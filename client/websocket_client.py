@@ -15,15 +15,15 @@ class WebSocketClient(object):
     # TODO: Either an instance of the client couples 1:1 with the cluster or an instance of the Client couples 1:3 with
     #  the 3 possible clusters (I think I like client per, but then a problem is the user can make multiple clients for
     #  the same cluster and that's not desirable behavior,
-    #  somehow keeping track with multiple Client instances will be the issue)
+    #  somehow keeping track with multiple Client instances will be the difficulty)
     def __init__(self, cluster: str, auth_key: str, process_message: Optional[Callable[[str], None]] = None):
         self._host = self.DEFAULT_HOST
         self.url = f"wss://{self._host}/{cluster}"
-        self.auth_key = auth_key
-        self.ws: websocket.WebSocketApp = websocket.WebSocketApp(self.url, on_error=self._default_on_error,
+        self.ws: websocket.WebSocketApp = websocket.WebSocketApp(self.url, on_open=self._default_on_open(),
                                                                  on_close=self._default_on_close,
-                                                                 on_message=self._default_on_message(),
-                                                                 on_open=self._authenticate())
+                                                                 on_error=self._default_on_error,
+                                                                 on_message=self._default_on_message())
+        self.auth_key = auth_key
 
         self.process_message = process_message
 
