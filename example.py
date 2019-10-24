@@ -1,6 +1,6 @@
 import time
 
-from client import WebSocketClient, STOCKS_CLUSTER
+from polygon_client import WebSocketClient, STOCKS_CLUSTER
 
 
 def my_customer_process_message(message):
