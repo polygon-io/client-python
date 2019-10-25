@@ -92,6 +92,7 @@ class WebSocketClient(object):
     def _default_on_open(self):
         def f(ws):
             self._authenticate(ws)
+        return f
 
     @staticmethod
     def _default_on_error(ws, error):
