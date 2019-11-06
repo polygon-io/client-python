@@ -93,6 +93,7 @@ import typing
 
 from .definitions import Definition
 
+
 AnyDefinition = typing.TypeVar("AnyDefinition", bound=Definition)
 
 # noinspection SpellCheckingInspection
