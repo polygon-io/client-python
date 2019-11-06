@@ -1,32 +1,168 @@
-import logging
-
 import requests
 
 
 class RESTClient:
     DEFAULT_HOST = "api.polygon.io"
 
-    def __init__(self, auth_key: str, debug: bool = False):
+    def __init__(self, auth_key):
         self.auth_key = auth_key
         self.url = "https://" + self.DEFAULT_HOST
 
         self._session = requests.Session()
         self._session.params["apiKey"] = self.auth_key
 
-        logging.basicConfig(level=logging.DEBUG if debug else None)
-
-    def tickers(self, **params):
+    def tickers(self, **query_params):
         endpoint = f"{self.url}/v2/reference/tickers"
-        return self._session.get(endpoint, params=params)
+        return self._session.get(endpoint, params=query_params)
 
-    def ticker_types(self, **params):
-        endpoint = f"{self.url}/v2/references/types"
-        return self._session.get(endpoint, params=params)
+    def ticker_types(self, **query_params):
+        endpoint = f"{self.url}/v2/reference/types"
+        return self._session.get(endpoint, params=query_params)
 
-    def ticker_details(self, symbol, **params):
+    def ticker_details(self, symbol, **query_params):
         endpoint = f"{self.url}/v1/meta/symbols/{symbol}/company"
-        return self._session.get(endpoint, params=params)
+        return self._session.get(endpoint, params=query_params)
 
-    def ticker_news(self, symbol, **params):
+    def ticker_news(self, symbol, **query_params):
         endpoint = f"{self.url}/v1/meta/symbols/{symbol}/news"
-        return self._session.get(endpoint, params=params)
+        return self._session.get(endpoint, params=query_params)
+
+    def markets(self, **query_params):
+        endpoint = f"{self.url}/v2/reference/markets"
+        return self._session.get(endpoint, params=query_params)
+
+    def locales(self, **query_params):
+        endpoint = f"{self.url}/v2/reference/locales"
+        return self._session.get(endpoint, params=query_params)
+
+    def stock_splits(self, symbol, **query_params):
+        endpoint = f"{self.url}/v2/reference/splits/{symbol}"
+        return self._session.get(endpoint, params=query_params)
+
+    def stock_dividends(self, symbol, **query_params):
+        endpoint = f"{self.url}/v2/reference/dividends/{symbol}"
+        return self._session.get(endpoint, params=query_params)
+
+    def stock_financials(self, symbol, **query_params):
+        endpoint = f"{self.url}/v2/reference/financials/{symbol}"
+        return self._session.get(endpoint, params=query_params)
+
+    def market_status(self, **query_params):
+        endpoint = f"{self.url}/v1/marketstatus/now"
+        return self._session.get(endpoint, params=query_params)
+
+    def market_holidays(self, **query_params):
+        endpoint = f"{self.url}/v1/marketstatus/upcoming"
+        return self._session.get(endpoint, params=query_params)
+
+    def exchanges(self, **query_params):
+        endpoint = f"{self.url}/v1/meta/exchanges"
+        return self._session.get(endpoint, params=query_params)
+
+    def historic_trades(self, symbol, date, **query_params):
+        endpoint = f"{self.url}/v1/historic/trades/{symbol}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def v2_historic_trades(self, ticker, date, **query_params):
+        endpoint = f"{self.url}/v2/ticks/stocks/trades/{ticker}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def historic_quotes(self, symbol, date, **query_params):
+        endpoint = f"{self.url}/v1/historic/quotes/{symbol}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def v2_historic_nbbo_quotes(self, ticker, date, **query_params):
+        endpoint = f"{self.url}/v2/ticks/stocks/nbbo/{ticker}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def last_trade_for_a_symbol(self, symbol, **query_params):
+        endpoint = f"{self.url}/v1/last/stocks/{symbol}"
+        return self._session.get(endpoint, params=query_params)
+
+    def last_quote_for_a_symbol(self, symbol, **query_params):
+        endpoint = f"{self.url}/v1/last_quote/stocks/{symbol}"
+        return self._session.get(endpoint, params=query_params)
+
+    def daily_open_close(self, symbol, date, **query_params):
+        endpoint = f"{self.url}/v1/open-close/{symbol}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def condition_mappings(self, ticktype, **query_params):
+        endpoint = f"{self.url}/v1/meta/conditions/{ticktype}"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_all_tickers(self, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/us/markets/stocks/tickers"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_single_ticker(self, ticker, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/us/markets/stocks/tickers/{ticker}"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_gainers_losers(self, direction, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/us/markets/stocks/{direction}"
+        return self._session.get(endpoint, params=query_params)
+
+    def previous_close(self, ticker, **query_params):
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/prev"
+        return self._session.get(endpoint, params=query_params)
+
+    def aggregates(self, ticker, multiplier, timespan, from_, to, **query_params):
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
+        return self._session.get(endpoint, params=query_params)
+
+    def grouped_daily(self, locale, market, date, **query_params):
+        endpoint = f"{self.url}/v2/aggs/grouped/locale/{locale}/market/{market}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def historic_forex_ticks(self, from_, to, date, **query_params):
+        endpoint = f"{self.url}/v1/historic/forex/{from_}/{to}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def real_time_currency_conversion(self, from_, to, **query_params):
+        endpoint = f"{self.url}/v1/conversion/{from_}/{to}"
+        return self._session.get(endpoint, params=query_params)
+
+    def last_quote_for_a_currency_pair(self, from_, to, **query_params):
+        endpoint = f"{self.url}/v1/last_quote/currencies/{from_}/{to}"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_all_tickers(self, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/tickers"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_gainers_losers(self, direction, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/{direction}"
+        return self._session.get(endpoint, params=query_params)
+
+    def crypto_exchanges(self, **query_params):
+        endpoint = f"{self.url}/v1/meta/crypto-exchanges"
+        return self._session.get(endpoint, params=query_params)
+
+    def last_trade_for_a_crypto_pair(self, from_, to, **query_params):
+        endpoint = f"{self.url}/v1/last/crypto/{from_}/{to}"
+        return self._session.get(endpoint, params=query_params)
+
+    def daily_open_close(self, from_, to, date, **query_params):
+        endpoint = f"{self.url}/v1/open-close/crypto/{from_}/{to}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def historic_crypto_trades(self, from_, to, date, **query_params):
+        endpoint = f"{self.url}/v1/historic/crypto/{from_}/{to}/{date}"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_all_tickers(self, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_single_ticker(self, ticker, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_single_ticker_full_book_l2(self, ticker, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
+        return self._session.get(endpoint, params=query_params)
+
+    def snapshot_gainers_losers(self, direction, **query_params):
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/{direction}"
+        return self._session.get(endpoint, params=query_params)
