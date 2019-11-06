@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from setuptools import setup, find_packages
 
 setup(
@@ -7,6 +9,8 @@ setup(
     author_email="ricky@polygon.io",
     url="",
     keywords=["Polygon API"],
-    packages=find_packages(),
+    packages=find_packages("src"),
+    package_dir={"": "src"},
+    py_modules=["polygon"],
     include_package_data=True
 )
