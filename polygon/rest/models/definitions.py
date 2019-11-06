@@ -61,7 +61,7 @@ class LastTrade(Definition):
         "cond3": "cond3",
         "cond4": "cond4",
         "timestamp": "timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -73,7 +73,7 @@ class LastTrade(Definition):
         "cond3": True,
         "cond4": True,
         "timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -85,7 +85,7 @@ class LastTrade(Definition):
         "cond3": "int",
         "cond4": "int",
         "timestamp": "int",
-        
+
     }
 
     def __init__(self):
@@ -97,7 +97,7 @@ class LastTrade(Definition):
         self.cond3: int
         self.cond4: int
         self.timestamp: int
-        
+
 
 # noinspection SpellCheckingInspection
 class LastQuote(Definition):
@@ -120,7 +120,7 @@ class LastQuote(Definition):
         "bidsize": True,
         "bidexchange": True,
         "timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -131,7 +131,7 @@ class LastQuote(Definition):
         "bidsize": "int",
         "bidexchange": "int",
         "timestamp": "int",
-        
+
     }
 
     def __init__(self):
@@ -142,7 +142,7 @@ class LastQuote(Definition):
         self.bidsize: int
         self.bidexchange: int
         self.timestamp: int
-        
+
 
 # noinspection SpellCheckingInspection
 class HistTrade(Definition):
@@ -155,7 +155,7 @@ class HistTrade(Definition):
         "price": "price",
         "size": "size",
         "timestamp": "timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -167,7 +167,7 @@ class HistTrade(Definition):
         "price": True,
         "size": True,
         "timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -179,7 +179,7 @@ class HistTrade(Definition):
         "price": "int",
         "size": "int",
         "timestamp": "str",
-        
+
     }
 
     def __init__(self):
@@ -191,7 +191,7 @@ class HistTrade(Definition):
         self.price: int
         self.size: int
         self.timestamp: str
-        
+
 
 # noinspection SpellCheckingInspection
 class Quote(Definition):
@@ -204,7 +204,7 @@ class Quote(Definition):
         "bS": "bid_size",
         "aS": "ask_size",
         "t": "timestamp_of_this_trade",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -216,7 +216,7 @@ class Quote(Definition):
         "bid_size": True,
         "ask_size": True,
         "timestamp_of_this_trade": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -228,7 +228,7 @@ class Quote(Definition):
         "bid_size": "int",
         "ask_size": "int",
         "timestamp_of_this_trade": "int",
-        
+
     }
 
     def __init__(self):
@@ -240,7 +240,7 @@ class Quote(Definition):
         self.bid_size: int
         self.ask_size: int
         self.timestamp_of_this_trade: int
-        
+
 
 # noinspection SpellCheckingInspection
 class Aggregate(Definition):
@@ -252,7 +252,7 @@ class Aggregate(Definition):
         "v": "total_volume_of_all_trades",
         "k": "transactions",
         "t": "timestamp_of_this_aggregation",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -263,7 +263,7 @@ class Aggregate(Definition):
         "total_volume_of_all_trades": True,
         "transactions": True,
         "timestamp_of_this_aggregation": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -274,7 +274,7 @@ class Aggregate(Definition):
         "total_volume_of_all_trades": "int",
         "transactions": "int",
         "timestamp_of_this_aggregation": "int",
-        
+
     }
 
     def __init__(self):
@@ -285,7 +285,7 @@ class Aggregate(Definition):
         self.total_volume_of_all_trades: int
         self.transactions: int
         self.timestamp_of_this_aggregation: int
-        
+
 
 # noinspection SpellCheckingInspection
 class Company(Definition):
@@ -312,7 +312,7 @@ class Company(Definition):
         "similar": "similar",
         "tags": "tags",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -338,7 +338,7 @@ class Company(Definition):
         "similar": False,
         "tags": False,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -364,7 +364,7 @@ class Company(Definition):
         "similar": "List[StockSymbol]",
         "tags": "List[str]",
         "updated": "str",
-        
+
     }
 
     def __init__(self):
@@ -390,7 +390,7 @@ class Company(Definition):
         self.similar: List[StockSymbol]
         self.tags: List[str]
         self.updated: str
-        
+
 
 # noinspection SpellCheckingInspection
 class Symbol(Definition):
@@ -401,7 +401,7 @@ class Symbol(Definition):
         "url": "url",
         "updated": "updated",
         "isOTC": "is___otc",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -411,7 +411,7 @@ class Symbol(Definition):
         "url": True,
         "updated": True,
         "is___otc": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -421,7 +421,7 @@ class Symbol(Definition):
         "url": "str",
         "updated": "str",
         "is___otc": "bool",
-        
+
     }
 
     def __init__(self):
@@ -431,7 +431,7 @@ class Symbol(Definition):
         self.url: str
         self.updated: str
         self.is___otc: bool
-        
+
 
 # noinspection SpellCheckingInspection
 class Dividend(Definition):
@@ -445,7 +445,7 @@ class Dividend(Definition):
         "amount": "amount",
         "qualified": "qualified",
         "flag": "flag",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -458,7 +458,7 @@ class Dividend(Definition):
         "amount": True,
         "qualified": True,
         "flag": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -471,7 +471,7 @@ class Dividend(Definition):
         "amount": "float",
         "qualified": "str",
         "flag": "str",
-        
+
     }
 
     def __init__(self):
@@ -484,7 +484,7 @@ class Dividend(Definition):
         self.amount: float
         self.qualified: str
         self.flag: str
-        
+
 
 # noinspection SpellCheckingInspection
 class News(Definition):
@@ -497,7 +497,7 @@ class News(Definition):
         "image": "image",
         "timestamp": "timestamp",
         "keywords": "keywords",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -509,7 +509,7 @@ class News(Definition):
         "image": True,
         "timestamp": True,
         "keywords": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -521,7 +521,7 @@ class News(Definition):
         "image": "str",
         "timestamp": "str",
         "keywords": "List[str]",
-        
+
     }
 
     def __init__(self):
@@ -533,7 +533,7 @@ class News(Definition):
         self.image: str
         self.timestamp: str
         self.keywords: List[str]
-        
+
 
 # noinspection SpellCheckingInspection
 class Earning(Definition):
@@ -552,7 +552,7 @@ class Earning(Definition):
         "yearAgo": "year_ago",
         "yearAgoChangePercent": "year_ag_ochan_gepercent",
         "estimatedChangePercent": "estimated_chang_epercent",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -570,7 +570,7 @@ class Earning(Definition):
         "year_ago": True,
         "year_ag_ochan_gepercent": True,
         "estimated_chang_epercent": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -588,7 +588,7 @@ class Earning(Definition):
         "year_ago": "float",
         "year_ag_ochan_gepercent": "float",
         "estimated_chang_epercent": "float",
-        
+
     }
 
     def __init__(self):
@@ -606,7 +606,7 @@ class Earning(Definition):
         self.year_ago: float
         self.year_ag_ochan_gepercent: float
         self.estimated_chang_epercent: float
-        
+
 
 # noinspection SpellCheckingInspection
 class Financial(Definition):
@@ -633,7 +633,7 @@ class Financial(Definition):
         "cashChange": "cash_change",
         "cashFlow": "cash_flow",
         "operatingGainsLosses": "operating_gain_slosses",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -659,7 +659,7 @@ class Financial(Definition):
         "cash_change": True,
         "cash_flow": True,
         "operating_gain_slosses": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -685,7 +685,7 @@ class Financial(Definition):
         "cash_change": "float",
         "cash_flow": "float",
         "operating_gain_slosses": "float",
-        
+
     }
 
     def __init__(self):
@@ -711,7 +711,7 @@ class Financial(Definition):
         self.cash_change: float
         self.cash_flow: float
         self.operating_gain_slosses: float
-        
+
 
 # noinspection SpellCheckingInspection
 class Exchange(Definition):
@@ -722,7 +722,7 @@ class Exchange(Definition):
         "mic": "mic",
         "name": "name",
         "tape": "tape",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -732,7 +732,7 @@ class Exchange(Definition):
         "mic": True,
         "name": True,
         "tape": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -742,7 +742,7 @@ class Exchange(Definition):
         "mic": "str",
         "name": "str",
         "tape": "str",
-        
+
     }
 
     def __init__(self):
@@ -752,7 +752,7 @@ class Exchange(Definition):
         self.mic: str
         self.name: str
         self.tape: str
-        
+
 
 # noinspection SpellCheckingInspection
 class Error(Definition):
@@ -760,91 +760,91 @@ class Error(Definition):
         "code": "code",
         "message": "message",
         "fields": "fields",
-        
+
     }
 
     _attribute_is_primitive = {
         "code": True,
         "message": True,
         "fields": True,
-        
+
     }
 
     _attributes_to_types = {
         "code": "int",
         "message": "str",
         "fields": "str",
-        
+
     }
 
     def __init__(self):
         self.code: int
         self.message: str
         self.fields: str
-        
+
 
 # noinspection SpellCheckingInspection
 class NotFound(Definition):
     _swagger_name_to_python = {
         "message": "message",
-        
+
     }
 
     _attribute_is_primitive = {
         "message": True,
-        
+
     }
 
     _attributes_to_types = {
         "message": "str",
-        
+
     }
 
     def __init__(self):
         self.message: str
-        
+
 
 # noinspection SpellCheckingInspection
 class Conflict(Definition):
     _swagger_name_to_python = {
         "message": "message",
-        
+
     }
 
     _attribute_is_primitive = {
         "message": True,
-        
+
     }
 
     _attributes_to_types = {
         "message": "str",
-        
+
     }
 
     def __init__(self):
         self.message: str
-        
+
 
 # noinspection SpellCheckingInspection
 class Unauthorized(Definition):
     _swagger_name_to_python = {
         "message": "message",
-        
+
     }
 
     _attribute_is_primitive = {
         "message": True,
-        
+
     }
 
     _attributes_to_types = {
         "message": "str",
-        
+
     }
 
     def __init__(self):
         self.message: str
-        
+
 
 # noinspection SpellCheckingInspection
 class MarketStatus(Definition):
@@ -853,7 +853,7 @@ class MarketStatus(Definition):
         "serverTime": "server_time",
         "exchanges": "exchanges",
         "currencies": "currencies",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -861,7 +861,7 @@ class MarketStatus(Definition):
         "server_time": True,
         "exchanges": True,
         "currencies": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -869,7 +869,7 @@ class MarketStatus(Definition):
         "server_time": "str",
         "exchanges": "Dict[str, str]",
         "currencies": "Dict[str, str]",
-        
+
     }
 
     def __init__(self):
@@ -877,7 +877,7 @@ class MarketStatus(Definition):
         self.server_time: str
         self.exchanges: Dict[str, str]
         self.currencies: Dict[str, str]
-        
+
 
 # noinspection SpellCheckingInspection
 class MarketHoliday(Definition):
@@ -888,7 +888,7 @@ class MarketHoliday(Definition):
         "date": "date",
         "open": "open",
         "close": "close",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -898,7 +898,7 @@ class MarketHoliday(Definition):
         "date": True,
         "open": True,
         "close": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -908,7 +908,7 @@ class MarketHoliday(Definition):
         "date": "str",
         "open": "str",
         "close": "str",
-        
+
     }
 
     def __init__(self):
@@ -918,7 +918,7 @@ class MarketHoliday(Definition):
         self.date: str
         self.open: str
         self.close: str
-        
+
 
 # noinspection SpellCheckingInspection
 class AnalystRatings(Definition):
@@ -932,7 +932,7 @@ class AnalystRatings(Definition):
         "sell": "sell",
         "strongSell": "strong_sell",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -945,7 +945,7 @@ class AnalystRatings(Definition):
         "sell": False,
         "strong_sell": False,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -958,7 +958,7 @@ class AnalystRatings(Definition):
         "sell": "RatingSection",
         "strong_sell": "RatingSection",
         "updated": "str",
-        
+
     }
 
     def __init__(self):
@@ -971,7 +971,7 @@ class AnalystRatings(Definition):
         self.sell: RatingSection
         self.strong_sell: RatingSection
         self.updated: str
-        
+
 
 # noinspection SpellCheckingInspection
 class RatingSection(Definition):
@@ -982,7 +982,7 @@ class RatingSection(Definition):
         "month3": "month3",
         "month4": "month4",
         "month5": "month5",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -992,7 +992,7 @@ class RatingSection(Definition):
         "month3": True,
         "month4": True,
         "month5": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1002,7 +1002,7 @@ class RatingSection(Definition):
         "month3": "float",
         "month4": "float",
         "month5": "float",
-        
+
     }
 
     def __init__(self):
@@ -1012,7 +1012,7 @@ class RatingSection(Definition):
         self.month3: float
         self.month4: float
         self.month5: float
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoTick(Definition):
@@ -1022,7 +1022,7 @@ class CryptoTick(Definition):
         "exchange": "exchange",
         "conditions": "conditions",
         "timestamp": "timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1031,7 +1031,7 @@ class CryptoTick(Definition):
         "exchange": True,
         "conditions": False,
         "timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1040,7 +1040,7 @@ class CryptoTick(Definition):
         "exchange": "int",
         "conditions": "List[int]",
         "timestamp": "int",
-        
+
     }
 
     def __init__(self):
@@ -1049,7 +1049,7 @@ class CryptoTick(Definition):
         self.exchange: int
         self.conditions: List[int]
         self.timestamp: int
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoTickJson(Definition):
@@ -1059,7 +1059,7 @@ class CryptoTickJson(Definition):
         "x": "exchange_the_trade_occured_on",
         "c": "c",
         "t": "timestamp_of_this_trade",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1068,7 +1068,7 @@ class CryptoTickJson(Definition):
         "exchange_the_trade_occured_on": True,
         "c": False,
         "timestamp_of_this_trade": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1077,7 +1077,7 @@ class CryptoTickJson(Definition):
         "exchange_the_trade_occured_on": "int",
         "c": "List[int]",
         "timestamp_of_this_trade": "int",
-        
+
     }
 
     def __init__(self):
@@ -1086,7 +1086,7 @@ class CryptoTickJson(Definition):
         self.exchange_the_trade_occured_on: int
         self.c: List[int]
         self.timestamp_of_this_trade: int
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoExchange(Definition):
@@ -1096,7 +1096,7 @@ class CryptoExchange(Definition):
         "market": "market",
         "name": "name",
         "url": "url",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1105,7 +1105,7 @@ class CryptoExchange(Definition):
         "market": True,
         "name": True,
         "url": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1114,7 +1114,7 @@ class CryptoExchange(Definition):
         "market": "str",
         "name": "str",
         "url": "str",
-        
+
     }
 
     def __init__(self):
@@ -1123,7 +1123,7 @@ class CryptoExchange(Definition):
         self.market: str
         self.name: str
         self.url: str
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoSnapshotTicker(Definition):
@@ -1136,7 +1136,7 @@ class CryptoSnapshotTicker(Definition):
         "todaysChange": "todays_change",
         "todaysChangePerc": "todays_chang_eperc",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1148,7 +1148,7 @@ class CryptoSnapshotTicker(Definition):
         "todays_change": True,
         "todays_chang_eperc": True,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1160,7 +1160,7 @@ class CryptoSnapshotTicker(Definition):
         "todays_change": "int",
         "todays_chang_eperc": "int",
         "updated": "int",
-        
+
     }
 
     def __init__(self):
@@ -1172,32 +1172,32 @@ class CryptoSnapshotTicker(Definition):
         self.todays_change: int
         self.todays_chang_eperc: int
         self.updated: int
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoSnapshotBookItem(Definition):
     _swagger_name_to_python = {
         "p": "price_of_this_book_level",
         "x": "exchange_to_size_of_this_price_level",
-        
+
     }
 
     _attribute_is_primitive = {
         "price_of_this_book_level": True,
         "exchange_to_size_of_this_price_level": True,
-        
+
     }
 
     _attributes_to_types = {
         "price_of_this_book_level": "int",
         "exchange_to_size_of_this_price_level": "Dict[str, str]",
-        
+
     }
 
     def __init__(self):
         self.price_of_this_book_level: int
         self.exchange_to_size_of_this_price_level: Dict[str, str]
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoSnapshotTickerBook(Definition):
@@ -1209,7 +1209,7 @@ class CryptoSnapshotTickerBook(Definition):
         "askCount": "ask_count",
         "spread": "spread",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1220,7 +1220,7 @@ class CryptoSnapshotTickerBook(Definition):
         "ask_count": True,
         "spread": True,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1231,7 +1231,7 @@ class CryptoSnapshotTickerBook(Definition):
         "ask_count": "int",
         "spread": "int",
         "updated": "int",
-        
+
     }
 
     def __init__(self):
@@ -1242,7 +1242,7 @@ class CryptoSnapshotTickerBook(Definition):
         self.ask_count: int
         self.spread: int
         self.updated: int
-        
+
 
 # noinspection SpellCheckingInspection
 class CryptoSnapshotAgg(Definition):
@@ -1252,7 +1252,7 @@ class CryptoSnapshotAgg(Definition):
         "l": "low_price",
         "o": "open_price",
         "v": "volume",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1261,7 +1261,7 @@ class CryptoSnapshotAgg(Definition):
         "low_price": True,
         "open_price": True,
         "volume": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1270,7 +1270,7 @@ class CryptoSnapshotAgg(Definition):
         "low_price": "int",
         "open_price": "int",
         "volume": "int",
-        
+
     }
 
     def __init__(self):
@@ -1279,7 +1279,7 @@ class CryptoSnapshotAgg(Definition):
         self.low_price: int
         self.open_price: int
         self.volume: int
-        
+
 
 # noinspection SpellCheckingInspection
 class Forex(Definition):
@@ -1287,28 +1287,28 @@ class Forex(Definition):
         "a": "ask_price",
         "b": "bid_price",
         "t": "timestamp_of_this_trade",
-        
+
     }
 
     _attribute_is_primitive = {
         "ask_price": True,
         "bid_price": True,
         "timestamp_of_this_trade": True,
-        
+
     }
 
     _attributes_to_types = {
         "ask_price": "int",
         "bid_price": "int",
         "timestamp_of_this_trade": "int",
-        
+
     }
 
     def __init__(self):
         self.ask_price: int
         self.bid_price: int
         self.timestamp_of_this_trade: int
-        
+
 
 # noinspection SpellCheckingInspection
 class LastForexTrade(Definition):
@@ -1316,28 +1316,28 @@ class LastForexTrade(Definition):
         "price": "price",
         "exchange": "exchange",
         "timestamp": "timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
         "price": True,
         "exchange": True,
         "timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
         "price": "int",
         "exchange": "int",
         "timestamp": "int",
-        
+
     }
 
     def __init__(self):
         self.price: int
         self.exchange: int
         self.timestamp: int
-        
+
 
 # noinspection SpellCheckingInspection
 class LastForexQuote(Definition):
@@ -1346,7 +1346,7 @@ class LastForexQuote(Definition):
         "bid": "bid",
         "exchange": "exchange",
         "timestamp": "timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1354,7 +1354,7 @@ class LastForexQuote(Definition):
         "bid": True,
         "exchange": True,
         "timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1362,7 +1362,7 @@ class LastForexQuote(Definition):
         "bid": "int",
         "exchange": "int",
         "timestamp": "int",
-        
+
     }
 
     def __init__(self):
@@ -1370,7 +1370,7 @@ class LastForexQuote(Definition):
         self.bid: int
         self.exchange: int
         self.timestamp: int
-        
+
 
 # noinspection SpellCheckingInspection
 class ForexAggregate(Definition):
@@ -1381,7 +1381,7 @@ class ForexAggregate(Definition):
         "h": "high_price",
         "v": "volume_of_all_trades",
         "t": "timestamp_of_this_aggregation",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1391,7 +1391,7 @@ class ForexAggregate(Definition):
         "high_price": True,
         "volume_of_all_trades": True,
         "timestamp_of_this_aggregation": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1401,7 +1401,7 @@ class ForexAggregate(Definition):
         "high_price": "int",
         "volume_of_all_trades": "int",
         "timestamp_of_this_aggregation": "int",
-        
+
     }
 
     def __init__(self):
@@ -1411,7 +1411,7 @@ class ForexAggregate(Definition):
         self.high_price: int
         self.volume_of_all_trades: int
         self.timestamp_of_this_aggregation: int
-        
+
 
 # noinspection SpellCheckingInspection
 class ForexSnapshotTicker(Definition):
@@ -1424,7 +1424,7 @@ class ForexSnapshotTicker(Definition):
         "todaysChange": "todays_change",
         "todaysChangePerc": "todays_chang_eperc",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1436,7 +1436,7 @@ class ForexSnapshotTicker(Definition):
         "todays_change": True,
         "todays_chang_eperc": True,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1448,7 +1448,7 @@ class ForexSnapshotTicker(Definition):
         "todays_change": "int",
         "todays_chang_eperc": "int",
         "updated": "int",
-        
+
     }
 
     def __init__(self):
@@ -1460,7 +1460,7 @@ class ForexSnapshotTicker(Definition):
         self.todays_change: int
         self.todays_chang_eperc: int
         self.updated: int
-        
+
 
 # noinspection SpellCheckingInspection
 class ForexSnapshotAgg(Definition):
@@ -1470,7 +1470,7 @@ class ForexSnapshotAgg(Definition):
         "l": "low_price",
         "o": "open_price",
         "v": "volume",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1479,7 +1479,7 @@ class ForexSnapshotAgg(Definition):
         "low_price": True,
         "open_price": True,
         "volume": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1488,7 +1488,7 @@ class ForexSnapshotAgg(Definition):
         "low_price": "int",
         "open_price": "int",
         "volume": "int",
-        
+
     }
 
     def __init__(self):
@@ -1497,7 +1497,7 @@ class ForexSnapshotAgg(Definition):
         self.low_price: int
         self.open_price: int
         self.volume: int
-        
+
 
 # noinspection SpellCheckingInspection
 class Ticker(Definition):
@@ -1513,7 +1513,7 @@ class Ticker(Definition):
         "updated": "updated",
         "attrs": "attrs",
         "codes": "codes",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1528,7 +1528,7 @@ class Ticker(Definition):
         "updated": True,
         "attrs": True,
         "codes": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1543,7 +1543,7 @@ class Ticker(Definition):
         "updated": "str",
         "attrs": "Dict[str, str]",
         "codes": "Dict[str, str]",
-        
+
     }
 
     def __init__(self):
@@ -1558,7 +1558,7 @@ class Ticker(Definition):
         self.updated: str
         self.attrs: Dict[str, str]
         self.codes: Dict[str, str]
-        
+
 
 # noinspection SpellCheckingInspection
 class Split(Definition):
@@ -1571,7 +1571,7 @@ class Split(Definition):
         "ratio": "ratio",
         "tofactor": "tofactor",
         "forfactor": "forfactor",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1583,7 +1583,7 @@ class Split(Definition):
         "ratio": True,
         "tofactor": True,
         "forfactor": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1595,7 +1595,7 @@ class Split(Definition):
         "ratio": "float",
         "tofactor": "float",
         "forfactor": "float",
-        
+
     }
 
     def __init__(self):
@@ -1607,7 +1607,7 @@ class Split(Definition):
         self.ratio: float
         self.tofactor: float
         self.forfactor: float
-        
+
 
 # noinspection SpellCheckingInspection
 class Financials(Definition):
@@ -1722,7 +1722,7 @@ class Financials(Definition):
         "taxLiabilities": "tax_liabilities",
         "tangibleAssetsBookValuePerShare": "tangible_asset_sbo_okva_lu_epershare",
         "workingCapital": "working_capital",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -1836,7 +1836,7 @@ class Financials(Definition):
         "tax_liabilities": True,
         "tangible_asset_sbo_okva_lu_epershare": True,
         "working_capital": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -1950,7 +1950,7 @@ class Financials(Definition):
         "tax_liabilities": "int",
         "tangible_asset_sbo_okva_lu_epershare": "int",
         "working_capital": "int",
-        
+
     }
 
     def __init__(self):
@@ -2064,7 +2064,7 @@ class Financials(Definition):
         self.tax_liabilities: int
         self.tangible_asset_sbo_okva_lu_epershare: int
         self.working_capital: int
-        
+
 
 # noinspection SpellCheckingInspection
 class Trade(Definition):
@@ -2077,7 +2077,7 @@ class Trade(Definition):
         "p": "price_of_the_trade",
         "s": "size_of_the_trade",
         "t": "timestamp_of_this_trade",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2089,7 +2089,7 @@ class Trade(Definition):
         "price_of_the_trade": True,
         "size_of_the_trade": True,
         "timestamp_of_this_trade": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2101,7 +2101,7 @@ class Trade(Definition):
         "price_of_the_trade": "int",
         "size_of_the_trade": "int",
         "timestamp_of_this_trade": "int",
-        
+
     }
 
     def __init__(self):
@@ -2113,7 +2113,7 @@ class Trade(Definition):
         self.price_of_the_trade: int
         self.size_of_the_trade: int
         self.timestamp_of_this_trade: int
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksSnapshotTicker(Definition):
@@ -2127,7 +2127,7 @@ class StocksSnapshotTicker(Definition):
         "todaysChange": "todays_change",
         "todaysChangePerc": "todays_chang_eperc",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2140,7 +2140,7 @@ class StocksSnapshotTicker(Definition):
         "todays_change": True,
         "todays_chang_eperc": True,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2153,7 +2153,7 @@ class StocksSnapshotTicker(Definition):
         "todays_change": "int",
         "todays_chang_eperc": "int",
         "updated": "int",
-        
+
     }
 
     def __init__(self):
@@ -2166,32 +2166,32 @@ class StocksSnapshotTicker(Definition):
         self.todays_change: int
         self.todays_chang_eperc: int
         self.updated: int
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksSnapshotBookItem(Definition):
     _swagger_name_to_python = {
         "p": "price_of_this_book_level",
         "x": "exchange_to_size_of_this_price_level",
-        
+
     }
 
     _attribute_is_primitive = {
         "price_of_this_book_level": True,
         "exchange_to_size_of_this_price_level": True,
-        
+
     }
 
     _attributes_to_types = {
         "price_of_this_book_level": "int",
         "exchange_to_size_of_this_price_level": "Dict[str, str]",
-        
+
     }
 
     def __init__(self):
         self.price_of_this_book_level: int
         self.exchange_to_size_of_this_price_level: Dict[str, str]
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksSnapshotTickerBook(Definition):
@@ -2203,7 +2203,7 @@ class StocksSnapshotTickerBook(Definition):
         "askCount": "ask_count",
         "spread": "spread",
         "updated": "updated",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2214,7 +2214,7 @@ class StocksSnapshotTickerBook(Definition):
         "ask_count": True,
         "spread": True,
         "updated": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2225,7 +2225,7 @@ class StocksSnapshotTickerBook(Definition):
         "ask_count": "int",
         "spread": "int",
         "updated": "int",
-        
+
     }
 
     def __init__(self):
@@ -2236,7 +2236,7 @@ class StocksSnapshotTickerBook(Definition):
         self.ask_count: int
         self.spread: int
         self.updated: int
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksV2Trade(Definition):
@@ -2252,7 +2252,7 @@ class StocksV2Trade(Definition):
         "c": "c",
         "p": "price_of_the_trade",
         "z": "tape_where_trade_occured",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2267,7 +2267,7 @@ class StocksV2Trade(Definition):
         "c": False,
         "price_of_the_trade": True,
         "tape_where_trade_occured": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2282,7 +2282,7 @@ class StocksV2Trade(Definition):
         "c": "List[int]",
         "price_of_the_trade": "int",
         "tape_where_trade_occured": "int",
-        
+
     }
 
     def __init__(self):
@@ -2297,7 +2297,7 @@ class StocksV2Trade(Definition):
         self.c: List[int]
         self.price_of_the_trade: int
         self.tape_where_trade_occured: int
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksV2NBBO(Definition):
@@ -2316,7 +2316,7 @@ class StocksV2NBBO(Definition):
         "X": "a__sk_exchange__id",
         "S": "a__sk_size",
         "z": "tape_where_trade_occured",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2334,7 +2334,7 @@ class StocksV2NBBO(Definition):
         "a__sk_exchange__id": True,
         "a__sk_size": True,
         "tape_where_trade_occured": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2352,7 +2352,7 @@ class StocksV2NBBO(Definition):
         "a__sk_exchange__id": "int",
         "a__sk_size": "int",
         "tape_where_trade_occured": "int",
-        
+
     }
 
     def __init__(self):
@@ -2370,7 +2370,7 @@ class StocksV2NBBO(Definition):
         self.a__sk_exchange__id: int
         self.a__sk_size: int
         self.tape_where_trade_occured: int
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksSnapshotAgg(Definition):
@@ -2380,7 +2380,7 @@ class StocksSnapshotAgg(Definition):
         "l": "low_price",
         "o": "open_price",
         "v": "volume",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2389,7 +2389,7 @@ class StocksSnapshotAgg(Definition):
         "low_price": True,
         "open_price": True,
         "volume": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2398,7 +2398,7 @@ class StocksSnapshotAgg(Definition):
         "low_price": "int",
         "open_price": "int",
         "volume": "int",
-        
+
     }
 
     def __init__(self):
@@ -2407,7 +2407,7 @@ class StocksSnapshotAgg(Definition):
         self.low_price: int
         self.open_price: int
         self.volume: int
-        
+
 
 # noinspection SpellCheckingInspection
 class StocksSnapshotQuote(Definition):
@@ -2417,7 +2417,7 @@ class StocksSnapshotQuote(Definition):
         "P": "ask_price",
         "S": "ask_size_in_lots",
         "t": "last_updated_timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2426,7 +2426,7 @@ class StocksSnapshotQuote(Definition):
         "ask_price": True,
         "ask_size_in_lots": True,
         "last_updated_timestamp": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2435,7 +2435,7 @@ class StocksSnapshotQuote(Definition):
         "ask_price": "int",
         "ask_size_in_lots": "int",
         "last_updated_timestamp": "int",
-        
+
     }
 
     def __init__(self):
@@ -2444,7 +2444,7 @@ class StocksSnapshotQuote(Definition):
         self.ask_price: int
         self.ask_size_in_lots: int
         self.last_updated_timestamp: int
-        
+
 
 # noinspection SpellCheckingInspection
 class Aggv2(Definition):
@@ -2457,7 +2457,7 @@ class Aggv2(Definition):
         "l": "low",
         "t": "unix_msec_timestamp",
         "n": "number_of_items_in_aggregate_window",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2469,7 +2469,7 @@ class Aggv2(Definition):
         "low": True,
         "unix_msec_timestamp": True,
         "number_of_items_in_aggregate_window": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -2481,7 +2481,7 @@ class Aggv2(Definition):
         "low": "int",
         "unix_msec_timestamp": "float",
         "number_of_items_in_aggregate_window": "float",
-        
+
     }
 
     def __init__(self):
@@ -2493,7 +2493,7 @@ class Aggv2(Definition):
         self.low: int
         self.unix_msec_timestamp: float
         self.number_of_items_in_aggregate_window: float
-        
+
 
 # noinspection SpellCheckingInspection
 class AggResponse(Definition):
@@ -2504,7 +2504,7 @@ class AggResponse(Definition):
         "queryCount": "query_count",
         "resultsCount": "results_count",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2514,7 +2514,7 @@ class AggResponse(Definition):
         "query_count": True,
         "results_count": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -2524,7 +2524,7 @@ class AggResponse(Definition):
         "query_count": "float",
         "results_count": "float",
         "results": "List[Aggv2]",
-        
+
     }
 
     def __init__(self):
@@ -2534,298 +2534,298 @@ class AggResponse(Definition):
         self.query_count: float
         self.results_count: float
         self.results: List[Aggv2]
-        
+
 
 # noinspection SpellCheckingInspection
-class TickersApiResponse(Definition):
+class ReferenceTickersApiResponse(Definition):
     _swagger_name_to_python = {
         "symbol": "symbol",
-        
+
     }
 
     _attribute_is_primitive = {
         "symbol": False,
-        
+
     }
 
     _attributes_to_types = {
         "symbol": "List[Symbol]",
-        
+
     }
 
     def __init__(self):
         self.symbol: List[Symbol]
-        
+
 
 # noinspection SpellCheckingInspection
-class TickerTypesApiResponse(Definition):
+class ReferenceTickerTypesApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "results": True,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "results": "Dict[str, str]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.results: Dict[str, str]
-        
+
 
 # noinspection SpellCheckingInspection
-class TickerDetailsApiResponse(Definition):
+class ReferenceTickerDetailsApiResponse(Definition):
     _swagger_name_to_python = {
         "company": "company",
-        
+
     }
 
     _attribute_is_primitive = {
         "company": False,
-        
+
     }
 
     _attributes_to_types = {
         "company": "Company",
-        
+
     }
 
     def __init__(self):
         self.company: Company
-        
+
 
 # noinspection SpellCheckingInspection
-class TickerNewsApiResponse(Definition):
+class ReferenceTickerNewsApiResponse(Definition):
     _swagger_name_to_python = {
         "news": "news",
-        
+
     }
 
     _attribute_is_primitive = {
         "news": False,
-        
+
     }
 
     _attributes_to_types = {
         "news": "List[News]",
-        
+
     }
 
     def __init__(self):
         self.news: List[News]
-        
+
 
 # noinspection SpellCheckingInspection
-class MarketsApiResponse(Definition):
+class ReferenceMarketsApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "results": "List[Dict[str, str]]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.results: List[Dict[str, str]]
-        
+
 
 # noinspection SpellCheckingInspection
-class LocalesApiResponse(Definition):
+class ReferenceLocalesApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "results": "List[Dict[str, str]]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.results: List[Dict[str, str]]
-        
+
 
 # noinspection SpellCheckingInspection
-class StockSplitsApiResponse(Definition):
+class ReferenceStockSplitsApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "count": "count",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "count": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "count": "float",
         "results": "List[Split]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.count: float
         self.results: List[Split]
-        
+
 
 # noinspection SpellCheckingInspection
-class StockDividendsApiResponse(Definition):
+class ReferenceStockDividendsApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "count": "count",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "count": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "count": "float",
         "results": "List[Dividend]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.count: float
         self.results: List[Dividend]
-        
+
 
 # noinspection SpellCheckingInspection
-class StockFinancialsApiResponse(Definition):
+class ReferenceStockFinancialsApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "count": "count",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "count": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "count": "float",
         "results": "List[Financials]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.count: float
         self.results: List[Financials]
-        
+
 
 # noinspection SpellCheckingInspection
-class MarketStatusApiResponse(Definition):
+class ReferenceMarketStatusApiResponse(Definition):
     _swagger_name_to_python = {
         "marketstatus": "marketstatus",
-        
+
     }
 
     _attribute_is_primitive = {
         "marketstatus": False,
-        
+
     }
 
     _attributes_to_types = {
         "marketstatus": "MarketStatus",
-        
+
     }
 
     def __init__(self):
         self.marketstatus: MarketStatus
-        
+
 
 # noinspection SpellCheckingInspection
-class MarketHolidaysApiResponse(Definition):
+class ReferenceMarketHolidaysApiResponse(Definition):
     _swagger_name_to_python = {
         "marketholiday": "marketholiday",
-        
+
     }
 
     _attribute_is_primitive = {
         "marketholiday": False,
-        
+
     }
 
     _attributes_to_types = {
         "marketholiday": "List[MarketHoliday]",
-        
+
     }
 
     def __init__(self):
         self.marketholiday: List[MarketHoliday]
-        
+
 
 # noinspection SpellCheckingInspection
-class ExchangesApiResponse(Definition):
+class StocksEquitiesExchangesApiResponse(Definition):
     _swagger_name_to_python = {
         "exchange": "exchange",
-        
+
     }
 
     _attribute_is_primitive = {
         "exchange": False,
-        
+
     }
 
     _attributes_to_types = {
         "exchange": "List[Exchange]",
-        
+
     }
 
     def __init__(self):
         self.exchange: List[Exchange]
-        
+
 
 # noinspection SpellCheckingInspection
-class HistoricTradesApiResponse(Definition):
+class StocksEquitiesHistoricTradesApiResponse(Definition):
     _swagger_name_to_python = {
         "day": "day",
         "map": "map",
@@ -2833,7 +2833,7 @@ class HistoricTradesApiResponse(Definition):
         "status": "status",
         "symbol": "symbol",
         "ticks": "ticks",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2843,7 +2843,7 @@ class HistoricTradesApiResponse(Definition):
         "status": True,
         "symbol": True,
         "ticks": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -2853,7 +2853,7 @@ class HistoricTradesApiResponse(Definition):
         "status": "str",
         "symbol": "str",
         "ticks": "List[Trade]",
-        
+
     }
 
     def __init__(self):
@@ -2863,7 +2863,7 @@ class HistoricTradesApiResponse(Definition):
         self.status: str
         self.symbol: str
         self.ticks: List[Trade]
-        
+
 
 # noinspection SpellCheckingInspection
 class HistoricTradesV2ApiResponse(Definition):
@@ -2873,7 +2873,7 @@ class HistoricTradesV2ApiResponse(Definition):
         "success": "success",
         "ticker": "ticker",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2882,7 +2882,7 @@ class HistoricTradesV2ApiResponse(Definition):
         "success": True,
         "ticker": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -2891,7 +2891,7 @@ class HistoricTradesV2ApiResponse(Definition):
         "success": "bool",
         "ticker": "str",
         "results": "List[StocksV2Trade]",
-        
+
     }
 
     def __init__(self):
@@ -2900,10 +2900,10 @@ class HistoricTradesV2ApiResponse(Definition):
         self.success: bool
         self.ticker: str
         self.results: List[StocksV2Trade]
-        
+
 
 # noinspection SpellCheckingInspection
-class HistoricQuotesApiResponse(Definition):
+class StocksEquitiesHistoricQuotesApiResponse(Definition):
     _swagger_name_to_python = {
         "day": "day",
         "map": "map",
@@ -2911,7 +2911,7 @@ class HistoricQuotesApiResponse(Definition):
         "status": "status",
         "symbol": "symbol",
         "ticks": "ticks",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2921,7 +2921,7 @@ class HistoricQuotesApiResponse(Definition):
         "status": True,
         "symbol": True,
         "ticks": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -2931,7 +2931,7 @@ class HistoricQuotesApiResponse(Definition):
         "status": "str",
         "symbol": "str",
         "ticks": "List[Quote]",
-        
+
     }
 
     def __init__(self):
@@ -2941,7 +2941,7 @@ class HistoricQuotesApiResponse(Definition):
         self.status: str
         self.symbol: str
         self.ticks: List[Quote]
-        
+
 
 # noinspection SpellCheckingInspection
 class HistoricNBboQuotesV2ApiResponse(Definition):
@@ -2951,7 +2951,7 @@ class HistoricNBboQuotesV2ApiResponse(Definition):
         "success": "success",
         "ticker": "ticker",
         "results": "results",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -2960,7 +2960,7 @@ class HistoricNBboQuotesV2ApiResponse(Definition):
         "success": True,
         "ticker": True,
         "results": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -2969,7 +2969,7 @@ class HistoricNBboQuotesV2ApiResponse(Definition):
         "success": "bool",
         "ticker": "str",
         "results": "List[StocksV2NBBO]",
-        
+
     }
 
     def __init__(self):
@@ -2978,74 +2978,74 @@ class HistoricNBboQuotesV2ApiResponse(Definition):
         self.success: bool
         self.ticker: str
         self.results: List[StocksV2NBBO]
-        
+
 
 # noinspection SpellCheckingInspection
-class LastTradeForASymbolApiResponse(Definition):
+class StocksEquitiesLastTradeForASymbolApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "symbol": "symbol",
         "last": "last",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "symbol": True,
         "last": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "symbol": "str",
         "last": "LastTrade",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.symbol: str
         self.last: LastTrade
-        
+
 
 # noinspection SpellCheckingInspection
-class LastQuoteForASymbolApiResponse(Definition):
+class StocksEquitiesLastQuoteForASymbolApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "symbol": "symbol",
         "last": "last",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "symbol": True,
         "last": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "symbol": "str",
         "last": "LastQuote",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.symbol: str
         self.last: LastQuote
-        
+
 
 # noinspection SpellCheckingInspection
-class DailyOpenCloseApiResponse(Definition):
+class StocksEquitiesDailyOpenCloseApiResponse(Definition):
     _swagger_name_to_python = {
         "symbol": "symbol",
         "open": "open",
         "close": "close",
         "afterHours": "after_hours",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3053,7 +3053,7 @@ class DailyOpenCloseApiResponse(Definition):
         "open": False,
         "close": False,
         "after_hours": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -3061,7 +3061,7 @@ class DailyOpenCloseApiResponse(Definition):
         "open": "HistTrade",
         "close": "HistTrade",
         "after_hours": "HistTrade",
-        
+
     }
 
     def __init__(self):
@@ -3069,169 +3069,169 @@ class DailyOpenCloseApiResponse(Definition):
         self.open: HistTrade
         self.close: HistTrade
         self.after_hours: HistTrade
-        
+
 
 # noinspection SpellCheckingInspection
-class ConditionMappingsApiResponse(Definition):
+class StocksEquitiesConditionMappingsApiResponse(Definition):
     _swagger_name_to_python = {
         "conditiontypemap": "conditiontypemap",
-        
+
     }
 
     _attribute_is_primitive = {
         "conditiontypemap": False,
-        
+
     }
 
     _attributes_to_types = {
         "conditiontypemap": "ConditionTypeMap",
-        
+
     }
 
     def __init__(self):
         self.conditiontypemap: ConditionTypeMap
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotAllTickersApiResponse(Definition):
+class StocksEquitiesSnapshotAllTickersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "tickers": "tickers",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "tickers": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "tickers": "List[StocksSnapshotTicker]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.tickers: List[StocksSnapshotTicker]
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotSingleTickerApiResponse(Definition):
+class StocksEquitiesSnapshotSingleTickerApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "ticker": "ticker",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "ticker": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "ticker": "StocksSnapshotTicker",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.ticker: StocksSnapshotTicker
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotGainersLosersApiResponse(Definition):
+class StocksEquitiesSnapshotGainersLosersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "tickers": "tickers",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "tickers": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "tickers": "List[StocksSnapshotTicker]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.tickers: List[StocksSnapshotTicker]
-        
+
 
 # noinspection SpellCheckingInspection
-class PreviousCloseApiResponse(Definition):
+class StocksEquitiesPreviousCloseApiResponse(Definition):
     _swagger_name_to_python = {
         "aggresponse": "aggresponse",
-        
+
     }
 
     _attribute_is_primitive = {
         "aggresponse": False,
-        
+
     }
 
     _attributes_to_types = {
         "aggresponse": "AggResponse",
-        
+
     }
 
     def __init__(self):
         self.aggresponse: AggResponse
-        
+
 
 # noinspection SpellCheckingInspection
-class AggregatesApiResponse(Definition):
+class StocksEquitiesAggregatesApiResponse(Definition):
     _swagger_name_to_python = {
         "aggresponse": "aggresponse",
-        
+
     }
 
     _attribute_is_primitive = {
         "aggresponse": False,
-        
+
     }
 
     _attributes_to_types = {
         "aggresponse": "AggResponse",
-        
+
     }
 
     def __init__(self):
         self.aggresponse: AggResponse
-        
+
 
 # noinspection SpellCheckingInspection
-class GroupedDailyApiResponse(Definition):
+class StocksEquitiesGroupedDailyApiResponse(Definition):
     _swagger_name_to_python = {
         "aggresponse": "aggresponse",
-        
+
     }
 
     _attribute_is_primitive = {
         "aggresponse": False,
-        
+
     }
 
     _attributes_to_types = {
         "aggresponse": "AggResponse",
-        
+
     }
 
     def __init__(self):
         self.aggresponse: AggResponse
-        
+
 
 # noinspection SpellCheckingInspection
-class HistoricForexTicksApiResponse(Definition):
+class ForexCurrenciesHistoricForexTicksApiResponse(Definition):
     _swagger_name_to_python = {
         "day": "day",
         "map": "map",
@@ -3239,7 +3239,7 @@ class HistoricForexTicksApiResponse(Definition):
         "status": "status",
         "pair": "pair",
         "ticks": "ticks",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3249,7 +3249,7 @@ class HistoricForexTicksApiResponse(Definition):
         "status": True,
         "pair": True,
         "ticks": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -3259,7 +3259,7 @@ class HistoricForexTicksApiResponse(Definition):
         "status": "str",
         "pair": "str",
         "ticks": "List[Forex]",
-        
+
     }
 
     def __init__(self):
@@ -3269,10 +3269,10 @@ class HistoricForexTicksApiResponse(Definition):
         self.status: str
         self.pair: str
         self.ticks: List[Forex]
-        
+
 
 # noinspection SpellCheckingInspection
-class RealTimeCurrencyConversionApiResponse(Definition):
+class ForexCurrenciesRealTimeCurrencyConversionApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "from": "from_",
@@ -3281,7 +3281,7 @@ class RealTimeCurrencyConversionApiResponse(Definition):
         "converted": "converted",
         "lastTrade": "last_trade",
         "symbol": "symbol",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3292,7 +3292,7 @@ class RealTimeCurrencyConversionApiResponse(Definition):
         "converted": True,
         "last_trade": False,
         "symbol": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -3303,7 +3303,7 @@ class RealTimeCurrencyConversionApiResponse(Definition):
         "converted": "float",
         "last_trade": "LastForexTrade",
         "symbol": "str",
-        
+
     }
 
     def __init__(self):
@@ -3314,116 +3314,116 @@ class RealTimeCurrencyConversionApiResponse(Definition):
         self.converted: float
         self.last_trade: LastForexTrade
         self.symbol: str
-        
+
 
 # noinspection SpellCheckingInspection
-class LastQuoteForACurrencyPairApiResponse(Definition):
+class ForexCurrenciesLastQuoteForACurrencyPairApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "symbol": "symbol",
         "last": "last",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "symbol": True,
         "last": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "symbol": "str",
         "last": "LastForexQuote",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.symbol: str
         self.last: LastForexQuote
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotAllTickersApiResponse(Definition):
+class ForexCurrenciesSnapshotAllTickersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "tickers": "tickers",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "tickers": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "tickers": "List[ForexSnapshotTicker]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.tickers: List[ForexSnapshotTicker]
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotGainersLosersApiResponse(Definition):
+class ForexCurrenciesSnapshotGainersLosersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "tickers": "tickers",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "tickers": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "tickers": "List[ForexSnapshotTicker]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.tickers: List[ForexSnapshotTicker]
-        
+
 
 # noinspection SpellCheckingInspection
-class CryptoExchangesApiResponse(Definition):
+class CryptoCryptoExchangesApiResponse(Definition):
     _swagger_name_to_python = {
         "cryptoexchange": "cryptoexchange",
-        
+
     }
 
     _attribute_is_primitive = {
         "cryptoexchange": False,
-        
+
     }
 
     _attributes_to_types = {
         "cryptoexchange": "List[CryptoExchange]",
-        
+
     }
 
     def __init__(self):
         self.cryptoexchange: List[CryptoExchange]
-        
+
 
 # noinspection SpellCheckingInspection
-class LastTradeForACryptoPairApiResponse(Definition):
+class CryptoLastTradeForACryptoPairApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "symbol": "symbol",
         "last": "last",
         "lastAverage": "last_average",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3431,7 +3431,7 @@ class LastTradeForACryptoPairApiResponse(Definition):
         "symbol": True,
         "last": False,
         "last_average": True,
-        
+
     }
 
     _attributes_to_types = {
@@ -3439,7 +3439,7 @@ class LastTradeForACryptoPairApiResponse(Definition):
         "symbol": "str",
         "last": "CryptoTick",
         "last_average": "Dict[str, str]",
-        
+
     }
 
     def __init__(self):
@@ -3447,10 +3447,10 @@ class LastTradeForACryptoPairApiResponse(Definition):
         self.symbol: str
         self.last: CryptoTick
         self.last_average: Dict[str, str]
-        
+
 
 # noinspection SpellCheckingInspection
-class DailyOpenCloseApiResponse(Definition):
+class CryptoDailyOpenCloseApiResponse(Definition):
     _swagger_name_to_python = {
         "symbol": "symbol",
         "isUTC": "is___utc",
@@ -3459,7 +3459,7 @@ class DailyOpenCloseApiResponse(Definition):
         "close": "close",
         "openTrades": "open_trades",
         "closingTrades": "closing_trades",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3470,7 +3470,7 @@ class DailyOpenCloseApiResponse(Definition):
         "close": True,
         "open_trades": False,
         "closing_trades": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -3481,7 +3481,7 @@ class DailyOpenCloseApiResponse(Definition):
         "close": "int",
         "open_trades": "List[CryptoTickJson]",
         "closing_trades": "List[CryptoTickJson]",
-        
+
     }
 
     def __init__(self):
@@ -3492,10 +3492,10 @@ class DailyOpenCloseApiResponse(Definition):
         self.close: int
         self.open_trades: List[CryptoTickJson]
         self.closing_trades: List[CryptoTickJson]
-        
+
 
 # noinspection SpellCheckingInspection
-class HistoricCryptoTradesApiResponse(Definition):
+class CryptoHistoricCryptoTradesApiResponse(Definition):
     _swagger_name_to_python = {
         "day": "day",
         "map": "map",
@@ -3503,7 +3503,7 @@ class HistoricCryptoTradesApiResponse(Definition):
         "status": "status",
         "symbol": "symbol",
         "ticks": "ticks",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3513,7 +3513,7 @@ class HistoricCryptoTradesApiResponse(Definition):
         "status": True,
         "symbol": True,
         "ticks": False,
-        
+
     }
 
     _attributes_to_types = {
@@ -3523,7 +3523,7 @@ class HistoricCryptoTradesApiResponse(Definition):
         "status": "str",
         "symbol": "str",
         "ticks": "List[CryptoTickJson]",
-        
+
     }
 
     def __init__(self):
@@ -3533,104 +3533,103 @@ class HistoricCryptoTradesApiResponse(Definition):
         self.status: str
         self.symbol: str
         self.ticks: List[CryptoTickJson]
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotAllTickersApiResponse(Definition):
+class CryptoSnapshotAllTickersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "tickers": "tickers",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "tickers": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "tickers": "List[CryptoSnapshotTicker]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.tickers: List[CryptoSnapshotTicker]
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotSingleTickerApiResponse(Definition):
+class CryptoSnapshotSingleTickerApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "ticker": "ticker",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "ticker": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "ticker": "CryptoSnapshotTicker",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.ticker: CryptoSnapshotTicker
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotSingleTickerFullBookApiResponse(Definition):
+class CryptoSnapshotSingleTickerFullBookApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "data": "data",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "data": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "data": "CryptoSnapshotTickerBook",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.data: CryptoSnapshotTickerBook
-        
+
 
 # noinspection SpellCheckingInspection
-class SnapshotGainersLosersApiResponse(Definition):
+class CryptoSnapshotGainersLosersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
         "tickers": "tickers",
-        
+
     }
 
     _attribute_is_primitive = {
         "status": True,
         "tickers": False,
-        
+
     }
 
     _attributes_to_types = {
         "status": "str",
         "tickers": "List[CryptoSnapshotTicker]",
-        
+
     }
 
     def __init__(self):
         self.status: str
         self.tickers: List[CryptoSnapshotTicker]
-        
