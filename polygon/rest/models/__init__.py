@@ -91,10 +91,10 @@ from .definitions import TickerSymbol
 
 import typing
 
-from .definitions import BaseDefinition
+from .definitions import Definition
 
 # noinspection SpellCheckingInspection
-name_to_class: typing.Dict[str, BaseDefinition] = {
+name_to_class: typing.Dict[str, typing.Callable[[], Definition]] = {
     "LastTrade": LastTrade,
     "LastQuote": LastQuote,
     "HistTrade": HistTrade,
