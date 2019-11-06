@@ -44,45 +44,45 @@ from .definitions import StocksSnapshotAgg
 from .definitions import StocksSnapshotQuote
 from .definitions import Aggv2
 from .definitions import AggResponse
-from .definitions import TickersApiResponse
-from .definitions import TickerTypesApiResponse
-from .definitions import TickerDetailsApiResponse
-from .definitions import TickerNewsApiResponse
-from .definitions import MarketsApiResponse
-from .definitions import LocalesApiResponse
-from .definitions import StockSplitsApiResponse
-from .definitions import StockDividendsApiResponse
-from .definitions import StockFinancialsApiResponse
-from .definitions import MarketStatusApiResponse
-from .definitions import MarketHolidaysApiResponse
-from .definitions import ExchangesApiResponse
-from .definitions import HistoricTradesApiResponse
+from .definitions import ReferenceTickersApiResponse
+from .definitions import ReferenceTickerTypesApiResponse
+from .definitions import ReferenceTickerDetailsApiResponse
+from .definitions import ReferenceTickerNewsApiResponse
+from .definitions import ReferenceMarketsApiResponse
+from .definitions import ReferenceLocalesApiResponse
+from .definitions import ReferenceStockSplitsApiResponse
+from .definitions import ReferenceStockDividendsApiResponse
+from .definitions import ReferenceStockFinancialsApiResponse
+from .definitions import ReferenceMarketStatusApiResponse
+from .definitions import ReferenceMarketHolidaysApiResponse
+from .definitions import StocksEquitiesExchangesApiResponse
+from .definitions import StocksEquitiesHistoricTradesApiResponse
 from .definitions import HistoricTradesV2ApiResponse
-from .definitions import HistoricQuotesApiResponse
+from .definitions import StocksEquitiesHistoricQuotesApiResponse
 from .definitions import HistoricNBboQuotesV2ApiResponse
-from .definitions import LastTradeForASymbolApiResponse
-from .definitions import LastQuoteForASymbolApiResponse
-from .definitions import DailyOpenCloseApiResponse
-from .definitions import ConditionMappingsApiResponse
-from .definitions import SnapshotAllTickersApiResponse
-from .definitions import SnapshotSingleTickerApiResponse
-from .definitions import SnapshotGainersLosersApiResponse
-from .definitions import PreviousCloseApiResponse
-from .definitions import AggregatesApiResponse
-from .definitions import GroupedDailyApiResponse
-from .definitions import HistoricForexTicksApiResponse
-from .definitions import RealTimeCurrencyConversionApiResponse
-from .definitions import LastQuoteForACurrencyPairApiResponse
-from .definitions import SnapshotAllTickersApiResponse
-from .definitions import SnapshotGainersLosersApiResponse
-from .definitions import CryptoExchangesApiResponse
-from .definitions import LastTradeForACryptoPairApiResponse
-from .definitions import DailyOpenCloseApiResponse
-from .definitions import HistoricCryptoTradesApiResponse
-from .definitions import SnapshotAllTickersApiResponse
-from .definitions import SnapshotSingleTickerApiResponse
-from .definitions import SnapshotSingleTickerFullBookApiResponse
-from .definitions import SnapshotGainersLosersApiResponse
+from .definitions import StocksEquitiesLastTradeForASymbolApiResponse
+from .definitions import StocksEquitiesLastQuoteForASymbolApiResponse
+from .definitions import StocksEquitiesDailyOpenCloseApiResponse
+from .definitions import StocksEquitiesConditionMappingsApiResponse
+from .definitions import StocksEquitiesSnapshotAllTickersApiResponse
+from .definitions import StocksEquitiesSnapshotSingleTickerApiResponse
+from .definitions import StocksEquitiesSnapshotGainersLosersApiResponse
+from .definitions import StocksEquitiesPreviousCloseApiResponse
+from .definitions import StocksEquitiesAggregatesApiResponse
+from .definitions import StocksEquitiesGroupedDailyApiResponse
+from .definitions import ForexCurrenciesHistoricForexTicksApiResponse
+from .definitions import ForexCurrenciesRealTimeCurrencyConversionApiResponse
+from .definitions import ForexCurrenciesLastQuoteForACurrencyPairApiResponse
+from .definitions import ForexCurrenciesSnapshotAllTickersApiResponse
+from .definitions import ForexCurrenciesSnapshotGainersLosersApiResponse
+from .definitions import CryptoCryptoExchangesApiResponse
+from .definitions import CryptoLastTradeForACryptoPairApiResponse
+from .definitions import CryptoDailyOpenCloseApiResponse
+from .definitions import CryptoHistoricCryptoTradesApiResponse
+from .definitions import CryptoSnapshotAllTickersApiResponse
+from .definitions import CryptoSnapshotSingleTickerApiResponse
+from .definitions import CryptoSnapshotSingleTickerFullBookApiResponse
+from .definitions import CryptoSnapshotGainersLosersApiResponse
 from .definitions import StockSymbol
 from .definitions import ConditionTypeMap
 from .definitions import SymbolTypeMap
@@ -93,8 +93,10 @@ import typing
 
 from .definitions import Definition
 
+AnyDefinition = typing.TypeVar("AnyDefinition", bound=Definition)
+
 # noinspection SpellCheckingInspection
-name_to_class: typing.Dict[str, typing.Callable[[], Definition]] = {
+name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]] = {
     "LastTrade": LastTrade,
     "LastQuote": LastQuote,
     "HistTrade": HistTrade,
@@ -141,46 +143,46 @@ name_to_class: typing.Dict[str, typing.Callable[[], Definition]] = {
     "StocksSnapshotQuote": StocksSnapshotQuote,
     "Aggv2": Aggv2,
     "AggResponse": AggResponse,
-    "TickersApiResponse": TickersApiResponse,
-    "TickerTypesApiResponse": TickerTypesApiResponse,
-    "TickerDetailsApiResponse": TickerDetailsApiResponse,
-    "TickerNewsApiResponse": TickerNewsApiResponse,
-    "MarketsApiResponse": MarketsApiResponse,
-    "LocalesApiResponse": LocalesApiResponse,
-    "StockSplitsApiResponse": StockSplitsApiResponse,
-    "StockDividendsApiResponse": StockDividendsApiResponse,
-    "StockFinancialsApiResponse": StockFinancialsApiResponse,
-    "MarketStatusApiResponse": MarketStatusApiResponse,
-    "MarketHolidaysApiResponse": MarketHolidaysApiResponse,
-    "ExchangesApiResponse": ExchangesApiResponse,
-    "HistoricTradesApiResponse": HistoricTradesApiResponse,
+    "ReferenceTickersApiResponse": ReferenceTickersApiResponse,
+    "ReferenceTickerTypesApiResponse": ReferenceTickerTypesApiResponse,
+    "ReferenceTickerDetailsApiResponse": ReferenceTickerDetailsApiResponse,
+    "ReferenceTickerNewsApiResponse": ReferenceTickerNewsApiResponse,
+    "ReferenceMarketsApiResponse": ReferenceMarketsApiResponse,
+    "ReferenceLocalesApiResponse": ReferenceLocalesApiResponse,
+    "ReferenceStockSplitsApiResponse": ReferenceStockSplitsApiResponse,
+    "ReferenceStockDividendsApiResponse": ReferenceStockDividendsApiResponse,
+    "ReferenceStockFinancialsApiResponse": ReferenceStockFinancialsApiResponse,
+    "ReferenceMarketStatusApiResponse": ReferenceMarketStatusApiResponse,
+    "ReferenceMarketHolidaysApiResponse": ReferenceMarketHolidaysApiResponse,
+    "StocksEquitiesExchangesApiResponse": StocksEquitiesExchangesApiResponse,
+    "StocksEquitiesHistoricTradesApiResponse": StocksEquitiesHistoricTradesApiResponse,
     "HistoricTradesV2ApiResponse": HistoricTradesV2ApiResponse,
-    "HistoricQuotesApiResponse": HistoricQuotesApiResponse,
+    "StocksEquitiesHistoricQuotesApiResponse": StocksEquitiesHistoricQuotesApiResponse,
     "HistoricNBboQuotesV2ApiResponse": HistoricNBboQuotesV2ApiResponse,
-    "LastTradeForASymbolApiResponse": LastTradeForASymbolApiResponse,
-    "LastQuoteForASymbolApiResponse": LastQuoteForASymbolApiResponse,
-    "DailyOpenCloseApiResponse": DailyOpenCloseApiResponse,
-    "ConditionMappingsApiResponse": ConditionMappingsApiResponse,
-    "SnapshotAllTickersApiResponse": SnapshotAllTickersApiResponse,
-    "SnapshotSingleTickerApiResponse": SnapshotSingleTickerApiResponse,
-    "SnapshotGainersLosersApiResponse": SnapshotGainersLosersApiResponse,
-    "PreviousCloseApiResponse": PreviousCloseApiResponse,
-    "AggregatesApiResponse": AggregatesApiResponse,
-    "GroupedDailyApiResponse": GroupedDailyApiResponse,
-    "HistoricForexTicksApiResponse": HistoricForexTicksApiResponse,
-    "RealTimeCurrencyConversionApiResponse": RealTimeCurrencyConversionApiResponse,
-    "LastQuoteForACurrencyPairApiResponse": LastQuoteForACurrencyPairApiResponse,
-    "SnapshotAllTickersApiResponse": SnapshotAllTickersApiResponse,
-    "SnapshotGainersLosersApiResponse": SnapshotGainersLosersApiResponse,
-    "CryptoExchangesApiResponse": CryptoExchangesApiResponse,
-    "LastTradeForACryptoPairApiResponse": LastTradeForACryptoPairApiResponse,
-    "DailyOpenCloseApiResponse": DailyOpenCloseApiResponse,
-    "HistoricCryptoTradesApiResponse": HistoricCryptoTradesApiResponse,
-    "SnapshotAllTickersApiResponse": SnapshotAllTickersApiResponse,
-    "SnapshotSingleTickerApiResponse": SnapshotSingleTickerApiResponse,
-    "SnapshotSingleTickerFullBookApiResponse": SnapshotSingleTickerFullBookApiResponse,
-    "SnapshotGainersLosersApiResponse": SnapshotGainersLosersApiResponse,
-    
+    "StocksEquitiesLastTradeForASymbolApiResponse": StocksEquitiesLastTradeForASymbolApiResponse,
+    "StocksEquitiesLastQuoteForASymbolApiResponse": StocksEquitiesLastQuoteForASymbolApiResponse,
+    "StocksEquitiesDailyOpenCloseApiResponse": StocksEquitiesDailyOpenCloseApiResponse,
+    "StocksEquitiesConditionMappingsApiResponse": StocksEquitiesConditionMappingsApiResponse,
+    "StocksEquitiesSnapshotAllTickersApiResponse": StocksEquitiesSnapshotAllTickersApiResponse,
+    "StocksEquitiesSnapshotSingleTickerApiResponse": StocksEquitiesSnapshotSingleTickerApiResponse,
+    "StocksEquitiesSnapshotGainersLosersApiResponse": StocksEquitiesSnapshotGainersLosersApiResponse,
+    "StocksEquitiesPreviousCloseApiResponse": StocksEquitiesPreviousCloseApiResponse,
+    "StocksEquitiesAggregatesApiResponse": StocksEquitiesAggregatesApiResponse,
+    "StocksEquitiesGroupedDailyApiResponse": StocksEquitiesGroupedDailyApiResponse,
+    "ForexCurrenciesHistoricForexTicksApiResponse": ForexCurrenciesHistoricForexTicksApiResponse,
+    "ForexCurrenciesRealTimeCurrencyConversionApiResponse": ForexCurrenciesRealTimeCurrencyConversionApiResponse,
+    "ForexCurrenciesLastQuoteForACurrencyPairApiResponse": ForexCurrenciesLastQuoteForACurrencyPairApiResponse,
+    "ForexCurrenciesSnapshotAllTickersApiResponse": ForexCurrenciesSnapshotAllTickersApiResponse,
+    "ForexCurrenciesSnapshotGainersLosersApiResponse": ForexCurrenciesSnapshotGainersLosersApiResponse,
+    "CryptoCryptoExchangesApiResponse": CryptoCryptoExchangesApiResponse,
+    "CryptoLastTradeForACryptoPairApiResponse": CryptoLastTradeForACryptoPairApiResponse,
+    "CryptoDailyOpenCloseApiResponse": CryptoDailyOpenCloseApiResponse,
+    "CryptoHistoricCryptoTradesApiResponse": CryptoHistoricCryptoTradesApiResponse,
+    "CryptoSnapshotAllTickersApiResponse": CryptoSnapshotAllTickersApiResponse,
+    "CryptoSnapshotSingleTickerApiResponse": CryptoSnapshotSingleTickerApiResponse,
+    "CryptoSnapshotSingleTickerFullBookApiResponse": CryptoSnapshotSingleTickerFullBookApiResponse,
+    "CryptoSnapshotGainersLosersApiResponse": CryptoSnapshotGainersLosersApiResponse,
+
 }
 
 # noinspection SpellCheckingInspection
@@ -189,5 +191,5 @@ name_to_type = {
     "ConditionTypeMap": ConditionTypeMap,
     "SymbolTypeMap": SymbolTypeMap,
     "TickerSymbol": TickerSymbol,
-    
+
 }
