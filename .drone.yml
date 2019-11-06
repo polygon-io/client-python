@@ -1,0 +1,22 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: test
+  image: python:3.7.5-alpine
+  commands:
+  - echo "testing"
+
+trigger:
+  branch:
+  - master
+  event:
+  - pull_request
+
+...

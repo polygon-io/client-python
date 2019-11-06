@@ -1,3 +1,5 @@
+[![Build Status](https://drone.polygon.io/api/badges/Polygon-io/polygon-client-python/status.svg)](https://drone.polygon.io/Polygon-io/polygon-client-python)
+
 # A Python client library for Polgyon's WebSocket and RESTful APIs
 
 Currently this repo only supports the WebSocket API
