@@ -1,1 +1,1 @@
-from .rest_client import RESTClient
+from .client import RESTClient
