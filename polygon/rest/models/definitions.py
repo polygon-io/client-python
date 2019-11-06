@@ -1,11 +1,7 @@
-from typing import List, Dict, Any, Optional
+import keyword
+from typing import List, Dict, Any
 
 from polygon.rest import models
-
-StockSymbol = str
-ConditionTypeMap = Dict[str, str]
-SymbolTypeMap = Dict[str, str]
-TickerSymbol = str
 
 
 class Definition:
@@ -23,8 +19,12 @@ class Definition:
             else:
                 list_items = input_json
             self.__setattr__(list_attribute_name, list_items)
+            return self
         elif isinstance(input_json, dict):
             self._unmarshal_json_object(input_json)
+            return self
+        elif isinstance(input_json, float) or isinstance(input_json, int):
+            return input_json
 
     @staticmethod
     def _unmarshal_json_list(input_json, known_type):
@@ -40,11 +40,13 @@ class Definition:
             if key in self._swagger_name_to_python:
                 attribute_name = self._swagger_name_to_python[key]
                 if not self._attribute_is_primitive[attribute_name]:
-                    if attribute_name in models.name_to_class:
-                        value = models.name_to_class[attribute_name]()
-                        value.unmarshal_json(input_json[key])
+                    if attribute_name in self._attributes_to_types:
+                        attribute_type = self._attributes_to_types[attribute_name]
+                        if attribute_type in models.name_to_class:
+                            model = models.name_to_class[attribute_type]()
+                            value = model.unmarshal_json(input_json[key])
             else:
-                attribute_name = key
+                attribute_name = key + "_" if keyword.iskeyword(key) else ""
 
             self.__setattr__(attribute_name, value)
         return self
@@ -109,7 +111,7 @@ class LastQuote(Definition):
         "bidsize": "bidsize",
         "bidexchange": "bidexchange",
         "timestamp": "timestamp",
-        
+
     }
 
     _attribute_is_primitive = {
@@ -3633,3 +3635,9 @@ class CryptoSnapshotGainersLosersApiResponse(Definition):
     def __init__(self):
         self.status: str
         self.tickers: List[CryptoSnapshotTicker]
+
+
+StockSymbol = str
+ConditionTypeMap = Dict[str, str]
+SymbolTypeMap = Dict[str, str]
+TickerSymbol = str
