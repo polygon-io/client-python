@@ -29,7 +29,7 @@ class StocksV2NBBO(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        't': 'str',
+        'T': 'str',
         't': 'int',
         'y': 'int',
         'f': 'int',
@@ -39,14 +39,14 @@ class StocksV2NBBO(object):
         'p': 'int',
         'x': 'int',
         's': 'int',
-        'p': 'int',
-        'x': 'int',
-        's': 'int',
+        'P': 'int',
+        'X': 'int',
+        'S': 'int',
         'z': 'int'
     }
 
     attribute_map = {
-        't': 'T',
+        'T': 'T',
         't': 't',
         'y': 'y',
         'f': 'f',
@@ -56,15 +56,15 @@ class StocksV2NBBO(object):
         'p': 'p',
         'x': 'x',
         's': 's',
-        'p': 'P',
-        'x': 'X',
-        's': 'S',
+        'P': 'P',
+        'X': 'X',
+        'S': 'S',
         'z': 'z'
     }
 
-    def __init__(self, t=None, t=None, y=None, f=None, q=None, c=None, i=None, p=None, x=None, s=None, p=None, x=None, s=None, z=None):  # noqa: E501
+    def __init__(self, T=None, t=None, y=None, f=None, q=None, c=None, i=None, p=None, x=None, s=None, P=None, X=None, S=None, z=None):  # noqa: E501
         """StocksV2NBBO - a model defined in Swagger"""  # noqa: E501
-        self._t = None
+        self._T = None
         self._t = None
         self._y = None
         self._f = None
@@ -74,13 +74,13 @@ class StocksV2NBBO(object):
         self._p = None
         self._x = None
         self._s = None
-        self._p = None
-        self._x = None
-        self._s = None
+        self._P = None
+        self._X = None
+        self._S = None
         self._z = None
         self.discriminator = None
-        if t is not None:
-            self.t = t
+        if T is not None:
+            self.T = T
         self.t = t
         if y is not None:
             self.y = y
@@ -100,27 +100,26 @@ class StocksV2NBBO(object):
         self.z = z
 
     @property
-    def t(self):
-        """Gets the t of this StocksV2NBBO.  # noqa: E501
+    def T(self):
+        """Gets the T of this StocksV2NBBO.  # noqa: E501
 
         Ticker of the object  # noqa: E501
 
-        :return: The t of this StocksV2NBBO.  # noqa: E501
+        :return: The T of this StocksV2NBBO.  # noqa: E501
         :rtype: str
         """
-        return self._t
-
-    @t.setter
-    def t(self, t):
-        """Sets the t of this StocksV2NBBO.
+        return self._T
+    @T.setter
+    def T(self, T):
+        """Sets the T of this StocksV2NBBO.
 
         Ticker of the object  # noqa: E501
 
-        :param t: The t of this StocksV2NBBO.  # noqa: E501
+        :param T: The T of this StocksV2NBBO.  # noqa: E501
         :type: str
         """
 
-        self._t = t
+        self._T = T
 
     @property
     def t(self):
@@ -340,29 +339,29 @@ class StocksV2NBBO(object):
         self._s = s
 
     @property
-    def p(self):
-        """Gets the p of this StocksV2NBBO.  # noqa: E501
+    def P(self):
+        """Gets the P of this StocksV2NBBO.  # noqa: E501
 
         ASK Price  # noqa: E501
 
-        :return: The p of this StocksV2NBBO.  # noqa: E501
+        :return: The P of this StocksV2NBBO.  # noqa: E501
         :rtype: int
         """
-        return self._p
+        return self._P
 
-    @p.setter
-    def p(self, p):
-        """Sets the p of this StocksV2NBBO.
+    @P.setter
+    def P(self, P):
+        """Sets the P of this StocksV2NBBO.
 
         ASK Price  # noqa: E501
 
-        :param p: The p of this StocksV2NBBO.  # noqa: E501
+        :param P: The P of this StocksV2NBBO.  # noqa: E501
         :type: int
         """
-        if p is None:
-            raise ValueError("Invalid value for `p`, must not be `None`")  # noqa: E501
+        if P is None:
+            raise ValueError("Invalid value for `P`, must not be `None`")  # noqa: E501
 
-        self._p = p
+        self._P = P
 
     @property
     def x(self):
@@ -390,29 +389,29 @@ class StocksV2NBBO(object):
         self._x = x
 
     @property
-    def s(self):
-        """Gets the s of this StocksV2NBBO.  # noqa: E501
+    def S(self):
+        """Gets the S of this StocksV2NBBO.  # noqa: E501
 
         ASK Size ( In round lots )  # noqa: E501
 
-        :return: The s of this StocksV2NBBO.  # noqa: E501
+        :return: The S of this StocksV2NBBO.  # noqa: E501
         :rtype: int
         """
-        return self._s
+        return self._S
 
-    @s.setter
-    def s(self, s):
-        """Sets the s of this StocksV2NBBO.
+    @S.setter
+    def S(self, S):
+        """Sets the S of this StocksV2NBBO.
 
         ASK Size ( In round lots )  # noqa: E501
 
-        :param s: The s of this StocksV2NBBO.  # noqa: E501
+        :param S: The S of this StocksV2NBBO.  # noqa: E501
         :type: int
         """
-        if s is None:
-            raise ValueError("Invalid value for `s`, must not be `None`")  # noqa: E501
+        if S is None:
+            raise ValueError("Invalid value for `S`, must not be `None`")  # noqa: E501
 
-        self._s = s
+        self._S = S
 
     @property
     def z(self):

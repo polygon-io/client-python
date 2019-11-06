@@ -29,7 +29,7 @@ class Aggv2(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        't': 'str',
+        'T': 'str',
         'v': 'int',
         'o': 'int',
         'c': 'int',
@@ -40,7 +40,7 @@ class Aggv2(object):
     }
 
     attribute_map = {
-        't': 'T',
+        'T': 'T',
         'v': 'v',
         'o': 'o',
         'c': 'c',
@@ -50,9 +50,9 @@ class Aggv2(object):
         'n': 'n'
     }
 
-    def __init__(self, t=None, v=None, o=None, c=None, h=None, l=None, t=None, n=None):  # noqa: E501
+    def __init__(self, T=None, v=None, o=None, c=None, h=None, l=None, t=None, n=None):  # noqa: E501
         """Aggv2 - a model defined in Swagger"""  # noqa: E501
-        self._t = None
+        self._T = None
         self._v = None
         self._o = None
         self._c = None
@@ -61,8 +61,8 @@ class Aggv2(object):
         self._t = None
         self._n = None
         self.discriminator = None
-        if t is not None:
-            self.t = t
+        if T is not None:
+            self.T = T
         self.v = v
         self.o = o
         self.c = c
@@ -74,27 +74,27 @@ class Aggv2(object):
             self.n = n
 
     @property
-    def t(self):
-        """Gets the t of this Aggv2.  # noqa: E501
+    def T(self):
+        """Gets the T of this Aggv2.  # noqa: E501
 
         Ticker symbol  # noqa: E501
 
-        :return: The t of this Aggv2.  # noqa: E501
+        :return: The T of this Aggv2.  # noqa: E501
         :rtype: str
         """
-        return self._t
+        return self._T
 
-    @t.setter
-    def t(self, t):
-        """Sets the t of this Aggv2.
+    @T.setter
+    def T(self, T):
+        """Sets the T of this Aggv2.
 
         Ticker symbol  # noqa: E501
 
-        :param t: The t of this Aggv2.  # noqa: E501
+        :param T: The T of this Aggv2.  # noqa: E501
         :type: str
         """
 
-        self._t = t
+        self._T = T
 
     @property
     def v(self):

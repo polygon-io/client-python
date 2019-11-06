@@ -29,7 +29,7 @@ class StocksV2Trade(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        't': 'str',
+        'T': 'str',
         't': 'int',
         'y': 'int',
         'f': 'int',
@@ -43,7 +43,7 @@ class StocksV2Trade(object):
     }
 
     attribute_map = {
-        't': 'T',
+        'T': 'T',
         't': 't',
         'y': 'y',
         'f': 'f',
@@ -56,9 +56,9 @@ class StocksV2Trade(object):
         'z': 'z'
     }
 
-    def __init__(self, t=None, t=None, y=None, f=None, q=None, i=None, x=None, s=None, c=None, p=None, z=None):  # noqa: E501
+    def __init__(self, T=None, t=None, y=None, f=None, q=None, i=None, x=None, s=None, c=None, p=None, z=None):  # noqa: E501
         """StocksV2Trade - a model defined in Swagger"""  # noqa: E501
-        self._t = None
+        self._T = None
         self._t = None
         self._y = None
         self._f = None
@@ -70,8 +70,8 @@ class StocksV2Trade(object):
         self._p = None
         self._z = None
         self.discriminator = None
-        if t is not None:
-            self.t = t
+        if T is not None:
+            self.T = T
         self.t = t
         if y is not None:
             self.y = y
@@ -86,27 +86,27 @@ class StocksV2Trade(object):
         self.z = z
 
     @property
-    def t(self):
-        """Gets the t of this StocksV2Trade.  # noqa: E501
+    def T(self):
+        """Gets the T of this StocksV2Trade.  # noqa: E501
 
         Ticker of the object  # noqa: E501
 
-        :return: The t of this StocksV2Trade.  # noqa: E501
+        :return: The T of this StocksV2Trade.  # noqa: E501
         :rtype: str
         """
-        return self._t
+        return self._T
 
-    @t.setter
-    def t(self, t):
-        """Sets the t of this StocksV2Trade.
+    @T.setter
+    def T(self, T):
+        """Sets the T of this StocksV2Trade.
 
         Ticker of the object  # noqa: E501
 
-        :param t: The t of this StocksV2Trade.  # noqa: E501
+        :param T: The T of this StocksV2Trade.  # noqa: E501
         :type: str
         """
 
-        self._t = t
+        self._T = T
 
     @property
     def t(self):
