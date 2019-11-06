@@ -10,8 +10,14 @@ platform:
 steps:
 - name: test
   image: python:3.7.5-alpine
+  environment:
+    API_KEY:
+      from_secret: TEST_API_KEY
+    MY_NEW_ENV: "hello world"
   commands:
-  - echo "testing"
+  - pip install -U tox
+  - env
+  - tox
 
 trigger:
   branch:
