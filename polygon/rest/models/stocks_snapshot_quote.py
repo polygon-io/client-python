@@ -31,31 +31,31 @@ class StocksSnapshotQuote(object):
     swagger_types = {
         'p': 'int',
         's': 'int',
-        'p': 'int',
-        's': 'int',
+        'P': 'int',
+        'S': 'int',
         't': 'int'
     }
 
     attribute_map = {
         'p': 'p',
         's': 's',
-        'p': 'P',
-        's': 'S',
+        'P': 'P',
+        'S': 'S',
         't': 't'
     }
 
-    def __init__(self, p=None, s=None, p=None, s=None, t=None):  # noqa: E501
+    def __init__(self, p=None, s=None, P=None, S=None, t=None):  # noqa: E501
         """StocksSnapshotQuote - a model defined in Swagger"""  # noqa: E501
         self._p = None
         self._s = None
-        self._p = None
+        self._P = None
         self._s = None
         self._t = None
         self.discriminator = None
         self.p = p
         self.s = s
-        self.p = p
-        self.s = s
+        self.P = P
+        self.S = S
         self.t = t
 
     @property
@@ -109,54 +109,54 @@ class StocksSnapshotQuote(object):
         self._s = s
 
     @property
-    def p(self):
-        """Gets the p of this StocksSnapshotQuote.  # noqa: E501
+    def P(self):
+        """Gets the P of this StocksSnapshotQuote.  # noqa: E501
 
         Ask Price  # noqa: E501
 
-        :return: The p of this StocksSnapshotQuote.  # noqa: E501
+        :return: The P of this StocksSnapshotQuote.  # noqa: E501
         :rtype: int
         """
-        return self._p
+        return self._P
 
-    @p.setter
-    def p(self, p):
+    @P.setter
+    def P(self, P):
         """Sets the p of this StocksSnapshotQuote.
 
         Ask Price  # noqa: E501
 
-        :param p: The p of this StocksSnapshotQuote.  # noqa: E501
+        :param P: The P of this StocksSnapshotQuote.  # noqa: E501
         :type: int
         """
-        if p is None:
-            raise ValueError("Invalid value for `p`, must not be `None`")  # noqa: E501
+        if P is None:
+            raise ValueError("Invalid value for `P`, must not be `None`")  # noqa: E501
 
-        self._p = p
+        self._P = P
 
     @property
-    def s(self):
-        """Gets the s of this StocksSnapshotQuote.  # noqa: E501
+    def S(self):
+        """Gets the S of this StocksSnapshotQuote.  # noqa: E501
 
         Ask size in lots  # noqa: E501
 
-        :return: The s of this StocksSnapshotQuote.  # noqa: E501
+        :return: The S of this StocksSnapshotQuote.  # noqa: E501
         :rtype: int
         """
-        return self._s
+        return self._S
 
-    @s.setter
-    def s(self, s):
-        """Sets the s of this StocksSnapshotQuote.
+    @S.setter
+    def S(self, S):
+        """Sets the S of this StocksSnapshotQuote.
 
         Ask size in lots  # noqa: E501
 
-        :param s: The s of this StocksSnapshotQuote.  # noqa: E501
+        :param S: The s of this StocksSnapshotQuote.  # noqa: E501
         :type: int
         """
-        if s is None:
-            raise ValueError("Invalid value for `s`, must not be `None`")  # noqa: E501
+        if S is None:
+            raise ValueError("Invalid value for `S`, must not be `None`")  # noqa: E501
 
-        self._s = s
+        self._S = S
 
     @property
     def t(self):
