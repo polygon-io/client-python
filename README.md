@@ -1,11 +1,14 @@
 [![Build Status](https://drone.polygon.io/api/badges/Polygon-io/polygon-client-python/status.svg)](https://drone.polygon.io/Polygon-io/polygon-client-python)
 
-# A Python client library for Polgyon's WebSocket and RESTful APIs
+# A Python client library for Polygon's WebSocket and RESTful APIs
 
 ## Getting Started
 
 For a basic product overview, check out our [setup and use documentation](https://polygon.io/sockets)
 
+### Install
+
+`pip install polygon-api-client`
 
 ## Simple WebSocket Demo
 ```python
