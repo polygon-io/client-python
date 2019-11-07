@@ -3,14 +3,15 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="polygon",
+    name="polygon-api-client",
     version="0.0.1",
     description="Polygon API client",
     author_email="ricky@polygon.io",
-    url="",
-    keywords=["Polygon API"],
-    packages=find_packages("src"),
-    package_dir={"": "src"},
-    py_modules=["polygon"],
-    include_package_data=True
+    url="https://github.com/Polygon-io/polygon-client-python",
+    packages=find_packages(),
+    classifiers=[
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Operating System :: OS Independent",
+    ],
 )
