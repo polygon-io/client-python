@@ -9,8 +9,8 @@ FOREX_CLUSTER = "forex"
 CRYPTO_CLUSTER = "crypto"
 
 
-class WebSocketClient(object):
-    DEFAULT_HOST = 'socket.polygon.io'
+class WebSocketClient:
+    DEFAULT_HOST = "socket.polygon.io"
 
     # TODO: Either an instance of the client couples 1:1 with the cluster or an instance of the Client couples 1:3 with
     #  the 3 possible clusters (I think I like client per, but then a problem is the user can make multiple clients for
@@ -32,6 +32,9 @@ class WebSocketClient(object):
         # self._run_thread is only set if the client is run asynchronously
         self._run_thread: Optional[threading.Thread] = None
 
+        # TODO: this probably isn't great design.
+        #  If the user defines their own signal handler then this will gets overwritten.
+        #  We still need to make sure that killing, terminating, interrupting the program closes the connection
         signal.signal(signal.SIGINT, self._cleanup_signal_handler())
         signal.signal(signal.SIGTERM, self._cleanup_signal_handler())
 
@@ -92,6 +95,7 @@ class WebSocketClient(object):
     def _default_on_open(self):
         def f(ws):
             self._authenticate(ws)
+
         return f
 
     @staticmethod

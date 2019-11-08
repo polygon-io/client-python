@@ -11,7 +11,8 @@ steps:
 - name: test
   image: python:3.7.5-alpine
   commands:
-  - echo "testing"
+  - pip install -U tox
+  - tox
 
 trigger:
   branch:
