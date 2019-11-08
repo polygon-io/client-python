@@ -1,20 +1,21 @@
 [![Build Status](https://drone.polygon.io/api/badges/Polygon-io/polygon-client-python/status.svg)](https://drone.polygon.io/Polygon-io/polygon-client-python)
 
-# A Python client library for Polgyon's WebSocket and RESTful APIs
-
-Currently this repo only supports the WebSocket API
+# A Python client library for Polygon's WebSocket and RESTful APIs
 
 ## Getting Started
 
 For a basic product overview, check out our [setup and use documentation](https://polygon.io/sockets)
 
+### Install
 
-## Simple Demo
+`pip install polygon-api-client`
+
+## Simple WebSocket Demo
 ```python
 import time
 
 
-from polygon_client import WebSocketClient, STOCKS_CLUSTER
+from polygon import WebSocketClient, STOCKS_CLUSTER
 
 
 def my_customer_process_message(message):
@@ -36,3 +37,27 @@ if __name__ == "__main__":
     main()
 
 ```
+
+## Simple REST Demo
+```python
+from polygon import RESTClient
+
+
+def main():
+    key = "your api key"
+    client = RESTClient(key)
+
+    resp = client.stocks_equities_daily_open_close("AAPL", "2018-3-2")
+    print(f"On: {resp.from_} Apple opened at {resp.open} and closed at {resp.close}")
+
+
+if __name__ == '__main__':
+    main()
+```
+
+
+## Notes about the REST Client
+
+We use swagger as our API spec and we used this swagger to generate most of the code that defines the REST client.
+We made this decision due to the size of our API, many endpoints and object definitions, and to accommodate future changes.
+
