@@ -10,6 +10,8 @@ For a basic product overview, check out our [setup and use documentation](https:
 
 `pip install polygon-api-client`
 
+`polygon-api-client` supports python version >= 3.6
+
 ## Simple WebSocket Demo
 ```python
 import time
