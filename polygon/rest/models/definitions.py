@@ -46,7 +46,7 @@ class Definition:
                             model = models.name_to_class[attribute_type]()
                             value = model.unmarshal_json(input_json[key])
             else:
-                attribute_name = key + "_" if keyword.iskeyword(key) else ""
+                attribute_name = key + ('_' if keyword.iskeyword(key) else '')
 
             self.__setattr__(attribute_name, value)
         return self
