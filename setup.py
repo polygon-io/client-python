@@ -2,12 +2,20 @@
 
 from setuptools import setup, find_packages
 
+import os
+import sys
+
+version = os.getenv("VERSION")
+if not version:
+    print("no version supplied")
+    sys.exit(1)
+
 setup(
     name="polygon-api-client",
-    version="0.0.1",
+    version=version,
     description="Polygon API client",
     author_email="ricky@polygon.io",
-    url="https://github.com/Polygon-io/polygon-client-python",
+    url="https://github.com/Polygon-io/client-python",
     packages=find_packages(),
     classifiers=[
         "License :: OSI Approved :: MIT License",
