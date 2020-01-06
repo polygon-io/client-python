@@ -1,4 +1,4 @@
-[![Build Status](https://drone.polygon.io/api/badges/Polygon-io/polygon-client-python/status.svg)](https://drone.polygon.io/Polygon-io/polygon-client-python)
+[![Build Status](https://drone.polygon.io/api/badges/polygon-io/client-python/status.svg)](https://drone.polygon.io/polygon-io/client-python)
 
 # Polygon Python Client - WebSocket & RESTful APIs
 

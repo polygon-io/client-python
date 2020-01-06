@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: default
+name: review
 
 platform:
   os: linux
@@ -11,13 +11,50 @@ steps:
 - name: test
   image: python:3.7.5-alpine
   commands:
-  - pip install -U tox
-  - tox
+    - pip install -U tox
+    - tox
 
 trigger:
   branch:
-  - master
+    - master
   event:
-  - pull_request
+    - pull_request
+
+---
+kind: pipeline
+type: docker
+name: release
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build
+    image: python:3.7.5-alpine
+    commands:
+      - python setup.py sdist bdist_wheel
+    environment:
+      VERSION: ${DRONE_TAG##v}
+
+  - name: release
+    image: python:3.7.5
+    commands:
+      - pip install --user --upgrade twine
+      - ./upload
+    environment:
+      PASSWORD:
+        from_secret: pypi_token
+      USERNAME: __token__
+
+trigger:
+  event:
+    - tag
+  ref:
+    - refs/tags/v*
+
+---
+kind: signature
+hmac: c5572884fdd2183d7c63100530974a649f4607ee18c813570741d7a63f31cfae
 
 ...
