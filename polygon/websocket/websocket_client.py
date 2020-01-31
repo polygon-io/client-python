@@ -17,7 +17,8 @@ class WebSocketClient:
     #  the same cluster and that's not desirable behavior,
     #  somehow keeping track with multiple Client instances will be the difficulty)
     def __init__(self, cluster: str, auth_key: str, process_message: Optional[Callable[[str], None]] = None,
-                 on_close: Optional[Callable[[str], None]] = None, on_error: Optional[Callable[[str], None]] = None):
+                 on_close: Optional[Callable[[websocket.WebSocketApp], None]] = None,
+                 on_error: Optional[Callable[[websocket.WebSocketApp, str], None]] = None):
         self._host = self.DEFAULT_HOST
         self.url = f"wss://{self._host}/{cluster}"
         self.ws: websocket.WebSocketApp = websocket.WebSocketApp(self.url, on_open=self._default_on_open(),
