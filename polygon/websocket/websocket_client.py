@@ -16,7 +16,8 @@ class WebSocketClient:
     #  the 3 possible clusters (I think I like client per, but then a problem is the user can make multiple clients for
     #  the same cluster and that's not desirable behavior,
     #  somehow keeping track with multiple Client instances will be the difficulty)
-    def __init__(self, cluster: str, auth_key: str, process_message: Optional[Callable[[str], None]] = None):
+    def __init__(self, cluster: str, auth_key: str, process_message: Optional[Callable[[str], None]] = None,
+                 on_close: Optional[Callable[[str], None]] = None, on_error: Optional[Callable[[str], None]] = None):
         self._host = self.DEFAULT_HOST
         self.url = f"wss://{self._host}/{cluster}"
         self.ws: websocket.WebSocketApp = websocket.WebSocketApp(self.url, on_open=self._default_on_open(),
@@ -26,6 +27,8 @@ class WebSocketClient:
         self.auth_key = auth_key
 
         self.process_message = process_message
+        self.ws.on_close = on_close
+        self.ws.on_error = on_error
 
         # being authenticated is an event that must occur before any other action is sent to the server
         self._authenticated = threading.Event()
