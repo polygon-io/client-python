@@ -30,4 +30,8 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
     ],
+    install_requires=[
+        "websocket-client==0.56.0",
+        "websockets==8.0.2",
+    ]
 )
