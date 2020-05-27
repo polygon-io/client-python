@@ -33,5 +33,6 @@ setup(
     install_requires=[
         "websocket-client==0.56.0",
         "websockets==8.0.2",
+        "requests==2.22.0"
     ]
 )
