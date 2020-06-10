@@ -1,8 +1,9 @@
 [![Build Status](https://drone.polygon.io/api/badges/polygon-io/client-python/status.svg)](https://drone.polygon.io/polygon-io/client-python)
+[![PyPI version](https://badge.fury.io/py/polygon-api-client.svg)](https://badge.fury.io/py/polygon-api-client)
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
-Python client for the [Polygon.io API](polygon.io)
+Python client for the [Polygon.io API](https://polygon.io)
 
 ## Getting Started
 
