@@ -2,6 +2,8 @@
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
+Python client for the [Polygon.io API](polygon.io)
+
 ## Getting Started
 
 For a basic product overview, check out our [setup and use documentation](https://polygon.io/sockets)
