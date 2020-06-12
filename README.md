@@ -3,7 +3,7 @@
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
-Python client for the [Polygon.io API](https://polygon.io)
+Python client for the Polygon.io [Stocks API](https://polygon.io)
 
 ## Getting Started
 
