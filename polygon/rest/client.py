@@ -17,6 +17,15 @@ class RESTClient:
         self._session = requests.Session()
         self._session.params["apiKey"] = self.auth_key
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.close()
+
+    def close(self):
+        self._session.close()
+
     def _handle_response(self, response_type: str, endpoint: str, params: Dict[str, str]) -> Type[models.AnyDefinition]:
         resp: requests.Response = self._session.get(endpoint, params=params)
         if resp.status_code == 200:
