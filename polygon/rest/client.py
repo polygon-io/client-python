@@ -10,12 +10,13 @@ class RESTClient:
     """ This is a custom generated class """
     DEFAULT_HOST = "api.polygon.io"
 
-    def __init__(self, auth_key: str):
+    def __init__(self, auth_key: str, timeout: int=None):
         self.auth_key = auth_key
         self.url = "https://" + self.DEFAULT_HOST
 
         self._session = requests.Session()
         self._session.params["apiKey"] = self.auth_key
+        self.timeout = timeout
 
     def __enter__(self):
         return self
@@ -27,7 +28,7 @@ class RESTClient:
         self._session.close()
 
     def _handle_response(self, response_type: str, endpoint: str, params: Dict[str, str]) -> Type[models.AnyDefinition]:
-        resp: requests.Response = self._session.get(endpoint, params=params)
+        resp: requests.Response = self._session.get(endpoint, params=params, timeout=self.timeout)
         if resp.status_code == 200:
             return unmarshal.unmarshal_json(response_type, resp.json())
         else:
