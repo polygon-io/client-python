@@ -3046,7 +3046,7 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         "symbol": "symbol",
         "open": "open",
         "close": "close",
-        "afterHours": "after_hours",
+        "afterHours": "afterHours",
 
     }
 
@@ -3054,7 +3054,7 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         "symbol": True,
         "open": False,
         "close": False,
-        "after_hours": False,
+        "afterHours": False,
 
     }
 
@@ -3062,7 +3062,7 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         "symbol": "str",
         "open": "HistTrade",
         "close": "HistTrade",
-        "after_hours": "HistTrade",
+        "afterHours": "HistTrade",
 
     }
 
@@ -3070,7 +3070,7 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         self.symbol: str
         self.open: HistTrade
         self.close: HistTrade
-        self.after_hours: HistTrade
+        self.afterHours: HistTrade
 
 
 # noinspection SpellCheckingInspection
