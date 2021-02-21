@@ -75,6 +75,7 @@ from .definitions import ForexCurrenciesRealTimeCurrencyConversionApiResponse
 from .definitions import ForexCurrenciesLastQuoteForACurrencyPairApiResponse
 from .definitions import ForexCurrenciesSnapshotAllTickersApiResponse
 from .definitions import ForexCurrenciesSnapshotGainersLosersApiResponse
+from .definitions import ForexCurrenciesAggregatesApiResponse
 from .definitions import CryptoCryptoExchangesApiResponse
 from .definitions import CryptoLastTradeForACryptoPairApiResponse
 from .definitions import CryptoDailyOpenCloseApiResponse
@@ -175,6 +176,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ForexCurrenciesLastQuoteForACurrencyPairApiResponse": ForexCurrenciesLastQuoteForACurrencyPairApiResponse,
     "ForexCurrenciesSnapshotAllTickersApiResponse": ForexCurrenciesSnapshotAllTickersApiResponse,
     "ForexCurrenciesSnapshotGainersLosersApiResponse": ForexCurrenciesSnapshotGainersLosersApiResponse,
+    "ForexCurrenciesAggregatesApiResponse": ForexCurrenciesAggregatesApiResponse,
     "CryptoCryptoExchangesApiResponse": CryptoCryptoExchangesApiResponse,
     "CryptoLastTradeForACryptoPairApiResponse": CryptoLastTradeForACryptoPairApiResponse,
     "CryptoDailyOpenCloseApiResponse": CryptoDailyOpenCloseApiResponse,

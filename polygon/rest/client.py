@@ -173,6 +173,11 @@ class RESTClient:
                                                  **query_params) -> models.ForexCurrenciesSnapshotGainersLosersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/{direction}"
         return self._handle_response("ForexCurrenciesSnapshotGainersLosersApiResponse", endpoint, query_params)
+    
+    def forex_currencies_aggregates(self, ticker, multiplier, timespan, from_, to,
+                                    **query_params) -> models.ForexCurrenciesAggregatesApiResponse:
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
+        return self._handle_response("ForexCurrenciesAggregatesApiResponse", endpoint, query_params)
 
     def crypto_crypto_exchanges(self, **query_params) -> models.CryptoCryptoExchangesApiResponse:
         endpoint = f"{self.url}/v1/meta/crypto-exchanges"

@@ -3413,6 +3413,25 @@ class ForexCurrenciesSnapshotGainersLosersApiResponse(Definition):
         self.status: str
         self.tickers: List[ForexSnapshotTicker]
 
+# noinspection SpellCheckingInspection
+class ForexCurrenciesAggregatesApiResponse(Definition):
+    _swagger_name_to_python = {
+        "aggresponse": "aggresponse",
+
+    }
+
+    _attribute_is_primitive = {
+        "aggresponse": False,
+
+    }
+
+    _attributes_to_types = {
+        "aggresponse": "ForexAggregate",
+
+    }
+
+    def __init__(self):
+        self.aggresponse: AggResponse
 
 # noinspection SpellCheckingInspection
 class CryptoCryptoExchangesApiResponse(Definition):
