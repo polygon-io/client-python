@@ -70,6 +70,7 @@ from .definitions import StocksEquitiesSnapshotGainersLosersApiResponse
 from .definitions import StocksEquitiesPreviousCloseApiResponse
 from .definitions import StocksEquitiesAggregatesApiResponse
 from .definitions import StocksEquitiesGroupedDailyApiResponse
+from .definitions import ForexCurrenciesAggregatesApiResponse
 from .definitions import ForexCurrenciesHistoricForexTicksApiResponse
 from .definitions import ForexCurrenciesRealTimeCurrencyConversionApiResponse
 from .definitions import ForexCurrenciesLastQuoteForACurrencyPairApiResponse
@@ -170,6 +171,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "StocksEquitiesPreviousCloseApiResponse": StocksEquitiesPreviousCloseApiResponse,
     "StocksEquitiesAggregatesApiResponse": StocksEquitiesAggregatesApiResponse,
     "StocksEquitiesGroupedDailyApiResponse": StocksEquitiesGroupedDailyApiResponse,
+    "ForexCurrenciesAggregatesApiResponse": ForexCurrenciesAggregatesApiResponse,
     "ForexCurrenciesHistoricForexTicksApiResponse": ForexCurrenciesHistoricForexTicksApiResponse,
     "ForexCurrenciesRealTimeCurrencyConversionApiResponse": ForexCurrenciesRealTimeCurrencyConversionApiResponse,
     "ForexCurrenciesLastQuoteForACurrencyPairApiResponse": ForexCurrenciesLastQuoteForACurrencyPairApiResponse,

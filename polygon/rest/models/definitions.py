@@ -3043,51 +3043,34 @@ class StocksEquitiesLastQuoteForASymbolApiResponse(Definition):
 # noinspection SpellCheckingInspection
 class StocksEquitiesDailyOpenCloseApiResponse(Definition):
     _swagger_name_to_python = {
-        "from": "from_",
         "symbol": "symbol",
         "open": "open",
-        "high": "high",
-        "low": "low",
         "close": "close",
-        "volume": "volume",
         "afterHours": "after_hours",
-        "preMarket": "pre_market",
+
     }
 
     _attribute_is_primitive = {
-        "from_": True,
         "symbol": True,
-        "open": True,
-        "high": True,
-        "low": True,
-        "close": True,
-        "volume": True,
-        "afterHours": True,
-        "preMarket": True,
+        "open": False,
+        "close": False,
+        "after_hours": False,
+
     }
 
     _attributes_to_types = {
-        "from_": "str",
         "symbol": "str",
-        "open": "float",
-        "high": "float",
-        "low": "float",
-        "close": "float",
-        "volume": "float",
-        "afterHours": "float",
-        "preMarket": "float",
+        "open": "HistTrade",
+        "close": "HistTrade",
+        "after_hours": "HistTrade",
+
     }
 
     def __init__(self):
-        self.from_: str
         self.symbol: str
-        self.open: float
-        self.high: float
-        self.low: float
-        self.close: float
-        self.volume: float
-        self.afterHours: float
-        self.preMarket: float
+        self.open: HistTrade
+        self.close: HistTrade
+        self.after_hours: HistTrade
 
 
 # noinspection SpellCheckingInspection
@@ -3248,6 +3231,25 @@ class StocksEquitiesGroupedDailyApiResponse(Definition):
     def __init__(self):
         self.aggresponse: AggResponse
 
+# noinspection SpellCheckingInspection
+class ForexCurrenciesAggregatesApiResponse(Definition):
+    _swagger_name_to_python = {
+        "aggresponse": "aggresponse",
+
+    }
+
+    _attribute_is_primitive = {
+        "aggresponse": False,
+
+    }
+
+    _attributes_to_types = {
+        "aggresponse": "AggResponse",
+
+    }
+
+    def __init__(self):
+        self.aggresponse: AggResponse
 
 # noinspection SpellCheckingInspection
 class ForexCurrenciesHistoricForexTicksApiResponse(Definition):
