@@ -149,11 +149,6 @@ class RESTClient:
         endpoint = f"{self.url}/v2/aggs/grouped/locale/{locale}/market/{market}/{date}"
         return self._handle_response("StocksEquitiesGroupedDailyApiResponse", endpoint, query_params)
 
-    def forex_currencies_aggregates(self, ticker, multiplier, timespan, from_, to,
-                                   **query_params) -> models.ForexCurrenciesAggregatesApiResponse:
-        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
-        return self._handle_response("ForexCurrenciesAggregatesApiResponse", endpoint, query_params)
-
     def forex_currencies_historic_forex_ticks(self, from_, to, date,
                                               **query_params) -> models.ForexCurrenciesHistoricForexTicksApiResponse:
         endpoint = f"{self.url}/v1/historic/forex/{from_}/{to}/{date}"
