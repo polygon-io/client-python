@@ -1,3 +1,5 @@
+# Be sure to pip install polygon-api-client
+
 import time
 
 from polygon import WebSocketClient, STOCKS_CLUSTER
