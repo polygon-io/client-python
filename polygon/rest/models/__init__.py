@@ -4,6 +4,8 @@ from .definitions import HistTrade
 from .definitions import Quote
 from .definitions import Aggregate
 from .definitions import Company
+from .definitions import CompanyVX
+from .definitions import Address
 from .definitions import Symbol
 from .defintiions import SymbolVX
 from .definitions import Dividend
@@ -49,6 +51,7 @@ from .definitions import ReferenceTickersApiResponse
 from .definitions import ReferenceTickersVXApiResponse
 from .definitions import ReferenceTickerTypesApiResponse
 from .definitions import ReferenceTickerDetailsApiResponse
+from .definitions import ReferenceTickerDetailsVXApiResponse
 from .definitions import ReferenceTickerNewsApiResponse
 from .definitions import ReferenceMarketsApiResponse
 from .definitions import ReferenceLocalesApiResponse
@@ -106,6 +109,8 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "Quote": Quote,
     "Aggregate": Aggregate,
     "Company": Company,
+    "CompanyVX": CompanyVX,
+    "Address": Address,
     "Symbol": Symbol,
     "Dividend": Dividend,
     "News": News,
@@ -150,6 +155,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ReferenceTickersVXApiResponse": ReferenceTickersVXApiResponse,
     "ReferenceTickerTypesApiResponse": ReferenceTickerTypesApiResponse,
     "ReferenceTickerDetailsApiResponse": ReferenceTickerDetailsApiResponse,
+    "ReferenceTickerDetailsVXApiResponse": ReferenceTickerDetailsVXApiResponse,
     "ReferenceTickerNewsApiResponse": ReferenceTickerNewsApiResponse,
     "ReferenceMarketsApiResponse": ReferenceMarketsApiResponse,
     "ReferenceLocalesApiResponse": ReferenceLocalesApiResponse,
