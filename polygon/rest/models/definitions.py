@@ -418,6 +418,7 @@ class Address(Definition):
         self.state: str
 
 
+# noinspection SpellCheckingInspection
 class CompanyVX(Definition):
     _swagger_name_to_python = {
         "ticker": "ticker",
@@ -539,6 +540,8 @@ class Symbol(Definition):
         self.updated: str
         self.is___otc: bool
 
+
+# noinspection SpellCheckingInspection
 class SymbolVX(Definition):
     _swagger_name_to_python = {
         "ticker": "ticker",
@@ -2723,7 +2726,8 @@ class ReferenceTickersApiResponse(Definition):
     def __init__(self):
         self.symbol: List[Symbol]
 
-#noinspection SpellCheckingInspection
+
+# noinspection SpellCheckingInspection
 class ReferenceTickersVXApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
@@ -2798,6 +2802,8 @@ class ReferenceTickerDetailsApiResponse(Definition):
     def __init__(self):
         self.company: Company
 
+
+# noinspection SpellCheckingInspection
 class ReferenceTickerDetailsVXApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
@@ -2821,6 +2827,7 @@ class ReferenceTickerDetailsVXApiResponse(Definition):
         self.results: List[CompanyVX]
         self.status: str
         self.count: float
+
 
 # noinspection SpellCheckingInspection
 class ReferenceTickerNewsApiResponse(Definition):
