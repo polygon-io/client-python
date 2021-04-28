@@ -3250,6 +3250,26 @@ class StocksEquitiesGroupedDailyApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
+class CurrenciesAggregatesApiResponse(Definition):
+    _swagger_name_to_python = {
+        "aggresponse": "aggresponse",
+
+    }
+
+    _attribute_is_primitive = {
+        "aggresponse": False,
+
+    }
+
+    _attributes_to_types = {
+        "aggresponse": "AggResponse",
+
+    }
+
+    def __init__(self):
+        self.aggresponse: AggResponse
+
+# noinspection SpellCheckingInspection
 class ForexCurrenciesHistoricForexTicksApiResponse(Definition):
     _swagger_name_to_python = {
         "day": "day",
