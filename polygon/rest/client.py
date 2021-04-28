@@ -175,6 +175,11 @@ class RESTClient:
                                                         **query_params) -> models.ForexCurrenciesLastQuoteForACurrencyPairApiResponse:
         endpoint = f"{self.url}/v1/last_quote/currencies/{from_}/{to}"
         return self._handle_response("ForexCurrenciesLastQuoteForACurrencyPairApiResponse", endpoint, query_params)
+    
+    # FIXME: add daily open/close
+    # FIXME: add grouped daily bars
+    # FIXME: add previous close
+    # FIXME: add snapshot for single ticker
 
     def forex_currencies_snapshot_all_tickers(self,
                                               **query_params) -> models.ForexCurrenciesSnapshotAllTickersApiResponse:
@@ -203,6 +208,9 @@ class RESTClient:
                                       **query_params) -> models.CryptoHistoricCryptoTradesApiResponse:
         endpoint = f"{self.url}/v1/historic/crypto/{from_}/{to}/{date}"
         return self._handle_response("CryptoHistoricCryptoTradesApiResponse", endpoint, query_params)
+    
+    # FIXME: add grouped daily bars
+    # FIXME: add previous close
 
     def crypto_snapshot_all_tickers(self, **query_params) -> models.CryptoSnapshotAllTickersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers"
