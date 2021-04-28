@@ -434,6 +434,66 @@ class Symbol(Definition):
         self.updated: str
         self.is___otc: bool
 
+class SymbolVX(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "name": "name",
+        "market": "market",
+        "locale": "locale",
+        "primary_exchange": "primary_exchange",
+        "type": "type",
+        "active": "active",
+        "currency_name": "currency_name",
+        "cik": "cik",
+        "composite_figi": "composite_figi",
+        "share_class_figi": "share_class_figi",
+        "last_updated_utc": "last_updated_utc",
+        "delisted_utc": "delisted_utc",
+    }
+
+    _attributes_is_primitive = {
+        "ticker": True,
+        "name": True,
+        "market": True, 
+        "primary_exchange": True,
+        "type": True,
+        "active": True,
+        "currency_name": True,
+        "cik": True,
+        "composite_figi": True,
+        "share_class_figi": True,
+        "last_updated_utc": True,
+        "delisted_utc": True,
+    }
+
+    _attributes_to_types = {
+        "ticker": "str",
+        "name": "str",
+        "market": "str",
+        "primary_exchange": "str",
+        "type": "str",
+        "active": "bool",
+        "currency_name": "str",
+        "cik": "str",
+        "composite_figi": "str",
+        "share_class_figi": "str",
+        "last_updated_utc": "str",
+        "delisted_utc": "str",
+    }
+
+    def __init__(self):
+        self.ticker: str
+        self.name: str
+        self.market: str
+        self.primary_exchange: str
+        self.type: str
+        self.active: bool
+        self.currency_name: str
+        self.cik: str
+        self.composite_figi: str
+        self.share_class_figi: str
+        self.last_updated_utc: str
+        self.delisted_utc: str
 
 # noinspection SpellCheckingInspection
 class Dividend(Definition):
@@ -2558,6 +2618,35 @@ class ReferenceTickersApiResponse(Definition):
     def __init__(self):
         self.symbol: List[Symbol]
 
+#noinspection SpellCheckingInspection
+class ReferenceTickersVXApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+        "count": "count",
+        "next_url": "next_url",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+        "count": True,
+        "next_url": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[SymbolVX]",
+        "status": "str",
+        "count": "float",
+        "next_url": "str",
+    }
+
+    def __init__(self):
+        self.results: List[SymbolVX]
+        self.status: str
+        self.count: float
+        self.next_url: str
+
 
 # noinspection SpellCheckingInspection
 class ReferenceTickerTypesApiResponse(Definition):
@@ -2603,7 +2692,6 @@ class ReferenceTickerDetailsApiResponse(Definition):
 
     def __init__(self):
         self.company: Company
-
 
 # noinspection SpellCheckingInspection
 class ReferenceTickerNewsApiResponse(Definition):

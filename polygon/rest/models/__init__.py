@@ -5,6 +5,7 @@ from .definitions import Quote
 from .definitions import Aggregate
 from .definitions import Company
 from .definitions import Symbol
+from .defintiions import SymbolVX
 from .definitions import Dividend
 from .definitions import News
 from .definitions import Earning
@@ -45,6 +46,7 @@ from .definitions import StocksSnapshotQuote
 from .definitions import Aggv2
 from .definitions import AggResponse
 from .definitions import ReferenceTickersApiResponse
+from .definitions import ReferenceTickersVXApiResponse
 from .definitions import ReferenceTickerTypesApiResponse
 from .definitions import ReferenceTickerDetailsApiResponse
 from .definitions import ReferenceTickerNewsApiResponse
@@ -145,6 +147,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "Aggv2": Aggv2,
     "AggResponse": AggResponse,
     "ReferenceTickersApiResponse": ReferenceTickersApiResponse,
+    "ReferenceTickersVXApiResponse": ReferenceTickersVXApiResponse,
     "ReferenceTickerTypesApiResponse": ReferenceTickerTypesApiResponse,
     "ReferenceTickerDetailsApiResponse": ReferenceTickerDetailsApiResponse,
     "ReferenceTickerNewsApiResponse": ReferenceTickerNewsApiResponse,
