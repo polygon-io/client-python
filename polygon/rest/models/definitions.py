@@ -393,6 +393,111 @@ class Company(Definition):
         self.tags: List[str]
         self.updated: str
 
+class Address(Definition):
+    _swagger_name_to_python = {
+        "address1": "address1",
+        "city": "city",
+        "state": "state",
+    }
+
+    _attributes_is_primitive = {
+        "address1": True,
+        "city": True,
+        "state": True,
+    }
+
+    _attributes_to_types = {
+        "address1": "str",
+        "city": "str",
+        "state": "str",
+    }
+
+    def __init__(self):
+        self.address1: str
+        self.city: str
+        self.state: str
+
+
+class CompanyVX(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "name": "name",
+        "market": "market",
+        "locale": "locale",
+        "primary_exchange": "primary_exchange",
+        "type": "type",
+        "active": "active",
+        "currency_name": "currency_name",
+        "cik": "cik",
+        "composite_figi": "composite_figi",
+        "share_class_figi": "share_class_figi",
+        "last_updated_utc": "last_updated_utc",
+        "outstanding_shares": "outstanding_shares",
+        "market_cap": "market_cap",
+        "phone_number": "phone_number",
+        "address": "address",
+        "sic_code": "sic_code",
+        "sic_description": "sic_description",
+    }
+
+    _attributes_is_primitive = {
+        "ticker": True,
+        "name": True,
+        "market": True, 
+        "primary_exchange": True,
+        "type": True,
+        "active": True,
+        "currency_name": True,
+        "cik": True,
+        "composite_figi": True,
+        "share_class_figi": True,
+        "last_updated_utc": True,
+        "outstanding_shares": True,
+        "market_cap": True,
+        "phone_number": True,
+        "address": False,
+        "sic_code": True,
+        "sic_description": True,
+    }
+
+    _attributes_to_types = {
+        "ticker": "str",
+        "name": "str",
+        "market": "str",
+        "primary_exchange": "str",
+        "type": "str",
+        "active": "bool",
+        "currency_name": "str",
+        "cik": "str",
+        "composite_figi": "str",
+        "share_class_figi": "str",
+        "last_updated_utc": "str",
+        "outstanding_shares": "int",
+        "market_cap": "int",
+        "phone_number": "str",
+        "address": "Address",
+        "sic_code": "str",
+        "sic_description": "str",
+    }
+
+    def __init__(self):
+        self.ticker: str
+        self.name: str
+        self.market: str
+        self.primary_exchange: str
+        self.type: str
+        self.active: bool
+        self.currency_name: str
+        self.cik: str
+        self.composite_figi: str
+        self.share_class_figi: str
+        self.last_updated_utc: str
+        self.outstanding_shares: int
+        self.market_cap: int
+        self.phone_number: str
+        self.address: Address
+        self.sic_code: str
+        self.sic_description: str
 
 # noinspection SpellCheckingInspection
 class Symbol(Definition):
@@ -2692,6 +2797,30 @@ class ReferenceTickerDetailsApiResponse(Definition):
 
     def __init__(self):
         self.company: Company
+
+class ReferenceTickerDetailsVXApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+        "count": "count",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+        "count": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[CompanyVX]",
+        "status": "str",
+        "count": "float",
+    }
+
+    def __init__(self):
+        self.results: List[CompanyVX]
+        self.status: str
+        self.count: float
 
 # noinspection SpellCheckingInspection
 class ReferenceTickerNewsApiResponse(Definition):
