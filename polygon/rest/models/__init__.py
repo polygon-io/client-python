@@ -7,7 +7,7 @@ from .definitions import Company
 from .definitions import CompanyV3
 from .definitions import Address
 from .definitions import Symbol
-from .defintiions import SymbolV3
+from .definitions import SymbolV3
 from .definitions import Dividend
 from .definitions import News
 from .definitions import NewsV2
