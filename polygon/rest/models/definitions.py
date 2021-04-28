@@ -419,7 +419,7 @@ class Address(Definition):
 
 
 # noinspection SpellCheckingInspection
-class CompanyVX(Definition):
+class CompanyV3(Definition):
     _swagger_name_to_python = {
         "ticker": "ticker",
         "name": "name",
@@ -542,7 +542,7 @@ class Symbol(Definition):
 
 
 # noinspection SpellCheckingInspection
-class SymbolVX(Definition):
+class SymbolV3(Definition):
     _swagger_name_to_python = {
         "ticker": "ticker",
         "name": "name",
@@ -704,6 +704,87 @@ class News(Definition):
         self.timestamp: str
         self.keywords: List[str]
 
+class Publisher(Definition):
+    _swagger_name_to_python = {
+        "name": "name",
+        "logo_url": "logo_url",
+        "homepage_url": "homepage_url",
+        "favicon_url": "favicon_url",
+    }
+
+    _attribute_is_primitive = {
+        "name": True,
+        "logo_url": True,
+        "homepage_url": True,
+        "favicon_url": True,
+    }
+
+    _attributes_to_type = {
+        "name": "str",
+        "logo_url": "str",
+        "homepage_url": "str",
+        "favicon_url": "str",
+    }
+
+    def __init__(self): 
+        self.name: str
+        self.logo_url: str
+        self.homepage_url: str
+        self.favicon_url: str
+
+
+# noinspection SpellCheckingInspection
+class NewsV2(Definition):
+    _swagger_name_to_python = {
+        "id": "id",
+        "publisher": "publisher",
+        "title": "title",
+        "author": "author",
+        "published_utc": "published_utc",
+        "tickers": "tickers",
+        "amp_url": "amp_url",
+        "image_url": "image_url",
+        "description": "description",
+        "keywords": "keywords",
+    }
+
+    _attribute_is_primitive = {
+        "id": True,
+        "publisher": False,
+        "title": True,
+        "author": True,
+        "published_utc": True,
+        "tickers": True,
+        "amp_url": True,
+        "image_url": True,
+        "description": True,
+        "keywords": True,
+    }
+
+    _attributes_to_type = {
+        "id": "str",
+        "publisher": "Publisher",
+        "title": "str",
+        "author": "str",
+        "published_utc": "str",
+        "tickers": "List[str]",
+        "amp_url": "str",
+        "image_url": "str",
+        "description": "str",
+        "keywords": "str",
+    }
+
+    def __init__(self):
+        self.id: str
+        self.publisher: Publisher
+        self.title: str
+        self.author: str
+        self.published_utc: str
+        self.tickers: List[str]
+        self.amp_url: str
+        self.image_url: str
+        self.description: str
+        self.keywords: str
 
 # noinspection SpellCheckingInspection
 class Earning(Definition):
@@ -2728,7 +2809,7 @@ class ReferenceTickersApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
-class ReferenceTickersVXApiResponse(Definition):
+class ReferenceTickersV3ApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
         "status": "status",
@@ -2744,14 +2825,14 @@ class ReferenceTickersVXApiResponse(Definition):
     }
 
     _attributes_to_types = {
-        "results": "List[SymbolVX]",
+        "results": "List[SymbolV3]",
         "status": "str",
         "count": "float",
         "next_url": "str",
     }
 
     def __init__(self):
-        self.results: List[SymbolVX]
+        self.results: List[SymbolV3]
         self.status: str
         self.count: float
         self.next_url: str
@@ -2804,7 +2885,7 @@ class ReferenceTickerDetailsApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
-class ReferenceTickerDetailsVXApiResponse(Definition):
+class ReferenceTickerDetailsV3ApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
         "status": "status",
@@ -2818,13 +2899,13 @@ class ReferenceTickerDetailsVXApiResponse(Definition):
     }
 
     _attributes_to_types = {
-        "results": "List[CompanyVX]",
+        "results": "List[CompanyV3]",
         "status": "str",
         "count": "float",
     }
 
     def __init__(self):
-        self.results: List[CompanyVX]
+        self.results: List[CompanyV3]
         self.status: str
         self.count: float
 
@@ -2848,6 +2929,36 @@ class ReferenceTickerNewsApiResponse(Definition):
 
     def __init__(self):
         self.news: List[News]
+
+
+# noinspection SpellCheckingInspection
+class ReferenceTickerNewsV2ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "next_url": "next_url",
+        "status": "status",
+        "count": "count",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "next_url": True,
+        "status": True,
+        "count": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[NewsV2]",
+        "next_url": "str",
+        "status": "str",
+        "count": "float",
+    }
+
+    def __init__(self):
+        self.results: List[NewsV2]
+        self.next_url: str
+        self.status: str
+        self.count: float
 
 
 # noinspection SpellCheckingInspection
