@@ -162,7 +162,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ReferenceTickerDetailsApiResponse": ReferenceTickerDetailsApiResponse,
     "ReferenceTickerDetailsV3ApiResponse": ReferenceTickerDetailsV3ApiResponse,
     "ReferenceTickerNewsApiResponse": ReferenceTickerNewsApiResponse,
-    "ReferenceTickersNewsV2ApiResponse": ReferenceTickerNewsV2ApiResponse,
+    "ReferenceTickerNewsV2ApiResponse": ReferenceTickerNewsV2ApiResponse,
     "ReferenceMarketsApiResponse": ReferenceMarketsApiResponse,
     "ReferenceLocalesApiResponse": ReferenceLocalesApiResponse,
     "ReferenceStockSplitsApiResponse": ReferenceStockSplitsApiResponse,
