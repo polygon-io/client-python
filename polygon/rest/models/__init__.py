@@ -83,6 +83,7 @@ from .definitions import CryptoSnapshotAllTickersApiResponse
 from .definitions import CryptoSnapshotSingleTickerApiResponse
 from .definitions import CryptoSnapshotSingleTickerFullBookApiResponse
 from .definitions import CryptoSnapshotGainersLosersApiResponse
+from .definitions import CurrenciesAggregatesApiResponse
 from .definitions import StockSymbol
 from .definitions import ConditionTypeMap
 from .definitions import SymbolTypeMap
@@ -183,6 +184,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "CryptoSnapshotSingleTickerApiResponse": CryptoSnapshotSingleTickerApiResponse,
     "CryptoSnapshotSingleTickerFullBookApiResponse": CryptoSnapshotSingleTickerFullBookApiResponse,
     "CryptoSnapshotGainersLosersApiResponse": CryptoSnapshotGainersLosersApiResponse,
+    "CurrenciesAggregatesApiResponse": CurrenciesAggregatesApiResponse,
 
 }
 
