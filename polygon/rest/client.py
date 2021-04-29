@@ -175,16 +175,23 @@ class RESTClient:
                                                         **query_params) -> models.ForexCurrenciesLastQuoteForACurrencyPairApiResponse:
         endpoint = f"{self.url}/v1/last_quote/currencies/{from_}/{to}"
         return self._handle_response("ForexCurrenciesLastQuoteForACurrencyPairApiResponse", endpoint, query_params)
+   
+    def forex_currencies_grouped_daily(self, date, **query_params) -> models.ForexCurrenciesGroupedDailyApiResponse:
+        endpoint = f"{self.url}/v2/aggs/grouped/locale/global/market/fx/{date}"
+        return self._handle_response("ForexCurrenciesGroupedDailyApiResponse", endpoint, query_params)
     
-    # FIXME: add daily open/close
-    # FIXME: add grouped daily bars
-    # FIXME: add previous close
-    # FIXME: add snapshot for single ticker
+    def forex_currencies_previous_close(self, ticker, **query_params) -> models.ForexCurrenciesGroupedDailyApiResponse:
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/prev"
+        return self._handle_response("ForexCurrenciesPreviousCloseApiResponse", endpoint, query_params)
 
     def forex_currencies_snapshot_all_tickers(self,
                                               **query_params) -> models.ForexCurrenciesSnapshotAllTickersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/tickers"
         return self._handle_response("ForexCurrenciesSnapshotAllTickersApiResponse", endpoint, query_params)
+    
+    def forex_currencies_snapshot_single_ticker(self, ticker, **query_params) -> models.ForexCurrenciesSnapshotSingleTickerApiResponse:
+        endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/tickers/{ticker}"
+        return self._handle_response("ForexCurrenciesSnapshotSingleTickerApiResponse", endpoint, query_params)
 
     def forex_currencies_snapshot_gainers_losers(self, direction,
                                                  **query_params) -> models.ForexCurrenciesSnapshotGainersLosersApiResponse:
@@ -219,8 +226,13 @@ class RESTClient:
         endpoint = f"{self.url}/v1/historic/crypto/{from_}/{to}/{date}"
         return self._handle_response("CryptoHistoricCryptoTradesApiResponse", endpoint, query_params)
     
-    # FIXME: add grouped daily bars
-    # FIXME: add previous close
+    def crypto_grouped_daily(self, date, **query_params) -> models.CryptoGroupedDailyApiResponse:
+        endpoint = f"{self.url}/v2/aggs/grouped/locale/global/market/crypto/{date}"
+        return self._handle_response("CryptoGroupedDailyApiResponse", endpoint, query_params)
+    
+    def crypto_previous_close(self, ticker, **query_params) -> models.CryptoPreviousCloseApiResponse:
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/prev"
+        return self._handle_response("CryptoPreviousClose", endpoint, query_params)
 
     def crypto_snapshot_all_tickers(self, **query_params) -> models.CryptoSnapshotAllTickersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers"
