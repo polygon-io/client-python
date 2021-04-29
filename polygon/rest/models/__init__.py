@@ -81,7 +81,10 @@ from .definitions import StocksEquitiesGroupedDailyApiResponse
 from .definitions import ForexCurrenciesHistoricForexTicksApiResponse
 from .definitions import ForexCurrenciesRealTimeCurrencyConversionApiResponse
 from .definitions import ForexCurrenciesLastQuoteForACurrencyPairApiResponse
+from. definitions import ForexCurrenciesGroupedDailyApiResponse
+from .definitions import ForexCurrenciesPreviousCloseApiResponse
 from .definitions import ForexCurrenciesSnapshotAllTickersApiResponse
+from .definitions import ForexCurrenciesSnapshotSingleTickerApiResponse
 from .definitions import ForexCurrenciesSnapshotGainersLosersApiResponse
 from .definitions import CryptoCryptoExchangesApiResponse
 from .definitions import CryptoLastTradeForACryptoPairApiResponse
@@ -191,7 +194,10 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ForexCurrenciesHistoricForexTicksApiResponse": ForexCurrenciesHistoricForexTicksApiResponse,
     "ForexCurrenciesRealTimeCurrencyConversionApiResponse": ForexCurrenciesRealTimeCurrencyConversionApiResponse,
     "ForexCurrenciesLastQuoteForACurrencyPairApiResponse": ForexCurrenciesLastQuoteForACurrencyPairApiResponse,
+    "ForexCurrenciesGroupedDailyApiResponse": ForexCurrenciesGroupedDailyApiResponse,
+    "ForexCurrenciesPreviousCloseApiResponse": ForexCurrenciesPreviousCloseApiResponse,
     "ForexCurrenciesSnapshotAllTickersApiResponse": ForexCurrenciesSnapshotAllTickersApiResponse,
+    "ForexCurrenciesSnapshotSingleTickerApiResponse": ForexCurrenciesSnapshotSingleTickerApiResponse,
     "ForexCurrenciesSnapshotGainersLosersApiResponse": ForexCurrenciesSnapshotGainersLosersApiResponse,
     "CryptoCryptoExchangesApiResponse": CryptoCryptoExchangesApiResponse,
     "CryptoLastTradeForACryptoPairApiResponse": CryptoLastTradeForACryptoPairApiResponse,
