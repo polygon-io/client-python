@@ -38,8 +38,8 @@ class RESTClient:
         endpoint = f"{self.url}/v2/reference/tickers"
         return self._handle_response("ReferenceTickersApiResponse", endpoint, query_params)
     
-    def reference_tickers_vx(self, **query_params) -> models.ReferenceTickersV3ApiResponse:
-        endpoint = f"{self.url}/vX/reference/tickers"
+    def reference_tickers_v3(self, **query_params) -> models.ReferenceTickersV3ApiResponse:
+        endpoint = f"{self.url}/v3/reference/tickers"
         return self._handle_response("ReferenceTickersV3ApiResponse", endpoint, query_params)
 
     def reference_ticker_types(self, **query_params) -> models.ReferenceTickerTypesApiResponse:
