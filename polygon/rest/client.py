@@ -232,7 +232,7 @@ class RESTClient:
     
     def crypto_previous_close(self, ticker, **query_params) -> models.CryptoPreviousCloseApiResponse:
         endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/prev"
-        return self._handle_response("CryptoPreviousClose", endpoint, query_params)
+        return self._handle_response("CryptoPreviousCloseApiResponse", endpoint, query_params)
 
     def crypto_snapshot_all_tickers(self, **query_params) -> models.CryptoSnapshotAllTickersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers"
