@@ -393,6 +393,112 @@ class Company(Definition):
         self.tags: List[str]
         self.updated: str
 
+class Address(Definition):
+    _swagger_name_to_python = {
+        "address1": "address1",
+        "city": "city",
+        "state": "state",
+    }
+
+    _attributes_is_primitive = {
+        "address1": True,
+        "city": True,
+        "state": True,
+    }
+
+    _attributes_to_types = {
+        "address1": "str",
+        "city": "str",
+        "state": "str",
+    }
+
+    def __init__(self):
+        self.address1: str
+        self.city: str
+        self.state: str
+
+
+# noinspection SpellCheckingInspection
+class CompanyV3(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "name": "name",
+        "market": "market",
+        "locale": "locale",
+        "primary_exchange": "primary_exchange",
+        "type": "type",
+        "active": "active",
+        "currency_name": "currency_name",
+        "cik": "cik",
+        "composite_figi": "composite_figi",
+        "share_class_figi": "share_class_figi",
+        "last_updated_utc": "last_updated_utc",
+        "outstanding_shares": "outstanding_shares",
+        "market_cap": "market_cap",
+        "phone_number": "phone_number",
+        "address": "address",
+        "sic_code": "sic_code",
+        "sic_description": "sic_description",
+    }
+
+    _attributes_is_primitive = {
+        "ticker": True,
+        "name": True,
+        "market": True, 
+        "primary_exchange": True,
+        "type": True,
+        "active": True,
+        "currency_name": True,
+        "cik": True,
+        "composite_figi": True,
+        "share_class_figi": True,
+        "last_updated_utc": True,
+        "outstanding_shares": True,
+        "market_cap": True,
+        "phone_number": True,
+        "address": False,
+        "sic_code": True,
+        "sic_description": True,
+    }
+
+    _attributes_to_types = {
+        "ticker": "str",
+        "name": "str",
+        "market": "str",
+        "primary_exchange": "str",
+        "type": "str",
+        "active": "bool",
+        "currency_name": "str",
+        "cik": "str",
+        "composite_figi": "str",
+        "share_class_figi": "str",
+        "last_updated_utc": "str",
+        "outstanding_shares": "int",
+        "market_cap": "int",
+        "phone_number": "str",
+        "address": "Address",
+        "sic_code": "str",
+        "sic_description": "str",
+    }
+
+    def __init__(self):
+        self.ticker: str
+        self.name: str
+        self.market: str
+        self.primary_exchange: str
+        self.type: str
+        self.active: bool
+        self.currency_name: str
+        self.cik: str
+        self.composite_figi: str
+        self.share_class_figi: str
+        self.last_updated_utc: str
+        self.outstanding_shares: int
+        self.market_cap: int
+        self.phone_number: str
+        self.address: Address
+        self.sic_code: str
+        self.sic_description: str
 
 # noinspection SpellCheckingInspection
 class Symbol(Definition):
@@ -434,6 +540,68 @@ class Symbol(Definition):
         self.updated: str
         self.is___otc: bool
 
+
+# noinspection SpellCheckingInspection
+class SymbolV3(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "name": "name",
+        "market": "market",
+        "locale": "locale",
+        "primary_exchange": "primary_exchange",
+        "type": "type",
+        "active": "active",
+        "currency_name": "currency_name",
+        "cik": "cik",
+        "composite_figi": "composite_figi",
+        "share_class_figi": "share_class_figi",
+        "last_updated_utc": "last_updated_utc",
+        "delisted_utc": "delisted_utc",
+    }
+
+    _attributes_is_primitive = {
+        "ticker": True,
+        "name": True,
+        "market": True, 
+        "primary_exchange": True,
+        "type": True,
+        "active": True,
+        "currency_name": True,
+        "cik": True,
+        "composite_figi": True,
+        "share_class_figi": True,
+        "last_updated_utc": True,
+        "delisted_utc": True,
+    }
+
+    _attributes_to_types = {
+        "ticker": "str",
+        "name": "str",
+        "market": "str",
+        "primary_exchange": "str",
+        "type": "str",
+        "active": "bool",
+        "currency_name": "str",
+        "cik": "str",
+        "composite_figi": "str",
+        "share_class_figi": "str",
+        "last_updated_utc": "str",
+        "delisted_utc": "str",
+    }
+
+    def __init__(self):
+        self.ticker: str
+        self.name: str
+        self.market: str
+        self.primary_exchange: str
+        self.type: str
+        self.active: bool
+        self.currency_name: str
+        self.cik: str
+        self.composite_figi: str
+        self.share_class_figi: str
+        self.last_updated_utc: str
+        self.delisted_utc: str
 
 # noinspection SpellCheckingInspection
 class Dividend(Definition):
@@ -536,6 +704,87 @@ class News(Definition):
         self.timestamp: str
         self.keywords: List[str]
 
+class Publisher(Definition):
+    _swagger_name_to_python = {
+        "name": "name",
+        "logo_url": "logo_url",
+        "homepage_url": "homepage_url",
+        "favicon_url": "favicon_url",
+    }
+
+    _attribute_is_primitive = {
+        "name": True,
+        "logo_url": True,
+        "homepage_url": True,
+        "favicon_url": True,
+    }
+
+    _attributes_to_type = {
+        "name": "str",
+        "logo_url": "str",
+        "homepage_url": "str",
+        "favicon_url": "str",
+    }
+
+    def __init__(self): 
+        self.name: str
+        self.logo_url: str
+        self.homepage_url: str
+        self.favicon_url: str
+
+
+# noinspection SpellCheckingInspection
+class NewsV2(Definition):
+    _swagger_name_to_python = {
+        "id": "id",
+        "publisher": "publisher",
+        "title": "title",
+        "author": "author",
+        "published_utc": "published_utc",
+        "tickers": "tickers",
+        "amp_url": "amp_url",
+        "image_url": "image_url",
+        "description": "description",
+        "keywords": "keywords",
+    }
+
+    _attribute_is_primitive = {
+        "id": True,
+        "publisher": False,
+        "title": True,
+        "author": True,
+        "published_utc": True,
+        "tickers": True,
+        "amp_url": True,
+        "image_url": True,
+        "description": True,
+        "keywords": True,
+    }
+
+    _attributes_to_type = {
+        "id": "str",
+        "publisher": "Publisher",
+        "title": "str",
+        "author": "str",
+        "published_utc": "str",
+        "tickers": "List[str]",
+        "amp_url": "str",
+        "image_url": "str",
+        "description": "str",
+        "keywords": "str",
+    }
+
+    def __init__(self):
+        self.id: str
+        self.publisher: Publisher
+        self.title: str
+        self.author: str
+        self.published_utc: str
+        self.tickers: List[str]
+        self.amp_url: str
+        self.image_url: str
+        self.description: str
+        self.keywords: str
 
 # noinspection SpellCheckingInspection
 class Earning(Definition):
@@ -2560,6 +2809,36 @@ class ReferenceTickersApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
+class ReferenceTickersV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+        "count": "count",
+        "next_url": "next_url",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+        "count": True,
+        "next_url": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[SymbolV3]",
+        "status": "str",
+        "count": "float",
+        "next_url": "str",
+    }
+
+    def __init__(self):
+        self.results: List[SymbolV3]
+        self.status: str
+        self.count: float
+        self.next_url: str
+
+
+# noinspection SpellCheckingInspection
 class ReferenceTickerTypesApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
@@ -2606,6 +2885,32 @@ class ReferenceTickerDetailsApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
+class ReferenceTickerDetailsV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+        "count": "count",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+        "count": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[CompanyV3]",
+        "status": "str",
+        "count": "float",
+    }
+
+    def __init__(self):
+        self.results: List[CompanyV3]
+        self.status: str
+        self.count: float
+
+
+# noinspection SpellCheckingInspection
 class ReferenceTickerNewsApiResponse(Definition):
     _swagger_name_to_python = {
         "news": "news",
@@ -2624,6 +2929,36 @@ class ReferenceTickerNewsApiResponse(Definition):
 
     def __init__(self):
         self.news: List[News]
+
+
+# noinspection SpellCheckingInspection
+class ReferenceTickerNewsV2ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "next_url": "next_url",
+        "status": "status",
+        "count": "count",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "next_url": True,
+        "status": True,
+        "count": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[NewsV2]",
+        "next_url": "str",
+        "status": "str",
+        "count": "float",
+    }
+
+    def __init__(self):
+        self.results: List[NewsV2]
+        self.next_url: str
+        self.status: str
+        self.count: float
 
 
 # noinspection SpellCheckingInspection

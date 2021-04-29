@@ -37,6 +37,10 @@ class RESTClient:
     def reference_tickers(self, **query_params) -> models.ReferenceTickersApiResponse:
         endpoint = f"{self.url}/v2/reference/tickers"
         return self._handle_response("ReferenceTickersApiResponse", endpoint, query_params)
+    
+    def reference_tickers_v3(self, **query_params) -> models.ReferenceTickersV3ApiResponse:
+        endpoint = f"{self.url}/v3/reference/tickers"
+        return self._handle_response("ReferenceTickersV3ApiResponse", endpoint, query_params)
 
     def reference_ticker_types(self, **query_params) -> models.ReferenceTickerTypesApiResponse:
         endpoint = f"{self.url}/v2/reference/types"
@@ -45,10 +49,18 @@ class RESTClient:
     def reference_ticker_details(self, symbol, **query_params) -> models.ReferenceTickerDetailsApiResponse:
         endpoint = f"{self.url}/v1/meta/symbols/{symbol}/company"
         return self._handle_response("ReferenceTickerDetailsApiResponse", endpoint, query_params)
+    
+    def reference_ticker_details_vx(self, symbol, **query_params) -> models.ReferenceTickerDetailsV3ApiResponse:
+        endpoint = f"{self.url}/vX/reference/tickers/{symbol}"
+        return self._handle_response("ReferenceTickerDetailsV3ApiResponse", endpoint, query_params)
 
     def reference_ticker_news(self, symbol, **query_params) -> models.ReferenceTickerNewsApiResponse:
         endpoint = f"{self.url}/v1/meta/symbols/{symbol}/news"
         return self._handle_response("ReferenceTickerNewsApiResponse", endpoint, query_params)
+    
+    def reference_ticker_news_v2(self, **query_params) -> models.ReferenceTickerNewsV2ApiResponse:
+        endpoint = f"{self.url}/v2/reference/news"
+        return self._handle_response("ReferenceTickerNewsV2ApiResponse", endpoint, query_params)
 
     def reference_markets(self, **query_params) -> models.ReferenceMarketsApiResponse:
         endpoint = f"{self.url}/v2/reference/markets"
@@ -163,6 +175,11 @@ class RESTClient:
                                                         **query_params) -> models.ForexCurrenciesLastQuoteForACurrencyPairApiResponse:
         endpoint = f"{self.url}/v1/last_quote/currencies/{from_}/{to}"
         return self._handle_response("ForexCurrenciesLastQuoteForACurrencyPairApiResponse", endpoint, query_params)
+    
+    # FIXME: add daily open/close
+    # FIXME: add grouped daily bars
+    # FIXME: add previous close
+    # FIXME: add snapshot for single ticker
 
     def forex_currencies_snapshot_all_tickers(self,
                                               **query_params) -> models.ForexCurrenciesSnapshotAllTickersApiResponse:
@@ -201,6 +218,9 @@ class RESTClient:
                                       **query_params) -> models.CryptoHistoricCryptoTradesApiResponse:
         endpoint = f"{self.url}/v1/historic/crypto/{from_}/{to}/{date}"
         return self._handle_response("CryptoHistoricCryptoTradesApiResponse", endpoint, query_params)
+    
+    # FIXME: add grouped daily bars
+    # FIXME: add previous close
 
     def crypto_snapshot_all_tickers(self, **query_params) -> models.CryptoSnapshotAllTickersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/crypto/tickers"

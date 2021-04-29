@@ -4,9 +4,14 @@ from .definitions import HistTrade
 from .definitions import Quote
 from .definitions import Aggregate
 from .definitions import Company
+from .definitions import CompanyV3
+from .definitions import Address
 from .definitions import Symbol
+from .definitions import SymbolV3
 from .definitions import Dividend
 from .definitions import News
+from .definitions import NewsV2
+from .definitions import Publisher
 from .definitions import Earning
 from .definitions import Financial
 from .definitions import Exchange
@@ -45,9 +50,12 @@ from .definitions import StocksSnapshotQuote
 from .definitions import Aggv2
 from .definitions import AggResponse
 from .definitions import ReferenceTickersApiResponse
+from .definitions import ReferenceTickersV3ApiResponse
 from .definitions import ReferenceTickerTypesApiResponse
 from .definitions import ReferenceTickerDetailsApiResponse
+from .definitions import ReferenceTickerDetailsV3ApiResponse
 from .definitions import ReferenceTickerNewsApiResponse
+from .definitions import ReferenceTickerNewsV2ApiResponse
 from .definitions import ReferenceMarketsApiResponse
 from .definitions import ReferenceLocalesApiResponse
 from .definitions import ReferenceStockSplitsApiResponse
@@ -105,9 +113,13 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "Quote": Quote,
     "Aggregate": Aggregate,
     "Company": Company,
+    "CompanyV3": CompanyV3,
+    "Address": Address,
     "Symbol": Symbol,
     "Dividend": Dividend,
     "News": News,
+    "NewsV2": NewsV2,
+    "Publisher": Publisher,
     "Earning": Earning,
     "Financial": Financial,
     "Exchange": Exchange,
@@ -146,9 +158,12 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "Aggv2": Aggv2,
     "AggResponse": AggResponse,
     "ReferenceTickersApiResponse": ReferenceTickersApiResponse,
+    "ReferenceTickersV3ApiResponse": ReferenceTickersV3ApiResponse,
     "ReferenceTickerTypesApiResponse": ReferenceTickerTypesApiResponse,
     "ReferenceTickerDetailsApiResponse": ReferenceTickerDetailsApiResponse,
+    "ReferenceTickerDetailsV3ApiResponse": ReferenceTickerDetailsV3ApiResponse,
     "ReferenceTickerNewsApiResponse": ReferenceTickerNewsApiResponse,
+    "ReferenceTickerNewsV2ApiResponse": ReferenceTickerNewsV2ApiResponse,
     "ReferenceMarketsApiResponse": ReferenceMarketsApiResponse,
     "ReferenceLocalesApiResponse": ReferenceLocalesApiResponse,
     "ReferenceStockSplitsApiResponse": ReferenceStockSplitsApiResponse,
