@@ -87,6 +87,8 @@ from .definitions import CryptoCryptoExchangesApiResponse
 from .definitions import CryptoLastTradeForACryptoPairApiResponse
 from .definitions import CryptoDailyOpenCloseApiResponse
 from .definitions import CryptoHistoricCryptoTradesApiResponse
+from .definitions import CryptoGroupedDailyApiResponse
+from .definitions import CryptoPreviousCloseApiResponse
 from .definitions import CryptoSnapshotAllTickersApiResponse
 from .definitions import CryptoSnapshotSingleTickerApiResponse
 from .definitions import CryptoSnapshotSingleTickerFullBookApiResponse
@@ -195,6 +197,8 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "CryptoLastTradeForACryptoPairApiResponse": CryptoLastTradeForACryptoPairApiResponse,
     "CryptoDailyOpenCloseApiResponse": CryptoDailyOpenCloseApiResponse,
     "CryptoHistoricCryptoTradesApiResponse": CryptoHistoricCryptoTradesApiResponse,
+    "CryptoGroupedDailyApiResponse": CryptoGroupedDailyApiResponse,
+    "CryptoPreviousCloseApiResponse": CryptoPreviousCloseApiResponse,
     "CryptoSnapshotAllTickersApiResponse": CryptoSnapshotAllTickersApiResponse,
     "CryptoSnapshotSingleTickerApiResponse": CryptoSnapshotSingleTickerApiResponse,
     "CryptoSnapshotSingleTickerFullBookApiResponse": CryptoSnapshotSingleTickerFullBookApiResponse,
