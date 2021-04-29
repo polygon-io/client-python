@@ -174,6 +174,11 @@ class RESTClient:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/{direction}"
         return self._handle_response("ForexCurrenciesSnapshotGainersLosersApiResponse", endpoint, query_params)
 
+    def forex_currencies_aggregates(self, ticker, multiplier, timespan, from_, to,
+                                   **query_params) -> models.CurrenciesAggregatesApiResponse:
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
+        return self._handle_response("CurrenciesAggregatesApiResponse", endpoint, query_params)
+
     def crypto_crypto_exchanges(self, **query_params) -> models.CryptoCryptoExchangesApiResponse:
         endpoint = f"{self.url}/v1/meta/crypto-exchanges"
         return self._handle_response("CryptoCryptoExchangesApiResponse", endpoint, query_params)
@@ -186,6 +191,11 @@ class RESTClient:
     def crypto_daily_open_close(self, from_, to, date, **query_params) -> models.CryptoDailyOpenCloseApiResponse:
         endpoint = f"{self.url}/v1/open-close/crypto/{from_}/{to}/{date}"
         return self._handle_response("CryptoDailyOpenCloseApiResponse", endpoint, query_params)
+
+    def crypto_aggregates(self, ticker, multiplier, timespan, from_, to,
+                                  **query_params) -> models.CurrenciesAggregatesApiResponse:
+        endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
+        return self._handle_response("CurrenciesAggregatesApiResponse", endpoint, query_params)
 
     def crypto_historic_crypto_trades(self, from_, to, date,
                                       **query_params) -> models.CryptoHistoricCryptoTradesApiResponse:
