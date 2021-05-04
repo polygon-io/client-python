@@ -3720,6 +3720,78 @@ class ForexCurrenciesLastQuoteForACurrencyPairApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
+class ForexCurrenciesGroupedDailyApiResponse(Definition):
+    _swagger_name_to_python = {
+        "status": "status",
+        "adjusted": "adjusted",
+        "queryCount": "queryCount",
+        "resultsCount": "resultsCount",
+        "results": "results",
+    }
+
+    _attribute_is_primitive = {
+        "status": True,
+        "adjusted": True,
+        "queryCount": True,
+        "resultsCount": True,
+        "results": False,
+    }
+
+    _attributes_to_types = {
+        "status": "str",
+        "adjusted": "bool",
+        "queryCount": "int",
+        "resultsCount": "int",
+        "results": "List[Aggv2]"
+    }
+
+    def __init__(self):
+        self.status: str
+        self.adjusted: bool
+        self.queryCount: int
+        self.resultsCount: int
+        self.results: List[Aggv2]
+
+
+# noinspection SpellCheckingInspection
+class ForexCurrenciesPreviousCloseApiResponse(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "status": "status",
+        "adjusted": "adjusted",
+        "queryCount": "queryCount",
+        "resultsCount": "resultsCount",
+        "results": "results",
+    }
+
+    _attribute_is_primitive = {
+        "ticker": True,
+        "status": True,
+        "adjusted": True,
+        "queryCount": True,
+        "resultsCount": True,
+        "results": False,
+    }
+
+    _attributes_to_types = {
+        "ticker": "str",
+        "status": "str",
+        "adjusted": "bool",
+        "queryCount": "int",
+        "resultsCount": "int",
+        "results": "List[Aggv2]"
+    }
+
+    def __init__(self):
+        self.ticker: str
+        self.status: str
+        self.adjusted: bool
+        self.queryCount: int
+        self.resultsCount: int
+        self.results: List[Aggv2]
+
+
+# noinspection SpellCheckingInspection
 class ForexCurrenciesSnapshotAllTickersApiResponse(Definition):
     _swagger_name_to_python = {
         "status": "status",
@@ -3742,6 +3814,28 @@ class ForexCurrenciesSnapshotAllTickersApiResponse(Definition):
     def __init__(self):
         self.status: str
         self.tickers: List[ForexSnapshotTicker]
+
+
+# noinspection SpellCheckingInspection
+class ForexCurrenciesSnapshotSingleTickerApiResponse(Definition):
+    _swagger_name_to_python = {
+        "status": "status",
+        "ticker": "ticker",
+    }
+
+    _attribute_is_primitive = {
+        "status": True,
+        "ticker": False,
+    }
+
+    _attributes_to_types = {
+        "status": "str",
+        "ticker": "ForexSnapshotTicker",
+    }
+
+    def __init__(self):
+        self.status: str
+        self.ticker: ForexSnapshotTicker
 
 
 # noinspection SpellCheckingInspection
@@ -3908,6 +4002,77 @@ class CryptoHistoricCryptoTradesApiResponse(Definition):
         self.symbol: str
         self.ticks: List[CryptoTickJson]
 
+
+# noinspection SpellCheckingInspection
+class CryptoGroupedDailyApiResponse(Definition):
+    _swagger_name_to_python = {
+        "status": "status",
+        "adjusted": "adjusted",
+        "queryCount": "queryCount",
+        "resultsCount": "resultsCount",
+        "results": "results",
+    }
+
+    _attribute_is_primitive = {
+        "status": True,
+        "adjusted": True,
+        "queryCount": True,
+        "resultsCount": True,
+        "results": False,
+    }
+
+    _attributes_to_types = {
+        "status": "str",
+        "adjusted": "bool",
+        "queryCount": "int",
+        "resultsCount": "int",
+        "results": "List[Aggv2]"
+    }
+
+    def __init__(self):
+        self.status: str
+        self.adjusted: bool
+        self.queryCount: int
+        self.resultsCount: int
+        self.results: List[Aggv2]
+
+
+# noinspection SpellCheckingInspection
+class CryptoPreviousCloseApiResponse(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "status": "status",
+        "adjusted": "adjusted",
+        "queryCount": "queryCount",
+        "resultsCount": "resultsCount",
+        "results": "results",
+    }
+
+    _attribute_is_primitive = {
+        "ticker": True,
+        "status": True,
+        "adjusted": True,
+        "queryCount": True,
+        "resultsCount": True,
+        "results": False,
+    }
+
+    _attributes_to_types = {
+        "ticker": "str",
+        "status": "str",
+        "adjusted": "bool",
+        "queryCount": "int",
+        "resultsCount": "int",
+        "results": "List[Aggv2]"
+    }
+
+    def __init__(self):
+        self.ticker: str
+        self.status: str
+        self.adjusted: bool
+        self.queryCount: int
+        self.resultsCount: int
+        self.results: List[Aggv2]
 
 # noinspection SpellCheckingInspection
 class CryptoSnapshotAllTickersApiResponse(Definition):

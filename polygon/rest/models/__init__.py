@@ -81,12 +81,17 @@ from .definitions import StocksEquitiesGroupedDailyApiResponse
 from .definitions import ForexCurrenciesHistoricForexTicksApiResponse
 from .definitions import ForexCurrenciesRealTimeCurrencyConversionApiResponse
 from .definitions import ForexCurrenciesLastQuoteForACurrencyPairApiResponse
+from. definitions import ForexCurrenciesGroupedDailyApiResponse
+from .definitions import ForexCurrenciesPreviousCloseApiResponse
 from .definitions import ForexCurrenciesSnapshotAllTickersApiResponse
+from .definitions import ForexCurrenciesSnapshotSingleTickerApiResponse
 from .definitions import ForexCurrenciesSnapshotGainersLosersApiResponse
 from .definitions import CryptoCryptoExchangesApiResponse
 from .definitions import CryptoLastTradeForACryptoPairApiResponse
 from .definitions import CryptoDailyOpenCloseApiResponse
 from .definitions import CryptoHistoricCryptoTradesApiResponse
+from .definitions import CryptoGroupedDailyApiResponse
+from .definitions import CryptoPreviousCloseApiResponse
 from .definitions import CryptoSnapshotAllTickersApiResponse
 from .definitions import CryptoSnapshotSingleTickerApiResponse
 from .definitions import CryptoSnapshotSingleTickerFullBookApiResponse
@@ -189,12 +194,17 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ForexCurrenciesHistoricForexTicksApiResponse": ForexCurrenciesHistoricForexTicksApiResponse,
     "ForexCurrenciesRealTimeCurrencyConversionApiResponse": ForexCurrenciesRealTimeCurrencyConversionApiResponse,
     "ForexCurrenciesLastQuoteForACurrencyPairApiResponse": ForexCurrenciesLastQuoteForACurrencyPairApiResponse,
+    "ForexCurrenciesGroupedDailyApiResponse": ForexCurrenciesGroupedDailyApiResponse,
+    "ForexCurrenciesPreviousCloseApiResponse": ForexCurrenciesPreviousCloseApiResponse,
     "ForexCurrenciesSnapshotAllTickersApiResponse": ForexCurrenciesSnapshotAllTickersApiResponse,
+    "ForexCurrenciesSnapshotSingleTickerApiResponse": ForexCurrenciesSnapshotSingleTickerApiResponse,
     "ForexCurrenciesSnapshotGainersLosersApiResponse": ForexCurrenciesSnapshotGainersLosersApiResponse,
     "CryptoCryptoExchangesApiResponse": CryptoCryptoExchangesApiResponse,
     "CryptoLastTradeForACryptoPairApiResponse": CryptoLastTradeForACryptoPairApiResponse,
     "CryptoDailyOpenCloseApiResponse": CryptoDailyOpenCloseApiResponse,
     "CryptoHistoricCryptoTradesApiResponse": CryptoHistoricCryptoTradesApiResponse,
+    "CryptoGroupedDailyApiResponse": CryptoGroupedDailyApiResponse,
+    "CryptoPreviousCloseApiResponse": CryptoPreviousCloseApiResponse,
     "CryptoSnapshotAllTickersApiResponse": CryptoSnapshotAllTickersApiResponse,
     "CryptoSnapshotSingleTickerApiResponse": CryptoSnapshotSingleTickerApiResponse,
     "CryptoSnapshotSingleTickerFullBookApiResponse": CryptoSnapshotSingleTickerFullBookApiResponse,
