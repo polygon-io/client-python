@@ -3397,8 +3397,8 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         "low": True,
         "close": True,
         "volume": True,
-        "afterHours": True,
-        "preMarket": True,
+        "after_hours": True,
+        "pre_market": True,
     }
 
     _attributes_to_types = {
@@ -3409,8 +3409,8 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         "low": "float",
         "close": "float",
         "volume": "float",
-        "afterHours": "float",
-        "preMarket": "float",
+        "after_hours": "float",
+        "pre_market": "float",
     }
 
     def __init__(self):
@@ -3421,8 +3421,8 @@ class StocksEquitiesDailyOpenCloseApiResponse(Definition):
         self.low: float
         self.close: float
         self.volume: float
-        self.afterHours: float
-        self.preMarket: float
+        self.after_hours: float
+        self.pre_market: float
 
 
 # noinspection SpellCheckingInspection
