@@ -8,18 +8,20 @@ STOCKS_CLUSTER = "stocks"
 FOREX_CLUSTER = "forex"
 CRYPTO_CLUSTER = "crypto"
 
+DELAYED = "delayed.polygon.io"
+REAL_TIME = "socket.polygon.io"
+
 
 class WebSocketClient:
-    DEFAULT_HOST = "socket.polygon.io"
-
     # TODO: Either an instance of the client couples 1:1 with the cluster or an instance of the Client couples 1:3 with
     #  the 3 possible clusters (I think I like client per, but then a problem is the user can make multiple clients for
     #  the same cluster and that's not desirable behavior,
     #  somehow keeping track with multiple Client instances will be the difficulty)
     def __init__(self, cluster: str, auth_key: str, process_message: Optional[Callable[[str], None]] = None,
                  on_close: Optional[Callable[[websocket.WebSocketApp], None]] = None,
-                 on_error: Optional[Callable[[websocket.WebSocketApp, str], None]] = None):
-        self._host = self.DEFAULT_HOST
+                 on_error: Optional[Callable[[websocket.WebSocketApp, str], None]] = None,
+                 host: str = REAL_TIME):
+        self._host = host
         self.url = f"wss://{self._host}/{cluster}"
         self.ws: websocket.WebSocketApp = websocket.WebSocketApp(self.url, on_open=self._default_on_open(),
                                                                  on_close=self._default_on_close,
@@ -58,14 +60,16 @@ class WebSocketClient:
         # TODO: make this a decorator or context manager
         self._authenticated.wait()
 
-        sub_message = '{"action":"subscribe","params":"%s"}' % self._format_params(params)
+        sub_message = '{"action":"subscribe","params":"%s"}' % self._format_params(
+            params)
         self.ws.send(sub_message)
 
     def unsubscribe(self, *params):
         # TODO: make this a decorator or context manager
         self._authenticated.wait()
 
-        sub_message = '{"action":"unsubscribe","params":"%s"}' % self._format_params(params)
+        sub_message = '{"action":"unsubscribe","params":"%s"}' % self._format_params(
+            params)
         self.ws.send(sub_message)
 
     def _cleanup_signal_handler(self):
@@ -87,7 +91,8 @@ class WebSocketClient:
     def process_message(self, pm):
         if pm:
             self.__process_message = pm
-            self.ws.on_message = lambda ws, message: self.__process_message(message)
+            self.ws.on_message = lambda ws, message: self.__process_message(
+                message)
 
     def _default_on_message(self):
         return lambda ws, message: self._default_process_message(message)
