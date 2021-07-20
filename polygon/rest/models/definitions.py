@@ -1385,7 +1385,7 @@ class CryptoSnapshotTicker(Definition):
         "min": "min",
         "prevDay": "prev_day",
         "todaysChange": "todays_change",
-        "todaysChangePerc": "todays_chang_eperc",
+        "todaysChangePerc": "todays_change_perc",
         "updated": "updated",
 
     }
@@ -1397,7 +1397,7 @@ class CryptoSnapshotTicker(Definition):
         "min": False,
         "prev_day": False,
         "todays_change": True,
-        "todays_chang_eperc": True,
+        "todays_change_perc": True,
         "updated": True,
 
     }
@@ -1409,7 +1409,7 @@ class CryptoSnapshotTicker(Definition):
         "min": "CryptoSnapshotAgg",
         "prev_day": "CryptoSnapshotAgg",
         "todays_change": "int",
-        "todays_chang_eperc": "int",
+        "todays_change_perc": "int",
         "updated": "int",
 
     }
@@ -1421,7 +1421,7 @@ class CryptoSnapshotTicker(Definition):
         self.min: CryptoSnapshotAgg
         self.prev_day: CryptoSnapshotAgg
         self.todays_change: int
-        self.todays_chang_eperc: int
+        self.todays_change_perc: int
         self.updated: int
 
 
@@ -1673,7 +1673,7 @@ class ForexSnapshotTicker(Definition):
         "min": "min",
         "prevDay": "prev_day",
         "todaysChange": "todays_change",
-        "todaysChangePerc": "todays_chang_eperc",
+        "todaysChangePerc": "todays_change_perc",
         "updated": "updated",
 
     }
@@ -1685,7 +1685,7 @@ class ForexSnapshotTicker(Definition):
         "min": False,
         "prev_day": False,
         "todays_change": True,
-        "todays_chang_eperc": True,
+        "todays_change_perc": True,
         "updated": True,
 
     }
@@ -1697,7 +1697,7 @@ class ForexSnapshotTicker(Definition):
         "min": "ForexSnapshotAgg",
         "prev_day": "ForexSnapshotAgg",
         "todays_change": "int",
-        "todays_chang_eperc": "int",
+        "todays_change_perc": "int",
         "updated": "int",
 
     }
@@ -1709,7 +1709,7 @@ class ForexSnapshotTicker(Definition):
         self.min: ForexSnapshotAgg
         self.prev_day: ForexSnapshotAgg
         self.todays_change: int
-        self.todays_chang_eperc: int
+        self.todays_change_perc: int
         self.updated: int
 
 
@@ -2376,7 +2376,7 @@ class StocksSnapshotTicker(Definition):
         "min": "min",
         "prevDay": "prev_day",
         "todaysChange": "todays_change",
-        "todaysChangePerc": "todays_chang_eperc",
+        "todaysChangePerc": "todays_change_perc",
         "updated": "updated",
 
     }
@@ -2389,7 +2389,7 @@ class StocksSnapshotTicker(Definition):
         "min": False,
         "prev_day": False,
         "todays_change": True,
-        "todays_chang_eperc": True,
+        "todays_change_perc": True,
         "updated": True,
 
     }
@@ -2402,7 +2402,7 @@ class StocksSnapshotTicker(Definition):
         "min": "StocksSnapshotAgg",
         "prev_day": "StocksSnapshotAgg",
         "todays_change": "int",
-        "todays_chang_eperc": "int",
+        "todays_change_perc": "int",
         "updated": "int",
 
     }
@@ -2415,7 +2415,7 @@ class StocksSnapshotTicker(Definition):
         self.min: StocksSnapshotAgg
         self.prev_day: StocksSnapshotAgg
         self.todays_change: int
-        self.todays_chang_eperc: int
+        self.todays_change_perc: int
         self.updated: int
 
 
