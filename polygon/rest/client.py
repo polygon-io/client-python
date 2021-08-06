@@ -82,6 +82,10 @@ class RESTClient:
         endpoint = f"{self.url}/v2/reference/financials/{symbol}"
         return self._handle_response("ReferenceStockFinancialsApiResponse", endpoint, query_params)
 
+    def reference_stock_financials_vx(self,  **query_params) -> models.ReferenceStockFinancialsApiResponse:
+        endpoint = f"{self.url}/vX/reference/financials"
+        return self._handle_response("ReferenceStockFinancialsApiResponse", endpoint, query_params)
+    
     def reference_market_status(self, **query_params) -> models.ReferenceMarketStatusApiResponse:
         endpoint = f"{self.url}/v1/marketstatus/now"
         return self._handle_response("ReferenceMarketStatusApiResponse", endpoint, query_params)
