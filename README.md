@@ -60,7 +60,7 @@ def main():
     # RESTClient can be used as a context manager to facilitate closing the underlying http session
     # https://requests.readthedocs.io/en/master/user/advanced/#session-objects
     with RESTClient(key) as client:
-        resp = client.stocks_equities_daily_open_close("AAPL", "2018-03-02")
+        resp = client.stocks_equities_daily_open_close("AAPL", "2021-06-11")
         print(f"On: {resp.from_} Apple opened at {resp.open} and closed at {resp.close}")
 
 
@@ -93,8 +93,8 @@ def main():
     # RESTClient can be used as a context manager to facilitate closing the underlying http session
     # https://requests.readthedocs.io/en/master/user/advanced/#session-objects
     with RESTClient(key) as client:
-        from_ = "2019-01-01"
-        to = "2019-02-01"
+        from_ = "2021-01-01"
+        to = "2021-02-01"
         resp = client.stocks_equities_aggregates("AAPL", 1, "minute", from_, to, unadjusted=False)
 
         print(f"Minute aggregates for {resp.ticker} between {from_} and {to}.")
