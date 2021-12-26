@@ -5,10 +5,7 @@ from setuptools import setup, find_packages
 import os
 import sys
 
-version = os.getenv("VERSION")
-if not version:
-    print("no version supplied")
-    sys.exit(1)
+version = "0.2.11"
 
 def get_readme_md_contents():
     """read the contents of your README file"""
