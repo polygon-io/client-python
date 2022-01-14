@@ -2318,6 +2318,334 @@ class Financials(Definition):
 
 
 # noinspection SpellCheckingInspection
+class FinancialsVx(Definition):
+    _swagger_name_to_python = {
+        "financials": "financials",
+        "start_date": "start_date",
+        "end_date": "end_date",
+        "cik": "cik",
+        "company_name": "company_name",
+        "fiscal_period": "fiscal_period",
+        "fiscal_year": "fiscal_year",
+        "source_filing_url": "source_filing_url",
+        "source_filing_file_url": "source_filing_file_url",
+    }
+
+    _attribute_is_primitive = {
+        "financials": False,
+        "start_date": True,
+        "end_date": True,
+        "cik": True,
+        "company_name": True,
+        "fiscal_period": True,
+        "fiscal_year": True,
+        "source_filing_url": True,
+        "source_filing_file_url": True,
+
+    }
+
+    _attributes_to_types = {
+        "financials": "financialsObject",
+        "start_date": "str",
+        "end_date": "str",
+        "cik": "str",
+        "company_name": "str",
+        "fiscal_period": "str",
+        "fiscal_year": "str",
+        "source_filing_url": "str",
+        "source_filing_file_url": "str",
+
+    }
+
+    def __init__(self):
+
+        self.financials: financialsObject
+        self.start_date: str
+        self.end_date: str
+        self.cik: str
+        self.company_name: str
+        self.fiscal_period: str
+        self.fiscal_year: str
+        self.source_filing_url: str
+        self.source_filing_file_url: str
+
+
+# noinspection SpellCheckingInspection
+class financialsObject(Definition):
+    _swagger_name_to_python = {
+        "balance_sheet": "balance_sheet",
+        "cash_flow_statement": "cash_flow_statement",
+        "comprehensive_income": "comprehensive_income",
+        "income_statement": "income_statement",
+    }
+
+    _attribute_is_primitive = {
+        "balance_sheet": False,
+        "cash_flow_statement": False,
+        "comprehensive_income": False,
+        "income_statement": False,
+
+    }
+
+    _attributes_to_types = {
+        "balance_sheet": "balance_sheet",
+        "cash_flow_statement": "cash_flow_statement",
+        "comprehensive_income": "comprehensive_income",
+        "income_statement": "income_statement",
+    }
+
+    def __init__(self):
+
+        self.balance_sheet: balance_sheet
+        self.cash_flow_statement: cash_flow_statement
+        self.comprehensive_income: comprehensive_income
+        self.income_statement: income_statement
+
+
+# noinspection SpellCheckingInspection
+class financialsUnit(Definition):
+    _swagger_name_to_python = {
+        "label": "label",
+        "value": "value",
+        "unit": "unit",
+        "order": "order",
+    }
+
+    _attribute_is_primitive = {
+        "label": True,
+        "value": True,
+        "unit": True,
+        "order": True,
+
+    }
+
+    _attributes_to_types = {
+        "label": "str",
+        "value": "int",
+        "unit": "str",
+        "order": "int",
+    }
+
+
+    def __init__(self):
+        self.label: str
+        self.value: int
+        self.unit: str
+        self.order: int
+
+class balance_sheet(Definition):
+    _swagger_name_to_python = {
+        "assets": "assets",
+        "liabilities_and_equity": "liabilities_and_equity",
+        "liabilities": "liabilities",
+        "equity_attributable_to_parent": "equity_attributable_to_parent",
+        "current_assets": "current_assets",
+        "other_than_fixed_noncurrent_assets": "other_than_fixed_noncurrent_assets",
+        "equity": "equity",
+        "equity_attributable_to_noncontrolling_interest": "equity_attributable_to_noncontrolling_interest",
+        "noncurrent_liabilities": "noncurrent_liabilities",
+        "noncurrent_assets": "noncurrent_assets",
+        "fixed_assets": "fixed_assets",
+        "current_liabilities": "current_liabilities",
+    }
+
+    _attribute_is_primitive = {
+        "assets": False,
+        "liabilities_and_equity": False,
+        "liabilities": False,
+        "equity_attributable_to_parent": False,
+        "current_assets": False,
+        "other_than_fixed_noncurrent_assets": False,
+        "equity": False,
+        "equity_attributable_to_noncontrolling_interest": False,
+        "noncurrent_liabilities": False,
+        "noncurrent_assets": False,
+        "fixed_assets": False,
+        "current_liabilities": False,
+
+    }
+
+    _attributes_to_types = {
+        "assets": "financialsUnit",
+        "liabilities_and_equity": "financialsUnit",
+        "liabilities": "financialsUnit",
+        "equity_attributable_to_parent": "financialsUnit",
+        "current_assets": "financialsUnit",
+        "other_than_fixed_noncurrent_assets": "financialsUnit",
+        "equity": "financialsUnit",
+        "equity_attributable_to_noncontrolling_interest": "financialsUnit",
+        "noncurrent_liabilities": "financialsUnit",
+        "noncurrent_assets": "financialsUnit",
+        "fixed_assets": "financialsUnit",
+        "current_liabilities": "financialsUnit",
+    }
+
+    def __init__(self):
+        self.assets: financialsUnit
+        self.liabilities_and_equity: financialsUnit
+        self.liabilities: financialsUnit
+        self.equity_attributable_to_parent: financialsUnit
+        self.current_assets: financialsUnit
+        self.other_than_fixed_noncurrent_assets: financialsUnit
+        self.equity: financialsUnit
+        self.equity_attributable_to_noncontrolling_interest: financialsUnit
+        self.noncurrent_liabilities: financialsUnit
+        self.noncurrent_assets: financialsUnit
+        self.fixed_assets: financialsUnit
+        self.current_liabilities: financialsUnit
+
+
+class income_statement(Definition):
+    _swagger_name_to_python = {
+        "income_loss_from_continuing_operations_before_tax": "income_loss_from_continuing_operations_before_tax",
+        "cost_of_revenue": "cost_of_revenue",
+        "participating_securities_distributed_and_undistributed_earnings_loss_basic": "participating_securities_distributed_and_undistributed_earnings_loss_basic",
+        "revenues": "revenues",
+        "basic_earnings_per_share": "basic_earnings_per_share",
+        "operating_expenses": "operating_expenses",
+        "benefits_costs_expenses": "benefits_costs_expenses",
+        "nonoperating_income_loss": "nonoperating_income_loss",
+        "operating_income_loss": "operating_income_loss",
+        "diluted_earnings_per_share": "diluted_earnings_per_share",
+        "net_income_loss_attributable_to_noncontrolling_interest": "net_income_loss_attributable_to_noncontrolling_interest",
+        "interest_expense_operating": "interest_expense_operating",
+        "net_income_loss_available_to_common_stockholders_basic": "net_income_loss_available_to_common_stockholders_basic",
+        "net_income_loss": "net_income_loss",
+        "income_tax_expense_benefit": "income_tax_expense_benefit",
+        "costs_and_expenses": "costs_and_expenses",
+        "income_loss_from_continuing_operations_after_tax": "income_loss_from_continuing_operations_after_tax",
+        "preferred_stock_dividends_and_other_adjustments": "preferred_stock_dividends_and_other_adjustments",
+        "gross_profit": "gross_profit",
+        "net_income_loss_attributable_to_parent": "net_income_loss_attributable_to_parent",
+
+    }
+
+    _attribute_is_primitive = {
+
+        "income_loss_from_continuing_operations_before_tax":  False,
+        "cost_of_revenue":  False,
+        "participating_securities_distributed_and_undistributed_earnings_loss_basic":  False,
+        "revenues":  False,
+        "basic_earnings_per_share":  False,
+        "operating_expenses":  False,
+        "benefits_costs_expenses":  False,
+        "nonoperating_income_loss":  False,
+        "operating_income_loss":  False,
+        "diluted_earnings_per_share":  False,
+        "net_income_loss_attributable_to_noncontrolling_interest":  False,
+        "interest_expense_operating":  False,
+        "net_income_loss_available_to_common_stockholders_basic":  False,
+        "net_income_loss":  False,
+        "income_tax_expense_benefit": False,
+        "costs_and_expenses":  False,
+        "income_loss_from_continuing_operations_after_tax": False,
+        "preferred_stock_dividends_and_other_adjustments":  False,
+        "gross_profit":  False,
+        "net_income_loss_attributable_to_parent":  False,
+
+    }
+
+    _attributes_to_types = {
+        "income_loss_from_continuing_operations_before_tax": "financialsUnit",
+        "cost_of_revenue": "financialsUnit",
+        "participating_securities_distributed_and_undistributed_earnings_loss_basic": "financialsUnit",
+        "revenues": "financialsUnit",
+        "basic_earnings_per_share": "financialsUnit",
+        "operating_expenses": "financialsUnit",
+        "benefits_costs_expenses": "financialsUnit",
+        "nonoperating_income_loss": "financialsUnit",
+        "operating_income_loss": "financialsUnit",
+        "diluted_earnings_per_share": "financialsUnit",
+        "net_income_loss_attributable_to_noncontrolling_interest": "financialsUnit",
+        "interest_expense_operating": "financialsUnit",
+        "net_income_loss_available_to_common_stockholders_basic": "financialsUnit",
+        "net_income_loss": "financialsUnit",
+        "income_tax_expense_benefit": "financialsUnit",
+        "costs_and_expenses": "financialsUnit",
+        "income_loss_from_continuing_operations_after_tax": "financialsUnit",
+        "preferred_stock_dividends_and_other_adjustments": "financialsUnit",
+        "gross_profit": "financialsUnit",
+        "net_income_loss_attributable_to_parent": "financialsUnit",
+
+    }
+
+    def __init__(self):
+
+        self.income_loss_from_continuing_operations_before_tax: financialsUnit
+        self.cost_of_revenue: financialsUnit
+        self.participating_securities_distributed_and_undistributed_earnings_loss_basic: financialsUnit
+        self.revenues: financialsUnit
+        self.basic_earnings_per_share: financialsUnit
+        self.operating_expenses: financialsUnit
+        self.benefits_costs_expenses: financialsUnit
+        self.nonoperating_income_loss: financialsUnit
+        self.operating_income_loss: financialsUnit
+        self.diluted_earnings_per_share: financialsUnit
+        self.net_income_loss_attributable_to_noncontrolling_interest: financialsUnit
+        self.interest_expense_operating: financialsUnit
+        self.net_income_loss_available_to_common_stockholders_basic: financialsUnit
+        self.net_income_loss: financialsUnit
+        self.income_tax_expense_benefit: financialsUnit
+        self.costs_and_expenses: financialsUnit
+        self.income_loss_from_continuing_operations_after_tax: financialsUnit
+        self.preferred_stock_dividends_and_other_adjustments: financialsUnit
+        self.gross_profit: financialsUnit
+        self.net_income_loss_attributable_to_parent: financialsUnit
+
+
+class cash_flow_statement(Definition):
+    _swagger_name_to_python = {
+
+    }
+
+    _attribute_is_primitive = {
+
+    }
+
+    _attributes_to_types = {
+
+    }
+
+    def __init__(self):
+        pass
+
+class comprehensive_income(Definition):
+    _swagger_name_to_python = {
+        "comprehensive_income_loss_attributable_to_parent": "comprehensive_income_loss_attributable_to_parent",
+        "comprehensive_income_loss": "liabilities_and_equity",
+        "comprehensive_income_loss_attributable_to_noncontrolling_interest": "comprehensive_income_loss_attributable_to_noncontrolling_interest",
+        "other_comprehensive_income_loss": "other_comprehensive_income_loss",
+        "other_comprehensive_income_loss_attributable_to_parent": "other_comprehensive_income_loss_attributable_to_parent",
+
+    }
+
+    _attribute_is_primitive = {
+        "comprehensive_income_loss_attributable_to_parent": False,
+        "comprehensive_income_loss": False,
+        "comprehensive_income_loss_attributable_to_noncontrolling_interest": False,
+        "other_comprehensive_income_loss": False,
+        "other_comprehensive_income_loss_attributable_to_parent": False,
+
+    }
+
+    _attributes_to_types = {
+        "comprehensive_income_loss_attributable_to_parent": "financialsUnit",
+        "comprehensive_income_loss": "financialsUnit",
+        "comprehensive_income_loss_attributable_to_noncontrolling_interest": "financialsUnit",
+        "other_comprehensive_income_loss": "financialsUnit",
+        "other_comprehensive_income_loss_attributable_to_parent": "financialsUnit",
+
+    }
+
+    def __init__(self):
+        self.comprehensive_income_loss_attributable_to_parent: financialsUnit
+        self.comprehensive_income_loss: financialsUnit
+        self.comprehensive_income_loss_attributable_to_noncontrolling_interest: financialsUnit
+        self.other_comprehensive_income_loss: financialsUnit
+        self.other_comprehensive_income_loss_attributable_to_parent: financialsUnit
+
+
+# noinspection SpellCheckingInspection
 class Trade(Definition):
     _swagger_name_to_python = {
         "c1": "condition_1_of_this_trade",
@@ -3095,6 +3423,43 @@ class ReferenceStockFinancialsApiResponse(Definition):
     def __init__(self):
         self.status: str
         self.count: float
+        self.results: List[Financials]
+
+
+# noinspection SpellCheckingInspection
+class ReferenceStockFinancialsVxApiResponse(Definition):
+    _swagger_name_to_python = {
+        "status": "status",
+        "request_id": "request_id",
+        "count": "count",
+        "next_url": "next_url",
+        "results": "results",
+
+    }
+
+    _attribute_is_primitive = {
+        "status": True,
+        "request_id": True,
+        "count": True,
+        "next_url": True,
+        "results": False,
+
+    }
+
+    _attributes_to_types = {
+        "status": "str",
+        "request_id": "str",
+        "count": "float",
+        "next_url": "str",
+        "results": "List[Financials]",
+
+    }
+
+    def __init__(self):
+        self.status: str
+        self.request_id: str
+        self.count: float
+        self.next_url: str
         self.results: List[Financials]
 
 

@@ -61,6 +61,7 @@ from .definitions import ReferenceLocalesApiResponse
 from .definitions import ReferenceStockSplitsApiResponse
 from .definitions import ReferenceStockDividendsApiResponse
 from .definitions import ReferenceStockFinancialsApiResponse
+from .definitions import ReferenceStockFinancialsVxApiResponse
 from .definitions import ReferenceMarketStatusApiResponse
 from .definitions import ReferenceMarketHolidaysApiResponse
 from .definitions import StocksEquitiesExchangesApiResponse
@@ -174,6 +175,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ReferenceStockSplitsApiResponse": ReferenceStockSplitsApiResponse,
     "ReferenceStockDividendsApiResponse": ReferenceStockDividendsApiResponse,
     "ReferenceStockFinancialsApiResponse": ReferenceStockFinancialsApiResponse,
+    "ReferenceStockFinancialsVxApiResponse": ReferenceStockFinancialsVxApiResponse,
     "ReferenceMarketStatusApiResponse": ReferenceMarketStatusApiResponse,
     "ReferenceMarketHolidaysApiResponse": ReferenceMarketHolidaysApiResponse,
     "StocksEquitiesExchangesApiResponse": StocksEquitiesExchangesApiResponse,
