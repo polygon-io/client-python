@@ -112,6 +112,10 @@ class RESTClient:
         endpoint = f"{self.url}/v2/ticks/stocks/nbbo/{ticker}/{date}"
         return self._handle_response("HistoricNBboQuotesV2ApiResponse", endpoint, query_params)
 
+    def historic_nbbo_quotes_v3(self, ticker, next_url=None, **query_params) -> models.HistoricNBboQuotesV3ApiResponse:
+        endpoint = f"{self.url}/v3/quotes/{ticker}" if not next_url else next_url
+        return self._handle_response("HistoricNBboQuotesV3ApiResponse", endpoint, query_params)
+
     def stocks_equities_last_trade_for_a_symbol(self, symbol,
                                                 **query_params) -> models.StocksEquitiesLastTradeForASymbolApiResponse:
         endpoint = f"{self.url}/v1/last/stocks/{symbol}"

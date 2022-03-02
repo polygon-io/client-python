@@ -45,6 +45,7 @@ from .definitions import StocksSnapshotBookItem
 from .definitions import StocksSnapshotTickerBook
 from .definitions import StocksV2Trade
 from .definitions import StocksV2NBBO
+from .definitions import StocksV3NBBO
 from .definitions import StocksSnapshotAgg
 from .definitions import StocksSnapshotQuote
 from .definitions import Aggv2
@@ -68,6 +69,7 @@ from .definitions import StocksEquitiesHistoricTradesApiResponse
 from .definitions import HistoricTradesV2ApiResponse
 from .definitions import StocksEquitiesHistoricQuotesApiResponse
 from .definitions import HistoricNBboQuotesV2ApiResponse
+from .definitions import HistoricNBboQuotesV3ApiResponse
 from .definitions import StocksEquitiesLastTradeForASymbolApiResponse
 from .definitions import StocksEquitiesLastQuoteForASymbolApiResponse
 from .definitions import StocksEquitiesDailyOpenCloseApiResponse
@@ -158,6 +160,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "StocksSnapshotTickerBook": StocksSnapshotTickerBook,
     "StocksV2Trade": StocksV2Trade,
     "StocksV2NBBO": StocksV2NBBO,
+    "StocksV3NBBO": StocksV3NBBO,
     "StocksSnapshotAgg": StocksSnapshotAgg,
     "StocksSnapshotQuote": StocksSnapshotQuote,
     "Aggv2": Aggv2,
@@ -181,6 +184,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "HistoricTradesV2ApiResponse": HistoricTradesV2ApiResponse,
     "StocksEquitiesHistoricQuotesApiResponse": StocksEquitiesHistoricQuotesApiResponse,
     "HistoricNBboQuotesV2ApiResponse": HistoricNBboQuotesV2ApiResponse,
+    "HistoricNBboQuotesV3ApiResponse": HistoricNBboQuotesV3ApiResponse,
     "StocksEquitiesLastTradeForASymbolApiResponse": StocksEquitiesLastTradeForASymbolApiResponse,
     "StocksEquitiesLastQuoteForASymbolApiResponse": StocksEquitiesLastQuoteForASymbolApiResponse,
     "StocksEquitiesDailyOpenCloseApiResponse": StocksEquitiesDailyOpenCloseApiResponse,

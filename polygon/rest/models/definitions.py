@@ -2624,6 +2624,67 @@ class StocksV2NBBO(Definition):
 
 
 # noinspection SpellCheckingInspection
+class StocksV3NBBO(Definition):
+    _swagger_name_to_python = {
+        "ask_exchange": "ask_exchange",
+        "ask_price": "ask_price",
+        "ask_size": "ask_size",
+        "bid_exchange": "bid_exchange",
+        "bid_price": "bid_price",
+        "bid_size": "bid_size",
+        "conditions": "conditions",
+        "participant_timestamp": "participant_timestamp",
+        "sequence_number": "sequence_number",
+        "sip_timestamp": "sip_timestamp",
+        "tape": "tape",
+
+    }
+
+    _attribute_is_primitive = {
+        "ask_exchange": True,
+        "ask_price": True,
+        "ask_size": True,
+        "bid_exchange": True,
+        "bid_price": True,
+        "bid_size": True,
+        "conditions": True,
+        "participant_timestamp": True,
+        "sequence_number": True,
+        "sip_timestamp": True,
+        "tape": True,
+
+    }
+
+    _attributes_to_types = {
+        "ask_exchange": "int",
+        "ask_price": "float",
+        "ask_size": "int",
+        "bid_exchange": "int",
+        "bid_price": "float",
+        "bid_size": "int",
+        "conditions": "List[int]",
+        "participant_timestamp": "int",
+        "sequence_number": "int",
+        "sip_timestamp": "int",
+        "tape": "int",
+
+    }
+
+    def __init__(self):
+        self.ask_exchange: int
+        self.ask_price: float
+        self.ask_size: int
+        self.bid_exchange: int
+        self.bid_price: float
+        self.bid_size: int
+        self.conditions: List[int]
+        self.participant_timestamp: int
+        self.sequence_number: int
+        self.sip_timestamp: int
+        self.tape: int
+
+
+# noinspection SpellCheckingInspection
 class StocksSnapshotAgg(Definition):
     _swagger_name_to_python = {
         "c": "close_price",
@@ -3315,6 +3376,35 @@ class HistoricNBboQuotesV2ApiResponse(Definition):
         self.success: bool
         self.ticker: str
         self.results: List[StocksV2NBBO]
+
+
+# noinspection SpellCheckingInspection
+class HistoricNBboQuotesV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "next_url": "next_url",
+        "results": "results",
+        "status": "status",
+
+    }
+
+    _attribute_is_primitive = {
+        "next_url": True,
+        "results": False,
+        "status": True,
+
+    }
+
+    _attributes_to_types = {
+        "next_url": "str",
+        "results": "List[StocksV3NBBO]",
+        "status": "str",
+
+    }
+
+    def __init__(self) -> None:
+        self.next_url: str
+        self.results: List[StocksV3NBBO]
+        self.status: str
 
 
 # noinspection SpellCheckingInspection
