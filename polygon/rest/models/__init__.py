@@ -49,6 +49,7 @@ from .definitions import StocksSnapshotAgg
 from .definitions import StocksSnapshotQuote
 from .definitions import Aggv2
 from .definitions import AggResponse
+from .definitions import OptionsContractAdditionalUnderlyingV3
 from .definitions import OptionsContractV3
 from .definitions import ReferenceTickersApiResponse
 from .definitions import ReferenceTickersV3ApiResponse
@@ -163,6 +164,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "StocksSnapshotQuote": StocksSnapshotQuote,
     "Aggv2": Aggv2,
     "AggResponse": AggResponse,
+    "OptionsContractAdditionalUnderlyingV3": OptionsContractAdditionalUnderlyingV3,
     "OptionsContractV3": OptionsContractV3,
     "ReferenceTickersApiResponse": ReferenceTickersApiResponse,
     "ReferenceTickersV3ApiResponse": ReferenceTickersV3ApiResponse,

@@ -1,5 +1,5 @@
 import keyword
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 from polygon.rest import models
 
@@ -4175,8 +4175,35 @@ class CryptoSnapshotGainersLosersApiResponse(Definition):
 
 
 # noinspection SpellCheckingInspection
+class OptionsContractAdditionalUnderlyingV3(Definition):
+    _swagger_name_to_python = {
+        "amount": "amount",
+        "type": "type",
+        "underlying": "underlying",
+    }
+
+    _attribute_is_primitive = {
+        "amount": True,
+        "type": True,
+        "underlying": True,
+    }
+
+    _attributes_to_types = {
+        "amount": "float",
+        "type": "str",
+        "underlying": "str",
+    }
+
+    def __init__(self):
+        self.amount = float
+        self.type = str
+        self.underlying = str
+
+
+# noinspection SpellCheckingInspection
 class OptionsContractV3(Definition):
     _swagger_name_to_python = {
+        "additional_underlyings": "additional_underlyings",
         "cfi": "cfi",
         "contract_type": "contract_type",
         "correction": "correction",
@@ -4189,6 +4216,7 @@ class OptionsContractV3(Definition):
     }
 
     _attribute_is_primitive = {
+        "additional_underlyings": False,
         "cfi": True,
         "contract_type": True,
         "correction": True,
@@ -4202,6 +4230,7 @@ class OptionsContractV3(Definition):
     }
 
     _attributes_to_types = {
+        "additional_underlyings": "Optional[Array[OptionsContractAddtionalUnderlyingV3]]",
         "cfi": "str",
         "contract_type": "str",
         "correction": "int",
@@ -4214,6 +4243,7 @@ class OptionsContractV3(Definition):
     }
 
     def __init__(self):
+        self.additional_underlyings = Optional[Array[OptionsContractAddtionalUnderlyingV3]]
         self.cfi = str
         self.contract_type = str
         self.correction = int
