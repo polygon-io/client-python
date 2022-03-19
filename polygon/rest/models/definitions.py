@@ -444,7 +444,7 @@ class CompanyV3(Definition):
     _attributes_is_primitive = {
         "ticker": True,
         "name": True,
-        "market": True, 
+        "market": True,
         "primary_exchange": True,
         "type": True,
         "active": True,
@@ -562,7 +562,7 @@ class SymbolV3(Definition):
     _attributes_is_primitive = {
         "ticker": True,
         "name": True,
-        "market": True, 
+        "market": True,
         "primary_exchange": True,
         "type": True,
         "active": True,
@@ -726,7 +726,7 @@ class Publisher(Definition):
         "favicon_url": "str",
     }
 
-    def __init__(self): 
+    def __init__(self):
         self.name: str
         self.logo_url: str
         self.homepage_url: str
@@ -4172,6 +4172,79 @@ class CryptoSnapshotGainersLosersApiResponse(Definition):
     def __init__(self):
         self.status: str
         self.tickers: List[CryptoSnapshotTicker]
+
+
+# noinspection SpellCheckingInspection
+class OptionsContractV3(Definition):
+    _swagger_name_to_python = {
+        "cfi": "cfi",
+        "contract_type": "contract_type",
+        "correction": "correction",
+        "exercise_style": "exercise_style",
+        "primary_exchange": "primary_exchange",
+        "shares_per_contract": "shares_per_contract",
+        "strike_price": "strike_price",
+        "ticker": "ticker",
+        "underlying_ticker": "underlying_ticker",
+    }
+
+    _attribute_is_primitive = {
+        "cfi": True,
+        "contract_type": True,
+        "correction": True,
+        "exercise_style": True,
+        "primary_exchange": True,
+        "shares_per_contract": True,
+        "strike_price": True,
+        "ticker": True,
+        "underlying_ticker": True,
+
+    }
+
+    _attributes_to_types = {
+        "cfi": "str",
+        "contract_type": "str",
+        "correction": "int",
+        "exercise_style": "str",
+        "primary_exchange": "str",
+        "shares_per_contract": "int",
+        "strike_price": "float",
+        "ticker": "str",
+        "underlying_ticker": "str",
+    }
+
+    def __init__(self):
+        self.cfi = str
+        self.contract_type = str
+        self.correction = int
+        self.exercise_style = str
+        self.primary_exchange = str
+        self.shares_per_contract = int
+        self.strike_price = float
+        self.ticker = str
+        self.underlying_ticker = str
+
+
+# noinspection SpellCheckingInspection
+class ReferenceOptionsContractsV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[OptionsContractV3]",
+        "status": "str",
+    }
+
+    def __init__(self):
+        self.results = List[OptionsContractV3]
+        self.status = str
 
 
 StockSymbol = str

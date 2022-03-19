@@ -37,7 +37,7 @@ class RESTClient:
     def reference_tickers(self, **query_params) -> models.ReferenceTickersApiResponse:
         endpoint = f"{self.url}/v2/reference/tickers"
         return self._handle_response("ReferenceTickersApiResponse", endpoint, query_params)
-    
+
     def reference_tickers_v3(self, next_url=None, **query_params) -> models.ReferenceTickersV3ApiResponse:
         endpoint = f"{self.url}/v3/reference/tickers" if not next_url else next_url
         return self._handle_response("ReferenceTickersV3ApiResponse", endpoint, query_params)
@@ -49,7 +49,7 @@ class RESTClient:
     def reference_ticker_details(self, symbol, **query_params) -> models.ReferenceTickerDetailsApiResponse:
         endpoint = f"{self.url}/v1/meta/symbols/{symbol}/company"
         return self._handle_response("ReferenceTickerDetailsApiResponse", endpoint, query_params)
-    
+
     def reference_ticker_details_vx(self, symbol, **query_params) -> models.ReferenceTickerDetailsV3ApiResponse:
         endpoint = f"{self.url}/vX/reference/tickers/{symbol}"
         return self._handle_response("ReferenceTickerDetailsV3ApiResponse", endpoint, query_params)
@@ -57,7 +57,7 @@ class RESTClient:
     def reference_ticker_news(self, symbol, **query_params) -> models.ReferenceTickerNewsApiResponse:
         endpoint = f"{self.url}/v1/meta/symbols/{symbol}/news"
         return self._handle_response("ReferenceTickerNewsApiResponse", endpoint, query_params)
-    
+
     def reference_ticker_news_v2(self, **query_params) -> models.ReferenceTickerNewsV2ApiResponse:
         endpoint = f"{self.url}/v2/reference/news"
         return self._handle_response("ReferenceTickerNewsV2ApiResponse", endpoint, query_params)
@@ -89,6 +89,10 @@ class RESTClient:
     def reference_market_holidays(self, **query_params) -> models.ReferenceMarketHolidaysApiResponse:
         endpoint = f"{self.url}/v1/marketstatus/upcoming"
         return self._handle_response("ReferenceMarketHolidaysApiResponse", endpoint, query_params)
+
+    def reference_options_contracts_v3(self, **query_params) -> models.ReferenceOptionsContractsV3ApiResponse:
+        endpoint = f"{self.url}/v3/reference/options/contracts"
+        return self._handle_response("ReferenceOptionsContractsV3ApiResponse", endpoint, query_params)
 
     def stocks_equities_exchanges(self, **query_params) -> models.StocksEquitiesExchangesApiResponse:
         endpoint = f"{self.url}/v1/meta/exchanges"
@@ -175,11 +179,11 @@ class RESTClient:
                                                         **query_params) -> models.ForexCurrenciesLastQuoteForACurrencyPairApiResponse:
         endpoint = f"{self.url}/v1/last_quote/currencies/{from_}/{to}"
         return self._handle_response("ForexCurrenciesLastQuoteForACurrencyPairApiResponse", endpoint, query_params)
-   
+
     def forex_currencies_grouped_daily(self, date, **query_params) -> models.ForexCurrenciesGroupedDailyApiResponse:
         endpoint = f"{self.url}/v2/aggs/grouped/locale/global/market/fx/{date}"
         return self._handle_response("ForexCurrenciesGroupedDailyApiResponse", endpoint, query_params)
-    
+
     def forex_currencies_previous_close(self, ticker, **query_params) -> models.ForexCurrenciesGroupedDailyApiResponse:
         endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/prev"
         return self._handle_response("ForexCurrenciesPreviousCloseApiResponse", endpoint, query_params)
@@ -188,7 +192,7 @@ class RESTClient:
                                               **query_params) -> models.ForexCurrenciesSnapshotAllTickersApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/tickers"
         return self._handle_response("ForexCurrenciesSnapshotAllTickersApiResponse", endpoint, query_params)
-    
+
     def forex_currencies_snapshot_single_ticker(self, ticker, **query_params) -> models.ForexCurrenciesSnapshotSingleTickerApiResponse:
         endpoint = f"{self.url}/v2/snapshot/locale/global/markets/forex/tickers/{ticker}"
         return self._handle_response("ForexCurrenciesSnapshotSingleTickerApiResponse", endpoint, query_params)
@@ -225,11 +229,11 @@ class RESTClient:
                                       **query_params) -> models.CryptoHistoricCryptoTradesApiResponse:
         endpoint = f"{self.url}/v1/historic/crypto/{from_}/{to}/{date}"
         return self._handle_response("CryptoHistoricCryptoTradesApiResponse", endpoint, query_params)
-    
+
     def crypto_grouped_daily(self, date, **query_params) -> models.CryptoGroupedDailyApiResponse:
         endpoint = f"{self.url}/v2/aggs/grouped/locale/global/market/crypto/{date}"
         return self._handle_response("CryptoGroupedDailyApiResponse", endpoint, query_params)
-    
+
     def crypto_previous_close(self, ticker, **query_params) -> models.CryptoPreviousCloseApiResponse:
         endpoint = f"{self.url}/v2/aggs/ticker/{ticker}/prev"
         return self._handle_response("CryptoPreviousCloseApiResponse", endpoint, query_params)

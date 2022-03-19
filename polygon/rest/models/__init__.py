@@ -49,6 +49,7 @@ from .definitions import StocksSnapshotAgg
 from .definitions import StocksSnapshotQuote
 from .definitions import Aggv2
 from .definitions import AggResponse
+from .definitions import OptionsContractV3
 from .definitions import ReferenceTickersApiResponse
 from .definitions import ReferenceTickersV3ApiResponse
 from .definitions import ReferenceTickerTypesApiResponse
@@ -63,6 +64,7 @@ from .definitions import ReferenceStockDividendsApiResponse
 from .definitions import ReferenceStockFinancialsApiResponse
 from .definitions import ReferenceMarketStatusApiResponse
 from .definitions import ReferenceMarketHolidaysApiResponse
+from .definitions import ReferenceOptionsContractsV3ApiResponse
 from .definitions import StocksEquitiesExchangesApiResponse
 from .definitions import StocksEquitiesHistoricTradesApiResponse
 from .definitions import HistoricTradesV2ApiResponse
@@ -101,7 +103,6 @@ from .definitions import StockSymbol
 from .definitions import ConditionTypeMap
 from .definitions import SymbolTypeMap
 from .definitions import TickerSymbol
-
 
 import typing
 
@@ -162,6 +163,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "StocksSnapshotQuote": StocksSnapshotQuote,
     "Aggv2": Aggv2,
     "AggResponse": AggResponse,
+    "OptionsContractV3": OptionsContractV3,
     "ReferenceTickersApiResponse": ReferenceTickersApiResponse,
     "ReferenceTickersV3ApiResponse": ReferenceTickersV3ApiResponse,
     "ReferenceTickerTypesApiResponse": ReferenceTickerTypesApiResponse,
@@ -176,6 +178,7 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "ReferenceStockFinancialsApiResponse": ReferenceStockFinancialsApiResponse,
     "ReferenceMarketStatusApiResponse": ReferenceMarketStatusApiResponse,
     "ReferenceMarketHolidaysApiResponse": ReferenceMarketHolidaysApiResponse,
+    "ReferenceOptionsContractsV3ApiResponse": ReferenceOptionsContractsV3ApiResponse,
     "StocksEquitiesExchangesApiResponse": StocksEquitiesExchangesApiResponse,
     "StocksEquitiesHistoricTradesApiResponse": StocksEquitiesHistoricTradesApiResponse,
     "HistoricTradesV2ApiResponse": HistoricTradesV2ApiResponse,
@@ -210,7 +213,6 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "CryptoSnapshotSingleTickerFullBookApiResponse": CryptoSnapshotSingleTickerFullBookApiResponse,
     "CryptoSnapshotGainersLosersApiResponse": CryptoSnapshotGainersLosersApiResponse,
     "CurrenciesAggregatesApiResponse": CurrenciesAggregatesApiResponse,
-
 }
 
 # noinspection SpellCheckingInspection
