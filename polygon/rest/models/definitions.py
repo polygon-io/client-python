@@ -1,5 +1,5 @@
 import keyword
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any
 
 from polygon.rest import models
 
@@ -4195,9 +4195,9 @@ class OptionsContractAdditionalUnderlyingV3(Definition):
     }
 
     def __init__(self):
-        self.amount = float
-        self.type = str
-        self.underlying = str
+        self.amount: float
+        self.type: str
+        self.underlying: str
 
 
 # noinspection SpellCheckingInspection
@@ -4230,7 +4230,7 @@ class OptionsContractV3(Definition):
     }
 
     _attributes_to_types = {
-        "additional_underlyings": "Optional[Array[OptionsContractAddtionalUnderlyingV3]]",
+        "additional_underlyings": "Array[OptionsContractAddtionalUnderlyingV3]",
         "cfi": "str",
         "contract_type": "str",
         "correction": "int",
@@ -4243,16 +4243,16 @@ class OptionsContractV3(Definition):
     }
 
     def __init__(self):
-        self.additional_underlyings = Optional[Array[OptionsContractAddtionalUnderlyingV3]]
-        self.cfi = str
-        self.contract_type = str
-        self.correction = int
-        self.exercise_style = str
-        self.primary_exchange = str
-        self.shares_per_contract = int
-        self.strike_price = float
-        self.ticker = str
-        self.underlying_ticker = str
+        self.additional_underlyings: Array[OptionsContractAddtionalUnderlyingV3]
+        self.cfi: str
+        self.contract_type: str
+        self.correction: int
+        self.exercise_style: str
+        self.primary_exchange: str
+        self.shares_per_contract: int
+        self.strike_price: float
+        self.ticker: str
+        self.underlying_ticker: str
 
 
 # noinspection SpellCheckingInspection
@@ -4314,14 +4314,14 @@ class OptionsQuoteV3(Definition):
     }
 
     def __init__(self):
-        self.ask_exchange = int
-        self.ask_price = float
-        self.ask_size = int
-        self.bid_exchange = int
-        self.bid_price = float
-        self.bid_size = int
-        self.sequence_number = int
-        self.sip_timestamp = int
+        self.ask_exchange: int
+        self.ask_price: float
+        self.ask_size: int
+        self.bid_exchange: int
+        self.bid_price: float
+        self.bid_size: int
+        self.sequence_number: int
+        self.sip_timestamp: int
 
 
 # noinspection SpellCheckingInspection
@@ -4342,8 +4342,8 @@ class OptionsQuotesV3ApiResponse(Definition):
     }
 
     def __init__(self):
-        self.results = List[OptionsQuoteV3]
-        self.status = str
+        self.results: List[OptionsQuoteV3]
+        self.status: str
 
 
 # noinspection SpellCheckingInspection
@@ -4388,16 +4388,16 @@ class OptionsSnapshotDayV3(Definition):
     }
 
     def __init__(self):
-        self.change = float
-        self.change_percent = float
-        self.close = float
-        self.high = float
-        self.last_updated = int
-        self.low = float
-        self.open = float
-        self.previous_close = float
-        self.volume = int
-        self.vwap = float
+        self.change: float
+        self.change_percent: float
+        self.close: float
+        self.high: float
+        self.last_updated: int
+        self.low: float
+        self.open: float
+        self.previous_close: float
+        self.volume: int
+        self.vwap: float
 
 
 # noinspection SpellCheckingInspection
@@ -4430,12 +4430,12 @@ class OptionsSnapshotDetailsV3(Definition):
     }
 
     def __init__(self):
-        self.contract_type = str
-        self.exercise_style = str
-        self.expiration_date = str
-        self.shares_per_contract = int
-        self.strike_price = float
-        self.ticker = str
+        self.contract_type: str
+        self.exercise_style: str
+        self.expiration_date: str
+        self.shares_per_contract: int
+        self.strike_price: float
+        self.ticker: str
 
 
 # noinspection SpellCheckingInspection
@@ -4462,10 +4462,10 @@ class OptionsGreeksV3(Definition):
     }
 
     def __init__(self):
-        self.delta = float
-        self.gamma = float
-        self.theta = float
-        self.vega = float
+        self.delta: float
+        self.gamma: float
+        self.theta: float
+        self.vega: float
 
 
 class OptionsSnapshotQuoteV3(Definition):
@@ -4500,13 +4500,13 @@ class OptionsSnapshotQuoteV3(Definition):
     }
 
     def __init__(self):
-        self.ask = float
-        self.ask_size = int
-        self.bid = float
-        self.bid_size = int
-        self.last_updated = int
-        self.midpoint = float
-        self.timeframe = str
+        self.ask: float
+        self.ask_size: int
+        self.bid: float
+        self.bid_size: int
+        self.last_updated: int
+        self.midpoint: float
+        self.timeframe: str
 
 
 # noinspection SpellCheckingInspection
@@ -4536,11 +4536,11 @@ class OptionsSnapshotUnderlyingAssetV3(Definition):
     }
 
     def __init__(self):
-        self.change_to_break_even = float
-        self.last_updated = int
-        self.price = float
-        self.ticker = str
-        self.timeframe = str
+        self.change_to_break_even: float
+        self.last_updated: int
+        self.price: float
+        self.ticker: str
+        self.timeframe: str
 
 
 # noinspection SpellCheckingInspection
@@ -4580,14 +4580,14 @@ class OptionsSnapshotV3(Definition):
     }
 
     def __init__(self):
-        self.break_even_price = float
-        self.day = OptionsSnapshotDayV3
-        self.details = OptionsSnapshotDetailsV3
-        self.greeks = OptionsGreeksV3
-        self.implied_volatility = float
-        self.last_quote = OptionsSnapshotQuoteV3
-        self.open_interest = int
-        self.underlying_asset = OptionsSnapshotUnderlyingAssetV3
+        self.break_even_price: float
+        self.day: OptionsSnapshotDayV3
+        self.details: OptionsSnapshotDetailsV3
+        self.greeks: OptionsGreeksV3
+        self.implied_volatility: float
+        self.last_quote: OptionsSnapshotQuoteV3
+        self.open_interest: int
+        self.underlying_asset: OptionsSnapshotUnderlyingAssetV3
 
 
 # noinspection SpellCheckingInspection
@@ -4608,8 +4608,8 @@ class OptionsSnapshotV3ApiResponse(Definition):
     }
 
     def __init__(self):
-        self.results = OptionsSnapshotV3
-        self.status = str
+        self.results: OptionsSnapshotV3
+        self.status: str
 
 
 StockSymbol = str
