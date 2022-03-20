@@ -4260,21 +4260,29 @@ class ReferenceOptionsContractsV3ApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
         "status": "status",
+        "next_url": "next_url",
+        "request_id": "request_id",
     }
 
     _attribute_is_primitive = {
         "results": False,
         "status": True,
+        "next_url": True,
+        "request_id": True,
     }
 
     _attributes_to_types = {
         "results": "List[OptionsContractV3]",
         "status": "str",
+        "next_url": "str",
+        "request_id": "str",
     }
 
     def __init__(self):
-        self.results = List[OptionsContractV3]
-        self.status = str
+        self.results: List[OptionsContractV3]
+        self.status: str
+        self.next_url: str
+        self.request_id: str
 
 
 # noinspection SpellCheckingInspection
@@ -4329,21 +4337,25 @@ class OptionsQuotesV3ApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
         "status": "status",
+        "next_url": "next_url",
     }
 
     _attribute_is_primitive = {
         "results": False,
         "status": True,
+        "next_url": True,
     }
 
     _attributes_to_types = {
         "results": "List[OptionsQuoteV3]",
         "status": "str",
+        "next_url": "str",
     }
 
     def __init__(self):
         self.results: List[OptionsQuoteV3]
         self.status: str
+        self.next_url: str
 
 
 # noinspection SpellCheckingInspection
@@ -4595,21 +4607,29 @@ class OptionsSnapshotV3ApiResponse(Definition):
     _swagger_name_to_python = {
         "results": "results",
         "status": "status",
+        "next_url": "next_url",
+        "request_id": "request_id",
     }
 
     _attribute_is_primitive = {
         "results": False,
         "status": True,
+        "next_url": True,
+        "request_id": True,
     }
 
     _attributes_to_types = {
         "results": "OptionsSnapshotV3",
         "status": "str",
+        "next_url": "str",
+        "request_id": "str",
     }
 
     def __init__(self):
         self.results: OptionsSnapshotV3
         self.status: str
+        self.next_url: str
+        self.request_id: str
 
 
 StockSymbol = str
