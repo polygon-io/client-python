@@ -90,16 +90,16 @@ class RESTClient:
         endpoint = f"{self.url}/v1/marketstatus/upcoming"
         return self._handle_response("ReferenceMarketHolidaysApiResponse", endpoint, query_params)
 
-    def reference_options_contracts_v3(self, **query_params) -> models.ReferenceOptionsContractsV3ApiResponse:
-        endpoint = f"{self.url}/v3/reference/options/contracts"
+    def reference_options_contracts_v3(self, next_url=None, **query_params) -> models.ReferenceOptionsContractsV3ApiResponse:
+        endpoint = f"{self.url}/v3/reference/options/contracts" if not next_url else next_url
         return self._handle_response("ReferenceOptionsContractsV3ApiResponse", endpoint, query_params)
 
     def options_snapshot_v3(self, underlying_asset, option_contract, **query_params) -> models.OptionsSnapshotV3ApiResponse:
         endpoint = f"{self.url}/v3/snapshot/options/{underlying_asset}/{option_contract}"
         return self._handle_response("OptionsSnapshotV3ApiResponse", endpoint, query_params)
 
-    def options_quotes_v3(self, ticker, **query_params) -> models.OptionsQuotesV3ApiResponse:
-        endpoint = f"{self.url}/v3/quotes/{ticker}"
+    def options_quotes_v3(self, ticker, next_url=None, **query_params) -> models.OptionsQuotesV3ApiResponse:
+        endpoint = f"{self.url}/v3/quotes/{ticker}" if not next_url else next_url
         return self._handle_response("OptionsQuotesV3ApiResponse", endpoint, query_params)
 
     def stocks_equities_exchanges(self, **query_params) -> models.StocksEquitiesExchangesApiResponse:
