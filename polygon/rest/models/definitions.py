@@ -4277,6 +4277,341 @@ class ReferenceOptionsContractsV3ApiResponse(Definition):
         self.status = str
 
 
+# noinspection SpellCheckingInspection
+class OptionsQuoteV3(Definition):
+    _swagger_name_to_python = {
+        "ask_exchange": "ask_exchange",
+        "ask_price": "ask_price",
+        "ask_size": "ask_size",
+        "bid_exchange": "bid_exchange",
+        "bid_price": "bid_price",
+        "bid_size": "bid_size",
+        "sequence_number": "sequence_number",
+        "sip_timestamp": "sip_timestamp",
+    }
+
+    _attribute_is_primitive = {
+        "ask_exchange": True,
+        "ask_price": True,
+        "ask_size": True,
+        "bid_exchange": True,
+        "bid_price": True,
+        "bid_size": True,
+        "sequence_number": True,
+        "sip_timestamp": True,
+
+    }
+
+    _attributes_to_types = {
+        "ask_exchange": "int",
+        "ask_price": "float",
+        "ask_size": "int",
+        "bid_exchange": "int",
+        "bid_price": "float",
+        "bid_size": "int",
+        "sequence_number": "int",
+        "sip_timestamp": "int",
+    }
+
+    def __init__(self):
+        self.ask_exchange = int
+        self.ask_price = float
+        self.ask_size = int
+        self.bid_exchange = int
+        self.bid_price = float
+        self.bid_size = int
+        self.sequence_number = int
+        self.sip_timestamp = int
+
+
+# noinspection SpellCheckingInspection
+class OptionsQuotesV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+    }
+
+    _attributes_to_types = {
+        "results": "List[OptionsQuoteV3]",
+        "status": "str",
+    }
+
+    def __init__(self):
+        self.results = List[OptionsQuoteV3]
+        self.status = str
+
+
+# noinspection SpellCheckingInspection
+class OptionsSnapshotDayV3(Definition):
+    _swagger_name_to_python = {
+        "change": "change",
+        "change_percent": "change_percent",
+        "close": "close",
+        "high": "high",
+        "last_updated": "last_updated",
+        "low": "low",
+        "open": "open",
+        "previous_close": "previous_close",
+        "volume": "volume",
+        "vwap": "vwap",
+    }
+
+    _attribute_is_primitive = {
+        "change": True,
+        "change_percent": True,
+        "close": True,
+        "high": True,
+        "last_updated": True,
+        "low": True,
+        "open": True,
+        "previous_close": True,
+        "volume": True,
+        "vwap": True,
+    }
+
+    _attributes_to_types = {
+        "change": "float",
+        "change_percent": "float",
+        "close": "float",
+        "high": "float",
+        "last_updated": "int",
+        "low": "float",
+        "open": "float",
+        "previous_close": "float",
+        "volume": "int",
+        "vwap": "float",
+    }
+
+    def __init__(self):
+        self.change = float
+        self.change_percent = float
+        self.close = float
+        self.high = float
+        self.last_updated = int
+        self.low = float
+        self.open = float
+        self.previous_close = float
+        self.volume = int
+        self.vwap = float
+
+
+# noinspection SpellCheckingInspection
+class OptionsSnapshotDetailsV3(Definition):
+    _swagger_name_to_python = {
+        "contract_type": "contract_type",
+        "exercise_style": "exercise_style",
+        "expiration_date": "expiration_date",
+        "shares_per_contract": "shares_per_contract",
+        "strike_price": "strike_price",
+        "ticker": "ticker",
+    }
+
+    _attribute_is_primitive = {
+        "contract_type": True,
+        "exercise_style": True,
+        "expiration_date": True,
+        "shares_per_contract": True,
+        "strike_price": True,
+        "ticker": True,
+    }
+
+    _attributes_to_types = {
+        "contract_type": "str",
+        "exercise_style": "str",
+        "expiration_date": "str",
+        "shares_per_contract": "int",
+        "strike_price": "float",
+        "ticker": "str",
+    }
+
+    def __init__(self):
+        self.contract_type = str
+        self.exercise_style = str
+        self.expiration_date = str
+        self.shares_per_contract = int
+        self.strike_price = float
+        self.ticker = str
+
+
+# noinspection SpellCheckingInspection
+class OptionsGreeksV3(Definition):
+    _swagger_name_to_python = {
+        "delta": "delta",
+        "gamma": "gamma",
+        "theta": "theta",
+        "vega": "vega",
+    }
+
+    _attribute_is_primitive = {
+        "delta": True,
+        "gamma": True,
+        "theta": True,
+        "vega": True,
+    }
+
+    _attributes_to_types = {
+        "delta": "float",
+        "gamma": "float",
+        "theta": "float",
+        "vega": "float",
+    }
+
+    def __init__(self):
+        self.delta = float
+        self.gamma = float
+        self.theta = float
+        self.vega = float
+
+
+class OptionsSnapshotQuoteV3(Definition):
+    _swagger_name_to_python = {
+        "ask": "ask",
+        "ask_size": "ask_size",
+        "bid": "bid",
+        "bid_size": "bid_size",
+        "last_updated": "last_updated",
+        "midpoint": "midpoint",
+        "timeframe": "timeframe",
+    }
+
+    _attribute_is_primitive = {
+        "ask": True,
+        "ask_size": True,
+        "bid": True,
+        "bid_size": True,
+        "last_updated": True,
+        "midpoint": True,
+        "timeframe": True,
+    }
+
+    _attributes_to_types = {
+        "ask": "float",
+        "ask_size": "int",
+        "bid": "float",
+        "bid_size": "int",
+        "last_updated": "int",
+        "midpoint": "float",
+        "timeframe": "str",
+    }
+
+    def __init__(self):
+        self.ask = float
+        self.ask_size = int
+        self.bid = float
+        self.bid_size = int
+        self.last_updated = int
+        self.midpoint = float
+        self.timeframe = str
+
+
+# noinspection SpellCheckingInspection
+class OptionsSnapshotUnderlyingAssetV3(Definition):
+    _swagger_name_to_python = {
+        "change_to_break_even": "change_to_break_even",
+        "last_updated": "last_updated",
+        "price": "price",
+        "ticker": "ticker",
+        "timeframe": "timeframe",
+    }
+
+    _attribute_is_primitive = {
+        "change_to_break_even": True,
+        "last_updated": True,
+        "price": True,
+        "ticker": True,
+        "timeframe": True,
+    }
+
+    _attributes_to_types = {
+        "change_to_break_even": "float",
+        "last_updated": "int",
+        "price": "float",
+        "ticker": "str",
+        "timeframe": "str",
+    }
+
+    def __init__(self):
+        self.change_to_break_even = float
+        self.last_updated = int
+        self.price = float
+        self.ticker = str
+        self.timeframe = str
+
+
+# noinspection SpellCheckingInspection
+class OptionsSnapshotV3(Definition):
+    _swagger_name_to_python = {
+        "break_even_price": "break_even_price",
+        "day": "day",
+        "details": "details",
+        "greeks": "greeks",
+        "implied_volatility": "implied_volatility",
+        "last_quote": "last_quote",
+        "open_interest": "open_interest",
+        "underlying_asset": "underlying_asset",
+    }
+
+    _attribute_is_primitive = {
+        "break_even_price": True,
+        "day": False,
+        "details": False,
+        "greeks": False,
+        "implied_volatility": True,
+        "last_quote": False,
+        "open_interest": True,
+        "underlying_asset": False,
+    }
+
+    _attributes_to_types = {
+        "break_even_price": "float",
+        "day": "OptionsSnapshotDayV3",
+        "details": "OptionsSnapshotDetailsV3",
+        "greeks": "OptionsGreeksV3",
+        "implied_volatility": "float",
+        "last_quote": "OptionsSnapshotQuoteV3",
+        "open_interest": "int",
+        "underlying_asset": "OptionsSnapshotUnderlyingAssetV3",
+
+    }
+
+    def __init__(self):
+        self.break_even_price = float
+        self.day = OptionsSnapshotDayV3
+        self.details = OptionsSnapshotDetailsV3
+        self.greeks = OptionsGreeksV3
+        self.implied_volatility = float
+        self.last_quote = OptionsSnapshotQuoteV3
+        self.open_interest = int
+        self.underlying_asset = OptionsSnapshotUnderlyingAssetV3
+
+
+# noinspection SpellCheckingInspection
+class OptionsSnapshotV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "results": "results",
+        "status": "status",
+    }
+
+    _attribute_is_primitive = {
+        "results": False,
+        "status": True,
+    }
+
+    _attributes_to_types = {
+        "results": "OptionsSnapshotV3",
+        "status": "str",
+    }
+
+    def __init__(self):
+        self.results = OptionsSnapshotV3
+        self.status = str
+
+
 StockSymbol = str
 ConditionTypeMap = Dict[str, str]
 SymbolTypeMap = Dict[str, str]

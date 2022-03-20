@@ -100,6 +100,15 @@ from .definitions import CryptoSnapshotSingleTickerApiResponse
 from .definitions import CryptoSnapshotSingleTickerFullBookApiResponse
 from .definitions import CryptoSnapshotGainersLosersApiResponse
 from .definitions import CurrenciesAggregatesApiResponse
+from .definitions import OptionsQuoteV3
+from .definitions import OptionsQuotesV3ApiResponse
+from .definitions import OptionsSnapshotDayV3
+from .definitions import OptionsSnapshotDetailsV3
+from .definitions import OptionsGreeksV3
+from .definitions import OptionsSnapshotQuoteV3
+from .definitions import OptionsSnapshotUnderlyingAssetV3
+from .definitions import OptionsSnapshotV3
+from .definitions import OptionsSnapshotV3ApiResponse
 from .definitions import StockSymbol
 from .definitions import ConditionTypeMap
 from .definitions import SymbolTypeMap
@@ -215,6 +224,15 @@ name_to_class: typing.Dict[str, typing.Callable[[], typing.Type[AnyDefinition]]]
     "CryptoSnapshotSingleTickerFullBookApiResponse": CryptoSnapshotSingleTickerFullBookApiResponse,
     "CryptoSnapshotGainersLosersApiResponse": CryptoSnapshotGainersLosersApiResponse,
     "CurrenciesAggregatesApiResponse": CurrenciesAggregatesApiResponse,
+    "OptionsQuoteV3": OptionsQuoteV3,
+    "OptionsQuotesV3ApiResponse": OptionsQuotesV3ApiResponse,
+    "OptionsSnapshotDayV3": OptionsSnapshotDayV3,
+    "OptionsSnapshotDetailsV3": OptionsSnapshotDetailsV3,
+    "OptionsGreeksV3": OptionsGreeksV3,
+    "OptionsSnapshotQuoteV3": OptionsSnapshotQuoteV3,
+    "OptionsSnapshotUnderlyingAssetV3": OptionsSnapshotUnderlyingAssetV3,
+    "OptionsSnapshotV3": OptionsSnapshotV3,
+    "OptionsSnapshotV3ApiResponse": OptionsSnapshotV3ApiResponse,
 }
 
 # noinspection SpellCheckingInspection
