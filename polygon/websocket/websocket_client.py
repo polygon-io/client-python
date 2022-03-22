@@ -1,4 +1,3 @@
-import signal
 import threading
 from typing import Optional, Callable
 
@@ -36,12 +35,6 @@ class WebSocketClient:
         # self._run_thread is only set if the client is run asynchronously
         self._run_thread: Optional[threading.Thread] = None
 
-        # TODO: this probably isn't great design.
-        #  If the user defines their own signal handler then this will gets overwritten.
-        #  We still need to make sure that killing, terminating, interrupting the program closes the connection
-        signal.signal(signal.SIGINT, self._cleanup_signal_handler())
-        signal.signal(signal.SIGTERM, self._cleanup_signal_handler())
-
     def run(self):
         self.ws.run_forever()
 
@@ -67,9 +60,6 @@ class WebSocketClient:
 
         sub_message = '{"action":"unsubscribe","params":"%s"}' % self._format_params(params)
         self.ws.send(sub_message)
-
-    def _cleanup_signal_handler(self):
-        return lambda signalnum, frame: self.close_connection()
 
     def _authenticate(self, ws):
         ws.send('{"action":"auth","params":"%s"}' % self.auth_key)
