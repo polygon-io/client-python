@@ -657,6 +657,54 @@ class Dividend(Definition):
 
 
 # noinspection SpellCheckingInspection
+class DividendV3(Definition):
+    _swagger_name_to_python = {
+        "ticker": "ticker",
+        "cash_amount": "cash_amount",
+        "declaration_date": "declaration_date",
+        "dividend_type": "dividend_type",
+        "ex_dividend_date": "ex_dividend_date",
+        "frequency": "frequency",
+        "pay_date": "pay_date",
+        "record_date": "record_date",
+
+    }
+
+    _attribute_is_primitive = {
+        "ticker": False,
+        "cash_amount": True,
+        "declaration_date": True,
+        "dividend_type": True,
+        "ex_dividend_date": True,
+        "frequency": True,
+        "pay_date": True,
+        "record_date": True,
+
+    }
+
+    _attributes_to_types = {
+        "ticker": "StockSymbol",
+        "cash_amount": "float",
+        "declaration_date": "str",
+        "dividend_type": "str",
+        "ex_dividend_date": "str",
+        "frequency": "float",
+        "pay_date": "str",
+        "record_date": "str",
+    }
+
+    def __init__(self):
+        self.stock: StockSymbol
+        self.cash_amount: float
+        self.declaration_date: str
+        self.dividend_type: str
+        self.ex_dividend_date: str
+        self.frequency: float
+        self.pay_date: str
+        self.record_date: str
+
+
+# noinspection SpellCheckingInspection
 class News(Definition):
     _swagger_name_to_python = {
         "symbols": "symbols",
@@ -3067,6 +3115,35 @@ class ReferenceStockDividendsApiResponse(Definition):
         self.status: str
         self.count: float
         self.results: List[Dividend]
+
+
+# noinspection SpellCheckingInspection
+class ReferenceStockDividendsV3ApiResponse(Definition):
+    _swagger_name_to_python = {
+        "status": "status",
+        "count": "count",
+        "results": "results",
+
+    }
+
+    _attribute_is_primitive = {
+        "status": True,
+        "count": True,
+        "results": False,
+
+    }
+
+    _attributes_to_types = {
+        "status": "str",
+        "count": "float",
+        "results": "List[DividendV3]",
+
+    }
+
+    def __init__(self):
+        self.status: str
+        self.count: float
+        self.results: List[DividendV3]
 
 
 # noinspection SpellCheckingInspection

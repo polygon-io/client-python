@@ -78,6 +78,10 @@ class RESTClient:
         endpoint = f"{self.url}/v2/reference/dividends/{symbol}"
         return self._handle_response("ReferenceStockDividendsApiResponse", endpoint, query_params)
 
+    def reference_stock_dividends_v3(self, **query_params) -> models.ReferenceStockDividendsV3ApiResponse:
+        endpoint = f"{self.url}/v3/reference/dividends"
+        return self._handle_response("ReferenceStockDividendsV3ApiResponse", endpoint, query_params)
+
     def reference_stock_financials(self, symbol, **query_params) -> models.ReferenceStockFinancialsApiResponse:
         endpoint = f"{self.url}/v2/reference/financials/{symbol}"
         return self._handle_response("ReferenceStockFinancialsApiResponse", endpoint, query_params)
