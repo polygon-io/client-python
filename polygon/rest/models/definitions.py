@@ -694,7 +694,7 @@ class DividendV3(Definition):
     }
 
     def __init__(self):
-        self.stock: StockSymbol
+        self.ticker: StockSymbol
         self.cash_amount: float
         self.declaration_date: str
         self.dividend_type: str
