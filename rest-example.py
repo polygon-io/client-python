@@ -8,13 +8,13 @@ def ts_to_datetime(ts) -> str:
 
 
 def main():
-    key = "your api key"
+    key = "dMduk7gHlFQ1NcaNGWDmCwMuYFOUst6z"
 
     # RESTClient can be used as a context manager to facilitate closing the underlying http session
     # https://requests.readthedocs.io/en/master/user/advanced/#session-objects
     with RESTClient(key) as client:
-        from_ = "2019-01-01"
-        to = "2019-02-01"
+        from_ = "2022-01-01"
+        to = "2022-03-31"
         resp = client.stocks_equities_aggregates("AAPL", 1, "minute", from_, to, unadjusted=False)
 
         print(f"Minute aggregates for {resp.ticker} between {from_} and {to}.")
