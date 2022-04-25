@@ -6,7 +6,7 @@ YELLOW := $(shell tput -Txterm setaf 3)
 WHITE  := $(shell tput -Txterm setaf 7)
 RESET  := $(shell tput -Txterm sgr0)
 
-.PHONY: help lint test
+.PHONY: help lint style static test
 
 ## Show help
 help:
@@ -20,14 +20,18 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
+## Check code style
 style:
 	poetry run black polygon
 
+## Check static types
 static:
 	poetry run mypy polygon
 
+## Check code style and static types
 lint: style static
 
+## Run unit tests
 test:
 	poetry run python -m unittest discover -s tests
 

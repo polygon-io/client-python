@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
