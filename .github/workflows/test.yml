@@ -1,4 +1,4 @@
-name: lint
+name: unittest
 on:
   push:
     tags:
@@ -26,8 +26,5 @@ jobs:
         uses: abatilo/actions-poetry@v2.0.0
       - name: Install pypi deps
         run: poetry install
-      - name: Style lint
-        run: make style
-      - name: Static lint
-        run: make static
-        if: always()
+      - name: Unit tests
+        run: make test

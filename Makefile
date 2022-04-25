@@ -20,12 +20,14 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
-.PHONY: lint
-lint:
+style:
 	poetry run black polygon
+
+static:
 	poetry run mypy polygon
 
-.PHONY: test
+lint: style static
+
 test:
 	python -m unittest discover -s tests
 
