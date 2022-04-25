@@ -15,7 +15,7 @@ class BaseTest(unittest.TestCase):
         if self.setup:
             return
         httpretty.enable(verbose=True, allow_net_connect=False)
-        c = RESTClient()
+        c = RESTClient("")
         for m in mocks:
             httpretty.register_uri(httpretty.GET, c.BASE + m[0], m[1])
         self.setup = True
