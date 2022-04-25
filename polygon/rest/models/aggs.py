@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Agg:
     open: float
@@ -13,14 +14,4 @@ class Agg:
 
     @staticmethod
     def from_dict(d):
-        return Agg(
-            d['o'],
-            d['h'],
-            d['l'],
-            d['c'],
-            d['v'],
-            d['vw'],
-            d['t'],
-            d['n']
-        )
-
+        return Agg(d["o"], d["h"], d["l"], d["c"], d["v"], d["vw"], d["t"], d["n"])

@@ -10,4 +10,3 @@ trades = []
 for t in c.list_trades("AAA", timestamp="2022-04-20", limit=5, sort=Sort.ASC):
     trades.append(t)
 print(trades)
-
