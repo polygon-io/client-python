@@ -1,0 +1,33 @@
+name: lint
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - v1
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10']
+    name: Lint ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup Poetry
+        uses: abatilo/actions-poetry@v2.0.0
+      - name: Install pypi deps
+        run: poetry install
+      - name: Style lint
+        run: poetry run black --check polygon
+      - name: Static lint
+        run: poetry run mypy polygon
+        if: always()

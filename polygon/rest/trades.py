@@ -4,18 +4,19 @@ from .models import Trade, Sort, Order
 
 # https://polygon.io/docs/stocks
 class TradesClient(BaseClient):
-    def list_trades(self,
+    def list_trades(
+        self,
         ticker: str,
-        timestamp: Optional[str]=None,
-        timestamp_lt: Optional[str]=None,
-        timestamp_lte: Optional[str]=None,
-        timestamp_gt: Optional[str]=None,
-        timestamp_gte: Optional[str]=None,
+        timestamp: Optional[str] = None,
+        timestamp_lt: Optional[str] = None,
+        timestamp_lte: Optional[str] = None,
+        timestamp_gt: Optional[str] = None,
+        timestamp_gte: Optional[str] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
-        params: Optional[Dict[str, Any]]=None,
-        raw: bool=False
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
     ):
         """
         Get trades for a ticker symbol in a given time range.
@@ -36,6 +37,9 @@ class TradesClient(BaseClient):
         """
         url = f"/v3/trades/{ticker}"
 
-        return self._paginate(path=url, params=self._get_params(self.list_trades, locals()), raw=raw, deserializer=Trade.from_dict)
-
-
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_trades, locals()),
+            raw=raw,
+            deserializer=Trade.from_dict,
+        )
