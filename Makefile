@@ -29,5 +29,5 @@ static:
 lint: style static
 
 test:
-	python -m unittest discover -s tests
+	poetry run python -m unittest discover -s tests
 
