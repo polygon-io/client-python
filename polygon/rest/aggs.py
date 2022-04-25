@@ -1,6 +1,7 @@
+from email.headerregistry import Group
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
-from .models import Agg, Sort
+from .models import Agg, GroupedDailyAgg, Sort
 
 # https://polygon.io/docs/stocks
 class AggsClient(BaseClient):
@@ -37,3 +38,20 @@ class AggsClient(BaseClient):
 
         return self._get(path=url, params=self._get_params(self.get_aggs, locals()), resultKey="results", deserializer=Agg.from_dict, raw=raw)
 
+    def get_grouped_daily_aggs(self,
+            date: str,
+            adjusted: Optional[bool]=None,
+            raw: bool=False,
+            params: Optional[Dict[str, Any]]=None,
+        ) -> List[GroupedDailyAgg]:
+            """
+            Get the daily open, high, low, and close (OHLC) for the entire market.
+
+            :param date: The beginning date for the aggregate window.
+            :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
+            :return: List of aggregates
+            :rtype: List[Agg]
+            """
+            url = f"/v2/aggs/grouped/locale/us/market/stocks/{date}"
+
+            return self._get(path=url, params=self._get_params(self.get_grouped_daily_aggs, locals()), resultKey="results", deserializer=GroupedDailyAgg.from_dict, raw=raw)
