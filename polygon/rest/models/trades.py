@@ -1,6 +1,7 @@
 from typing import Optional, List
 from dataclasses import dataclass
 
+
 @dataclass
 class Trade:
     "Trade contains trade data for a specified ticker symbol."
@@ -20,4 +21,3 @@ class Trade:
     @staticmethod
     def from_dict(d):
         return Trade(**d)
-
