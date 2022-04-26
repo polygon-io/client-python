@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from typing import Optional
 
@@ -50,3 +51,57 @@ class GroupedDailyAgg:
             d.get('t', None),
             d.get('n', None)
         )
+
+@dataclass
+class DailyOpenCloseAgg:
+    after_hours: Optional[float]
+    close: float
+    from_: str
+    high: float
+    low: float
+    open: float
+    pre_market: float
+    status: Optional[str]
+    symbol: str
+    volume: float
+
+    @staticmethod
+    def from_dict(d):
+        print(type(d))
+        return DailyOpenCloseAgg(
+            d.get('afterHours', None),
+            d.get('close', None),
+            d.get('from', None),
+            d.get('high', None),
+            d.get('low', None),
+            d.get('open', None),
+            d.get('preMarket', None),
+            d.get('status', None),
+            d.get('symbol', None),
+            d.get('volume', None)
+        )
+
+@dataclass
+class PreviousCloseAgg:
+    ticker: str
+    close: float
+    high: float
+    low: float
+    open: float
+    timestamp: float
+    volume: float
+    vwap: Optional[float]
+
+    @staticmethod
+    def from_dict(d):
+        return PreviousCloseAgg(
+            d.get('T', None),
+            d.get('c', None),
+            d.get('h', None),
+            d.get('l', None),
+            d.get('o', None),
+            d.get('t', None),
+            d.get('v', None),
+            d.get('vw', None),
+        )
+

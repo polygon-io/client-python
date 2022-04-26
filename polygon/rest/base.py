@@ -48,8 +48,15 @@ class BaseClient:
 
         obj = self._decode(resp)
 
+        print("type1", type(obj))
+
         if resultKey:
             obj = obj[resultKey]
+        else:
+            # If the resultKey does not exist, still need to put the results in a list
+            obj_list = []
+            obj_list.append(obj) 
+            obj = obj_list
         
         if deserializer:
             obj = [deserializer(o) for o in obj]

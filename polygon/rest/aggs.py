@@ -1,7 +1,7 @@
 from email.headerregistry import Group
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
-from .models import Agg, GroupedDailyAgg, Sort
+from .models import Agg, GroupedDailyAgg, DailyOpenCloseAgg, PreviousCloseAgg, Sort
 
 # https://polygon.io/docs/stocks
 class AggsClient(BaseClient):
@@ -39,19 +39,63 @@ class AggsClient(BaseClient):
         return self._get(path=url, params=self._get_params(self.get_aggs, locals()), resultKey="results", deserializer=Agg.from_dict, raw=raw)
 
     def get_grouped_daily_aggs(self,
-            date: str,
-            adjusted: Optional[bool]=None,
-            raw: bool=False,
-            params: Optional[Dict[str, Any]]=None,
-        ) -> List[GroupedDailyAgg]:
-            """
-            Get the daily open, high, low, and close (OHLC) for the entire market.
+        date: str,
+        adjusted: Optional[bool]=None,
+        params: Optional[Dict[str, Any]]=None,
+        raw: bool=False,
+    ) -> List[GroupedDailyAgg]:
+        """
+        Get the daily open, high, low, and close (OHLC) for the entire market.
 
-            :param date: The beginning date for the aggregate window.
-            :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
-            :return: List of aggregates
-            :rtype: List[Agg]
-            """
-            url = f"/v2/aggs/grouped/locale/us/market/stocks/{date}"
+        :param date: The beginning date for the aggregate window.
+        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of grouped daily aggregates
+        :rtype: List[GroupedDailyAgg]
+        """
+        url = f"/v2/aggs/grouped/locale/us/market/stocks/{date}"
 
-            return self._get(path=url, params=self._get_params(self.get_grouped_daily_aggs, locals()), resultKey="results", deserializer=GroupedDailyAgg.from_dict, raw=raw)
+        return self._get(path=url, params=self._get_params(self.get_grouped_daily_aggs, locals()), resultKey="results", deserializer=GroupedDailyAgg.from_dict, raw=raw)
+
+    def get_daily_open_close_agg(self,
+        ticker: str,
+        date: str,
+        adjusted: Optional[bool]=None,
+        params: Optional[Dict[str, Any]]=None,
+        raw: bool=False,
+    ) -> DailyOpenCloseAgg:
+        """
+        Get the open, close and afterhours prices of a stock symbol on a certain date.
+
+        :param ticker: The exchange symbol that this item is traded under.
+        :param date: The beginning date for the aggregate window.
+        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Daily open close aggregate
+        :rtype: DailyOpenCloseAgg
+        """
+        url = f"/v1/open-close/{ticker}/{date}"
+
+        return self._get(path=url, params=self._get_params(self.get_daily_open_close_agg, locals()), deserializer=DailyOpenCloseAgg.from_dict, raw=raw)
+
+    def get_previous_close_agg(self,
+        ticker: str,
+        adjusted: Optional[bool]=None,
+        params: Optional[Dict[str, Any]]=None,
+        raw: bool=False,
+    ) -> PreviousCloseAgg:
+        """
+        Get the previous day's open, high, low, and close (OHLC) for the specified stock ticker.
+
+        :param ticker: The ticker symbol of the stock/equity.
+        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Previous close aggregate
+        :rtype: PreviousCloseAgg
+        """
+        url = f"/v2/aggs/ticker/{ticker}/prev"
+
+        return self._get(path=url, params=self._get_params(self.get_previous_close_agg, locals()), resultKey="results", deserializer=PreviousCloseAgg.from_dict, raw=raw)
