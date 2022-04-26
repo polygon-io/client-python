@@ -74,3 +74,26 @@ class TickerNews:
     @staticmethod
     def from_dict(d):
         return TickerNews(**d)
+
+# @dataclass
+# class Publisher:
+    
+
+@dataclass
+class TickerTypes:
+    "TickerDetails contains data for news articles relating to a stock ticker symbol."
+    amp_url: Optional[str] = None
+    article_url: Optional[str] = None
+    author: Optional[str] = None
+    description: Optional[str] = None
+    id: Optional[str] = None
+    image_url: Optional[str] = None
+    keywords: Optional[List[str]] = None
+    published_utc: Optional[str] = None
+    publisher: Optional[Dict[str,str]] = None
+    tickers: Optional[List[str]] = None
+    title: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return TickerNews(**d)
