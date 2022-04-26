@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, Sort, Order
+from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, Sort, Order
 from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
@@ -114,3 +114,35 @@ class TickersClient(BaseClient):
         url = f"/v3/reference/tickers/{ticker}"
 
         return self._get(path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw) 
+
+    def get_ticker_news(
+        self,
+        ticker: Optional[str] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        published_utc: Optional[str] = None,
+        published_utc_lt: Optional[str] = None,
+        published_utc_lte: Optional[str] = None,
+        published_utc_gt: Optional[str] = None,
+        published_utc_gte: Optional[str] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[TickerDetails, HTTPResponse]:
+        """
+        Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
+
+        :param ticker: Return results that contain this ticker.
+        :param published_utc: Return results published on, before, or after this date.
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Ticker News
+        :rtype: TickerNews
+        """
+        url = "/v2/reference/news"
+
+        return self._get(path=url, params=params, deserializer=TickerNews.from_dict, raw=raw) 
