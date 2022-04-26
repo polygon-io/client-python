@@ -1,6 +1,7 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, Union
+from typing import Optional, Any, Dict, Union, Iterator
 from .models import Trade, Sort, Order
+from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
 class TradesClient(BaseClient):
@@ -17,7 +18,7 @@ class TradesClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ):
+    ) -> Union[Iterator[Trade], HTTPResponse]:
         """
         Get trades for a ticker symbol in a given time range.
 
