@@ -82,8 +82,8 @@ class TickersClient(BaseClient):
         :param order: The order to sort the results on. Default is asc (ascending).
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
-        :return: List of aggregates
-        :rtype: List[Agg]
+        :return: List of tickers
+        :rtype: List[Ticker]
         """
         url = "/v3/reference/tickers"
 
