@@ -1,5 +1,5 @@
 from typing import Optional, Dict, List
-from models import Locale, Market
+from models import Locale, Market, AssetClass, Locale
 from dataclasses import dataclass
 
 
@@ -81,18 +81,11 @@ class TickerNews:
 
 @dataclass
 class TickerTypes:
-    "TickerDetails contains data for news articles relating to a stock ticker symbol."
-    amp_url: Optional[str] = None
-    article_url: Optional[str] = None
-    author: Optional[str] = None
+    "TickerTypes contains data ticker types."
+    asset_class: Optional[AssetClass] = None
+    code: Optional[str] = None
     description: Optional[str] = None
-    id: Optional[str] = None
-    image_url: Optional[str] = None
-    keywords: Optional[List[str]] = None
-    published_utc: Optional[str] = None
-    publisher: Optional[Dict[str,str]] = None
-    tickers: Optional[List[str]] = None
-    title: Optional[str] = None
+    locale: Optional[Locale] = None
 
     @staticmethod
     def from_dict(d):
