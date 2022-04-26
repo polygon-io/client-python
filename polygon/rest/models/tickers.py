@@ -51,3 +51,7 @@ class TickerDetails:
     total_employees: Optional[int] = None
     type: Optional[str] = None
     weighted_shares_outstanding: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return TickerDetails(**d)
