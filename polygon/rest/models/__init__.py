@@ -14,3 +14,12 @@ class Sort(Enum):
 class Order(Enum):
     ASC = "asc"
     DESC = "desc"
+
+class Locale(Enum):
+    US = "us"
+    GLOBAL = "global"
+
+class Market(Enum):
+    STOCKS = "stocks"
+    CRYPTO = "crypto"
+    FX = "fx"
