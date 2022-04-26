@@ -1,6 +1,7 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, Union
+from typing import Optional, Any, Dict, List, Union
 from .models import Quote, LastQuote, Sort, Order
+from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
 class QuotesClient(BaseClient):
@@ -17,7 +18,7 @@ class QuotesClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False
-    ):
+    ) -> Union[List[Quote], HTTPResponse]:
         """
         Get quotes for a ticker symbol in a given time range.
 
