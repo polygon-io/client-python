@@ -31,7 +31,7 @@ class QuotesClient(BaseClient):
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params
-        :param raw: Return raw object instead of results object
+        :param raw: Return HTTPResponse object instead of results object
         :return: List of quotes
         :rtype: List[Quote]
         """
@@ -55,12 +55,12 @@ class QuotesClient(BaseClient):
 
         :param ticker: The ticker symbol of the stock/equity.
         :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of quotes
-        :rtype: List[Quote]
+        :param raw: Return HTTPResponse object instead of results object
+        :return: Last Quote
+        :rtype: LastQuote
         """
         url = f"/v2/last/nbbo/{ticker}"
 
-        return self._get(path=url, params=params, deserializer=LastQuote.from_dict, raw=True)
+        return self._get(path=url, params=params, deserializer=LastQuote.from_dict, raw=raw)
 
     
