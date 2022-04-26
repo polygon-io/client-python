@@ -1,5 +1,6 @@
 from .aggs import *
 from .trades import *
+from .quotes import *
 from enum import Enum
 
 
