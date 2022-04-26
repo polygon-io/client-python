@@ -37,7 +37,4 @@ class MarketsClient(BaseClient):
         """
         url = "/v1/marketstatus/now"
 
-        return self._get(path=url, params=params, deserializer=MarketStatus.from_dict, raw=raw)
-    
-
-    
+        return self._get(path=url, params=params, deserializer=MarketStatus.from_dict, raw=raw)    
