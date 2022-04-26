@@ -48,8 +48,6 @@ class BaseClient:
 
         obj = self._decode(resp)
 
-        print("type1", type(obj))
-
         if resultKey:
             obj = obj[resultKey]
         else:

@@ -67,7 +67,6 @@ class DailyOpenCloseAgg:
 
     @staticmethod
     def from_dict(d):
-        print(type(d))
         return DailyOpenCloseAgg(
             d.get('afterHours', None),
             d.get('close', None),
