@@ -3,7 +3,7 @@ from typing import Optional, Any, Dict, Union
 from .models import Quote, Sort, Order
 
 # https://polygon.io/docs/stocks
-class QuoteClient(BaseClient):
+class QuotesClient(BaseClient):
     def list_quotes(
         self,
         ticker: str,
