@@ -28,6 +28,7 @@ urllib3 = "^1.26.9"
 black = "^22.3.0"
 mypy = "^0.942"
 types-urllib3 = "^1.26.13"
+httpretty = "^1.1.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
