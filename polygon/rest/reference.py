@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import MarketHoliday, MarketStatus, Ticker, Sort, Order
+from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, Sort, Order
 from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
@@ -93,3 +93,24 @@ class TickersClient(BaseClient):
             raw=raw,
             deserializer=Ticker.from_dict,
         )
+
+    def get_ticker_details(
+        self,
+        ticker: Optional[str] = None,
+        date: Optional[str] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[TickerDetails, HTTPResponse]:
+        """
+        Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.
+
+        :param ticker: The ticker symbol of the asset.
+        :param date: Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Ticker Details V3
+        :rtype: TickerDetail
+        """
+        url = f"/v3/reference/tickers/{ticker}"
+
+        return self._get(path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw) 
