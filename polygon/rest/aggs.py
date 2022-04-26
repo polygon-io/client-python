@@ -1,6 +1,7 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from .models import Agg, Sort
+from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
 class AggsClient(BaseClient):
@@ -17,7 +18,7 @@ class AggsClient(BaseClient):
         limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> List[Agg]:
+    ) -> Union[List[Agg], HTTPResponse]:
         """
         Get aggregate bars for a ticker over a given date range in custom time window sizes.
 
