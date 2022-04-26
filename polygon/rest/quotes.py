@@ -16,7 +16,7 @@ class QuotesClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
-        raw: bool = False,
+        raw: bool = False
     ):
         """
         Get quotes for a ticker symbol in a given time range.
@@ -43,3 +43,24 @@ class QuotesClient(BaseClient):
             raw=raw,
             deserializer=Quote.from_dict,
         )
+    
+    def get_last_quote(
+        self,
+        ticker: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False
+    ):
+        """
+        Get the most recent NBBO (Quote) tick for a given stock.
+
+        :param ticker: The ticker symbol of the stock/equity.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of quotes
+        :rtype: List[Quote]
+        """
+        url = f"/v2/last/nbbo/{ticker}"
+
+        return self._get(path=url, params=params, deserializer=LastQuote.from_dict, raw=True)
+
+    
