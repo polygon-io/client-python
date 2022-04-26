@@ -1,5 +1,4 @@
-from re import LOCALE
-from typing import Optional, List
+from typing import Optional
 from models import Locale, Market
 from dataclasses import dataclass
 
