@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, Union
-from .models import Quote, Sort, Order
+from .models import Quote, LastQuote, Sort, Order
 
 # https://polygon.io/docs/stocks
 class QuotesClient(BaseClient):
