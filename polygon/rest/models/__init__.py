@@ -23,3 +23,9 @@ class Market(Enum):
     STOCKS = "stocks"
     CRYPTO = "crypto"
     FX = "fx"
+
+class AssetClass(Enum):
+    STOCKS = "stocks"
+    OPTIONS = "options"
+    CRYPTO = "crypto"
+    FX = "fx"
