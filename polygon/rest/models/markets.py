@@ -20,9 +20,9 @@ class MarketHoliday:
 class MarketStatus:
     "MarketStatus contains data for the current trading status of the exchanges and overall financial markets."
     after_hours: Optional[bool] = None
-    currencies: Optional[Dict[str]] = None
+    currencies: Optional[Dict[str, str]] = None
     early_hours: Optional[bool] = None
-    exchanges: Optional[Dict[str]] = None
+    exchanges: Optional[Dict[str, str]] = None
     market: Optional[str] = None
     server_time: Optional[str] = None
 
