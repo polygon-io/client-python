@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
+
 @dataclass
 class Agg:
     open: float
@@ -15,15 +16,16 @@ class Agg:
     @staticmethod
     def from_dict(d):
         return Agg(
-            d.get('o', None),
-            d.get('h', None),
-            d.get('l', None),
-            d.get('c', None),
-            d.get('v', None),
-            d.get('vw', None),
-            d.get('t', None),
-            d.get('n', None)
+            d.get("o", None),
+            d.get("h", None),
+            d.get("l", None),
+            d.get("c", None),
+            d.get("v", None),
+            d.get("vw", None),
+            d.get("t", None),
+            d.get("n", None),
         )
+
 
 @dataclass
 class GroupedDailyAgg:
@@ -40,16 +42,17 @@ class GroupedDailyAgg:
     @staticmethod
     def from_dict(d):
         return GroupedDailyAgg(
-            d.get('T', None),
-            d.get('o', None),
-            d.get('h', None),
-            d.get('l', None),
-            d.get('c', None),
-            d.get('v', None),
-            d.get('vw', None),
-            d.get('t', None),
-            d.get('n', None)
+            d.get("T", None),
+            d.get("o", None),
+            d.get("h", None),
+            d.get("l", None),
+            d.get("c", None),
+            d.get("v", None),
+            d.get("vw", None),
+            d.get("t", None),
+            d.get("n", None),
         )
+
 
 @dataclass
 class DailyOpenCloseAgg:
@@ -67,17 +70,18 @@ class DailyOpenCloseAgg:
     @staticmethod
     def from_dict(d):
         return DailyOpenCloseAgg(
-            d.get('afterHours', None),
-            d.get('close', None),
-            d.get('from', None),
-            d.get('high', None),
-            d.get('low', None),
-            d.get('open', None),
-            d.get('preMarket', None),
-            d.get('status', None),
-            d.get('symbol', None),
-            d.get('volume', None)
+            d.get("afterHours", None),
+            d.get("close", None),
+            d.get("from", None),
+            d.get("high", None),
+            d.get("low", None),
+            d.get("open", None),
+            d.get("preMarket", None),
+            d.get("status", None),
+            d.get("symbol", None),
+            d.get("volume", None),
         )
+
 
 @dataclass
 class PreviousCloseAgg:
@@ -93,12 +97,12 @@ class PreviousCloseAgg:
     @staticmethod
     def from_dict(d):
         return PreviousCloseAgg(
-            d.get('T', None),
-            d.get('c', None),
-            d.get('h', None),
-            d.get('l', None),
-            d.get('o', None),
-            d.get('t', None),
-            d.get('v', None),
-            d.get('vw', None),
+            d.get("T", None),
+            d.get("c", None),
+            d.get("h", None),
+            d.get("l", None),
+            d.get("o", None),
+            d.get("t", None),
+            d.get("v", None),
+            d.get("vw", None),
         )

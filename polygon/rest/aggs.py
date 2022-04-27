@@ -50,12 +50,13 @@ class AggsClient(BaseClient):
             raw=raw,
         )
 
-    def get_grouped_daily_aggs(self,
+    def get_grouped_daily_aggs(
+        self,
         date: str,
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        ) -> Union[List[GroupedDailyAgg], HTTPResponse]:
+    ) -> Union[List[GroupedDailyAgg], HTTPResponse]:
         """
         Get the daily open, high, low, and close (OHLC) for the entire market.
 
@@ -67,15 +68,22 @@ class AggsClient(BaseClient):
         """
         url = f"/v2/aggs/grouped/locale/us/market/stocks/{date}"
 
-        return self._get(path=url, params=self._get_params(self.get_grouped_daily_aggs, locals()), resultKey="results", deserializer=GroupedDailyAgg.from_dict, raw=raw)
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_grouped_daily_aggs, locals()),
+            resultKey="results",
+            deserializer=GroupedDailyAgg.from_dict,
+            raw=raw,
+        )
 
-    def get_daily_open_close_agg(self,
+    def get_daily_open_close_agg(
+        self,
         ticker: str,
         date: str,
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        ) -> Union[DailyOpenCloseAgg, HTTPResponse]:
+    ) -> Union[DailyOpenCloseAgg, HTTPResponse]:
         """
         Get the open, close and afterhours prices of a stock symbol on a certain date.
 
@@ -88,14 +96,20 @@ class AggsClient(BaseClient):
         """
         url = f"/v1/open-close/{ticker}/{date}"
 
-        return self._get(path=url, params=self._get_params(self.get_daily_open_close_agg, locals()), deserializer=DailyOpenCloseAgg.from_dict, raw=raw)
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_daily_open_close_agg, locals()),
+            deserializer=DailyOpenCloseAgg.from_dict,
+            raw=raw,
+        )
 
-    def get_previous_close_agg(self,
+    def get_previous_close_agg(
+        self,
         ticker: str,
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        ) -> Union[PreviousCloseAgg, HTTPResponse]:
+    ) -> Union[PreviousCloseAgg, HTTPResponse]:
         """
         Get the previous day's open, high, low, and close (OHLC) for the specified stock ticker.
 
@@ -107,4 +121,10 @@ class AggsClient(BaseClient):
         """
         url = f"/v2/aggs/ticker/{ticker}/prev"
 
-        return self._get(path=url, params=self._get_params(self.get_previous_close_agg, locals()), resultKey="results", deserializer=PreviousCloseAgg.from_dict, raw=raw)
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_previous_close_agg, locals()),
+            resultKey="results",
+            deserializer=PreviousCloseAgg.from_dict,
+            raw=raw,
+        )
