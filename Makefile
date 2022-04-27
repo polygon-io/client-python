@@ -22,11 +22,11 @@ help:
 
 ## Check code style
 style:
-	poetry run black polygon
+	poetry run black polygon tests
 
 ## Check static types
 static:
-	poetry run mypy polygon
+	poetry run mypy polygon tests
 
 ## Check code style and static types
 lint: style static
