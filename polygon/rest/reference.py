@@ -16,7 +16,6 @@ class MarketsClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
         :return: List of quotes
-        :rtype: List[Quote]
         """
         url = "/v1/marketstatus/upcoming"
 
@@ -33,7 +32,6 @@ class MarketsClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
         :return: List of quotes
-        :rtype: List[Quote]
         """
         url = "/v1/marketstatus/now"
 
@@ -83,7 +81,6 @@ class TickersClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: List of tickers
-        :rtype: List[Ticker]
         """
         url = "/v3/reference/tickers"
 
@@ -109,7 +106,6 @@ class TickersClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Ticker Details V3
-        :rtype: TickerDetail
         """
         url = f"/v3/reference/tickers/{ticker}"
 
@@ -141,7 +137,6 @@ class TickersClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Ticker News
-        :rtype: TickerNews
         """
         url = "/v2/reference/news"
 
@@ -162,7 +157,6 @@ class TickersClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Ticker Types
-        :rtype: TickerTypes
         """
         url = "/v3/reference/tickers/types"
 
@@ -207,8 +201,7 @@ class SplitsClient(BaseClient):
         :param order: Order results based on the sort field.
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
-        :return: List of tickers
-        :rtype: List[Ticker]
+        :return: List of splits
         """
         url = "/v3/reference/splits"
 

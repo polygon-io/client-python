@@ -34,7 +34,6 @@ class QuotesClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
         :return: List of quotes
-        :rtype: List[Quote]
         """
         url = f"/v3/quotes/{ticker}"
 
@@ -58,7 +57,6 @@ class QuotesClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
         :return: Last Quote
-        :rtype: LastQuote
         """
         url = f"/v2/last/nbbo/{ticker}"
 
