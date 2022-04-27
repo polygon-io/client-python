@@ -1,3 +1,4 @@
+from polygon.rest.models.dividends import DividendType
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import (
@@ -12,6 +13,8 @@ from .models import (
     AssetClass,
     Locale,
     Split,
+    Dividend,
+    Frequency,
 )
 from urllib3 import HTTPResponse
 
@@ -187,10 +190,10 @@ class SplitsClient(BaseClient):
         ticker_gt: Optional[str] = None,
         ticker_gte: Optional[str] = None,
         execution_date: Optional[str] = None,
-        execution_lt: Optional[str] = None,
-        execution_lte: Optional[str] = None,
-        execution_gt: Optional[str] = None,
-        execution_gte: Optional[str] = None,
+        execution_date_lt: Optional[str] = None,
+        execution_date_lte: Optional[str] = None,
+        execution_date_gt: Optional[str] = None,
+        execution_date_gte: Optional[str] = None,
         reverse_split: Optional[bool] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
@@ -226,4 +229,93 @@ class SplitsClient(BaseClient):
             params=self._get_params(self.list_splits, locals()),
             raw=raw,
             deserializer=Split.from_dict,
+        )
+
+
+class DividendsClient(BaseClient):
+    def list_dividends(
+        self,
+        ticker: Optional[str] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        ex_dividend_date: Optional[str] = None,
+        ex_dividend_date_lt: Optional[str] = None,
+        ex_dividend_date_lte: Optional[str] = None,
+        ex_dividend_date_gt: Optional[str] = None,
+        ex_dividend_date_gte: Optional[str] = None,
+        record_date: Optional[str] = None,
+        record_date_lt: Optional[str] = None,
+        record_date_lte: Optional[str] = None,
+        record_date_gt: Optional[str] = None,
+        record_date_gte: Optional[str] = None,
+        declaration_date: Optional[str] = None,
+        declaration_date_lt: Optional[str] = None,
+        declaration_date_lte: Optional[str] = None,
+        declaration_date_gt: Optional[str] = None,
+        declaration_date_gte: Optional[str] = None,
+        pay_date: Optional[str] = None,
+        pay_date_lt: Optional[str] = None,
+        pay_date_lte: Optional[str] = None,
+        pay_date_gt: Optional[str] = None,
+        pay_date_gte: Optional[str] = None,
+        frequency: Optional[Frequency] = None,
+        cash_amount: Optional[float] = None,
+        cash_amount_lt: Optional[float] = None,
+        cash_amount_lte: Optional[float] = None,
+        cash_amount_gt: Optional[float] = None,
+        cash_amount_gte: Optional[float] = None,
+        dividend_type: Optional[DividendType] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Iterator[Dividend], HTTPResponse]:
+        """
+        Get a list of historical cash dividends, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount.
+
+        :param ticker: Return the dividends that contain this ticker.
+        :param ticker_lt: Ticker less than
+        :param ticker_lte: Ticker less than or equal to
+        :param ticker_gt: Ticker greater than
+        :param ticker_gte: Ticker greater than or equal to
+        :param ex_dividend_date: Query by ex-dividend date with the format YYYY-MM-DD.
+        :param ex_dividend_date_lt: Ex-dividend date less than
+        :param ex_dividend_date_lte: Ex-dividend date less than or equal to
+        :param ex_dividend_date_gt: Ex-dividend date greater than
+        :param ex_dividend_date_gte: Ex-dividend date greater than or equal to
+        :param record_date: Query by record date with the format YYYY-MM-DD.
+        :param record_date_lt: Record date less than
+        :param record_date_lte: Record date less than or equal to
+        :param record_date_gt: Record date greater than
+        :param record_date_gte: Record date greater than or equal to
+        :param declaration_date: Query by declaration date with the format YYYY-MM-DD.
+        :param declaration_date_lt: Declaration date less than
+        :param declaration_date_lte: Declaration date less than or equal to
+        :param declaration_date_gt: Declaration date greater than
+        :param declaration_date_gte: Declaration date greater than or equal to
+        :param pay_date: Query by pay date with the format YYYY-MM-DD.
+        :param pay_date_lt: Pay date less than
+        :param pay_date_lte: Pay date less than or equal to
+        :param pay_date_gt: Pay date greater than
+        :param pay_date_gte: Pay date greater than or equal to
+        :param frequency: Query by the number of times per year the dividend is paid out. Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), and 12 (monthly).
+        :param cash_amount: Query by the cash amount of the dividend.
+        :param dividend_type: Query by the type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD. Special Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of dividends
+        """
+        url = "/v3/reference/dividends"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_dividends, locals()),
+            raw=raw,
+            deserializer=Dividend.from_dict,
         )
