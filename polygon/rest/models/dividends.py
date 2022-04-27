@@ -8,6 +8,13 @@ class DividendType(Enum):
     LT = "LT"
     ST = "ST"
 
+class Frequency(Enum):
+    OneTime = 0
+    Anually = 1
+    BiAnually = 2
+    Quarterly = 4
+    Monthly = 12
+
 @dataclass
 class Dividend:
     "Dividend contains data for a historical cash dividend, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount."
@@ -15,7 +22,7 @@ class Dividend:
     declaration_date: Optional[str] = None
     dividend_type: Optional[DividendType] = None
     ex_dividend_date: Optional[str] = None
-    frequency: Optional[int] = None
+    frequency: Optional[Frequency] = None
     pay_date: Optional[str] = None
     record_date: Optional[str] = None
     ticker: Optional[str] = None
