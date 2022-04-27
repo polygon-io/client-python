@@ -7,6 +7,7 @@ from .reference import (
     SplitsClient,
     DividendsClient,
     ConditionsClient,
+    ExchangesClient
 )
 
 
@@ -19,5 +20,6 @@ class RESTClient(
     SplitsClient,
     DividendsClient,
     ConditionsClient,
+    ExchangesClient,
 ):
     pass
