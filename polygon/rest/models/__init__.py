@@ -49,3 +49,8 @@ class DataType(Enum):
     DataTrade = "trade"
     DataBBO = "bbo"
     DataNBBO = "nbbo"
+
+class SIP(Enum):
+    CTA = "CTA"
+    UTP = "UTP"
+    OPRA = "OPRA"
