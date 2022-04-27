@@ -1,5 +1,5 @@
-from typing import Optional, List
-from . import AssetClass
+from typing import Optional
+from . import AssetClass, DataType
 from dataclasses import dataclass
 
 
@@ -15,7 +15,7 @@ class Condition:
     "Condition contains data for a condition that Polygon.io uses."
     abbreviation: Optional[str] = None
     asset_class: Optional[AssetClass] = None
-    data_types: Optional[List[str]] = None
+    data_types: Optional[DataType] = None
     description: Optional[str] = None
     exchange: Optional[int] = None
     id: Optional[int] = None
