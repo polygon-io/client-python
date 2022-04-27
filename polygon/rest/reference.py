@@ -170,8 +170,8 @@ class TickersClient(BaseClient):
 
     def get_ticker_types(
         self,
-        asset_class: Optional[AssetClass] = None,
-        locale: Optional[Locale] = None,
+        asset_class: Optional[Union[str, AssetClass]] = None,
+        locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[TickerTypes, HTTPResponse]:
@@ -269,13 +269,13 @@ class DividendsClient(BaseClient):
         pay_date_lte: Optional[str] = None,
         pay_date_gt: Optional[str] = None,
         pay_date_gte: Optional[str] = None,
-        frequency: Optional[Frequency] = None,
+        frequency: Optional[Union[int, Frequency]] = None,
         cash_amount: Optional[float] = None,
         cash_amount_lt: Optional[float] = None,
         cash_amount_lte: Optional[float] = None,
         cash_amount_gt: Optional[float] = None,
         cash_amount_gte: Optional[float] = None,
-        dividend_type: Optional[DividendType] = None,
+        dividend_type: Optional[Union[str, DividendType]] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
