@@ -18,6 +18,7 @@ from .models import (
     Condition,
     DataType,
     SIP,
+    Exchange
 )
 from urllib3 import HTTPResponse
 
@@ -177,6 +178,7 @@ class TickersClient(BaseClient):
     ) -> Union[TickerTypes, HTTPResponse]:
         """
         List all ticker types that Polygon.io has.
+
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
         :param params: Any additional query params
@@ -365,3 +367,27 @@ class ConditionsClient(BaseClient):
             raw=raw,
             deserializer=Condition.from_dict,
         )
+
+class ExchangesClient(BaseClient):
+    def get_exchanges(
+        self, 
+        asset_class: Optional[Union[str, AssetClass]] = None,
+        locale: Optional[Union[str, Locale]] = None,
+        params: Optional[Dict[str, Any]] = None, 
+        raw: bool = False
+    ) -> Union[Exchange, HTTPResponse]:
+        """
+        List all exchanges that Polygon.io knows about.
+
+        :param asset_class: Filter by asset class.
+        :param locale: Filter by locale.
+        :param params: Any additional query params
+        :param raw: Return HTTPResponse object instead of results object
+        :return: List of quotes
+        """
+        url = "/v3/reference/exchanges"
+
+        return self._get(
+            path=url, params=params, deserializer=Exchange.from_dict, raw=raw
+        )
+
