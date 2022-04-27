@@ -12,7 +12,6 @@ class Sort(Enum):
     ASC = "asc"
     DESC = "desc"
 
-
 class Order(Enum):
     ASC = "asc"
     DESC = "desc"
@@ -25,7 +24,6 @@ class Market(Enum):
     STOCKS = "stocks"
     CRYPTO = "crypto"
     FX = "fx"
-
 
 class AssetClass(Enum):
     STOCKS = "stocks"
