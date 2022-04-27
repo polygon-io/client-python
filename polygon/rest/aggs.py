@@ -3,6 +3,7 @@ from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from .models import Agg, GroupedDailyAgg, DailyOpenCloseAgg, PreviousCloseAgg, Sort
 from urllib3 import HTTPResponse
+from datetime import datetime
 
 # https://polygon.io/docs/stocks
 class AggsClient(BaseClient):
@@ -12,8 +13,8 @@ class AggsClient(BaseClient):
         multiplier: int,
         timespan: str,
         # "from" is a keyword in python https://www.w3schools.com/python/python_ref_keywords.asp
-        from_: str,
-        to: str,
+        from_: Union[str, int, datetime],
+        to: Union[str, int, datetime],
         adjusted: Optional[bool] = None,
         sort: Optional[Union[str, Sort]] = None,
         limit: Optional[int] = None,
@@ -25,8 +26,8 @@ class AggsClient(BaseClient):
         :param ticker: The ticker symbol.
         :param multiplier: The size of the timespan multiplier.
         :param timespan: The size of the time window.
-        :param _from: The start of the aggregate time window.
-        :param to: The end of the aggregate time window.
+        :param _from: The start of the aggregate time window as YYYY-MM-DD, Unix MS Timestamps, or a datetime.
+        :param to: The end of the aggregate time window as YYYY-MM-DD, Unix MS Timestamps, or a datetime.
         :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
         :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
         :param limit: Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
@@ -34,6 +35,11 @@ class AggsClient(BaseClient):
         :param raw: Return raw object instead of results object
         :return: List of aggregates
         """
+        if isinstance(from_, datetime):
+            from_ = int(from_.timestamp() * 1000)
+
+        if isinstance(to, datetime):
+            to = int(to.timestamp() * 1000)
         url = f"/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
 
         return self._get(

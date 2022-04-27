@@ -1,6 +1,6 @@
 from polygon import RESTClient
 import unittest
-import httpretty
+import httpretty  # type: ignore
 
 mocks = [
     (
@@ -21,8 +21,10 @@ mocks = [
     )
 ]
 
+
 class BaseTest(unittest.TestCase):
     setup = False
+
     def setUp(self):
         if self.setup:
             return
@@ -31,4 +33,3 @@ class BaseTest(unittest.TestCase):
         for m in mocks:
             httpretty.register_uri(httpretty.GET, c.BASE + m[0], m[1])
         self.setup = True
-

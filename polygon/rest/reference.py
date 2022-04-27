@@ -1,14 +1,27 @@
+from polygon.rest.models.dividends import DividendType
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, TickerTypes, Sort, Order, AssetClass, Locale
+from .models import (
+    MarketHoliday,
+    MarketStatus,
+    Ticker,
+    TickerDetails,
+    TickerNews,
+    TickerTypes,
+    Sort,
+    Order,
+    AssetClass,
+    Locale,
+    Split,
+    Dividend,
+    Frequency,
+)
 from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
 class MarketsClient(BaseClient):
     def list_market_holidays(
-        self,
-        params: Optional[Dict[str, Any]] = None,
-        raw: bool = False
+        self, params: Optional[Dict[str, Any]] = None, raw: bool = False
     ) -> Union[List[MarketHoliday], HTTPResponse]:
         """
         Get upcoming market holidays and their open/close times.
@@ -16,16 +29,15 @@ class MarketsClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
         :return: List of quotes
-        :rtype: List[Quote]
         """
         url = "/v1/marketstatus/upcoming"
 
-        return self._get(path=url, params=params, deserializer=MarketHoliday.from_dict, raw=raw)
+        return self._get(
+            path=url, params=params, deserializer=MarketHoliday.from_dict, raw=raw
+        )
 
     def get_market_status(
-        self,
-        params: Optional[Dict[str, Any]] = None,
-        raw: bool = False
+        self, params: Optional[Dict[str, Any]] = None, raw: bool = False
     ) -> Union[MarketStatus, HTTPResponse]:
         """
         Get the current trading status of the exchanges and overall financial markets.
@@ -33,11 +45,13 @@ class MarketsClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
         :return: List of quotes
-        :rtype: List[Quote]
         """
         url = "/v1/marketstatus/now"
 
-        return self._get(path=url, params=params, deserializer=MarketStatus.from_dict, raw=raw)    
+        return self._get(
+            path=url, params=params, deserializer=MarketStatus.from_dict, raw=raw
+        )
+
 
 class TickersClient(BaseClient):
     def list_tickers(
@@ -63,9 +77,8 @@ class TickersClient(BaseClient):
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
         Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
-
         :param ticker: Specify a ticker symbol. Defaults to empty string which queries all tickers.
-        :param ticker_lt: Timestamp less than
+        :param ticker_lt: Ticker less than
         :param ticker_lte: Ticker less than or equal to
         :param ticker_gt: Ticker greater than
         :param ticker_gte: Ticker greater than or equal to
@@ -83,7 +96,6 @@ class TickersClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: List of tickers
-        :rtype: List[Ticker]
         """
         url = "/v3/reference/tickers"
 
@@ -103,17 +115,17 @@ class TickersClient(BaseClient):
     ) -> Union[TickerDetails, HTTPResponse]:
         """
         Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.
-
         :param ticker: The ticker symbol of the asset.
         :param date: Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Ticker Details V3
-        :rtype: TickerDetail
         """
         url = f"/v3/reference/tickers/{ticker}"
 
-        return self._get(path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw) 
+        return self._get(
+            path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw
+        )
 
     def get_ticker_news(
         self,
@@ -132,7 +144,6 @@ class TickersClient(BaseClient):
     ) -> Union[TickerDetails, HTTPResponse]:
         """
         Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
-
         :param ticker: Return results that contain this ticker.
         :param published_utc: Return results published on, before, or after this date.
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
@@ -141,11 +152,12 @@ class TickersClient(BaseClient):
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Ticker News
-        :rtype: TickerNews
         """
         url = "/v2/reference/news"
 
-        return self._get(path=url, params=params, deserializer=TickerNews.from_dict, raw=raw) 
+        return self._get(
+            path=url, params=params, deserializer=TickerNews.from_dict, raw=raw
+        )
 
     def get_ticker_types(
         self,
@@ -156,14 +168,154 @@ class TickersClient(BaseClient):
     ) -> Union[TickerTypes, HTTPResponse]:
         """
         List all ticker types that Polygon.io has.
-
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Ticker Types
-        :rtype: TickerTypes
         """
         url = "/v3/reference/tickers/types"
 
-        return self._get(path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw)
+        return self._get(
+            path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw
+        )
+
+
+class SplitsClient(BaseClient):
+    def list_splits(
+        self,
+        ticker: Optional[str] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        execution_date: Optional[str] = None,
+        execution_date_lt: Optional[str] = None,
+        execution_date_lte: Optional[str] = None,
+        execution_date_gt: Optional[str] = None,
+        execution_date_gte: Optional[str] = None,
+        reverse_split: Optional[bool] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Iterator[Split], HTTPResponse]:
+        """
+        Get a list of historical stock splits, including the ticker symbol, the execution date, and the factors of the split ratio.
+
+        :param ticker: Return the stock splits that contain this ticker.
+        :param ticker_lt: Ticker less than
+        :param ticker_lte: Ticker less than or equal to
+        :param ticker_gt: Ticker greater than
+        :param ticker_gte: Ticker greater than or equal to
+        :param execution_date: Query by execution date with the format YYYY-MM-DD.
+        :param execution_date_lt: Execution date less than
+        :param execution_date_lte: Execution date less than or equal to
+        :param execution_date_gt: Execution date greater than
+        :param execution_date_gte: Execution date greater than or equal to
+        :param reverse_split: Query for reverse stock splits. A split ratio where split_from is greater than split_to represents a reverse split. By default this filter is not used.
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of splits
+        """
+        url = "/v3/reference/splits"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_splits, locals()),
+            raw=raw,
+            deserializer=Split.from_dict,
+        )
+
+
+class DividendsClient(BaseClient):
+    def list_dividends(
+        self,
+        ticker: Optional[str] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        ex_dividend_date: Optional[str] = None,
+        ex_dividend_date_lt: Optional[str] = None,
+        ex_dividend_date_lte: Optional[str] = None,
+        ex_dividend_date_gt: Optional[str] = None,
+        ex_dividend_date_gte: Optional[str] = None,
+        record_date: Optional[str] = None,
+        record_date_lt: Optional[str] = None,
+        record_date_lte: Optional[str] = None,
+        record_date_gt: Optional[str] = None,
+        record_date_gte: Optional[str] = None,
+        declaration_date: Optional[str] = None,
+        declaration_date_lt: Optional[str] = None,
+        declaration_date_lte: Optional[str] = None,
+        declaration_date_gt: Optional[str] = None,
+        declaration_date_gte: Optional[str] = None,
+        pay_date: Optional[str] = None,
+        pay_date_lt: Optional[str] = None,
+        pay_date_lte: Optional[str] = None,
+        pay_date_gt: Optional[str] = None,
+        pay_date_gte: Optional[str] = None,
+        frequency: Optional[Frequency] = None,
+        cash_amount: Optional[float] = None,
+        cash_amount_lt: Optional[float] = None,
+        cash_amount_lte: Optional[float] = None,
+        cash_amount_gt: Optional[float] = None,
+        cash_amount_gte: Optional[float] = None,
+        dividend_type: Optional[DividendType] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Iterator[Dividend], HTTPResponse]:
+        """
+        Get a list of historical cash dividends, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount.
+
+        :param ticker: Return the dividends that contain this ticker.
+        :param ticker_lt: Ticker less than
+        :param ticker_lte: Ticker less than or equal to
+        :param ticker_gt: Ticker greater than
+        :param ticker_gte: Ticker greater than or equal to
+        :param ex_dividend_date: Query by ex-dividend date with the format YYYY-MM-DD.
+        :param ex_dividend_date_lt: Ex-dividend date less than
+        :param ex_dividend_date_lte: Ex-dividend date less than or equal to
+        :param ex_dividend_date_gt: Ex-dividend date greater than
+        :param ex_dividend_date_gte: Ex-dividend date greater than or equal to
+        :param record_date: Query by record date with the format YYYY-MM-DD.
+        :param record_date_lt: Record date less than
+        :param record_date_lte: Record date less than or equal to
+        :param record_date_gt: Record date greater than
+        :param record_date_gte: Record date greater than or equal to
+        :param declaration_date: Query by declaration date with the format YYYY-MM-DD.
+        :param declaration_date_lt: Declaration date less than
+        :param declaration_date_lte: Declaration date less than or equal to
+        :param declaration_date_gt: Declaration date greater than
+        :param declaration_date_gte: Declaration date greater than or equal to
+        :param pay_date: Query by pay date with the format YYYY-MM-DD.
+        :param pay_date_lt: Pay date less than
+        :param pay_date_lte: Pay date less than or equal to
+        :param pay_date_gt: Pay date greater than
+        :param pay_date_gte: Pay date greater than or equal to
+        :param frequency: Query by the number of times per year the dividend is paid out. Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), and 12 (monthly).
+        :param cash_amount: Query by the cash amount of the dividend.
+        :param dividend_type: Query by the type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD. Special Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of dividends
+        """
+        url = "/v3/reference/dividends"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_dividends, locals()),
+            raw=raw,
+            deserializer=Dividend.from_dict,
+        )

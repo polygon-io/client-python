@@ -102,4 +102,3 @@ class PreviousCloseAgg:
             d.get('v', None),
             d.get('vw', None),
         )
-
