@@ -5,6 +5,7 @@ from .markets import *
 from .tickers import *
 from .splits import *
 from .dividends import *
+from .conditions import *
 
 from enum import Enum
 
@@ -43,3 +44,8 @@ class Frequency(Enum):
     BiAnually = 2
     Quarterly = 4
     Monthly = 12
+
+class DataType(Enum):
+    DataTrade = "trade"
+    DataBBO = "bbo"
+    DataNBBO = "nbbo"
