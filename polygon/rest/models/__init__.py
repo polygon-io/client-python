@@ -6,6 +6,7 @@ from .tickers import *
 from .splits import *
 from .dividends import *
 from .conditions import *
+from .exchanges import *
 
 from enum import Enum
 
@@ -63,3 +64,8 @@ class SIP(Enum):
     CTA = "CTA"
     UTP = "UTP"
     OPRA = "OPRA"
+
+class ExchangeType(Enum):
+    exchange = "exchange"
+    TRF = "TRF"
+    SIP = "SIP"
