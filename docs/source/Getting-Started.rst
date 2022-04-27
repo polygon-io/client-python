@@ -31,7 +31,7 @@ For non-paginated endpoints call :code:`get_*`.
   aggs = client.get_aggs("AAPL", 1, "day", "2022-04-01", "2022-04-04")
   print(aggs)
 
-For paginated endpoints call `list_*` and use the provided iterator.
+For paginated endpoints call :code:`list_*` and use the provided iterator.
 
 .. code-block:: python
 
