@@ -127,7 +127,7 @@ class TickersClient(BaseClient):
             path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw
         )
 
-    def get_ticker_news(
+    def list_ticker_news(
         self,
         ticker: Optional[str] = None,
         ticker_lt: Optional[str] = None,
@@ -141,7 +141,7 @@ class TickersClient(BaseClient):
         published_utc_gte: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[TickerDetails, HTTPResponse]:
+    ) -> Union[Iterator[TickerNews], HTTPResponse]:
         """
         Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
         :param ticker: Return results that contain this ticker.
@@ -155,8 +155,11 @@ class TickersClient(BaseClient):
         """
         url = "/v2/reference/news"
 
-        return self._get(
-            path=url, params=params, deserializer=TickerNews.from_dict, raw=raw
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_ticker_news, locals()),
+            raw=raw,
+            deserializer=TickerNews.from_dict,
         )
 
     def get_ticker_types(
