@@ -1,6 +1,21 @@
 from typing import Optional, List
-from models import Locale, Market, AssetClass, Locale
+from enum import Enum
 from dataclasses import dataclass
+
+class Locale(Enum):
+    US = "us"
+    GLOBAL = "global"
+
+class Market(Enum):
+    STOCKS = "stocks"
+    CRYPTO = "crypto"
+    FX = "fx"
+
+class AssetClass(Enum):
+    STOCKS = "stocks"
+    OPTIONS = "options"
+    CRYPTO = "crypto"
+    FX = "fx"
 
 @dataclass
 class Address:
