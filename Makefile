@@ -22,7 +22,7 @@ help:
 
 ## Check code style
 style:
-	poetry run black polygon tests
+	poetry run black $(if $(CI),--check,) polygon tests
 
 ## Check static types
 static:
