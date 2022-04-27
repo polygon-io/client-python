@@ -329,6 +329,7 @@ class DividendsClient(BaseClient):
             deserializer=Dividend.from_dict,
         )
 
+
 class ConditionsClient(BaseClient):
     def list_conditions(
         self,

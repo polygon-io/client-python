@@ -1,16 +1,19 @@
 from typing import Optional
 from dataclasses import dataclass
 
+
 @dataclass
 class Currencies:
     crypto: Optional[str] = None
     fx: Optional[str] = None
+
 
 @dataclass
 class Exchanges:
     nasdaq: Optional[str] = None
     nyse: Optional[str] = None
     otc: Optional[str] = None
+
 
 @dataclass
 class MarketHoliday:

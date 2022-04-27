@@ -9,22 +9,27 @@ from .conditions import *
 
 from enum import Enum
 
+
 class Sort(Enum):
     ASC = "asc"
     DESC = "desc"
+
 
 class Order(Enum):
     ASC = "asc"
     DESC = "desc"
 
+
 class Locale(Enum):
     US = "us"
     GLOBAL = "global"
+
 
 class Market(Enum):
     STOCKS = "stocks"
     CRYPTO = "crypto"
     FX = "fx"
+
 
 class AssetClass(Enum):
     STOCKS = "stocks"
@@ -32,11 +37,13 @@ class AssetClass(Enum):
     CRYPTO = "crypto"
     FX = "fx"
 
+
 class DividendType(Enum):
     CD = "CD"
     SC = "SC"
     LT = "LT"
     ST = "ST"
+
 
 class Frequency(Enum):
     OneTime = 0
@@ -45,10 +52,12 @@ class Frequency(Enum):
     Quarterly = 4
     Monthly = 12
 
+
 class DataType(Enum):
     DataTrade = "trade"
     DataBBO = "bbo"
     DataNBBO = "nbbo"
+
 
 class SIP(Enum):
     CTA = "CTA"

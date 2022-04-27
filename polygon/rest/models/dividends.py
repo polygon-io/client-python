@@ -2,6 +2,7 @@ from typing import Optional
 from . import DividendType, Frequency
 from dataclasses import dataclass
 
+
 @dataclass
 class Dividend:
     "Dividend contains data for a historical cash dividend, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount."

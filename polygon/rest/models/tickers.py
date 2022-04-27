@@ -2,6 +2,7 @@ from typing import Optional, List
 from . import Locale, Market, AssetClass
 from dataclasses import dataclass
 
+
 @dataclass
 class Address:
     address1: Optional[str] = None
