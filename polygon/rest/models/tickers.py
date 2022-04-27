@@ -1,6 +1,24 @@
-from typing import Optional, Dict, List
+from typing import Optional, List
 from models import Locale, Market, AssetClass, Locale
 from dataclasses import dataclass
+
+@dataclass
+class Address:
+    address1: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+
+@dataclass
+class Branding:
+    icon_url: Optional[str] = None
+    logo_url: Optional[str] = None
+
+@dataclass
+class Publisher:
+    favicon_url: Optional[str] = None
+    homepage_url: Optional[str] = None
+    logo_url: Optional[str] = None
+    name: Optional[str] = None
 
 
 @dataclass
@@ -28,8 +46,8 @@ class Ticker:
 class TickerDetails:
     "TickerDetails contains data for a specified ticker symbol."
     active: Optional[bool] = None
-    address: Optional[Dict[str,str]] = None
-    branding: Optional[Dict[str,str]] = None
+    address: Optional[Address] = None
+    branding: Optional[Branding] = None
     cik: Optional[str] = None
     composite_figi: Optional[str] = None
     currency_name: Optional[str] = None
@@ -67,17 +85,13 @@ class TickerNews:
     image_url: Optional[str] = None
     keywords: Optional[List[str]] = None
     published_utc: Optional[str] = None
-    publisher: Optional[Dict[str,str]] = None
+    publisher: Optional[Publisher] = None
     tickers: Optional[List[str]] = None
     title: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
         return TickerNews(**d)
-
-# @dataclass
-# class Publisher:
-    
 
 @dataclass
 class TickerTypes:
