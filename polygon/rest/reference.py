@@ -14,7 +14,7 @@ from .models import (
     Locale,
     Split,
     Dividend,
-    Frequency
+    Frequency,
 )
 from urllib3 import HTTPResponse
 
@@ -230,6 +230,7 @@ class SplitsClient(BaseClient):
             raw=raw,
             deserializer=Split.from_dict,
         )
+
 
 class DividendsClient(BaseClient):
     def list_dividends(

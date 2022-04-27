@@ -5,6 +5,12 @@ from .reference import MarketsClient, TickersClient, SplitsClient, DividendsClie
 
 
 class RESTClient(
-    AggsClient, TradesClient, QuotesClient, MarketsClient, TickersClient, SplitsClient, DividendsClient
+    AggsClient,
+    TradesClient,
+    QuotesClient,
+    MarketsClient,
+    TickersClient,
+    SplitsClient,
+    DividendsClient,
 ):
     pass
