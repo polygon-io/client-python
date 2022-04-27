@@ -15,7 +15,7 @@ HTTP client usage
 
 .. automethod:: polygon.RESTClient.__init__
 
-You can pass your API key via the environment variable :code:`POLYGON_API_KEY` or as the first parameter to the :code:`RESTClient` constructor.
+You can pass your API key via the environment variable :code:`POLYGON_API_KEY` or as the first parameter to the :code:`RESTClient` constructor:
 
 .. code-block:: python
 
@@ -24,31 +24,31 @@ You can pass your API key via the environment variable :code:`POLYGON_API_KEY` o
   client = RESTClient() # POLYGON_API_KEY is used
   client = RESTClient("api_key") # api_key is used
 
-For non-paginated endpoints call :code:`get_*`.
+For non-paginated endpoints call :code:`get_*`:
 
 .. code-block:: python
 
   aggs = client.get_aggs("AAPL", 1, "day", "2022-04-01", "2022-04-04")
   print(aggs)
 
-For paginated endpoints call :code:`list_*` and use the provided iterator.
+For paginated endpoints call :code:`list_*` and use the provided iterator:
 
 .. code-block:: python
 
   trades = []
-  for t in client.list_trades("AAA", timestamp="2022-04-20", limit=5, sort=Sort.ASC):
+  for t in client.list_trades("AAA", timestamp="2022-04-20", limit=5, sort=Sort.ASC)
       trades.append(t)
   print(trades)
 
-For endpoints that have a set of parameters you can use the provided enums.
+For endpoints that have a set of parameters you can use the provided enums:
 
 .. code-block:: python
 
   from polygon.rest.models import Sort
 
-  client.list_trades(..., sort=Sort.ASC):
+  client.list_trades(..., sort=Sort.ASC)
 
-To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response) yourself, pass `raw=True>`_.
+To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response) yourself, pass `raw=True>`_ yourself pass :code:`raw=True`:
 
 .. code-block:: python
 
@@ -90,7 +90,7 @@ To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/re
   #    "count": 2
   #  }'
 
-If it is a paginated :code:`list_*` response it's up to you to handle the "next_url" iteration.
+If it is a paginated :code:`list_*` response it's up to you to handle the "next_url" iteration:
 
 .. code-block:: python
 
