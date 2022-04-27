@@ -110,7 +110,7 @@ class TickerNews:
 
 @dataclass
 class TickerTypes:
-    "TickerTypes contains data ticker types."
+    "TickerTypes contains data for ticker types."
     asset_class: Optional[AssetClass] = None
     code: Optional[str] = None
     description: Optional[str] = None
