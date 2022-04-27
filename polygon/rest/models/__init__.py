@@ -12,6 +12,7 @@ class Sort(Enum):
     ASC = "asc"
     DESC = "desc"
 
+
 class Order(Enum):
     ASC = "asc"
     DESC = "desc"

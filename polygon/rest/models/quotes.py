@@ -23,6 +23,7 @@ class Quote:
     def from_dict(d):
         return Quote(**d)
 
+
 @dataclass
 class LastQuote:
     "LastQuote contains data for the most recent NBBO (Quote) tick for a given stock."
@@ -57,5 +58,5 @@ class LastQuote:
             bid_price=d.get("p", None),
             bid_size=d.get("s", None),
             bid_exchange=d.get("x", None),
-            tape=d.get("z", None)
+            tape=d.get("z", None),
         )

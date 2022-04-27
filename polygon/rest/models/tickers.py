@@ -2,14 +2,17 @@ from typing import Optional, List
 from enum import Enum
 from dataclasses import dataclass
 
+
 class Locale(Enum):
     US = "us"
     GLOBAL = "global"
+
 
 class Market(Enum):
     STOCKS = "stocks"
     CRYPTO = "crypto"
     FX = "fx"
+
 
 class AssetClass(Enum):
     STOCKS = "stocks"
@@ -17,16 +20,19 @@ class AssetClass(Enum):
     CRYPTO = "crypto"
     FX = "fx"
 
+
 @dataclass
 class Address:
     address1: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None
 
+
 @dataclass
 class Branding:
     icon_url: Optional[str] = None
     logo_url: Optional[str] = None
+
 
 @dataclass
 class Publisher:
@@ -56,6 +62,7 @@ class Ticker:
     @staticmethod
     def from_dict(d):
         return Ticker(**d)
+
 
 @dataclass
 class TickerDetails:
@@ -89,6 +96,7 @@ class TickerDetails:
     def from_dict(d):
         return TickerDetails(**d)
 
+
 @dataclass
 class TickerNews:
     "TickerDetails contains data for news articles relating to a stock ticker symbol."
@@ -107,6 +115,7 @@ class TickerNews:
     @staticmethod
     def from_dict(d):
         return TickerNews(**d)
+
 
 @dataclass
 class TickerTypes:

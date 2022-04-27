@@ -1,14 +1,24 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, TickerTypes, Sort, Order, AssetClass, Locale, Split
+from .models import (
+    MarketHoliday,
+    MarketStatus,
+    Ticker,
+    TickerDetails,
+    TickerNews,
+    TickerTypes,
+    Sort,
+    Order,
+    AssetClass,
+    Locale,
+    Split,
+)
 from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
 class MarketsClient(BaseClient):
     def list_market_holidays(
-        self,
-        params: Optional[Dict[str, Any]] = None,
-        raw: bool = False
+        self, params: Optional[Dict[str, Any]] = None, raw: bool = False
     ) -> Union[List[MarketHoliday], HTTPResponse]:
         """
         Get upcoming market holidays and their open/close times.
@@ -19,12 +29,12 @@ class MarketsClient(BaseClient):
         """
         url = "/v1/marketstatus/upcoming"
 
-        return self._get(path=url, params=params, deserializer=MarketHoliday.from_dict, raw=raw)
+        return self._get(
+            path=url, params=params, deserializer=MarketHoliday.from_dict, raw=raw
+        )
 
     def get_market_status(
-        self,
-        params: Optional[Dict[str, Any]] = None,
-        raw: bool = False
+        self, params: Optional[Dict[str, Any]] = None, raw: bool = False
     ) -> Union[MarketStatus, HTTPResponse]:
         """
         Get the current trading status of the exchanges and overall financial markets.
@@ -35,7 +45,10 @@ class MarketsClient(BaseClient):
         """
         url = "/v1/marketstatus/now"
 
-        return self._get(path=url, params=params, deserializer=MarketStatus.from_dict, raw=raw)    
+        return self._get(
+            path=url, params=params, deserializer=MarketStatus.from_dict, raw=raw
+        )
+
 
 class TickersClient(BaseClient):
     def list_tickers(
@@ -109,7 +122,9 @@ class TickersClient(BaseClient):
         """
         url = f"/v3/reference/tickers/{ticker}"
 
-        return self._get(path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw) 
+        return self._get(
+            path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw
+        )
 
     def get_ticker_news(
         self,
@@ -140,7 +155,9 @@ class TickersClient(BaseClient):
         """
         url = "/v2/reference/news"
 
-        return self._get(path=url, params=params, deserializer=TickerNews.from_dict, raw=raw) 
+        return self._get(
+            path=url, params=params, deserializer=TickerNews.from_dict, raw=raw
+        )
 
     def get_ticker_types(
         self,
@@ -160,7 +177,10 @@ class TickersClient(BaseClient):
         """
         url = "/v3/reference/tickers/types"
 
-        return self._get(path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw)
+        return self._get(
+            path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw
+        )
+
 
 class SplitsClient(BaseClient):
     def list_splits(

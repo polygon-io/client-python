@@ -16,6 +16,7 @@ class MarketHoliday:
     def from_dict(d):
         return MarketHoliday(**d)
 
+
 @dataclass
 class MarketStatus:
     "MarketStatus contains data for the current trading status of the exchanges and overall financial markets."
