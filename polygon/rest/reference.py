@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, TickerTypes, Sort, Order, AssetClass, Locale
+from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, TickerTypes, Sort, Order, AssetClass, Locale, Split
 from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
@@ -65,7 +65,7 @@ class TickersClient(BaseClient):
         Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
 
         :param ticker: Specify a ticker symbol. Defaults to empty string which queries all tickers.
-        :param ticker_lt: Timestamp less than
+        :param ticker_lt: Ticker less than
         :param ticker_lte: Ticker less than or equal to
         :param ticker_gt: Ticker greater than
         :param ticker_gte: Ticker greater than or equal to
@@ -167,3 +167,54 @@ class TickersClient(BaseClient):
         url = "/v3/reference/tickers/types"
 
         return self._get(path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw)
+
+class SplitsClient(BaseClient):
+    def list_splits(
+        self,
+        ticker: Optional[str] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        execution_date: Optional[str] = None,
+        execution_lt: Optional[str] = None,
+        execution_lte: Optional[str] = None,
+        execution_gt: Optional[str] = None,
+        execution_gte: Optional[str] = None,
+        reverse_split: Optional[bool] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Iterator[Split], HTTPResponse]:
+        """
+        Get a list of historical stock splits, including the ticker symbol, the execution date, and the factors of the split ratio.
+
+        :param ticker: Return the stock splits that contain this ticker.
+        :param ticker_lt: Ticker less than
+        :param ticker_lte: Ticker less than or equal to
+        :param ticker_gt: Ticker greater than
+        :param ticker_gte: Ticker greater than or equal to
+        :param execution_date: Query by execution date with the format YYYY-MM-DD.
+        :param execution_date_lt: Execution date less than
+        :param execution_date_lte: Execution date less than or equal to
+        :param execution_date_gt: Execution date greater than
+        :param execution_date_gte: Execution date greater than or equal to
+        :param reverse_split: Query for reverse stock splits. A split ratio where split_from is greater than split_to represents a reverse split. By default this filter is not used.
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of tickers
+        :rtype: List[Ticker]
+        """
+        url = "/v3/reference/splits"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_splits, locals()),
+            raw=raw,
+            deserializer=Split.from_dict,
+        )
