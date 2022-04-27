@@ -33,8 +33,7 @@ class TradesClient(BaseClient):
         :param order: Order results based on the sort field
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
-        :return: List of aggregates
-        :rtype: List[Agg]
+        :return: Iterator of trades
         """
         url = f"/v3/trades/{ticker}"
 

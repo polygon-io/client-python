@@ -46,7 +46,7 @@ class AggsClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_aggs, locals()),
-            resultKey="results",
+            result_key="results",
             deserializer=Agg.from_dict,
             raw=raw,
         )

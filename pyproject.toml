@@ -29,6 +29,9 @@ black = "^22.3.0"
 mypy = "^0.942"
 types-urllib3 = "^1.26.13"
 httpretty = "^1.1.4"
+Sphinx = "^4.5.0"
+sphinx-rtd-theme = "^1.0.0"
+sphinx-autodoc-typehints = "^1.18.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

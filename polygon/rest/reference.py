@@ -1,4 +1,3 @@
-from polygon.rest.models.dividends import DividendType
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import (
@@ -14,6 +13,7 @@ from .models import (
     Locale,
     Split,
     Dividend,
+    DividendType,
     Frequency,
 )
 from urllib3 import HTTPResponse
