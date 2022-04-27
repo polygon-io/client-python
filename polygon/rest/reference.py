@@ -18,7 +18,7 @@ from .models import (
     Condition,
     DataType,
     SIP,
-    Exchange
+    Exchange,
 )
 from urllib3 import HTTPResponse
 
@@ -368,13 +368,14 @@ class ConditionsClient(BaseClient):
             deserializer=Condition.from_dict,
         )
 
+
 class ExchangesClient(BaseClient):
     def get_exchanges(
-        self, 
+        self,
         asset_class: Optional[Union[str, AssetClass]] = None,
         locale: Optional[Union[str, Locale]] = None,
-        params: Optional[Dict[str, Any]] = None, 
-        raw: bool = False
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
     ) -> Union[Exchange, HTTPResponse]:
         """
         List all exchanges that Polygon.io knows about.
@@ -390,4 +391,3 @@ class ExchangesClient(BaseClient):
         return self._get(
             path=url, params=params, deserializer=Exchange.from_dict, raw=raw
         )
-

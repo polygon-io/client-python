@@ -65,6 +65,7 @@ class SIP(Enum):
     UTP = "UTP"
     OPRA = "OPRA"
 
+
 class ExchangeType(Enum):
     exchange = "exchange"
     TRF = "TRF"

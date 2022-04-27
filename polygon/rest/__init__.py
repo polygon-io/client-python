@@ -7,7 +7,7 @@ from .reference import (
     SplitsClient,
     DividendsClient,
     ConditionsClient,
-    ExchangesClient
+    ExchangesClient,
 )
 
 
