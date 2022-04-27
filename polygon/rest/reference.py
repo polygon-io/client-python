@@ -77,6 +77,7 @@ class TickersClient(BaseClient):
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
         Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
+
         :param ticker: Specify a ticker symbol. Defaults to empty string which queries all tickers.
         :param ticker_lt: Ticker less than
         :param ticker_lte: Ticker less than or equal to
@@ -115,6 +116,7 @@ class TickersClient(BaseClient):
     ) -> Union[TickerDetails, HTTPResponse]:
         """
         Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.
+
         :param ticker: The ticker symbol of the asset.
         :param date: Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.
         :param params: Any additional query params
@@ -144,6 +146,7 @@ class TickersClient(BaseClient):
     ) -> Union[TickerDetails, HTTPResponse]:
         """
         Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
+
         :param ticker: Return results that contain this ticker.
         :param published_utc: Return results published on, before, or after this date.
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
@@ -168,6 +171,7 @@ class TickersClient(BaseClient):
     ) -> Union[TickerTypes, HTTPResponse]:
         """
         List all ticker types that Polygon.io has.
+
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
         :param params: Any additional query params
