@@ -3,6 +3,7 @@ from .trades import *
 from .quotes import *
 from .markets import *
 from .tickers import *
+from .splits import *
 
 from enum import Enum
 
