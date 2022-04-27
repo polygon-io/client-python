@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, Sort, Order
+from .models import MarketHoliday, MarketStatus, Ticker, TickerDetails, TickerNews, TickerTypes, Sort, Order, AssetClass, Locale
 from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
@@ -146,3 +146,24 @@ class TickersClient(BaseClient):
         url = "/v2/reference/news"
 
         return self._get(path=url, params=params, deserializer=TickerNews.from_dict, raw=raw) 
+
+    def get_ticker_types(
+        self,
+        asset_class: Optional[AssetClass] = None,
+        locale: Optional[Locale] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[TickerTypes, HTTPResponse]:
+        """
+        List all ticker types that Polygon.io has.
+
+        :param asset_class: Filter by asset class.
+        :param locale: Filter by locale.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Ticker Types
+        :rtype: TickerTypes
+        """
+        url = "/v3/reference/tickers/types"
+
+        return self._get(path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw)
