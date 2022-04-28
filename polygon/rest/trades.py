@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, Union, Iterator
-from .models import Trade, Sort, Order
+from .models import Trade, LastTrade, LastTradeCrypto, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -43,4 +43,52 @@ class TradesClient(BaseClient):
             params=self._get_params(self.list_trades, locals()),
             raw=raw,
             deserializer=Trade.from_dict,
+        )
+
+    def get_last_trade(
+        self,
+        ticker: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[LastTrade, HTTPResponse]:
+        """
+        Get the most recent trade for a ticker.
+
+        :param ticker: The ticker symbol of the asset
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Last trade
+        """
+        url = f"/v2/last/trade/{ticker}"
+
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_last_trade, locals()),
+            result_key="results",
+            deserializer=LastTrade.from_dict,
+            raw=raw,
+        )
+
+    def get_last_trade_crypto(
+        self,
+        from_: str,
+        to: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[LastTrade, HTTPResponse]:
+        """
+        Get the most recent trade for a ticker.
+
+        :param ticker: The ticker symbol of the asset
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Last trade
+        """
+        url = f"/v1/last/crypto/{from_}/{to}"
+
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_last_trade_crypto, locals()),
+            deserializer=LastTradeCrypto.from_dict,
+            raw=raw,
         )

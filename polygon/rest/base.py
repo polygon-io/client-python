@@ -67,8 +67,10 @@ class BaseClient:
 
         if result_key:
             obj = obj[result_key]
-        else:
-            # If the result_key does not exist, still need to put the results in a list
+
+        # If obj is not yet a list, need to turn it into a list
+        # This is for the Daily Open/Close and Last Trade endpoints
+        if type(obj) != list:
             obj = [obj]
 
         if deserializer:
