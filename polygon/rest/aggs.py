@@ -124,7 +124,7 @@ class AggsClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_previous_close_agg, locals()),
-            result_key="result_keys",
+            result_key="results",
             deserializer=PreviousCloseAgg.from_dict,
             raw=raw,
         )

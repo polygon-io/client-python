@@ -62,7 +62,7 @@ class BaseClient:
         if result_key:
             obj = obj[result_key]
         else:
-            # If the resultKey does not exist, still need to put the results in a list
+            # If the result_key does not exist, still need to put the results in a list
             obj = [obj]
 
         if deserializer:
