@@ -113,4 +113,4 @@ class TickerTypes:
 
     @staticmethod
     def from_dict(d):
-        return TickerNews(**d)
+        return TickerTypes(**d)
