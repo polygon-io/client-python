@@ -1,9 +1,12 @@
 from polygon import RESTClient
 from polygon.rest.models import Sort
+from datetime import date, datetime
 
 client = RESTClient(verbose=True)
 
-aggs = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
+aggs = client.get_aggs("AAPL", 1, "day", "2005-04-04", "2005-04-04")
+print(aggs)
+aggs = client.get_aggs("AAPL", 1, "day", date(2005, 4, 4), datetime(2005, 4, 4))
 print(aggs)
 
 trades = []
