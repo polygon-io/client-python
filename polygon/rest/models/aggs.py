@@ -9,9 +9,9 @@ class Agg:
     low: float
     close: float
     volume: float
-    vwap: float
-    timestamp: int
-    transactions: int
+    vwap: Optional[float]
+    timestamp: Optional[int]
+    transactions: Optional[int]
 
     @staticmethod
     def from_dict(d):
@@ -36,7 +36,7 @@ class GroupedDailyAgg:
     close: float
     volume: float
     vwap: Optional[float]
-    timestamp: int
+    timestamp: Optional[int]
     transactions: Optional[int]
 
     @staticmethod
@@ -62,7 +62,7 @@ class DailyOpenCloseAgg:
     high: float
     low: float
     open: float
-    pre_market: float
+    pre_market: Optional[float]
     status: Optional[str]
     symbol: str
     volume: float
@@ -90,7 +90,7 @@ class PreviousCloseAgg:
     high: float
     low: float
     open: float
-    timestamp: float
+    timestamp: Optional[float]
     volume: float
     vwap: Optional[float]
 
