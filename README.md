@@ -3,19 +3,15 @@
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
-Python client for the Polygon.io [Stocks API](https://polygon.io)
+Python client for the [Polygon.io API](https://polygon.io).
 
-## Getting Started
-
-For a basic product overview, check out our [setup and use documentation](https://polygon.io/sockets)
-
+## Getting started
 ### Install
-
-Requires python version >= 3.7
 
 `pip install polygon-api-client`
 
-## REST Demos
+Requires python version >= 3.7
+
 ### Getting aggs
 ```python
 from polygon import RESTClient
