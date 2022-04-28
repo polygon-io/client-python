@@ -40,7 +40,7 @@ class BaseClient:
         self,
         path: str,
         params: Optional[dict] = None,
-        resultKey: Optional[str] = None,
+        result_key: Optional[str] = None,
         deserializer=None,
         raw: bool = False,
     ) -> Any:
@@ -59,8 +59,8 @@ class BaseClient:
 
         obj = self._decode(resp)
 
-        if resultKey:
-            obj = obj[resultKey]
+        if result_key:
+            obj = obj[result_key]
 
         if deserializer:
             obj = [deserializer(o) for o in obj]
@@ -86,18 +86,48 @@ class BaseClient:
 
         return params
 
-    def _paginate(self, path: str, params: dict, raw: bool, deserializer):
+    def _paginate_iter(
+        self,
+        path: str,
+        params: dict,
+        raw: bool,
+        deserializer,
+        result_key: str = "results",
+    ):
         while True:
             resp = self._get(
-                path=path, params=params, deserializer=deserializer, raw=True
+                path=path,
+                params=params,
+                deserializer=deserializer,
+                result_key=result_key,
+                raw=True,
             )
-            if raw:
-                return resp
             decoded = self._decode(resp)
-            for t in decoded["results"]:
+            for t in decoded[result_key]:
                 yield deserializer(t)
             if "next_url" in decoded:
                 path = decoded["next_url"].replace(self.BASE, "")
                 params = {}
             else:
                 return
+
+    def _paginate(
+        self,
+        path: str,
+        params: dict,
+        raw: bool,
+        deserializer,
+        result_key: str = "results",
+    ):
+        if raw:
+            return self._get(
+                path=path, params=params, deserializer=deserializer, raw=True
+            )
+
+        return self._paginate_iter(
+            path=path,
+            params=params,
+            deserializer=deserializer,
+            result_key=result_key,
+            raw=True,
+        )
