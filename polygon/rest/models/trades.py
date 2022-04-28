@@ -68,13 +68,7 @@ class Last:
 
     @staticmethod
     def from_dict(d):
-        return Last(
-            d.get("conditions", None),
-            d.get("exchange", None),
-            d.get("price", None),
-            d.get("size", None),
-            d.get("timestamp", None),
-        )
+        return Last(**d)
 
 
 @dataclass
