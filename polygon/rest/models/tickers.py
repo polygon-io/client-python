@@ -60,6 +60,7 @@ class TickerDetails:
     currency_name: Optional[str] = None
     delisted_utc: Optional[str] = None
     description: Optional[str] = None
+    ticker_root: Optional[str] = None
     homepage_url: Optional[str] = None
     list_date: Optional[str] = None
     locale: Optional[Locale] = None
