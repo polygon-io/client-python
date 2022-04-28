@@ -71,7 +71,7 @@ class AggsClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_grouped_daily_aggs, locals()),
-            resultKey="results",
+            result_key="results",
             deserializer=GroupedDailyAgg.from_dict,
             raw=raw,
         )
@@ -124,7 +124,7 @@ class AggsClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_previous_close_agg, locals()),
-            resultKey="results",
+            result_key="result_keys",
             deserializer=PreviousCloseAgg.from_dict,
             raw=raw,
         )

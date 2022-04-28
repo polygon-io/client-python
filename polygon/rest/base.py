@@ -59,8 +59,8 @@ class BaseClient:
 
         obj = self._decode(resp)
 
-        if resultKey:
-            obj = obj[resultKey]
+        if result_key:
+            obj = obj[result_key]
         else:
             # If the resultKey does not exist, still need to put the results in a list
             obj = [obj]
