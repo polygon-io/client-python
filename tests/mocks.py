@@ -43,6 +43,10 @@ mocks = [
         "/v1/marketstatus/upcoming",
         '[{"exchange":"NYSE","name":"Memorial Day","date":"2022-05-30","status":"closed"},{"exchange":"NASDAQ","name":"Memorial Day","date":"2022-05-30","status":"closed"},{"exchange":"NASDAQ","name":"Juneteenth","date":"2022-06-20","status":"closed"},{"exchange":"NYSE","name":"Juneteenth","date":"2022-06-20","status":"closed"},{"exchange":"NYSE","name":"Independence Day","date":"2022-07-04","status":"closed"},{"exchange":"NASDAQ","name":"Independence Day","date":"2022-07-04","status":"closed"},{"exchange":"NYSE","name":"Labor Day","date":"2022-09-05","status":"closed"},{"exchange":"NASDAQ","name":"Labor Day","date":"2022-09-05","status":"closed"},{"exchange":"NYSE","name":"Thanksgiving","date":"2022-11-24","status":"closed"},{"exchange":"NASDAQ","name":"Thanksgiving","date":"2022-11-24","status":"closed"},{"exchange":"NYSE","name":"Thanksgiving","date":"2022-11-25","status":"early-close","open":"2022-11-25T14:30:00.000Z","close":"2022-11-25T18:00:00.000Z"},{"exchange":"NASDAQ","name":"Thanksgiving","date":"2022-11-25","status":"early-close","open":"2022-11-25T14:30:00.000Z","close":"2022-11-25T18:00:00.000Z"},{"exchange":"NYSE","name":"Christmas","date":"2022-12-26","status":"closed"},{"exchange":"NASDAQ","name":"Christmas","date":"2022-12-26","status":"closed"}]',
     ),
+    (
+        "/v1/marketstatus/now",
+        '{"market":"extended-hours","earlyHours":false,"afterHours":true,"serverTime":"2022-04-28T16:48:08-04:00","exchanges":{"nyse":"extended-hours","nasdaq":"extended-hours","otc":"extended-hours"},"currencies":{"fx":"open","crypto":"open"}}',
+    ),
 ]
 
 

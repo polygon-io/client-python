@@ -121,3 +121,21 @@ class MarketsTest(BaseTest):
             ),
         ]
         self.assertEqual(holidays, expected)
+
+    def test_get_market_status(self):
+        status = self.c.get_market_status()
+        expected = [
+            MarketStatus(
+                after_hours=True,
+                currencies={"fx": "open", "crypto": "open"},
+                early_hours=False,
+                exchanges={
+                    "nyse": "extended-hours",
+                    "nasdaq": "extended-hours",
+                    "otc": "extended-hours",
+                },
+                market="extended-hours",
+                server_time="2022-04-28T16:48:08-04:00",
+            )
+        ]
+        self.assertEqual(status, expected)
