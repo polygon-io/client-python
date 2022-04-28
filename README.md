@@ -16,7 +16,7 @@ Requires python version >= 3.7
 ```python
 from polygon import RESTClient
 
-client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key as first parameter.
+client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key.
 aggs = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
 ```
 
@@ -25,7 +25,7 @@ aggs = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
 from polygon import RESTClient
 from polygon.rest.models import Sort
 
-client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key as first parameter.
+client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key.
 
 trades = []
 for t in client.list_trades("AAA", timestamp="2022-04-20", limit=5, sort=Sort.ASC):
@@ -38,6 +38,6 @@ To handle the raw [urllib3 response](https://urllib3.readthedocs.io/en/stable/re
 ```python
 from polygon import RESTClient
 
-client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key as first parameter.
+client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key.
 response = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04", raw=True)
 ```
