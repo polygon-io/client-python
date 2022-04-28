@@ -42,7 +42,7 @@ class Condition:
     legacy: Optional[bool] = None
     name: Optional[str] = None
     sip_mapping: Optional[SipMapping] = None
-    type: Optional[str] = None 
+    type: Optional[str] = None
     update_rules: Optional[UpdateRules] = None
 
     @staticmethod
