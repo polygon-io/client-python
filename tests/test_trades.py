@@ -7,7 +7,7 @@ from polygon.rest.models import (
 )
 
 class TradesTest(BaseTest):
-    def test_last_trade(self):
+    def test_get_last_trade(self):
         last_trade = self.c.get_last_trade("AAPL")
         expected = [
             LastTrade(
@@ -27,7 +27,8 @@ class TradesTest(BaseTest):
           )
         ]
         self.assertEqual(last_trade, expected)
-    def test_last_trade_crypto(self):
+
+    def test_get_last_trade_crypto(self):
       last_trade_crypto = self.c.get_last_trade_crypto("BTC", "USD")
       expected = [
         LastTradeCrypto(
@@ -44,3 +45,39 @@ class TradesTest(BaseTest):
         )
       ]
       self.assertEqual(last_trade_crypto, expected)
+
+    def test_trades(self):
+      trades = [t for t in self.c.list_trades("AAPL")]
+      print(trades)
+      expected = [
+        Trade(
+          conditions=[12,37],
+          correction=1,
+          exchange=11,
+          id="183276",
+          participant_timestamp=1651181822461636600,
+          price=156.43,
+          sequence_number=7179341,
+          sip_timestamp=1651181822461979400,
+          size=10,
+          tape=3,
+          trf_id=3,
+          trf_timestamp=1651181557090806500,
+        ),
+        Trade(
+          conditions=[12,37],
+          correction=1,
+          exchange=12,
+          id="183276",
+          participant_timestamp=1651181822461636600,
+          price=157.43,
+          sequence_number=7179341,
+          sip_timestamp=1651181822461979400,
+          size=10,
+          tape=3,
+          trf_id=3,
+          trf_timestamp=1651181557090806500,
+        )
+      ]
+      self.assertEqual(trades, expected)
+

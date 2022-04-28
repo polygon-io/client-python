@@ -46,6 +46,14 @@ mocks = [
     (
         "/v1/last/crypto/BTC/USD",
         '{"last":{"conditions":[2],"exchange":2,"price":39976.89682331,"size":0.005,"timestamp":1651180409688},"request_id":"d67c9bfe1fa0c29db9177d78b3ab713c","status":"success","symbol":"BTC-USD"}'
+    ),
+    (
+        "/v3/trades/AAPL",
+        '{"results":[{"conditions":[12,37],"correction":1,"exchange":11,"id":"183276","participant_timestamp":1651181822461636600,"price":156.43,"sequence_number":7179341,"sip_timestamp":1651181822461979400,"size":10,"tape":3,"trf_id":3,"trf_timestamp":1651181557090806500}],"status":"OK","request_id":"756f9910624b35a47eb07f21a7a373bb","next_url":"https://api.polygon.io/v3/trades/AAPL?cursor=YXA9NzE4MDc4MyZhcz0mbGltaXQ9MTAmb3JkZXI9ZGVzYyZzb3J0PXRpbWVzdGFtcCZ0aW1lc3RhbXAubHRlPTIwMjItMDQtMjhUMjElM0EzOCUzQTA2LjYwMTQ1MTQ1NVo"}'
+    ),
+    (
+        "/v3/trades/AAPL?cursor=YXA9NzE4MDc4MyZhcz0mbGltaXQ9MTAmb3JkZXI9ZGVzYyZzb3J0PXRpbWVzdGFtcCZ0aW1lc3RhbXAubHRlPTIwMjItMDQtMjhUMjElM0EzOCUzQTA2LjYwMTQ1MTQ1NVo",
+        '{"results":[{"conditions":[12,37],"correction":1,"exchange":12,"id":"183276","participant_timestamp":1651181822461636600,"price":157.43,"sequence_number":7179341,"sip_timestamp":1651181822461979400,"size":10,"tape":3,"trf_id":3,"trf_timestamp":1651181557090806500}],"status":"OK","request_id":"756f9910624b35a47eb07f21a7a373bb"}'
     )
 ]
 
