@@ -23,10 +23,6 @@ from .models import (
 from urllib3 import HTTPResponse
 from datetime import date
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 702e7b62dc13e012e94e47cf2be453300abdeee7
 class MarketsClient(BaseClient):
     def get_market_holidays(
         self, params: Optional[Dict[str, Any]] = None, raw: bool = False
@@ -41,7 +37,7 @@ class MarketsClient(BaseClient):
         url = "/v1/marketstatus/upcoming"
 
         return self._get(
-            path=url, params=params, deserializer=MarketHoliday.from_dict, raw=raw, result_key="results",
+            path=url, params=params, deserializer=MarketHoliday.from_dict, raw=raw, result_key="",
         )
 
     def get_market_status(
