@@ -1,5 +1,6 @@
-[![Build Status](https://drone.polygon.io/api/badges/polygon-io/client-python/status.svg)](https://drone.polygon.io/polygon-io/client-python)
+[![Build Status](https://github.com/polygon-io/client-python/actions/workflows/test/badge.svg)]()
 [![PyPI version](https://badge.fury.io/py/polygon-api-client.svg)](https://badge.fury.io/py/polygon-api-client)
+[![Docs](https://readthedocs.org/projects/polygon-api-client/badge/?version=latest)](https://polygon-api-client.readthedocs.io/en/latest/)
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
@@ -11,105 +12,30 @@ For a basic product overview, check out our [setup and use documentation](https:
 
 ### Install
 
+Requires python version >= 3.7
+
 `pip install polygon-api-client`
 
-`polygon-api-client` supports python version >= 3.6
-
-## Simple WebSocket Demo
-```python
-import time
-
-from polygon import WebSocketClient, STOCKS_CLUSTER
-
-
-def my_custom_process_message(message):
-    print("this is my custom message processing", message)
-
-
-def my_custom_error_handler(ws, error):
-    print("this is my custom error handler", error)
-
-
-def my_custom_close_handler(ws):
-    print("this is my custom close handler")
-
-
-def main():
-    key = 'your api key'
-    my_client = WebSocketClient(STOCKS_CLUSTER, key, my_custom_process_message)
-    my_client.run_async()
-
-    my_client.subscribe("T.MSFT", "T.AAPL", "T.AMD", "T.NVDA")
-    time.sleep(1)
-
-    my_client.close_connection()
-
-
-if __name__ == "__main__":
-    main()
-```
-
-## Simple REST Demo
+## REST Demos
+### Getting aggs
 ```python
 from polygon import RESTClient
 
-
-def main():
-    key = "your api key"
-
-    # RESTClient can be used as a context manager to facilitate closing the underlying http session
-    # https://requests.readthedocs.io/en/master/user/advanced/#session-objects
-    with RESTClient(key) as client:
-        resp = client.stocks_equities_daily_open_close("AAPL", "2021-06-11")
-        print(f"On: {resp.from_} Apple opened at {resp.open} and closed at {resp.close}")
-
-
-if __name__ == '__main__':
-    main()
-
+client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key as first parameter.
+aggs = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
 ```
 
-### Query parameters for REST calls
-
-Every function call under our RESTClient has the `query_params` kwargs. These kwargs are passed along and mapped 1:1
-as query parameters to the underling HTTP call. For more information on the different query parameters please reference
-our [API Docs](https://polygon.io/docs/).
-
-#### Example with query parameters
-
+### Getting trades
 ```python
-import datetime
-
 from polygon import RESTClient
+from polygon.rest.models import Sort
 
+client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key as first parameter.
 
-def ts_to_datetime(ts) -> str:
-    return datetime.datetime.fromtimestamp(ts / 1000.0).strftime('%Y-%m-%d %H:%M')
+trades = []
+for t in client.list_trades("AAA", timestamp="2022-04-20", limit=5, sort=Sort.ASC):
+    trades.append(t)
+```
 
-
-def main():
-    key = "your api key"
-
-    # RESTClient can be used as a context manager to facilitate closing the underlying http session
-    # https://requests.readthedocs.io/en/master/user/advanced/#session-objects
-    with RESTClient(key) as client:
-        from_ = "2021-01-01"
-        to = "2021-02-01"
-        resp = client.stocks_equities_aggregates("AAPL", 1, "minute", from_, to, unadjusted=False)
-
-        print(f"Minute aggregates for {resp.ticker} between {from_} and {to}.")
-
-        for result in resp.results:
-            dt = ts_to_datetime(result["t"])
-            print(f"{dt}\n\tO: {result['o']}\n\tH: {result['h']}\n\tL: {result['l']}\n\tC: {result['c']} ")
-
-
-if __name__ == '__main__':
-    main()
-```  
-
-## Notes about the REST Client
-
-We use swagger as our API spec and we used this swagger to generate most of the code that defines the REST client.
-We made this decision due to the size of our API, many endpoints and object definitions, and to accommodate future changes.
-
+### Getting raw response
+To handle the raw [urllib3 response](https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response) yourself, pass `raw=True`.
