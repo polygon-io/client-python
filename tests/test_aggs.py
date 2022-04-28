@@ -1,17 +1,15 @@
-from polygon import RESTClient
+from mocks import BaseTest
 from polygon.rest.models import (
     Agg,
     GroupedDailyAgg,
     DailyOpenCloseAgg,
     PreviousCloseAgg,
 )
-from mocks import BaseTest
 
 
 class AggsTest(BaseTest):
     def test_get_aggs(self):
-        c = RESTClient("")
-        aggs = c.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
+        aggs = self.c.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
         expected = [
             Agg(
                 open=1.5032,
@@ -37,8 +35,7 @@ class AggsTest(BaseTest):
         self.assertEqual(aggs, expected)
 
     def test_get_grouped_daily_aggs(self):
-        c = RESTClient("")
-        aggs = c.get_grouped_daily_aggs("2005-04-04", True)
+        aggs = self.c.get_grouped_daily_aggs("2005-04-04", True)
         expected = [
             GroupedDailyAgg(
                 ticker="GIK",
@@ -55,8 +52,7 @@ class AggsTest(BaseTest):
         self.assertEqual(aggs, expected)
 
     def test_get_daily_open_close_agg(self):
-        c = RESTClient("")
-        aggs = c.get_daily_open_close_agg("AAPL", "2005-04-01", True)
+        aggs = self.c.get_daily_open_close_agg("AAPL", "2005-04-01", True)
         expected = [
             DailyOpenCloseAgg(
                 after_hours=123,
@@ -74,8 +70,7 @@ class AggsTest(BaseTest):
         self.assertEqual(aggs, expected)
 
     def test_get_previous_close_agg(self):
-        c = RESTClient("")
-        aggs = c.get_previous_close_agg("AAPL")
+        aggs = self.c.get_previous_close_agg("AAPL")
         expected = [
             PreviousCloseAgg(
                 ticker="AAPL",
