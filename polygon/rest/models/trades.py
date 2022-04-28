@@ -57,12 +57,26 @@ class LastTrade:
         )
 
 @dataclass
-class LastTradeCrypto:
+class Last:
     conditions: List[int]
     exchange: int
     price: float
     size: float
     timestamp: int
+
+    @staticmethod
+    def from_dict(d):
+        return Last(
+            d.get("conditions", None),
+            d.get("exchange", None),
+            d.get("price", None),
+            d.get("size", None),
+            d.get("timestamp", None),
+        )
+
+@dataclass
+class LastTradeCrypto:
+    last: Last
     ticker: str
     status: str 
     request_id: str
@@ -70,11 +84,7 @@ class LastTradeCrypto:
     @staticmethod
     def from_dict(d):
         return LastTradeCrypto(
-            d.get("conditions", None),
-            d.get("exchange", None),
-            d.get("price", None),
-            d.get("size", None),
-            d.get("timestamp", None),
+            d.get("last", None),
             d.get("symbol", None),
             d.get("status", None),
             d.get("request_id", None),
