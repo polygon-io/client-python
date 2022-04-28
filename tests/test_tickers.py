@@ -70,7 +70,7 @@ class TickersTest(BaseTest):
                 composite_figi="BBG000B9XRY4",
                 currency_name="usd",
                 delisted_utc=None,
-                description="Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apples total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apples products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apples products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.",
+                description="Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apples total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apples products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apples products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40 of its revenue from the Americas, with the remainder earned internationally.",
                 ticker_root="AAPL",
                 homepage_url="https://www.apple.com",
                 list_date="1980-12-12",
@@ -91,3 +91,106 @@ class TickersTest(BaseTest):
             )
         ]
         self.assertEqual(details, expected)
+
+    def test_list_ticker_news(self):
+        news = [t for t in self.c.list_ticker_news("NFLX")]
+        expected = [
+            TickerNews(
+                amp_url="https://www.marketwatch.com/amp/story/theres-a-big-hole-in-the-feds-theory-of-inflationincomes-are-falling-at-a-record-10-9-rate-11651165705",
+                article_url="https://www.marketwatch.com/story/theres-a-big-hole-in-the-feds-theory-of-inflationincomes-are-falling-at-a-record-10-9-rate-11651165705",
+                author="MarketWatch",
+                description="If inflation is all due to an overly generous federal government giving its people too much money, then our inflation problem is about to go away.",
+                id="JeJEhAVoKaqJ2zF9nzQYMg07UlEeWlis6Dsop33TPQY",
+                image_url="https://images.mktw.net/im-533637/social",
+                keywords=None,
+                published_utc="2022-04-28T17:08:00Z",
+                publisher={
+                    "name": "MarketWatch",
+                    "homepage_url": "https://www.marketwatch.com/",
+                    "logo_url": "https://s3.polygon.io/public/assets/news/logos/marketwatch.svg",
+                    "favicon_url": "https://s3.polygon.io/public/assets/news/favicons/marketwatch.ico",
+                },
+                tickers=["MSFT", "TSN", "NFLX", "AMZN"],
+                title="Theres a big hole in the Feds theory of inflation—incomes are falling at a record 10.9 rate",
+            )
+        ]
+        self.assertEqual(news, expected)
+
+    def test_get_ticker_types(self):
+        types = self.c.get_ticker_types("stocks")
+        expected = [
+            TickerTypes(
+                asset_class="stocks", code="CS", description="Common Stock", locale="us"
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="PFD",
+                description="Preferred Stock",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks", code="WARRANT", description="Warrant", locale="us"
+            ),
+            TickerTypes(
+                asset_class="stocks", code="RIGHT", description="Rights", locale="us"
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="BOND",
+                description="Corporate Bond",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="ETF",
+                description="Exchange Traded Fund",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="ETN",
+                description="Exchange Traded Note",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="SP",
+                description="Structured Product",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="ADRC",
+                description="American Depository Receipt Common",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="ADRW",
+                description="American Depository Receipt Warrants",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="ADRR",
+                description="American Depository Receipt Rights",
+                locale="us",
+            ),
+            TickerTypes(
+                asset_class="stocks", code="FUND", description="Fund", locale="us"
+            ),
+            TickerTypes(
+                asset_class="stocks", code="BASKET", description="Basket", locale="us"
+            ),
+            TickerTypes(
+                asset_class="stocks", code="UNIT", description="Unit", locale="us"
+            ),
+            TickerTypes(
+                asset_class="stocks",
+                code="LT",
+                description="Liquidating Trust",
+                locale="us",
+            ),
+        ]
+
+        self.assertEqual(types, expected)
