@@ -39,6 +39,14 @@ mocks = [
         "/v3/reference/tickers/types",
         '{"results":[{"code":"CS","description":"Common Stock","asset_class":"stocks","locale":"us"},{"code":"PFD","description":"Preferred Stock","asset_class":"stocks","locale":"us"},{"code":"WARRANT","description":"Warrant","asset_class":"stocks","locale":"us"},{"code":"RIGHT","description":"Rights","asset_class":"stocks","locale":"us"},{"code":"BOND","description":"Corporate Bond","asset_class":"stocks","locale":"us"},{"code":"ETF","description":"Exchange Traded Fund","asset_class":"stocks","locale":"us"},{"code":"ETN","description":"Exchange Traded Note","asset_class":"stocks","locale":"us"},{"code":"SP","description":"Structured Product","asset_class":"stocks","locale":"us"},{"code":"ADRC","description":"American Depository Receipt Common","asset_class":"stocks","locale":"us"},{"code":"ADRW","description":"American Depository Receipt Warrants","asset_class":"stocks","locale":"us"},{"code":"ADRR","description":"American Depository Receipt Rights","asset_class":"stocks","locale":"us"},{"code":"FUND","description":"Fund","asset_class":"stocks","locale":"us"},{"code":"BASKET","description":"Basket","asset_class":"stocks","locale":"us"},{"code":"UNIT","description":"Unit","asset_class":"stocks","locale":"us"},{"code":"LT","description":"Liquidating Trust","asset_class":"stocks","locale":"us"}],"status":"OK","request_id":"efbfc7c2304bba6c2f19a2567f568134","count":15}',
     ),
+    (
+        "/v2/last/trade/AAPL",
+        '{"results":{"c":[12,37],"i":"237688","p":166.25,"s":2,"x":4,"r":202,"z":3,"T":"AAPL","t":1651179319310617300,"y":1651179319308000000,"f":1651179319310588400,"q":7084210},"status":"OK","request_id":"d4bafa50e72cf9ed19ac538ae1a3185a"}'
+    ),
+    (
+        "/v1/last/crypto/BTC/USD",
+        '{"last":{"conditions":[2],"exchange":2,"price":39976.89682331,"size":0.005,"timestamp":1651180409688},"request_id":"d67c9bfe1fa0c29db9177d78b3ab713c","status":"success","symbol":"BTC-USD"}'
+    )
 ]
 
 
