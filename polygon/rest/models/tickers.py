@@ -31,6 +31,9 @@ class Ticker:
     cik: Optional[str] = None
     composite_figi: Optional[str] = None
     currency_name: Optional[str] = None
+    currency_symbol: Optional[str] = None
+    base_currency_symbol: Optional[str] = None
+    base_currency_name: Optional[str] = None
     delisted_utc: Optional[str] = None
     last_updated_utc: Optional[str] = None
     locale: Optional[Locale] = None
