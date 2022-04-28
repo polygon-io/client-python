@@ -19,12 +19,21 @@ mocks = [
         "/v2/aggs/ticker/AAPL/prev",
         '{"ticker":"AAPL","queryCount":1,"resultsCount":1,"adjusted":true,"results":[{"T":"AAPL","v":9.5595226e+07,"vw":158.6074,"o":162.25,"c":156.8,"h":162.34,"l":156.72,"t":1651003200000,"n":899965}],"status":"OK","request_id":"5e5378d5ecaf3df794bb52e45d015d2e","count":1}',
     ),
+    (
+        "/v3/reference/tickers",
+        '{"results":[{"ticker":"A","name":"Agilent Technologies Inc.","market":"stocks","locale":"us","primary_exchange":"XNYS","type":"CS","active":true,"currency_name":"usd","cik":"0001090872","composite_figi":"BBG000C2V3D6","share_class_figi":"BBG001SCTQY4","last_updated_utc":"2022-04-27T00:00:00Z"},{"ticker":"AA","name":"Alcoa Corporation","market":"stocks","locale":"us","primary_exchange":"XNYS","type":"CS","active":true,"currency_name":"usd","cik":"0001675149","composite_figi":"BBG00B3T3HD3","share_class_figi":"BBG00B3T3HF1","last_updated_utc":"2022-04-27T00:00:00Z"}],"status":"OK","request_id":"37089bb3b4ef99a796cdc82ff971e447","count":2,"next_url":"https://api.polygon.io/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIyLTA0LTI3JmxpbWl0PTImb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUFBJTdDZjEyMmJjYmY4YWQwNzRmZmJlMTZmNjkxOWQ0ZDc3NjZlMzA3MWNmNmU1Nzg3OGE0OGU1NjQ1YzQyM2U3NzJhOSZzb3J0PXRpY2tlcg"}'
+    ),
+    (
+        "/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIyLTA0LTI3JmxpbWl0PTImb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUFBJTdDZjEyMmJjYmY4YWQwNzRmZmJlMTZmNjkxOWQ0ZDc3NjZlMzA3MWNmNmU1Nzg3OGE0OGU1NjQ1YzQyM2U3NzJhOSZzb3J0PXRpY2tlcg",
+        '{"results":[{"ticker":"AAA","name":"AAF First Priority CLO Bond ETF","market":"stocks","locale":"us","primary_exchange":"ARCX","type":"ETF","active":true,"currency_name":"usd","composite_figi":"BBG00X5FSP48","share_class_figi":"BBG00X5FSPZ4","last_updated_utc":"2022-04-27T00:00:00Z"},{"ticker":"AAAU","name":"Goldman Sachs Physical Gold ETF Shares","market":"stocks","locale":"us","primary_exchange":"BATS","type":"ETF","active":true,"currency_name":"usd","cik":"0001708646","composite_figi":"BBG00LPXX872","share_class_figi":"BBG00LPXX8Z1","last_updated_utc":"2022-04-27T00:00:00Z"}],"status":"OK","request_id":"40d60d83fa0628503b4d13387b7bde2a","count":2}'
+    )
 ]
 
 
 class BaseTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.maxDiff = None
         cls.c = RESTClient("")
         httpretty.enable(verbose=True, allow_net_connect=False)
         for m in mocks:
