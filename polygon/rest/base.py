@@ -69,6 +69,7 @@ class BaseClient:
             obj = obj[result_key]
 
         # If obj is not yet a list, need to turn it into a list
+        # This is for the Daily Open/Close and Last Trade endpoints
         if type(obj) != list:
             obj = [obj]
 
