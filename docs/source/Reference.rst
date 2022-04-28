@@ -4,9 +4,14 @@ Reference
 ===============
 
 ====================
-List market holidays
+Get market holidays
 ====================
-.. automethod:: polygon.RESTClient.list_market_holidays
+.. automethod:: polygon.RESTClient.get_market_holidays
+
+====================
+Get market status
+====================
+.. automethod:: polygon.RESTClient.get_market_status
 
 ====================
 List tickers
@@ -14,12 +19,12 @@ List tickers
 .. automethod:: polygon.RESTClient.list_tickers
 
 ====================
-List ticker details
+Get ticker details
 ====================
 .. automethod:: polygon.RESTClient.get_ticker_details
 
 ====================
-Get ticker news
+List ticker news
 ====================
 .. automethod:: polygon.RESTClient.list_ticker_news
 
@@ -38,3 +43,12 @@ List dividends
 ====================
 .. automethod:: polygon.RESTClient.list_dividends
 
+====================
+List conditions
+====================
+.. automethod:: polygon.RESTClient.list_conditions
+
+====================
+Get exchanges
+====================
+.. automethod:: polygon.RESTClient.get_exchanges

@@ -24,7 +24,7 @@ from urllib3 import HTTPResponse
 
 # https://polygon.io/docs/stocks
 class MarketsClient(BaseClient):
-    def list_market_holidays(
+    def get_market_holidays(
         self, params: Optional[Dict[str, Any]] = None, raw: bool = False
     ) -> Union[List[MarketHoliday], HTTPResponse]:
         """

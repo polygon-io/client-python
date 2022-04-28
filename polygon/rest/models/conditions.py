@@ -42,9 +42,7 @@ class Condition:
     legacy: Optional[bool] = None
     name: Optional[str] = None
     sip_mapping: Optional[SipMapping] = None
-    Type: Optional[
-        str
-    ] = None  # todo: 'type' is a keyword so here I capitalized. Should we capital case all dataclasses?
+    type: Optional[str] = None
     update_rules: Optional[UpdateRules] = None
 
     @staticmethod
