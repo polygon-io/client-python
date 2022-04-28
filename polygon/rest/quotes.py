@@ -2,17 +2,18 @@ from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from .models import Quote, LastQuote, Sort, Order
 from urllib3 import HTTPResponse
+from datetime import datetime, date
 
 # https://polygon.io/docs/stocks
 class QuotesClient(BaseClient):
     def list_quotes(
         self,
         ticker: str,
-        timestamp: Optional[str] = None,
-        timestamp_lt: Optional[str] = None,
-        timestamp_lte: Optional[str] = None,
-        timestamp_gt: Optional[str] = None,
-        timestamp_gte: Optional[str] = None,
+        timestamp: Optional[Union[str, int, datetime, date]] = None,
+        timestamp_lt: Optional[Union[str, int, datetime, date]] = None,
+        timestamp_lte: Optional[Union[str, int, datetime, date]] = None,
+        timestamp_gt: Optional[Union[str, int, datetime, date]] = None,
+        timestamp_gte: Optional[Union[str, int, datetime, date]] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
