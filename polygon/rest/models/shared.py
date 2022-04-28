@@ -37,17 +37,17 @@ class DividendType(Enum):
 
 
 class Frequency(Enum):
-    OneTime = 0
-    Anually = 1
-    BiAnually = 2
-    Quarterly = 4
-    Monthly = 12
+    ONE_TIME = 0
+    ANUALLY = 1
+    BIANUALLY = 2
+    QUARTERLY = 4
+    MONTHLY = 12
 
 
 class DataType(Enum):
-    DataTrade = "trade"
-    DataBBO = "bbo"
-    DataNBBO = "nbbo"
+    DATA_TRADE = "trade"
+    DATA_BBO = "bbo"
+    DATA_NBBO = "nbbo"
 
 
 class SIP(Enum):
@@ -57,6 +57,6 @@ class SIP(Enum):
 
 
 class ExchangeType(Enum):
-    exchange = "exchange"
+    EXCHANGE = "exchange"
     TRF = "TRF"
     SIP = "SIP"
