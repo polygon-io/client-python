@@ -23,13 +23,9 @@ mocks = [
 
 
 class BaseTest(unittest.TestCase):
-    setup = False
-
-    def setUp(self):
-        if self.setup:
-            return
+    @classmethod
+    def setUpClass(cls):
+        cls.c = RESTClient("")
         httpretty.enable(verbose=True, allow_net_connect=False)
-        c = RESTClient("")
         for m in mocks:
-            httpretty.register_uri(httpretty.GET, c.BASE + m[0], m[1])
-        self.setup = True
+            httpretty.register_uri(httpretty.GET, cls.c.BASE + m[0], m[1])
