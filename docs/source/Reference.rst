@@ -6,7 +6,7 @@ Reference
 ====================
 Get market holidays
 ====================
-.. automethod:: polygon.RESTClient.list_market_holidays
+.. automethod:: polygon.RESTClient.get_market_holidays
 
 ====================
 Get market status
