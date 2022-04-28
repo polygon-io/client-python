@@ -1,7 +1,14 @@
 from .aggs import AggsClient
 from .trades import TradesClient
 from .quotes import QuotesClient
-from .reference import MarketsClient, TickersClient, SplitsClient, DividendsClient
+from .reference import (
+    MarketsClient,
+    TickersClient,
+    SplitsClient,
+    DividendsClient,
+    ConditionsClient,
+    ExchangesClient,
+)
 
 
 class RESTClient(
@@ -12,5 +19,7 @@ class RESTClient(
     TickersClient,
     SplitsClient,
     DividendsClient,
+    ConditionsClient,
+    ExchangesClient,
 ):
     pass
