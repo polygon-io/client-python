@@ -33,4 +33,11 @@ for t in client.list_trades("AAA", timestamp="2022-04-20", limit=5, sort=Sort.AS
 ```
 
 ### Getting raw response
-To handle the raw [urllib3 response](https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response) yourself, pass `raw=True`.
+To handle the raw [urllib3 response](https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response) yourself, pass `raw=True`:
+
+```python
+from polygon import RESTClient
+
+client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key as first parameter.
+response = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04", raw=True)
+```
