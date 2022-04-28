@@ -1,4 +1,3 @@
-[![Build Status](https://github.com/polygon-io/client-python/actions/workflows/test/badge.svg)]()
 [![PyPI version](https://badge.fury.io/py/polygon-api-client.svg)](https://badge.fury.io/py/polygon-api-client)
 [![Docs](https://readthedocs.org/projects/polygon-api-client/badge/?version=latest)](https://polygon-api-client.readthedocs.io/en/latest/)
 
