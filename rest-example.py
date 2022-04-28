@@ -1,7 +1,7 @@
 from polygon import RESTClient
 from polygon.rest.models import Sort
 
-client = RESTClient()
+client = RESTClient(verbose=True)
 
 aggs = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04")
 print(aggs)
