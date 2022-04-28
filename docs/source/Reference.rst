@@ -21,7 +21,7 @@ List ticker details
 ====================
 Get ticker news
 ====================
-.. automethod:: polygon.RESTClient.get_ticker_news
+.. automethod:: polygon.RESTClient.list_ticker_news
 
 ====================
 Get ticker types
