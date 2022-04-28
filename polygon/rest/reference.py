@@ -21,6 +21,7 @@ from .models import (
     Exchange,
 )
 from urllib3 import HTTPResponse
+from datetime import date
 
 # https://polygon.io/docs/stocks
 class MarketsClient(BaseClient):
@@ -175,7 +176,7 @@ class TickersClient(BaseClient):
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[TickerTypes, HTTPResponse]:
+    ) -> Union[List[TickerTypes], HTTPResponse]:
         """
         List all ticker types that Polygon.io has.
 
@@ -188,7 +189,11 @@ class TickersClient(BaseClient):
         url = "/v3/reference/tickers/types"
 
         return self._get(
-            path=url, params=params, deserializer=TickerTypes.from_dict, raw=raw
+            path=url,
+            params=params,
+            deserializer=TickerTypes.from_dict,
+            raw=raw,
+            result_key="results",
         )
 
 
@@ -200,11 +205,11 @@ class SplitsClient(BaseClient):
         ticker_lte: Optional[str] = None,
         ticker_gt: Optional[str] = None,
         ticker_gte: Optional[str] = None,
-        execution_date: Optional[str] = None,
-        execution_date_lt: Optional[str] = None,
-        execution_date_lte: Optional[str] = None,
-        execution_date_gt: Optional[str] = None,
-        execution_date_gte: Optional[str] = None,
+        execution_date: Optional[Union[str, date]] = None,
+        execution_date_lt: Optional[Union[str, date]] = None,
+        execution_date_lte: Optional[Union[str, date]] = None,
+        execution_date_gt: Optional[Union[str, date]] = None,
+        execution_date_gte: Optional[Union[str, date]] = None,
         reverse_split: Optional[bool] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
@@ -251,26 +256,26 @@ class DividendsClient(BaseClient):
         ticker_lte: Optional[str] = None,
         ticker_gt: Optional[str] = None,
         ticker_gte: Optional[str] = None,
-        ex_dividend_date: Optional[str] = None,
-        ex_dividend_date_lt: Optional[str] = None,
-        ex_dividend_date_lte: Optional[str] = None,
-        ex_dividend_date_gt: Optional[str] = None,
-        ex_dividend_date_gte: Optional[str] = None,
-        record_date: Optional[str] = None,
-        record_date_lt: Optional[str] = None,
-        record_date_lte: Optional[str] = None,
-        record_date_gt: Optional[str] = None,
-        record_date_gte: Optional[str] = None,
-        declaration_date: Optional[str] = None,
-        declaration_date_lt: Optional[str] = None,
-        declaration_date_lte: Optional[str] = None,
-        declaration_date_gt: Optional[str] = None,
-        declaration_date_gte: Optional[str] = None,
-        pay_date: Optional[str] = None,
-        pay_date_lt: Optional[str] = None,
-        pay_date_lte: Optional[str] = None,
-        pay_date_gt: Optional[str] = None,
-        pay_date_gte: Optional[str] = None,
+        ex_dividend_date: Optional[Union[str, date]] = None,
+        ex_dividend_date_lt: Optional[Union[str, date]] = None,
+        ex_dividend_date_lte: Optional[Union[str, date]] = None,
+        ex_dividend_date_gt: Optional[Union[str, date]] = None,
+        ex_dividend_date_gte: Optional[Union[str, date]] = None,
+        record_date: Optional[Union[str, date]] = None,
+        record_date_lt: Optional[Union[str, date]] = None,
+        record_date_lte: Optional[Union[str, date]] = None,
+        record_date_gt: Optional[Union[str, date]] = None,
+        record_date_gte: Optional[Union[str, date]] = None,
+        declaration_date: Optional[Union[str, date]] = None,
+        declaration_date_lt: Optional[Union[str, date]] = None,
+        declaration_date_lte: Optional[Union[str, date]] = None,
+        declaration_date_gt: Optional[Union[str, date]] = None,
+        declaration_date_gte: Optional[Union[str, date]] = None,
+        pay_date: Optional[Union[str, date]] = None,
+        pay_date_lt: Optional[Union[str, date]] = None,
+        pay_date_lte: Optional[Union[str, date]] = None,
+        pay_date_gt: Optional[Union[str, date]] = None,
+        pay_date_gte: Optional[Union[str, date]] = None,
         frequency: Optional[Union[int, Frequency]] = None,
         cash_amount: Optional[float] = None,
         cash_amount_lt: Optional[float] = None,

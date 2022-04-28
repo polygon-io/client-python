@@ -14,7 +14,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 print('docs path', sys.path[0])
-
+os.environ['POLYGON_API_KEY'] = 'POLYGON_API_KEY'
 
 # -- Project information -----------------------------------------------------
 
