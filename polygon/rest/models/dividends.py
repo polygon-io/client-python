@@ -1,21 +1,6 @@
 from typing import Optional
-from enum import Enum
+from .shared import DividendType, Frequency
 from dataclasses import dataclass
-
-
-class DividendType(Enum):
-    CD = "CD"
-    SC = "SC"
-    LT = "LT"
-    ST = "ST"
-
-
-class Frequency(Enum):
-    OneTime = 0
-    Anually = 1
-    BiAnually = 2
-    Quarterly = 4
-    Monthly = 12
 
 
 @dataclass
