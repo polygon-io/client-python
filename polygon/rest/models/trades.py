@@ -55,3 +55,27 @@ class LastTrade:
             d.get("x", None),
             d.get("z", None),
         )
+
+@dataclass
+class LastTradeCrypto:
+    conditions: List[int]
+    exchange: int
+    price: float
+    size: float
+    timestamp: int
+    ticker: str
+    status: str 
+    request_id: str
+
+    @staticmethod
+    def from_dict(d):
+        return LastTradeCrypto(
+            d.get("conditions", None),
+            d.get("exchange", None),
+            d.get("price", None),
+            d.get("size", None),
+            d.get("timestamp", None),
+            d.get("symbol", None),
+            d.get("status", None),
+            d.get("request_id", None),
+        )
