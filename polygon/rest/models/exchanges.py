@@ -1,5 +1,5 @@
 from typing import Optional
-from . import AssetClass, Locale, ExchangeType
+from .shared import AssetClass, Locale, ExchangeType
 from dataclasses import dataclass
 
 

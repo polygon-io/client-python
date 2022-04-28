@@ -1,5 +1,5 @@
 from typing import Optional
-from . import AssetClass, DataType
+from .shared import AssetClass, DataType
 from dataclasses import dataclass
 
 
