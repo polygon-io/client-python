@@ -15,6 +15,10 @@ from .models import (
     Dividend,
     DividendType,
     Frequency,
+    Condition,
+    DataType,
+    SIP,
+    Exchange,
 )
 from urllib3 import HTTPResponse
 
@@ -129,7 +133,7 @@ class TickersClient(BaseClient):
             path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw
         )
 
-    def get_ticker_news(
+    def list_ticker_news(
         self,
         ticker: Optional[str] = None,
         ticker_lt: Optional[str] = None,
@@ -143,7 +147,7 @@ class TickersClient(BaseClient):
         published_utc_gte: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[TickerDetails, HTTPResponse]:
+    ) -> Union[Iterator[TickerNews], HTTPResponse]:
         """
         Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
 
@@ -158,14 +162,17 @@ class TickersClient(BaseClient):
         """
         url = "/v2/reference/news"
 
-        return self._get(
-            path=url, params=params, deserializer=TickerNews.from_dict, raw=raw
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_ticker_news, locals()),
+            raw=raw,
+            deserializer=TickerNews.from_dict,
         )
 
     def get_ticker_types(
         self,
-        asset_class: Optional[AssetClass] = None,
-        locale: Optional[Locale] = None,
+        asset_class: Optional[Union[str, AssetClass]] = None,
+        locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[TickerTypes, HTTPResponse]:
@@ -264,13 +271,13 @@ class DividendsClient(BaseClient):
         pay_date_lte: Optional[str] = None,
         pay_date_gt: Optional[str] = None,
         pay_date_gte: Optional[str] = None,
-        frequency: Optional[Frequency] = None,
+        frequency: Optional[Union[int, Frequency]] = None,
         cash_amount: Optional[float] = None,
         cash_amount_lt: Optional[float] = None,
         cash_amount_lte: Optional[float] = None,
         cash_amount_gt: Optional[float] = None,
         cash_amount_gte: Optional[float] = None,
-        dividend_type: Optional[DividendType] = None,
+        dividend_type: Optional[Union[str, DividendType]] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
@@ -322,4 +329,65 @@ class DividendsClient(BaseClient):
             params=self._get_params(self.list_dividends, locals()),
             raw=raw,
             deserializer=Dividend.from_dict,
+        )
+
+
+class ConditionsClient(BaseClient):
+    def list_conditions(
+        self,
+        asset_class: Optional[Union[str, AssetClass]] = None,
+        data_type: Optional[Union[str, DataType]] = None,
+        id: Optional[int] = None,
+        sip: Optional[Union[str, SIP]] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Iterator[Condition], HTTPResponse]:
+        """
+        List all conditions that Polygon.io uses.
+
+        :param asset_class: Filter for conditions within a given asset class.
+        :param data_type: Data types that this condition applies to.
+        :param id: Filter for conditions with a given ID.
+        :param sip: Filter by SIP. If the condition contains a mapping for that SIP, the condition will be returned.
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: List of conditions
+        """
+        url = "/v3/reference/conditions"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_conditions, locals()),
+            raw=raw,
+            deserializer=Condition.from_dict,
+        )
+
+
+class ExchangesClient(BaseClient):
+    def get_exchanges(
+        self,
+        asset_class: Optional[Union[str, AssetClass]] = None,
+        locale: Optional[Union[str, Locale]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Exchange, HTTPResponse]:
+        """
+        List all exchanges that Polygon.io knows about.
+
+        :param asset_class: Filter by asset class.
+        :param locale: Filter by locale.
+        :param params: Any additional query params
+        :param raw: Return HTTPResponse object instead of results object
+        :return: List of quotes
+        """
+        url = "/v3/reference/exchanges"
+
+        return self._get(
+            path=url, params=params, deserializer=Exchange.from_dict, raw=raw
         )
