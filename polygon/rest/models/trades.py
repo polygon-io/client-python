@@ -22,6 +22,7 @@ class Trade:
     def from_dict(d):
         return Trade(**d)
 
+
 @dataclass
 class LastTrade:
     ticker: str
@@ -56,6 +57,7 @@ class LastTrade:
             d.get("z", None),
         )
 
+
 @dataclass
 class Last:
     conditions: List[int]
@@ -74,11 +76,12 @@ class Last:
             d.get("timestamp", None),
         )
 
+
 @dataclass
 class LastTradeCrypto:
     last: Last
     ticker: str
-    status: str 
+    status: str
     request_id: str
 
     @staticmethod

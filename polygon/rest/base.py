@@ -155,4 +155,4 @@ class BaseClient:
             deserializer=deserializer,
             result_key=result_key,
             raw=True,
-        )                               
+        )
