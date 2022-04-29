@@ -60,3 +60,14 @@ class ExchangeType(Enum):
     EXCHANGE = "exchange"
     TRF = "TRF"
     SIP = "SIP"
+
+
+class Direction(Enum):
+    GAINERS = "gainers"
+    LOSERS = "losers"
+
+
+class SnapshotMarketType(Enum):
+    STOCKS = "stocks"
+    FOREX = "forex"
+    CRYPTO = "crypto"
