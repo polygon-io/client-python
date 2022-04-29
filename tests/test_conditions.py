@@ -4,7 +4,7 @@ from mocks import BaseTest
 
 class ConditionsTest(BaseTest):
     def test_list_conditions(self):
-        conditions = [c for c in self.c.list_conditions()]
+        conditions = [c for c in self.c.list_conditions("stocks")]
         expected = [
             Condition(
                 abbreviation=None,
