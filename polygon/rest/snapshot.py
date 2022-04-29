@@ -127,7 +127,7 @@ class SnapshotClient(BaseClient):
         :param ticker: The ticker symbol.
         :return: List of Snapshots
         """
-        url = f" /v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
+        url = f"/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_crypto_book, locals()),
