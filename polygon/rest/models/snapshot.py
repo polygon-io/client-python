@@ -102,6 +102,7 @@ class OptionLastQuote:
     def from_dict(d):
         return OptionLastQuote(**d)
 
+
 @dataclass
 class OptionGreeks:
     delta: Optional[float]
