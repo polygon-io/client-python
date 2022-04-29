@@ -47,6 +47,14 @@ mocks = [
         "/v1/marketstatus/now",
         '{"market":"extended-hours","earlyHours":false,"afterHours":true,"serverTime":"2022-04-28T16:48:08-04:00","exchanges":{"nyse":"extended-hours","nasdaq":"extended-hours","otc":"extended-hours"},"currencies":{"fx":"open","crypto":"open"}}',
     ),
+    (
+        "/v3/reference/splits",
+        '{"results":[{"execution_date":"2022-07-18","split_from":1,"split_to":20,"ticker":"GOOGL"},{"execution_date":"2022-07-18","split_from":1,"split_to":20,"ticker":"GOOG"},{"execution_date":"2022-07-01","split_from":1,"split_to":3,"ticker":"CTO"},{"execution_date":"2022-06-29","split_from":1,"split_to":10,"ticker":"SHOP"},{"execution_date":"2022-06-22","split_from":1,"split_to":10,"ticker":"SHOP"},{"execution_date":"2022-06-10","split_from":1,"split_to":4,"ticker":"DXCM"},{"execution_date":"2022-06-06","split_from":1,"split_to":20,"ticker":"AMZN"},{"execution_date":"2022-05-20","split_from":2,"split_to":1,"ticker":"BRW"},{"execution_date":"2022-05-16","split_from":1,"split_to":2,"ticker":"CM"},{"execution_date":"2022-05-02","split_from":3,"split_to":4,"ticker":"CIG.C"}],"status":"OK","request_id":"b52de486daf5491e6b9ebdf5e0bf65bc","next_url":"https://api.polygon.io/v3/reference/splits?cursor=YXA9MjAyMi0wNS0wMiZhcz1DSUcuQyZleGVjdXRpb25fZGF0ZS5sdGU9MjAyMi0wNS0wMiZsaW1pdD0xMCZvcmRlcj1kZXNjJnNvcnQ9ZXhlY3V0aW9uX2RhdGU"}'
+    ),
+    (
+        "v3/reference/splits?cursor=YXA9MjAyMi0wNS0wMiZhcz1DSUcuQyZleGVjdXRpb25fZGF0ZS5sdGU9MjAyMi0wNS0wMiZsaW1pdD0xMCZvcmRlcj1kZXNjJnNvcnQ9ZXhlY3V0aW9uX2RhdGU",
+        '{"results":[{"execution_date":"2022-05-02","split_from":3,"split_to":4,"ticker":"CIG"},{"execution_date":"2022-04-27","split_from":25,"split_to":1,"ticker":"NVIV"},{"execution_date":"2022-04-27","split_from":40,"split_to":1,"ticker":"AGRX"},{"execution_date":"2022-04-25","split_from":150,"split_to":1,"ticker":"TBLT"},{"execution_date":"2022-04-22","split_from":20,"split_to":1,"ticker":"UK"},{"execution_date":"2022-04-19","split_from":50,"split_to":1,"ticker":"DFFN"},{"execution_date":"2022-04-19","split_from":10,"split_to":11,"ticker":"BBDO"},{"execution_date":"2022-04-19","split_from":10,"split_to":11,"ticker":"BBD"},{"execution_date":"2022-04-13","split_from":6,"split_to":1,"ticker":"APLD"},{"execution_date":"2022-04-12","split_from":35,"split_to":1,"ticker":"ZSAN"}],"status":"OK","request_id":"52b7c607dffe9d93423ab8cdfd47ba64"}'
+    )
 ]
 
 
