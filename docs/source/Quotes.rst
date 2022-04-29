@@ -6,7 +6,6 @@ Quotes
 ===========
 List quotes
 ===========
-
 .. automethod:: polygon.RESTClient.list_quotes
 
 ==============
