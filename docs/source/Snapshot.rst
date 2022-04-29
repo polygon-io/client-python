@@ -1,4 +1,4 @@
-.. _trades_header:
+.. _snapshot_header:
 
 Snapshot
 =============
