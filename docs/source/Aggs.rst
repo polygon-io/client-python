@@ -14,7 +14,7 @@ Get grouped daily aggs
 .. automethod:: polygon.RESTClient.get_grouped_daily_aggs
 
 ============================
-Get grouped daily aggs
+Get daily open close agg
 ============================
 .. automethod:: polygon.RESTClient.get_daily_open_close_agg
 
