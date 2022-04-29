@@ -1,4 +1,3 @@
-from polygon import RESTClient
 from polygon.rest.models import (
     Ticker,
     TickerDetails,
