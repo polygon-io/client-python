@@ -35,6 +35,7 @@ class SnapshotClient(BaseClient):
             params=self._get_params(self.get_snapshot_all, locals()),
             deserializer=Snapshot.from_dict,
             raw=raw,
+            result_key="tickers",
         )
 
     def get_snapshot_direction(
