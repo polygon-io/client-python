@@ -31,7 +31,10 @@ class BaseClient:
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
-            num_pools=num_pools, headers={"Authorization": "Bearer " + self.API_KEY}
+            num_pools=num_pools, headers={
+                "Authorization": "Bearer " + self.API_KEY,
+                "User-Agent": "Python client"
+            }
         )
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
