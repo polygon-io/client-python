@@ -1,6 +1,14 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
-from .models import Quote, LastQuote, LastQuoteCurrencyPair, RealTimeCurrencyConversion, Sort, Order
+from .models import (
+    Quote,
+    LastQuote,
+    LastQuote,
+    RealTimeCurrencyConversion,
+    Sort,
+    Order,
+    LastQuoteCurrencyPairLast,
+)
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -59,12 +67,20 @@ class QuotesClient(BaseClient):
         url = f"/v2/last/nbbo/{ticker}"
 
         return self._get(
-            path=url, params=self._get_params(self.get_last_quote, locals()), deserializer=LastQuote.from_dict, raw=raw
+            path=url,
+            params=self._get_params(self.get_last_quote, locals()),
+            result_key="results",
+            deserializer=LastQuote.from_dict,
+            raw=raw,
         )
 
     def get_last_quote_currency_pair(
-        self, from_: str, to: str, params: Optional[Dict[str, Any]] = None, raw: bool = False
-    ) -> Union[LastQuoteCurrencyPair, HTTPResponse]:
+        self,
+        from_: str,
+        to: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[List[LastQuoteCurrencyPairLast], HTTPResponse]:
         """
         Get the last quote tick for a forex currency pair.
 
@@ -77,11 +93,21 @@ class QuotesClient(BaseClient):
         url = f"/v1/last_quote/currencies/{from_}/{to}"
 
         return self._get(
-            path=url, params=self._get_params(self.get_last_quote_currency_pair, locals()), deserializer=LastQuoteCurrencyPair.from_dict, raw=raw
+            path=url,
+            params=self._get_params(self.get_last_quote_currency_pair, locals()),
+            result_key="last",
+            deserializer=LastQuoteCurrencyPairLast.from_dict,
+            raw=raw,
         )
 
-    def get_real_time_currency_conversion(
-        self, from_: str, to: str, amount: Optional[float]=None, precision: Optional[int]=None, params: Optional[Dict[str, Any]] = None, raw: bool = False
+    def get_realtime_currency_conversion(
+        self,
+        from_: str,
+        to: str,
+        amount: Optional[float] = None,
+        precision: Optional[int] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
     ) -> Union[RealTimeCurrencyConversion, HTTPResponse]:
         """
         Get currency conversions using the latest market conversion rates. Note than you can convert in both directions. For example USD to CAD or CAD to USD.
@@ -96,6 +122,10 @@ class QuotesClient(BaseClient):
         """
         url = f"/v1/conversion/{from_}/{to}"
 
-        return self._get(
-            path=url, params=self._get_params(self.get_real_time_currency_conversion, locals()), deserializer=RealTimeCurrencyConversion.from_dict, raw=raw
+        json = self._get(
+            path=url,
+            params=self._get_params(self.get_realtime_currency_conversion, locals()),
+            raw=raw,
         )
+
+        return RealTimeCurrencyConversion.from_dict(json[0])
