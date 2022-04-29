@@ -4,7 +4,7 @@ from .models import Agg, GroupedDailyAgg, DailyOpenCloseAgg, PreviousCloseAgg, S
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
-# https://polygon.io/docs/stocks
+
 class AggsClient(BaseClient):
     def get_aggs(
         self,
