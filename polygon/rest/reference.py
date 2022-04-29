@@ -385,7 +385,7 @@ class ExchangesClient(BaseClient):
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[Exchange, HTTPResponse]:
+    ) -> Union[List[Exchange], HTTPResponse]:
         """
         List all exchanges that Polygon.io knows about.
 
@@ -398,5 +398,9 @@ class ExchangesClient(BaseClient):
         url = "/v3/reference/exchanges"
 
         return self._get(
-            path=url, params=params, deserializer=Exchange.from_dict, raw=raw
+            path=url,
+            params=params,
+            deserializer=Exchange.from_dict,
+            raw=raw,
+            result_key="results",
         )
