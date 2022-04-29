@@ -47,7 +47,7 @@ class TradesTest(BaseTest):
       self.assertEqual(last_trade_crypto, expected)
 
     def test_trades(self):
-      trades = [t for t in self.c.list_trades("AAPL")]
+      trades = [t for t in self.c.list_trades(ticker="AAPL", limit=2)]
       print(trades)
       expected = [
         Trade(
