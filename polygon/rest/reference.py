@@ -33,7 +33,7 @@ class MarketsClient(BaseClient):
 
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
-        :return: Market holidays
+        :return: List of market holidays
         """
         url = "/v1/marketstatus/upcoming"
 
