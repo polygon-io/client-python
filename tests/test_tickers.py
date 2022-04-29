@@ -10,7 +10,44 @@ from mocks import BaseTest
 class TickersTest(BaseTest):
     def test_list_tickers(self):
         tickers = [t for t in self.c.list_tickers()]
+        print(len(tickers))
         expected = [
+            Ticker(
+                active=True,
+                cik="0001090872",
+                composite_figi="BBG000C2V3D6",
+                currency_name="usd",
+                currency_symbol=None,
+                base_currency_symbol=None,
+                base_currency_name=None,
+                delisted_utc=None,
+                last_updated_utc="2022-04-27T00:00:00Z",
+                locale="us",
+                market="stocks",
+                name="Agilent Technologies Inc.",
+                primary_exchange="XNYS",
+                share_class_figi="BBG001SCTQY4",
+                ticker="A",
+                type="CS",
+            ),
+            Ticker(
+                active=True,
+                cik="0001675149",
+                composite_figi="BBG00B3T3HD3",
+                currency_name="usd",
+                currency_symbol=None,
+                base_currency_symbol=None,
+                base_currency_name=None,
+                delisted_utc=None,
+                last_updated_utc="2022-04-27T00:00:00Z",
+                locale="us",
+                market="stocks",
+                name="Alcoa Corporation",
+                primary_exchange="XNYS",
+                share_class_figi="BBG00B3T3HF1",
+                ticker="AA",
+                type="CS",
+            ),
             Ticker(
                 active=True,
                 cik=None,
