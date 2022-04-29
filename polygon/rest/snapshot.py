@@ -104,7 +104,7 @@ class SnapshotClient(BaseClient):
         :param option_contract: The option contract identifier.
         :return: List of Snapshots
         """
-        url = f"/v2/snapshot/options/{underlying_asset}/{option_contract}"
+        url = f"/v3/snapshot/options/{underlying_asset}/{option_contract}"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_option, locals()),
