@@ -90,6 +90,8 @@ mocks = [
     (
         "/v1/conversion/AUD/USD?amount=100",
         '{"converted":70.85,"from":"AUD","initialAmount":100,"last":{"ask":1.4116318,"bid":1.4115123,"exchange":48,"timestamp":1651259043000},"request_id":"fac0cbd15f33070754880ace220d12b9","status":"success","symbol":"USD/AUD","to":"USD"}',
+    ),
+    (
         "/v2/snapshot/locale/us/markets/stocks/tickers?market.type=stocks",
         '{"count": 1,"status": "OK","tickers": [{"day": {"c": 20.506,"h": 20.64,"l": 20.506,"o": 20.64,"v": 37216,"vw": 20.616},"lastQuote": {"P": 20.6,"S": 22,"p": 20.5,"s": 13,"t": 1605192959994246100},"lastTrade": {"c": [14,41],"i": "71675577320245","p": 20.506,"s": 2416,"t": 1605192894630916600,"x": 4},"min": {"av": 37216,"c": 20.506,"h": 20.506,"l": 20.506,"o": 20.506,"v": 5000,"vw": 20.5105},"prevDay": {"c": 20.63,"h": 21,"l": 20.5,"o": 20.79,"v": 292738,"vw": 20.6939},"ticker": "BCAT","todaysChange": -0.124,"todaysChangePerc": -0.601,"updated": 1605192894630916600}]}',
     ),
