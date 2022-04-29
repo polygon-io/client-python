@@ -42,4 +42,11 @@ class MarketStatus:
 
     @staticmethod
     def from_dict(d):
-        return MarketStatus(**d)
+        return MarketStatus(
+            d.get("afterHours", None),
+            d.get("currencies", None),
+            d.get("earlyHours", None),
+            d.get("exchanges", None),
+            d.get("market", None),
+            d.get("serverTime", None),
+        )
