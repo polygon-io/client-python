@@ -33,7 +33,7 @@ class MarketsClient(BaseClient):
 
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
-        :return: List of quotes
+        :return: List of market holidays
         """
         url = "/v1/marketstatus/upcoming"
 
@@ -53,7 +53,7 @@ class MarketsClient(BaseClient):
 
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
-        :return: List of quotes
+        :return: Market status
         """
         url = "/v1/marketstatus/now"
 
@@ -393,7 +393,7 @@ class ExchangesClient(BaseClient):
         :param locale: Filter by locale.
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
-        :return: List of quotes
+        :return: List of exchanges
         """
         url = "/v3/reference/exchanges"
 
