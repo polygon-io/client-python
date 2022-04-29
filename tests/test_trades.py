@@ -49,7 +49,6 @@ class TradesTest(BaseTest):
 
     def test_trades(self):
         trades = [t for t in self.c.list_trades(ticker="AAPL", limit=2)]
-        print(trades)
         expected = [
             Trade(
                 conditions=[12, 37],
