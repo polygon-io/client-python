@@ -8,13 +8,13 @@ from .trades import LastTrade
 @dataclass
 class SnapshotMin:
     "Most recent minute bar"
-    accumulated_volume: Optional[float]
-    open: Optional[float]
-    high: Optional[float]
-    low: Optional[float]
-    close: Optional[float]
-    volume: Optional[float]
-    vwap: Optional[float]
+    accumulated_volume: Optional[float] = None
+    open: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    close: Optional[float] = None
+    volume: Optional[float] = None
+    vwap: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -31,15 +31,15 @@ class SnapshotMin:
 
 @dataclass
 class Snapshot:
-    day: Optional[Agg]
-    last_quote: Optional[LastQuote]
-    last_trade: Optional[LastTrade]
-    min: Optional[SnapshotMin]
-    prev_day: Optional[Agg]
-    ticker: str
-    todays_change: float
-    todays_change_percent: float
-    updated: int
+    day: Optional[Agg] = None
+    last_quote: Optional[LastQuote] = None
+    last_trade: Optional[LastTrade] = None
+    min: Optional[SnapshotMin] = None
+    prev_day: Optional[Agg] = None
+    ticker: Optional[str] = None
+    todays_change: Optional[float] = None
+    todays_change_percent: Optional[float] = None
+    updated: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -58,16 +58,16 @@ class Snapshot:
 
 @dataclass
 class DayOptionContractSnapshot:
-    change: Optional[float]
-    change_percent: Optional[float]
-    close: Optional[float]
-    high: Optional[float]
-    last_updated: Optional[int]
-    low: Optional[float]
-    open: Optional[float]
-    previous_close: Optional[float]
-    volume: Optional[float]
-    vwap: Optional[float]
+    change: Optional[float] = None
+    change_percent: Optional[float] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    last_updated: Optional[int] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    previous_close: Optional[float] = None
+    volume: Optional[float] = None
+    vwap: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -76,12 +76,12 @@ class DayOptionContractSnapshot:
 
 @dataclass
 class OptionDetails:
-    contract_type: str
-    exercise_style: str
-    expiration_date: str
-    shares_per_contract: float
-    strike_price: float
-    ticker: str
+    contract_type: Optional[str] = None
+    exercise_style: Optional[str] = None
+    expiration_date: Optional[str] = None
+    shares_per_contract: Optional[float] = None
+    strike_price: Optional[float] = None
+    ticker: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
@@ -90,13 +90,13 @@ class OptionDetails:
 
 @dataclass
 class OptionLastQuote:
-    ask: Optional[float]
-    ask_size: Optional[float]
-    bid: Optional[float]
-    bid_size: Optional[float]
-    last_updated: Optional[int]
-    midpoint: Optional[float]
-    timeframe: Optional[str]
+    ask: Optional[float] = None
+    ask_size: Optional[float] = None
+    bid: Optional[float] = None
+    bid_size: Optional[float] = None
+    last_updated: Optional[int] = None
+    midpoint: Optional[float] = None
+    timeframe: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
@@ -105,10 +105,10 @@ class OptionLastQuote:
 
 @dataclass
 class OptionGreeks:
-    delta: Optional[float]
-    gamma: Optional[float]
-    theta: Optional[float]
-    vega: Optional[float]
+    delta: Optional[float] = None
+    gamma: Optional[float] = None
+    theta: Optional[float] = None
+    vega: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -117,11 +117,11 @@ class OptionGreeks:
 
 @dataclass
 class UnderlyingAsset:
-    change_to_break_even: Optional[float]
-    last_updated: Optional[int]
-    price: Optional[float]
-    ticker: Optional[str]
-    timeframe: Optional[str]
+    change_to_break_even: Optional[float] = None
+    last_updated: Optional[int] = None
+    price: Optional[float] = None
+    ticker: Optional[str] = None
+    timeframe: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
@@ -130,14 +130,14 @@ class UnderlyingAsset:
 
 @dataclass
 class OptionContractSnapshot:
-    break_even_price: Optional[float]
-    day: Optional[Agg]
-    details: Optional[OptionDetails]
-    greeks: Optional[OptionGreeks]
-    implied_volatility: Optional[float]
-    last_quote: Optional[OptionLastQuote]
-    open_interest: Optional[float]
-    underlying_asset: Optional[float]
+    break_even_price: Optional[float] = None
+    day: Optional[Agg] = None
+    details: Optional[OptionDetails] = None
+    greeks: Optional[OptionGreeks] = None
+    implied_volatility: Optional[float] = None
+    last_quote: Optional[OptionLastQuote] = None
+    open_interest: Optional[float] = None
+    underlying_asset: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -146,8 +146,8 @@ class OptionContractSnapshot:
 
 @dataclass
 class OrderBookQuote:
-    price: Optional[float]
-    exchange_shares: Dict[str, float]
+    price: Optional[float] = None
+    exchange_shares: Optional[Dict[str, float]] = None
 
     @staticmethod
     def from_dict(d):
@@ -156,13 +156,13 @@ class OrderBookQuote:
 
 @dataclass
 class SnapshotTickerFullBook:
-    ticker: Optional[str]
-    bids: Optional[List[OrderBookQuote]]
-    asks: Optional[List[OrderBookQuote]]
-    bid_count: Optional[float]
-    ask_count: Optional[float]
-    spread: Optional[float]
-    updated: int
+    ticker: Optional[str] = None
+    bids: Optional[List[OrderBookQuote]] = None
+    asks: Optional[List[OrderBookQuote]] = None
+    bid_count: Optional[float] = None
+    ask_count: Optional[float] = None
+    spread: Optional[float] = None
+    updated: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
