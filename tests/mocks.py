@@ -86,6 +86,10 @@ mocks = [
     (
         "/v2/snapshot/locale/us/markets/stocks/tickers/AAPL",
         '{"request_id":"957db942cab2d6b0633b9b4820db0cb2","status":"OK","ticker":{"day":{"c":160.315,"h":166.2,"l":159.8,"o":161.84,"v":68840127,"vw":162.7124},"lastQuote":{"P":159.99,"S":5,"p":159.98,"s":3,"t":1651251948407646487},"lastTrade":{"c":null,"i":"121351","p":159.99,"s":200,"t":1651251948294080343,"x":12},"min":{"av":68834255,"c":160.3,"h":160.71,"l":160.3,"o":160.71,"v":197226,"vw":160.5259},"prevDay":{"c":163.64,"h":164.515,"l":158.93,"o":159.25,"v":130149192,"vw":161.8622},"ticker":"AAPL","todaysChange":-3.65,"todaysChangePerc":-2.231,"updated":1651251948294080343}}'
+    ),
+    (
+        "/v2/snapshot/locale/global/markets/crypto/tickers/X:BTCUSD/book",
+        '{"data": {"askCount": 593.1412981600005,"asks": [{"p": 11454,"x": {"2": 1}},{"p": 11455,"x": {"2": 1}}],"bidCount": 694.951789670001,"bids": [{"p": 16303.17,"x": {"1": 2}},{"p": 16302.94,"x": {"1": 0.02859424,"6": 0.023455}}],"spread": -4849.17,"ticker": "X:BTCUSD","updated": 1605295074162},"status": "OK}'
     )
 ]
 
