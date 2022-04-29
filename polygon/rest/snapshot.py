@@ -35,6 +35,7 @@ class SnapshotClient(BaseClient):
             params=self._get_params(self.get_snapshot_all, locals()),
             deserializer=Snapshot.from_dict,
             raw=raw,
+            result_key="tickers",
         )
 
     def get_snapshot_direction(
@@ -103,7 +104,7 @@ class SnapshotClient(BaseClient):
         :param option_contract: The option contract identifier.
         :return: List of Snapshots
         """
-        url = f"/v2/snapshot/options/{underlying_asset}/{option_contract}"
+        url = f"/v3/snapshot/options/{underlying_asset}/{option_contract}"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_option, locals()),
@@ -126,7 +127,7 @@ class SnapshotClient(BaseClient):
         :param ticker: The ticker symbol.
         :return: List of Snapshots
         """
-        url = f" /v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
+        url = f"/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_crypto_book, locals()),

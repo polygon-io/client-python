@@ -1,6 +1,7 @@
 from .aggs import AggsClient
 from .trades import TradesClient
 from .quotes import QuotesClient
+from .snapshot import SnapshotClient
 from .reference import (
     MarketsClient,
     TickersClient,
@@ -15,6 +16,7 @@ class RESTClient(
     AggsClient,
     TradesClient,
     QuotesClient,
+    SnapshotClient,
     MarketsClient,
     TickersClient,
     SplitsClient,
