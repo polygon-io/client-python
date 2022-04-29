@@ -41,16 +41,16 @@ mocks = [
     ),
     (
         "/v2/last/trade/AAPL",
-        '{"results":{"c":[12,37],"i":"237688","p":166.25,"s":2,"x":4,"r":202,"z":3,"T":"AAPL","t":1651179319310617300,"y":1651179319308000000,"f":1651179319310588400,"q":7084210},"status":"OK","request_id":"d4bafa50e72cf9ed19ac538ae1a3185a"}'
+        '{"results":{"c":[12,37],"i":"237688","p":166.25,"s":2,"x":4,"r":202,"z":3,"T":"AAPL","t":1651179319310617300,"y":1651179319308000000,"f":1651179319310588400,"q":7084210},"status":"OK","request_id":"d4bafa50e72cf9ed19ac538ae1a3185a"}',
     ),
     (
         "/v1/last/crypto/BTC/USD",
-        '{"last":{"conditions":[2],"exchange":2,"price":39976.89682331,"size":0.005,"timestamp":1651180409688},"request_id":"d67c9bfe1fa0c29db9177d78b3ab713c","status":"success","symbol":"BTC-USD"}'
+        '{"last":{"conditions":[2],"exchange":2,"price":39976.89682331,"size":0.005,"timestamp":1651180409688},"request_id":"d67c9bfe1fa0c29db9177d78b3ab713c","status":"success","symbol":"BTC-USD"}',
     ),
     (
         "/v3/trades/AAPL",
-        '{"results":[{"conditions":[12,37],"correction":1,"exchange":11,"id":"183276","participant_timestamp":1651181822461636600,"price":156.43,"sequence_number":7179341,"sip_timestamp":1651181822461979400,"size":10,"tape":3,"trf_id":3,"trf_timestamp":1651181557090806500},{"conditions":[12,37],"correction":1,"exchange":12,"id":"183276","participant_timestamp":1651181822461636600,"price":157.43,"sequence_number":7179341,"sip_timestamp":1651181822461979400,"size":10,"tape":3,"trf_id":3,"trf_timestamp":1651181557090806500}],"status":"OK","request_id":"756f9910624b35a47eb07f21a7a373bb"}'
-    )
+        '{"results":[{"conditions":[12,37],"correction":1,"exchange":11,"id":"183276","participant_timestamp":1651181822461636600,"price":156.43,"sequence_number":7179341,"sip_timestamp":1651181822461979400,"size":10,"tape":3,"trf_id":3,"trf_timestamp":1651181557090806500},{"conditions":[12,37],"correction":1,"exchange":12,"id":"183276","participant_timestamp":1651181822461636600,"price":157.43,"sequence_number":7179341,"sip_timestamp":1651181822461979400,"size":10,"tape":3,"trf_id":3,"trf_timestamp":1651181557090806500}],"status":"OK","request_id":"756f9910624b35a47eb07f21a7a373bb"}',
+    ),
 ]
 
 
