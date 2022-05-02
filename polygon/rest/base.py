@@ -17,7 +17,7 @@ class BaseClient:
         connect_timeout: float = 10.0,
         read_timeout: float = 10.0,
         num_pools: int = 10,
-        retries=3,
+        retries: int = 3,
         base: str = base,
         verbose: bool = False,
     ):

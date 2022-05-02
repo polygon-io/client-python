@@ -1,0 +1,14 @@
+- choose lib (websockets)
+	- new
+	- connect
+	- sub/unsub
+	- callback
+	- close
+- models (use wrapper)
+	- ...or raw data
+- reconnects
+	- expo backoff
+	- max retries
+	- resub
+- maybe logger
+- tests
