@@ -1,5 +1,5 @@
 from polygon.rest.models import Snapshot, OptionContractSnapshot, SnapshotTickerFullBook
-from mocks import BaseTest
+from base import BaseTest
 
 
 class SnapshotsTest(BaseTest):

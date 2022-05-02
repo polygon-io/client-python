@@ -1,8 +1,7 @@
-from mocks import BaseTest
+from base import BaseTest
 from polygon.rest.models import (
     Trade,
     LastTrade,
-    Last,
     LastTradeCrypto,
 )
 

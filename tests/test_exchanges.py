@@ -1,5 +1,5 @@
 from polygon.rest.models import Exchange
-from mocks import BaseTest
+from base import BaseTest
 
 
 class ExchangesTest(BaseTest):

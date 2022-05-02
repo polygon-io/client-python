@@ -1,0 +1,15 @@
+{
+    "market": "extended-hours",
+    "earlyHours": false,
+    "afterHours": true,
+    "serverTime": "2022-04-28T16:48:08-04:00",
+    "exchanges": {
+        "nyse": "extended-hours",
+        "nasdaq": "extended-hours",
+        "otc": "extended-hours"
+    },
+    "currencies": {
+        "fx": "open",
+        "crypto": "open"
+    }
+}

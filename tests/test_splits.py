@@ -1,5 +1,5 @@
 from polygon.rest.models import Split
-from mocks import BaseTest
+from base import BaseTest
 
 
 class SplitsTest(BaseTest):
