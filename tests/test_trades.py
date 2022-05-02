@@ -2,7 +2,7 @@ from base import BaseTest
 from polygon.rest.models import (
     Trade,
     LastTrade,
-    Last,
+    CryptoTrade,
 )
 
 
@@ -27,9 +27,9 @@ class TradesTest(BaseTest):
 
         self.assertEqual(last_trade, expected)
 
-    def test_get_last_trade_crypto(self):
-        last_trade_crypto = self.c.get_last_trade_crypto("BTC", "USD")
-        expected = Last(
+    def test_get_last_crypto_trade(self):
+        last_trade_crypto = self.c.get_last_crypto_trade("BTC", "USD")
+        expected = CryptoTrade(
             conditions=[2],
             exchange=2,
             price=39976.89682331,

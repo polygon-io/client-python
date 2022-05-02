@@ -3,6 +3,9 @@ from polygon.rest.models import (
     TickerDetails,
     TickerNews,
     TickerTypes,
+    Publisher,
+    Branding,
+    Address,
 )
 from base import BaseTest
 
@@ -90,16 +93,20 @@ class TickersTest(BaseTest):
         details = self.c.get_ticker_details("AAPL")
         expected = TickerDetails(
             active=True,
-            address={
-                "address1": "ONE APPLE PARK WAY",
-                "city": "CUPERTINO",
-                "state": "CA",
-                "postal_code": "95014",
-            },
-            branding={
-                "logo_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-02-01_logo.svg",
-                "icon_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-02-01_icon.png",
-            },
+            address=[
+                Address(
+                    address1="ONE APPLE PARK WAY",
+                    city="CUPERTINO",
+                    state="CA",
+                    postal_code="95014",
+                )
+            ],
+            branding=[
+                Branding(
+                    icon_url="https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-02-01_icon.png",
+                    logo_url="https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-02-01_logo.svg",
+                )
+            ],
             cik="0000320193",
             composite_figi="BBG000B9XRY4",
             currency_name="usd",
@@ -137,12 +144,14 @@ class TickersTest(BaseTest):
                 image_url="https://images.mktw.net/im-533637/social",
                 keywords=None,
                 published_utc="2022-04-28T17:08:00Z",
-                publisher={
-                    "name": "MarketWatch",
-                    "homepage_url": "https://www.marketwatch.com/",
-                    "logo_url": "https://s3.polygon.io/public/assets/news/logos/marketwatch.svg",
-                    "favicon_url": "https://s3.polygon.io/public/assets/news/favicons/marketwatch.ico",
-                },
+                publisher=[
+                    Publisher(
+                        favicon_url="https://s3.polygon.io/public/assets/news/favicons/marketwatch.ico",
+                        homepage_url="https://www.marketwatch.com/",
+                        logo_url="https://s3.polygon.io/public/assets/news/logos/marketwatch.svg",
+                        name="MarketWatch",
+                    )
+                ],
                 tickers=["MSFT", "TSN", "NFLX", "AMZN"],
                 title="Theres a big hole in the Feds theory of inflation—incomes are falling at a record 10.9 rate",
             )

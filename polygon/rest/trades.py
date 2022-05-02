@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, Union, Iterator
-from .models import Trade, LastTrade, Last, Sort, Order
+from .models import Trade, LastTrade, CryptoTrade, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -69,13 +69,13 @@ class TradesClient(BaseClient):
             raw=raw,
         )
 
-    def get_last_trade_crypto(
+    def get_last_crypto_trade(
         self,
         from_: str,
         to: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[Last, HTTPResponse]:
+    ) -> Union[CryptoTrade, HTTPResponse]:
         """
         Get the most recent trade for a ticker.
 
@@ -88,8 +88,8 @@ class TradesClient(BaseClient):
 
         return self._get(
             path=url,
-            params=self._get_params(self.get_last_trade_crypto, locals()),
+            params=self._get_params(self.get_last_crypto_trade, locals()),
             result_key="last",
-            deserializer=Last.from_dict,
+            deserializer=CryptoTrade.from_dict,
             raw=raw,
         )

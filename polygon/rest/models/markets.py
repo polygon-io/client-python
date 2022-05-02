@@ -3,16 +3,26 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Currencies:
+class MarketCurrencies:
+    "Contains currency market status data."
     crypto: Optional[str] = None
     fx: Optional[str] = None
 
+    @staticmethod
+    def from_dict(d):
+        return MarketCurrencies(**d)
+
 
 @dataclass
-class Exchanges:
+class MarketExchanges:
+    "Contains exchange market status data."
     nasdaq: Optional[str] = None
     nyse: Optional[str] = None
     otc: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return MarketExchanges(**d)
 
 
 @dataclass
@@ -34,19 +44,23 @@ class MarketHoliday:
 class MarketStatus:
     "MarketStatus contains data for the current trading status of the exchanges and overall financial markets."
     after_hours: Optional[bool] = None
-    currencies: Optional[Currencies] = None
+    currencies: Optional[MarketCurrencies] = None
     early_hours: Optional[bool] = None
-    exchanges: Optional[Exchanges] = None
+    exchanges: Optional[MarketExchanges] = None
     market: Optional[str] = None
     server_time: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
         return MarketStatus(
-            d.get("afterHours", None),
-            d.get("currencies", None),
-            d.get("earlyHours", None),
-            d.get("exchanges", None),
-            d.get("market", None),
-            d.get("serverTime", None),
+            after_hours=d.get("after_hours", None),
+            currencies=None
+            if "currencies" not in d
+            else [MarketCurrencies.from_dict(d["currencies"])],
+            early_hours=d.get("early_hours", None),
+            exchanges=None
+            if "exchanges" not in d
+            else [MarketExchanges.from_dict(d["exchanges"])],
+            market=d.get("market", None),
+            server_time=d.get("server_time", None),
         )
