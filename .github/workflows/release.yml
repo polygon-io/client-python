@@ -17,6 +17,8 @@ jobs:
           python-version: "3.10"
       - name: Setup Poetry
         uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: "1.1.13"
       - name: Install pypi deps
         run: poetry install
       - name: Version according to tag
