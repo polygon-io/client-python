@@ -16,6 +16,10 @@ class SnapshotMin:
     volume: Optional[float] = None
     vwap: Optional[float] = None
 
+    @staticmethod
+    def from_dict(d):
+        return SnapshotMin(**d)
+
 
 @dataclass
 class Snapshot:
@@ -33,15 +37,15 @@ class Snapshot:
     @staticmethod
     def from_dict(d):
         return Snapshot(
-            d.get("day", None),
-            d.get("lastQuote", None),
-            d.get("lastTrade", None),
-            d.get("min", None),
-            d.get("prevDay", None),
-            d.get("ticker", None),
-            d.get("todaysChange", None),
-            d.get("todaysChangePercent", None),
-            d.get("updated", None),
+            day=Agg.from_dict(d.get("day", {}), None),
+            last_quote=LastQuote.from_dict(d.get("last_quote", {}), None),
+            last_trade=LastTrade.from_dict(d.get("last_trade", {}), None),
+            min=SnapshotMin.from_dict(d.get("min", {}), None),
+            prev_day=Agg.from_dict(d.get("prev_day", {}), None),
+            ticker=d.get("ticker", None),
+            todays_change=d.get("todays_change", None),
+            todays_change_percent=d.get("todays_change_percent", None),
+            updated=d.get("updated", None),
         )
 
 
@@ -59,6 +63,10 @@ class DayOptionContractSnapshot:
     volume: Optional[float] = None
     vwap: Optional[float] = None
 
+    @staticmethod
+    def from_dict(d):
+        return DayOptionContractSnapshot(**d)
+
 
 @dataclass
 class OptionDetails:
@@ -69,6 +77,10 @@ class OptionDetails:
     shares_per_contract: Optional[float] = None
     strike_price: Optional[float] = None
     ticker: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return OptionDetails(**d)
 
 
 @dataclass
@@ -82,6 +94,10 @@ class OptionLastQuote:
     midpoint: Optional[float] = None
     timeframe: Optional[str] = None
 
+    @staticmethod
+    def from_dict(d):
+        return OptionLastQuote(**d)
+
 
 @dataclass
 class OptionGreeks:
@@ -90,6 +106,10 @@ class OptionGreeks:
     gamma: Optional[float] = None
     theta: Optional[float] = None
     vega: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return OptionGreeks(**d)
 
 
 @dataclass
@@ -100,6 +120,10 @@ class UnderlyingAsset:
     price: Optional[float] = None
     ticker: Optional[str] = None
     timeframe: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UnderlyingAsset(**d)
 
 
 @dataclass
@@ -116,7 +140,18 @@ class OptionContractSnapshot:
 
     @staticmethod
     def from_dict(d):
-        return OptionContractSnapshot(**d)
+        return OptionContractSnapshot(
+            break_even_price=d.get("break_even_price", None),
+            day=DayOptionContractSnapshot.from_dict(d.get("day", {}), None),
+            details=OptionDetails.from_dict(d.get("details", {}), None),
+            greeks=OptionGreeks.from_dict(d.get("greeks", {}), None),
+            implied_volatility=d.get("implied_volatility", None),
+            last_quote=OptionLastQuote.from_dict(d.get("last_quote", {}), None),
+            open_interest=d.get("open_interest", None),
+            underlying_asset=UnderlyingAsset.from_dict(
+                d.get("underlying_asset", {}), None
+            ),
+        )
 
 
 @dataclass
@@ -124,6 +159,10 @@ class OrderBookQuote:
     "Contains data for a book bid or ask."
     price: Optional[float] = None
     exchange_shares: Optional[Dict[str, float]] = None
+
+    @staticmethod
+    def from_dict(d):
+        return OrderBookQuote(**d)
 
 
 @dataclass
@@ -140,11 +179,15 @@ class SnapshotTickerFullBook:
     @staticmethod
     def from_dict(d):
         return SnapshotTickerFullBook(
-            d.get("ticker", None),
-            d.get("bids", None),
-            d.get("asks", None),
-            d.get("bidCount", None),
-            d.get("askCount", None),
-            d.get("spread", None),
-            d.get("updated", None),
+            ticker=d.get("ticker", None),
+            bids=None
+            if "bids" not in d
+            else [OrderBookQuote.from_dict(o) for o in d["bids"]],
+            asks=None
+            if "asks" not in d
+            else [OrderBookQuote.from_dict(o) for o in d["asks"]],
+            bid_count=d.get("bid_count", None),
+            ask_count=d.get("ask_count", None),
+            spread=d.get("spread", None),
+            updated=d.get("updated", None),
         )

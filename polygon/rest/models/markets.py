@@ -8,6 +8,10 @@ class MarketCurrencies:
     crypto: Optional[str] = None
     fx: Optional[str] = None
 
+    @staticmethod
+    def from_dict(d):
+        return MarketCurrencies(**d)
+
 
 @dataclass
 class MarketExchanges:
@@ -15,6 +19,10 @@ class MarketExchanges:
     nasdaq: Optional[str] = None
     nyse: Optional[str] = None
     otc: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return MarketExchanges(**d)
 
 
 @dataclass
@@ -45,10 +53,10 @@ class MarketStatus:
     @staticmethod
     def from_dict(d):
         return MarketStatus(
-            d.get("afterHours", None),
-            d.get("currencies", None),
-            d.get("earlyHours", None),
-            d.get("exchanges", None),
-            d.get("market", None),
-            d.get("serverTime", None),
+            after_hours=d.get("after_hours", None),
+            currencies=MarketCurrencies.from_dict(d.get("currencies", {}), None),
+            early_hours=d.get("early_hours", None),
+            exchanges=MarketExchanges.from_dict(d.get("exchanges", {}), None),
+            market=d.get("market", None),
+            server_time=d.get("server_time", None),
         )

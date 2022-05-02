@@ -10,6 +10,10 @@ class SipMapping:
     OPRA: Optional[str] = None
     UTP: Optional[str] = None
 
+    @staticmethod
+    def from_dict(d):
+        return SipMapping(**d)
+
 
 @dataclass
 class Consolidated:
@@ -17,6 +21,10 @@ class Consolidated:
     updates_high_low: Optional[bool] = None
     updates_open_close: Optional[bool] = None
     updates_volume: Optional[bool] = None
+
+    @staticmethod
+    def from_dict(d):
+        return Consolidated(**d)
 
 
 @dataclass
@@ -26,12 +34,23 @@ class MarketCenter:
     updates_open_close: Optional[bool] = None
     updates_volume: Optional[bool] = None
 
+    @staticmethod
+    def from_dict(d):
+        return MarketCenter(**d)
+
 
 @dataclass
 class UpdateRules:
     "Contains data for a list of aggregation rules."
     consolidated: Optional[Consolidated] = None
     market_center: Optional[MarketCenter] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UpdateRules(
+            consolidated=Consolidated.from_dict(d.get("consolidated", {}), None),
+            market_center=MarketCenter.from_dict(d.get("market_center", {}), None),
+        )
 
 
 @dataclass
@@ -51,4 +70,16 @@ class Condition:
 
     @staticmethod
     def from_dict(d):
-        return Condition(**d)
+        return Condition(
+            abbreviation=d.get("abbreviation", None),
+            asset_class=d.get("asset_class", None),
+            data_types=d.get("data_types", None),
+            description=d.get("description", None),
+            exchange=d.get("exchange", None),
+            id=d.get("id", None),
+            legacy=d.get("legacy", None),
+            name=d.get("name", None),
+            sip_mapping=SipMapping.from_dict(d.get("sip_mapping", {}), None),
+            type=d.get("type", None),
+            update_rules=UpdateRules.from_dict(d.get("update_rules", {}), None),
+        )
