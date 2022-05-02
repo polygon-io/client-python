@@ -37,11 +37,15 @@ class Snapshot:
     @staticmethod
     def from_dict(d):
         return Snapshot(
-            day=Agg.from_dict(d.get("day", {}), None),
-            last_quote=LastQuote.from_dict(d.get("last_quote", {}), None),
-            last_trade=LastTrade.from_dict(d.get("last_trade", {}), None),
-            min=SnapshotMin.from_dict(d.get("min", {}), None),
-            prev_day=Agg.from_dict(d.get("prev_day", {}), None),
+            day=None if "day" not in d else [Agg.from_dict(d["day"])],
+            last_quote=None
+            if "last_quote" not in d
+            else [LastQuote.from_dict(d["last_quote"])],
+            last_trade=None
+            if "last_trade" not in d
+            else [LastTrade.from_dict(d["last_trade"])],
+            min=None if "min" not in d else [SnapshotMin.from_dict(d["min"])],
+            prev_day=None if "prev_day" not in d else [Agg.from_dict(d["prev_day"])],
             ticker=d.get("ticker", None),
             todays_change=d.get("todays_change", None),
             todays_change_percent=d.get("todays_change_percent", None),
@@ -142,15 +146,21 @@ class OptionContractSnapshot:
     def from_dict(d):
         return OptionContractSnapshot(
             break_even_price=d.get("break_even_price", None),
-            day=DayOptionContractSnapshot.from_dict(d.get("day", {}), None),
-            details=OptionDetails.from_dict(d.get("details", {}), None),
-            greeks=OptionGreeks.from_dict(d.get("greeks", {}), None),
+            day=None
+            if "day" not in d
+            else [DayOptionContractSnapshot.from_dict(d["day"])],
+            details=None
+            if "details" not in d
+            else [OptionDetails.from_dict(d["details"])],
+            greeks=None if "greeks" not in d else [OptionGreeks.from_dict(d["greeks"])],
             implied_volatility=d.get("implied_volatility", None),
-            last_quote=OptionLastQuote.from_dict(d.get("last_quote", {}), None),
+            last_quote=None
+            if "last_quote" not in d
+            else [OptionLastQuote.from_dict(d["last_quote"])],
             open_interest=d.get("open_interest", None),
-            underlying_asset=UnderlyingAsset.from_dict(
-                d.get("underlying_asset", {}), None
-            ),
+            underlying_asset=None
+            if "underlying_asset" not in d
+            else [UnderlyingAsset.from_dict(d["underlying_asset"])],
         )
 
 

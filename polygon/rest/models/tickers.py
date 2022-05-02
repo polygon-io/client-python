@@ -97,8 +97,10 @@ class TickerDetails:
     def from_dict(d):
         return TickerDetails(
             active=d.get("active", None),
-            address=Address.from_dict(d.get("address", {}), None),
-            branding=Branding.from_dict(d.get("branding", {}), None),
+            address=None if "address" not in d else [Address.from_dict(d["address"])],
+            branding=None
+            if "branding" not in d
+            else [Branding.from_dict(d["branding"])],
             cik=d.get("cik", None),
             composite_figi=d.get("composite_figi", None),
             currency_name=d.get("currency_name", None),
@@ -152,7 +154,9 @@ class TickerNews:
             image_url=d.get("image_url", None),
             keywords=d.get("keywords", None),
             published_utc=d.get("published_utc", None),
-            publisher=Publisher.from_dict(d.get("publisher", {}), None),
+            publisher=None
+            if "publisher" not in d
+            else [Publisher.from_dict(d["publisher"])],
             tickers=d.get("tickers", None),
             title=d.get("title", None),
         )
