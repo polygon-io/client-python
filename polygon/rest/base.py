@@ -72,13 +72,11 @@ class BaseClient:
         if result_key:
             obj = obj[result_key]
 
-        # If obj is not yet a list, need to turn it into a list
-        # This is for the Daily Open/Close and Last Trade endpoints
-        if type(obj) != list:
-            obj = [obj]
-
         if deserializer:
-            obj = [deserializer(o) for o in obj]
+            if type(obj) == list:
+                obj = [deserializer(o) for o in obj]
+            else:
+                obj = deserializer(obj)
 
         return obj
 
