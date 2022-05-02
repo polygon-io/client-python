@@ -3,8 +3,6 @@ on:
   push:
     tags:
       - v*
-    branches:
-      - master
 permissions:
   contents: read
 jobs:
@@ -21,9 +19,11 @@ jobs:
         uses: abatilo/actions-poetry@v2.0.0
       - name: Install pypi deps
         run: poetry install
-      - name: Version
+      - name: Version according to tag
         run: poetry version ${{ github.event.release.tag_name }}
       - name: Build
         run: poetry build
+      - name: Poetry publish config
+        run: poetry config pypi-token.pypi $POETRY_HTTP_BASIC_PYPI_PASSWORD
       - name: Publish to PyPi
         run: poetry publish --dry-run
