@@ -3,14 +3,14 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Currencies:
+class MarketCurrencies:
     "Contains currency market status data."
     crypto: Optional[str] = None
     fx: Optional[str] = None
 
 
 @dataclass
-class Exchanges:
+class MarketExchanges:
     "Contains exchange market status data."
     nasdaq: Optional[str] = None
     nyse: Optional[str] = None
@@ -36,9 +36,9 @@ class MarketHoliday:
 class MarketStatus:
     "MarketStatus contains data for the current trading status of the exchanges and overall financial markets."
     after_hours: Optional[bool] = None
-    currencies: Optional[Currencies] = None
+    currencies: Optional[MarketCurrencies] = None
     early_hours: Optional[bool] = None
-    exchanges: Optional[Exchanges] = None
+    exchanges: Optional[MarketExchanges] = None
     market: Optional[str] = None
     server_time: Optional[str] = None
 
