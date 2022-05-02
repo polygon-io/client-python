@@ -39,11 +39,6 @@ Crypto Trade
 .. autoclass:: polygon.rest.models.CryptoTrade
 
 ==============================================================
-Last Crypto Trade
-==============================================================
-.. autoclass:: polygon.rest.models.LastCryptoTrade
-
-==============================================================
 Quote
 ==============================================================
 .. autoclass:: polygon.rest.models.Quote
