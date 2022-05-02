@@ -48,8 +48,8 @@ class UpdateRules:
     @staticmethod
     def from_dict(d):
         return UpdateRules(
-            consolidated=Consolidated.from_dict(d.get("consolidated", {}), None),
-            market_center=MarketCenter.from_dict(d.get("market_center", {}), None),
+            consolidated=None if "consolidated" not in d else [Consolidated.from_dict(d['consolidated'])],
+            market_center=None if "market_center" not in d else [MarketCenter.from_dict(d['market_center'])],
         )
 
 
