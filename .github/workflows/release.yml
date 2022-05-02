@@ -23,8 +23,11 @@ jobs:
         run: poetry config pypi-token.pypi ${{ secrets.POETRY_HTTP_BASIC_PYPI_PASSWORD }}
       - name: Install pypi deps
         run: poetry install
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
       - name: Version according to tag
-        run: poetry version $(git describe --tags --abrev=0)
+        run: poetry version ${{ steps.tag.outputs.tag }}
       - name: Build
         run: poetry build
       - name: Publish to PyPi
