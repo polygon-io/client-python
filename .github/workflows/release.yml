@@ -26,6 +26,6 @@ jobs:
       - name: Build
         run: poetry build
       - name: Poetry publish config
-        run: poetry config pypi-token.pypi $POETRY_HTTP_BASIC_PYPI_PASSWORD
+        run: poetry config pypi-token.pypi ${{ secrets.POETRY_HTTP_BASIC_PYPI_PASSWORD }}
       - name: Publish to PyPi
         run: poetry publish --dry-run
