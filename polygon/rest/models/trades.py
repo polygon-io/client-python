@@ -74,7 +74,7 @@ class CryptoTrade:
 
 
 @dataclass
-class LastTradeCrypto:
+class LastCryptoTrade:
     "Contains data for the last trade tick of a specified cryptocurrency pair."
     last: Optional[CryptoTrade] = None
     ticker: Optional[str] = None
@@ -83,7 +83,7 @@ class LastTradeCrypto:
 
     @staticmethod
     def from_dict(d):
-        return LastTradeCrypto(
+        return LastCryptoTrade(
             d.get("last", None),
             d.get("symbol", None),
             d.get("status", None),
