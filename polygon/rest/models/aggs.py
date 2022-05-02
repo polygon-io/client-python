@@ -4,14 +4,15 @@ from typing import Optional
 
 @dataclass
 class Agg:
-    open: Optional[float]
-    high: Optional[float]
-    low: Optional[float]
-    close: Optional[float]
-    volume: Optional[float]
-    vwap: Optional[float]
-    timestamp: Optional[int]
-    transactions: Optional[int]
+    "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
+    open: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    close: Optional[float] = None
+    volume: Optional[float] = None
+    vwap: Optional[float] = None
+    timestamp: Optional[int] = None
+    transactions: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -29,15 +30,16 @@ class Agg:
 
 @dataclass
 class GroupedDailyAgg:
-    ticker: str
-    open: float
-    high: float
-    low: float
-    close: float
-    volume: float
-    vwap: Optional[float]
-    timestamp: Optional[int]
-    transactions: Optional[int]
+    "Contains daily open, high, low, and close (OHLC) data for a given date."
+    ticker: Optional[str] = None
+    open: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    close: Optional[float] = None
+    volume: Optional[float] = None
+    vwap: Optional[float] = None
+    timestamp: Optional[int] = None
+    transactions: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -56,16 +58,17 @@ class GroupedDailyAgg:
 
 @dataclass
 class DailyOpenCloseAgg:
-    after_hours: Optional[float]
-    close: float
-    from_: str
-    high: float
-    low: float
-    open: float
-    pre_market: Optional[float]
-    status: Optional[str]
-    symbol: str
-    volume: float
+    "Contains data for open, close and afterhours prices of a ticker symbol on a specified date."
+    after_hours: Optional[float] = None
+    close: Optional[float] = None
+    from_: Optional[str] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    pre_market: Optional[float] = None
+    status: Optional[str] = None
+    symbol: Optional[str] = None
+    volume: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -85,14 +88,15 @@ class DailyOpenCloseAgg:
 
 @dataclass
 class PreviousCloseAgg:
-    ticker: str
-    close: float
-    high: float
-    low: float
-    open: float
-    timestamp: Optional[float]
-    volume: float
-    vwap: Optional[float]
+    "Contains data for the previous day's open, high, low, and close (OHLC) of the specified stock ticker."
+    ticker: Optional[str] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    timestamp: Optional[float] = None
+    volume: Optional[float] = None
+    vwap: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
