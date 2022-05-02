@@ -24,7 +24,7 @@ jobs:
       - name: Install pypi deps
         run: poetry install
       - name: Version according to tag
-        run: poetry version $(git describe --tags --abrev=0)
+        run: poetry version $(git describe --tags)
       - name: Build
         run: poetry build
       - name: Publish to PyPi
