@@ -1,0 +1,31 @@
+name: release
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - master
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Release to PyPi
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10
+      - name: Setup Poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.2.0b1
+      - name: Setup release plugin
+        run: poetry plugin add poetry-dynamic-versioning-plugin
+      - name: Install pypi deps
+        run: poetry install
+      - name: Build
+        run: poetry build
+      - name: Publish to PyPi
+        run: poetry publish
