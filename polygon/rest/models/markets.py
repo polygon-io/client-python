@@ -4,12 +4,14 @@ from dataclasses import dataclass
 
 @dataclass
 class Currencies:
+    "Contains currency market status data."
     crypto: Optional[str] = None
     fx: Optional[str] = None
 
 
 @dataclass
 class Exchanges:
+    "Contains exchange market status data."
     nasdaq: Optional[str] = None
     nyse: Optional[str] = None
     otc: Optional[str] = None
