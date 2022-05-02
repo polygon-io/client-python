@@ -1,5 +1,5 @@
 from polygon.rest.models import Dividend
-from mocks import BaseTest
+from base import BaseTest
 
 
 class DividendsTest(BaseTest):

@@ -1,0 +1,66 @@
+{
+    "results": [
+        {
+            "execution_date": "2022-07-18",
+            "split_from": 1,
+            "split_to": 20,
+            "ticker": "GOOGL"
+        },
+        {
+            "execution_date": "2022-07-18",
+            "split_from": 1,
+            "split_to": 20,
+            "ticker": "GOOG"
+        },
+        {
+            "execution_date": "2022-07-01",
+            "split_from": 1,
+            "split_to": 3,
+            "ticker": "CTO"
+        },
+        {
+            "execution_date": "2022-06-29",
+            "split_from": 1,
+            "split_to": 10,
+            "ticker": "SHOP"
+        },
+        {
+            "execution_date": "2022-06-22",
+            "split_from": 1,
+            "split_to": 10,
+            "ticker": "SHOP"
+        },
+        {
+            "execution_date": "2022-06-10",
+            "split_from": 1,
+            "split_to": 4,
+            "ticker": "DXCM"
+        },
+        {
+            "execution_date": "2022-06-06",
+            "split_from": 1,
+            "split_to": 20,
+            "ticker": "AMZN"
+        },
+        {
+            "execution_date": "2022-05-20",
+            "split_from": 2,
+            "split_to": 1,
+            "ticker": "BRW"
+        },
+        {
+            "execution_date": "2022-05-16",
+            "split_from": 1,
+            "split_to": 2,
+            "ticker": "CM"
+        },
+        {
+            "execution_date": "2022-05-02",
+            "split_from": 3,
+            "split_to": 4,
+            "ticker": "CIG.C"
+        }
+    ],
+    "status": "OK",
+    "request_id": "b52de486daf5491e6b9ebdf5e0bf65bc"
+}

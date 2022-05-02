@@ -1,0 +1,29 @@
+{
+    "results": [
+        {
+            "id": "JeJEhAVoKaqJ2zF9nzQYMg07UlEeWlis6Dsop33TPQY",
+            "publisher": {
+                "name": "MarketWatch",
+                "homepage_url": "https://www.marketwatch.com/",
+                "logo_url": "https://s3.polygon.io/public/assets/news/logos/marketwatch.svg",
+                "favicon_url": "https://s3.polygon.io/public/assets/news/favicons/marketwatch.ico"
+            },
+            "title": "Theres a big hole in the Feds theory of inflation\u2014incomes are falling at a record 10.9 rate",
+            "author": "MarketWatch",
+            "published_utc": "2022-04-28T17:08:00Z",
+            "article_url": "https://www.marketwatch.com/story/theres-a-big-hole-in-the-feds-theory-of-inflationincomes-are-falling-at-a-record-10-9-rate-11651165705",
+            "tickers": [
+                "MSFT",
+                "TSN",
+                "NFLX",
+                "AMZN"
+            ],
+            "amp_url": "https://www.marketwatch.com/amp/story/theres-a-big-hole-in-the-feds-theory-of-inflationincomes-are-falling-at-a-record-10-9-rate-11651165705",
+            "image_url": "https://images.mktw.net/im-533637/social",
+            "description": "If inflation is all due to an overly generous federal government giving its people too much money, then our inflation problem is about to go away."
+        }
+    ],
+    "status": "OK",
+    "request_id": "f5248459196e12f27520afd41cee5126",
+    "count": 10
+}

@@ -1,6 +1,5 @@
-from polygon import RESTClient
 from polygon.rest.models import MarketHoliday, MarketStatus
-from mocks import BaseTest
+from base import BaseTest
 
 
 class MarketsTest(BaseTest):

@@ -4,7 +4,7 @@ from polygon.rest.models import (
     TickerNews,
     TickerTypes,
 )
-from mocks import BaseTest
+from base import BaseTest
 
 
 class TickersTest(BaseTest):

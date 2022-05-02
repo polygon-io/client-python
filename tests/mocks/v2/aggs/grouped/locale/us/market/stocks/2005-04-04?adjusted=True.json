@@ -1,0 +1,21 @@
+{
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+        {
+            "T": "GIK",
+            "v": 895345,
+            "vw": 9.9979,
+            "o": 9.99,
+            "c": 10.02,
+            "h": 10.02,
+            "l": 9.9,
+            "t": 1602705600000,
+            "n": 96
+        }
+    ],
+    "status": "OK",
+    "request_id": "eae3ded2d6d43f978125b7a8a609fad9",
+    "count": 1
+}

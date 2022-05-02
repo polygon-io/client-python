@@ -1,0 +1,12 @@
+{
+    "status": "OK",
+    "from": "2021-04-01",
+    "symbol": "AAPL",
+    "open": 123.66,
+    "high": 124.18,
+    "low": 122.49,
+    "close": 123,
+    "volume": 75089134,
+    "afterHours": 123,
+    "preMarket": 123.45
+}

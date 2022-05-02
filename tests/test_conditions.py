@@ -1,5 +1,5 @@
 from polygon.rest.models import Condition
-from mocks import BaseTest
+from base import BaseTest
 
 
 class ConditionsTest(BaseTest):
