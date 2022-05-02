@@ -139,9 +139,24 @@ Ticker Types
 .. autoclass:: polygon.rest.models.TickerTypes
 
 ==============================================================
-Market
+Market Holiday
 ==============================================================
-.. autoclass:: polygon.rest.models.Market
+.. autoclass:: polygon.rest.models.MarketHoliday
+
+==============================================================
+Market Currencies
+==============================================================
+.. autoclass:: polygon.rest.models.MarketCurrencies
+
+==============================================================
+Market Exchanges
+==============================================================
+.. autoclass:: polygon.rest.models.MarketExchanges
+
+==============================================================
+Market Status
+==============================================================
+.. autoclass:: polygon.rest.models.MarketStatus
 
 ==============================================================
 Condition
