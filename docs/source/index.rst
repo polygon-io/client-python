@@ -13,6 +13,7 @@ This documentation is for the Python client only. For details about the response
   Quotes
   Reference
   Trades
+  Models
 
 
 Indices and tables
