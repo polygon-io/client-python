@@ -7,7 +7,7 @@ from .trades import LastTrade
 
 @dataclass
 class SnapshotMin:
-    "Most recent minute bar"
+    "Most recent minute bar."
     accumulated_volume: Optional[float] = None
     open: Optional[float] = None
     high: Optional[float] = None
@@ -23,7 +23,7 @@ class SnapshotMin:
 
 @dataclass
 class Snapshot:
-    "Contains the most up-to-date market data for all traded ticker symbols"
+    "Contains the most up-to-date market data for all traded ticker symbols."
     day: Optional[Agg] = None
     last_quote: Optional[LastQuote] = None
     last_trade: Optional[LastTrade] = None

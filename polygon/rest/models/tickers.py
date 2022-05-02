@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Address:
-    "Contains address data for a ticker detail"
+    "Contains address data for a ticker detail."
     address1: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None
@@ -17,7 +17,7 @@ class Address:
 
 @dataclass
 class Branding:
-    "Contains branding data for a ticker detail"
+    "Contains branding data for a ticker detail."
     icon_url: Optional[str] = None
     logo_url: Optional[str] = None
 
@@ -28,7 +28,7 @@ class Branding:
 
 @dataclass
 class Publisher:
-    "Contains publisher data for ticker news"
+    "Contains publisher data for ticker news."
     favicon_url: Optional[str] = None
     homepage_url: Optional[str] = None
     logo_url: Optional[str] = None

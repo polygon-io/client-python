@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass
 class SipMapping:
-    "Contains data for a mapping to a symbol for each SIP that has a given condition"
+    "Contains data for a mapping to a symbol for each SIP that has a given condition."
     CTA: Optional[str] = None
     OPRA: Optional[str] = None
     UTP: Optional[str] = None
