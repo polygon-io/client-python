@@ -16,18 +16,6 @@ class SnapshotMin:
     volume: Optional[float] = None
     vwap: Optional[float] = None
 
-    @staticmethod
-    def from_dict(d):
-        return SnapshotMin(
-            d.get("ac", None),
-            d.get("o", None),
-            d.get("h", None),
-            d.get("l", None),
-            d.get("c", None),
-            d.get("v", None),
-            d.get("vw", None),
-        )
-
 
 @dataclass
 class Snapshot:
@@ -71,10 +59,6 @@ class DayOptionContractSnapshot:
     volume: Optional[float] = None
     vwap: Optional[float] = None
 
-    @staticmethod
-    def from_dict(d):
-        return DayOptionContractSnapshot(**d)
-
 
 @dataclass
 class OptionDetails:
@@ -85,10 +69,6 @@ class OptionDetails:
     shares_per_contract: Optional[float] = None
     strike_price: Optional[float] = None
     ticker: Optional[str] = None
-
-    @staticmethod
-    def from_dict(d):
-        return OptionDetails(**d)
 
 
 @dataclass
@@ -102,36 +82,24 @@ class OptionLastQuote:
     midpoint: Optional[float] = None
     timeframe: Optional[str] = None
 
-    @staticmethod
-    def from_dict(d):
-        return OptionLastQuote(**d)
-
 
 @dataclass
 class OptionGreeks:
-    "Contains data for the greeks in an options contract. "
+    "Contains data for the greeks in an options contract."
     delta: Optional[float] = None
     gamma: Optional[float] = None
     theta: Optional[float] = None
     vega: Optional[float] = None
 
-    @staticmethod
-    def from_dict(d):
-        return OptionGreeks(**d)
-
 
 @dataclass
 class UnderlyingAsset:
-    "Contains data for the underlying stock in an options contract. "
+    "Contains data for the underlying stock in an options contract."
     change_to_break_even: Optional[float] = None
     last_updated: Optional[int] = None
     price: Optional[float] = None
     ticker: Optional[str] = None
     timeframe: Optional[str] = None
-
-    @staticmethod
-    def from_dict(d):
-        return UnderlyingAsset(**d)
 
 
 @dataclass
@@ -156,10 +124,6 @@ class OrderBookQuote:
     "Contains data for a book bid or ask."
     price: Optional[float] = None
     exchange_shares: Optional[Dict[str, float]] = None
-
-    @staticmethod
-    def from_dict(d):
-        return OrderBookQuote(**d)
 
 
 @dataclass
