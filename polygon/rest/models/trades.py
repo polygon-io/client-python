@@ -69,20 +69,3 @@ class Last:
     @staticmethod
     def from_dict(d):
         return Last(**d)
-
-
-@dataclass
-class LastTradeCrypto:
-    last: Last
-    ticker: str
-    status: str
-    request_id: str
-
-    @staticmethod
-    def from_dict(d):
-        return LastTradeCrypto(
-            d.get("last", None),
-            d.get("symbol", None),
-            d.get("status", None),
-            d.get("request_id", None),
-        )
