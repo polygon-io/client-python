@@ -1,0 +1,252 @@
+{
+    "results": [
+        {
+            "id": 1,
+            "type": "sale_condition",
+            "name": "Acquisition",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "UTP": "A"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 2,
+            "type": "sale_condition",
+            "name": "Average Price Trade",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "CTA": "B",
+                "UTP": "W"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": false,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": false,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 3,
+            "type": "sale_condition",
+            "name": "Automatic Execution",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "CTA": "E"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 4,
+            "type": "sale_condition",
+            "name": "Bunched Trade",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "UTP": "B"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 5,
+            "type": "sale_condition",
+            "name": "Bunched Sold Trade",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "UTP": "G"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 6,
+            "type": "sale_condition",
+            "name": "CAP Election",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "CTA": "I"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ],
+            "legacy": true
+        },
+        {
+            "id": 7,
+            "type": "sale_condition",
+            "name": "Cash Sale",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "CTA": "C",
+                "UTP": "C"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": false,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": false,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 8,
+            "type": "sale_condition",
+            "name": "Closing Prints",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "UTP": "6"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 9,
+            "type": "sale_condition",
+            "name": "Cross Trade",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "CTA": "X",
+                "UTP": "X"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": true,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        },
+        {
+            "id": 10,
+            "type": "sale_condition",
+            "name": "Derivatively Priced",
+            "asset_class": "stocks",
+            "sip_mapping": {
+                "CTA": "4",
+                "UTP": "4"
+            },
+            "update_rules": {
+                "consolidated": {
+                    "updates_high_low": true,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                },
+                "market_center": {
+                    "updates_high_low": true,
+                    "updates_open_close": false,
+                    "updates_volume": true
+                }
+            },
+            "data_types": [
+                "trade"
+            ]
+        }
+    ],
+    "status": "OK",
+    "request_id": "4c915a9cb249e40d08d031d70567d615",
+    "count": 10
+}

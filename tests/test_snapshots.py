@@ -1,5 +1,5 @@
 from polygon.rest.models import Snapshot, OptionContractSnapshot, SnapshotTickerFullBook
-from mocks import BaseTest
+from base import BaseTest
 
 
 class SnapshotsTest(BaseTest):
@@ -155,123 +155,117 @@ class SnapshotsTest(BaseTest):
 
     def test_get_snapshot_ticker(self):
         snapshots = self.c.get_snapshot_ticker("AAPL")
-        expected = [
-            Snapshot(
-                day={
-                    "c": 160.315,
-                    "h": 166.2,
-                    "l": 159.8,
-                    "o": 161.84,
-                    "v": 68840127,
-                    "vw": 162.7124,
-                },
-                last_quote={
-                    "P": 159.99,
-                    "S": 5,
-                    "p": 159.98,
-                    "s": 3,
-                    "t": 1651251948407646487,
-                },
-                last_trade={
-                    "c": None,
-                    "i": "121351",
-                    "p": 159.99,
-                    "s": 200,
-                    "t": 1651251948294080343,
-                    "x": 12,
-                },
-                min={
-                    "av": 68834255,
-                    "c": 160.3,
-                    "h": 160.71,
-                    "l": 160.3,
-                    "o": 160.71,
-                    "v": 197226,
-                    "vw": 160.5259,
-                },
-                prev_day={
-                    "c": 163.64,
-                    "h": 164.515,
-                    "l": 158.93,
-                    "o": 159.25,
-                    "v": 130149192,
-                    "vw": 161.8622,
-                },
-                ticker="AAPL",
-                todays_change=-3.65,
-                todays_change_percent=None,
-                updated=1651251948294080343,
-            )
-        ]
+        expected = Snapshot(
+            day={
+                "c": 160.315,
+                "h": 166.2,
+                "l": 159.8,
+                "o": 161.84,
+                "v": 68840127,
+                "vw": 162.7124,
+            },
+            last_quote={
+                "P": 159.99,
+                "S": 5,
+                "p": 159.98,
+                "s": 3,
+                "t": 1651251948407646487,
+            },
+            last_trade={
+                "c": None,
+                "i": "121351",
+                "p": 159.99,
+                "s": 200,
+                "t": 1651251948294080343,
+                "x": 12,
+            },
+            min={
+                "av": 68834255,
+                "c": 160.3,
+                "h": 160.71,
+                "l": 160.3,
+                "o": 160.71,
+                "v": 197226,
+                "vw": 160.5259,
+            },
+            prev_day={
+                "c": 163.64,
+                "h": 164.515,
+                "l": 158.93,
+                "o": 159.25,
+                "v": 130149192,
+                "vw": 161.8622,
+            },
+            ticker="AAPL",
+            todays_change=-3.65,
+            todays_change_percent=None,
+            updated=1651251948294080343,
+        )
         self.assertEqual(snapshots, expected)
 
     def test_get_snapshot_option(self):
         snapshots = self.c.get_snapshot_option("AAPL", "O:AAPL230616C00150000")
-        expected = [
-            OptionContractSnapshot(
-                break_even_price=179.075,
-                day={
-                    "change": -2.3999999999999986,
-                    "change_percent": -7.643312101910824,
-                    "close": 29,
-                    "high": 32.25,
-                    "last_updated": 1651204800000000000,
-                    "low": 29,
-                    "open": 29.99,
-                    "previous_close": 31.4,
-                    "volume": 8,
-                    "vwap": 30.7738,
-                },
-                details={
-                    "contract_type": "call",
-                    "exercise_style": "american",
-                    "expiration_date": "2023-06-16",
-                    "shares_per_contract": 100,
-                    "strike_price": 150,
-                    "ticker": "O:AAPL230616C00150000",
-                },
-                greeks={
-                    "delta": 0.6436614934293701,
-                    "gamma": 0.0061735291012820675,
-                    "theta": -0.028227189324641973,
-                    "vega": 0.6381159723175714,
-                },
-                implied_volatility=0.3570277203465058,
-                last_quote={
-                    "ask": 29.25,
-                    "ask_size": 209,
-                    "bid": 28.9,
-                    "bid_size": 294,
-                    "last_updated": 1651254260800059648,
-                    "midpoint": 29.075,
-                    "timeframe": "REAL-TIME",
-                },
-                open_interest=8133,
-                underlying_asset={
-                    "change_to_break_even": 19.11439999999999,
-                    "last_updated": 1651254263172073152,
-                    "price": 159.9606,
-                    "ticker": "AAPL",
-                    "timeframe": "REAL-TIME",
-                },
-            )
-        ]
+        expected = OptionContractSnapshot(
+            break_even_price=179.075,
+            day={
+                "change": -2.3999999999999986,
+                "change_percent": -7.643312101910824,
+                "close": 29,
+                "high": 32.25,
+                "last_updated": 1651204800000000000,
+                "low": 29,
+                "open": 29.99,
+                "previous_close": 31.4,
+                "volume": 8,
+                "vwap": 30.7738,
+            },
+            details={
+                "contract_type": "call",
+                "exercise_style": "american",
+                "expiration_date": "2023-06-16",
+                "shares_per_contract": 100,
+                "strike_price": 150,
+                "ticker": "O:AAPL230616C00150000",
+            },
+            greeks={
+                "delta": 0.6436614934293701,
+                "gamma": 0.0061735291012820675,
+                "theta": -0.028227189324641973,
+                "vega": 0.6381159723175714,
+            },
+            implied_volatility=0.3570277203465058,
+            last_quote={
+                "ask": 29.25,
+                "ask_size": 209,
+                "bid": 28.9,
+                "bid_size": 294,
+                "last_updated": 1651254260800059648,
+                "midpoint": 29.075,
+                "timeframe": "REAL-TIME",
+            },
+            open_interest=8133,
+            underlying_asset={
+                "change_to_break_even": 19.11439999999999,
+                "last_updated": 1651254263172073152,
+                "price": 159.9606,
+                "ticker": "AAPL",
+                "timeframe": "REAL-TIME",
+            },
+        )
         self.assertEqual(snapshots, expected)
 
     def test_get_snapshot_crypto_book(self):
         snapshots = self.c.get_snapshot_crypto_book("X:BTCUSD")
-        expected = [
-            SnapshotTickerFullBook(
-                ticker="X:BTCUSD",
-                bids=[
-                    {"p": 16303.17, "x": {"1": 2}},
-                    {"p": 16302.94, "x": {"1": 0.02859424, "6": 0.023455}},
-                ],
-                asks=[{"p": 11454, "x": {"2": 1}}, {"p": 11455, "x": {"2": 1}}],
-                bid_count=694.951789670001,
-                ask_count=593.1412981600005,
-                spread=-4849.17,
-                updated=1605295074162,
-            )
-        ]
+        expected = SnapshotTickerFullBook(
+            ticker="X:BTCUSD",
+            bids=[
+                {"p": 16303.17, "x": {"1": 2}},
+                {"p": 16302.94, "x": {"1": 0.02859424, "6": 0.023455}},
+            ],
+            asks=[{"p": 11454, "x": {"2": 1}}, {"p": 11455, "x": {"2": 1}}],
+            bid_count=694.951789670001,
+            ask_count=593.1412981600005,
+            spread=-4849.17,
+            updated=1605295074162,
+        )
         self.assertEqual(snapshots, expected)

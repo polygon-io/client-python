@@ -1,0 +1,36 @@
+{
+    "results": [
+        {
+            "ticker": "A",
+            "name": "Agilent Technologies Inc.",
+            "market": "stocks",
+            "locale": "us",
+            "primary_exchange": "XNYS",
+            "type": "CS",
+            "active": true,
+            "currency_name": "usd",
+            "cik": "0001090872",
+            "composite_figi": "BBG000C2V3D6",
+            "share_class_figi": "BBG001SCTQY4",
+            "last_updated_utc": "2022-04-27T00:00:00Z"
+        },
+        {
+            "ticker": "AA",
+            "name": "Alcoa Corporation",
+            "market": "stocks",
+            "locale": "us",
+            "primary_exchange": "XNYS",
+            "type": "CS",
+            "active": true,
+            "currency_name": "usd",
+            "cik": "0001675149",
+            "composite_figi": "BBG00B3T3HD3",
+            "share_class_figi": "BBG00B3T3HF1",
+            "last_updated_utc": "2022-04-27T00:00:00Z"
+        }
+    ],
+    "status": "OK",
+    "request_id": "37089bb3b4ef99a796cdc82ff971e447",
+    "count": 2,
+    "next_url": "https://api.polygon.io/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIyLTA0LTI3JmxpbWl0PTImb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUFBJTdDZjEyMmJjYmY4YWQwNzRmZmJlMTZmNjkxOWQ0ZDc3NjZlMzA3MWNmNmU1Nzg3OGE0OGU1NjQ1YzQyM2U3NzJhOSZzb3J0PXRpY2tlcg"
+}

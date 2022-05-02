@@ -71,21 +71,3 @@ class CryptoTrade:
     @staticmethod
     def from_dict(d):
         return CryptoTrade(**d)
-
-
-@dataclass
-class LastCryptoTrade:
-    "Contains data for the last trade tick of a specified cryptocurrency pair."
-    last: Optional[CryptoTrade] = None
-    ticker: Optional[str] = None
-    status: Optional[str] = None
-    request_id: Optional[str] = None
-
-    @staticmethod
-    def from_dict(d):
-        return LastCryptoTrade(
-            d.get("last", None),
-            d.get("symbol", None),
-            d.get("status", None),
-            d.get("request_id", None),
-        )

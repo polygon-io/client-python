@@ -1,4 +1,4 @@
-from mocks import BaseTest
+from base import BaseTest
 from polygon.rest.models import (
     Agg,
     GroupedDailyAgg,
@@ -53,20 +53,19 @@ class AggsTest(BaseTest):
 
     def test_get_daily_open_close_agg(self):
         aggs = self.c.get_daily_open_close_agg("AAPL", "2005-04-01", True)
-        expected = [
-            DailyOpenCloseAgg(
-                after_hours=123,
-                close=123,
-                from_="2021-04-01",
-                high=124.18,
-                low=122.49,
-                open=123.66,
-                pre_market=123.45,
-                status="OK",
-                symbol="AAPL",
-                volume=75089134,
-            )
-        ]
+        expected = DailyOpenCloseAgg(
+            after_hours=123,
+            close=123,
+            from_="2021-04-01",
+            high=124.18,
+            low=122.49,
+            open=123.66,
+            pre_market=123.45,
+            status="OK",
+            symbol="AAPL",
+            volume=75089134,
+        )
+
         self.assertEqual(aggs, expected)
 
     def test_get_previous_close_agg(self):
