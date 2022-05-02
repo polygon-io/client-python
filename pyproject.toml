@@ -38,12 +38,5 @@ sphinx-rtd-theme = "^1.0.0"
 sphinx-autodoc-typehints = "^1.18.1"
 
 [build-system]
-# so releasing doesn't have to touch the "version" in this file
-# we have to use a beta release of poetry and this plugin:
-# https://pypi.org/project/poetry-dynamic-versioning-plugin/
-requires = ["poetry>=1.2.0b1", "poetry-dynamic-versioning-plugin"]
-build-backend = "poetry.masonry.api"
-
-[tool.poetry-dynamic-versioning]
-enable = true
-style = "semver"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

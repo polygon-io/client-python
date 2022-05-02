@@ -19,13 +19,11 @@ jobs:
           python-version: "3.10"
       - name: Setup Poetry
         uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: 1.2.0b1
-      - name: Setup release plugin
-        run: poetry plugin add poetry-dynamic-versioning-plugin
       - name: Install pypi deps
         run: poetry install
+      - name: Version
+        run: poetry version ${{ github.event.release.tag_name }}
       - name: Build
         run: poetry build
       - name: Publish to PyPi
-        run: poetry publish
+        run: poetry publish --dry-run
