@@ -9,6 +9,7 @@ class Address:
     address1: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None
+    postal_code: Optional[str] = None
 
     @staticmethod
     def from_dict(d):

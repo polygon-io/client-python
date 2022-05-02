@@ -18,7 +18,15 @@ class SnapshotMin:
 
     @staticmethod
     def from_dict(d):
-        return SnapshotMin(**d)
+        return SnapshotMin(
+            d.get("av", None),
+            d.get("o", None),
+            d.get("h", None),
+            d.get("l", None),
+            d.get("c", None),
+            d.get("v", None),
+            d.get("vw", None),
+        )
 
 
 @dataclass
@@ -172,7 +180,10 @@ class OrderBookQuote:
 
     @staticmethod
     def from_dict(d):
-        return OrderBookQuote(**d)
+        return OrderBookQuote(
+            d.get("p", None),
+            d.get("x", None),
+        )
 
 
 @dataclass
