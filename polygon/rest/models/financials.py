@@ -1,5 +1,4 @@
 from typing import Optional, Dict
-from .shared import DividendType
 from dataclasses import dataclass
 
 
