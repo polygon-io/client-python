@@ -24,6 +24,7 @@ class RESTClient(
     DividendsClient,
     ConditionsClient,
     ExchangesClient,
-    VXClient,
 ):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.vx = VXClient(*args, **kwargs)

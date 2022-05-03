@@ -22,7 +22,7 @@ from base import BaseTest
 
 class FinancialsTest(BaseTest):
     def test_list_stock_financials(self):
-        financials = [f for f in self.c.list_stock_financials()]
+        financials = [f for f in self.c.vx.list_stock_financials()]
         expected = [
             StockFinancial(
                 cik="0001413447",
