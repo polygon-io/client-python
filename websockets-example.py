@@ -1,16 +1,32 @@
 import asyncio
 from polygon import WebSocketClient
+#import logging
+#logging.basicConfig(
+#    format="%(asctime)s %(message)s",
+#    level=logging.DEBUG,
+#)
 
-async def processor(msg):
-    print('got msg', msg)
+count = 0
+c = WebSocketClient(verbose=True, raw=True, subscriptions=['T.*'])
 
-async def hello():
-    print('making client')
-    c = WebSocketClient(verbose=True)
-    print('subscribe')
-    c.subscribe('T.AAPL')
-    print('connect')
-    await c.connect(processor)
+async def processor(msg, _):
+    global count, c
+    print(count)
+    count += 1
 
-asyncio.run(hello())
+async def timeout():
+    await asyncio.sleep(3)
+    print('unsubscribe_all')
+    c.unsubscribe_all()
+    await asyncio.sleep(3)
+    print('close')
+    await c.close()
+
+async def main():
+    await asyncio.gather(
+        c.connect(processor),
+        timeout()
+    )
+
+asyncio.run(main())
 
