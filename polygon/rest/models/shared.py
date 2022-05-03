@@ -72,6 +72,7 @@ class SnapshotMarketType(Enum):
     FOREX = "forex"
     CRYPTO = "crypto"
 
+
 class Timeframe(Enum):
     ANNUAL = "annual"
     QUARTERLY = "quarterly"

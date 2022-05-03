@@ -12,6 +12,7 @@ from .reference import (
 )
 from .vx import VXClient
 
+
 class RESTClient(
     AggsClient,
     TradesClient,
