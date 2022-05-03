@@ -17,6 +17,7 @@ class WebsocketBaseClient:
         raw: bool = False,
         verbose: bool = False,
         subscriptions: List[str] = [],
+        max_reconnects: int = 5,
         **kwargs
     ):
         if api_key is None:
@@ -36,9 +37,11 @@ class WebsocketBaseClient:
         self.url = f"wss://{feed}/{market}"
         self.subscribed = False
         self.subscriptions = set(subscriptions)
+        self.max_reconnects = max_reconnects
 
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
     async def connect(self, processor):
+        reconnects = 0
         if self.verbose:
             print('connect', self.url)
         async for s in websockets.connect(self.url):
@@ -59,6 +62,11 @@ class WebsocketBaseClient:
                 async for msg in s:
                     await processor(msg)
             except websockets.ConnectionClosed:
+                if self.verbose:
+                    print('connection closed')
+                reconnects += 1
+                if reconnects > self.max_reconnects:
+                    return
                 continue
     
     def subscribe(self, *subscriptions: str):
@@ -69,3 +77,6 @@ class WebsocketBaseClient:
         for s in subscriptions:
             self.subscriptions.discard(s)
 
+
+    def unsubscribe_all(self):
+        self.subscriptions = set()

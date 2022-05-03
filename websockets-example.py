@@ -8,7 +8,7 @@ async def hello():
     print('making client')
     c = WebSocketClient(verbose=True)
     print('subscribe')
-    c.subscribe(Topic.Trades, 'AAPL')
+    c.subscribe('T.AAPL')
     print('connect')
     await c.connect(processor)
 
