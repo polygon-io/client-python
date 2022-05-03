@@ -28,7 +28,6 @@ class BaseClient:
         self.API_KEY = api_key
         self.BASE = base
 
-        print('hello', api_key)
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
