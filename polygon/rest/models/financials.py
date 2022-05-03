@@ -299,8 +299,8 @@ class Financials:
 
 
 @dataclass
-class Financial:
-    "Financial contains historical financial data for a stock ticker."
+class StockFinancial:
+    "StockFinancial contains historical financial data for a stock ticker."
     cik: Optional[str] = None
     company_name: Optional[str] = None
     end_date: Optional[str] = None
@@ -314,7 +314,7 @@ class Financial:
 
     @staticmethod
     def from_dict(d):
-        return Financial(
+        return StockFinancial(
             cik=d.get("cik", None),
             company_name=d.get("company_name", None),
             end_date=d.get("end_date", None),
