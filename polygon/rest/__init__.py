@@ -10,7 +10,7 @@ from .reference import (
     ConditionsClient,
     ExchangesClient,
 )
-
+from .vx import VXClient
 
 class RESTClient(
     AggsClient,
@@ -23,5 +23,6 @@ class RESTClient(
     DividendsClient,
     ConditionsClient,
     ExchangesClient,
+    VXClient,
 ):
     pass

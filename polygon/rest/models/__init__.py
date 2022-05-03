@@ -9,3 +9,4 @@ from .dividends import *
 from .conditions import *
 from .exchanges import *
 from .snapshot import *
+from .financials import *
