@@ -35,7 +35,8 @@ def parse(msg: List[Dict[str, Any]]):
     for m in msg:
         parsed = parse_single(m)
         if parsed is None:
-            print("bad message", m)
+            if m['ev'] != 'status':
+                print("could not parse message", m)
         else:
             res.append(parsed)
     return res

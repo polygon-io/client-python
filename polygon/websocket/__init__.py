@@ -82,7 +82,8 @@ class WebSocketClient:
                     print("authed:", msg)
                 while True:
                     if self.schedule_resub:
-                        print("reconciling:", self.subs, self.scheduled_subs)
+                        if self.verbose:
+                            print("reconciling:", self.subs, self.scheduled_subs)
                         new_subs = self.scheduled_subs.difference(self.subs)
                         await self._subscribe(new_subs)
                         old_subs = self.subs.difference(self.scheduled_subs)
@@ -93,16 +94,19 @@ class WebSocketClient:
 
                     msg = await s.recv()
                     msgJson = json.loads(msg)
-                    if msgJson[0]["ev"] == "status" and self.verbose:
-                        print("status:", msgJson[0]["message"])
-                        continue
+                    for m in msgJson:
+                        if m["ev"] == "status":
+                            if self.verbose:
+                                print("status:", m["message"])
+                            continue
                     if not self.raw:
                         msg = parse(msgJson)
 
-                    if isasync:
-                        await processor(msg)
-                    else:
-                        processor(msg)
+                    if len(msg) > 0:
+                        if isasync:
+                            await processor(msg)
+                        else:
+                            processor(msg)
             except ConnectionClosedOK:
                 if self.verbose:
                     print("connection closed (OK)")

@@ -17,11 +17,10 @@ async def handle_msg(msg):
     count += 1
 
 async def timeout():
-    await asyncio.sleep(3)
+    await asyncio.sleep(1)
     print('unsubscribe_all')
-    #c.unsubscribe_all()
-    c.unsubscribe('T.*')
-    await asyncio.sleep(3)
+    c.unsubscribe_all()
+    await asyncio.sleep(1)
     print('close')
     await c.close()
 
