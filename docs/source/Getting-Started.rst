@@ -177,11 +177,13 @@ Websocket client usage
 
   from polygon import WebSocketClient
   from polygon.websocket.models import Market, Feed, WebSocketMessage
+  from typing import List
   import asyncio
 
   client = WebSocketClient(market=Market.Stocks, feed=Feed.RealTime) # Uses POLYGON_API_KEY env var. Can optionally supply your key.
+  client.subscribe('T.AAPL')
 
-  async def handle_msg(msg: WebSocketMessage):
+  async def handle_msg(msg: List[WebSocketMessage]):
     print(msg)
 
   asyncio.run(client.connect(handle_msg))
