@@ -58,7 +58,12 @@ class WebSocketClient:
         self.schedule_resub = True
 
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
-    async def connect(self, processor: Callable[[Union[List[WebSocketMessage], Data]], Optional[Awaitable]], close_timeout: int = 1, **kwargs):
+    async def connect(
+        self,
+        processor: Callable[[Union[List[WebSocketMessage], Data]], Optional[Awaitable]],
+        close_timeout: int = 1,
+        **kwargs,
+    ):
         """
         Connect to websocket server and run `processor(msg)` on every new `msg`.
 
@@ -72,7 +77,7 @@ class WebSocketClient:
         async for s in connect(self.url, close_timeout=close_timeout, **kwargs):
             self.websocket = s
             try:
-                msg= await s.recv()
+                msg = await s.recv()
                 if self.verbose:
                     print("connected:", msg)
                 if self.verbose:
@@ -95,7 +100,7 @@ class WebSocketClient:
 
                     cmsg: Union[List[WebSocketMessage], Data] = await s.recv()
                     # we know cmsg is Data
-                    msgJson = json.loads(cmsg) # type: ignore
+                    msgJson = json.loads(cmsg)  # type: ignore
                     for m in msgJson:
                         if m["ev"] == "status":
                             if self.verbose:
@@ -107,7 +112,7 @@ class WebSocketClient:
                     if len(cmsg) > 0:
                         if isasync:
                             # we know processor is Awaitable
-                            await processor(cmsg) # type: ignore
+                            await processor(cmsg)  # type: ignore
                         else:
                             processor(cmsg)
             except ConnectionClosedOK:
