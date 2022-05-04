@@ -20,7 +20,7 @@ class WebsocketBaseClient:
         verbose: bool = False,
         subscriptions: List[str] = [],
         max_reconnects: Optional[int] = 5,
-        **kwargs
+        **kwargs,
     ):
         if api_key is None:
             raise Exception(
@@ -43,42 +43,44 @@ class WebsocketBaseClient:
         self.websocket = None
         self.scheduled_subs = set(subscriptions)
         self.schedule_resub = True
-        print('subscriptions', subscriptions)
-        print('scheduled_subs', subscriptions)
+        print("subscriptions", subscriptions)
+        print("scheduled_subs", subscriptions)
 
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
     async def connect_loop(self, processor, close_timeout=1, **kwargs):
         reconnects = 0
         isasync = inspect.iscoroutinefunction(processor)
         if self.verbose:
-            print('connect', self.url)
-        async for s in websockets.connect(self.url, close_timeout=close_timeout, **kwargs):
+            print("connect", self.url)
+        async for s in websockets.connect(
+            self.url, close_timeout=close_timeout, **kwargs
+        ):
             self.websocket = s
             try:
                 msg = await s.recv()
                 if self.verbose:
-                    print('connected', msg)
+                    print("connected", msg)
                 if self.verbose:
-                    print('authing')
-                await s.send(json.dumps({"action":"auth","params":self.api_key}))
+                    print("authing")
+                await s.send(json.dumps({"action": "auth", "params": self.api_key}))
                 msg = await s.recv()
                 if self.verbose:
-                    print('authed', msg)
+                    print("authed", msg)
                 while True:
                     if self.schedule_resub:
-                        print('reconciling', self.subs, self.scheduled_subs)
+                        print("reconciling", self.subs, self.scheduled_subs)
                         new_subs = self.scheduled_subs.difference(self.subs)
                         await self._subscribe(new_subs)
                         old_subs = self.subs.difference(self.scheduled_subs)
                         await self._unsubscribe(old_subs)
                         self.subs = self.scheduled_subs
-                        print('reconciled')
+                        print("reconciled")
                         self.schedule_resub = False
 
                     msg = await s.recv()
                     msgJson = json.loads(msg)
-                    if msgJson[0]['ev'] == 'status' and self.verbose:
-                        print('status', msgJson[0]['message'])
+                    if msgJson[0]["ev"] == "status" and self.verbose:
+                        print("status", msgJson[0]["message"])
                         continue
 
                     if not self.raw:
@@ -89,7 +91,7 @@ class WebsocketBaseClient:
                         processor(msg, s)
             except websockets.ConnectionClosed:
                 if self.verbose:
-                    print('connection closed')
+                    print("connection closed")
                 reconnects += 1
                 if self.max_reconnects is not None and reconnects > self.max_reconnects:
                     return
@@ -101,34 +103,34 @@ class WebsocketBaseClient:
     async def _subscribe(self, topics):
         if self.websocket is None or len(topics) == 0:
             return
-        topics = ','.join(topics)
+        topics = ",".join(topics)
         if self.verbose:
-            print('subbing', topics)
-        await self.websocket.send(json.dumps({"action":"subscribe","params":topics}))
-        #msg = await self.websocket.recv()
-        #if self.verbose:
+            print("subbing", topics)
+        await self.websocket.send(json.dumps({"action": "subscribe", "params": topics}))
+        # msg = await self.websocket.recv()
+        # if self.verbose:
         #    print('subbed', msg)
 
     async def _unsubscribe(self, topics):
         if self.websocket is None or len(topics) == 0:
             return
-        subs = ','.join(topics)
+        subs = ",".join(topics)
         if self.verbose:
-            print('unsubbing', topics)
-        await self.websocket.send(json.dumps({"action":"unsubscribe","params":subs}))
-        #msg = await self.websocket.recv()
-        #if self.verbose:
+            print("unsubbing", topics)
+        await self.websocket.send(json.dumps({"action": "unsubscribe", "params": subs}))
+        # msg = await self.websocket.recv()
+        # if self.verbose:
         #    print('unsubbed', msg)
 
     def subscribe(self, *subscriptions: str):
         for s in subscriptions:
-            print('add', s)
+            print("add", s)
             self.scheduled_subs.add(s)
         self.schedule_resub = True
 
     def unsubscribe(self, *subscriptions: str):
         for s in subscriptions:
-            print('discard', s)
+            print("discard", s)
             self.scheduled_subs.discard(s)
         self.schedule_resub = True
 
@@ -138,16 +140,16 @@ class WebsocketBaseClient:
 
     async def close(self):
         if self.verbose:
-            print('closing')
+            print("closing")
 
         if self.loop_task:
             self.loop_task.cancel()
             self.loop_task = None
         else:
-            print('no loop_task to cancel')
+            print("no loop_task to cancel")
 
         if self.websocket:
             await self.websocket.close()
             self.websocket = None
         else:
-            print('no websocket open to close')
+            print("no websocket open to close")
