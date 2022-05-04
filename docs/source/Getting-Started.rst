@@ -173,4 +173,18 @@ If it is a paginated :code:`list_*` response it's up to you to handle the "next_
 Websocket client usage
 ----------------------
 
-Coming soon.
+.. code-block:: python
+
+  from polygon import WebSocketClient
+  from polygon.websocket.models import Market, Feed, WebSocketMessage
+  from typing import List
+  import asyncio
+
+  client = WebSocketClient(market=Market.Stocks, feed=Feed.RealTime) # Uses POLYGON_API_KEY env var. Can optionally supply your key.
+  client.subscribe('T.AAPL')
+
+  async def handle_msg(msg: List[WebSocketMessage]):
+    print(msg)
+
+  asyncio.run(client.connect(handle_msg))
+

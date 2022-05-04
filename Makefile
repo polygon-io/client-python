@@ -6,7 +6,7 @@ YELLOW := $(shell tput -Txterm setaf 3)
 WHITE  := $(shell tput -Txterm setaf 7)
 RESET  := $(shell tput -Txterm sgr0)
 
-.PHONY: help lint style static test
+.PHONY: help lint style static test test_rest test_websocket
 
 ## Show help
 help:
@@ -22,16 +22,21 @@ help:
 
 ## Check code style
 style:
-	poetry run black $(if $(CI),--check,) polygon tests
+	poetry run black $(if $(CI),--check,) polygon test_*
 
 ## Check static types
 static:
-	poetry run mypy polygon tests
+	poetry run mypy polygon test_*
 
 ## Check code style and static types
 lint: style static
 
 ## Run unit tests
-test:
-	poetry run python -m unittest discover -s tests
+test_rest:
+	poetry run python -m unittest discover -s test_rest
+
+test_websocket:
+	poetry run python -m unittest discover -s test_websocket
+
+test: test_rest test_websocket
 

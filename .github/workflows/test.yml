@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10']
-    name: Lint ${{ matrix.python-version }}
+        python-version: ['3.8', '3.9', '3.10']
+    name: Unit test ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup Python

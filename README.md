@@ -41,3 +41,20 @@ from polygon import RESTClient
 client = RESTClient() # Uses POLYGON_API_KEY env var. Can optionally supply your key.
 response = client.get_aggs("AAPL", 1, "day", "2005-04-01", "2005-04-04", raw=True)
 ```
+
+### Streaming websockets
+
+```python
+from polygon import WebSocketClient
+from polygon.websocket.models import Market, Feed, WebSocketMessage
+import asyncio
+
+client = WebSocketClient(market=Market.Stocks, feed=Feed.RealTime) # Uses POLYGON_API_KEY env var. Can optionally supply your key.
+client.subscribe('T.AAPL')
+
+def handle_msg(msg: WebSocketMessage):
+	print(msg)
+
+asyncio.run(client.connect(handle_msg))
+```
+

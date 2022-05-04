@@ -26,6 +26,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.7"
 urllib3 = "^1.26.9"
+websockets = "^10.3"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
