@@ -2,6 +2,7 @@
 	- [x] new
 	- [x] connect
 	- [x] sub/unsub
+		- [x] support sub/unsubbing while looping?
 	- [x] callback
 	- [x] close
 - [ ] models (use wrapper)

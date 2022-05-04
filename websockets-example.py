@@ -7,7 +7,7 @@ from polygon import WebSocketClient
 #)
 
 count = 0
-c = WebSocketClient(verbose=True, raw=True, subscriptions=['T.*'])
+c = WebSocketClient(verbose=True, raw=True, subscriptions=['T.AAPL'])
 
 async def processor(msg, _):
     global count, c
@@ -17,7 +17,8 @@ async def processor(msg, _):
 async def timeout():
     await asyncio.sleep(3)
     print('unsubscribe_all')
-    c.unsubscribe_all()
+    #c.unsubscribe_all()
+    c.unsubscribe('T.*')
     await asyncio.sleep(3)
     print('close')
     await c.close()
