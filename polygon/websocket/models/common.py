@@ -14,3 +14,18 @@ class Market(Enum):
     Options = "options"
     Forex = "forex"
     Crypto = "crypto"
+
+
+class EventType(Enum):
+    A = "A"
+    AM = "AM"
+    CA = "CA"
+    XA = "XA"
+    T = "T"
+    XT = "XT"
+    Q = "Q"
+    C = "C"
+    XQ = "XQ"
+    NOI = "NOI"
+    LULD = "LULD"
+    XL2 = "XL2"
