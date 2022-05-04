@@ -1,5 +1,4 @@
 from polygon import RESTClient
-from polygon.rest.models import Sort
 from datetime import date, datetime
 
 client = RESTClient(verbose=True)

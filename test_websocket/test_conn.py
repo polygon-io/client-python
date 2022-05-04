@@ -7,7 +7,9 @@ from polygon.websocket import EquityTrade
 
 class WebSocketsTest(BaseTest):
     async def test_conn(self):
-        c = WebSocketClient(api_key="", feed=f"localhost:{port}", verbose=True, secure=False)
+        c = WebSocketClient(
+            api_key="", feed=f"localhost:{port}", verbose=True, secure=False
+        )
         self.expectResponse(
             [
                 EquityTrade(
