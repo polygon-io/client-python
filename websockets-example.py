@@ -1,6 +1,6 @@
 import asyncio
 from polygon import WebSocketClient
-from polygon.websocket.models import Market, Feed
+from polygon.websocket.models import Market, Feed, WebSocketMessage
 # import logging
 # logging.basicConfig(
 #     format="%(asctime)s %(message)s",
@@ -11,7 +11,7 @@ count = 0
 c = WebSocketClient(market=Market.Stocks, feed=Feed.RealTime)
 c.subscribe('T.AAPL')
 
-async def handle_msg(msg):
+async def handle_msg(msg: WebSocketMessage):
     global count, c
     print(count, msg)
     count += 1

@@ -30,7 +30,7 @@ def parse_single(data: Dict[str, Any]):
     return None
 
 
-def parse(msg: List[Dict[str, Any]]):
+def parse(msg: List[Dict[str, Any]]) -> List[WebSocketMessage]:
     res = []
     for m in msg:
         parsed = parse_single(m)
