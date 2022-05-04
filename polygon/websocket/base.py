@@ -138,9 +138,7 @@ class WebsocketBaseClient:
                         continue
 
                     if not self.raw:
-                        print("parsing", msgJson)
                         msg = parse(msgJson)
-                        print("parsed", msg)
                     if isasync:
                         await processor(msg, s)
                     else:
