@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Union, NewType
 from .common import EventType
 from dataclasses import dataclass
 
@@ -6,7 +6,7 @@ from dataclasses import dataclass
 @dataclass
 class EquityAgg:
     "EquityAgg contains aggregate data for either stock tickers or option contracts."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     volume: Optional[float] = None
     accumulated_volume: Optional[float] = None
@@ -44,7 +44,7 @@ class EquityAgg:
 @dataclass
 class CurrencyAgg:
     "CurrencyAgg contains aggregate data for either forex currency pairs or crypto pairs."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     pair: Optional[str] = None
     open: Optional[float] = None
     close: Optional[float] = None
@@ -76,7 +76,7 @@ class CurrencyAgg:
 @dataclass
 class EquityTrade:
     "EquityTrade contains trade data for either stock tickers or option contracts."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     exchange: Optional[int] = None
     id: Optional[str] = None
@@ -106,7 +106,7 @@ class EquityTrade:
 @dataclass
 class CryptoTrade:
     "CryptoTrade contains trade data for a crypto pair."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     exchange: Optional[int] = None
     id: Optional[str] = None
@@ -134,7 +134,7 @@ class CryptoTrade:
 @dataclass
 class EquityQuote:
     "EquityQuote contains quote data for either stock tickers or option contracts."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     bid_exchange_id: Optional[int] = None
     bid_price: Optional[float] = None
@@ -168,7 +168,7 @@ class EquityQuote:
 @dataclass
 class ForexQuote:
     "ForexQuote contains quote data for a forex currency pair."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     pair: Optional[str] = None
     exchange_id: Optional[int] = None
     ask_price: Optional[float] = None
@@ -190,7 +190,7 @@ class ForexQuote:
 @dataclass
 class CryptoQuote:
     "CryptoQuote contains quote data for a crypto pair."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     pair: Optional[str] = None
     bid_price: Optional[int] = None
     bid_size: Optional[float] = None
@@ -218,7 +218,7 @@ class CryptoQuote:
 @dataclass
 class Imbalance:
     "Imbalance contains imbalance event data for a given stock ticker symbol."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     time_stamp: Optional[int] = None
     auction_time: Optional[int] = None
@@ -248,7 +248,7 @@ class Imbalance:
 @dataclass
 class LimitUpLimitDown:
     "LimitUpLimitDown contains LULD event data for a given stock ticker symbol."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     high_price: Optional[float] = None
     low_price: Optional[float] = None
@@ -274,7 +274,7 @@ class LimitUpLimitDown:
 @dataclass
 class Level2Book:
     "Level2Book contains level 2 book data for a given crypto pair."
-    event_type: Optional[EventType] = None
+    event_type: Optional[Union[str, EventType]] = None
     pair: Optional[str] = None
     bid_prices: Optional[float] = None
     ask_prices: Optional[float] = None
@@ -293,3 +293,22 @@ class Level2Book:
             d.get("x", None),
             d.get("r", None),
         )
+
+
+WebSocketMessage = NewType(
+    "WebSocketMessage",
+    List[
+        Union[
+            EquityAgg,
+            CurrencyAgg,
+            EquityTrade,
+            CryptoTrade,
+            EquityQuote,
+            ForexQuote,
+            CryptoQuote,
+            Imbalance,
+            LimitUpLimitDown,
+            Level2Book,
+        ]
+    ],
+)

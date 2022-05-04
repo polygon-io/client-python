@@ -5,11 +5,11 @@
 		- [x] support sub/unsubbing while looping?
 	- [x] callback
 	- [x] close
-- [ ] models (use wrapper)
+- [x] models (use wrapper)
 	- [x] ...or raw data
 - [x] reconnects
 	- [x] expo backoff
 	- [x] max retries
 	- [x] resub
 - [x] maybe logger
-- [ ] tests
+- [x] tests

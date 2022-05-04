@@ -1,4 +1,4 @@
-from websockets import serve
+from websockets import serve  # type: ignore
 import asyncio
 import json
 
@@ -32,8 +32,53 @@ async def mock_server(websocket):
                         ]
                     )
                 )
-                await websocket.send( json.dumps([{"ev":"T","sym":"AAPL","i":"5096","x":10,"p":161.87,"s":300,"c":[14,41],"t":1651684192462,"q":4009402,"z":3}]))
-                await websocket.send( json.dumps([{"ev":"T","sym":"AAPL","i":"72815","x":12,"p":161.87,"s":1,"c":[14,37,41],"t":1651684192536,"q":4009408,"z":3}, {"ev":"T","sym":"AAPL","i":"799","x":4,"p":161.87,"s":100,"t":1651684192717,"q":4009434,"z":3}]))
+                await websocket.send(
+                    json.dumps(
+                        [
+                            {
+                                "ev": "T",
+                                "sym": "AAPL",
+                                "i": "5096",
+                                "x": 10,
+                                "p": 161.87,
+                                "s": 300,
+                                "c": [14, 41],
+                                "t": 1651684192462,
+                                "q": 4009402,
+                                "z": 3,
+                            }
+                        ]
+                    )
+                )
+                await websocket.send(
+                    json.dumps(
+                        [
+                            {
+                                "ev": "T",
+                                "sym": "AMZN",
+                                "i": "72815",
+                                "x": 12,
+                                "p": 161.87,
+                                "s": 1,
+                                "c": [14, 37, 41],
+                                "t": 1651684192536,
+                                "q": 4009408,
+                                "z": 3,
+                            },
+                            {
+                                "ev": "T",
+                                "sym": "AMZN",
+                                "i": "799",
+                                "x": 4,
+                                "p": 161.87,
+                                "s": 100,
+                                "t": 1651684192717,
+                                "q": 4009434,
+                                "z": 3,
+                            },
+                        ]
+                    )
+                )
         elif message["action"] == "unsubscribe":
             for p in message["params"].split(","):
                 subs.discard(p)

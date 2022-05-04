@@ -1,15 +1,15 @@
 import asyncio
 from polygon import WebSocketClient
-import logging
-logging.basicConfig(
-    format="%(asctime)s %(message)s",
-    level=logging.DEBUG,
-)
+# import logging
+# logging.basicConfig(
+#     format="%(asctime)s %(message)s",
+#     level=logging.DEBUG,
+# )
 
 count = 0
 c = WebSocketClient(verbose=True, raw=True, subscriptions=['T.AAPL'])
 
-async def processor(msg, _):
+async def processor(msg):
     global count, c
     print(count, msg)
     count += 1
