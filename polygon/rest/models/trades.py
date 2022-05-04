@@ -25,19 +25,20 @@ class Trade:
 
 @dataclass
 class LastTrade:
-    ticker: str
-    trf_timestamp: int
-    sequence_number: float
-    sip_timestamp: int
-    participant_timestamp: int
-    conditions: List[int]
-    correction: int
-    id: str
-    price: float
-    trf_id: int
-    size: float
-    exchange: int
-    tape: int
+    "Contains data for the most recent trade for a given ticker symbol."
+    ticker: Optional[str] = None
+    trf_timestamp: Optional[int] = None
+    sequence_number: Optional[float] = None
+    sip_timestamp: Optional[int] = None
+    participant_timestamp: Optional[int] = None
+    conditions: Optional[List[int]] = None
+    correction: Optional[int] = None
+    id: Optional[str] = None
+    price: Optional[float] = None
+    trf_id: Optional[int] = None
+    size: Optional[float] = None
+    exchange: Optional[int] = None
+    tape: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -59,13 +60,14 @@ class LastTrade:
 
 
 @dataclass
-class Last:
-    conditions: List[int]
-    exchange: int
-    price: float
-    size: float
-    timestamp: int
+class CryptoTrade:
+    "Contains data for a crypto trade."
+    conditions: Optional[List[int]] = None
+    exchange: Optional[int] = None
+    price: Optional[float] = None
+    size: Optional[float] = None
+    timestamp: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
-        return Last(**d)
+        return CryptoTrade(**d)

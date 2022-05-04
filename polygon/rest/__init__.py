@@ -10,6 +10,7 @@ from .reference import (
     ConditionsClient,
     ExchangesClient,
 )
+from .vx import VXClient
 
 
 class RESTClient(
@@ -24,4 +25,6 @@ class RESTClient(
     ConditionsClient,
     ExchangesClient,
 ):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.vx = VXClient(*args, **kwargs)

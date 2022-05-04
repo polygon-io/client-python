@@ -15,7 +15,8 @@ for dname, _, files in os.walk(mockdir):
             with open(abspath, "r") as f:
                 urllpath = abspath.replace(mockdir, "").replace(".json", "")
                 mocks.append((urllpath, f.read()))
-                # print('load', urllpath)
+
+unittest.util._MAX_LENGTH = 30000  # type: ignore
 
 
 class BaseTest(unittest.TestCase):

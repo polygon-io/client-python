@@ -13,6 +13,8 @@ This documentation is for the Python client only. For details about the response
   Quotes
   Reference
   Trades
+  vX
+  Models
 
 
 Indices and tables
