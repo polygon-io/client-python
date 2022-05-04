@@ -1,13 +1,67 @@
 import os
 from enum import Enum
 from typing import Optional, Union, List
-from .models import Feed, Market
+
+from .models import (
+    Feed,
+    Market,
+    EquityAgg,
+    CurrencyAgg,
+    EquityTrade,
+    CryptoTrade,
+    EquityQuote,
+    ForexQuote,
+    CryptoQuote,
+    Imbalance,
+    LimitUpLimitDown,
+    Level2Book,
+)
 import websockets
 import json
 import inspect
 import asyncio
 
 env_key = "POLYGON_API_KEY"
+
+
+def parse_single(data):
+    event_type = data["ev"]
+    if event_type == "A":
+        return EquityAgg.from_dict(data)
+    elif event_type == "AM":
+        return EquityAgg.from_dict(data)
+    elif event_type == "CA":
+        return CurrencyAgg.from_dict(data)
+    elif event_type == "XA":
+        return CurrencyAgg.from_dict(data)
+    elif event_type == "T":
+        return EquityTrade.from_dict(data)
+    elif event_type == "XT":
+        return CryptoTrade.from_dict(data)
+    elif event_type == "Q":
+        return EquityQuote.from_dict(data)
+    elif event_type == "C":
+        return ForexQuote.from_dict(data)
+    elif event_type == "XQ":
+        return CryptoQuote.from_dict(data)
+    elif event_type == "NOI":
+        return Imbalance.from_dict(data)
+    elif event_type == "LULD":
+        return LimitUpLimitDown.from_dict(data)
+    elif event_type == "XL2":
+        return Level2Book.from_dict(data)
+    return None
+
+
+def parse(msg):
+    res = []
+    for m in msg:
+        parsed = parse_single(m)
+        if parsed is None:
+            print("bad message", m)
+        else:
+            res.append(parsed)
+    return res
 
 
 class WebsocketBaseClient:
@@ -84,7 +138,9 @@ class WebsocketBaseClient:
                         continue
 
                     if not self.raw:
+                        print("parsing", msgJson)
                         msg = parse(msgJson)
+                        print("parsed", msg)
                     if isasync:
                         await processor(msg, s)
                     else:
