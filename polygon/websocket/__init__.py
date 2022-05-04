@@ -149,7 +149,7 @@ class WebSocketClient:
         """
         Subscribe to given subscriptions.
 
-        :param subscriptions: Subscriptions (*args)
+        :param subscriptions: Subscriptions (args)
         """
         for s in subscriptions:
             topic, sym = self._parse_subscription(s)
@@ -170,7 +170,7 @@ class WebSocketClient:
         """
         Unsubscribe from given subscriptions.
 
-        :param subscriptions: Subscriptions (*args)
+        :param subscriptions: Subscriptions (args)
         """
         for s in subscriptions:
             topic, sym = self._parse_subscription(s)

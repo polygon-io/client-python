@@ -6,24 +6,21 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 
-base = "https://api.polygon.io"
-env_key = "POLYGON_API_KEY"
-
 
 class BaseClient:
     def __init__(
         self,
-        api_key: Optional[str] = os.getenv(env_key),
-        connect_timeout: float = 10.0,
-        read_timeout: float = 10.0,
-        num_pools: int = 10,
-        retries: int = 3,
-        base: str = base,
-        verbose: bool = False,
+        api_key: Optional[str],
+        connect_timeout: float,
+        read_timeout: float,
+        num_pools: int,
+        retries: int,
+        base: str,
+        verbose: bool,
     ):
         if api_key is None:
             raise Exception(
-                f"Must specify env var {env_key} or pass api_key in constructor"
+                f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
             )
         self.API_KEY = api_key
         self.BASE = base

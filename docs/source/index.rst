@@ -9,6 +9,7 @@ This documentation is for the Python client only. For details about the response
 
   Getting-Started
   Aggs
+  WebSockets
   Snapshot
   Quotes
   Reference
