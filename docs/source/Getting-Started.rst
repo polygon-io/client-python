@@ -40,6 +40,11 @@ For paginated endpoints call :code:`list_*` and use the provided iterator:
       trades.append(t)
   print(trades)
 
+.. note::
+  The number of network requests made by the iterator depends on the value given for the query parameter :code:`limit`.
+  :code:`limit` specifies how many results should be returned per network request. 
+  You can see each network request by passing :code:`verbose = True` to the client. 
+
 For endpoints that have a set of parameters you can use the provided enums:
 
 .. code-block:: python
