@@ -1,5 +1,5 @@
 from typing import Optional
-from .shared import DividendType, Frequency
+from .common import DividendType, Frequency
 from dataclasses import dataclass
 
 

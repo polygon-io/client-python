@@ -1,5 +1,5 @@
 from typing import Optional, List
-from .shared import Locale, Market, AssetClass
+from .common import Locale, Market, AssetClass
 from dataclasses import dataclass
 
 

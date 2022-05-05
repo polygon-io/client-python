@@ -192,6 +192,3 @@ Condition
 Exchange
 ==============================================================
 .. autoclass:: polygon.rest.models.Exchange
-
-
-
