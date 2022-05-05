@@ -13,7 +13,7 @@ def parse_single(data: Dict[str, Any]):
         return CurrencyAgg.from_dict(data)
     elif event_type == EventType.EquityTrade.value:
         return EquityTrade.from_dict(data)
-    elif event_type == EventType.ForexTrade.value:
+    elif event_type == EventType.CryptoTrade.value:
         return CryptoTrade.from_dict(data)
     elif event_type == EventType.EquityQuote.value:
         return EquityQuote.from_dict(data)
