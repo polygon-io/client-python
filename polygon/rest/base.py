@@ -1,4 +1,4 @@
-import os
+import certifi
 import json
 import urllib3
 import inspect
@@ -33,6 +33,8 @@ class BaseClient:
                 "Authorization": "Bearer " + self.API_KEY,
                 "User-Agent": "Python client",
             },
+            ca_certs=certifi.where(),
+            cert_reqs="CERT_REQUIRED",
         )
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
@@ -55,7 +57,10 @@ class BaseClient:
         if self.verbose:
             print("_get", path, params)
         resp = self.client.request(
-            "GET", self.BASE + path, fields=params, retries=self.retries
+            "GET",
+            self.BASE + path,
+            fields=params,
+            retries=self.retries,
         )
 
         if resp.status != 200:
