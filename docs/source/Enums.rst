@@ -28,6 +28,8 @@ Locale
 Market
 ==============================================================
 .. autoclass:: polygon.rest.models.Market
+    :members:
+    :undoc-members:
 
 ==============================================================
 AssetClass
