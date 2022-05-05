@@ -94,8 +94,8 @@ class WebSocketClient:
                 auth_msg_parsed = json.loads(auth_msg)
                 if self.verbose:
                     print("authed:", auth_msg)
-                if auth_msg_parsed[0]['status'] == 'auth_failed':
-                    print(auth_msg_parsed[0]['message'])
+                if auth_msg_parsed[0]["status"] == "auth_failed":
+                    print(auth_msg_parsed[0]["message"])
                     return
                 while True:
                     if self.schedule_resub:
