@@ -22,7 +22,7 @@ class EventType(Enum):
     CryptoAgg = "CA"
     ForexAgg = "XA"
     EquityTrade = "T"
-    ForexTrade = "XT"
+    CryptoTrade = "XT"
     EquityQuote = "Q"
     ForexQuote = "C"
     CryptoQuote = "XQ"
