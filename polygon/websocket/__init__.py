@@ -90,9 +90,13 @@ class WebSocketClient:
                 if self.verbose:
                     print("authing:")
                 await s.send(json.dumps({"action": "auth", "params": self.api_key}))
-                msg = await s.recv()
+                auth_msg = await s.recv()
+                auth_msg_parsed = json.loads(auth_msg)
                 if self.verbose:
-                    print("authed:", msg)
+                    print("authed:", auth_msg)
+                if auth_msg_parsed[0]['status'] == 'auth_failed':
+                    print(auth_msg_parsed[0]['message'])
+                    return
                 while True:
                     if self.schedule_resub:
                         if self.verbose:
