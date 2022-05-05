@@ -1,12 +1,14 @@
 import os
 from enum import Enum
 from typing import Optional, Union, List, Set, Callable, Awaitable
+import json
+import inspect
+import ssl
+import certifi
 from .models import *
 from websockets.client import connect, WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
 from websockets.typing import Data
-import json
-import inspect
 
 env_key = "POLYGON_API_KEY"
 
@@ -74,7 +76,12 @@ class WebSocketClient:
         isasync = inspect.iscoroutinefunction(processor)
         if self.verbose:
             print("connect:", self.url)
-        async for s in connect(self.url, close_timeout=close_timeout, **kwargs):
+        # darwin needs some extra <3
+        ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        ssl_context.load_verify_locations(certifi.where())
+        async for s in connect(
+            self.url, close_timeout=close_timeout, ssl=ssl_context, **kwargs
+        ):
             self.websocket = s
             try:
                 msg = await s.recv()
