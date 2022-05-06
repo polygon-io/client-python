@@ -77,8 +77,11 @@ class WebSocketClient:
         if self.verbose:
             print("connect:", self.url)
         # darwin needs some extra <3
-        ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
-        ssl_context.load_verify_locations(certifi.where())
+        ssl_context = None
+        if self.url.startswith("wss://"):
+            ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+            ssl_context.load_verify_locations(certifi.where())
+
         async for s in connect(
             self.url, close_timeout=close_timeout, ssl=ssl_context, **kwargs
         ):

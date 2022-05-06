@@ -6,6 +6,7 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
+
 version = pkg_resources.require("polygon-api-client")[0].version
 
 
