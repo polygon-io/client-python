@@ -5,6 +5,9 @@ import inspect
 from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
+import pkg_resources  # part of setuptools
+
+version = pkg_resources.require("polygon-api-client")[0].version
 
 
 class BaseClient:
@@ -31,7 +34,7 @@ class BaseClient:
             num_pools=num_pools,
             headers={
                 "Authorization": "Bearer " + self.API_KEY,
-                "User-Agent": "Python client",
+                "User-Agent": "Python client " + version,
             },
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
