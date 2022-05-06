@@ -75,6 +75,7 @@ class WebSocketClient:
 
         :param processor: The callback to process messages.
         :param close_timeout: How long to wait for handshake when calling .close.
+        :raises AuthError: If invalid API key is supplied.
         """
         reconnects = 0
         isasync = inspect.iscoroutinefunction(processor)
