@@ -5,7 +5,6 @@ import json
 import inspect
 import ssl
 import certifi
-from multiprocessing import AuthenticationError
 from .models import *
 from websockets.client import connect, WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
@@ -13,6 +12,8 @@ from websockets.typing import Data
 
 env_key = "POLYGON_API_KEY"
 
+class AuthError(Exception):
+    pass
 
 class WebSocketClient:
     def __init__(
@@ -98,11 +99,8 @@ class WebSocketClient:
                 auth_msg_parsed = json.loads(auth_msg)
                 if self.verbose:
                     print("authed:", auth_msg)
-                try:
-                    if auth_msg_parsed[0]["status"] == "auth_failed":
-                        raise AuthenticationError(auth_msg_parsed[0]["message"])
-                except (AuthenticationError):
-                    exit("Authentication Failed. Exiting...")
+                if auth_msg_parsed[0]["status"] == "auth_failed":
+                    raise AuthError(auth_msg_parsed[0]["message"])
                 while True:
                     if self.schedule_resub:
                         if self.verbose:
