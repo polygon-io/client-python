@@ -13,6 +13,7 @@ from websockets.typing import Data
 
 env_key = "POLYGON_API_KEY"
 
+
 class WebSocketClient:
     def __init__(
         self,
