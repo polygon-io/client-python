@@ -9,7 +9,7 @@ This documentation is for the Python client only. For details about the response
 
   Getting-Started
   Aggs
-  WebSockets
+  WebSocket
   Snapshot
   Quotes
   Reference
@@ -17,7 +17,7 @@ This documentation is for the Python client only. For details about the response
   vX
   Models
   Enums
-  WebsocketEnums
+  WebSocket-Enums
 
 Indices and tables
 ==================
