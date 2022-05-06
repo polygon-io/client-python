@@ -13,6 +13,10 @@ from websockets.typing import Data
 env_key = "POLYGON_API_KEY"
 
 
+class AuthError(Exception):
+    pass
+
+
 class WebSocketClient:
     def __init__(
         self,
@@ -71,6 +75,7 @@ class WebSocketClient:
 
         :param processor: The callback to process messages.
         :param close_timeout: How long to wait for handshake when calling .close.
+        :raises AuthError: If invalid API key is supplied.
         """
         reconnects = 0
         isasync = inspect.iscoroutinefunction(processor)
@@ -98,8 +103,7 @@ class WebSocketClient:
                 if self.verbose:
                     print("authed:", auth_msg)
                 if auth_msg_parsed[0]["status"] == "auth_failed":
-                    print(auth_msg_parsed[0]["message"])
-                    return
+                    raise AuthError(auth_msg_parsed[0]["message"])
                 while True:
                     if self.schedule_resub:
                         if self.verbose:

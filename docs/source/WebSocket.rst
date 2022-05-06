@@ -1,6 +1,6 @@
-.. _websockets_header:
+.. _websocket_header:
 
-WebSockets
+WebSocket
 ==========
 
 ===========

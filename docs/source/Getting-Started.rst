@@ -193,3 +193,5 @@ Websocket client usage
 
   asyncio.run(client.connect(handle_msg))
 
+.. note::
+  Raises :code:`AuthError` if invalid API key is provided.
