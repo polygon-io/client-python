@@ -175,23 +175,100 @@ If it is a paginated :code:`list_*` response it's up to you to handle the "next_
   # }'
 
 
-Websocket client usage
+WebSocket client usage
 ----------------------
+
+.. automethod:: polygon.WebSocketClient.__init__
+
+The simplest way to use the websocket client is to just provide a callback:
 
 .. code-block:: python
 
   from polygon import WebSocketClient
-  from polygon.websocket.models import Market, Feed, WebSocketMessage
+  from polygon.websocket.models import WebSocketMessage
   from typing import List
-  import asyncio
 
-  client = WebSocketClient(market=Market.Stocks, feed=Feed.RealTime) # Uses POLYGON_API_KEY env var. Can optionally supply your key.
-  client.subscribe('T.AAPL')
+  c = WebSocketClient(subscriptions=['T.AAPL'])
 
-  async def handle_msg(msg: List[WebSocketMessage]):
-    print(msg)
+  def handle_msg(msgs: List[WebSocketMessage]):
+      for m in msgs:
+          print(m)
 
-  asyncio.run(client.connect(handle_msg))
+  c.run(handle_msg)
 
 .. note::
   Raises :code:`AuthError` if invalid API key is provided.
+
+If you want to capture state you can use a global variable inside the callback.
+Alternatively, you can wrap a class method in a closure.
+
+.. code-block:: python
+
+  from polygon import WebSocketClient
+  from polygon.websocket.models import WebSocketMessage
+  from typing import List
+
+  class MessageHandler:
+      count = 0
+
+      def handle_msg(self, msgs: List[WebSocketMessage]):
+          for m in msgs:
+              if type(m) == EquityTrade:
+                  print(self.count, m)
+                  self.count += 1
+
+  h = MessageHandler()
+
+  def handle_msg(msgs: List[WebSocketMessage]):
+      h.handle_msg(msgs)
+
+  c.run(handle_msg)
+
+Under the hood our client uses an asynchronous runtime. To manage the runtime
+yourself (including unsubscribing and subscribing) you'll need to use asyncio
+and the :code:`.connect` method:
+
+.. code-block:: python
+
+  from polygon import WebSocketClient
+  from polygon.websocket.models import WebSocketMessage
+  from typing import List
+
+  c = WebSocketClient(subscriptions=['T.AAPL']) # Uses POLYGON_API_KEY env var. Can optionally supply your key.
+
+  async def handle_msg(msgs: List[WebSocketMessage]):
+      for m in msgs:
+          print(m)
+
+  async def timeout():
+      await asyncio.sleep(1)
+      print('unsubscribe_all')
+      c.unsubscribe_all()
+      await asyncio.sleep(1)
+      print('close')
+      await c.close()
+
+  async def main():
+      await asyncio.gather(
+          c.connect(handle_msg),
+          timeout()
+      )
+
+  asyncio.run(main())
+
+To handle raw messages yourself pass `raw=True`:
+
+.. code-block:: python
+
+  from polygon import WebSocketClient
+  from polygon.websocket.models import WebSocketMessage
+  from typing import Union
+  import json
+
+  c = WebSocketClient(subscriptions=['T.*'], raw=True)
+
+  def handle_msg(msgs: Union[str, bytes]):
+      print(json.loads(msgs))
+
+  c.run(handle_msg)
+
