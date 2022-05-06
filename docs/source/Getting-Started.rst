@@ -186,10 +186,6 @@ Websocket client usage
   import asyncio
 
   client = WebSocketClient(market=Market.Stocks, feed=Feed.RealTime) # Uses POLYGON_API_KEY env var. Can optionally supply your key.
-
-.. note::
-  Raises :code:`AuthError` if invalid API key is provided.
-
   client.subscribe('T.AAPL')
 
   async def handle_msg(msg: List[WebSocketMessage]):
@@ -197,3 +193,5 @@ Websocket client usage
 
   asyncio.run(client.connect(handle_msg))
 
+.. note::
+  Raises :code:`AuthError` if invalid API key is provided.
