@@ -117,7 +117,9 @@ class WebSocketClient:
                         self.subs = set(self.scheduled_subs)
                         self.schedule_resub = False
 
-                    cmsg: Union[List[WebSocketMessage], Union[str, bytes]] = await s.recv()
+                    cmsg: Union[
+                        List[WebSocketMessage], Union[str, bytes]
+                    ] = await s.recv()
                     # we know cmsg is Data
                     msgJson = json.loads(cmsg)  # type: ignore
                     for m in msgJson:
@@ -129,7 +131,7 @@ class WebSocketClient:
                         cmsg = parse(msgJson)
 
                     if len(cmsg) > 0:
-                        await processor(cmsg) # type: ignore
+                        await processor(cmsg)  # type: ignore
             except ConnectionClosedOK:
                 if self.verbose:
                     print("connection closed (OK)")
@@ -142,14 +144,27 @@ class WebSocketClient:
                     return
                 continue
 
-    def run(self, handle_msg: Union[
+    def run(
+        self,
+        handle_msg: Union[
             Callable[[List[WebSocketMessage]], None],
             Callable[[Union[str, bytes]], None],
-        ]):
+        ],
+        close_timeout: int = 1,
+        **kwargs,
+    ):
+        """
+        Connect to websocket server and run `processor(msg)` on every new `msg`. Synchronous version of `.connect`.
+
+        :param processor: The callback to process messages.
+        :param close_timeout: How long to wait for handshake when calling .close.
+        :raises AuthError: If invalid API key is supplied.
+        """
+
         async def handle_msg_wrapper(msgs):
             handle_msg(msgs)
 
-        asyncio.run(self.connect(handle_msg_wrapper))
+        asyncio.run(self.connect(handle_msg_wrapper, close_timeout, **kwargs))
 
     async def _subscribe(self, topics: Union[List[str], Set[str]]):
         if self.websocket is None or len(topics) == 0:
