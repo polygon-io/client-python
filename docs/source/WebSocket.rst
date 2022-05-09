@@ -7,6 +7,7 @@ WebSocket
 Init client
 ===========
 .. automethod:: polygon.WebSocketClient.__init__
+  :noindex:
 
 ============================
 Connect
