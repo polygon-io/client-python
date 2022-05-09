@@ -98,10 +98,8 @@ class TickerDetails:
     def from_dict(d):
         return TickerDetails(
             active=d.get("active", None),
-            address=None if "address" not in d else [Address.from_dict(d["address"])],
-            branding=None
-            if "branding" not in d
-            else [Branding.from_dict(d["branding"])],
+            address=None if "address" not in d else Address.from_dict(d["address"]),
+            branding=None if "branding" not in d else Branding.from_dict(d["branding"]),
             cik=d.get("cik", None),
             composite_figi=d.get("composite_figi", None),
             currency_name=d.get("currency_name", None),
