@@ -107,7 +107,7 @@ class EquityTrade:
 class CryptoTrade:
     "CryptoTrade contains trade data for a crypto pair."
     event_type: Optional[Union[str, EventType]] = None
-    symbol: Optional[str] = None
+    pair: Optional[str] = None
     exchange: Optional[int] = None
     id: Optional[str] = None
     price: Optional[float] = None
@@ -120,7 +120,7 @@ class CryptoTrade:
     def from_dict(d):
         return CryptoTrade(
             d.get("ev", None),
-            d.get("sym", None),
+            d.get("pair", None),
             d.get("x", None),
             d.get("i", None),
             d.get("p", None),
