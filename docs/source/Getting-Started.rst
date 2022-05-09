@@ -8,7 +8,7 @@ Requirements:
 
 .. code-block:: shell
 
-    pip install polygon-api-client
+    pip install polygon-api-client~=1.0.0b
 
 HTTP client usage
 -----------------
@@ -45,7 +45,7 @@ For endpoints that have a set of parameters you can use the provided :doc:`enums
 
   client.list_trades(..., sort=Sort.ASC)
 
-To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response) yourself, pass `raw=True>`_ yourself pass :code:`raw=True`:
+To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response>`_ yourself pass :code:`raw=True`:
 
 .. literalinclude:: ../../examples/rest/raw-get.py
 
@@ -76,7 +76,7 @@ yourself (including unsubscribing and subscribing) you can use asyncio and the
 
 .. literalinclude:: ../../examples/websocket/async.py
 
-To handle raw messages yourself pass `raw=True`:
+To handle raw string or byte messages yourself pass :code:`raw=True`:
 
 .. literalinclude:: ../../examples/websocket/raw.py
 

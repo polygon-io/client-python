@@ -24,7 +24,7 @@ class WebSocketClient:
         market: Union[str, Market] = Market.Stocks,
         raw: bool = False,
         verbose: bool = False,
-        subscriptions: List[str] = [],
+        subscriptions: Optional[List[str]] = None,
         max_reconnects: Optional[int] = 5,
         secure: bool = True,
         **kwargs,
@@ -33,8 +33,8 @@ class WebSocketClient:
         Initialize a Polygon WebSocketClient.
 
         :param api_key: Your API keYour API key.
-        :param feed: The feed to subscribe to (default RealTime)
-        :param raw: The market to subscribe to (default Stocks)
+        :param feed: The feed to subscribe to.
+        :param raw: Whether to pass raw Union[str, bytes] to user callback.
         :param verbose: Whether to print client and server status messages.
         :param subscriptions: List of subscription parameters.
         :param max_reconnects: How many times to reconnect on network outage before ending .connect event loop.
@@ -59,6 +59,8 @@ class WebSocketClient:
         self.subs: Set[str] = set()
         self.max_reconnects = max_reconnects
         self.websocket: Optional[WebSocketClientProtocol] = None
+        if subscriptions is None:
+            subscriptions = []
         self.scheduled_subs = set(subscriptions)
         self.schedule_resub = True
 
