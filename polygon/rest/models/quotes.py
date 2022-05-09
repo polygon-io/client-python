@@ -76,14 +76,14 @@ class Last:
 
 
 @dataclass
-class ForexLastQuote:
+class LastForexQuote:
     "ForexLastQuote contains data for the last quote tick for a forex currency pair."
     last: Optional[Last] = None
     symbol: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
-        return ForexLastQuote(
+        return LastForexQuote(
             last=None if "last" not in d else [Last.from_dict(d["last"])],
             symbol=d.get("symbol", None),
         )
