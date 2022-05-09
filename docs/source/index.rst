@@ -7,7 +7,7 @@ This documentation is for the Python client only. For details about the response
   :maxdepth: 1
   :caption: Contents:
 
-  Getting-started
+  Getting-Started
   Aggs
   WebSocket
   Snapshot
@@ -17,7 +17,7 @@ This documentation is for the Python client only. For details about the response
   vX
   Models
   Enums
-  WebSocket-enums
+  WebSocket-Enums
 
 Indices and tables
 ==================
