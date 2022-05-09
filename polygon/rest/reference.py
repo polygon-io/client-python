@@ -135,7 +135,11 @@ class TickersClient(BaseClient):
         url = f"/v3/reference/tickers/{ticker}"
 
         return self._get(
-            path=url, params=params, deserializer=TickerDetails.from_dict, raw=raw
+            path=url,
+            params=params,
+            deserializer=TickerDetails.from_dict,
+            raw=raw,
+            result_key="results",
         )
 
     def list_ticker_news(
