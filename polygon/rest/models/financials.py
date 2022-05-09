@@ -9,7 +9,7 @@ class DataPoint:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -24,7 +24,7 @@ class ExchangeGainsLosses:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -39,7 +39,7 @@ class NetCashFlow:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -54,7 +54,7 @@ class NetCashFlowFromFinancingActivities:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -76,17 +76,15 @@ class CashFlowStatement:
         return CashFlowStatement(
             exchange_gains_losses=None
             if "exchange_gains_losses" not in d
-            else [ExchangeGainsLosses.from_dict(d["exchange_gains_losses"])],
+            else ExchangeGainsLosses.from_dict(d["exchange_gains_losses"]),
             net_cash_flow=None
             if "net_cash_flow" not in d
-            else [NetCashFlow.from_dict(d["net_cash_flow"])],
+            else NetCashFlow.from_dict(d["net_cash_flow"]),
             net_cash_flow_from_financing_activities=None
             if "net_cash_flow_from_financing_activities" not in d
-            else [
-                NetCashFlowFromFinancingActivities.from_dict(
-                    d["net_cash_flow_from_financing_activities"]
-                )
-            ],
+            else NetCashFlowFromFinancingActivities.from_dict(
+                d["net_cash_flow_from_financing_activities"]
+            ),
         )
 
 
@@ -97,7 +95,7 @@ class ComprehensiveIncomeLoss:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -112,7 +110,7 @@ class ComprehensiveIncomeLossAttributableToParent:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -127,7 +125,7 @@ class OtherComprehensiveIncomeLoss:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -149,21 +147,17 @@ class ComprehensiveIncome:
         return ComprehensiveIncome(
             comprehensive_income_loss=None
             if "comprehensive_income_loss" not in d
-            else [ComprehensiveIncomeLoss.from_dict(d["comprehensive_income_loss"])],
+            else ComprehensiveIncomeLoss.from_dict(d["comprehensive_income_loss"]),
             comprehensive_income_loss_attributable_to_parent=None
             if "comprehensive_income_loss_attributable_to_parent" not in d
-            else [
-                ComprehensiveIncomeLossAttributableToParent.from_dict(
-                    d["comprehensive_income_loss_attributable_to_parent"]
-                )
-            ],
+            else ComprehensiveIncomeLossAttributableToParent.from_dict(
+                d["comprehensive_income_loss_attributable_to_parent"]
+            ),
             other_comprehensive_income_loss=None
             if "other_comprehensive_income_loss" not in d
-            else [
-                OtherComprehensiveIncomeLoss.from_dict(
-                    d["other_comprehensive_income_loss"]
-                )
-            ],
+            else OtherComprehensiveIncomeLoss.from_dict(
+                d["other_comprehensive_income_loss"]
+            ),
         )
 
 
@@ -174,7 +168,7 @@ class BasicEarningsPerShare:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -189,7 +183,7 @@ class CostOfRevenue:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -204,7 +198,7 @@ class GrossProfit:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -219,7 +213,7 @@ class OperatingExpenses:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -234,7 +228,7 @@ class Revenues:
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
-    value: Optional[int] = None
+    value: Optional[float] = None
     xpath: Optional[str] = None
 
     @staticmethod
@@ -256,19 +250,17 @@ class IncomeStatement:
         return IncomeStatement(
             basic_earnings_per_share=None
             if "basic_earnings_per_share" not in d
-            else [BasicEarningsPerShare.from_dict(d["basic_earnings_per_share"])],
+            else BasicEarningsPerShare.from_dict(d["basic_earnings_per_share"]),
             cost_of_revenue=None
             if "cost_of_revenue" not in d
-            else [CostOfRevenue.from_dict(d["cost_of_revenue"])],
+            else CostOfRevenue.from_dict(d["cost_of_revenue"]),
             gross_profit=None
             if "gross_profit" not in d
-            else [GrossProfit.from_dict(d["gross_profit"])],
+            else GrossProfit.from_dict(d["gross_profit"]),
             operating_expenses=None
             if "operating_expenses" not in d
-            else [OperatingExpenses.from_dict(d["operating_expenses"])],
-            revenues=None
-            if "revenues" not in d
-            else [Revenues.from_dict(d["revenues"])],
+            else OperatingExpenses.from_dict(d["operating_expenses"]),
+            revenues=None if "revenues" not in d else Revenues.from_dict(d["revenues"]),
         )
 
 
@@ -288,13 +280,13 @@ class Financials:
             else {k: DataPoint.from_dict(v) for (k, v) in d["balance_sheet"].items()},
             cash_flow_statement=None
             if "cash_flow_statement" not in d
-            else [CashFlowStatement.from_dict(d["cash_flow_statement"])],
+            else CashFlowStatement.from_dict(d["cash_flow_statement"]),
             comprehensive_income=None
             if "comprehensive_income" not in d
-            else [ComprehensiveIncome.from_dict(d["comprehensive_income"])],
+            else ComprehensiveIncome.from_dict(d["comprehensive_income"]),
             income_statement=None
             if "income_statement" not in d
-            else [IncomeStatement.from_dict(d["income_statement"])],
+            else IncomeStatement.from_dict(d["income_statement"]),
         )
 
 
@@ -321,7 +313,7 @@ class StockFinancial:
             filing_date=d.get("filing_date", None),
             financials=None
             if "financials" not in d
-            else [Financials.from_dict(d["financials"])],
+            else Financials.from_dict(d["financials"]),
             fiscal_period=d.get("fiscal_period", None),
             fiscal_year=d.get("fiscal_year", None),
             source_filing_file_url=d.get("source_filing_file_url", None),
