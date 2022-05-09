@@ -1,6 +1,6 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import Quote, LastQuote, Sort, Order
+from .models import Quote, LastQuote, ForexLastQuote, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -60,4 +60,29 @@ class QuotesClient(BaseClient):
 
         return self._get(
             path=url, params=params, deserializer=LastQuote.from_dict, raw=raw
+        )
+
+    def get_forex_last_quote(
+        self,
+        from_: str,
+        to: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[ForexLastQuote, HTTPResponse]:
+        """
+        Get the last quote tick for a forex currency pair.
+
+        :param from_: The "from" symbol of the pair.
+        :param to: The "to" symbol of the pair.
+        :param params: Any additional query params
+        :param raw: Return HTTPResponse object instead of results object
+        :return: Forex Last Quote
+        """
+        url = f"/v1/last_quote/currencies/{from_}/{to}"
+
+        return self._get(
+            path=url,
+            params=params,
+            deserializer=ForexLastQuote.from_dict,
+            raw=raw,
         )
