@@ -45,7 +45,7 @@ For endpoints that have a set of parameters you can use the provided :doc:`enums
 
   client.list_trades(..., sort=Sort.ASC)
 
-To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response)`_ yourself pass :code:`raw=True`:
+To handle the raw `urllib3 response <https://urllib3.readthedocs.io/en/stable/reference/urllib3.response.html?highlight=response#response>`_ yourself pass :code:`raw=True`:
 
 .. literalinclude:: ../../examples/rest/raw-get.py
 
