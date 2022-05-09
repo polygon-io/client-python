@@ -10,7 +10,7 @@ from .reference import (
     ConditionsClient,
     ExchangesClient,
 )
-from .vx import VXClient
+from .vX import VXClient
 from typing import Optional
 import os
 
@@ -50,7 +50,7 @@ class RESTClient(
             base=base,
             verbose=verbose,
         )
-        self.vx = VXClient(
+        self.vX = VXClient(
             api_key=api_key,
             connect_timeout=connect_timeout,
             read_timeout=read_timeout,
