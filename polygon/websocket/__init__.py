@@ -2,13 +2,12 @@ import os
 from enum import Enum
 from typing import Optional, Union, List, Set, Callable, Awaitable
 import json
-import inspect
+import asyncio
 import ssl
 import certifi
 from .models import *
 from websockets.client import connect, WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
-from websockets.typing import Data
 
 env_key = "POLYGON_API_KEY"
 
@@ -66,7 +65,10 @@ class WebSocketClient:
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
     async def connect(
         self,
-        processor: Callable[[Union[List[WebSocketMessage], Data]], Optional[Awaitable]],
+        processor: Union[
+            Callable[[List[WebSocketMessage]], Awaitable],
+            Callable[[Union[str, bytes]], Awaitable],
+        ],
         close_timeout: int = 1,
         **kwargs,
     ):
@@ -78,7 +80,6 @@ class WebSocketClient:
         :raises AuthError: If invalid API key is supplied.
         """
         reconnects = 0
-        isasync = inspect.iscoroutinefunction(processor)
         if self.verbose:
             print("connect:", self.url)
         # darwin needs some extra <3
@@ -116,7 +117,9 @@ class WebSocketClient:
                         self.subs = set(self.scheduled_subs)
                         self.schedule_resub = False
 
-                    cmsg: Union[List[WebSocketMessage], Data] = await s.recv()
+                    cmsg: Union[
+                        List[WebSocketMessage], Union[str, bytes]
+                    ] = await s.recv()
                     # we know cmsg is Data
                     msgJson = json.loads(cmsg)  # type: ignore
                     for m in msgJson:
@@ -128,11 +131,7 @@ class WebSocketClient:
                         cmsg = parse(msgJson)
 
                     if len(cmsg) > 0:
-                        if isasync:
-                            # we know processor is Awaitable
-                            await processor(cmsg)  # type: ignore
-                        else:
-                            processor(cmsg)
+                        await processor(cmsg)  # type: ignore
             except ConnectionClosedOK:
                 if self.verbose:
                     print("connection closed (OK)")
@@ -144,6 +143,28 @@ class WebSocketClient:
                 if self.max_reconnects is not None and reconnects > self.max_reconnects:
                     return
                 continue
+
+    def run(
+        self,
+        handle_msg: Union[
+            Callable[[List[WebSocketMessage]], None],
+            Callable[[Union[str, bytes]], None],
+        ],
+        close_timeout: int = 1,
+        **kwargs,
+    ):
+        """
+        Connect to websocket server and run `processor(msg)` on every new `msg`. Synchronous version of `.connect`.
+
+        :param processor: The callback to process messages.
+        :param close_timeout: How long to wait for handshake when calling .close.
+        :raises AuthError: If invalid API key is supplied.
+        """
+
+        async def handle_msg_wrapper(msgs):
+            handle_msg(msgs)
+
+        asyncio.run(self.connect(handle_msg_wrapper, close_timeout, **kwargs))
 
     async def _subscribe(self, topics: Union[List[str], Set[str]]):
         if self.websocket is None or len(topics) == 0:

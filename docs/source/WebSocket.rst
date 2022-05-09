@@ -14,6 +14,11 @@ Connect
 .. automethod:: polygon.WebSocketClient.connect
 
 ============================
+Run
+============================
+.. automethod:: polygon.WebSocketClient.run
+
+============================
 Subscribe
 ============================
 .. automethod:: polygon.WebSocketClient.subscribe
