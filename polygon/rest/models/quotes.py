@@ -60,3 +60,30 @@ class LastQuote:
             bid_exchange=d.get("x", None),
             tape=d.get("z", None),
         )
+
+
+@dataclass
+class Last:
+    "Contains data for a forex quote."
+    ask: Optional[float] = None
+    bid: Optional[float] = None
+    exchange: Optional[int] = None
+    timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return Last(**d)
+
+
+@dataclass
+class ForexLastQuote:
+    "ForexLastQuote contains data for the last quote tick for a forex currency pair."
+    last: Optional[Last] = None
+    symbol: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return ForexLastQuote(
+            last=None if "last" not in d else [Last.from_dict(d["last"])],
+            symbol=d.get("symbol", None),
+        )
