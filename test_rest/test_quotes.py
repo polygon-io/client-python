@@ -4,6 +4,7 @@ from polygon.rest.models import (
     LastQuote,
     Last,
     LastForexQuote,
+    RealTimeCurrencyConversion
 )
 
 
@@ -343,3 +344,17 @@ class QuotesTest(BaseTest):
         )
 
         self.assertEqual(last_forex, expected)
+
+    def test_get_real_time_currency_conversion(self):
+        conversion = self.c.get_real_time_currency_conversion("AUD", "USD", 100, 2)
+        expected = RealTimeCurrencyConversion(
+            converted=69.31,
+            from_=None,
+            initial_amount=100,
+            last=[
+                Last(ask=1.4436264, bid=1.4427932, exchange=48, timestamp=1652195426000)
+            ],
+            to="USD",
+        )
+
+        self.assertEqual(conversion, expected)
