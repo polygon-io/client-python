@@ -313,3 +313,24 @@ class QuotesTest(BaseTest):
             ),
         ]
         self.assertEqual(quotes, expected)
+
+    def test_get_last_quote(self):
+        last = self.c.get_last_quote("AAPL")
+        expected = LastQuote(
+            ticker="AAPL",
+            trf_timestamp=None,
+            sequence_number=26006043,
+            sip_timestamp=1652192754171838500,
+            participant_timestamp=1652192754171619000,
+            ask_price=155.66,
+            ask_size=14,
+            ask_exchange=11,
+            conditions=None,
+            indicators=None,
+            bid_price=155.65,
+            bid_size=1,
+            bid_exchange=19,
+            tape=3,
+        )
+
+        self.assertEqual(last, expected)
