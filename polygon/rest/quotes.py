@@ -1,4 +1,3 @@
-from threading import local
 from .base import BaseClient
 from typing import Optional, Any, Dict, Union, Iterator
 from .models import (
@@ -121,7 +120,6 @@ class QuotesClient(BaseClient):
         :return: Real-Time Currency Conversion
         """
         url = f"/v1/conversion/{from_}/{to}"
-        print(locals())
         if params is None:
             params = {}
         params["amount"] = amount
