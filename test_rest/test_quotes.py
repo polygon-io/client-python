@@ -334,3 +334,12 @@ class QuotesTest(BaseTest):
         )
 
         self.assertEqual(last, expected)
+
+    def test_get_last_forex_quote(self):
+        last_forex = self.c.get_last_forex_quote("AUD", "USD")
+        expected = LastForexQuote(
+            last=[Last(ask=0.69527, bid=0.6952, exchange=48, timestamp=1652193694000)],
+            symbol="AUD/USD",
+        )
+
+        self.assertEqual(last_forex, expected)
