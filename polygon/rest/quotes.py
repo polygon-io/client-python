@@ -89,7 +89,7 @@ class QuotesClient(BaseClient):
         :param to: The "to" symbol of the pair.
         :param params: Any additional query params
         :param raw: Return HTTPResponse object instead of results object
-        :return: Forex Last Quote
+        :return: Last Forex Quote
         """
         url = f"/v1/last_quote/currencies/{from_}/{to}"
 
