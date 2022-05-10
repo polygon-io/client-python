@@ -1,0 +1,126 @@
+{
+    "results": [
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 2,
+            "bid_exchange": 19,
+            "bid_price": 155.86,
+            "bid_size": 1,
+            "participant_timestamp": 1652191872690177000,
+            "sequence_number": 19288135,
+            "sip_timestamp": 1652191872690386918,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 2,
+            "bid_exchange": 15,
+            "bid_price": 155.85,
+            "bid_size": 5,
+            "participant_timestamp": 1652191872688200000,
+            "sequence_number": 19288101,
+            "sip_timestamp": 1652191872688383612,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 15,
+            "bid_price": 155.85,
+            "bid_size": 5,
+            "participant_timestamp": 1652191872687729447,
+            "sequence_number": 19288096,
+            "sip_timestamp": 1652191872687968794,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872686891199,
+            "sequence_number": 19288093,
+            "sip_timestamp": 1652191872687168881,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872677145000,
+            "sequence_number": 19288051,
+            "sip_timestamp": 1652191872677330035,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 4,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872676782000,
+            "sequence_number": 19288049,
+            "sip_timestamp": 1652191872676973864,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 4,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 3,
+            "participant_timestamp": 1652191872664864000,
+            "sequence_number": 19288026,
+            "sip_timestamp": 1652191872665047506,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 4,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872663336000,
+            "sequence_number": 19288010,
+            "sip_timestamp": 1652191872663527001,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872663291000,
+            "sequence_number": 19288009,
+            "sip_timestamp": 1652191872663480163,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 2,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872663233957,
+            "sequence_number": 19288004,
+            "sip_timestamp": 1652191872663407429,
+            "tape": 3
+        }
+    ],
+    "status": "OK",
+    "request_id": "74f65a8eee41f475f5a05e31059a9245"
+}

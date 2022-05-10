@@ -3,6 +3,11 @@
 WebSocket
 ==========
 
+- `Stocks getting started`_
+- `Options getting started`_
+- `Forex getting started`_
+- `Crypto getting started`_
+
 ===========
 Init client
 ===========
@@ -34,3 +39,7 @@ Close
 ============================
 .. automethod:: polygon.WebSocketClient.close
 
+.. _Stocks getting started: https://polygon.io/docs/stocks/ws_getting-started
+.. _Options getting started: https://polygon.io/docs/options/ws_getting-started
+.. _Forex getting started: https://polygon.io/docs/forex/ws_getting-started
+.. _Crypto getting started: https://polygon.io/docs/crypto/ws_getting-started

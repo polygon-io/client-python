@@ -60,3 +60,50 @@ class LastQuote:
             bid_exchange=d.get("x", None),
             tape=d.get("z", None),
         )
+
+
+@dataclass
+class Last:
+    "Contains data for a forex quote."
+    ask: Optional[float] = None
+    bid: Optional[float] = None
+    exchange: Optional[int] = None
+    timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return Last(**d)
+
+
+@dataclass
+class LastForexQuote:
+    "ForexLastQuote contains data for the last quote tick for a forex currency pair."
+    last: Optional[Last] = None
+    symbol: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return LastForexQuote(
+            last=None if "last" not in d else Last.from_dict(d["last"]),
+            symbol=d.get("symbol", None),
+        )
+
+
+@dataclass
+class RealTimeCurrencyConversion:
+    "RealTimeCurrencyConversion contains data for currency conversions using the latest market conversion rates."
+    converted: Optional[float] = None
+    from_: Optional[str] = None
+    initial_amount: Optional[float] = None
+    last: Optional[Last] = None
+    to: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return RealTimeCurrencyConversion(
+            converted=d.get("converted", None),
+            from_=d.get("from_", None),
+            initial_amount=d.get("initialAmount", None),
+            last=None if "last" not in d else Last.from_dict(d["last"]),
+            to=d.get("to", None),
+        )

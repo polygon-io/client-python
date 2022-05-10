@@ -1,0 +1,127 @@
+{
+    "results": [
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872800402200,
+            "sequence_number": 19288684,
+            "sip_timestamp": 1652191872800638700,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 15,
+            "bid_price": 155.85,
+            "bid_size": 5,
+            "participant_timestamp": 1652191872774195000,
+            "sequence_number": 19288618,
+            "sip_timestamp": 1652191872774441200,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 4,
+            "participant_timestamp": 1652191872773756000,
+            "sequence_number": 19288617,
+            "sip_timestamp": 1652191872773945300,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 12,
+            "bid_price": 155.85,
+            "bid_size": 3,
+            "participant_timestamp": 1652191872753255000,
+            "sequence_number": 19288557,
+            "sip_timestamp": 1652191872753443000,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 19,
+            "bid_price": 155.85,
+            "bid_size": 3,
+            "participant_timestamp": 1652191872751394300,
+            "sequence_number": 19288549,
+            "sip_timestamp": 1652191872751569400,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 21,
+            "bid_price": 155.86,
+            "bid_size": 1,
+            "participant_timestamp": 1652191872750485800,
+            "sequence_number": 19288528,
+            "sip_timestamp": 1652191872750826800,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 11,
+            "bid_price": 155.86,
+            "bid_size": 1,
+            "participant_timestamp": 1652191872750458400,
+            "sequence_number": 19288525,
+            "sip_timestamp": 1652191872750633000,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 15,
+            "ask_price": 155.87,
+            "ask_size": 3,
+            "bid_exchange": 21,
+            "bid_price": 155.86,
+            "bid_size": 2,
+            "participant_timestamp": 1652191872750206000,
+            "sequence_number": 19288519,
+            "sip_timestamp": 1652191872750488300,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 1,
+            "bid_exchange": 21,
+            "bid_price": 155.86,
+            "bid_size": 2,
+            "participant_timestamp": 1652191872748910000,
+            "sequence_number": 19288491,
+            "sip_timestamp": 1652191872749094400,
+            "tape": 3
+        },
+        {
+            "ask_exchange": 19,
+            "ask_price": 155.87,
+            "ask_size": 2,
+            "bid_exchange": 21,
+            "bid_price": 155.86,
+            "bid_size": 2,
+            "participant_timestamp": 1652191872690425000,
+            "sequence_number": 19288166,
+            "sip_timestamp": 1652191872690661000,
+            "tape": 3
+        }
+    ],
+    "status": "OK",
+    "request_id": "280bc9f4c6d0ba24a819f0d153b15d85",
+    "next_url": "https://api.polygon.io/v3/quotes/AAPL?cursor=YXA9MTkyODgxNjYmYXM9JmxpbWl0PTEwJm9yZGVyPWRlc2Mmc29ydD10aW1lc3RhbXAmdGltZXN0YW1wLmx0ZT0yMDIyLTA1LTEwVDE0JTNBMTElM0ExMi42OTA2NjExODla"
+}

@@ -1,0 +1,11 @@
+{
+    "last": {
+        "ask": 0.69527,
+        "bid": 0.6952,
+        "exchange": 48,
+        "timestamp": 1652193694000
+    },
+    "request_id": "54259e767db5057989cddbe33a2eaf1b",
+    "status": "success",
+    "symbol": "AUD/USD"
+}

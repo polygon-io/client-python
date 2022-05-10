@@ -1,0 +1,15 @@
+{
+    "converted": 69.31,
+    "from": "AUD",
+    "initialAmount": 100,
+    "last": {
+        "ask": 1.4436264,
+        "bid": 1.4427932,
+        "exchange": 48,
+        "timestamp": 1652195426000
+    },
+    "request_id": "b2cbbd1c2aa9eadd738087deef2bcf95",
+    "status": "success",
+    "symbol": "USD/AUD",
+    "to": "USD"
+}

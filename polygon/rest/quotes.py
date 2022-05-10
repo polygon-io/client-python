@@ -1,6 +1,14 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import Quote, LastQuote, Sort, Order
+from typing import Optional, Any, Dict, Union, Iterator
+from .models import (
+    Quote,
+    LastQuote,
+    LastForexQuote,
+    RealTimeCurrencyConversion,
+    Sort,
+    Order,
+    Precision,
+)
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -32,8 +40,8 @@ class QuotesClient(BaseClient):
         :param limit: Limit the number of results returned, default is 10 and max is 50000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
         :return: List of quotes
         """
         url = f"/v3/quotes/{ticker}"
@@ -52,12 +60,73 @@ class QuotesClient(BaseClient):
         Get the most recent NBBO (Quote) tick for a given stock.
 
         :param ticker: The ticker symbol of the stock/equity.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
         :return: Last Quote
         """
         url = f"/v2/last/nbbo/{ticker}"
 
         return self._get(
-            path=url, params=params, deserializer=LastQuote.from_dict, raw=raw
+            path=url,
+            params=params,
+            result_key="results",
+            deserializer=LastQuote.from_dict,
+            raw=raw,
+        )
+
+    def get_last_forex_quote(
+        self,
+        from_: str,
+        to: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[LastForexQuote, HTTPResponse]:
+        """
+        Get the last quote tick for a forex currency pair.
+
+        :param from_: The "from" symbol of the pair.
+        :param to: The "to" symbol of the pair.
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
+        :return: Last Forex Quote
+        """
+        url = f"/v1/last_quote/currencies/{from_}/{to}"
+
+        return self._get(
+            path=url,
+            params=params,
+            deserializer=LastForexQuote.from_dict,
+            raw=raw,
+        )
+
+    def get_real_time_currency_conversion(
+        self,
+        from_: str,
+        to: str,
+        amount: float,
+        precision: Union[int, Precision] = 2,
+        params: Dict[str, Any] = None,
+        raw: bool = False,
+    ) -> Union[RealTimeCurrencyConversion, HTTPResponse]:
+        """
+        Get currency conversions using the latest market conversion rates.
+
+        :param from_: The "from" symbol of the pair.
+        :param to: The "to" symbol of the pair.
+        :param amount: The amount to convert, with a decimal.
+        :param precision: The decimal precision of the conversion. Defaults to 2 which is 2 decimal places accuracy.
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
+        :return: Real-Time Currency Conversion
+        """
+        url = f"/v1/conversion/{from_}/{to}"
+        if params is None:
+            params = {}
+        params["amount"] = amount
+        params["precision"] = precision
+        return self._get(
+            path=url,
+            params=params,
+            deserializer=RealTimeCurrencyConversion.from_dict,
+            raw=raw,
         )
