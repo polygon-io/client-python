@@ -84,7 +84,7 @@ class LastForexQuote:
     @staticmethod
     def from_dict(d):
         return LastForexQuote(
-            last=None if "last" not in d else [Last.from_dict(d["last"])],
+            last=None if "last" not in d else Last.from_dict(d["last"]),
             symbol=d.get("symbol", None),
         )
 
@@ -104,6 +104,6 @@ class RealTimeCurrencyConversion:
             converted=d.get("converted", None),
             from_=d.get("from_", None),
             initial_amount=d.get("initialAmount", None),
-            last=None if "last" not in d else [Last.from_dict(d["last"])],
+            last=None if "last" not in d else Last.from_dict(d["last"]),
             to=d.get("to", None),
         )
