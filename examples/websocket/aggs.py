@@ -2,7 +2,8 @@ from polygon import WebSocketClient
 from polygon.websocket.models import WebSocketMessage, EquityTrade
 from typing import List
 
-c = WebSocketClient(subscriptions=['T.*'])
+c = WebSocketClient(subscriptions=["T.*"])
+
 
 class MessageHandler:
     count = 0
@@ -13,9 +14,12 @@ class MessageHandler:
                 print(self.count, m)
                 self.count += 1
 
+
 h = MessageHandler()
+
 
 def handle_msg(msgs: List[WebSocketMessage]):
     h.handle_msg(msgs)
+
 
 c.run(handle_msg)

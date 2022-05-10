@@ -1,8 +1,20 @@
 from polygon import RESTClient
+from typing import cast
+from urllib3 import HTTPResponse
 
 client = RESTClient(verbose=True)
 
-aggs = client.get_aggs("AAPL", 1, "day", "2022-04-01", "2022-04-04", raw=True)
+aggs = cast(
+    HTTPResponse,
+    client.get_aggs(
+        ticker="AAPL",
+        multiplier=1,
+        timespan="day",
+        from_="2022-04-01",
+        to="2022-04-04",
+        raw=True,
+    ),
+)
 print(aggs.geturl())
 # https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2022-04-01/2022-04-04
 print(aggs.status)
