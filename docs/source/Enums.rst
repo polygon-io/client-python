@@ -94,3 +94,9 @@ Timeframe
     :members:
     :undoc-members: 
 
+==============================================================
+Precision
+==============================================================
+.. autoclass:: polygon.rest.models.Precision
+    :members:
+    :undoc-members: 
