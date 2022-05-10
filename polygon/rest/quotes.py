@@ -41,8 +41,8 @@ class QuotesClient(BaseClient):
         :param limit: Limit the number of results returned, default is 10 and max is 50000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
         :return: List of quotes
         """
         url = f"/v3/quotes/{ticker}"
@@ -61,8 +61,8 @@ class QuotesClient(BaseClient):
         Get the most recent NBBO (Quote) tick for a given stock.
 
         :param ticker: The ticker symbol of the stock/equity.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
         :return: Last Quote
         """
         url = f"/v2/last/nbbo/{ticker}"
@@ -87,8 +87,8 @@ class QuotesClient(BaseClient):
 
         :param from_: The "from" symbol of the pair.
         :param to: The "to" symbol of the pair.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
         :return: Last Forex Quote
         """
         url = f"/v1/last_quote/currencies/{from_}/{to}"
@@ -116,8 +116,8 @@ class QuotesClient(BaseClient):
         :param to: The "to" symbol of the pair.
         :param amount: The amount to convert, with a decimal.
         :param precision: The decimal precision of the conversion. Defaults to 2 which is 2 decimal places accuracy.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
         :return: Real-Time Currency Conversion
         """
         url = f"/v1/conversion/{from_}/{to}"
