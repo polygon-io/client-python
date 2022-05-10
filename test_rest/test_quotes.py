@@ -4,7 +4,7 @@ from polygon.rest.models import (
     LastQuote,
     Last,
     LastForexQuote,
-    RealTimeCurrencyConversion
+    RealTimeCurrencyConversion,
 )
 
 
