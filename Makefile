@@ -22,11 +22,11 @@ help:
 
 ## Check code style
 style:
-	poetry run black $(if $(CI),--check,) polygon test_*
+	poetry run black $(if $(CI),--check,) polygon test_* examples
 
 ## Check static types
 static:
-	poetry run mypy polygon test_*
+	poetry run mypy polygon test_* examples
 
 ## Check code style and static types
 lint: style static

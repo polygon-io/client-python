@@ -1,8 +1,13 @@
 from polygon import RESTClient
+from typing import cast
+from urllib3 import HTTPResponse
 
 client = RESTClient(verbose=True)
 
-trades = client.list_trades("AAA", timestamp="2022-04-20", limit=5, raw=True)
+trades = cast(
+    HTTPResponse,
+    client.list_trades(ticker="AAA", timestamp="2022-04-20", limit=5, raw=True),
+)
 print(trades.data)
 # b'{
 #  "results": [
