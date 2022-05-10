@@ -59,7 +59,11 @@ class QuotesClient(BaseClient):
         url = f"/v2/last/nbbo/{ticker}"
 
         return self._get(
-            path=url, params=params, deserializer=LastQuote.from_dict, raw=raw
+            path=url,
+            params=params,
+            result_key="results",
+            deserializer=LastQuote.from_dict,
+            raw=raw,
         )
 
     def get_last_forex_quote(
