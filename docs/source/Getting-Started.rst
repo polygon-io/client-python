@@ -3,7 +3,7 @@ Getting Started
 
 Requirements:
   - `Polygon.io API key <https://polygon.io/dashboard/api-keys>`_
-  - `Python >= 3.7 <https://www.python.org/downloads/>`_
+  - `Python >= 3.8 <https://www.python.org/downloads/>`_
   - `This package <https://pypi.org/project/polygon-api-client/>`_
 
 .. code-block:: shell

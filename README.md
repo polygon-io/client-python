@@ -9,7 +9,7 @@ Python client for the [Polygon.io API](https://polygon.io).
 
 `pip install polygon-api-client~=1.0.0b`
 
-Requires Python >= 3.7.
+Requires Python >= 3.8.
 
 ## Getting started
 See the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html)

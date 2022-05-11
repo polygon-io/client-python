@@ -14,6 +14,10 @@ except:
     pass
 
 
+class NoResults(Exception):
+    pass
+
+
 class BaseClient:
     def __init__(
         self,
@@ -79,6 +83,12 @@ class BaseClient:
         obj = self._decode(resp)
 
         if result_key:
+            if result_key not in obj:
+                raise NoResults(
+                    f'Expected key "{result_key}" in response {obj}.'
+                    + "Make sure you have sufficient permissions and your request parameters are valid."
+                    + f"This is the url that returned no results: {resp.geturl()}"
+                )
             obj = obj[result_key]
 
         if deserializer:
@@ -106,9 +116,9 @@ class BaseClient:
         params = caller_locals["params"]
         if params is None:
             params = {}
-        # https://docs.python.org/3.7/library/inspect.html#inspect.Signature
+        # https://docs.python.org/3.8/library/inspect.html#inspect.Signature
         for argname, v in inspect.signature(fn).parameters.items():
-            # https://docs.python.org/3.7/library/inspect.html#inspect.Parameter
+            # https://docs.python.org/3.8/library/inspect.html#inspect.Parameter
             if argname in ["params", "raw"]:
                 continue
             if v.default != v.empty:
