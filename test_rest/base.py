@@ -14,9 +14,9 @@ for dname, _, files in os.walk(mockdir):
         if fname.endswith(".json"):
             abspath = os.path.join(dname, fname)
             with open(abspath, "r") as f:
-                urllpath = abspath.replace(mockdir, "")
+                urllpath = abspath.replace(mockdir, "").replace('\\', '/')
                 urllpath = re.sub(".json$", "", urllpath)
-                urllpath = re.sub("[\\/]index$", "", urllpath)
+                urllpath = re.sub("/index$", "", urllpath)
                 # Windows will be sad. We support dev on Windows.
                 if "?" in urllpath:
                     raise Exception(f"use & instead of ? in path ${urllpath}")
@@ -39,6 +39,6 @@ class BaseTest(unittest.TestCase):
         cls.c = RESTClient("", verbose=True)
         pook.on()
         for m in mocks:
-            url = BASE + m[0].replace('\\', '/')
+            url = BASE + m[0]
             print('register', url)
             pook.get(url, reply=200, response_body=m[1])
