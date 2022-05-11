@@ -18,6 +18,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} Unit test ${{ matrix.python-version }}
     steps:
+      - name: Windows hack
+        run: git config --system core.longpaths true
       - uses: actions/checkout@v3
       - name: Setup Python
         uses: actions/setup-python@v3
