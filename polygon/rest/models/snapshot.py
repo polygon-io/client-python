@@ -6,7 +6,7 @@ from .trades import LastTrade
 
 
 @dataclass
-class SnapshotMin:
+class MinuteSnapshot:
     "Most recent minute bar."
     accumulated_volume: Optional[float] = None
     open: Optional[float] = None
@@ -18,7 +18,7 @@ class SnapshotMin:
 
     @staticmethod
     def from_dict(d):
-        return SnapshotMin(
+        return MinuteSnapshot(
             d.get("av", None),
             d.get("o", None),
             d.get("h", None),
@@ -30,12 +30,12 @@ class SnapshotMin:
 
 
 @dataclass
-class Snapshot:
+class TickerSnapshot:
     "Contains the most up-to-date market data for all traded ticker symbols."
     day: Optional[Agg] = None
     last_quote: Optional[LastQuote] = None
     last_trade: Optional[LastTrade] = None
-    min: Optional[SnapshotMin] = None
+    min: Optional[MinuteSnapshot] = None
     prev_day: Optional[Agg] = None
     ticker: Optional[str] = None
     todays_change: Optional[float] = None
@@ -44,16 +44,16 @@ class Snapshot:
 
     @staticmethod
     def from_dict(d):
-        return Snapshot(
-            day=None if "day" not in d else [Agg.from_dict(d["day"])],
+        return TickerSnapshot(
+            day=None if "day" not in d else Agg.from_dict(d["day"]),
             last_quote=None
             if "last_quote" not in d
-            else [LastQuote.from_dict(d["last_quote"])],
+            else LastQuote.from_dict(d["last_quote"]),
             last_trade=None
             if "last_trade" not in d
-            else [LastTrade.from_dict(d["last_trade"])],
-            min=None if "min" not in d else [SnapshotMin.from_dict(d["min"])],
-            prev_day=None if "prev_day" not in d else [Agg.from_dict(d["prev_day"])],
+            else LastTrade.from_dict(d["last_trade"]),
+            min=None if "min" not in d else MinuteSnapshot.from_dict(d["min"]),
+            prev_day=None if "prev_day" not in d else Agg.from_dict(d["prev_day"]),
             ticker=d.get("ticker", None),
             todays_change=d.get("todays_change", None),
             todays_change_percent=d.get("todays_change_percent", None),
@@ -96,7 +96,7 @@ class OptionDetails:
 
 
 @dataclass
-class OptionLastQuote:
+class LastQuoteOptionContractSnapshot:
     "Contains data for the most recent quote in an options contract."
     ask: Optional[float] = None
     ask_size: Optional[float] = None
@@ -108,11 +108,11 @@ class OptionLastQuote:
 
     @staticmethod
     def from_dict(d):
-        return OptionLastQuote(**d)
+        return LastQuoteOptionContractSnapshot(**d)
 
 
 @dataclass
-class OptionGreeks:
+class Greeks:
     "Contains data for the greeks in an options contract."
     delta: Optional[float] = None
     gamma: Optional[float] = None
@@ -121,7 +121,7 @@ class OptionGreeks:
 
     @staticmethod
     def from_dict(d):
-        return OptionGreeks(**d)
+        return Greeks(**d)
 
 
 @dataclass
@@ -144,9 +144,9 @@ class OptionContractSnapshot:
     break_even_price: Optional[float] = None
     day: Optional[DayOptionContractSnapshot] = None
     details: Optional[OptionDetails] = None
-    greeks: Optional[OptionGreeks] = None
+    greeks: Optional[Greeks] = None
     implied_volatility: Optional[float] = None
-    last_quote: Optional[OptionLastQuote] = None
+    last_quote: Optional[LastQuoteOptionContractSnapshot] = None
     open_interest: Optional[float] = None
     underlying_asset: Optional[UnderlyingAsset] = None
 
@@ -156,19 +156,19 @@ class OptionContractSnapshot:
             break_even_price=d.get("break_even_price", None),
             day=None
             if "day" not in d
-            else [DayOptionContractSnapshot.from_dict(d["day"])],
+            else DayOptionContractSnapshot.from_dict(d["day"]),
             details=None
             if "details" not in d
-            else [OptionDetails.from_dict(d["details"])],
-            greeks=None if "greeks" not in d else [OptionGreeks.from_dict(d["greeks"])],
+            else OptionDetails.from_dict(d["details"]),
+            greeks=None if "greeks" not in d else Greeks.from_dict(d["greeks"]),
             implied_volatility=d.get("implied_volatility", None),
             last_quote=None
             if "last_quote" not in d
-            else [OptionLastQuote.from_dict(d["last_quote"])],
+            else LastQuoteOptionContractSnapshot.from_dict(d["last_quote"]),
             open_interest=d.get("open_interest", None),
             underlying_asset=None
             if "underlying_asset" not in d
-            else [UnderlyingAsset.from_dict(d["underlying_asset"])],
+            else UnderlyingAsset.from_dict(d["underlying_asset"]),
         )
 
 
