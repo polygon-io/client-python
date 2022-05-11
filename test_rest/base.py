@@ -3,7 +3,7 @@ from polygon import RESTClient, BASE
 import os
 import re
 import unittest
-import pook
+import pook # type: ignore
 
 # mocks are stored in file tree
 mocks = []
