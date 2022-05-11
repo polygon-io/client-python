@@ -140,14 +140,13 @@ class TickersTest(BaseTest):
                 image_url="https://images.mktw.net/im-533637/social",
                 keywords=None,
                 published_utc="2022-04-28T17:08:00Z",
-                publisher=[
-                    Publisher(
+                publisher=Publisher(
                         favicon_url="https://s3.polygon.io/public/assets/news/favicons/marketwatch.ico",
                         homepage_url="https://www.marketwatch.com/",
                         logo_url="https://s3.polygon.io/public/assets/news/logos/marketwatch.svg",
                         name="MarketWatch",
                     )
-                ],
+                ,
                 tickers=["MSFT", "TSN", "NFLX", "AMZN"],
                 title="Theres a big hole in the Feds theory of inflation—incomes are falling at a record 10.9 rate",
             )

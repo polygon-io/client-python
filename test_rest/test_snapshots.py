@@ -16,7 +16,7 @@ from base import BaseTest
 
 class SnapshotsTest(BaseTest):
     def test_get_snapshot_all(self):
-        snapshots = self.c.get_snapshot_all()
+        snapshots = self.c.get_snapshot_all("stocks")
         expected = [
             Snapshot(
                 day=[
@@ -54,7 +54,7 @@ class SnapshotsTest(BaseTest):
         self.assertEqual(snapshots, expected)
 
     def test_get_snapshot_direction(self):
-        snapshots = self.c.get_snapshot_direction("gainers")
+        snapshots = self.c.get_snapshot_direction("stocks", "gainers")
         expected = [
             Snapshot(
                 day=[
@@ -124,7 +124,7 @@ class SnapshotsTest(BaseTest):
         self.assertEqual(snapshots, expected)
 
     def test_get_snapshot_ticker(self):
-        snapshots = self.c.get_snapshot_ticker("AAPL")
+        snapshots = self.c.get_snapshot_ticker("stocks", "AAPL")
         expected = Snapshot(
             day=[
                 Agg(
