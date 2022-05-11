@@ -101,7 +101,7 @@ class BaseClient:
         return 1
 
     def _get_params(
-            self, fn, caller_locals: Dict[str, Any], datetime_res: str = "nanos"
+        self, fn, caller_locals: Dict[str, Any], datetime_res: str = "nanos"
     ):
         params = caller_locals["params"]
         if params is None:
@@ -119,8 +119,13 @@ class BaseClient:
                 elif isinstance(val, datetime):
                     val = int(val.timestamp() * self.time_mult(datetime_res))
                 if val is not None:
-                    if argname.endswith('_lt') or argname.endswith('_lte') or argname.endswith('_gt') or argname.endswith('_gte'):
-                        argname = argname.replace('_', '.')
+                    if (
+                        argname.endswith("_lt")
+                        or argname.endswith("_lte")
+                        or argname.endswith("_gt")
+                        or argname.endswith("_gte")
+                    ):
+                        argname = argname.replace("_", ".")
                     params[argname] = val
 
         return params
