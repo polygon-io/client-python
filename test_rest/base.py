@@ -1,4 +1,4 @@
-from polygon import RESTClient, BASE
+from polygon import RESTClient
 
 import os
 import re
@@ -38,6 +38,6 @@ class BaseTest(unittest.TestCase):
         cls.c = RESTClient("", verbose=True)
         pook.on()
         for m in mocks:
-            url = BASE + m[0]
-            print("register", url)
+            url = cls.c.BASE + m[0]
+            # print("register", url)
             pook.get(url, reply=200, response_body=m[1])
