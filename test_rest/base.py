@@ -30,8 +30,8 @@ for dname, _, files in os.walk(mockdir):
 
 pook.on()
 for m in mocks:
-    url = BASE + m[0]
-    # print('register', url)
+    url = BASE + m[0].replace('\\', '/')
+    print('register', url)
     pook.get(url, reply=200, response_body=m[1])
 
 unittest.util._MAX_LENGTH = 30000  # type: ignore
