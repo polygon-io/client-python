@@ -1,5 +1,4 @@
-from typing import Optional
-from .common import AssetClass, DataType
+from typing import Optional, List
 from dataclasses import dataclass
 
 
@@ -50,10 +49,10 @@ class UpdateRules:
         return UpdateRules(
             consolidated=None
             if "consolidated" not in d
-            else [Consolidated.from_dict(d["consolidated"])],
+            else Consolidated.from_dict(d["consolidated"]),
             market_center=None
             if "market_center" not in d
-            else [MarketCenter.from_dict(d["market_center"])],
+            else MarketCenter.from_dict(d["market_center"]),
         )
 
 
@@ -61,8 +60,8 @@ class UpdateRules:
 class Condition:
     "Condition contains data for a condition that Polygon.io uses."
     abbreviation: Optional[str] = None
-    asset_class: Optional[AssetClass] = None
-    data_types: Optional[DataType] = None
+    asset_class: Optional[str] = None
+    data_types: Optional[List[str]] = None
     description: Optional[str] = None
     exchange: Optional[int] = None
     id: Optional[int] = None
@@ -85,9 +84,9 @@ class Condition:
             name=d.get("name", None),
             sip_mapping=None
             if "sip_mapping" not in d
-            else [SipMapping.from_dict(d["sip_mapping"])],
+            else SipMapping.from_dict(d["sip_mapping"]),
             type=d.get("type", None),
             update_rules=None
             if "update_rules" not in d
-            else [UpdateRules.from_dict(d["update_rules"])],
+            else UpdateRules.from_dict(d["update_rules"]),
         )
