@@ -23,6 +23,9 @@ class Branding:
     "Contains branding data for a ticker detail."
     icon_url: Optional[str] = None
     logo_url: Optional[str] = None
+    accent_color: Optional[str] = None
+    light_color: Optional[str] = None
+    dark_color: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
@@ -54,8 +57,8 @@ class Ticker:
     base_currency_name: Optional[str] = None
     delisted_utc: Optional[str] = None
     last_updated_utc: Optional[str] = None
-    locale: Optional[Locale] = None
-    market: Optional[Market] = None
+    locale: Optional[str] = None
+    market: Optional[str] = None
     name: Optional[str] = None
     primary_exchange: Optional[str] = None
     share_class_figi: Optional[str] = None
@@ -159,7 +162,7 @@ class TickerNews:
             published_utc=d.get("published_utc", None),
             publisher=None
             if "publisher" not in d
-            else [Publisher.from_dict(d["publisher"])],
+            else Publisher.from_dict(d["publisher"]),
             tickers=d.get("tickers", None),
             title=d.get("title", None),
         )
@@ -168,10 +171,10 @@ class TickerNews:
 @dataclass
 class TickerTypes:
     "TickerTypes contains data for ticker types."
-    asset_class: Optional[AssetClass] = None
+    asset_class: Optional[str] = None
     code: Optional[str] = None
     description: Optional[str] = None
-    locale: Optional[Locale] = None
+    locale: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
