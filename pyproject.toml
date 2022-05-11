@@ -24,7 +24,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 urllib3 = "^1.26.9"
 websockets = "^10.3"
 certifi = "^2021.10.8"
