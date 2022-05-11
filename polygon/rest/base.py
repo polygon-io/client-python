@@ -106,9 +106,9 @@ class BaseClient:
         params = caller_locals["params"]
         if params is None:
             params = {}
-        # https://docs.python.org/3.7/library/inspect.html#inspect.Signature
+        # https://docs.python.org/3.8/library/inspect.html#inspect.Signature
         for argname, v in inspect.signature(fn).parameters.items():
-            # https://docs.python.org/3.7/library/inspect.html#inspect.Parameter
+            # https://docs.python.org/3.8/library/inspect.html#inspect.Parameter
             if argname in ["params", "raw"]:
                 continue
             if v.default != v.empty:
