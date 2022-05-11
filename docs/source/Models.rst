@@ -51,12 +51,12 @@ Last Quote
 ==============================================================
 Snapshot Min
 ==============================================================
-.. autoclass:: polygon.rest.models.SnapshotMin
+.. autoclass:: polygon.rest.models.MinuteSnapshot
 
 ==============================================================
 Snapshot
 ==============================================================
-.. autoclass:: polygon.rest.models.Snapshot
+.. autoclass:: polygon.rest.models.TickerSnapshot
 
 ==============================================================
 Day Option Contract Snapshot
@@ -69,14 +69,9 @@ Option Details
 .. autoclass:: polygon.rest.models.OptionDetails
 
 ==============================================================
-Option Last Quote
-==============================================================
-.. autoclass:: polygon.rest.models.OptionLastQuote
-
-==============================================================
 Option Greeks
 ==============================================================
-.. autoclass:: polygon.rest.models.OptionGreeks
+.. autoclass:: polygon.rest.models.Greeks
 
 ==============================================================
 Underlying Asset
@@ -106,7 +101,7 @@ Ticker
 ==============================================================
 Address
 ==============================================================
-.. autoclass:: polygon.rest.models.Address
+.. autoclass:: polygon.rest.models.CompanyAddress
 
 ==============================================================
 Branding
