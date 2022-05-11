@@ -10,13 +10,17 @@ permissions:
   contents: read
 jobs:
   test:
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python-version: ['3.8', '3.9', '3.10']
-    name: Unit test ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} Unit test ${{ matrix.python-version }}
     steps:
+      - name: Windows hack
+        run: git config --system core.longpaths true
+        if: ${{ matrix.os == 'windows-latest' }}
       - uses: actions/checkout@v3
       - name: Setup Python
         uses: actions/setup-python@v3

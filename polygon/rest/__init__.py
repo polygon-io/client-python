@@ -15,8 +15,8 @@ from typing import Optional
 import os
 
 
-base = "https://api.polygon.io"
-env_key = "POLYGON_API_KEY"
+BASE = "https://api.polygon.io"
+ENV_KEY = "POLYGON_API_KEY"
 
 
 class RESTClient(
@@ -33,12 +33,12 @@ class RESTClient(
 ):
     def __init__(
         self,
-        api_key: Optional[str] = os.getenv(env_key),
+        api_key: Optional[str] = os.getenv(ENV_KEY),
         connect_timeout: float = 10.0,
         read_timeout: float = 10.0,
         num_pools: int = 10,
         retries: int = 3,
-        base: str = base,
+        base: str = BASE,
         verbose: bool = False,
     ):
         super().__init__(

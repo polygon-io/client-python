@@ -13,7 +13,7 @@ from urllib3 import HTTPResponse
 class SnapshotClient(BaseClient):
     def get_snapshot_all(
         self,
-        market_type: Optional[Union[str, SnapshotMarketType]] = "stocks",
+        market_type: Optional[Union[str, SnapshotMarketType]],
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -40,8 +40,8 @@ class SnapshotClient(BaseClient):
 
     def get_snapshot_direction(
         self,
+        market_type: Optional[Union[str, SnapshotMarketType]],
         direction: Union[str, Direction],
-        market_type: Optional[Union[str, SnapshotMarketType]] = "stocks",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
@@ -67,8 +67,8 @@ class SnapshotClient(BaseClient):
 
     def get_snapshot_ticker(
         self,
+        market_type: Optional[Union[str, SnapshotMarketType]],
         ticker: str,
-        market_type: Optional[Union[str, SnapshotMarketType]] = "stocks",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[TickerSnapshot, HTTPResponse]:

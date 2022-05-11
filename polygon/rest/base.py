@@ -129,7 +129,14 @@ class BaseClient:
                 elif isinstance(val, datetime):
                     val = int(val.timestamp() * self.time_mult(datetime_res))
                 if val is not None:
-                    params[argname.replace("_", ".")] = val
+                    if (
+                        argname.endswith("_lt")
+                        or argname.endswith("_lte")
+                        or argname.endswith("_gt")
+                        or argname.endswith("_gte")
+                    ):
+                        argname = argname.replace("_", ".")
+                    params[argname] = val
 
         return params
 
