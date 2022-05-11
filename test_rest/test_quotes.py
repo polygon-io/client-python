@@ -2,7 +2,7 @@ from base import BaseTest
 from polygon.rest.models import (
     Quote,
     LastQuote,
-    Last,
+    ForexQuote,
     LastForexQuote,
     RealTimeCurrencyConversion,
 )
@@ -339,7 +339,9 @@ class QuotesTest(BaseTest):
     def test_get_last_forex_quote(self):
         last_forex = self.c.get_last_forex_quote("AUD", "USD")
         expected = LastForexQuote(
-            last=Last(ask=0.69527, bid=0.6952, exchange=48, timestamp=1652193694000),
+            last=ForexQuote(
+                ask=0.69527, bid=0.6952, exchange=48, timestamp=1652193694000
+            ),
             symbol="AUD/USD",
         )
 
@@ -351,7 +353,7 @@ class QuotesTest(BaseTest):
             converted=69.31,
             from_=None,
             initial_amount=100,
-            last=Last(
+            last=ForexQuote(
                 ask=1.4436264, bid=1.4427932, exchange=48, timestamp=1652195426000
             ),
             to="USD",

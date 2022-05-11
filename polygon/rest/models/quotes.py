@@ -63,7 +63,7 @@ class LastQuote:
 
 
 @dataclass
-class Last:
+class ForexQuote:
     "Contains data for a forex quote."
     ask: Optional[float] = None
     bid: Optional[float] = None
@@ -72,19 +72,19 @@ class Last:
 
     @staticmethod
     def from_dict(d):
-        return Last(**d)
+        return ForexQuote(**d)
 
 
 @dataclass
 class LastForexQuote:
     "ForexLastQuote contains data for the last quote tick for a forex currency pair."
-    last: Optional[Last] = None
+    last: Optional[ForexQuote] = None
     symbol: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
         return LastForexQuote(
-            last=None if "last" not in d else Last.from_dict(d["last"]),
+            last=None if "last" not in d else ForexQuote.from_dict(d["last"]),
             symbol=d.get("symbol", None),
         )
 
@@ -95,7 +95,7 @@ class RealTimeCurrencyConversion:
     converted: Optional[float] = None
     from_: Optional[str] = None
     initial_amount: Optional[float] = None
-    last: Optional[Last] = None
+    last: Optional[ForexQuote] = None
     to: Optional[str] = None
 
     @staticmethod
@@ -104,6 +104,6 @@ class RealTimeCurrencyConversion:
             converted=d.get("converted", None),
             from_=d.get("from_", None),
             initial_amount=d.get("initialAmount", None),
-            last=None if "last" not in d else Last.from_dict(d["last"]),
+            last=None if "last" not in d else ForexQuote.from_dict(d["last"]),
             to=d.get("to", None),
         )
