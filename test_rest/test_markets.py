@@ -130,13 +130,11 @@ class MarketsTest(BaseTest):
         status = self.c.get_market_status()
         expected = MarketStatus(
             after_hours=None,
-            currencies=[MarketCurrencies(crypto="open", fx="open")],
+            currencies=MarketCurrencies(crypto="open", fx="open"),
             early_hours=None,
-            exchanges=[
-                MarketExchanges(
-                    nasdaq="extended-hours", nyse="extended-hours", otc="extended-hours"
-                )
-            ],
+            exchanges=MarketExchanges(
+                nasdaq="extended-hours", nyse="extended-hours", otc="extended-hours"
+            ),
             market="extended-hours",
             server_time=None,
         )

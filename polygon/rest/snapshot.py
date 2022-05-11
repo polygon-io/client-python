@@ -1,7 +1,7 @@
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from .models import (
-    Snapshot,
+    TickerSnapshot,
     Direction,
     OptionContractSnapshot,
     SnapshotMarketType,
@@ -17,7 +17,7 @@ class SnapshotClient(BaseClient):
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[List[Snapshot], HTTPResponse]:
+    ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
 
@@ -33,7 +33,7 @@ class SnapshotClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_all, locals()),
-            deserializer=Snapshot.from_dict,
+            deserializer=TickerSnapshot.from_dict,
             raw=raw,
             result_key="tickers",
         )
@@ -44,7 +44,7 @@ class SnapshotClient(BaseClient):
         market_type: Optional[Union[str, SnapshotMarketType]] = "stocks",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[List[Snapshot], HTTPResponse]:
+    ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.
 
@@ -61,7 +61,7 @@ class SnapshotClient(BaseClient):
             path=url,
             params=self._get_params(self.get_snapshot_direction, locals()),
             result_key="tickers",
-            deserializer=Snapshot.from_dict,
+            deserializer=TickerSnapshot.from_dict,
             raw=raw,
         )
 
@@ -71,7 +71,7 @@ class SnapshotClient(BaseClient):
         market_type: Optional[Union[str, SnapshotMarketType]] = "stocks",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[Snapshot, HTTPResponse]:
+    ) -> Union[TickerSnapshot, HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
 
@@ -86,7 +86,7 @@ class SnapshotClient(BaseClient):
             path=url,
             params=self._get_params(self.get_snapshot_ticker, locals()),
             result_key="ticker",
-            deserializer=Snapshot.from_dict,
+            deserializer=TickerSnapshot.from_dict,
             raw=raw,
         )
 
