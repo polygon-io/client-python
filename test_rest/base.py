@@ -3,7 +3,7 @@ from polygon import RESTClient, BASE
 import os
 import re
 import unittest
-import pook # type: ignore
+import pook  # type: ignore
 
 # mocks are stored in file tree
 mocks = []
@@ -14,7 +14,7 @@ for dname, _, files in os.walk(mockdir):
         if fname.endswith(".json"):
             abspath = os.path.join(dname, fname)
             with open(abspath, "r") as f:
-                urllpath = abspath.replace(mockdir, "").replace('\\', '/')
+                urllpath = abspath.replace(mockdir, "").replace("\\", "/")
                 urllpath = re.sub(".json$", "", urllpath)
                 urllpath = re.sub("/index$", "", urllpath)
                 # Windows will be sad. We support dev on Windows.
@@ -28,7 +28,6 @@ for dname, _, files in os.walk(mockdir):
                 mocks.append((urllpath, f.read()))
 
 
-
 unittest.util._MAX_LENGTH = 30000  # type: ignore
 
 
@@ -40,5 +39,5 @@ class BaseTest(unittest.TestCase):
         pook.on()
         for m in mocks:
             url = BASE + m[0]
-            print('register', url)
+            print("register", url)
             pook.get(url, reply=200, response_body=m[1])
