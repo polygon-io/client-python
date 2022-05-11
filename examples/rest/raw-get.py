@@ -2,16 +2,16 @@ from polygon import RESTClient
 from typing import cast
 from urllib3 import HTTPResponse
 
-client = RESTClient(verbose=True)
+client = RESTClient()
 
 aggs = cast(
     HTTPResponse,
     client.get_aggs(
-        ticker="AAPL",
-        multiplier=1,
-        timespan="day",
-        from_="2022-04-01",
-        to="2022-04-04",
+        "AAPL",
+        1,
+        "day",
+        "2022-04-01",
+        "2022-04-04",
         raw=True,
     ),
 )
