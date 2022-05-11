@@ -16,7 +16,7 @@ for dname, _, files in os.walk(mockdir):
             with open(abspath, "r") as f:
                 urllpath = abspath.replace(mockdir, "")
                 urllpath = re.sub(".json$", "", urllpath)
-                urllpath = re.sub("/index$", "", urllpath)
+                urllpath = re.sub("[\\/]index$", "", urllpath)
                 # Windows will be sad. We support dev on Windows.
                 if "?" in urllpath:
                     raise Exception(f"use & instead of ? in path ${urllpath}")
