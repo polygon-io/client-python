@@ -1,5 +1,4 @@
 from typing import Optional, List
-from .common import Locale, Market, AssetClass
 from dataclasses import dataclass
 
 
@@ -84,8 +83,8 @@ class TickerDetails:
     ticker_root: Optional[str] = None
     homepage_url: Optional[str] = None
     list_date: Optional[str] = None
-    locale: Optional[Locale] = None
-    market: Optional[Market] = None
+    locale: Optional[str] = None
+    market: Optional[str] = None
     market_cap: Optional[float] = None
     name: Optional[str] = None
     phone_number: Optional[str] = None
