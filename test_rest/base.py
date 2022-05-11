@@ -28,11 +28,6 @@ for dname, _, files in os.walk(mockdir):
                 mocks.append((urllpath, f.read()))
 
 
-pook.on()
-for m in mocks:
-    url = BASE + m[0].replace('\\', '/')
-    print('register', url)
-    pook.get(url, reply=200, response_body=m[1])
 
 unittest.util._MAX_LENGTH = 30000  # type: ignore
 
@@ -42,3 +37,8 @@ class BaseTest(unittest.TestCase):
     def setUpClass(cls):
         cls.maxDiff = None
         cls.c = RESTClient("", verbose=True)
+        pook.on()
+        for m in mocks:
+            url = BASE + m[0].replace('\\', '/')
+            print('register', url)
+            pook.get(url, reply=200, response_body=m[1])
