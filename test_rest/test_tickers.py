@@ -5,7 +5,7 @@ from polygon.rest.models import (
     TickerTypes,
     Publisher,
     Branding,
-    Address,
+    CompanyAddress,
 )
 from base import BaseTest
 
@@ -93,7 +93,7 @@ class TickersTest(BaseTest):
         details = self.c.get_ticker_details("AAPL")
         expected = TickerDetails(
             active=True,
-            address=Address(
+            address=CompanyAddress(
                 address1="ONE APPLE PARK WAY",
                 city="CUPERTINO",
                 state="CA",

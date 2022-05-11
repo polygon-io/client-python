@@ -4,16 +4,18 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Address:
+class CompanyAddress:
     "Contains address data for a ticker detail."
     address1: Optional[str] = None
+    address2: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None
+    country: Optional[str] = None
     postal_code: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
-        return Address(**d)
+        return CompanyAddress(**d)
 
 
 @dataclass
@@ -69,7 +71,7 @@ class Ticker:
 class TickerDetails:
     "TickerDetails contains data for a specified ticker symbol."
     active: Optional[bool] = None
-    address: Optional[Address] = None
+    address: Optional[CompanyAddress] = None
     branding: Optional[Branding] = None
     cik: Optional[str] = None
     composite_figi: Optional[str] = None
@@ -98,7 +100,7 @@ class TickerDetails:
     def from_dict(d):
         return TickerDetails(
             active=d.get("active", None),
-            address=None if "address" not in d else Address.from_dict(d["address"]),
+            address=None if "address" not in d else CompanyAddress.from_dict(d["address"]),
             branding=None if "branding" not in d else Branding.from_dict(d["branding"]),
             cik=d.get("cik", None),
             composite_figi=d.get("composite_figi", None),
