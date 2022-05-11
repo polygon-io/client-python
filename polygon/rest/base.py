@@ -14,7 +14,7 @@ except:
     pass
 
 
-class NoResults(Exception):
+class NoResultsError(Exception):
     pass
 
 
@@ -84,7 +84,7 @@ class BaseClient:
 
         if result_key:
             if result_key not in obj:
-                raise NoResults(
+                raise NoResultsError(
                     f'Expected key "{result_key}" in response {obj}.'
                     + "Make sure you have sufficient permissions and your request parameters are valid."
                     + f"This is the url that returned no results: {resp.geturl()}"

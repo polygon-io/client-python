@@ -1,13 +1,13 @@
 from polygon.rest.models import (
-    Snapshot,
+    TickerSnapshot,
     OptionContractSnapshot,
     SnapshotTickerFullBook,
     Agg,
-    SnapshotMin,
+    MinuteSnapshot,
     OrderBookQuote,
     UnderlyingAsset,
-    OptionLastQuote,
-    OptionGreeks,
+    LastQuoteOptionContractSnapshot,
+    Greeks,
     OptionDetails,
     DayOptionContractSnapshot,
 )
@@ -18,32 +18,28 @@ class SnapshotsTest(BaseTest):
     def test_get_snapshot_all(self):
         snapshots = self.c.get_snapshot_all("stocks")
         expected = [
-            Snapshot(
-                day=[
-                    Agg(
-                        open=20.64,
-                        high=20.64,
-                        low=20.506,
-                        close=20.506,
-                        volume=37216,
-                        vwap=20.616,
-                        timestamp=None,
-                        transactions=None,
-                    )
-                ],
+            TickerSnapshot(
+                day=Agg(
+                    open=20.64,
+                    high=20.64,
+                    low=20.506,
+                    close=20.506,
+                    volume=37216,
+                    vwap=20.616,
+                    timestamp=None,
+                    transactions=None,
+                ),
                 last_quote=None,
                 last_trade=None,
-                min=[
-                    SnapshotMin(
-                        accumulated_volume=37216,
-                        open=20.506,
-                        high=20.506,
-                        low=20.506,
-                        close=20.506,
-                        volume=5000,
-                        vwap=20.5105,
-                    )
-                ],
+                min=MinuteSnapshot(
+                    accumulated_volume=37216,
+                    open=20.506,
+                    high=20.506,
+                    low=20.506,
+                    close=20.506,
+                    volume=5000,
+                    vwap=20.5105,
+                ),
                 prev_day=None,
                 ticker="BCAT",
                 todays_change=None,
@@ -53,104 +49,30 @@ class SnapshotsTest(BaseTest):
         ]
         self.assertEqual(snapshots, expected)
 
-    def test_get_snapshot_direction(self):
-        snapshots = self.c.get_snapshot_direction("stocks", "gainers")
-        expected = [
-            Snapshot(
-                day=[
-                    Agg(
-                        open=6.81,
-                        high=6.99,
-                        low=6.4,
-                        close=6.42,
-                        volume=115782,
-                        vwap=6.656,
-                        timestamp=None,
-                        transactions=None,
-                    )
-                ],
-                last_quote=None,
-                last_trade=None,
-                min=[
-                    SnapshotMin(
-                        accumulated_volume=115689,
-                        open=6.49,
-                        high=6.542,
-                        low=6.42,
-                        close=6.42,
-                        volume=2671,
-                        vwap=6.4604,
-                    )
-                ],
-                prev_day=None,
-                ticker="NVCN",
-                todays_change=None,
-                todays_change_percent=None,
-                updated=1651251360000000000,
-            ),
-            Snapshot(
-                day=[
-                    Agg(
-                        open=4.31,
-                        high=4.95,
-                        low=4.21,
-                        close=4.2107,
-                        volume=453199,
-                        vwap=4.4181,
-                        timestamp=None,
-                        transactions=None,
-                    )
-                ],
-                last_quote=None,
-                last_trade=None,
-                min=[
-                    SnapshotMin(
-                        accumulated_volume=453189,
-                        open=4.2107,
-                        high=4.2107,
-                        low=4.2107,
-                        close=4.2107,
-                        volume=1012,
-                        vwap=4.2107,
-                    )
-                ],
-                prev_day=None,
-                ticker="BIOL",
-                todays_change=None,
-                todays_change_percent=None,
-                updated=1651251789345841015,
-            ),
-        ]
-        self.assertEqual(snapshots, expected)
-
     def test_get_snapshot_ticker(self):
         snapshots = self.c.get_snapshot_ticker("stocks", "AAPL")
-        expected = Snapshot(
-            day=[
-                Agg(
-                    open=161.84,
-                    high=166.2,
-                    low=159.8,
-                    close=160.315,
-                    volume=68840127,
-                    vwap=162.7124,
-                    timestamp=None,
-                    transactions=None,
-                )
-            ],
+        expected = TickerSnapshot(
+            day=Agg(
+                open=161.84,
+                high=166.2,
+                low=159.8,
+                close=160.315,
+                volume=68840127,
+                vwap=162.7124,
+                timestamp=None,
+                transactions=None,
+            ),
             last_quote=None,
             last_trade=None,
-            min=[
-                SnapshotMin(
-                    accumulated_volume=68834255,
-                    open=160.71,
-                    high=160.71,
-                    low=160.3,
-                    close=160.3,
-                    volume=197226,
-                    vwap=160.5259,
-                )
-            ],
+            min=MinuteSnapshot(
+                accumulated_volume=68834255,
+                open=160.71,
+                high=160.71,
+                low=160.3,
+                close=160.3,
+                volume=197226,
+                vwap=160.5259,
+            ),
             prev_day=None,
             ticker="AAPL",
             todays_change=None,
@@ -163,60 +85,50 @@ class SnapshotsTest(BaseTest):
         snapshots = self.c.get_snapshot_option("AAPL", "O:AAPL230616C00150000")
         expected = OptionContractSnapshot(
             break_even_price=179.075,
-            day=[
-                DayOptionContractSnapshot(
-                    change=-2.3999999999999986,
-                    change_percent=-7.643312101910824,
-                    close=29,
-                    high=32.25,
-                    last_updated=1651204800000000000,
-                    low=29,
-                    open=29.99,
-                    previous_close=31.4,
-                    volume=8,
-                    vwap=30.7738,
-                )
-            ],
-            details=[
-                OptionDetails(
-                    contract_type="call",
-                    exercise_style="american",
-                    expiration_date="2023-06-16",
-                    shares_per_contract=100,
-                    strike_price=150,
-                    ticker="O:AAPL230616C00150000",
-                )
-            ],
-            greeks=[
-                OptionGreeks(
-                    delta=0.6436614934293701,
-                    gamma=0.0061735291012820675,
-                    theta=-0.028227189324641973,
-                    vega=0.6381159723175714,
-                )
-            ],
+            day=DayOptionContractSnapshot(
+                change=-2.3999999999999986,
+                change_percent=-7.643312101910824,
+                close=29,
+                high=32.25,
+                last_updated=1651204800000000000,
+                low=29,
+                open=29.99,
+                previous_close=31.4,
+                volume=8,
+                vwap=30.7738,
+            ),
+            details=OptionDetails(
+                contract_type="call",
+                exercise_style="american",
+                expiration_date="2023-06-16",
+                shares_per_contract=100,
+                strike_price=150,
+                ticker="O:AAPL230616C00150000",
+            ),
+            greeks=Greeks(
+                delta=0.6436614934293701,
+                gamma=0.0061735291012820675,
+                theta=-0.028227189324641973,
+                vega=0.6381159723175714,
+            ),
             implied_volatility=0.3570277203465058,
-            last_quote=[
-                OptionLastQuote(
-                    ask=29.25,
-                    ask_size=209,
-                    bid=28.9,
-                    bid_size=294,
-                    last_updated=1651254260800059648,
-                    midpoint=29.075,
-                    timeframe="REAL-TIME",
-                )
-            ],
+            last_quote=LastQuoteOptionContractSnapshot(
+                ask=29.25,
+                ask_size=209,
+                bid=28.9,
+                bid_size=294,
+                last_updated=1651254260800059648,
+                midpoint=29.075,
+                timeframe="REAL-TIME",
+            ),
             open_interest=8133,
-            underlying_asset=[
-                UnderlyingAsset(
-                    change_to_break_even=19.11439999999999,
-                    last_updated=1651254263172073152,
-                    price=159.9606,
-                    ticker="AAPL",
-                    timeframe="REAL-TIME",
-                )
-            ],
+            underlying_asset=UnderlyingAsset(
+                change_to_break_even=19.11439999999999,
+                last_updated=1651254263172073152,
+                price=159.9606,
+                ticker="AAPL",
+                timeframe="REAL-TIME",
+            ),
         )
         self.assertEqual(snapshots, expected)
 

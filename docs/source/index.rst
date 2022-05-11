@@ -18,6 +18,7 @@ This documentation is for the Python client only. For details about the response
   Models
   Enums
   WebSocket-Enums
+  Exceptions
 
 Indices and tables
 ==================

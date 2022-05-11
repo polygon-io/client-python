@@ -56,11 +56,11 @@ class MarketStatus:
             after_hours=d.get("after_hours", None),
             currencies=None
             if "currencies" not in d
-            else [MarketCurrencies.from_dict(d["currencies"])],
+            else MarketCurrencies.from_dict(d["currencies"]),
             early_hours=d.get("early_hours", None),
             exchanges=None
             if "exchanges" not in d
-            else [MarketExchanges.from_dict(d["exchanges"])],
+            else MarketExchanges.from_dict(d["exchanges"]),
             market=d.get("market", None),
             server_time=d.get("server_time", None),
         )
