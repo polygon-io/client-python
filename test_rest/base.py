@@ -17,10 +17,13 @@ for dname, _, files in os.walk(mockdir):
                 urllpath = abspath.replace(mockdir, "")
                 urllpath = re.sub(".json$", "", urllpath)
                 urllpath = re.sub("/index$", "", urllpath)
+                # Windows will be sad. We support dev on Windows.
                 if "?" in urllpath:
-                    # Windows will be sad. We support dev on Windows.
                     raise Exception(f"use & instead of ? in path ${urllpath}")
                 urllpath = urllpath.replace("&", "?", 1)
+                if ":" in urllpath:
+                    raise Exception(f"use ; instead of : in path ${urllpath}")
+                urllpath = urllpath.replace(";", ":", 1)
                 mocks.append((urllpath, f.read()))
 
 unittest.util._MAX_LENGTH = 30000  # type: ignore
