@@ -159,7 +159,7 @@ class TickerNews:
             published_utc=d.get("published_utc", None),
             publisher=None
             if "publisher" not in d
-            else Publisher.from_dict(d["publisher"]),
+            else [Publisher.from_dict(d["publisher"])],
             tickers=d.get("tickers", None),
             title=d.get("title", None),
         )

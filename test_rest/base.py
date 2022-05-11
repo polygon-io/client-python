@@ -23,7 +23,7 @@ for dname, _, files in os.walk(mockdir):
                 urllpath = urllpath.replace("&", "?", 1)
                 if ":" in urllpath:
                     raise Exception(f"use ; instead of : in path ${urllpath}")
-                urllpath = urllpath.replace(";", ":", 1)
+                urllpath = urllpath.replace(";", "\\:", 1)
                 print(urllpath)
                 mocks.append((urllpath, f.read()))
 
