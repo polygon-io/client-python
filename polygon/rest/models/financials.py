@@ -1,8 +1,8 @@
 from typing import Optional, Dict
-from dataclasses import dataclass
+from ...modelclass import modelclass
 
 
-@dataclass
+@modelclass
 class DataPoint:
     "An individual financial data point."
     formula: Optional[str] = None
@@ -17,7 +17,7 @@ class DataPoint:
         return DataPoint(**d)
 
 
-@dataclass
+@modelclass
 class ExchangeGainsLosses:
     "Contains exchange gains losses data for a cash flow statement."
     formula: Optional[str] = None
@@ -32,7 +32,7 @@ class ExchangeGainsLosses:
         return ExchangeGainsLosses(**d)
 
 
-@dataclass
+@modelclass
 class NetCashFlow:
     "Contains net cash flow data for a cash flow statement."
     formula: Optional[str] = None
@@ -47,7 +47,7 @@ class NetCashFlow:
         return NetCashFlow(**d)
 
 
-@dataclass
+@modelclass
 class NetCashFlowFromFinancingActivities:
     "Contains net cash flow from financing activities data for a cash flow statement."
     formula: Optional[str] = None
@@ -62,7 +62,7 @@ class NetCashFlowFromFinancingActivities:
         return NetCashFlowFromFinancingActivities(**d)
 
 
-@dataclass
+@modelclass
 class CashFlowStatement:
     "Contains cash flow statement data."
     exchange_gains_losses: Optional[ExchangeGainsLosses] = None
@@ -88,7 +88,7 @@ class CashFlowStatement:
         )
 
 
-@dataclass
+@modelclass
 class ComprehensiveIncomeLoss:
     "Contains comprehensive income loss data for comprehensive income."
     formula: Optional[str] = None
@@ -103,7 +103,7 @@ class ComprehensiveIncomeLoss:
         return ComprehensiveIncomeLoss(**d)
 
 
-@dataclass
+@modelclass
 class ComprehensiveIncomeLossAttributableToParent:
     "Contains comprehensive income loss attributable to parent data for comprehensive income."
     formula: Optional[str] = None
@@ -118,7 +118,7 @@ class ComprehensiveIncomeLossAttributableToParent:
         return ComprehensiveIncomeLossAttributableToParent(**d)
 
 
-@dataclass
+@modelclass
 class OtherComprehensiveIncomeLoss:
     "Contains other comprehensive income loss data for comprehensive income."
     formula: Optional[str] = None
@@ -133,7 +133,7 @@ class OtherComprehensiveIncomeLoss:
         return OtherComprehensiveIncomeLoss(**d)
 
 
-@dataclass
+@modelclass
 class ComprehensiveIncome:
     "Contains comprehensive income data."
     comprehensive_income_loss: Optional[ComprehensiveIncomeLoss] = None
@@ -161,7 +161,7 @@ class ComprehensiveIncome:
         )
 
 
-@dataclass
+@modelclass
 class BasicEarningsPerShare:
     "Contains basic earning per share data for an income statement."
     formula: Optional[str] = None
@@ -176,7 +176,7 @@ class BasicEarningsPerShare:
         return BasicEarningsPerShare(**d)
 
 
-@dataclass
+@modelclass
 class CostOfRevenue:
     "Contains cost of revenue data for an income statement."
     formula: Optional[str] = None
@@ -191,7 +191,7 @@ class CostOfRevenue:
         return CostOfRevenue(**d)
 
 
-@dataclass
+@modelclass
 class GrossProfit:
     "Contains gross profit data for an income statement."
     formula: Optional[str] = None
@@ -206,7 +206,7 @@ class GrossProfit:
         return GrossProfit(**d)
 
 
-@dataclass
+@modelclass
 class OperatingExpenses:
     "Contains operating expenses data for an income statement."
     formula: Optional[str] = None
@@ -221,7 +221,7 @@ class OperatingExpenses:
         return OperatingExpenses(**d)
 
 
-@dataclass
+@modelclass
 class Revenues:
     "Contains revenues data for an income statement."
     formula: Optional[str] = None
@@ -236,7 +236,7 @@ class Revenues:
         return Revenues(**d)
 
 
-@dataclass
+@modelclass
 class IncomeStatement:
     "Contains income statement data."
     basic_earnings_per_share: Optional[BasicEarningsPerShare] = None
@@ -264,7 +264,7 @@ class IncomeStatement:
         )
 
 
-@dataclass
+@modelclass
 class Financials:
     "Contains financial data."
     balance_sheet: Optional[Dict[str, DataPoint]] = None
@@ -290,7 +290,7 @@ class Financials:
         )
 
 
-@dataclass
+@modelclass
 class StockFinancial:
     "StockFinancial contains historical financial data for a stock ticker."
     cik: Optional[str] = None
