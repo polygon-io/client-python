@@ -1,8 +1,8 @@
 from typing import Optional, List
-from dataclasses import dataclass
+from ...modelclass import modelclass
 
 
-@dataclass
+@modelclass
 class SipMapping:
     "Contains data for a mapping to a symbol for each SIP that has a given condition."
     CTA: Optional[str] = None
@@ -14,7 +14,7 @@ class SipMapping:
         return SipMapping(**d)
 
 
-@dataclass
+@modelclass
 class Consolidated:
     "Contains data for aggregation rules on a consolidated (all exchanges) basis."
     updates_high_low: Optional[bool] = None
@@ -26,7 +26,7 @@ class Consolidated:
         return Consolidated(**d)
 
 
-@dataclass
+@modelclass
 class MarketCenter:
     "Contains data for aggregation rules on a per-market-center basis."
     updates_high_low: Optional[bool] = None
@@ -38,7 +38,7 @@ class MarketCenter:
         return MarketCenter(**d)
 
 
-@dataclass
+@modelclass
 class UpdateRules:
     "Contains data for a list of aggregation rules."
     consolidated: Optional[Consolidated] = None
@@ -56,7 +56,7 @@ class UpdateRules:
         )
 
 
-@dataclass
+@modelclass
 class Condition:
     "Condition contains data for a condition that Polygon.io uses."
     abbreviation: Optional[str] = None

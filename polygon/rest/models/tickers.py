@@ -1,8 +1,8 @@
 from typing import Optional, List
-from dataclasses import dataclass
+from ...modelclass import modelclass
 
 
-@dataclass
+@modelclass
 class CompanyAddress:
     "Contains address data for a ticker detail."
     address1: Optional[str] = None
@@ -17,7 +17,7 @@ class CompanyAddress:
         return CompanyAddress(**d)
 
 
-@dataclass
+@modelclass
 class Branding:
     "Contains branding data for a ticker detail."
     icon_url: Optional[str] = None
@@ -31,7 +31,7 @@ class Branding:
         return Branding(**d)
 
 
-@dataclass
+@modelclass
 class Publisher:
     "Contains publisher data for ticker news."
     favicon_url: Optional[str] = None
@@ -44,7 +44,7 @@ class Publisher:
         return Publisher(**d)
 
 
-@dataclass
+@modelclass
 class Ticker:
     "Ticker contains data for a specified ticker symbol."
     active: Optional[bool] = None
@@ -69,7 +69,7 @@ class Ticker:
         return Ticker(**d)
 
 
-@dataclass
+@modelclass
 class TickerDetails:
     "TickerDetails contains data for a specified ticker symbol."
     active: Optional[bool] = None
@@ -133,7 +133,7 @@ class TickerDetails:
         )
 
 
-@dataclass
+@modelclass
 class TickerNews:
     "TickerDetails contains data for news articles relating to a stock ticker symbol."
     amp_url: Optional[str] = None
@@ -167,7 +167,7 @@ class TickerNews:
         )
 
 
-@dataclass
+@modelclass
 class TickerTypes:
     "TickerTypes contains data for ticker types."
     asset_class: Optional[str] = None

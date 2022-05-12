@@ -1,11 +1,11 @@
-from dataclasses import dataclass
 from typing import Optional, List, Dict
 from .aggs import Agg
 from .quotes import LastQuote
 from .trades import LastTrade
+from ...modelclass import modelclass
 
 
-@dataclass
+@modelclass
 class MinuteSnapshot:
     "Most recent minute bar."
     accumulated_volume: Optional[float] = None
@@ -29,7 +29,7 @@ class MinuteSnapshot:
         )
 
 
-@dataclass
+@modelclass
 class TickerSnapshot:
     "Contains the most up-to-date market data for all traded ticker symbols."
     day: Optional[Agg] = None
@@ -61,7 +61,7 @@ class TickerSnapshot:
         )
 
 
-@dataclass
+@modelclass
 class DayOptionContractSnapshot:
     "Contains data for the most recent daily bar in an options contract."
     change: Optional[float] = None
@@ -80,7 +80,7 @@ class DayOptionContractSnapshot:
         return DayOptionContractSnapshot(**d)
 
 
-@dataclass
+@modelclass
 class OptionDetails:
     "Contains details for an options contract."
     contract_type: Optional[str] = None
@@ -95,7 +95,7 @@ class OptionDetails:
         return OptionDetails(**d)
 
 
-@dataclass
+@modelclass
 class LastQuoteOptionContractSnapshot:
     "Contains data for the most recent quote in an options contract."
     ask: Optional[float] = None
@@ -111,7 +111,7 @@ class LastQuoteOptionContractSnapshot:
         return LastQuoteOptionContractSnapshot(**d)
 
 
-@dataclass
+@modelclass
 class Greeks:
     "Contains data for the greeks in an options contract."
     delta: Optional[float] = None
@@ -124,7 +124,7 @@ class Greeks:
         return Greeks(**d)
 
 
-@dataclass
+@modelclass
 class UnderlyingAsset:
     "Contains data for the underlying stock in an options contract."
     change_to_break_even: Optional[float] = None
@@ -138,7 +138,7 @@ class UnderlyingAsset:
         return UnderlyingAsset(**d)
 
 
-@dataclass
+@modelclass
 class OptionContractSnapshot:
     "Contains data for the snapshot of an option contract of a stock equity."
     break_even_price: Optional[float] = None
@@ -172,7 +172,7 @@ class OptionContractSnapshot:
         )
 
 
-@dataclass
+@modelclass
 class OrderBookQuote:
     "Contains data for a book bid or ask."
     price: Optional[float] = None
@@ -186,7 +186,7 @@ class OrderBookQuote:
         )
 
 
-@dataclass
+@modelclass
 class SnapshotTickerFullBook:
     "Contains the current level 2 book of a single ticker. This is the combined book from all of the exchanges."
     ticker: Optional[str] = None

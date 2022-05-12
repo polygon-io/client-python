@@ -1,8 +1,8 @@
 from typing import Optional
-from dataclasses import dataclass
+from ...modelclass import modelclass
 
 
-@dataclass
+@modelclass
 class Split:
     "Split contains data for a historical stock split, including the ticker symbol, the execution date, and the factors of the split ratio."
     execution_date: Optional[str] = None

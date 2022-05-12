@@ -1,8 +1,8 @@
 from typing import Optional
-from dataclasses import dataclass
+from ...modelclass import modelclass
 
 
-@dataclass
+@modelclass
 class Exchange:
     "Exchange contains data for a condition that Polygon.io uses."
     acronym: Optional[str] = None
