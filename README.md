@@ -14,3 +14,11 @@ Requires Python >= 3.8.
 ## Getting started
 See the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html)
 section in our docs or view the [examples](./examples) directory.
+
+# Contributing
+
+For now, we're generally not accepting pull requests from outside contributors
+but we're open to bug reports and feature requests. Or if you have more general
+feedback, feel free to reach out on
+our [Slack channel](https://polygon.io/contact).
+
