@@ -78,9 +78,9 @@ class TickersClient(BaseClient):
         date: Optional[str] = None,
         active: Optional[bool] = None,
         search: Optional[str] = None,
-        limit: Optional[int] = None,
-        sort: Optional[Union[str, Sort]] = None,
-        order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = 10,
+        sort: Optional[Union[str, Sort]] = "ticker",
+        order: Optional[Union[str, Order]] = "asc",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[Iterator[Ticker], HTTPResponse]:
