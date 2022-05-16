@@ -154,6 +154,7 @@ class TickersClient(BaseClient):
         published_utc_lte: Optional[str] = None,
         published_utc_gt: Optional[str] = None,
         published_utc_gte: Optional[str] = None,
+        limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[Iterator[TickerNews], HTTPResponse]:
