@@ -25,7 +25,6 @@ class OptionsContract:
     primary_exchange: Optional[str] = None
     shares_per_contract: Optional[float] = None
     strike_price: Optional[float] = None
-    size: Optional[float] = None
     ticker: Optional[str] = None
     underlying_ticker: Optional[str] = None
 
