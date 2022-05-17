@@ -1,5 +1,4 @@
 import os
-import sys
 from enum import Enum
 from typing import Optional, Union, List, Set, Callable, Awaitable
 import logging
@@ -10,16 +9,16 @@ import certifi
 from .models import *
 from websockets.client import connect, WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
+from ..logging import get_logger
+import logging
 
 env_key = "POLYGON_API_KEY"
+logger = get_logger("WebSocketClient")
 
 
 class AuthError(Exception):
     pass
 
-
-logger = logging.getLogger('WebSocketClient')
-logger.addHandler(logging.StreamHandler(sys.stdout))
 
 class WebSocketClient:
     def __init__(

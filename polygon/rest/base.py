@@ -6,9 +6,10 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
+from ..logging import get_logger
 import logging
-import sys
 
+logger = get_logger("RESTClient")
 version = "unknown"
 try:
     version = pkg_resources.require("polygon-api-client")[0].version
@@ -19,8 +20,6 @@ except:
 class NoResultsError(Exception):
     pass
 
-logger = logging.getLogger('RESTClient')
-logger.addHandler(logging.StreamHandler(sys.stdout))
 
 class BaseClient:
     def __init__(
