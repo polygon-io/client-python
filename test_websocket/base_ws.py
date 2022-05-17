@@ -22,4 +22,7 @@ class BaseTest(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         self.maxDiff = None
         loop = asyncio.get_event_loop()
-        loop.create_task(run_mock_server())
+        self.task = loop.create_task(run_mock_server())
+
+    async def asyncTearDown(self):
+        self.task.cancel()

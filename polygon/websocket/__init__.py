@@ -110,7 +110,9 @@ class WebSocketClient:
                     raise AuthError(auth_msg_parsed[0]["message"])
                 while True:
                     if self.schedule_resub:
-                        logger.debug("reconciling: %s %s", self.subs, self.scheduled_subs)
+                        logger.debug(
+                            "reconciling: %s %s", self.subs, self.scheduled_subs
+                        )
                         new_subs = self.scheduled_subs.difference(self.subs)
                         await self._subscribe(new_subs)
                         old_subs = self.subs.difference(self.scheduled_subs)
@@ -184,7 +186,7 @@ class WebSocketClient:
         s = s.strip()
         split = s.split(".")
         if len(split) != 2:
-            WebSocketClient.logger.warning("invalid subscription:", s)
+            logger.warning("invalid subscription:", s)
             return [None, None]
 
         return split
