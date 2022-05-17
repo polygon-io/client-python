@@ -19,6 +19,7 @@ from .models import (
     DataType,
     SIP,
     Exchange,
+    OptionsContract,
 )
 from urllib3 import HTTPResponse
 from datetime import date
@@ -31,9 +32,9 @@ class MarketsClient(BaseClient):
         """
         Get upcoming market holidays and their open/close times.
 
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
-        :return: List of market holidays
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
+        :return: List of market holidays.
         """
         url = "/v1/marketstatus/upcoming"
 
@@ -51,9 +52,9 @@ class MarketsClient(BaseClient):
         """
         Get the current trading status of the exchanges and overall financial markets.
 
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
-        :return: Market status
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
+        :return: Market status.
         """
         url = "/v1/marketstatus/now"
 
@@ -88,10 +89,10 @@ class TickersClient(BaseClient):
         Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
 
         :param ticker: Specify a ticker symbol. Defaults to empty string which queries all tickers.
-        :param ticker_lt: Ticker less than
-        :param ticker_lte: Ticker less than or equal to
-        :param ticker_gt: Ticker greater than
-        :param ticker_gte: Ticker greater than or equal to
+        :param ticker_lt: Ticker less than.
+        :param ticker_lte: Ticker less than or equal to.
+        :param ticker_gt: Ticker greater than.
+        :param ticker_gte: Ticker greater than or equal to.
         :param type: Specify the type of the tickers. Find the types that we support via our Ticker Types API. Defaults to empty string which queries all types.
         :param market: Filter by market type. By default all markets are included.
         :param exchange: Specify the primary exchange of the asset in the ISO code format. Find more information about the ISO codes at the ISO org website. Defaults to empty string which queries all exchanges.
@@ -103,9 +104,9 @@ class TickersClient(BaseClient):
         :param limit: Limit the size of the response, default is 100 and max is 1000.
         :param sort: The field to sort the results on. Default is ticker. If the search query parameter is present, sort is ignored and results are ordered by relevance.
         :param order: The order to sort the results on. Default is asc (ascending).
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of tickers
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: List of tickers.
         """
         url = "/v3/reference/tickers"
 
@@ -168,9 +169,9 @@ class TickersClient(BaseClient):
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Ticker News
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: Ticker News.
         """
         url = "/v2/reference/news"
 
@@ -193,9 +194,9 @@ class TickersClient(BaseClient):
 
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Ticker Types
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: Ticker Types.
         """
         url = "/v3/reference/tickers/types"
 
@@ -232,22 +233,22 @@ class SplitsClient(BaseClient):
         Get a list of historical stock splits, including the ticker symbol, the execution date, and the factors of the split ratio.
 
         :param ticker: Return the stock splits that contain this ticker.
-        :param ticker_lt: Ticker less than
-        :param ticker_lte: Ticker less than or equal to
-        :param ticker_gt: Ticker greater than
-        :param ticker_gte: Ticker greater than or equal to
+        :param ticker_lt: Ticker less than.
+        :param ticker_lte: Ticker less than or equal to.
+        :param ticker_gt: Ticker greater than.
+        :param ticker_gte: Ticker greater than or equal to.
         :param execution_date: Query by execution date with the format YYYY-MM-DD.
-        :param execution_date_lt: Execution date less than
-        :param execution_date_lte: Execution date less than or equal to
-        :param execution_date_gt: Execution date greater than
-        :param execution_date_gte: Execution date greater than or equal to
+        :param execution_date_lt: Execution date less than.
+        :param execution_date_lte: Execution date less than or equal to.
+        :param execution_date_gt: Execution date greater than.
+        :param execution_date_gte: Execution date greater than or equal to.
         :param reverse_split: Query for reverse stock splits. A split ratio where split_from is greater than split_to represents a reverse split. By default this filter is not used.
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of splits
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: List of splits.
         """
         url = "/v3/reference/splits"
 
@@ -304,39 +305,39 @@ class DividendsClient(BaseClient):
         Get a list of historical cash dividends, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount.
 
         :param ticker: Return the dividends that contain this ticker.
-        :param ticker_lt: Ticker less than
-        :param ticker_lte: Ticker less than or equal to
-        :param ticker_gt: Ticker greater than
-        :param ticker_gte: Ticker greater than or equal to
+        :param ticker_lt: Ticker less than.
+        :param ticker_lte: Ticker less than or equal to.
+        :param ticker_gt: Ticker greater than.
+        :param ticker_gte: Ticker greater than or equal to.
         :param ex_dividend_date: Query by ex-dividend date with the format YYYY-MM-DD.
-        :param ex_dividend_date_lt: Ex-dividend date less than
-        :param ex_dividend_date_lte: Ex-dividend date less than or equal to
-        :param ex_dividend_date_gt: Ex-dividend date greater than
-        :param ex_dividend_date_gte: Ex-dividend date greater than or equal to
+        :param ex_dividend_date_lt: Ex-dividend date less than.
+        :param ex_dividend_date_lte: Ex-dividend date less than or equal to.
+        :param ex_dividend_date_gt: Ex-dividend date greater than.
+        :param ex_dividend_date_gte: Ex-dividend date greater than or equal to.
         :param record_date: Query by record date with the format YYYY-MM-DD.
-        :param record_date_lt: Record date less than
-        :param record_date_lte: Record date less than or equal to
-        :param record_date_gt: Record date greater than
-        :param record_date_gte: Record date greater than or equal to
+        :param record_date_lt: Record date less than.
+        :param record_date_lte: Record date less than or equal to.
+        :param record_date_gt: Record date greater than.
+        :param record_date_gte: Record date greater than or equal to.
         :param declaration_date: Query by declaration date with the format YYYY-MM-DD.
-        :param declaration_date_lt: Declaration date less than
-        :param declaration_date_lte: Declaration date less than or equal to
-        :param declaration_date_gt: Declaration date greater than
-        :param declaration_date_gte: Declaration date greater than or equal to
+        :param declaration_date_lt: Declaration date less than.
+        :param declaration_date_lte: Declaration date less than or equal to.
+        :param declaration_date_gt: Declaration date greater than.
+        :param declaration_date_gte: Declaration date greater than or equal to.
         :param pay_date: Query by pay date with the format YYYY-MM-DD.
-        :param pay_date_lt: Pay date less than
-        :param pay_date_lte: Pay date less than or equal to
-        :param pay_date_gt: Pay date greater than
-        :param pay_date_gte: Pay date greater than or equal to
+        :param pay_date_lt: Pay date less than.
+        :param pay_date_lte: Pay date less than or equal to.
+        :param pay_date_gt: Pay date greater than.
+        :param pay_date_gte: Pay date greater than or equal to.
         :param frequency: Query by the number of times per year the dividend is paid out. Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), and 12 (monthly).
         :param cash_amount: Query by the cash amount of the dividend.
         :param dividend_type: Query by the type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD. Special Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of dividends
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: List of dividends.
         """
         url = "/v3/reference/dividends"
 
@@ -371,9 +372,9 @@ class ConditionsClient(BaseClient):
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of conditions
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: List of conditions.
         """
         url = "/v3/reference/conditions"
 
@@ -398,9 +399,9 @@ class ExchangesClient(BaseClient):
 
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
-        :param params: Any additional query params
-        :param raw: Return HTTPResponse object instead of results object
-        :return: List of exchanges
+        :param params: Any additional query params.
+        :param raw: Return HTTPResponse object instead of results object.
+        :return: List of exchanges.
         """
         url = "/v3/reference/exchanges"
 
@@ -410,4 +411,83 @@ class ExchangesClient(BaseClient):
             deserializer=Exchange.from_dict,
             raw=raw,
             result_key="results",
+        )
+
+
+class ContractsClient(BaseClient):
+    def get_options_contract(
+        self,
+        ticker: str,
+        as_of: Union[str, date] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[OptionsContract, HTTPResponse]:
+        """
+        Get the most recent trade for a ticker.
+
+        :param ticker: The ticker symbol of the asset
+        :param as_of: Specify a point in time for the contract as of this date with format YYYY-MM-DD.
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: Last trade.
+        """
+        url = f"/v3/reference/options/contracts/{ticker}"
+
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_options_contract, locals()),
+            result_key="results",
+            deserializer=OptionsContract.from_dict,
+            raw=raw,
+        )
+    
+    def list_options_contracts(
+        self,
+        underlying_ticker: Optional[str] = None,
+        underlying_ticker_lt: Optional[str] = None,
+        underlying_ticker_lte: Optional[str] = None,
+        underlying_ticker_gt: Optional[str] = None,
+        underlying_ticker_gte: Optional[str] = None,
+        contract_type: Optional[str] = None,
+        expiration_date: Optional[Union[str, date]] = None,
+        expiration_date_lt: Optional[Union[str, date]] = None,
+        expiration_date_lte: Optional[Union[str, date]] = None,
+        expiration_date_gt: Optional[Union[str, date]] = None,
+        expiration_date_gte: Optional[Union[str, date]] = None,
+        as_of: Optional[Union[str, date]] = None,
+        strike_price: Optional[float] = None,
+        strike_price_lt: Optional[float] = None,
+        strike_price_lte: Optional[float] = None,
+        strike_price_gt: Optional[float] = None,
+        strike_price_gte: Optional[float] = None,
+        expired: Optional[bool] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[Iterator[OptionsContract], HTTPResponse]:
+        """
+        List historical options contracts.
+
+        :param underlying_ticker: Query for contracts relating to an underlying stock ticker.
+        :param contract_type: Query by the type of contract.
+        :param expiration_date: Query by contract expiration with date format YYYY-MM-DD.
+        :param as_of: Specify a point in time for contracts as of this date with format YYYY-MM-DD. 
+        :param strike_price: Query by strike price of a contract.
+        :param expired: Query for expired contracts. 
+        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param sort: Sort field used for ordering.
+        :param order: Order results based on the sort field.
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object
+        :return: List of options contracts.
+        """
+        url = "/v3/reference/options/contracts"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_options_contracts, locals()),
+            raw=raw,
+            deserializer=OptionsContract.from_dict,
         )
