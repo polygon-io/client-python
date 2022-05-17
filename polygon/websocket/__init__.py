@@ -1,6 +1,8 @@
 import os
+import sys
 from enum import Enum
 from typing import Optional, Union, List, Set, Callable, Awaitable
+import logging
 import json
 import asyncio
 import ssl
@@ -15,6 +17,9 @@ env_key = "POLYGON_API_KEY"
 class AuthError(Exception):
     pass
 
+
+logger = logging.getLogger('WebSocketClient')
+logger.addHandler(logging.StreamHandler(sys.stdout))
 
 class WebSocketClient:
     def __init__(
@@ -35,7 +40,7 @@ class WebSocketClient:
         :param api_key: Your API keYour API key.
         :param feed: The feed to subscribe to.
         :param raw: Whether to pass raw Union[str, bytes] to user callback.
-        :param verbose: Whether to print client and server status messages.
+        :param verbose: Whether to log client and server status messages.
         :param subscriptions: List of subscription parameters.
         :param max_reconnects: How many times to reconnect on network outage before ending .connect event loop.
         :return: A client.
@@ -48,7 +53,8 @@ class WebSocketClient:
         self.feed = feed
         self.market = market
         self.raw = raw
-        self.verbose = verbose
+        if verbose:
+            logger.setLevel(logging.DEBUG)
         self.websocket_cfg = kwargs
         if isinstance(feed, Enum):
             feed = feed.value
@@ -82,8 +88,7 @@ class WebSocketClient:
         :raises AuthError: If invalid API key is supplied.
         """
         reconnects = 0
-        if self.verbose:
-            print("connect:", self.url)
+        logger.debug("connect: %s", self.url)
         # darwin needs some extra <3
         ssl_context = None
         if self.url.startswith("wss://"):
@@ -96,21 +101,17 @@ class WebSocketClient:
             self.websocket = s
             try:
                 msg = await s.recv()
-                if self.verbose:
-                    print("connected:", msg)
-                if self.verbose:
-                    print("authing:")
+                logger.debug("connected: %s", msg)
+                logger.debug("authing...")
                 await s.send(json.dumps({"action": "auth", "params": self.api_key}))
                 auth_msg = await s.recv()
                 auth_msg_parsed = json.loads(auth_msg)
-                if self.verbose:
-                    print("authed:", auth_msg)
+                logger.debug("authed: %s", auth_msg)
                 if auth_msg_parsed[0]["status"] == "auth_failed":
                     raise AuthError(auth_msg_parsed[0]["message"])
                 while True:
                     if self.schedule_resub:
-                        if self.verbose:
-                            print("reconciling:", self.subs, self.scheduled_subs)
+                        logger.debug("reconciling: %s %s", self.subs, self.scheduled_subs)
                         new_subs = self.scheduled_subs.difference(self.subs)
                         await self._subscribe(new_subs)
                         old_subs = self.subs.difference(self.scheduled_subs)
@@ -126,21 +127,18 @@ class WebSocketClient:
                     msgJson = json.loads(cmsg)  # type: ignore
                     for m in msgJson:
                         if m["ev"] == "status":
-                            if self.verbose:
-                                print("status:", m["message"])
+                            logger.debug("status: %s", m["message"])
                             continue
                     if not self.raw:
-                        cmsg = parse(msgJson)
+                        cmsg = parse(msgJson, logger)
 
                     if len(cmsg) > 0:
                         await processor(cmsg)  # type: ignore
             except ConnectionClosedOK:
-                if self.verbose:
-                    print("connection closed (OK)")
+                logger.debug("connection closed (OK)")
                 return
             except ConnectionClosedError:
-                if self.verbose:
-                    print("connection closed (error)")
+                logger.debug("connection closed (ERR)")
                 reconnects += 1
                 if self.max_reconnects is not None and reconnects > self.max_reconnects:
                     return
@@ -172,16 +170,14 @@ class WebSocketClient:
         if self.websocket is None or len(topics) == 0:
             return
         subs = ",".join(topics)
-        if self.verbose:
-            print("subbing:", subs)
+        logger.debug("subbing: %s", subs)
         await self.websocket.send(json.dumps({"action": "subscribe", "params": subs}))
 
     async def _unsubscribe(self, topics: Union[List[str], Set[str]]):
         if self.websocket is None or len(topics) == 0:
             return
         subs = ",".join(topics)
-        if self.verbose:
-            print("unsubbing:", subs)
+        logger.debug("unsubbing: %s", subs)
         await self.websocket.send(json.dumps({"action": "unsubscribe", "params": subs}))
 
     @staticmethod
@@ -189,7 +185,7 @@ class WebSocketClient:
         s = s.strip()
         split = s.split(".")
         if len(split) != 2:
-            print("invalid subscription:", s)
+            WebSocketClient.logger.warning("invalid subscription:", s)
             return [None, None]
 
         return split
@@ -204,8 +200,7 @@ class WebSocketClient:
             topic, sym = self._parse_subscription(s)
             if topic == None:
                 continue
-            if self.verbose:
-                print("add:", s)
+            logger.debug("sub desired: %s", s)
             self.scheduled_subs.add(s)
             # If user subs to X.*, remove other X.\w+
             if sym == "*":
@@ -225,8 +220,7 @@ class WebSocketClient:
             topic, sym = self._parse_subscription(s)
             if topic == None:
                 continue
-            if self.verbose:
-                print("discard:", s)
+            logger.debug("sub undesired: %s", s)
             self.scheduled_subs.discard(s)
 
             # If user unsubs to X.*, remove other X.\w+
@@ -248,11 +242,10 @@ class WebSocketClient:
         """
         Close the websocket connection.
         """
-        if self.verbose:
-            print("closing:")
+        logger.debug("closing")
 
         if self.websocket:
             await self.websocket.close()
             self.websocket = None
         else:
-            print("no websocket open to close")
+            logger.warning("no websocket open to close")
