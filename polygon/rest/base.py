@@ -6,7 +6,10 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
+from ..logging import get_logger
+import logging
 
+logger = get_logger("RESTClient")
 version = "unknown"
 try:
     version = pkg_resources.require("polygon-api-client")[0].version
@@ -49,7 +52,8 @@ class BaseClient:
         )
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
-        self.verbose = verbose
+        if verbose:
+            logger.setLevel(logging.DEBUG)
 
     def _decode(self, resp):
         return json.loads(resp.data.decode("utf-8"))
@@ -65,8 +69,7 @@ class BaseClient:
         if params is None:
             params = {}
         params = {str(k): str(v) for k, v in params.items() if v is not None}
-        if self.verbose:
-            print("_get", path, params)
+        logger.debug("_get %s params %s", path, params)
         resp = self.client.request(
             "GET",
             self.BASE + path,
@@ -144,7 +147,6 @@ class BaseClient:
         self,
         path: str,
         params: dict,
-        raw: bool,
         deserializer,
         result_key: str = "results",
     ):
@@ -183,5 +185,4 @@ class BaseClient:
             params=params,
             deserializer=deserializer,
             result_key=result_key,
-            raw=True,
         )

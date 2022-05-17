@@ -1,6 +1,7 @@
 from typing import Dict, Any, List
 from .common import *
 from .models import *
+import logging
 
 
 def parse_single(data: Dict[str, Any]):
@@ -30,13 +31,13 @@ def parse_single(data: Dict[str, Any]):
     return None
 
 
-def parse(msg: List[Dict[str, Any]]) -> List[WebSocketMessage]:
+def parse(msg: List[Dict[str, Any]], logger: logging.Logger) -> List[WebSocketMessage]:
     res = []
     for m in msg:
         parsed = parse_single(m)
         if parsed is None:
             if m["ev"] != "status":
-                print("could not parse message", m)
+                logger.warning("could not parse message %s", m)
         else:
             res.append(parsed)
     return res
