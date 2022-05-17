@@ -9,6 +9,7 @@ from .reference import (
     DividendsClient,
     ConditionsClient,
     ExchangesClient,
+    ContractsClient,
 )
 from .vX import VXClient
 from typing import Optional
@@ -30,6 +31,7 @@ class RESTClient(
     DividendsClient,
     ConditionsClient,
     ExchangesClient,
+    ContractsClient,
 ):
     def __init__(
         self,

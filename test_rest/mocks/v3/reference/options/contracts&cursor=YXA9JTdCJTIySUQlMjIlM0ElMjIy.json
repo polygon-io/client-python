@@ -1,0 +1,116 @@
+{
+    "results": [
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 115,
+            "ticker": "O:A220520C00115000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 120,
+            "ticker": "O:A220520C00120000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 125,
+            "ticker": "O:A220520C00125000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 130,
+            "ticker": "O:A220520C00130000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 135,
+            "ticker": "O:A220520C00135000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 140,
+            "ticker": "O:A220520C00140000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 145,
+            "ticker": "O:A220520C00145000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 150,
+            "ticker": "O:A220520C00150000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 155,
+            "ticker": "O:A220520C00155000",
+            "underlying_ticker": "A"
+        },
+        {
+            "cfi": "OCASPS",
+            "contract_type": "call",
+            "exercise_style": "american",
+            "expiration_date": "2022-05-20",
+            "primary_exchange": "BATO",
+            "shares_per_contract": 100,
+            "strike_price": 160,
+            "ticker": "O:A220520C00160000",
+            "underlying_ticker": "A"
+        }
+    ],
+    "status": "OK",
+    "request_id": "7ab36c77b9412ecc95275a94461be18f"
+}
