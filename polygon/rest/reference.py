@@ -440,7 +440,7 @@ class ContractsClient(BaseClient):
             deserializer=OptionsContract.from_dict,
             raw=raw,
         )
-    
+
     def list_options_contracts(
         self,
         underlying_ticker: Optional[str] = None,
@@ -473,9 +473,9 @@ class ContractsClient(BaseClient):
         :param underlying_ticker: Query for contracts relating to an underlying stock ticker.
         :param contract_type: Query by the type of contract.
         :param expiration_date: Query by contract expiration with date format YYYY-MM-DD.
-        :param as_of: Specify a point in time for contracts as of this date with format YYYY-MM-DD. 
+        :param as_of: Specify a point in time for contracts as of this date with format YYYY-MM-DD.
         :param strike_price: Query by strike price of a contract.
-        :param expired: Query for expired contracts. 
+        :param expired: Query for expired contracts.
         :param limit: Limit the number of results returned, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
