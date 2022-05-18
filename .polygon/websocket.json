@@ -1,0 +1,3284 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Polygon Websocket Spec",
+    "description": "The future of fintech.",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "wss://socket.polygon.io",
+      "description": "Real-time"
+    },
+    {
+      "url": "wss://delayed.polygon.io",
+      "description": "Delayed"
+    }
+  ],
+  "x-polygon-order": {
+    "stocks": {
+      "market": [
+        "/stocks/AM",
+        "/stocks/A",
+        "/stocks/T",
+        "/stocks/Q",
+        "/stocks/NOI",
+        "/stocks/LULD"
+      ]
+    },
+    "options": {
+      "market": [
+        "/options/AM",
+        "/options/A",
+        "/options/T",
+        "/options/Q"
+      ]
+    },
+    "fx": {
+      "market": [
+        "/forex/CA",
+        "/forex/C"
+      ]
+    },
+    "crypto": {
+      "market": [
+        "/crypto/XA",
+        "/crypto/XT",
+        "/crypto/XQ",
+        "/crypto/XL2"
+      ]
+    }
+  },
+  "paths": {
+    "/stocks/T": {
+      "get": {
+        "summary": "Trades",
+        "description": "Stream real-time trades for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a trade event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "enum": [
+                        "T"
+                      ],
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "x": {
+                      "type": "integer",
+                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                    },
+                    "i": {
+                      "type": "string",
+                      "description": "The trade ID."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq).\n"
+                    },
+                    "p": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The price."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The trade size."
+                    },
+                    "c": {
+                      "type": "array",
+                      "description": "The trade conditions. See <a target=\"_blank\" href=\"https://polygon.io/glossary/us/stocks/conditions-indicators\" \nalt=\"Conditions and Indicators\">Conditions and Indicators\"</a> for Polygon.io's trade conditions glossary.\n",
+                      "items": {
+                        "type": "integer",
+                        "description": "The ID of the condition."
+                      }
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "q": {
+                      "type": "integer",
+                      "description": "The sequence number represents the sequence in which message events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11).\n"
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "T",
+                  "sym": "MSFT",
+                  "x": 4,
+                  "i": "12345",
+                  "z": 3,
+                  "p": 114.125,
+                  "s": 100,
+                  "c": [
+                    0,
+                    12
+                  ],
+                  "t": 1536036818784,
+                  "q": 3681328
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "trades",
+          "description": "Trade data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/stocks/Q": {
+      "get": {
+        "summary": "Quotes",
+        "description": "Stream real-time quotes for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a quote event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "enum": [
+                        "Q"
+                      ],
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "bx": {
+                      "type": "integer",
+                      "description": "The bid exchange ID."
+                    },
+                    "bp": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The bid price."
+                    },
+                    "bs": {
+                      "type": "integer",
+                      "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price."
+                    },
+                    "ax": {
+                      "type": "integer",
+                      "description": "The ask exchange ID."
+                    },
+                    "ap": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The ask price."
+                    },
+                    "as": {
+                      "type": "integer",
+                      "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price."
+                    },
+                    "c": {
+                      "type": "integer",
+                      "description": "The condition."
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq)."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "Q",
+                  "sym": "MSFT",
+                  "bx": 4,
+                  "bp": 114.125,
+                  "bs": 100,
+                  "ax": 7,
+                  "ap": 114.128,
+                  "as": 160,
+                  "c": 0,
+                  "t": 1536036818784,
+                  "z": 3
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "nbbo",
+          "description": "NBBO data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/stocks/A": {
+      "get": {
+        "summary": "Aggregates (Per Second)",
+        "description": "Stream real-time second aggregates for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a second aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "description": "The event type."
+                        },
+                        "sym": {
+                          "type": "string",
+                          "description": "The ticker symbol for the given stock."
+                        },
+                        "v": {
+                          "type": "integer",
+                          "description": "The tick volume."
+                        },
+                        "av": {
+                          "type": "integer",
+                          "description": "Today's accumulated volume."
+                        },
+                        "op": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Today's official opening price."
+                        },
+                        "vw": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "The tick's volume weighted average price."
+                        },
+                        "o": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The opening tick price for this aggregate window."
+                        },
+                        "c": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The closing tick price for this aggregate window."
+                        },
+                        "h": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The highest tick price for this aggregate window."
+                        },
+                        "l": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The lowest tick price for this aggregate window."
+                        },
+                        "a": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "Today's volume weighted average price."
+                        },
+                        "z": {
+                          "type": "integer",
+                          "description": "The average trade size for this aggregate window."
+                        },
+                        "s": {
+                          "type": "integer",
+                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                        },
+                        "e": {
+                          "type": "integer",
+                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "A"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "A",
+                  "sym": "SPCE",
+                  "v": 200,
+                  "av": 8642007,
+                  "op": 25.66,
+                  "vw": 25.3981,
+                  "o": 25.39,
+                  "c": 25.39,
+                  "h": 25.39,
+                  "l": 25.39,
+                  "a": 25.3714,
+                  "z": 50,
+                  "s": 1610144868000,
+                  "e": 1610144869000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/stocks/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time minute aggregates for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "description": "The event type."
+                        },
+                        "sym": {
+                          "type": "string",
+                          "description": "The ticker symbol for the given stock."
+                        },
+                        "v": {
+                          "type": "integer",
+                          "description": "The tick volume."
+                        },
+                        "av": {
+                          "type": "integer",
+                          "description": "Today's accumulated volume."
+                        },
+                        "op": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Today's official opening price."
+                        },
+                        "vw": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "The tick's volume weighted average price."
+                        },
+                        "o": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The opening tick price for this aggregate window."
+                        },
+                        "c": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The closing tick price for this aggregate window."
+                        },
+                        "h": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The highest tick price for this aggregate window."
+                        },
+                        "l": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The lowest tick price for this aggregate window."
+                        },
+                        "a": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "Today's volume weighted average price."
+                        },
+                        "z": {
+                          "type": "integer",
+                          "description": "The average trade size for this aggregate window."
+                        },
+                        "s": {
+                          "type": "integer",
+                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                        },
+                        "e": {
+                          "type": "integer",
+                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "AM"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "GTE",
+                  "v": 4110,
+                  "av": 9470157,
+                  "op": 0.4372,
+                  "vw": 0.4488,
+                  "o": 0.4488,
+                  "c": 0.4486,
+                  "h": 0.4489,
+                  "l": 0.4486,
+                  "a": 0.4352,
+                  "z": 685,
+                  "s": 1610144640000,
+                  "e": 1610144700000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/stocks/LULD": {
+      "get": {
+        "summary": "Limit-Up Limit-Down (LULD)",
+        "description": "Stream real-time LULD events for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a LULD event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "enum": [
+                        "LULD"
+                      ],
+                      "description": "The event type."
+                    },
+                    "T": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The high price."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The low price."
+                    },
+                    "i": {
+                      "type": "array",
+                      "description": "The Indicators.",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq).\n"
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "q": {
+                      "type": "integer",
+                      "description": "The sequence number represents the sequence in which message events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11).\n"
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "LULD",
+                  "T": "MSFT",
+                  "h": 218.96,
+                  "l": 198.11,
+                  "i": [
+                    21
+                  ],
+                  "z": 3,
+                  "t": 1601316752683746,
+                  "q": 290317
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "limit-up-limit-down",
+          "description": "Limit-Up Limit-Down data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/stocks/NOI": {
+      "get": {
+        "summary": "Imbalances",
+        "description": "Stream real-time imbalance events for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for an imbalance event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "enum": [
+                        "NOI"
+                      ],
+                      "description": "The event type."
+                    },
+                    "T": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "at": {
+                      "type": "integer",
+                      "description": "The time that the auction is planned to take place in the format (hour x 100) + minutes in Eastern Standard Time, \nfor example 930 would be 9:30 am EST, and 1600 would be 4:00 pm EST.\n"
+                    },
+                    "a": {
+                      "type": "string",
+                      "description": "The auction type.\n`O` - Early Opening Auction (non-NYSE only)\n`M` - Core Opening Auction\n`H` - Reopening Auction (Halt Resume)\n`C` - Closing Auction\n`P` - Extreme Closing Imbalance (NYSE only)\n`R` - Regulatory Closing Imbalance (NYSE only)\n"
+                    },
+                    "i": {
+                      "type": "integer",
+                      "description": "The symbol sequence."
+                    },
+                    "x": {
+                      "type": "integer",
+                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                    },
+                    "o": {
+                      "type": "integer",
+                      "description": "The imbalance quantity."
+                    },
+                    "p": {
+                      "type": "integer",
+                      "description": "The paired quantity."
+                    },
+                    "b": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The book clearing price."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "NOI",
+                  "T": "NTEST.Q",
+                  "t": 1601318039223013600,
+                  "at": 930,
+                  "a": "M",
+                  "i": 44,
+                  "x": 10,
+                  "o": 480,
+                  "p": 440,
+                  "b": 25.03
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "imbalances",
+          "description": "Imbalances data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/options/T": {
+      "get": {
+        "summary": "Trades",
+        "description": "Stream real-time trades for a given option contract.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a trade event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "enum": [
+                        "T"
+                      ],
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given option contract."
+                    },
+                    "x": {
+                      "type": "integer",
+                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                    },
+                    "p": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The price."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The trade size."
+                    },
+                    "c": {
+                      "type": "array",
+                      "description": "The trade conditions",
+                      "items": {
+                        "type": "integer",
+                        "description": "The ID of the condition."
+                      }
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "q": {
+                      "type": "integer",
+                      "description": "The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11)."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "T",
+                  "sym": "O:AMC210827C00037000",
+                  "x": 65,
+                  "p": 1.54,
+                  "s": 1,
+                  "c": [
+                    233
+                  ],
+                  "t": 1629820676333,
+                  "q": 651921857
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "trades",
+          "description": "Trade data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "options",
+          "description": "Options data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/options/Q": {
+      "get": {
+        "summary": "Quotes",
+        "description": "Stream real-time quotes for a given option contract.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+            },
+            "example": "O:SPY241220P00720000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a trade event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "enum": [
+                        "Q"
+                      ],
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given option contract."
+                    },
+                    "bx": {
+                      "type": "integer",
+                      "description": "The bid exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                    },
+                    "ax": {
+                      "type": "integer",
+                      "description": "The ask exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                    },
+                    "bp": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The bid price."
+                    },
+                    "ap": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The ask price."
+                    },
+                    "bs": {
+                      "type": "integer",
+                      "description": "The bid size."
+                    },
+                    "as": {
+                      "type": "integer",
+                      "description": "The ask size."
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "q": {
+                      "type": "integer",
+                      "description": "The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11)."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "Q",
+                  "sym": "O:SPY241220P00720000",
+                  "bx": 302,
+                  "ax": 302,
+                  "bp": 9.71,
+                  "ap": 9.81,
+                  "bs": 17,
+                  "as": 24,
+                  "t": 1644506128351,
+                  "q": 844090872
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "nbbo",
+          "description": "NBBO data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "options",
+          "description": "Options data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/options/A": {
+      "get": {
+        "summary": "Aggregates (Per Second)",
+        "description": "Stream real-time second aggregates for a given option contract.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a second aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "description": "The event type."
+                        },
+                        "sym": {
+                          "type": "string",
+                          "description": "The ticker symbol for the given option contract."
+                        },
+                        "v": {
+                          "type": "integer",
+                          "description": "The tick volume."
+                        },
+                        "av": {
+                          "type": "integer",
+                          "description": "Today's accumulated volume."
+                        },
+                        "op": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Today's official opening price."
+                        },
+                        "vw": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "The tick's volume weighted average price."
+                        },
+                        "o": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The opening tick price for this aggregate window."
+                        },
+                        "c": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The closing tick price for this aggregate window."
+                        },
+                        "h": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The highest tick price for this aggregate window."
+                        },
+                        "l": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The lowest tick price for this aggregate window."
+                        },
+                        "a": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "Today's volume weighted average price."
+                        },
+                        "z": {
+                          "type": "integer",
+                          "description": "The average trade size for this aggregate window."
+                        },
+                        "s": {
+                          "type": "integer",
+                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                        },
+                        "e": {
+                          "type": "integer",
+                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "A"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "O:ONEM220121C00025000",
+                  "v": 2,
+                  "av": 8,
+                  "op": 2.2,
+                  "vw": 2.05,
+                  "o": 2.05,
+                  "c": 2.05,
+                  "h": 2.05,
+                  "l": 2.05,
+                  "a": 2.1312,
+                  "z": 2,
+                  "s": 1632419640000,
+                  "e": 1632419700000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "options",
+          "description": "Options data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/options/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time minute aggregates for a given option contract.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "description": "The event type."
+                        },
+                        "sym": {
+                          "type": "string",
+                          "description": "The ticker symbol for the given option contract."
+                        },
+                        "v": {
+                          "type": "integer",
+                          "description": "The tick volume."
+                        },
+                        "av": {
+                          "type": "integer",
+                          "description": "Today's accumulated volume."
+                        },
+                        "op": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Today's official opening price."
+                        },
+                        "vw": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "The tick's volume weighted average price."
+                        },
+                        "o": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The opening tick price for this aggregate window."
+                        },
+                        "c": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The closing tick price for this aggregate window."
+                        },
+                        "h": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The highest tick price for this aggregate window."
+                        },
+                        "l": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The lowest tick price for this aggregate window."
+                        },
+                        "a": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "Today's volume weighted average price."
+                        },
+                        "z": {
+                          "type": "integer",
+                          "description": "The average trade size for this aggregate window."
+                        },
+                        "s": {
+                          "type": "integer",
+                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                        },
+                        "e": {
+                          "type": "integer",
+                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "AM"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "O:ONEM220121C00025000",
+                  "v": 2,
+                  "av": 8,
+                  "op": 2.2,
+                  "vw": 2.05,
+                  "o": 2.05,
+                  "c": 2.05,
+                  "h": 2.05,
+                  "l": 2.05,
+                  "a": 2.1312,
+                  "z": 2,
+                  "s": 1632419640000,
+                  "e": 1632419700000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "options",
+          "description": "Options data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/forex/C": {
+      "get": {
+        "summary": "Quotes",
+        "description": "Stream real-time forex quotes for a given forex pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]{3})\\/?<to>([A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a forex quote event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "type": "string",
+                          "description": "The event type."
+                        },
+                        "p": {
+                          "type": "string",
+                          "description": "The current pair."
+                        },
+                        "x": {
+                          "type": "integer",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                        },
+                        "a": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The ask price."
+                        },
+                        "b": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The bid price."
+                        },
+                        "t": {
+                          "type": "integer",
+                          "description": "The Timestamp in Unix MS."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "C"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "C",
+                  "p": "USD/CNH",
+                  "x": "44",
+                  "a": 6.83366,
+                  "b": 6.83363,
+                  "t": 1536036818784
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "nbbo",
+          "description": "NBBO data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "fx",
+          "description": "Forex data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/forex/CA": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time per-minute forex aggregates for a given forex pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]{3})\\/?<to>([A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a forex per-minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "CA"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The currency pair."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for this aggregate window."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for this aggregate window."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The high price for this aggregate window."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The low price for this aggregate window."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The volume of trades during this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "CA",
+                  "pair": "USD/EUR",
+                  "o": 0.8687,
+                  "c": 0.86889,
+                  "h": 0.86889,
+                  "l": 0.8686,
+                  "v": 20,
+                  "s": 1539145740000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "fx",
+          "description": "Forex data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/crypto/XT": {
+      "get": {
+        "summary": "Trades",
+        "description": "Stream real-time crypto trades for a given crypto pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a crypto trade event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "XT"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The crypto pair."
+                    },
+                    "p": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The price."
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "s": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The size."
+                    },
+                    "c": {
+                      "type": "array",
+                      "description": "The conditions.\n0 (or empty array): empty\n1: sellside\n2: buyside\n",
+                      "items": {
+                        "type": "integer",
+                        "description": "The ID of the condition."
+                      }
+                    },
+                    "i": {
+                      "type": "integer",
+                      "description": "The ID of the trade (optional)."
+                    },
+                    "x": {
+                      "type": "integer",
+                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+                    },
+                    "r": {
+                      "type": "integer",
+                      "description": "The timestamp that the tick was received by Polygon."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "XT",
+                  "pair": "BTC-USD",
+                  "p": 33021.9,
+                  "t": 1610462007425,
+                  "s": 0.01616617,
+                  "c": [
+                    2
+                  ],
+                  "i": 14272084,
+                  "x": 3,
+                  "r": 1610462007576
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "trades",
+          "description": "Trade data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/crypto/XQ": {
+      "get": {
+        "summary": "Quotes",
+        "description": "Stream real-time crypto quotes for a given crypto pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a crypto quote event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "XQ"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The crypto pair."
+                    },
+                    "bp": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The bid price."
+                    },
+                    "bs": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The bid size."
+                    },
+                    "ap": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The ask price."
+                    },
+                    "as": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The ask size."
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "x": {
+                      "type": "integer",
+                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+                    },
+                    "r": {
+                      "type": "integer",
+                      "description": "The timestamp that the tick was received by Polygon."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "XQ",
+                  "pair": "BTC-USD",
+                  "bp": 33052.79,
+                  "bs": 0.48,
+                  "ap": 33073.19,
+                  "as": 0.601,
+                  "t": 1610462411115,
+                  "x": 1,
+                  "r": 1610462411128
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "nbbo",
+          "description": "NBBO data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/crypto/XL2": {
+      "get": {
+        "summary": "Level 2 Book",
+        "description": "Stream real-time level 2 book data for a given crypto pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a crypto level 2 book event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "XL2"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The crypto pair."
+                    },
+                    "b": {
+                      "type": "array",
+                      "description": "An array of bid prices with a maximum depth of 100.",
+                      "items": {
+                        "type": "array",
+                        "description": "An array where the first item is bid price and the second item is size.",
+                        "items": {
+                          "type": "number",
+                          "format": "double"
+                        }
+                      }
+                    },
+                    "a": {
+                      "type": "array",
+                      "description": "An array of ask prices with a maximum depth of 100.",
+                      "items": {
+                        "type": "array",
+                        "description": "An array where the first item is ask price and the second item is size.",
+                        "items": {
+                          "type": "number",
+                          "format": "double"
+                        }
+                      }
+                    },
+                    "t": {
+                      "type": "integer",
+                      "description": "The Timestamp in Unix MS."
+                    },
+                    "x": {
+                      "type": "integer",
+                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+                    },
+                    "r": {
+                      "type": "integer",
+                      "description": "The timestamp that the tick was received by Polygon."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "XL2",
+                  "pair": "BTC-USD",
+                  "t": 1610462411115,
+                  "r": 1610462411128,
+                  "x": 1,
+                  "b": [
+                    [
+                      33712.71,
+                      0.18635
+                    ],
+                    [
+                      33712.7,
+                      0.134
+                    ]
+                  ],
+                  "a": [
+                    [
+                      33718.23,
+                      3.5527483
+                    ],
+                    [
+                      33718.24,
+                      0.1
+                    ]
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "nbbo",
+          "description": "NBBO data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/crypto/XA": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time per-minute crypto aggregates for a given crypto pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a crypto per-minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "XA"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The crypto pair."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for this aggregate window."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for this aggregate window."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The high price for this aggregate window."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The low price for this aggregate window."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The volume of trades during this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                    },
+                    "vw": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The volume weighted average price."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The average trade size for this aggregate window."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "XA",
+                  "pair": "BCD-USD",
+                  "v": 951.6112,
+                  "vw": 0.7756,
+                  "z": 73,
+                  "o": 0.772,
+                  "c": 0.784,
+                  "h": 0.784,
+                  "l": 0.771,
+                  "s": 1610463240000,
+                  "e": 1610463300000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Event": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "status"
+            ],
+            "description": "A constant denoting that this message describes a status event."
+          },
+          "message": {
+            "type": "string",
+            "description": "The descriptive message explaining this status event."
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "ConnectEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "enum": [
+                  "status"
+                ],
+                "description": "A constant denoting that this message describes a status event."
+              },
+              "message": {
+                "type": "string",
+                "description": "The descriptive message explaining this status event."
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "title": "connect",
+            "properties": {
+              "status": {
+                "enum": [
+                  "success"
+                ],
+                "description": "The status indicating that the connection event was successful."
+              }
+            },
+            "example": "{\"ev\":\"status\",\"status\":\"success\",\"message\":\"Connected Successfully\"}"
+          }
+        ]
+      },
+      "DisconnectEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "enum": [
+                  "status"
+                ],
+                "description": "A constant denoting that this message describes a status event."
+              },
+              "message": {
+                "type": "string",
+                "description": "The descriptive message explaining this status event."
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "title": "disconnect",
+            "properties": {
+              "status": {
+                "enum": [
+                  "max_connections",
+                  "force_disconnect",
+                  "slow_consumer"
+                ],
+                "description": "The event that caused the WebSocket to disconnect."
+              }
+            },
+            "example": "{\"ev\":\"status\",\"status\":\"max_connections\",\"message\":\"Maximum number of connections exceeded.\"}"
+          }
+        ]
+      },
+      "AuthEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "enum": [
+                  "status"
+                ],
+                "description": "A constant denoting that this message describes a status event."
+              },
+              "message": {
+                "type": "string",
+                "description": "The descriptive message explaining this status event."
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "title": "auth",
+            "properties": {
+              "status": {
+                "enum": [
+                  "auth_success",
+                  "auth_timeout",
+                  "auth_failed"
+                ],
+                "description": "The result of the authentication action."
+              }
+            },
+            "example": "{\"ev\":\"status\",\"status\":\"auth_success\",\"message\":\"authenticated\"}"
+          }
+        ]
+      },
+      "SubscribeEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "enum": [
+                  "status"
+                ],
+                "description": "A constant denoting that this message describes a status event."
+              },
+              "message": {
+                "type": "string",
+                "description": "The descriptive message explaining this status event."
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "title": "subscribe",
+            "properties": {
+              "status": {
+                "enum": [
+                  "success",
+                  "auth_required",
+                  "error"
+                ],
+                "description": "The result of a subscribe action."
+              }
+            },
+            "example": "{\"ev\":\"status\",\"status\":\"success\",\"message\":\"subscribed to: T.MSFT\"}"
+          }
+        ]
+      },
+      "UnsubscribeEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "enum": [
+                  "status"
+                ],
+                "description": "A constant denoting that this message describes a status event."
+              },
+              "message": {
+                "type": "string",
+                "description": "The descriptive message explaining this status event."
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "title": "unsubscribe",
+            "properties": {
+              "status": {
+                "enum": [
+                  "success"
+                ],
+                "description": "The result of an unsubscribe action."
+              }
+            },
+            "example": "{\"ev\":\"status\",\"status\":\"success\",\"message\":\"unsubscribed to: T.MSFT\"}"
+          }
+        ]
+      },
+      "Timestamp": {
+        "type": "integer",
+        "description": "The Timestamp in Unix MS."
+      },
+      "AggsOpen": {
+        "type": "number",
+        "format": "double",
+        "description": "The open price for this aggregate window."
+      },
+      "AggsClose": {
+        "type": "number",
+        "format": "double",
+        "description": "The close price for this aggregate window."
+      },
+      "AggsHigh": {
+        "type": "number",
+        "format": "double",
+        "description": "The high price for this aggregate window."
+      },
+      "AggsLow": {
+        "type": "number",
+        "format": "double",
+        "description": "The low price for this aggregate window."
+      },
+      "AggsVolume": {
+        "type": "integer",
+        "description": "The volume of trades during this aggregate window."
+      },
+      "AggsStartTime": {
+        "type": "integer",
+        "description": "The start time for this aggregate window in Unix Milliseconds."
+      },
+      "AggsEndTime": {
+        "type": "integer",
+        "description": "The end time for this aggregate window in Unix Milliseconds."
+      },
+      "StockTradeEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "T"
+            ],
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given stock."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+          },
+          "i": {
+            "type": "string",
+            "description": "The trade ID."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq).\n"
+          },
+          "p": {
+            "type": "number",
+            "format": "double",
+            "description": "The price."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The trade size."
+          },
+          "c": {
+            "type": "array",
+            "description": "The trade conditions. See <a target=\"_blank\" href=\"https://polygon.io/glossary/us/stocks/conditions-indicators\" \nalt=\"Conditions and Indicators\">Conditions and Indicators\"</a> for Polygon.io's trade conditions glossary.\n",
+            "items": {
+              "type": "integer",
+              "description": "The ID of the condition."
+            }
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "q": {
+            "type": "integer",
+            "description": "The sequence number represents the sequence in which message events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11).\n"
+          }
+        }
+      },
+      "StockQuoteEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "Q"
+            ],
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given stock."
+          },
+          "bx": {
+            "type": "integer",
+            "description": "The bid exchange ID."
+          },
+          "bp": {
+            "type": "number",
+            "format": "double",
+            "description": "The bid price."
+          },
+          "bs": {
+            "type": "integer",
+            "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price."
+          },
+          "ax": {
+            "type": "integer",
+            "description": "The ask exchange ID."
+          },
+          "ap": {
+            "type": "number",
+            "format": "double",
+            "description": "The ask price."
+          },
+          "as": {
+            "type": "integer",
+            "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price."
+          },
+          "c": {
+            "type": "integer",
+            "description": "The condition."
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq)."
+          }
+        }
+      },
+      "StockBaseAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given stock."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The tick volume."
+          },
+          "av": {
+            "type": "integer",
+            "description": "Today's accumulated volume."
+          },
+          "op": {
+            "type": "number",
+            "format": "double",
+            "description": "Today's official opening price."
+          },
+          "vw": {
+            "type": "number",
+            "format": "float",
+            "description": "The tick's volume weighted average price."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The opening tick price for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The closing tick price for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The highest tick price for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The lowest tick price for this aggregate window."
+          },
+          "a": {
+            "type": "number",
+            "format": "float",
+            "description": "Today's volume weighted average price."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The average trade size for this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+          }
+        }
+      },
+      "StockSecondAggregateEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "description": "The event type."
+              },
+              "sym": {
+                "type": "string",
+                "description": "The ticker symbol for the given stock."
+              },
+              "v": {
+                "type": "integer",
+                "description": "The tick volume."
+              },
+              "av": {
+                "type": "integer",
+                "description": "Today's accumulated volume."
+              },
+              "op": {
+                "type": "number",
+                "format": "double",
+                "description": "Today's official opening price."
+              },
+              "vw": {
+                "type": "number",
+                "format": "float",
+                "description": "The tick's volume weighted average price."
+              },
+              "o": {
+                "type": "number",
+                "format": "double",
+                "description": "The opening tick price for this aggregate window."
+              },
+              "c": {
+                "type": "number",
+                "format": "double",
+                "description": "The closing tick price for this aggregate window."
+              },
+              "h": {
+                "type": "number",
+                "format": "double",
+                "description": "The highest tick price for this aggregate window."
+              },
+              "l": {
+                "type": "number",
+                "format": "double",
+                "description": "The lowest tick price for this aggregate window."
+              },
+              "a": {
+                "type": "number",
+                "format": "float",
+                "description": "Today's volume weighted average price."
+              },
+              "z": {
+                "type": "integer",
+                "description": "The average trade size for this aggregate window."
+              },
+              "s": {
+                "type": "integer",
+                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+              },
+              "e": {
+                "type": "integer",
+                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "A"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "StockMinuteAggregateEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "description": "The event type."
+              },
+              "sym": {
+                "type": "string",
+                "description": "The ticker symbol for the given stock."
+              },
+              "v": {
+                "type": "integer",
+                "description": "The tick volume."
+              },
+              "av": {
+                "type": "integer",
+                "description": "Today's accumulated volume."
+              },
+              "op": {
+                "type": "number",
+                "format": "double",
+                "description": "Today's official opening price."
+              },
+              "vw": {
+                "type": "number",
+                "format": "float",
+                "description": "The tick's volume weighted average price."
+              },
+              "o": {
+                "type": "number",
+                "format": "double",
+                "description": "The opening tick price for this aggregate window."
+              },
+              "c": {
+                "type": "number",
+                "format": "double",
+                "description": "The closing tick price for this aggregate window."
+              },
+              "h": {
+                "type": "number",
+                "format": "double",
+                "description": "The highest tick price for this aggregate window."
+              },
+              "l": {
+                "type": "number",
+                "format": "double",
+                "description": "The lowest tick price for this aggregate window."
+              },
+              "a": {
+                "type": "number",
+                "format": "float",
+                "description": "Today's volume weighted average price."
+              },
+              "z": {
+                "type": "integer",
+                "description": "The average trade size for this aggregate window."
+              },
+              "s": {
+                "type": "integer",
+                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+              },
+              "e": {
+                "type": "integer",
+                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "AM"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "StockLULDEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "LULD"
+            ],
+            "description": "The event type."
+          },
+          "T": {
+            "type": "string",
+            "description": "The ticker symbol for the given stock."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The high price."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The low price."
+          },
+          "i": {
+            "type": "array",
+            "description": "The Indicators.",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "z": {
+            "type": "integer",
+            "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq).\n"
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "q": {
+            "type": "integer",
+            "description": "The sequence number represents the sequence in which message events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11).\n"
+          }
+        }
+      },
+      "StockImbalanceEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "NOI"
+            ],
+            "description": "The event type."
+          },
+          "T": {
+            "type": "string",
+            "description": "The ticker symbol for the given stock."
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "at": {
+            "type": "integer",
+            "description": "The time that the auction is planned to take place in the format (hour x 100) + minutes in Eastern Standard Time, \nfor example 930 would be 9:30 am EST, and 1600 would be 4:00 pm EST.\n"
+          },
+          "a": {
+            "type": "string",
+            "description": "The auction type.\n`O` - Early Opening Auction (non-NYSE only)\n`M` - Core Opening Auction\n`H` - Reopening Auction (Halt Resume)\n`C` - Closing Auction\n`P` - Extreme Closing Imbalance (NYSE only)\n`R` - Regulatory Closing Imbalance (NYSE only)\n"
+          },
+          "i": {
+            "type": "integer",
+            "description": "The symbol sequence."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+          },
+          "o": {
+            "type": "integer",
+            "description": "The imbalance quantity."
+          },
+          "p": {
+            "type": "integer",
+            "description": "The paired quantity."
+          },
+          "b": {
+            "type": "number",
+            "format": "double",
+            "description": "The book clearing price."
+          }
+        }
+      },
+      "StockSymbol": {
+        "type": "string",
+        "description": "The ticker symbol for the given stock."
+      },
+      "StockTape": {
+        "type": "integer",
+        "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq).\n"
+      },
+      "StockExchangeID": {
+        "type": "integer",
+        "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+      },
+      "OptionTradeEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "T"
+            ],
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given option contract."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+          },
+          "p": {
+            "type": "number",
+            "format": "double",
+            "description": "The price."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The trade size."
+          },
+          "c": {
+            "type": "array",
+            "description": "The trade conditions",
+            "items": {
+              "type": "integer",
+              "description": "The ID of the condition."
+            }
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "q": {
+            "type": "integer",
+            "description": "The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11)."
+          }
+        }
+      },
+      "OptionQuoteEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "enum": [
+              "Q"
+            ],
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given option contract."
+          },
+          "bx": {
+            "type": "integer",
+            "description": "The bid exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+          },
+          "ax": {
+            "type": "integer",
+            "description": "The ask exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+          },
+          "bp": {
+            "type": "number",
+            "format": "double",
+            "description": "The bid price."
+          },
+          "ap": {
+            "type": "number",
+            "format": "double",
+            "description": "The ask price."
+          },
+          "bs": {
+            "type": "integer",
+            "description": "The bid size."
+          },
+          "as": {
+            "type": "integer",
+            "description": "The ask size."
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "q": {
+            "type": "integer",
+            "description": "The sequence number represents the sequence in which trade events happened. These are increasing and unique per ticker symbol, but will not always be sequential (e.g., 1, 2, 6, 9, 10, 11)."
+          }
+        }
+      },
+      "OptionBaseAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given option contract."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The tick volume."
+          },
+          "av": {
+            "type": "integer",
+            "description": "Today's accumulated volume."
+          },
+          "op": {
+            "type": "number",
+            "format": "double",
+            "description": "Today's official opening price."
+          },
+          "vw": {
+            "type": "number",
+            "format": "float",
+            "description": "The tick's volume weighted average price."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The opening tick price for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The closing tick price for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The highest tick price for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The lowest tick price for this aggregate window."
+          },
+          "a": {
+            "type": "number",
+            "format": "float",
+            "description": "Today's volume weighted average price."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The average trade size for this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+          }
+        }
+      },
+      "OptionSecondAggregateEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "description": "The event type."
+              },
+              "sym": {
+                "type": "string",
+                "description": "The ticker symbol for the given option contract."
+              },
+              "v": {
+                "type": "integer",
+                "description": "The tick volume."
+              },
+              "av": {
+                "type": "integer",
+                "description": "Today's accumulated volume."
+              },
+              "op": {
+                "type": "number",
+                "format": "double",
+                "description": "Today's official opening price."
+              },
+              "vw": {
+                "type": "number",
+                "format": "float",
+                "description": "The tick's volume weighted average price."
+              },
+              "o": {
+                "type": "number",
+                "format": "double",
+                "description": "The opening tick price for this aggregate window."
+              },
+              "c": {
+                "type": "number",
+                "format": "double",
+                "description": "The closing tick price for this aggregate window."
+              },
+              "h": {
+                "type": "number",
+                "format": "double",
+                "description": "The highest tick price for this aggregate window."
+              },
+              "l": {
+                "type": "number",
+                "format": "double",
+                "description": "The lowest tick price for this aggregate window."
+              },
+              "a": {
+                "type": "number",
+                "format": "float",
+                "description": "Today's volume weighted average price."
+              },
+              "z": {
+                "type": "integer",
+                "description": "The average trade size for this aggregate window."
+              },
+              "s": {
+                "type": "integer",
+                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+              },
+              "e": {
+                "type": "integer",
+                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "A"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "OptionMinuteAggregateEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "description": "The event type."
+              },
+              "sym": {
+                "type": "string",
+                "description": "The ticker symbol for the given option contract."
+              },
+              "v": {
+                "type": "integer",
+                "description": "The tick volume."
+              },
+              "av": {
+                "type": "integer",
+                "description": "Today's accumulated volume."
+              },
+              "op": {
+                "type": "number",
+                "format": "double",
+                "description": "Today's official opening price."
+              },
+              "vw": {
+                "type": "number",
+                "format": "float",
+                "description": "The tick's volume weighted average price."
+              },
+              "o": {
+                "type": "number",
+                "format": "double",
+                "description": "The opening tick price for this aggregate window."
+              },
+              "c": {
+                "type": "number",
+                "format": "double",
+                "description": "The closing tick price for this aggregate window."
+              },
+              "h": {
+                "type": "number",
+                "format": "double",
+                "description": "The highest tick price for this aggregate window."
+              },
+              "l": {
+                "type": "number",
+                "format": "double",
+                "description": "The lowest tick price for this aggregate window."
+              },
+              "a": {
+                "type": "number",
+                "format": "float",
+                "description": "Today's volume weighted average price."
+              },
+              "z": {
+                "type": "integer",
+                "description": "The average trade size for this aggregate window."
+              },
+              "s": {
+                "type": "integer",
+                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+              },
+              "e": {
+                "type": "integer",
+                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "AM"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "OptionSymbol": {
+        "type": "string",
+        "description": "The ticker symbol for the given option contract."
+      },
+      "ForexBaseQuoteEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "description": "The event type."
+          },
+          "p": {
+            "type": "string",
+            "description": "The current pair."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+          },
+          "a": {
+            "type": "number",
+            "format": "double",
+            "description": "The ask price."
+          },
+          "b": {
+            "type": "number",
+            "format": "double",
+            "description": "The bid price."
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          }
+        }
+      },
+      "ForexQuoteEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "type": "string",
+                "description": "The event type."
+              },
+              "p": {
+                "type": "string",
+                "description": "The current pair."
+              },
+              "x": {
+                "type": "integer",
+                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+              },
+              "a": {
+                "type": "number",
+                "format": "double",
+                "description": "The ask price."
+              },
+              "b": {
+                "type": "number",
+                "format": "double",
+                "description": "The bid price."
+              },
+              "t": {
+                "type": "integer",
+                "description": "The Timestamp in Unix MS."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "C"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "ForexAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "CA"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The currency pair."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The high price for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The low price for this aggregate window."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The volume of trades during this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The start time for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The end time for this aggregate window in Unix Milliseconds."
+          }
+        }
+      },
+      "CryptoQuoteEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "XQ"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The crypto pair."
+          },
+          "bp": {
+            "type": "number",
+            "format": "double",
+            "description": "The bid price."
+          },
+          "bs": {
+            "type": "number",
+            "format": "double",
+            "description": "The bid size."
+          },
+          "ap": {
+            "type": "number",
+            "format": "double",
+            "description": "The ask price."
+          },
+          "as": {
+            "type": "number",
+            "format": "double",
+            "description": "The ask size."
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+          },
+          "r": {
+            "type": "integer",
+            "description": "The timestamp that the tick was received by Polygon."
+          }
+        }
+      },
+      "CryptoTradeEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "XT"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The crypto pair."
+          },
+          "p": {
+            "type": "number",
+            "format": "double",
+            "description": "The price."
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "s": {
+            "type": "number",
+            "format": "double",
+            "description": "The size."
+          },
+          "c": {
+            "type": "array",
+            "description": "The conditions.\n0 (or empty array): empty\n1: sellside\n2: buyside\n",
+            "items": {
+              "type": "integer",
+              "description": "The ID of the condition."
+            }
+          },
+          "i": {
+            "type": "integer",
+            "description": "The ID of the trade (optional)."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+          },
+          "r": {
+            "type": "integer",
+            "description": "The timestamp that the tick was received by Polygon."
+          }
+        }
+      },
+      "CryptoAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "XA"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The crypto pair."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The high price for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The low price for this aggregate window."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The volume of trades during this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The start time for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The end time for this aggregate window in Unix Milliseconds."
+          },
+          "vw": {
+            "type": "number",
+            "format": "double",
+            "description": "The volume weighted average price."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The average trade size for this aggregate window."
+          }
+        }
+      },
+      "CryptoL2BookEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "XL2"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The crypto pair."
+          },
+          "b": {
+            "type": "array",
+            "description": "An array of bid prices with a maximum depth of 100.",
+            "items": {
+              "type": "array",
+              "description": "An array where the first item is bid price and the second item is size.",
+              "items": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          },
+          "a": {
+            "type": "array",
+            "description": "An array of ask prices with a maximum depth of 100.",
+            "items": {
+              "type": "array",
+              "description": "An array where the first item is ask price and the second item is size.",
+              "items": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          },
+          "t": {
+            "type": "integer",
+            "description": "The Timestamp in Unix MS."
+          },
+          "x": {
+            "type": "integer",
+            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+          },
+          "r": {
+            "type": "integer",
+            "description": "The timestamp that the tick was received by Polygon."
+          }
+        }
+      },
+      "CryptoPair": {
+        "type": "string",
+        "description": "The crypto pair."
+      },
+      "CryptoExchangeID": {
+        "type": "integer",
+        "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+      },
+      "CryptoReceivedTimestamp": {
+        "type": "integer",
+        "description": "The timestamp that the tick was received by Polygon."
+      }
+    },
+    "parameters": {
+      "StocksTickerParam": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^([a-zA-Z]+)$/"
+        },
+        "example": "*"
+      },
+      "OptionsTickerParam": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+        },
+        "example": "*"
+      },
+      "OptionsTickerWithoutWildcardParam": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+        },
+        "example": "O:SPY241220P00720000"
+      },
+      "ForexTickerParam": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^(?<from>([A-Z]{3})\\/?<to>([A-Z]{3}))$/"
+        },
+        "example": "*"
+      },
+      "CryptoTickerParam": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+        },
+        "example": "*"
+      }
+    }
+  }
+}
