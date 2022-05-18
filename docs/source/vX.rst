@@ -4,7 +4,7 @@ vX
 ==========
 
 .. note::
-    To call vX methods, use the vX class member on RESTClient.
+    To call vX methods, use the vx class member on RESTClient.
 
     For example, :code:`financials = RESTClient().vx.list_stock_financials()`
 
