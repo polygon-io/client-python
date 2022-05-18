@@ -52,7 +52,7 @@ class RESTClient(
             base=base,
             verbose=verbose,
         )
-        self.vX = VXClient(
+        self.vx = VXClient(
             api_key=api_key,
             connect_timeout=connect_timeout,
             read_timeout=read_timeout,
