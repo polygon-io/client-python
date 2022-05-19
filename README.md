@@ -36,6 +36,7 @@ _before_ we bump the major version of the client, and in general, we'll try to
 bundle breaking changes like this to avoid frequent major version bumps.
 
 Exceptions to this are:
+
 	- Methods under `client.vx`. These are expiremental.
 	- Methods that start with `_*`. We use these internally.
 	- Type annotations. We may modify these based on our JSON responses.
