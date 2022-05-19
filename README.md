@@ -15,7 +15,7 @@ Requires Python >= 3.8.
 See the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html)
 section in our docs or view the [examples](./examples) directory.
 
-# Contributing
+## Contributing
 
 For now, we're generally not accepting pull requests from outside contributors
 but we're open to bug reports and feature requests. Or if you have more general
@@ -36,7 +36,8 @@ _before_ we bump the major version of the client, and in general, we'll try to
 bundle breaking changes like this to avoid frequent major version bumps.
 
 Exceptions to this are:
-	- Methods under `client.vx`. These are expiremental.
-	- Methods that start with `_*`. We use these internally.
-	- Type annotations. We may modify these based on our JSON responses.
-	- We may add model fields.
+
+- Methods under `client.vx`. These are expiremental.
+- Methods that start with `_*`. We use these internally.
+- Type annotations. We may modify these based on our JSON responses.
+- We may add model fields.
