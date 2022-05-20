@@ -138,7 +138,7 @@ class BaseClient:
                         or argname.endswith("_gt")
                         or argname.endswith("_gte")
                     ):
-                        argname = argname.replace("_", ".")
+                        argname = ".".join(argname.rsplit("_", 1))
                     params[argname] = val
 
         return params
