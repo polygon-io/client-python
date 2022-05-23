@@ -105,7 +105,7 @@ class QuotesClient(BaseClient):
         to: str,
         amount: float,
         precision: Union[int, Precision] = 2,
-        params: Dict[str, Any] = None,
+        params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[RealTimeCurrencyConversion, HTTPResponse]:
         """
