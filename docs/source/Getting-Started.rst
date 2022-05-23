@@ -8,7 +8,7 @@ Requirements:
 
 .. code-block:: shell
 
-    pip install polygon-api-client~=1.0.0b
+    pip install polygon-api-client
 
 HTTP client usage
 -----------------
