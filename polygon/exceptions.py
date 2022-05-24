@@ -1,17 +1,17 @@
 
-class PolyBadResponse(Exception):
+class BadResponse(Exception):
     """
     Non-200 response from API
     """
     pass
 
-class PolyAuthError(Exception):
+class AuthError(Exception):
     """"
     Empty or invalid API key
     """
     pass
 
-class PolyMissingResults(Exception):
+class MissingResults(Exception):
     """
     Missing results key
     """

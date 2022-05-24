@@ -11,7 +11,7 @@ from websockets.client import connect, WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
 from ..logging import get_logger
 import logging
-from ..exceptions import PolyAuthError
+from ..exceptions import AuthError
 
 env_key = "POLYGON_API_KEY"
 logger = get_logger("WebSocketClient")
@@ -42,7 +42,7 @@ class WebSocketClient:
         :return: A client.
         """
         if api_key is None:
-            raise PolyAuthError(
+            raise AuthError(
                 f"Must specify env var {env_key} or pass api_key in constructor"
             )
         self.api_key = api_key
@@ -104,7 +104,7 @@ class WebSocketClient:
                 auth_msg_parsed = json.loads(auth_msg)
                 logger.debug("authed: %s", auth_msg)
                 if auth_msg_parsed[0]["status"] == "auth_failed":
-                    raise PolyAuthError(auth_msg_parsed[0]["message"])
+                    raise AuthError(auth_msg_parsed[0]["message"])
                 while True:
                     if self.schedule_resub:
                         logger.debug(
