@@ -8,7 +8,7 @@ from datetime import datetime
 import pkg_resources  # part of setuptools
 from ..logging import get_logger
 import logging
-from ..exceptions import AuthError, BadResponse, MissingResults
+from ..exceptions import AuthError, BadResponse, NoResultsError
 
 logger = get_logger("RESTClient")
 version = "unknown"
@@ -83,7 +83,7 @@ class BaseClient:
 
         if result_key:
             if result_key not in obj:
-                raise MissingResults(
+                raise NoResultsError(
                     f'Expected key "{result_key}" in response {obj}.'
                     + "Make sure you have sufficient permissions and your request parameters are valid."
                     + f"This is the url that returned no results: {resp.geturl()}"

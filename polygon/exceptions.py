@@ -11,7 +11,7 @@ class AuthError(Exception):
     """
     pass
 
-class MissingResults(Exception):
+class NoResultsError(Exception):
     """
     Missing results key
     """
