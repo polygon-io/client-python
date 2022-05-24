@@ -8,16 +8,13 @@ from datetime import datetime
 import pkg_resources  # part of setuptools
 from ..logging import get_logger
 import logging
+from ..exceptions import AuthError, BadResponse, NoResultsError
 
 logger = get_logger("RESTClient")
 version = "unknown"
 try:
     version = pkg_resources.require("polygon-api-client")[0].version
 except:
-    pass
-
-
-class NoResultsError(Exception):
     pass
 
 
@@ -33,7 +30,7 @@ class BaseClient:
         verbose: bool,
     ):
         if api_key is None:
-            raise Exception(
+            raise AuthError(
                 f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
             )
         self.API_KEY = api_key
@@ -78,7 +75,7 @@ class BaseClient:
         )
 
         if resp.status != 200:
-            raise Exception(resp.data.decode("utf-8"))
+            raise BadResponse(resp.data.decode("utf-8"))
 
         if raw:
             return resp

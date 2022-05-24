@@ -11,13 +11,10 @@ from websockets.client import connect, WebSocketClientProtocol
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
 from ..logging import get_logger
 import logging
+from ..exceptions import AuthError
 
 env_key = "POLYGON_API_KEY"
 logger = get_logger("WebSocketClient")
-
-
-class AuthError(Exception):
-    pass
 
 
 class WebSocketClient:
@@ -45,7 +42,7 @@ class WebSocketClient:
         :return: A client.
         """
         if api_key is None:
-            raise Exception(
+            raise AuthError(
                 f"Must specify env var {env_key} or pass api_key in constructor"
             )
         self.api_key = api_key
