@@ -8,6 +8,7 @@ from datetime import datetime
 import pkg_resources  # part of setuptools
 from ..logging import get_logger
 import logging
+from ..exceptions import PolyAuthError, PolyBadResponse, PolyMissingResults
 
 logger = get_logger("RESTClient")
 version = "unknown"
@@ -15,11 +16,6 @@ try:
     version = pkg_resources.require("polygon-api-client")[0].version
 except:
     pass
-
-
-class NoResultsError(Exception):
-    pass
-
 
 class BaseClient:
     def __init__(
@@ -33,7 +29,7 @@ class BaseClient:
         verbose: bool,
     ):
         if api_key is None:
-            raise Exception(
+            raise PolyAuthError(
                 f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
             )
         self.API_KEY = api_key
@@ -78,7 +74,7 @@ class BaseClient:
         )
 
         if resp.status != 200:
-            raise Exception(resp.data.decode("utf-8"))
+            raise PolyBadResponse(resp.data.decode("utf-8"))
 
         if raw:
             return resp
@@ -87,7 +83,7 @@ class BaseClient:
 
         if result_key:
             if result_key not in obj:
-                raise NoResultsError(
+                raise PolyMissingResults(
                     f'Expected key "{result_key}" in response {obj}.'
                     + "Make sure you have sufficient permissions and your request parameters are valid."
                     + f"This is the url that returned no results: {resp.geturl()}"
