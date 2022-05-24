@@ -1,5 +1,6 @@
 from .rest import RESTClient
-from .rest.base import NoResultsError, version
-from .websocket import WebSocketClient, AuthError
+from .rest.base import version
+from .websocket import WebSocketClient
+from .exceptions import *
 
 __version__ = version
