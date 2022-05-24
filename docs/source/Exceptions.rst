@@ -11,15 +11,16 @@ AuthError
     :undoc-members:  
 
 ==============================================================
+BadResponse
+==============================================================
+.. autoclass:: polygon.exceptions.BadResponse
+    :members:
+    :undoc-members:  
+
+==============================================================
 NoResultsError
 ==============================================================
 .. autoclass:: polygon.exceptions.NoResultsError
     :members:
     :undoc-members:  
 
-==============================================================
-BadResponse
-==============================================================
-.. autoclass:: polygon.exceptions.BadResponse
-    :members:
-    :undoc-members:  
