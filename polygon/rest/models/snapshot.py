@@ -47,16 +47,16 @@ class TickerSnapshot:
         return TickerSnapshot(
             day=None if "day" not in d else Agg.from_dict(d["day"]),
             last_quote=None
-            if "last_quote" not in d
-            else LastQuote.from_dict(d["last_quote"]),
+            if "lastQuote" not in d
+            else LastQuote.from_dict(d["lastQuote"]),
             last_trade=None
-            if "last_trade" not in d
-            else LastTrade.from_dict(d["last_trade"]),
+            if "lastTrade" not in d
+            else LastTrade.from_dict(d["lastTrade"]),
             min=None if "min" not in d else MinuteSnapshot.from_dict(d["min"]),
-            prev_day=None if "prev_day" not in d else Agg.from_dict(d["prev_day"]),
+            prev_day=None if "prevDay" not in d else Agg.from_dict(d["prevDay"]),
             ticker=d.get("ticker", None),
-            todays_change=d.get("todays_change", None),
-            todays_change_percent=d.get("todays_change_percent", None),
+            todays_change=d.get("todaysChange", None),
+            todays_change_percent=d.get("todaysChangePerc", None),
             updated=d.get("updated", None),
         )
 
@@ -207,8 +207,8 @@ class SnapshotTickerFullBook:
             asks=None
             if "asks" not in d
             else [OrderBookQuote.from_dict(o) for o in d["asks"]],
-            bid_count=d.get("bid_count", None),
-            ask_count=d.get("ask_count", None),
+            bid_count=d.get("bidCount", None),
+            ask_count=d.get("askCount", None),
             spread=d.get("spread", None),
             updated=d.get("updated", None),
         )
