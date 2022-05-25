@@ -42,7 +42,7 @@ class BaseClient:
             num_pools=num_pools,
             headers={
                 "Authorization": "Bearer " + self.API_KEY,
-                "User-Agent": "Python client " + version,
+                "User-Agent": f"Polygon.io PythonClient/{version}",
             },
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
