@@ -50,12 +50,15 @@ class AggsClient(BaseClient):
             raw=raw,
         )
 
+    # TODO: next breaking change release move "market_type" to be 2nd mandatory
+    # param
     def get_grouped_daily_aggs(
         self,
         date: str,
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        market_type: str = "stocks",
     ) -> Union[GroupedDailyAgg, HTTPResponse]:
         """
         Get the daily open, high, low, and close (OHLC) for the entire market.
@@ -66,7 +69,7 @@ class AggsClient(BaseClient):
         :param raw: Return raw object instead of results object
         :return: List of grouped daily aggregates
         """
-        url = f"/v2/aggs/grouped/locale/us/market/stocks/{date}"
+        url = f"/v2/aggs/grouped/locale/us/market/{market_type}/{date}"
 
         return self._get(
             path=url,
