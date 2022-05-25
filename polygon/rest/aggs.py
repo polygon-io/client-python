@@ -50,6 +50,8 @@ class AggsClient(BaseClient):
             raw=raw,
         )
 
+    # TODO: next breaking change release move "market_type" to be 2nd mandatory
+    # param
     def get_grouped_daily_aggs(
         self,
         date: str,
