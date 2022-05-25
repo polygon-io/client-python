@@ -63,7 +63,7 @@ class WebSocketClient:
         self.websocket: Optional[WebSocketClientProtocol] = None
         if subscriptions is None:
             subscriptions = []
-        self.scheduled_subs = set(subscriptions)
+        self.scheduled_subs: Set[str] = set(subscriptions)
         self.schedule_resub = True
 
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
@@ -138,6 +138,9 @@ class WebSocketClient:
             except ConnectionClosedError:
                 logger.debug("connection closed (ERR)")
                 reconnects += 1
+                self.scheduled_subs = set(self.subs)
+                self.subs = set()
+                self.schedule_resub = True
                 if self.max_reconnects is not None and reconnects > self.max_reconnects:
                     return
                 continue

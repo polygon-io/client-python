@@ -2,7 +2,7 @@ from polygon import WebSocketClient
 from polygon.websocket.models import WebSocketMessage
 from typing import List
 
-c = WebSocketClient(subscriptions=["T.*"])
+c = WebSocketClient(subscriptions=["T.*"], verbose=True)
 
 
 def handle_msg(msgs: List[WebSocketMessage]):
