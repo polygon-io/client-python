@@ -3063,7 +3063,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -3073,7 +3073,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -4580,7 +4580,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -4590,7 +4590,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -5771,7 +5771,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -5781,7 +5781,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -7665,7 +7665,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -7675,7 +7675,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -13186,7 +13186,7 @@
       "AggregateTimeFrom": {
         "name": "from",
         "in": "path",
-        "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+        "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
         "required": true,
         "schema": {
           "type": "string"
@@ -13196,7 +13196,7 @@
       "AggregateTimeTo": {
         "name": "to",
         "in": "path",
-        "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
+        "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
         "required": true,
         "schema": {
           "type": "string"
