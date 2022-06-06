@@ -31,12 +31,19 @@ static:
 ## Check code style and static types
 lint: style static
 
-## Run unit tests
+## Update the REST API spec
+rest-spec:
+	curl https://api.polygon.io/specs/rest.json > .polygon/rest.json
+
+## Update the WebSocket API spec
+ws-spec:
+	curl https://api.polygon.io/specs/websocket.json > .polygon/websocket.json
+
 test_rest:
 	poetry run python -m unittest discover -s test_rest
 
 test_websocket:
 	poetry run python -m unittest discover -s test_websocket
 
+## Run the unit tests
 test: test_rest test_websocket
-
