@@ -36,7 +36,7 @@ types-urllib3 = "^1.26.15"
 Sphinx = "^5.0.1"
 sphinx-rtd-theme = "^1.0.0"
 # keep this in sync with docs/requirements.txt for readthedocs.org
-sphinx-autodoc-typehints = "^1.18.1"
+sphinx-autodoc-typehints = "^1.18.2"
 types-certifi = "^2021.10.8"
 types-setuptools = "^57.4.17"
 pook = "^1.0.2"
