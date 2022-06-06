@@ -18,105 +18,382 @@
   "x-polygon-order": {
     "stocks": {
       "market": [
-        "/v2/aggs/ticker/{stocksTicker}/range/{multiplier}/{timespan}/{from}/{to}",
-        "/v2/aggs/grouped/locale/us/market/stocks/{date}",
-        "/v1/open-close/{stocksTicker}/{date}",
-        "/v2/aggs/ticker/{stocksTicker}/prev",
-        "/v3/trades/{stockTicker}",
-        "/v2/ticks/stocks/trades/{ticker}/{date}",
-        "/v2/last/trade/{stocksTicker}",
-        "/v3/quotes/{stockTicker}",
-        "/v2/ticks/stocks/nbbo/{ticker}/{date}",
-        "/v2/last/nbbo/{stocksTicker}",
-        "/v2/snapshot/locale/us/markets/stocks/tickers",
-        "/v2/snapshot/locale/us/markets/stocks/{direction}",
-        "/v2/snapshot/locale/us/markets/stocks/tickers/{stocksTicker}"
+        {
+          "paths": [
+            "/v2/aggs/ticker/{stocksTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/grouped/locale/us/market/stocks/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/open-close/{stocksTicker}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/ticker/{stocksTicker}/prev"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/trades/{stockTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/ticks/stocks/trades/{ticker}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/last/trade/{stocksTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/quotes/{stockTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/ticks/stocks/nbbo/{ticker}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/last/nbbo/{stocksTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/snapshot/locale/us/markets/stocks/tickers",
+            "/v2/snapshot/locale/us/markets/stocks/{direction}",
+            "/v2/snapshot/locale/us/markets/stocks/tickers/{stocksTicker}"
+          ],
+          "group": "Snapshots"
+        }
       ],
       "reference": [
-        "/v3/reference/tickers",
-        "/v1/meta/symbols/{stocksTicker}/company",
-        "/v3/reference/tickers/{ticker}",
-        "/v2/reference/news",
-        "/v3/reference/tickers/types",
-        "/v1/marketstatus/upcoming",
-        "/v1/marketstatus/now",
-        "/v1/reference/sec/filings",
-        "/v1/reference/sec/filings/{filing_id}",
-        "/v1/reference/sec/filings/{filing_id}/files",
-        "/v1/reference/sec/filings/{filing_id}/files/{file_id}",
-        "/v3/reference/splits",
-        "/v3/reference/dividends",
-        "/vX/reference/financials",
-        "/v3/reference/conditions",
-        "/v3/reference/exchanges"
+        {
+          "paths": [
+            "/v3/reference/tickers"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/meta/symbols/{stocksTicker}/company"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/tickers/{ticker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/reference/news"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/tickers/types"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/upcoming"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/now"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/reference/sec/filings",
+            "/v1/reference/sec/filings/{filing_id}",
+            "/v1/reference/sec/filings/{filing_id}/files",
+            "/v1/reference/sec/filings/{filing_id}/files/{file_id}"
+          ],
+          "group": "SEC Filings"
+        },
+        {
+          "paths": [
+            "/v3/reference/splits"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/dividends"
+          ]
+        },
+        {
+          "paths": [
+            "/vX/reference/financials"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/conditions"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/exchanges"
+          ]
+        }
       ]
     },
     "options": {
       "market": [
-        "/v2/aggs/ticker/{optionsTicker}/range/{multiplier}/{timespan}/{from}/{to}",
-        "/v1/open-close/{optionsTicker}/{date}",
-        "/v2/aggs/ticker/{optionsTicker}/prev",
-        "/v3/trades/{optionsTicker}",
-        "/v2/last/trade/{optionsTicker}",
-        "/v3/quotes/{optionsTicker}",
-        "/v3/snapshot/options/{underlyingAsset}/{optionContract}",
-        "/v3/snapshot/options/{underlyingAsset}"
+        {
+          "paths": [
+            "/v2/aggs/ticker/{optionsTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/open-close/{optionsTicker}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/ticker/{optionsTicker}/prev"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/trades/{optionsTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/last/trade/{optionsTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/quotes/{optionsTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/snapshot/options/{underlyingAsset}/{optionContract}",
+            "/v3/snapshot/options/{underlyingAsset}"
+          ],
+          "group": "Snapshots"
+        }
       ],
       "reference": [
-        "/v3/reference/options/contracts/{options_ticker}",
-        "/v3/reference/options/contracts",
-        "/v3/reference/tickers",
-        "/v1/meta/symbols/{stocksTicker}/company",
-        "/v3/reference/tickers/{ticker}",
-        "/v2/reference/news",
-        "/v3/reference/tickers/types",
-        "/v1/marketstatus/upcoming",
-        "/v1/marketstatus/now",
-        "/v3/reference/conditions",
-        "/v3/reference/exchanges"
+        {
+          "paths": [
+            "/v3/reference/options/contracts/{options_ticker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/options/contracts"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/tickers"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/meta/symbols/{stocksTicker}/company"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/tickers/{ticker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/reference/news"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/tickers/types"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/upcoming"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/now"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/conditions"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/exchanges"
+          ]
+        }
       ]
     },
     "fx": {
       "market": [
-        "/v2/aggs/ticker/{forexTicker}/range/{multiplier}/{timespan}/{from}/{to}",
-        "/v2/aggs/grouped/locale/global/market/fx/{date}",
-        "/v2/aggs/ticker/{forexTicker}/prev",
-        "/v3/quotes/{fxTicker}",
-        "/v1/historic/forex/{from}/{to}/{date}",
-        "/v1/last_quote/currencies/{from}/{to}",
-        "/v1/conversion/{from}/{to}",
-        "/v2/snapshot/locale/global/markets/forex/tickers",
-        "/v2/snapshot/locale/global/markets/forex/{direction}",
-        "/v2/snapshot/locale/global/markets/forex/tickers/{ticker}"
+        {
+          "paths": [
+            "/v2/aggs/ticker/{forexTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/grouped/locale/global/market/fx/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/ticker/{forexTicker}/prev"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/quotes/{fxTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/historic/forex/{from}/{to}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/last_quote/currencies/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/conversion/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/snapshot/locale/global/markets/forex/tickers",
+            "/v2/snapshot/locale/global/markets/forex/{direction}",
+            "/v2/snapshot/locale/global/markets/forex/tickers/{ticker}"
+          ],
+          "group": "Snapshots"
+        }
       ],
       "reference": [
-        "/v3/reference/tickers",
-        "/v1/marketstatus/upcoming",
-        "/v1/marketstatus/now",
-        "/v3/reference/conditions",
-        "/v3/reference/exchanges"
+        {
+          "paths": [
+            "/v3/reference/tickers"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/upcoming"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/now"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/conditions"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/exchanges"
+          ]
+        }
       ]
     },
     "crypto": {
       "market": [
-        "/v2/aggs/ticker/{cryptoTicker}/range/{multiplier}/{timespan}/{from}/{to}",
-        "/v2/aggs/grouped/locale/global/market/crypto/{date}",
-        "/v1/open-close/crypto/{from}/{to}/{date}",
-        "/v2/aggs/ticker/{cryptoTicker}/prev",
-        "/v3/trades/{cryptoTicker}",
-        "/v1/historic/crypto/{from}/{to}/{date}",
-        "/v1/last/crypto/{from}/{to}",
-        "/v2/snapshot/locale/global/markets/crypto/tickers",
-        "/v2/snapshot/locale/global/markets/crypto/{direction}",
-        "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}",
-        "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
+        {
+          "paths": [
+            "/v2/aggs/ticker/{cryptoTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/grouped/locale/global/market/crypto/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/open-close/crypto/{from}/{to}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/ticker/{cryptoTicker}/prev"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/trades/{cryptoTicker}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/historic/crypto/{from}/{to}/{date}"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/last/crypto/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/snapshot/locale/global/markets/crypto/tickers",
+            "/v2/snapshot/locale/global/markets/crypto/{direction}",
+            "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}",
+            "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
+          ],
+          "group": "Snapshots"
+        }
       ],
       "reference": [
-        "/v3/reference/tickers",
-        "/v1/marketstatus/upcoming",
-        "/v1/marketstatus/now",
-        "/v3/reference/conditions",
-        "/v3/reference/exchanges"
+        {
+          "paths": [
+            "/v3/reference/tickers"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/upcoming"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/now"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/conditions"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/exchanges"
+          ]
+        }
       ]
     }
   },
@@ -2786,7 +3063,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2796,7 +3073,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -4303,7 +4580,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -4313,7 +4590,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -5494,7 +5771,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -5504,7 +5781,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -7388,7 +7665,7 @@
           {
             "name": "from",
             "in": "path",
-            "description": "The start of the aggregate time window.",
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -7398,7 +7675,7 @@
           {
             "name": "to",
             "in": "path",
-            "description": "The end of the aggregate time window.",
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
             "required": true,
             "schema": {
               "type": "string"
@@ -12909,7 +13186,7 @@
       "AggregateTimeFrom": {
         "name": "from",
         "in": "path",
-        "description": "The start of the aggregate time window.",
+        "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
         "required": true,
         "schema": {
           "type": "string"
@@ -12919,7 +13196,7 @@
       "AggregateTimeTo": {
         "name": "to",
         "in": "path",
-        "description": "The end of the aggregate time window.",
+        "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a nanosecond timestamp.",
         "required": true,
         "schema": {
           "type": "string"
