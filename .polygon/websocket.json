@@ -18,34 +18,98 @@
   "x-polygon-order": {
     "stocks": {
       "market": [
-        "/stocks/AM",
-        "/stocks/A",
-        "/stocks/T",
-        "/stocks/Q",
-        "/stocks/NOI",
-        "/stocks/LULD"
+        {
+          "paths": [
+            "/stocks/AM"
+          ]
+        },
+        {
+          "paths": [
+            "/stocks/A"
+          ]
+        },
+        {
+          "paths": [
+            "/stocks/T"
+          ]
+        },
+        {
+          "paths": [
+            "/stocks/Q"
+          ]
+        },
+        {
+          "paths": [
+            "/stocks/NOI"
+          ]
+        },
+        {
+          "paths": [
+            "/stocks/LULD"
+          ]
+        }
       ]
     },
     "options": {
       "market": [
-        "/options/AM",
-        "/options/A",
-        "/options/T",
-        "/options/Q"
+        {
+          "paths": [
+            "/options/AM"
+          ]
+        },
+        {
+          "paths": [
+            "/options/A"
+          ]
+        },
+        {
+          "paths": [
+            "/options/T"
+          ]
+        },
+        {
+          "paths": [
+            "/options/Q"
+          ]
+        }
       ]
     },
     "fx": {
       "market": [
-        "/forex/CA",
-        "/forex/C"
+        {
+          "paths": [
+            "/forex/CA"
+          ]
+        },
+        {
+          "paths": [
+            "/forex/C"
+          ]
+        }
       ]
     },
     "crypto": {
       "market": [
-        "/crypto/XA",
-        "/crypto/XT",
-        "/crypto/XQ",
-        "/crypto/XL2"
+        {
+          "paths": [
+            "/crypto/XA"
+          ]
+        },
+        {
+          "paths": [
+            "/crypto/XT"
+          ]
+        },
+        {
+          "paths": [
+            "/crypto/XQ"
+          ]
+        },
+        {
+          "paths": [
+            "/crypto/XL2"
+          ]
+        }
       ]
     }
   },
