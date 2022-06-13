@@ -3256,7 +3256,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/tickers": {
       "get": {
-        "summary": "Snapshot - All Tickers",
+        "summary": "All Tickers",
         "description": "Get the most up-to-date market data for all traded stock symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "tags": [
           "stocks:snapshot"
@@ -3585,7 +3585,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/tickers/{stocksTicker}": {
       "get": {
-        "summary": "Snapshot - Ticker",
+        "summary": "Ticker",
         "description": "Get the most up-to-date market data for a single traded stock ticker.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "tags": [
           "stocks:snapshot"
@@ -3913,7 +3913,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/{direction}": {
       "get": {
-        "summary": "Snapshot - Gainers/Losers",
+        "summary": "Gainers/Losers",
         "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "tags": [
           "stocks:snapshot"
@@ -5954,7 +5954,7 @@
     },
     "/v2/snapshot/locale/global/markets/forex/tickers/{ticker}": {
       "get": {
-        "summary": "Snapshot - Ticker",
+        "summary": "Ticker",
         "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for a single traded currency symbol.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "tags": [
           "fx:snapshot"
@@ -6216,7 +6216,7 @@
     },
     "/v2/snapshot/locale/global/markets/forex/tickers": {
       "get": {
-        "summary": "Snapshot - All Tickers",
+        "summary": "All Tickers",
         "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for all traded forex symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "tags": [
           "fx:snapshot"
@@ -6473,7 +6473,7 @@
     },
     "/v2/snapshot/locale/global/markets/forex/{direction}": {
       "get": {
-        "summary": "Snapshot - Gainers/Losers",
+        "summary": "Gainers/Losers",
         "description": "Get the current top 20 gainers or losers of the day in forex markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "tags": [
           "fx:snapshot"
@@ -7858,7 +7858,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/tickers": {
       "get": {
-        "summary": "Snapshot - All Tickers",
+        "summary": "All Tickers",
         "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for all traded cryptocurrency symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "tags": [
           "crypto:snapshot"
@@ -8155,7 +8155,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}": {
       "get": {
-        "summary": "Snapshot - Ticker",
+        "summary": "Ticker",
         "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for a single traded cryptocurrency symbol.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "tags": [
           "crypto:snapshot"
@@ -8456,7 +8456,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book": {
       "get": {
-        "summary": "Snapshot - Ticker Full Book (L2)",
+        "summary": "Ticker Full Book (L2)",
         "description": "Get the current level 2 book of a single ticker. This is the combined book from all of the exchanges.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "tags": [
           "crypto:snapshot"
@@ -8621,7 +8621,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/{direction}": {
       "get": {
-        "summary": "Snapshot - Gainers/Losers",
+        "summary": "Gainers/Losers",
         "description": "Get the current top 20 gainers or losers of the day in cryptocurrency markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "tags": [
           "crypto:snapshot"
