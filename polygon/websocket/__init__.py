@@ -1,6 +1,6 @@
 import os
 from enum import Enum
-from typing import Optional, Union, List, Set, Callable, Awaitable
+from typing import Optional, Union, List, Set, Callable, Awaitable, Dict, Any
 import logging
 import json
 import asyncio
@@ -152,6 +152,8 @@ class WebSocketClient:
             Callable[[Union[str, bytes]], None],
         ],
         close_timeout: int = 1,
+        handle_msg_args: List[Any] = None,
+        handle_msg_kwargs: Dict[Any, Any] = None,
         **kwargs,
     ):
         """
@@ -163,7 +165,7 @@ class WebSocketClient:
         """
 
         async def handle_msg_wrapper(msgs):
-            handle_msg(msgs)
+            handle_msg(msgs, *handle_msg_args, **handle_msg_kwargs)
 
         asyncio.run(self.connect(handle_msg_wrapper, close_timeout, **kwargs))
 
