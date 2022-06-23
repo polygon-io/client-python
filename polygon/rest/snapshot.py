@@ -17,6 +17,7 @@ class SnapshotClient(BaseClient):
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        include_otc: bool = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
