@@ -33,7 +33,7 @@ class OptionsContract:
         return OptionsContract(
             additional_underlyings=None
             if "additional_underlyings" not in d
-            else Underlying.from_dict(d["additional_underlyings"]),
+            else [Underlying.from_dict(u) for u in d["additional_underlyings"]],
             cfi=d.get("cfi", None),
             correction=d.get("correction", None),
             exercise_style=d.get("exercise_style", None),
