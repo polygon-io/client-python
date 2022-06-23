@@ -20,6 +20,7 @@ class EquityAgg:
     average_size: Optional[float] = None
     start_timestamp: Optional[int] = None
     end_timestamp: Optional[int] = None
+    otc: Optional[bool] = None
 
     @staticmethod
     def from_dict(d):
@@ -38,6 +39,7 @@ class EquityAgg:
             d.get("z", None),
             d.get("s", None),
             d.get("e", None),
+            d.get("o", None),
         )
 
 
