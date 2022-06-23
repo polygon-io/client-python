@@ -15,6 +15,7 @@ class MinuteSnapshot:
     close: Optional[float] = None
     volume: Optional[float] = None
     vwap: Optional[float] = None
+    otc: Optional[bool] = None
 
     @staticmethod
     def from_dict(d):
@@ -26,6 +27,7 @@ class MinuteSnapshot:
             d.get("c", None),
             d.get("v", None),
             d.get("vw", None),
+            d.get("otc", None),
         )
 
 

@@ -13,6 +13,7 @@ class Agg:
     vwap: Optional[float] = None
     timestamp: Optional[int] = None
     transactions: Optional[int] = None
+    otc: Optional[bool] = None
 
     @staticmethod
     def from_dict(d):
@@ -25,6 +26,7 @@ class Agg:
             d.get("vw", None),
             d.get("t", None),
             d.get("n", None),
+            d.get("otc", None),
         )
 
 
@@ -40,6 +42,7 @@ class GroupedDailyAgg:
     vwap: Optional[float] = None
     timestamp: Optional[int] = None
     transactions: Optional[int] = None
+    otc: Optional[bool] = None
 
     @staticmethod
     def from_dict(d):
@@ -53,6 +56,7 @@ class GroupedDailyAgg:
             d.get("vw", None),
             d.get("t", None),
             d.get("n", None),
+            d.get("otc", None),
         )
 
 
@@ -69,6 +73,7 @@ class DailyOpenCloseAgg:
     status: Optional[str] = None
     symbol: Optional[str] = None
     volume: Optional[float] = None
+    otc: Optional[bool] = None
 
     @staticmethod
     def from_dict(d):
@@ -83,6 +88,7 @@ class DailyOpenCloseAgg:
             d.get("status", None),
             d.get("symbol", None),
             d.get("volume", None),
+            d.get("otc", None),
         )
 
 

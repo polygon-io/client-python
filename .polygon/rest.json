@@ -512,7 +512,17 @@
                 "WARRANT",
                 "INDEX",
                 "ETF",
-                "ETN"
+                "ETN",
+                "OS",
+                "GDR",
+                "OTHER",
+                "NYRS",
+                "AGEN",
+                "EQLK",
+                "BOND",
+                "ADRW",
+                "BASKET",
+                "LT"
               ]
             }
           },
@@ -526,7 +536,8 @@
               "enum": [
                 "stocks",
                 "crypto",
-                "fx"
+                "fx",
+                "otc"
               ]
             }
           },
@@ -661,7 +672,7 @@
                       "properties": {
                         "results": {
                           "type": "array",
-                          "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.                                                                                                                                                                                                                                                                                                   \n",
+                          "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.\n",
                           "items": {
                             "type": "object",
                             "properties": {
@@ -679,7 +690,8 @@
                                 "enum": [
                                   "stocks",
                                   "crypto",
-                                  "fx"
+                                  "fx",
+                                  "otc"
                                 ]
                               },
                               "locale": {
@@ -872,7 +884,8 @@
                               "enum": [
                                 "stocks",
                                 "crypto",
-                                "fx"
+                                "fx",
+                                "otc"
                               ]
                             },
                             "locale": {
@@ -2637,6 +2650,10 @@
                       "format": "double",
                       "description": "The trading volume of the symbol in the given time period."
                     },
+                    "otc": {
+                      "type": "boolean",
+                      "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
+                    },
                     "preMarket": {
                       "type": "integer",
                       "description": "The open price of the ticker symbol in pre-market trading."
@@ -2704,6 +2721,15 @@
               "type": "boolean"
             },
             "example": true
+          },
+          {
+            "name": "include_otc",
+            "in": "query",
+            "description": "Include OTC securities in the response. Default is false (don't include OTC securities).\n",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -2787,6 +2813,10 @@
                               "n": {
                                 "type": "number",
                                 "description": "The number of transactions in the aggregate window."
+                              },
+                              "otc": {
+                                "type": "boolean",
+                                "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                               }
                             }
                           }
@@ -3199,6 +3229,10 @@
                               "n": {
                                 "type": "number",
                                 "description": "The number of transactions in the aggregate window."
+                              },
+                              "otc": {
+                                "type": "boolean",
+                                "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                               }
                             }
                           }
@@ -3272,6 +3306,15 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "include_otc",
+            "in": "query",
+            "description": "Include OTC securities in the response. Default is false (don't include OTC securities).\n",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -3335,6 +3378,10 @@
                                     "type": "number",
                                     "format": "double",
                                     "description": "The volume weighted average price."
+                                  },
+                                  "otc": {
+                                    "type": "boolean",
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                   }
                                 }
                               },
@@ -3437,6 +3484,10 @@
                                     "type": "number",
                                     "format": "double",
                                     "description": "The volume weighted average price."
+                                  },
+                                  "otc": {
+                                    "type": "boolean",
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                   }
                                 }
                               },
@@ -3473,6 +3524,10 @@
                                     "type": "number",
                                     "format": "double",
                                     "description": "The volume weighted average price."
+                                  },
+                                  "otc": {
+                                    "type": "boolean",
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                   }
                                 }
                               },
@@ -3666,6 +3721,10 @@
                                   "type": "number",
                                   "format": "double",
                                   "description": "The volume weighted average price."
+                                },
+                                "otc": {
+                                  "type": "boolean",
+                                  "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                 }
                               }
                             },
@@ -3768,6 +3827,10 @@
                                   "type": "number",
                                   "format": "double",
                                   "description": "The volume weighted average price."
+                                },
+                                "otc": {
+                                  "type": "boolean",
+                                  "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                 }
                               }
                             },
@@ -3804,6 +3867,10 @@
                                   "type": "number",
                                   "format": "double",
                                   "description": "The volume weighted average price."
+                                },
+                                "otc": {
+                                  "type": "boolean",
+                                  "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                 }
                               }
                             },
@@ -3991,6 +4058,10 @@
                                     "type": "number",
                                     "format": "double",
                                     "description": "The volume weighted average price."
+                                  },
+                                  "otc": {
+                                    "type": "boolean",
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                   }
                                 }
                               },
@@ -4093,6 +4164,10 @@
                                     "type": "number",
                                     "format": "double",
                                     "description": "The volume weighted average price."
+                                  },
+                                  "otc": {
+                                    "type": "boolean",
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                   }
                                 }
                               },
@@ -4129,6 +4204,10 @@
                                     "type": "number",
                                     "format": "double",
                                     "description": "The volume weighted average price."
+                                  },
+                                  "otc": {
+                                    "type": "boolean",
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                                   }
                                 }
                               },
@@ -4489,6 +4568,10 @@
                       "type": "number",
                       "format": "double",
                       "description": "The trading volume of the symbol in the given time period."
+                    },
+                    "otc": {
+                      "type": "boolean",
+                      "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                     },
                     "preMarket": {
                       "type": "integer",
@@ -9664,6 +9747,10 @@
         "type": "number",
         "description": "The number of transactions in the aggregate window."
       },
+      "OTC": {
+        "type": "boolean",
+        "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
+      },
       "Open": {
         "type": "number",
         "format": "double",
@@ -9856,6 +9943,65 @@
                 "n": {
                   "type": "number",
                   "description": "The number of transactions in the aggregate window."
+                },
+                "otc": {
+                  "type": "boolean",
+                  "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
+                }
+              }
+            }
+          }
+        }
+      },
+      "StocksTickerResultsOTC": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "o": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "The open price for the symbol in the given time period."
+                },
+                "h": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "The highest price for the symbol in the given time period."
+                },
+                "l": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "The lowest price for the symbol in the given time period."
+                },
+                "c": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "The close price for the symbol in the given time period."
+                },
+                "v": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "The trading volume of the symbol in the given time period."
+                },
+                "vw": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "The volume weighted average price."
+                },
+                "t": {
+                  "type": "integer",
+                  "description": "The Unix Msec timestamp for the start of the aggregate window."
+                },
+                "n": {
+                  "type": "number",
+                  "description": "The number of transactions in the aggregate window."
+                },
+                "otc": {
+                  "type": "boolean",
+                  "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                 }
               }
             }
@@ -10121,6 +10267,45 @@
           }
         }
       },
+      "SnapshotOHLCVVWOtc": {
+        "type": "object",
+        "properties": {
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for the symbol in the given time period."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The highest price for the symbol in the given time period."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The lowest price for the symbol in the given time period."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for the symbol in the given time period."
+          },
+          "v": {
+            "type": "number",
+            "format": "double",
+            "description": "The trading volume of the symbol in the given time period."
+          },
+          "vw": {
+            "type": "number",
+            "format": "double",
+            "description": "The volume weighted average price."
+          },
+          "otc": {
+            "type": "boolean",
+            "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
+          }
+        }
+      },
       "StocksSnapshotLastQuote": {
         "type": "object",
         "properties": {
@@ -10187,6 +10372,49 @@
           }
         }
       },
+      "StocksSnapshotMinuteOTC": {
+        "type": "object",
+        "properties": {
+          "av": {
+            "type": "integer",
+            "description": "The accumulated volume."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for the symbol in the given time period."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The highest price for the symbol in the given time period."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The lowest price for the symbol in the given time period."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for the symbol in the given time period."
+          },
+          "v": {
+            "type": "number",
+            "format": "double",
+            "description": "The trading volume of the symbol in the given time period."
+          },
+          "vw": {
+            "type": "number",
+            "format": "double",
+            "description": "The volume weighted average price."
+          },
+          "otc": {
+            "type": "boolean",
+            "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
+          }
+        }
+      },
       "StocksSnapshotTickers": {
         "type": "object",
         "properties": {
@@ -10228,6 +10456,10 @@
                       "type": "number",
                       "format": "double",
                       "description": "The volume weighted average price."
+                    },
+                    "otc": {
+                      "type": "boolean",
+                      "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                     }
                   }
                 },
@@ -10330,6 +10562,10 @@
                       "type": "number",
                       "format": "double",
                       "description": "The volume weighted average price."
+                    },
+                    "otc": {
+                      "type": "boolean",
+                      "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                     }
                   }
                 },
@@ -10366,6 +10602,10 @@
                       "type": "number",
                       "format": "double",
                       "description": "The volume weighted average price."
+                    },
+                    "otc": {
+                      "type": "boolean",
+                      "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                     }
                   }
                 },
@@ -10431,6 +10671,10 @@
                     "type": "number",
                     "format": "double",
                     "description": "The volume weighted average price."
+                  },
+                  "otc": {
+                    "type": "boolean",
+                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                   }
                 }
               },
@@ -10533,6 +10777,10 @@
                     "type": "number",
                     "format": "double",
                     "description": "The volume weighted average price."
+                  },
+                  "otc": {
+                    "type": "boolean",
+                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                   }
                 }
               },
@@ -10569,6 +10817,10 @@
                     "type": "number",
                     "format": "double",
                     "description": "The volume weighted average price."
+                  },
+                  "otc": {
+                    "type": "boolean",
+                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                   }
                 }
               },
@@ -11433,7 +11685,7 @@
         "properties": {
           "results": {
             "type": "array",
-            "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.                                                                                                                                                                                                                                                                                                   \n",
+            "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.\n",
             "items": {
               "type": "object",
               "properties": {
@@ -11451,7 +11703,8 @@
                   "enum": [
                     "stocks",
                     "crypto",
-                    "fx"
+                    "fx",
+                    "otc"
                   ]
                 },
                 "locale": {
@@ -11532,7 +11785,8 @@
                 "enum": [
                   "stocks",
                   "crypto",
-                  "fx"
+                  "fx",
+                  "otc"
                 ]
               },
               "locale": {
@@ -12235,6 +12489,10 @@
             "type": "number",
             "format": "double",
             "description": "The trading volume of the symbol in the given time period."
+          },
+          "otc": {
+            "type": "boolean",
+            "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
           },
           "preMarket": {
             "type": "integer",
@@ -13258,6 +13516,15 @@
           ]
         },
         "example": "gainers"
+      },
+      "IncludeOTC": {
+        "name": "include_otc",
+        "in": "query",
+        "description": "Include OTC securities in the response. Default is false (don't include OTC securities).\n",
+        "required": false,
+        "schema": {
+          "type": "boolean"
+        }
       },
       "LimitMax50000": {
         "name": "limit",

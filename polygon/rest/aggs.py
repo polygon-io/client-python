@@ -59,6 +59,7 @@ class AggsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         market_type: str = "stocks",
+        include_otc: bool = False,
     ) -> Union[GroupedDailyAgg, HTTPResponse]:
         """
         Get the daily open, high, low, and close (OHLC) for the entire market.
