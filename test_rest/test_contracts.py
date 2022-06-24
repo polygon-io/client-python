@@ -8,6 +8,7 @@ class ContractsTest(BaseTest):
         expected = OptionsContract(
             additional_underlyings=None,
             cfi="OCASPS",
+            contract_type="call",
             correction=None,
             exercise_style="american",
             expiration_date="2024-01-19",
@@ -26,6 +27,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -39,6 +41,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -52,6 +55,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -65,6 +69,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -78,6 +83,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -91,6 +97,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -104,6 +111,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -117,6 +125,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -130,6 +139,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -143,6 +153,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -156,6 +167,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -169,6 +181,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -182,6 +195,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -195,6 +209,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -208,6 +223,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -221,6 +237,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -234,6 +251,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -247,6 +265,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -260,6 +279,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",
@@ -273,6 +293,7 @@ class ContractsTest(BaseTest):
             OptionsContract(
                 additional_underlyings=None,
                 cfi="OCASPS",
+                contract_type="call",
                 correction=None,
                 exercise_style="american",
                 expiration_date="2022-05-20",

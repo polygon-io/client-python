@@ -19,6 +19,7 @@ class OptionsContract:
     "OptionsContract contains data for a specified ticker symbol."
     additional_underlyings: Optional[List[Underlying]] = None
     cfi: Optional[str] = None
+    contract_type: Optional[str] = None
     correction: Optional[str] = None
     exercise_style: Optional[str] = None
     expiration_date: Optional[str] = None
@@ -35,6 +36,7 @@ class OptionsContract:
             if "additional_underlyings" not in d
             else [Underlying.from_dict(u) for u in d["additional_underlyings"]],
             cfi=d.get("cfi", None),
+            contract_type=d.get("contract_type", None),
             correction=d.get("correction", None),
             exercise_style=d.get("exercise_style", None),
             expiration_date=d.get("expiration_date", None),
