@@ -423,6 +423,10 @@
                         "e": {
                           "type": "integer",
                           "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                        },
+                        "otc": {
+                          "type": "boolean",
+                          "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                         }
                       }
                     },
@@ -566,6 +570,10 @@
                         "e": {
                           "type": "integer",
                           "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                        },
+                        "otc": {
+                          "type": "boolean",
+                          "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
                         }
                       }
                     },
@@ -2348,6 +2356,10 @@
           "e": {
             "type": "integer",
             "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+          },
+          "otc": {
+            "type": "boolean",
+            "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
           }
         }
       },
@@ -2417,6 +2429,10 @@
               "e": {
                 "type": "integer",
                 "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+              },
+              "otc": {
+                "type": "boolean",
+                "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
               }
             }
           },
@@ -2498,6 +2514,10 @@
               "e": {
                 "type": "integer",
                 "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+              },
+              "otc": {
+                "type": "boolean",
+                "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false."
               }
             }
           },
