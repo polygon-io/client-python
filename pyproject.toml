@@ -38,7 +38,7 @@ sphinx-rtd-theme = "^1.0.0"
 # keep this in sync with docs/requirements.txt for readthedocs.org
 sphinx-autodoc-typehints = "^1.18.3"
 types-certifi = "^2021.10.8"
-types-setuptools = "^57.4.17"
+types-setuptools = "^57.4.18"
 pook = "^1.0.2"
 
 [build-system]
