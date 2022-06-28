@@ -1,4 +1,5 @@
 from typing import Optional, List
+
 from ...modelclass import modelclass
 
 
@@ -78,6 +79,9 @@ class TickerDetails:
     cik: Optional[str] = None
     composite_figi: Optional[str] = None
     currency_name: Optional[str] = None
+    currency_symbol: Optional[str] = None
+    base_currency_name: Optional[str] = None
+    base_currency_symbol: Optional[str] = None
     delisted_utc: Optional[str] = None
     description: Optional[str] = None
     ticker_root: Optional[str] = None
