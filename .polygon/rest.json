@@ -3999,6 +3999,15 @@
               ]
             },
             "example": "gainers"
+          },
+          {
+            "name": "include_otc",
+            "in": "query",
+            "description": "Include OTC securities in the response. Default is false (don't include OTC securities).\n",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
