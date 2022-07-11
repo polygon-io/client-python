@@ -17,7 +17,7 @@ class SnapshotClient(BaseClient):
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        include_otc: bool = False,
+        include_otc: Optional[bool] = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
@@ -26,6 +26,7 @@ class SnapshotClient(BaseClient):
 
         :param market_type: Which market to get a snapshot of.
         :param tickers: A comma separated list of tickers to get snapshots for.
+        :param include_otc: Include OTC securities in the response. Default is false (don't include OTC securities).
         :return: List of Snapshots
         """
         url = f"/v2/snapshot/locale/us/markets/{market_type}/tickers"
@@ -44,6 +45,7 @@ class SnapshotClient(BaseClient):
         market_type: Optional[Union[str, SnapshotMarketType]],
         direction: Union[str, Direction],
         params: Optional[Dict[str, Any]] = None,
+        include_otc: bool = False,
         raw: bool = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
@@ -55,6 +57,7 @@ class SnapshotClient(BaseClient):
 
         :param market_type: Which market to get a snapshot of.
         :param direction: The direction ("gainers" or "losers")
+        :param include_otc: Include OTC securities in the response. Default is false (don't include OTC securities).
         :return: List of Snapshots
         """
         url = f"/v2/snapshot/locale/us/markets/{market_type}/{direction}"
