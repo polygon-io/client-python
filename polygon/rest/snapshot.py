@@ -45,7 +45,7 @@ class SnapshotClient(BaseClient):
         market_type: Optional[Union[str, SnapshotMarketType]],
         direction: Union[str, Direction],
         params: Optional[Dict[str, Any]] = None,
-        include_otc: bool = False,
+        include_otc: Optional[bool] = False,
         raw: bool = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
