@@ -2811,7 +2811,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               },
                               "otc": {
@@ -2996,7 +2996,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -3227,7 +3227,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               },
                               "otc": {
@@ -4806,7 +4806,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -4977,7 +4977,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -5580,7 +5580,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -5765,7 +5765,7 @@
                                 "description": "The volume weighted average price."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -5997,7 +5997,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -7475,7 +7475,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -7660,7 +7660,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -7891,7 +7891,7 @@
                                 "description": "The Unix Msec timestamp for the start of the aggregate window."
                               },
                               "n": {
-                                "type": "number",
+                                "type": "integer",
                                 "description": "The number of transactions in the aggregate window."
                               }
                             }
@@ -9753,7 +9753,7 @@
         "description": "The milliseconds of latency for the query results."
       },
       "NumberOfItems": {
-        "type": "number",
+        "type": "integer",
         "description": "The number of transactions in the aggregate window."
       },
       "OTC": {
@@ -9895,7 +9895,7 @@
                   "description": "The Unix Msec timestamp for the start of the aggregate window."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 }
               }
@@ -9950,7 +9950,7 @@
                   "description": "The Unix Msec timestamp for the start of the aggregate window."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 },
                 "otc": {
@@ -10005,7 +10005,7 @@
                   "description": "The Unix Msec timestamp for the start of the aggregate window."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 },
                 "otc": {
@@ -10064,7 +10064,7 @@
                   "description": "The Unix Msec timestamp for the start of the aggregate window."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 }
               }
@@ -10115,7 +10115,7 @@
                   "description": "The Unix Msec timestamp for the start of the aggregate window."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 }
               }
@@ -10170,7 +10170,7 @@
                   "description": "The Unix Msec timestamp for the start of the aggregate window."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 }
               }
@@ -13065,7 +13065,7 @@
                   "description": "The volume weighted average price."
                 },
                 "n": {
-                  "type": "number",
+                  "type": "integer",
                   "description": "The number of transactions in the aggregate window."
                 }
               }
