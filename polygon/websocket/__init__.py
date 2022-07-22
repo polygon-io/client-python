@@ -132,11 +132,11 @@ class WebSocketClient:
 
                     if len(cmsg) > 0:
                         await processor(cmsg)  # type: ignore
-            except ConnectionClosedOK:
-                logger.debug("connection closed (OK)")
+            except ConnectionClosedOK as e:
+                logger.debug("connection closed (OK): %s", e)
                 return
-            except ConnectionClosedError:
-                logger.debug("connection closed (ERR)")
+            except ConnectionClosedError as e:
+                logger.debug("connection closed (ERR): %s", e)
                 reconnects += 1
                 self.scheduled_subs = set(self.subs)
                 self.subs = set()
