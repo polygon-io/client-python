@@ -7,6 +7,7 @@ class Feed(Enum):
     Nasdaq = "nasdaqfeed.polygon.io"
     PolyFeed = "polyfeed.polygon.io"
     PolyFeedPlus = "polyfeedplus.polygon.io"
+    StarterFeed = "starterfeed.polygon.io"
 
 
 class Market(Enum):
