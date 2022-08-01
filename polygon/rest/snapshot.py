@@ -11,7 +11,7 @@ from urllib3 import HTTPResponse
 
 
 def get_locale(market_type: Union[SnapshotMarketType, str]):
-    if market_type == SnapshotMarketType.STOCKS:
+    if market_type == SnapshotMarketType.STOCKS.value:
         return "us"
 
     return "global"
