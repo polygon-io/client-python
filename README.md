@@ -17,10 +17,13 @@ section in our docs or view the [examples](./examples) directory.
 
 ## Contributing
 
-For now, we're generally not accepting pull requests from outside contributors
-but we're open to bug reports and feature requests. Or if you have more general
-feedback, feel free to reach out on
-our [Slack channel](https://polygon.io/contact).
+If you found a bug or have an idea for a new feature, please first discuss it with us by
+[submitting a new issue](https://github.com/polygon-io/client-python/issues/new/choose).
+We're also open to volunteers if you want to submit a PR for any open issues but
+please discuss it with us beforehand. PRs that aren't linked to an existing issue or
+discussed with us ahead of time will generally be declined. If you have more general
+feedback or want to discuss using this client with other users, feel free to reach out
+on our [Slack channel](https://polygon-io.slack.com/archives/C03FRFN7UF3).
 
 ## Release planning
 This client will attempt to follow the release cadence of our API.
