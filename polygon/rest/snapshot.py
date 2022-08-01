@@ -10,10 +10,17 @@ from .models import (
 from urllib3 import HTTPResponse
 
 
+def get_locale(market_type: Union[SnapshotMarketType, str]):
+    if market_type == SnapshotMarketType.STOCKS:
+        return "us"
+
+    return "global"
+
+
 class SnapshotClient(BaseClient):
     def get_snapshot_all(
         self,
-        market_type: Optional[Union[str, SnapshotMarketType]],
+        market_type: Union[str, SnapshotMarketType],
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -29,7 +36,8 @@ class SnapshotClient(BaseClient):
         :param include_otc: Include OTC securities in the response. Default is false (don't include OTC securities).
         :return: List of Snapshots
         """
-        url = f"/v2/snapshot/locale/us/markets/{market_type}/tickers"
+        locale = get_locale(market_type)
+        url = f"/v2/snapshot/locale/{locale}/markets/{market_type}/tickers"
         if type(tickers) is list:
             tickers = ",".join(tickers)
         return self._get(
@@ -42,7 +50,7 @@ class SnapshotClient(BaseClient):
 
     def get_snapshot_direction(
         self,
-        market_type: Optional[Union[str, SnapshotMarketType]],
+        market_type: Union[str, SnapshotMarketType],
         direction: Union[str, Direction],
         params: Optional[Dict[str, Any]] = None,
         include_otc: Optional[bool] = False,
@@ -60,7 +68,8 @@ class SnapshotClient(BaseClient):
         :param include_otc: Include OTC securities in the response. Default is false (don't include OTC securities).
         :return: List of Snapshots
         """
-        url = f"/v2/snapshot/locale/us/markets/{market_type}/{direction}"
+        locale = get_locale(market_type)
+        url = f"/v2/snapshot/locale/{locale}/markets/{market_type}/{direction}"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_direction, locals()),
@@ -71,7 +80,7 @@ class SnapshotClient(BaseClient):
 
     def get_snapshot_ticker(
         self,
-        market_type: Optional[Union[str, SnapshotMarketType]],
+        market_type: Union[str, SnapshotMarketType],
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -85,7 +94,8 @@ class SnapshotClient(BaseClient):
         :param ticker: The ticker symbol.
         :return: List of Snapshots
         """
-        url = f"/v2/snapshot/locale/us/markets/{market_type}/tickers/{ticker}"
+        locale = get_locale(market_type)
+        url = f"/v2/snapshot/locale/{locale}/markets/{market_type}/tickers/{ticker}"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_ticker, locals()),
