@@ -506,7 +506,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-urllib3"
-version = "1.26.16"
+version = "1.26.20"
 description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
@@ -564,7 +564,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "27324d8d6c8ce180fcd8fdbadc440bb47a7f8f76ea105b45d762929e19644e05"
+content-hash = "fe72000ba507dd91ecc9600b2b8592c2c028f8ca336b1cccaaa39980c0cacb4a"
 
 [metadata.files]
 alabaster = [
@@ -840,8 +840,8 @@ types-setuptools = [
     {file = "types_setuptools-63.2.2-py3-none-any.whl", hash = "sha256:a370df7a1e0dc856af9d998234f6e2ab04f30f25b8e1410f6db65910979f6252"},
 ]
 types-urllib3 = [
-    {file = "types-urllib3-1.26.16.tar.gz", hash = "sha256:8bb3832c684c30cbed40b96e28bc04703becb2b97d82ac65ba4b968783453b0e"},
-    {file = "types_urllib3-1.26.16-py3-none-any.whl", hash = "sha256:20588c285e5ca336d908d2705994830a83cfb6bda40fc356bbafaf430a262013"},
+    {file = "types-urllib3-1.26.20.tar.gz", hash = "sha256:1fb6e2af519a7216a19dd6be8cd2ee787b402a754ccb4a13ca1c0e5b202aea5a"},
+    {file = "types_urllib3-1.26.20-py3-none-any.whl", hash = "sha256:6249b6223226cb2012db3b4ff6945c9cb0e12ece9b24f5e29787c4f05028a979"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.2.0-py3-none-any.whl", hash = "sha256:6657594ee297170d19f67d55c05852a874e7eb634f4f753dbd667855e07c1708"},
