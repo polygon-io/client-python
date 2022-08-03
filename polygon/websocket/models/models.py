@@ -39,7 +39,7 @@ class EquityAgg:
             d.get("z", None),
             d.get("s", None),
             d.get("e", None),
-            d.get("o", None),
+            d.get("otc", None),
         )
 
 
@@ -145,6 +145,7 @@ class EquityQuote:
     ask_price: Optional[float] = None
     ask_size: Optional[int] = None
     condition: Optional[int] = None
+    indicators: Optional[List[int]] = None
     timestamp: Optional[int] = None
     tape: Optional[int] = None
     sequence_number: Optional[int] = None
@@ -161,6 +162,7 @@ class EquityQuote:
             d.get("ap", None),
             d.get("as", None),
             d.get("c", None),
+            d.get("i", None),
             d.get("t", None),
             d.get("z", None),
             d.get("q", None),
