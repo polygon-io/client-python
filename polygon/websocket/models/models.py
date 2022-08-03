@@ -39,7 +39,7 @@ class EquityAgg:
             d.get("z", None),
             d.get("s", None),
             d.get("e", None),
-            d.get("o", None),
+            d.get("otc", None),
         )
 
 
