@@ -79,7 +79,8 @@ class TradesClient(BaseClient):
         """
         Get the most recent trade for a ticker.
 
-        :param ticker: The ticker symbol of the asset
+        :param from_: The "from" symbol of the pair.
+        :param to: The "to" symbol of the pair.
         :param params: Any additional query params
         :param raw: Return raw object instead of results object
         :return: Last trade
