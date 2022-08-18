@@ -4,6 +4,7 @@ from typing import List
 
 c = WebSocketClient(market=Market.Crypto, subscriptions=["XA.*"])
 
+
 def handle_msg(msgs: List[WebSocketMessage]):
     for m in msgs:
         print(m)
