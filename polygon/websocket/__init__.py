@@ -33,7 +33,7 @@ class WebSocketClient:
         """
         Initialize a Polygon WebSocketClient.
 
-        :param api_key: Your API keYour API key.
+        :param api_key: Your API key.
         :param feed: The feed to subscribe to.
         :param raw: Whether to pass raw Union[str, bytes] to user callback.
         :param verbose: Whether to log client and server status messages.
