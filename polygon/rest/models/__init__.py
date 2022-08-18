@@ -1,5 +1,6 @@
 from .common import *
 from .aggs import *
+from .indicators import *
 from .trades import *
 from .quotes import *
 from .markets import *
