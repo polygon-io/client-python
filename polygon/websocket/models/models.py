@@ -56,7 +56,7 @@ class CurrencyAgg:
     vwap: Optional[float] = None
     start_timestamp: Optional[int] = None
     end_timestamp: Optional[int] = None
-    avg_trade_size: Optional[int] = None
+    avg_trade_size: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
