@@ -1,7 +1,7 @@
 {
     "status": "OK",
     "request_id": "6a7e466379af0a71039d60cc78e72282",
-    "next_url": "https://api.polygon.io/v1/indicators/SMA/AAPL?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZ",
+    "next_url": "https://api.polygon.io/v1/indicators/sma/AAPL?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZ",
     "results": {
         "values":[
             {
@@ -40,7 +40,7 @@
                     "n": 1
                 }
             ],
-            "url": "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/1626912000000/1629590400000?adjusted=true&limit=1&sort=desc"
+            "url": "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/1626912000000/1629590400000?adjusted=true&limit=50000&sort=desc"
         }
     }
 }

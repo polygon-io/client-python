@@ -1,7 +1,8 @@
 from sqlite3 import Timestamp
 from typing import Optional, Any, Dict, List, Union
 from ...modelclass import modelclass
-from aggs import Agg
+from .aggs import Agg
+
 
 @modelclass
 class IndicatorValue:
@@ -12,9 +13,10 @@ class IndicatorValue:
     @staticmethod
     def from_dict(d):
         return IndicatorValue(
-            d.get("timestamp", None),
-            d.get("value", None),
+            timestamp=d.get("timestamp", None),
+            value=d.get("value", None),
         )
+
 
 @modelclass
 class MACDIndicatorValue:
@@ -27,11 +29,12 @@ class MACDIndicatorValue:
     @staticmethod
     def from_dict(d):
         return MACDIndicatorValue(
-            d.get("timestamp", None),
-            d.get("value", None),
-            d.get("histogram", None),
-            d.get("signal", None),
+            timestamp=d.get("timestamp", None),
+            value=d.get("value", None),
+            signal=d.get("histogram", None),
+            histogram=d.get("signal", None),
         )
+
 
 @modelclass
 class Underlying:
@@ -42,21 +45,22 @@ class Underlying:
     @staticmethod
     def from_dict(d):
         return Underlying(
-            d.get("values", None),
-            d.get("underlying", None),
+            url=d.get("url", None),
+            aggregates=[Agg.from_dict(a) for a in d.get("aggregates", [])],
         )
+
 
 @modelclass
 class SingleIndicatorResults:
     "Contains one datum for all MACD values."
     values: Optional[List[IndicatorValue]] = None
-    underlying: Optional[float] = None
+    underlying: Optional[Underlying] = None
 
     @staticmethod
     def from_dict(d):
         return SingleIndicatorResults(
-            d.get("values", None),
-            d.get("underlying", None),
+            values=[IndicatorValue.from_dict(v) for v in (d.get("values", []))],
+            underlying=Underlying.from_dict(d.get("underlying", None)),
         )
 
 
@@ -64,11 +68,11 @@ class SingleIndicatorResults:
 class MACDIndicatorResults:
     "Contains one datum for all MACD values."
     values: Optional[List[MACDIndicatorValue]] = None
-    underlying: Optional[float] = None
+    underlying: Optional[Underlying] = None
 
     @staticmethod
     def from_dict(d):
         return MACDIndicatorResults(
-            d.get("values", None),
-            d.get("underlying", None),
+            values=[MACDIndicatorValue.from_dict(v) for v in (d.get("values", []))],
+            underlying=Underlying.from_dict(d.get("underlying", None)),
         )

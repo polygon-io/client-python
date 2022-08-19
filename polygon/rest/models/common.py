@@ -86,6 +86,7 @@ class Precision(Enum):
     THREE = 3
     FOUR = 4
 
+
 class SeriesType(Enum):
     OPEN = "open"
     CLOSE = "close"

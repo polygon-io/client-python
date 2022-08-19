@@ -2,6 +2,7 @@ from .aggs import AggsClient
 from .trades import TradesClient
 from .quotes import QuotesClient
 from .snapshot import SnapshotClient
+from .indicators import IndicatorsClient
 from .reference import (
     MarketsClient,
     TickersClient,
@@ -32,6 +33,7 @@ class RESTClient(
     ConditionsClient,
     ExchangesClient,
     ContractsClient,
+    IndicatorsClient,
 ):
     def __init__(
         self,
