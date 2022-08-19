@@ -88,6 +88,6 @@ class Precision(Enum):
 
 class SeriesType(Enum):
     OPEN = "open"
-    CLOSE = "closer"
+    CLOSE = "close"
     HIGH = "high"
     LOW = "low"
