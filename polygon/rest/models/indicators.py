@@ -65,9 +65,7 @@ class SingleIndicatorResults:
 
 
 SMAIndicatorResults = SingleIndicatorResults
-
 EMAIndicatorResults = SingleIndicatorResults
-
 RSIIndicatorResults = SingleIndicatorResults
 
 

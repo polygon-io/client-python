@@ -3,6 +3,8 @@ from polygon.rest.models.aggs import Agg
 from polygon.rest.models.indicators import (
     SingleIndicatorResults,
     SMAIndicatorResults,
+    EMAIndicatorResults,
+    RSIIndicatorResults,
     MACDIndicatorResults,
     IndicatorValue,
     MACDIndicatorValue,
@@ -64,7 +66,7 @@ class IndicatorsTest(BaseTest):
             timestamp_gte="1477972800000",
         )
 
-        expected = SingleIndicatorResults(
+        expected = EMAIndicatorResults(
             values=[
                 IndicatorValue(timestamp=1478232000000, value=110.96883950617286),
                 IndicatorValue(timestamp=1478145600000, value=112.03325925925927),
@@ -156,7 +158,7 @@ class IndicatorsTest(BaseTest):
             timestamp_gt="2022-08-18",
         )
 
-        expected = SingleIndicatorResults(
+        expected = RSIIndicatorResults(
             values=[
                 IndicatorValue(timestamp=1660928400000, value=172.46568754351864),
                 IndicatorValue(timestamp=1660927500000, value=172.43049675862588),

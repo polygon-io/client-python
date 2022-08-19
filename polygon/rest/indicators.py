@@ -1,5 +1,10 @@
 from polygon.rest.models.common import SeriesType
-from polygon.rest.models.indicators import SMAIndicatorResults, EMAIndicatorResults, RSIIndicatorResults, MACDIndicatorResults
+from polygon.rest.models.indicators import (
+    SMAIndicatorResults,
+    EMAIndicatorResults,
+    RSIIndicatorResults,
+    MACDIndicatorResults,
+)
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from .models import Order
