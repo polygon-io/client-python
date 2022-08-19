@@ -38,7 +38,7 @@ class MACDIndicatorValue:
 
 @modelclass
 class Underlying:
-    "Contains one datum for all MACD values."
+    "Contains the URL to call to get the aggs used for building the indicator."
     url: Optional[str] = None
     aggregates: Optional[List[Agg]] = None
 
@@ -52,7 +52,7 @@ class Underlying:
 
 @modelclass
 class SingleIndicatorResults:
-    "Contains one datum for all MACD values."
+    "Contains indicator values and Underlying."
     values: Optional[List[IndicatorValue]] = None
     underlying: Optional[Underlying] = None
 
@@ -64,9 +64,16 @@ class SingleIndicatorResults:
         )
 
 
+SMAIndicatorResults = SingleIndicatorResults
+
+EMAIndicatorResults = SingleIndicatorResults
+
+RSIIndicatorResults = SingleIndicatorResults
+
+
 @modelclass
 class MACDIndicatorResults:
-    "Contains one datum for all MACD values."
+    "Contains indicator values and Underlying."
     values: Optional[List[MACDIndicatorValue]] = None
     underlying: Optional[Underlying] = None
 

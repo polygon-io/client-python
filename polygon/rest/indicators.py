@@ -1,5 +1,5 @@
 from polygon.rest.models.common import SeriesType
-from polygon.rest.models.indicators import SingleIndicatorResults, MACDIndicatorResults
+from polygon.rest.models.indicators import SMAIndicatorResults, EMAIndicatorResults, RSIIndicatorResults, MACDIndicatorResults
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from .models import Order
@@ -25,7 +25,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
-    ) -> Union[SingleIndicatorResults, HTTPResponse]:
+    ) -> Union[SMAIndicatorResults, HTTPResponse]:
         """
         Get SMA values for a given ticker over a given range with the specified parameters
 
@@ -57,7 +57,7 @@ class IndicatorsClient(BaseClient):
             path=url,
             params=self._get_params(self.get_sma, locals()),
             result_key="results",
-            deserializer=SingleIndicatorResults.from_dict,
+            deserializer=SMAIndicatorResults.from_dict,
             raw=raw,
         )
 
@@ -78,7 +78,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
-    ) -> Union[SingleIndicatorResults, HTTPResponse]:
+    ) -> Union[EMAIndicatorResults, HTTPResponse]:
         """
         Get EMA values for a given ticker over a given range with the specified parameters
 
@@ -110,7 +110,7 @@ class IndicatorsClient(BaseClient):
             path=url,
             params=self._get_params(self.get_ema, locals()),
             result_key="results",
-            deserializer=SingleIndicatorResults.from_dict,
+            deserializer=EMAIndicatorResults.from_dict,
             raw=raw,
         )
 
@@ -131,7 +131,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
-    ) -> Union[SingleIndicatorResults, HTTPResponse]:
+    ) -> Union[RSIIndicatorResults, HTTPResponse]:
         """
         Get SMA values for a given ticker over a given range with the specified parameters
 
@@ -163,7 +163,7 @@ class IndicatorsClient(BaseClient):
             path=url,
             params=self._get_params(self.get_rsi, locals()),
             result_key="results",
-            deserializer=SingleIndicatorResults.from_dict,
+            deserializer=RSIIndicatorResults.from_dict,
             raw=raw,
         )
 

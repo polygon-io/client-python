@@ -2,6 +2,7 @@ from base import BaseTest
 from polygon.rest.models.aggs import Agg
 from polygon.rest.models.indicators import (
     SingleIndicatorResults,
+    SMAIndicatorResults,
     MACDIndicatorResults,
     IndicatorValue,
     MACDIndicatorValue,
@@ -18,7 +19,7 @@ class IndicatorsTest(BaseTest):
             timestamp="1483958600",
             expand_underlying=True,
         )
-        expected = SingleIndicatorResults(
+        expected = SMAIndicatorResults(
             values=[
                 IndicatorValue(timestamp=1578027600, value=141.34),
                 IndicatorValue(timestamp=1578035600, value=139.33),
