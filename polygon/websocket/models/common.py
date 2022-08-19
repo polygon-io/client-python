@@ -20,8 +20,8 @@ class Market(Enum):
 class EventType(Enum):
     EquityAgg = "A"
     EquityAggMin = "AM"
-    CryptoAgg = "CA"
-    ForexAgg = "XA"
+    CryptoAgg = "XA"
+    ForexAgg = "CA"
     EquityTrade = "T"
     CryptoTrade = "XT"
     EquityQuote = "Q"
