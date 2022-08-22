@@ -51,7 +51,7 @@ class VXClient(BaseClient):
         :param period_of_report_date_gte: period_of_report_date greater than or equal to.
         :param timeframe: Query by timeframe.
         :param include_sources: Whether or not to include the xpath and formula attributes for each financial data point.
-        :param limit: Limit the number of results returned, default is 1 and max is 100.
+        :param limit: Limit the number of results returned per-page, default is 1 and max is 100.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params
