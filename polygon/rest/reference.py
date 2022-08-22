@@ -101,7 +101,7 @@ class TickersClient(BaseClient):
         :param date: Specify a point in time to retrieve tickers available on that date. Defaults to the most recent available date.
         :param search: Search for terms within the ticker and/or company name.
         :param active: Specify if the tickers returned should be actively traded on the queried date. Default is true.
-        :param limit: Limit the size of the response, default is 100 and max is 1000.
+        :param limit: Limit the size of the response per-page, default is 100 and max is 1000.
         :param sort: The field to sort the results on. Default is ticker. If the search query parameter is present, sort is ignored and results are ordered by relevance.
         :param order: The order to sort the results on. Default is asc (ascending).
         :param params: Any additional query params.
@@ -166,7 +166,7 @@ class TickersClient(BaseClient):
 
         :param ticker: Return results that contain this ticker.
         :param published_utc: Return results published on, before, or after this date.
-        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param limit: Limit the number of results returned per-page, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
@@ -243,7 +243,7 @@ class SplitsClient(BaseClient):
         :param execution_date_gt: Execution date greater than.
         :param execution_date_gte: Execution date greater than or equal to.
         :param reverse_split: Query for reverse stock splits. A split ratio where split_from is greater than split_to represents a reverse split. By default this filter is not used.
-        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param limit: Limit the number of results returned per-page, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
@@ -332,7 +332,7 @@ class DividendsClient(BaseClient):
         :param frequency: Query by the number of times per year the dividend is paid out. Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), and 12 (monthly).
         :param cash_amount: Query by the cash amount of the dividend.
         :param dividend_type: Query by the type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD. Special Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.
-        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param limit: Limit the number of results returned per-page, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
@@ -369,7 +369,7 @@ class ConditionsClient(BaseClient):
         :param data_type: Data types that this condition applies to.
         :param id: Filter for conditions with a given ID.
         :param sip: Filter by SIP. If the condition contains a mapping for that SIP, the condition will be returned.
-        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param limit: Limit the number of results returned per-page, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
@@ -476,7 +476,7 @@ class ContractsClient(BaseClient):
         :param as_of: Specify a point in time for contracts as of this date with format YYYY-MM-DD.
         :param strike_price: Query by strike price of a contract.
         :param expired: Query for expired contracts.
-        :param limit: Limit the number of results returned, default is 10 and max is 1000.
+        :param limit: Limit the number of results returned per-page, default is 10 and max is 1000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
