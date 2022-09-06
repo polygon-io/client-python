@@ -152,7 +152,6 @@ class IndicatorsTest(BaseTest):
         indicators = self.c.get_rsi(
             ticker="AAPL",
             window=20,
-            multiplier=15,
             timespan="minute",
             adjusted=True,
             timestamp_gt="2022-08-18",

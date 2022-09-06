@@ -21,7 +21,6 @@ class IndicatorsClient(BaseClient):
         timestamp_lte: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gt: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gte: Optional[Union[str, int, datetime, date]] = None,
-        multiplier: Optional[int] = None,
         timespan: Optional[str] = None,
         window: Optional[int] = None,
         adjusted: Optional[bool] = None,
@@ -35,7 +34,6 @@ class IndicatorsClient(BaseClient):
         Get SMA values for a given ticker over a given range with the specified parameters
 
         :param ticker: The ticker symbol
-        :param multiplier: The size of the timespan multiplier used to create underlying aggregates
         :param timespan: The size of the underlying aggregate time window
         :param window: The window size used to calculate the simple moving average. i.e. a window size of 10 with daily
              aggregates would result in a 10-day moving average
@@ -74,7 +72,6 @@ class IndicatorsClient(BaseClient):
         timestamp_lte: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gt: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gte: Optional[Union[str, int, datetime, date]] = None,
-        multiplier: Optional[int] = None,
         timespan: Optional[str] = None,
         window: Optional[int] = None,
         adjusted: Optional[bool] = None,
@@ -88,7 +85,6 @@ class IndicatorsClient(BaseClient):
         Get EMA values for a given ticker over a given range with the specified parameters
 
         :param ticker: The ticker symbol
-        :param multiplier: The size of the timespan multiplier used to create underlying aggregates
         :param timespan: The size of the underlying aggregate time window
         :param window: The window size used to calculate the exponential moving average. i.e. a window size of 10 with daily
              aggregates would result in a 10-day moving average
@@ -127,7 +123,6 @@ class IndicatorsClient(BaseClient):
         timestamp_lte: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gt: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gte: Optional[Union[str, int, datetime, date]] = None,
-        multiplier: Optional[int] = None,
         timespan: Optional[str] = None,
         window: Optional[int] = None,
         adjusted: Optional[bool] = None,
@@ -141,7 +136,6 @@ class IndicatorsClient(BaseClient):
         Get SMA values for a given ticker over a given range with the specified parameters
 
         :param ticker: The ticker symbol
-        :param multiplier: The size of the timespan multiplier used to create underlying aggregates
         :param timespan: The size of the underlying aggregate time window
         :param window: The window size used to calculate the simple moving average. i.e. a window size of 10 with daily
              aggregates would result in a 10-day moving average
@@ -180,7 +174,6 @@ class IndicatorsClient(BaseClient):
         timestamp_lte: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gt: Optional[Union[str, int, datetime, date]] = None,
         timestamp_gte: Optional[Union[str, int, datetime, date]] = None,
-        multiplier: Optional[int] = None,
         timespan: Optional[str] = None,
         short_window: Optional[int] = None,
         long_window: Optional[int] = None,
@@ -196,7 +189,6 @@ class IndicatorsClient(BaseClient):
         Get SMA values for a given ticker over a given range with the specified parameters
 
         :param ticker: The ticker symbol
-        :param multiplier: The size of the timespan multiplier used to create underlying aggregates
         :param timespan: The size of the underlying aggregate time window
         :param short_window: The short window size used to calculate the MACD data
         :param long_window: The long window size used to calculate the MACD data
