@@ -1,6 +1,6 @@
 from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
-from typing import List
+from polygon.websocket.models import WebSocketMessage, EquityQuote
+from typing import List, cast
 import time
 
 c = WebSocketClient(subscriptions=["Q.SPY"])
@@ -8,8 +8,10 @@ c = WebSocketClient(subscriptions=["Q.SPY"])
 
 def handle_msg(msgs: List[WebSocketMessage]):
     for m in msgs:
-        now = time.time() * 1000
-        print(now, m.timestamp, now - m.timestamp)
+        q: EquityQuote = cast(EquityQuote, m)
+        if q.timestamp is not None:
+            now = time.time() * 1000
+            print(now, q.timestamp, now - q.timestamp)
 
 
 c.run(handle_msg)
