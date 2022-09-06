@@ -37,7 +37,7 @@ class QuotesClient(BaseClient):
         :param timestamp_lte: Timestamp less than or equal to
         :param timestamp_gt: Timestamp greater than
         :param timestamp_gte: Timestamp greater than or equal to
-        :param limit: Limit the number of results returned, default is 10 and max is 50000.
+        :param limit: Limit the number of results returned per-page, default is 10 and max is 50000.
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.

@@ -29,7 +29,7 @@ class TradesClient(BaseClient):
         :param timestamp_lte: Timestamp less than or equal to
         :param timestamp_gt: Timestamp greater than
         :param timestamp_gte: Timestamp greater than or equal to
-        :param limit: Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
+        :param limit: Limits the number of base aggregates queried per-page to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
         :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
         :param order: Order results based on the sort field
         :param params: Any additional query params
