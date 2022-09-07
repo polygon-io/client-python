@@ -133,7 +133,7 @@ class IndicatorsClient(BaseClient):
         raw: bool = False,
     ) -> Union[RSIIndicatorResults, HTTPResponse]:
         """
-        Get SMA values for a given ticker over a given range with the specified parameters
+        Get RSI values for a given ticker over a given range with the specified parameters
 
         :param ticker: The ticker symbol
         :param timespan: The size of the underlying aggregate time window
@@ -186,7 +186,7 @@ class IndicatorsClient(BaseClient):
         raw: bool = False,
     ) -> Union[MACDIndicatorResults, HTTPResponse]:
         """
-        Get SMA values for a given ticker over a given range with the specified parameters
+        Get MACD values for a given ticker over a given range with the specified parameters
 
         :param ticker: The ticker symbol
         :param timespan: The size of the underlying aggregate time window
