@@ -8,7 +8,7 @@ from polygon.rest.models.indicators import (
     MACDIndicatorResults,
     IndicatorValue,
     MACDIndicatorValue,
-    Underlying,
+    IndicatorUnderlying,
 )
 
 
@@ -27,7 +27,7 @@ class IndicatorsTest(BaseTest):
                 IndicatorValue(timestamp=1578035600, value=139.33),
                 IndicatorValue(timestamp=1578049600, value=138.22),
             ],
-            underlying=Underlying(
+            underlying=IndicatorUnderlying(
                 url="https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/1626912000000/1629590400000?adjusted=true&limit=50000&sort=desc",
                 aggregates=[
                     Agg(
@@ -73,7 +73,7 @@ class IndicatorsTest(BaseTest):
                 IndicatorValue(timestamp=1478059200000, value=113.1348888888889),
                 IndicatorValue(timestamp=1477972800000, value=113.90733333333334),
             ],
-            underlying=Underlying(
+            underlying=IndicatorUnderlying(
                 url="http://localhost:8081/v2/aggs/ticker/AAPL/range/1/day/1477368000000/1478393873000?adjusted=false&limit=50000&sort=desc",
                 aggregates=[],
             ),
@@ -140,7 +140,7 @@ class IndicatorsTest(BaseTest):
                     histogram=178.5731174261227,
                 ),
             ],
-            underlying=Underlying(
+            underlying=IndicatorUnderlying(
                 url="http://localhost:8081/v2/aggs/ticker/SPY/range/1/day/1657670400000/1660926503659?limit=50000&sort=desc",
                 aggregates=[],
             ),
@@ -197,7 +197,7 @@ class IndicatorsTest(BaseTest):
                 IndicatorValue(timestamp=1660896900000, value=173.8480667500587),
                 IndicatorValue(timestamp=1660896000000, value=173.97207377638065),
             ],
-            underlying=Underlying(
+            underlying=IndicatorUnderlying(
                 url="https://api.polygon.io/v2/aggs/ticker/AAPL/range/15/minute/1660521600000/1660928746001?limit=50000&sort=desc",
                 aggregates=[],
             ),

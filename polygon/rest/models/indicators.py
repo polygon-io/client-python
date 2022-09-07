@@ -37,14 +37,14 @@ class MACDIndicatorValue:
 
 
 @modelclass
-class Underlying:
+class IndicatorUnderlying:
     "Contains the URL to call to get the aggs used for building the indicator."
     url: Optional[str] = None
     aggregates: Optional[List[Agg]] = None
 
     @staticmethod
     def from_dict(d):
-        return Underlying(
+        return IndicatorUnderlying(
             url=d.get("url", None),
             aggregates=[Agg.from_dict(a) for a in d.get("aggregates", [])],
         )
@@ -54,13 +54,13 @@ class Underlying:
 class SingleIndicatorResults:
     "Contains indicator values and Underlying."
     values: Optional[List[IndicatorValue]] = None
-    underlying: Optional[Underlying] = None
+    underlying: Optional[IndicatorUnderlying] = None
 
     @staticmethod
     def from_dict(d):
         return SingleIndicatorResults(
             values=[IndicatorValue.from_dict(v) for v in (d.get("values", []))],
-            underlying=Underlying.from_dict(d.get("underlying", None)),
+            underlying=IndicatorUnderlying.from_dict(d.get("underlying", None)),
         )
 
 
@@ -73,11 +73,11 @@ RSIIndicatorResults = SingleIndicatorResults
 class MACDIndicatorResults:
     "Contains indicator values and Underlying."
     values: Optional[List[MACDIndicatorValue]] = None
-    underlying: Optional[Underlying] = None
+    underlying: Optional[IndicatorUnderlying] = None
 
     @staticmethod
     def from_dict(d):
         return MACDIndicatorResults(
             values=[MACDIndicatorValue.from_dict(v) for v in (d.get("values", []))],
-            underlying=Underlying.from_dict(d.get("underlying", None)),
+            underlying=IndicatorUnderlying.from_dict(d.get("underlying", None)),
         )
