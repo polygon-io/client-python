@@ -85,3 +85,10 @@ class Precision(Enum):
     TWO = 2
     THREE = 3
     FOUR = 4
+
+
+class SeriesType(Enum):
+    OPEN = "open"
+    CLOSE = "close"
+    HIGH = "high"
+    LOW = "low"
