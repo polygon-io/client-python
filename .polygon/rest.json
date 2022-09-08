@@ -21,7 +21,7 @@
         }
       },
       "AggregateLimitMax50000": {
-        "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n\u003ca href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\"\u003eAggregate Data API Improvements\u003c/a\u003e.\n",
+        "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n<a href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\">Aggregate Data API Improvements</a>.\n",
         "example": 120,
         "in": "query",
         "name": "limit",
@@ -232,7 +232,7 @@
       "AskExchangeId": {
         "allOf": [
           {
-            "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
             "type": "integer"
           },
           {
@@ -252,7 +252,7 @@
       "BidExchangeId": {
         "allOf": [
           {
-            "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
             "type": "integer"
           },
           {
@@ -313,7 +313,7 @@
             "type": "string"
           },
           "figi": {
-            "description": "The OpenFigi project guid for the symbol. (\u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://openfigi.com/\"\u003ehttps://openfigi.com/\u003c/a\u003e)",
+            "description": "The OpenFigi project guid for the symbol. (<a rel=\"nofollow\" target=\"_blank\" href=\"https://openfigi.com/\">https://openfigi.com/</a>)",
             "type": "string"
           },
           "hq_address": {
@@ -333,7 +333,7 @@
             "type": "string"
           },
           "lei": {
-            "description": "The Legal Entity Identifier (LEI) guid for the symbol. (\u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Legal_Entity_Identifier\"\u003ehttps://en.wikipedia.org/wiki/Legal_Entity_Identifier\u003c/a\u003e)",
+            "description": "The Legal Entity Identifier (LEI) guid for the symbol. (<a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Legal_Entity_Identifier\">https://en.wikipedia.org/wiki/Legal_Entity_Identifier</a>)",
             "type": "string"
           },
           "listdate": {
@@ -362,7 +362,7 @@
             "type": "string"
           },
           "sic": {
-            "description": "Standard Industrial Classification (SIC) id for the symbol. (\u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Standard_Industrial_Classification\"\u003ehttps://en.wikipedia.org/wiki/Legal_Entity_Identifier\u003c/a\u003e)",
+            "description": "Standard Industrial Classification (SIC) id for the symbol. (<a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Standard_Industrial_Classification\">https://en.wikipedia.org/wiki/Legal_Entity_Identifier</a>)",
             "type": "integer"
           },
           "similar": {
@@ -385,7 +385,7 @@
             "type": "array"
           },
           "type": {
-            "description": "The type or class of the security.  (\u003ca alt=\"Full List of Ticker Types\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers_types\"\u003eFull List of Ticker Types\u003c/a\u003e)",
+            "description": "The type or class of the security.  (<a alt=\"Full List of Ticker Types\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers_types\">Full List of Ticker Types</a>)",
             "type": "string"
           },
           "updated": {
@@ -403,7 +403,7 @@
       "ConditionTypeMap": {
         "properties": {
           "condition": {
-            "description": "Polygon.io's mapping for condition codes.  For more information, see our \u003ca href=\"https://polygon.io/glossary/us/stocks/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\"\u003eTrade Conditions Glossary\u003c/a\u003e.\n",
+            "description": "Polygon.io's mapping for condition codes.  For more information, see our <a href=\"https://polygon.io/glossary/us/stocks/trade-conditions\" alt=\"Trade Conditions Glossary\" target=\"_blank\">Trade Conditions Glossary</a>.\n",
             "type": "string"
           }
         },
@@ -425,7 +425,7 @@
         "items": {
           "properties": {
             "id": {
-              "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+              "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
               "type": "integer"
             },
             "market": {
@@ -553,7 +553,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                   "type": "integer"
                 }
               },
@@ -577,7 +577,7 @@
                 "type": "array"
               },
               "exchange": {
-                "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                 "type": "integer"
               },
               "price": {
@@ -641,7 +641,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                   "type": "integer"
                 }
               },
@@ -693,7 +693,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                  "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                   "type": "integer"
                 }
               },
@@ -815,7 +815,7 @@
                         "type": "integer"
                       },
                       "x": {
-                        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                         "type": "integer"
                       }
                     },
@@ -824,7 +824,7 @@
                   {
                     "properties": {
                       "x": {
-                        "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                        "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                         "type": "integer"
                       }
                     }
@@ -945,7 +945,7 @@
                       "type": "number"
                     },
                     "x": {
-                      "description": "A map of the exchange ID to number of shares at this price level.\n\u003cbr /\u003e\n\u003cbr /\u003e\n**Example:**\n\u003cbr /\u003e\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n\u003cbr /\u003e\n\u003cbr /\u003e\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
+                      "description": "A map of the exchange ID to number of shares at this price level.\n<br />\n<br />\n**Example:**\n<br />\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n<br />\n<br />\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
                       "type": "object"
                     }
                   },
@@ -967,7 +967,7 @@
                       "type": "number"
                     },
                     "x": {
-                      "description": "A map of the exchange ID to number of shares at this price level.\n\u003cbr /\u003e\n\u003cbr /\u003e\n**Example:**\n\u003cbr /\u003e\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n\u003cbr /\u003e\n\u003cbr /\u003e\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
+                      "description": "A map of the exchange ID to number of shares at this price level.\n<br />\n<br />\n**Example:**\n<br />\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n<br />\n<br />\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
                       "type": "object"
                     }
                   },
@@ -1067,7 +1067,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         }
                       },
@@ -1076,7 +1076,7 @@
                     {
                       "properties": {
                         "x": {
-                          "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                          "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                           "type": "integer"
                         }
                       }
@@ -1210,14 +1210,14 @@
             "type": "integer"
           },
           "x": {
-            "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
             "type": "integer"
           }
         },
         "type": "object"
       },
       "CryptoTradeExchange": {
-        "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+        "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
         "type": "integer"
       },
       "Date": {
@@ -1248,7 +1248,7 @@
               "type": "string"
             },
             "mic": {
-              "description": "The Market Identification Code or MIC as defined in ISO 10383 (\u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\"\u003ehttps://en.wikipedia.org/wiki/Market_Identifier_Code\u003c/a\u003e).",
+              "description": "The Market Identification Code or MIC as defined in ISO 10383 (<a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">https://en.wikipedia.org/wiki/Market_Identifier_Code</a>).",
               "type": "string"
             },
             "name": {
@@ -1269,7 +1269,7 @@
         "type": "array"
       },
       "ExchangeId": {
-        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
         "type": "integer"
       },
       "Financial": {
@@ -1783,7 +1783,7 @@
                 "type": "number"
               },
               "exchange": {
-                "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                 "type": "integer"
               },
               "timestamp": {
@@ -1801,7 +1801,7 @@
         "type": "object"
       },
       "ForexExchangeId": {
-        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
         "type": "integer"
       },
       "ForexGroupedResults": {
@@ -1896,7 +1896,7 @@
                   "type": "integer"
                 },
                 "x": {
-                  "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                  "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                   "type": "integer"
                 }
               },
@@ -1922,7 +1922,7 @@
                 "type": "number"
               },
               "exchange": {
-                "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                 "type": "integer"
               },
               "timestamp": {
@@ -2755,7 +2755,7 @@
             "type": "integer"
           },
           "x": {
-            "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
             "type": "integer"
           }
         },
@@ -3245,7 +3245,7 @@
                     "type": "integer"
                   },
                   "x": {
-                    "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                    "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                     "type": "integer"
                   }
                 },
@@ -3460,7 +3460,7 @@
                       "type": "integer"
                     },
                     "x": {
-                      "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                      "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                       "type": "integer"
                     }
                   },
@@ -3699,7 +3699,7 @@
               "X": {
                 "allOf": [
                   {
-                    "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                    "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                     "type": "integer"
                   },
                   {
@@ -3735,7 +3735,7 @@
               "x": {
                 "allOf": [
                   {
-                    "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                    "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                     "type": "integer"
                   },
                   {
@@ -3797,7 +3797,7 @@
                     "X": {
                       "allOf": [
                         {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         {
@@ -3833,7 +3833,7 @@
                     "x": {
                       "allOf": [
                         {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         {
@@ -3916,7 +3916,7 @@
                 "type": "number"
               },
               "x": {
-                "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                 "type": "integer"
               },
               "z": {
@@ -3992,7 +3992,7 @@
                       "type": "number"
                     },
                     "x": {
-                      "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                      "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                       "type": "integer"
                     },
                     "z": {
@@ -4429,7 +4429,7 @@
                 "type": "number"
               },
               "sic_code": {
-                "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\"\u003eSIC Code List\u003c/a\u003e.\n",
+                "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's <a rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\">SIC Code List</a>.\n",
                 "type": "string"
               },
               "sic_description": {
@@ -4678,7 +4678,7 @@
                           "type": "number"
                         },
                         "exchange": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "timestamp": {
@@ -4879,7 +4879,7 @@
                                 "type": "integer"
                               },
                               "x": {
-                                "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                                "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                 "type": "integer"
                               }
                             },
@@ -5058,7 +5058,7 @@
                                 "type": "integer"
                               },
                               "x": {
-                                "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                 "type": "integer"
                               }
                             },
@@ -10372,7 +10372,7 @@
                           }
                         },
                         "exchange": {
-                          "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.",
+                          "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.",
                           "type": "integer"
                         },
                         "price": {
@@ -10489,7 +10489,7 @@
                           "type": "number"
                         },
                         "exchange": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "timestamp": {
@@ -10877,7 +10877,7 @@
                             "type": "integer"
                           },
                           "x": {
-                            "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                             "type": "integer"
                           }
                         },
@@ -10929,7 +10929,7 @@
                             "type": "integer"
                           },
                           "x": {
-                            "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                            "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                             "type": "integer"
                           }
                         },
@@ -12847,7 +12847,7 @@
     },
     "/v2/aggs/ticker/{cryptoTicker}/range/{multiplier}/{timespan}/{from}/{to}": {
       "get": {
-        "description": "Get aggregate bars for a cryptocurrency pair over a given date range in custom time window sizes.\n\u003cbr /\u003e\n\u003cbr /\u003e\nFor example, if timespan = ‘minute’ and multiplier = ‘5’ then 5-minute bars will be returned.\n",
+        "description": "Get aggregate bars for a cryptocurrency pair over a given date range in custom time window sizes.\n<br />\n<br />\nFor example, if timespan = \u2018minute\u2019 and multiplier = \u20185\u2019 then 5-minute bars will be returned.\n",
         "parameters": [
           {
             "description": "The ticker symbol of the currency pair.",
@@ -12930,7 +12930,7 @@
             }
           },
           {
-            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n\u003ca href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\"\u003eAggregate Data API Improvements\u003c/a\u003e.\n",
+            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n<a href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\">Aggregate Data API Improvements</a>.\n",
             "example": 120,
             "in": "query",
             "name": "limit",
@@ -13250,7 +13250,7 @@
     },
     "/v2/aggs/ticker/{forexTicker}/range/{multiplier}/{timespan}/{from}/{to}": {
       "get": {
-        "description": "Get aggregate bars for a forex pair over a given date range in custom time window sizes.\n\u003cbr /\u003e\n\u003cbr /\u003e\nFor example, if timespan = ‘minute’ and multiplier = ‘5’ then 5-minute bars will be returned.\n",
+        "description": "Get aggregate bars for a forex pair over a given date range in custom time window sizes.\n<br />\n<br />\nFor example, if timespan = \u2018minute\u2019 and multiplier = \u20185\u2019 then 5-minute bars will be returned.\n",
         "parameters": [
           {
             "description": "The ticker symbol of the currency pair.",
@@ -13333,7 +13333,7 @@
             }
           },
           {
-            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n\u003ca href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\"\u003eAggregate Data API Improvements\u003c/a\u003e.\n",
+            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n<a href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\">Aggregate Data API Improvements</a>.\n",
             "example": 120,
             "in": "query",
             "name": "limit",
@@ -13639,7 +13639,7 @@
     },
     "/v2/aggs/ticker/{optionsTicker}/range/{multiplier}/{timespan}/{from}/{to}": {
       "get": {
-        "description": "Get aggregate bars for an option contract over a given date range in custom time window sizes.\n\u003cbr /\u003e\n\u003cbr /\u003e\nFor example, if timespan = ‘minute’ and multiplier = ‘5’ then 5-minute bars will be returned.\n",
+        "description": "Get aggregate bars for an option contract over a given date range in custom time window sizes.\n<br />\n<br />\nFor example, if timespan = \u2018minute\u2019 and multiplier = \u20185\u2019 then 5-minute bars will be returned.\n",
         "parameters": [
           {
             "description": "The ticker symbol of the options contract.",
@@ -13722,7 +13722,7 @@
             }
           },
           {
-            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n\u003ca href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\"\u003eAggregate Data API Improvements\u003c/a\u003e.\n",
+            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n<a href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\">Aggregate Data API Improvements</a>.\n",
             "example": 120,
             "in": "query",
             "name": "limit",
@@ -14038,7 +14038,7 @@
     },
     "/v2/aggs/ticker/{stocksTicker}/range/{multiplier}/{timespan}/{from}/{to}": {
       "get": {
-        "description": "Get aggregate bars for a stock over a given date range in custom time window sizes.\n\u003cbr /\u003e\n\u003cbr /\u003e\nFor example, if timespan = ‘minute’ and multiplier = ‘5’ then 5-minute bars will be returned.\n",
+        "description": "Get aggregate bars for a stock over a given date range in custom time window sizes.\n<br />\n<br />\nFor example, if timespan = \u2018minute\u2019 and multiplier = \u20185\u2019 then 5-minute bars will be returned.\n",
         "parameters": [
           {
             "description": "The ticker symbol of the stock/equity.",
@@ -14121,7 +14121,7 @@
             }
           },
           {
-            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n\u003ca href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\"\u003eAggregate Data API Improvements\u003c/a\u003e.\n",
+            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on \n<a href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\">Aggregate Data API Improvements</a>.\n",
             "example": 120,
             "in": "query",
             "name": "limit",
@@ -14339,7 +14339,7 @@
                           "type": "string"
                         },
                         "X": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "c": {
@@ -14384,7 +14384,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -14540,7 +14540,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -14700,7 +14700,7 @@
                           "type": "integer"
                         },
                         "x": {
-                          "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                           "type": "integer"
                         },
                         "y": {
@@ -14952,7 +14952,7 @@
                       "amp_url": "https://amp.benzinga.com/amp/content/20784086",
                       "article_url": "https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square",
                       "author": "Rachit Vats",
-                      "description": "\u003cp\u003eCathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange \u003cstrong\u003eCoinbase Global Inc \u003c/strong\u003e(NASDAQ: \u003ca class=\"ticker\" href=\"https://www.benzinga.com/stock/coin#NASDAQ\"\u003eCOIN\u003c/a\u003e) worth about $64.49 million on the stock\u0026rsquo;s Friday\u0026rsquo;s dip and also its fourth-straight loss.\u003c/p\u003e\n\u003cp\u003eThe investment firm\u0026rsquo;s \u003cstrong\u003eArk Innovation ETF\u003c/strong\u003e (NYSE: \u003ca class=\"ticker\" href=\"https://www.benzinga.com/stock/arkk#NYSE\"\u003eARKK\u003c/a\u003e) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase\u0026rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.\u003c/p\u003e\n\u003cp\u003eThe New York-based company also added another 3,873 shares of the mobile gaming company \u003cstrong\u003eSkillz Inc\u003c/strong\u003e (NYSE: \u003ca class=\"ticker\" href=\"https://www.benzinga.com/stock/sklz#NYSE\"\u003eSKLZ\u003c/a\u003e), \u003ca href=\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\"\u003ejust a day after\u003c/a\u003e snapping 1.2 million shares of the stock.\u003c/p\u003e\n\u003cp\u003eARKK bought the shares of the company which closed ...\u003c/p\u003e\u003cp\u003e\u003ca href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square\u003eFull story available on Benzinga.com\u003c/a\u003e\u003c/p\u003e",
+                      "description": "<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ: <a class=\"ticker\" href=\"https://www.benzinga.com/stock/coin#NASDAQ\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p>\n<p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE: <a class=\"ticker\" href=\"https://www.benzinga.com/stock/arkk#NYSE\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p>\n<p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE: <a class=\"ticker\" href=\"https://www.benzinga.com/stock/sklz#NYSE\">SKLZ</a>), <a href=\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\">just a day after</a> snapping 1.2 million shares of the stock.</p>\n<p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>",
                       "id": "nJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA",
                       "image_url": "https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720",
                       "keywords": [
@@ -15151,7 +15151,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/tickers": {
       "get": {
-        "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for all traded cryptocurrency symbols.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
+        "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded cryptocurrency symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
             "description": "A comma separated list of tickers to get snapshots for.",
@@ -15298,7 +15298,7 @@
                                         "type": "integer"
                                       },
                                       "x": {
-                                        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                         "type": "integer"
                                       }
                                     },
@@ -15307,7 +15307,7 @@
                                   {
                                     "properties": {
                                       "x": {
-                                        "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                                        "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                         "type": "integer"
                                       }
                                     }
@@ -15448,7 +15448,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}": {
       "get": {
-        "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for a single traded cryptocurrency symbol.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for a single traded cryptocurrency symbol.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "Ticker of the snapshot",
@@ -15601,7 +15601,7 @@
                                       "type": "integer"
                                     },
                                     "x": {
-                                      "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                      "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                       "type": "integer"
                                     }
                                   },
@@ -15610,7 +15610,7 @@
                                 {
                                   "properties": {
                                     "x": {
-                                      "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                                      "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                       "type": "integer"
                                     }
                                   }
@@ -15749,7 +15749,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book": {
       "get": {
-        "description": "Get the current level 2 book of a single ticker. This is the combined book from all of the exchanges.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the current level 2 book of a single ticker. This is the combined book from all of the exchanges.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The cryptocurrency ticker.",
@@ -15829,7 +15829,7 @@
                                     "type": "number"
                                   },
                                   "x": {
-                                    "description": "A map of the exchange ID to number of shares at this price level.\n\u003cbr /\u003e\n\u003cbr /\u003e\n**Example:**\n\u003cbr /\u003e\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n\u003cbr /\u003e\n\u003cbr /\u003e\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
+                                    "description": "A map of the exchange ID to number of shares at this price level.\n<br />\n<br />\n**Example:**\n<br />\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n<br />\n<br />\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
                                     "type": "object"
                                   }
                                 },
@@ -15851,7 +15851,7 @@
                                     "type": "number"
                                   },
                                   "x": {
-                                    "description": "A map of the exchange ID to number of shares at this price level.\n\u003cbr /\u003e\n\u003cbr /\u003e\n**Example:**\n\u003cbr /\u003e\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n\u003cbr /\u003e\n\u003cbr /\u003e\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
+                                    "description": "A map of the exchange ID to number of shares at this price level.\n<br />\n<br />\n**Example:**\n<br />\n`{\n  \"p\": 16302.94,\n  \"x\": {\n    \"1\": 0.02859424,\n    \"6\": 0.023455\n  }\n}`\n<br />\n<br />\nIn this example, exchange ID 1 has 0.02859424 shares available at $16,302.94,\nand exchange ID 6 has 0.023455 shares at the same price level.\n",
                                     "type": "object"
                                   }
                                 },
@@ -15914,7 +15914,7 @@
     },
     "/v2/snapshot/locale/global/markets/crypto/{direction}": {
       "get": {
-        "description": "Get the current top 20 gainers or losers of the day in cryptocurrency markets.\n\u003cbr /\u003e\n\u003cbr /\u003e\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the current top 20 gainers or losers of the day in cryptocurrency markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The direction of the snapshot results to return.\n",
@@ -16059,7 +16059,7 @@
                                         "type": "integer"
                                       },
                                       "x": {
-                                        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                         "type": "integer"
                                       }
                                     },
@@ -16068,7 +16068,7 @@
                                   {
                                     "properties": {
                                       "x": {
-                                        "description": "The exchange that this crypto trade happened on.  \nSee \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\"\u003eExchanges\u003c/a\u003e for a mapping of exchanges to IDs.\n",
+                                        "description": "The exchange that this crypto trade happened on.  \nSee <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a mapping of exchanges to IDs.\n",
                                         "type": "integer"
                                       }
                                     }
@@ -16209,7 +16209,7 @@
     },
     "/v2/snapshot/locale/global/markets/forex/tickers": {
       "get": {
-        "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for all traded forex symbols.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
+        "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded forex symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
             "description": "A comma separated list of tickers to get snapshots for.",
@@ -16466,7 +16466,7 @@
     },
     "/v2/snapshot/locale/global/markets/forex/tickers/{ticker}": {
       "get": {
-        "description": "Get the current minute, day, and previous day’s aggregate, as well as the last trade and quote for a single traded currency symbol.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for a single traded currency symbol.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The forex ticker.",
@@ -16728,7 +16728,7 @@
     },
     "/v2/snapshot/locale/global/markets/forex/{direction}": {
       "get": {
-        "description": "Get the current top 20 gainers or losers of the day in forex markets.\n\u003cbr /\u003e\n\u003cbr /\u003e\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the current top 20 gainers or losers of the day in forex markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The direction of the snapshot results to return.\n",
@@ -16988,7 +16988,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/tickers": {
       "get": {
-        "description": "Get the most up-to-date market data for all traded stock symbols.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
+        "description": "Get the most up-to-date market data for all traded stock symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
             "description": "A comma separated list of tickers to get snapshots for.",
@@ -17185,7 +17185,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                     "type": "integer"
                                   }
                                 },
@@ -17337,7 +17337,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/tickers/{stocksTicker}": {
       "get": {
-        "description": "Get the most up-to-date market data for a single traded stock ticker.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
+        "description": "Get the most up-to-date market data for a single traded stock ticker.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
             "description": "The ticker symbol of the stock/equity.",
@@ -17527,7 +17527,7 @@
                                   "type": "integer"
                                 },
                                 "x": {
-                                  "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                  "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                   "type": "integer"
                                 }
                               },
@@ -17677,7 +17677,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/{direction}": {
       "get": {
-        "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n\u003cbr /\u003e\n\u003cbr /\u003e\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n\u003cbr /\u003e\n\u003cbr /\u003e\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The direction of the snapshot results to return.\n",
@@ -17871,7 +17871,7 @@
                                     "type": "integer"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                     "type": "integer"
                                   }
                                 },
@@ -18245,7 +18245,7 @@
                                   "X": {
                                     "allOf": [
                                       {
-                                        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                         "type": "integer"
                                       },
                                       {
@@ -18281,7 +18281,7 @@
                                   "x": {
                                     "allOf": [
                                       {
-                                        "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                        "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                         "type": "integer"
                                       },
                                       {
@@ -18575,7 +18575,7 @@
                                     "type": "number"
                                   },
                                   "x": {
-                                    "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                                    "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                                     "type": "integer"
                                   },
                                   "z": {
@@ -21563,7 +21563,7 @@
                       "items": {
                         "properties": {
                           "additional_underlyings": {
-                            "description": "If an option contract has additional underlyings or deliverables associated with it, they will appear here.\nSee \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.optionseducation.org/referencelibrary/faq/splits-mergers-spinoffs-bankruptcies\"\u003ehere\u003c/a\u003e for some examples of what might cause a contract to have additional underlyings.",
+                            "description": "If an option contract has additional underlyings or deliverables associated with it, they will appear here.\nSee <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.optionseducation.org/referencelibrary/faq/splits-mergers-spinoffs-bankruptcies\">here</a> for some examples of what might cause a contract to have additional underlyings.",
                             "items": {
                               "properties": {
                                 "amount": {
@@ -21590,7 +21590,7 @@
                             }
                           },
                           "cfi": {
-                            "description": "The 6 letter CFI code of the contract (defined in \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/ISO_10962\"\u003eISO 10962\u003c/a\u003e)",
+                            "description": "The 6 letter CFI code of the contract (defined in <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/ISO_10962\">ISO 10962</a>)",
                             "type": "string"
                           },
                           "contract_type": {
@@ -21602,7 +21602,7 @@
                             "type": "integer"
                           },
                           "exercise_style": {
-                            "description": "The exercise style of this contract. See \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\"\u003ethis link\u003c/a\u003e for more details on exercise styles.",
+                            "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
                             "enum": [
                               "american",
                               "european",
@@ -21745,7 +21745,7 @@
                     "results": {
                       "properties": {
                         "additional_underlyings": {
-                          "description": "If an option contract has additional underlyings or deliverables associated with it, they will appear here.\nSee \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.optionseducation.org/referencelibrary/faq/splits-mergers-spinoffs-bankruptcies\"\u003ehere\u003c/a\u003e for some examples of what might cause a contract to have additional underlyings.",
+                          "description": "If an option contract has additional underlyings or deliverables associated with it, they will appear here.\nSee <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.optionseducation.org/referencelibrary/faq/splits-mergers-spinoffs-bankruptcies\">here</a> for some examples of what might cause a contract to have additional underlyings.",
                           "items": {
                             "properties": {
                               "amount": {
@@ -21772,7 +21772,7 @@
                           }
                         },
                         "cfi": {
-                          "description": "The 6 letter CFI code of the contract (defined in \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/ISO_10962\"\u003eISO 10962\u003c/a\u003e)",
+                          "description": "The 6 letter CFI code of the contract (defined in <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/ISO_10962\">ISO 10962</a>)",
                           "type": "string"
                         },
                         "contract_type": {
@@ -21784,7 +21784,7 @@
                           "type": "integer"
                         },
                         "exercise_style": {
-                          "description": "The exercise style of this contract. See \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\"\u003ethis link\u003c/a\u003e for more details on exercise styles.",
+                          "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
                           "enum": [
                             "american",
                             "european",
@@ -22804,7 +22804,7 @@
                               "type": "number"
                             },
                             "sic_code": {
-                              "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\"\u003eSIC Code List\u003c/a\u003e.\n",
+                              "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's <a rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\">SIC Code List</a>.\n",
                               "type": "string"
                             },
                             "sic_description": {
@@ -23193,7 +23193,7 @@
                                 "type": "string"
                               },
                               "exercise_style": {
-                                "description": "The exercise style of this contract. See \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\"\u003ethis link\u003c/a\u003e for more details on exercise styles.",
+                                "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
                                 "enum": [
                                   "american",
                                   "european",
@@ -23573,7 +23573,7 @@
                               "type": "string"
                             },
                             "exercise_style": {
-                              "description": "The exercise style of this contract. See \u003ca rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\"\u003ethis link\u003c/a\u003e for more details on exercise styles.",
+                              "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
                               "enum": [
                                 "american",
                                 "european",
@@ -23914,7 +23914,7 @@
                             "type": "array"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "id": {
@@ -24143,7 +24143,7 @@
                             "type": "integer"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "participant_timestamp": {
@@ -24381,7 +24381,7 @@
                             "type": "integer"
                           },
                           "exchange": {
-                            "description": "The exchange ID. See \u003ca href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\"\u003eExchanges\u003c/a\u003e for Polygon.io's mapping of exchange IDs.",
+                            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
                             "type": "integer"
                           },
                           "id": {
@@ -24493,7 +24493,7 @@
     },
     "/vX/reference/financials": {
       "get": {
-        "description": "Get historical financial data for a stock ticker.\nThe financials data is extracted from XBRL from company SEC filings using the methodology outlined \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\"\u003ehere\u003c/a\u003e.",
+        "description": "Get historical financial data for a stock ticker.\nThe financials data is extracted from XBRL from company SEC filings using the methodology outlined <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrl.squarespace.com/understanding-sec-xbrl-financi/\">here</a>.",
         "operationId": "ListFinancials",
         "parameters": [
           {
@@ -24505,7 +24505,7 @@
             }
           },
           {
-            "description": "Query by central index key (\u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/edgar/searchedgar/cik.htm\"\u003eCIK\u003c/a\u003e) Number",
+            "description": "Query by central index key (<a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/edgar/searchedgar/cik.htm\">CIK</a>) Number",
             "in": "query",
             "name": "cik",
             "schema": {
@@ -24524,7 +24524,7 @@
             }
           },
           {
-            "description": "Query by standard industrial classification (\u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\"\u003eSIC\u003c/a\u003e)",
+            "description": "Query by standard industrial classification (<a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://www.sec.gov/corpfin/division-of-corporation-finance-standard-industrial-classification-sic-code-list\">SIC</a>)",
             "in": "query",
             "name": "sic",
             "schema": {
@@ -24532,7 +24532,7 @@
             }
           },
           {
-            "description": "Query by the date when the filing with financials data was filed in YYYY-MM-DD format.\n\nBest used when querying over date ranges to find financials based on filings that happen in a time period.\n\nExamples:\n\nTo get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte=2009-01-01\n\nTo get financials based on filings that happened in the year 2009 use the query params filing_date.gte=2009-01-01\u0026filing_date.lt=2010-01-01",
+            "description": "Query by the date when the filing with financials data was filed in YYYY-MM-DD format.\n\nBest used when querying over date ranges to find financials based on filings that happen in a time period.\n\nExamples:\n\nTo get financials based on filings that have happened after January 1, 2009 use the query param filing_date.gte=2009-01-01\n\nTo get financials based on filings that happened in the year 2009 use the query params filing_date.gte=2009-01-01&filing_date.lt=2010-01-01",
             "in": "query",
             "name": "filing_date",
             "schema": {
@@ -24857,13 +24857,13 @@
                           "financials": {
                             "properties": {
                               "balance_sheet": {
-                                "description": "Balance sheet.\nNote that the keys in this object can be any of the balance sheet concepts defined in \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\"\u003ethis table of fundamental accounting concepts\u003c/a\u003e but converted to `snake_case`.",
+                                "description": "Balance sheet.\nNote that the keys in this object can be any of the balance sheet concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.",
                                 "properties": {
                                   "*": {
                                     "description": "An individual financial data point.",
                                     "properties": {
                                       "formula": {
-                                        "description": "The name of the formula used to derive this data point from other financial data points.\nInformation about the formulas can be found \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrlsite.azurewebsites.net/2020/reporting-scheme/us-gaap/fac/documentation/ImputeRulesList.html\"\u003ehere\u003c/a\u003e.\nThis value is only returned for data points that are not explicitly expressed within the XBRL source file when the `include_sources` query parameter is `true`."
+                                        "description": "The name of the formula used to derive this data point from other financial data points.\nInformation about the formulas can be found <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrlsite.azurewebsites.net/2020/reporting-scheme/us-gaap/fac/documentation/ImputeRulesList.html\">here</a>.\nThis value is only returned for data points that are not explicitly expressed within the XBRL source file when the `include_sources` query parameter is `true`."
                                       },
                                       "label": {
                                         "description": "A human readable label for the financial data point.",
@@ -24882,7 +24882,7 @@
                                         "type": "number"
                                       },
                                       "xpath": {
-                                        "description": "The \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/XPath\"\u003eXPath 1.0\u003c/a\u003e query that identifies the fact from within the XBRL source file.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true`."
+                                        "description": "The <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/XPath\">XPath 1.0</a> query that identifies the fact from within the XBRL source file.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true`."
                                       }
                                     },
                                     "required": [
@@ -24897,15 +24897,15 @@
                                 "type": "object"
                               },
                               "cash_flow_statement": {
-                                "description": "Cash flow statement.\nNote that the keys in this object can be any of the cash flow statement concepts defined in \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\"\u003ethis table of fundamental accounting concepts\u003c/a\u003e but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
+                                "description": "Cash flow statement.\nNote that the keys in this object can be any of the cash flow statement concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
                                 "type": "object"
                               },
                               "comprehensive_income": {
-                                "description": "Comprehensive income.\nNote that the keys in this object can be any of the comprehensive income statement concepts defined in \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\"\u003ethis table of fundamental accounting concepts\u003c/a\u003e but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
+                                "description": "Comprehensive income.\nNote that the keys in this object can be any of the comprehensive income statement concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
                                 "type": "object"
                               },
                               "income_statement": {
-                                "description": "Income statement.\nNote that the keys in this object can be any of the income statement concepts defined in \u003ca rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\"\u003ethis table of fundamental accounting concepts\u003c/a\u003e but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
+                                "description": "Income statement.\nNote that the keys in this object can be any of the income statement concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
                                 "type": "object"
                               }
                             },

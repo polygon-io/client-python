@@ -33,7 +33,7 @@ lint: style static
 
 ## Update the REST API spec
 rest-spec:
-	curl https://api.polygon.io/specs/rest.json > .polygon/rest.json
+	poetry run python .polygon/rest.py
 
 ## Update the WebSocket API spec
 ws-spec:
