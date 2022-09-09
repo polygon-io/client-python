@@ -118,16 +118,20 @@ class WebSocketClient:
                         self.subs = set(self.scheduled_subs)
                         self.schedule_resub = False
 
-                    cmsg: Union[
-                        List[WebSocketMessage], Union[str, bytes]
-                    ] = await s.recv()
-                    # we know cmsg is Data
-                    msgJson = json.loads(cmsg)  # type: ignore
-                    for m in msgJson:
-                        if m["ev"] == "status":
-                            logger.debug("status: %s", m["message"])
-                            continue
+                    try:
+                        cmsg: Union[
+                            List[WebSocketMessage], Union[str, bytes]
+                        ] = await asyncio.wait_for(s.recv(), timeout=1)
+                    except asyncio.TimeoutError:
+                        continue
+
                     if not self.raw:
+                        # we know cmsg is Data
+                        msgJson = json.loads(cmsg)  # type: ignore
+                        for m in msgJson:
+                            if m["ev"] == "status":
+                                logger.debug("status: %s", m["message"])
+                                continue
                         cmsg = parse(msgJson, logger)
 
                     if len(cmsg) > 0:
