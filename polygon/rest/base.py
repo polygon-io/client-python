@@ -28,6 +28,7 @@ class BaseClient:
         retries: int,
         base: str,
         verbose: bool,
+        custom_json: Optional[Any] = None
     ):
         if api_key is None:
             raise AuthError(
@@ -51,9 +52,13 @@ class BaseClient:
         self.retries = retries
         if verbose:
             logger.setLevel(logging.DEBUG)
+        if custom_json:
+          self.json = custom_json
+        else:
+          self.json = json
 
     def _decode(self, resp):
-        return json.loads(resp.data.decode("utf-8"))
+        return self.json.loads(resp.data.decode("utf-8"))
 
     def _get(
         self,
