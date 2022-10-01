@@ -53,9 +53,9 @@ class BaseClient:
         if verbose:
             logger.setLevel(logging.DEBUG)
         if custom_json:
-          self.json = custom_json
+            self.json = custom_json
         else:
-          self.json = json
+            self.json = json
 
     def _decode(self, resp):
         return self.json.loads(resp.data.decode("utf-8"))

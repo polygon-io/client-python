@@ -40,6 +40,7 @@ class WebSocketClient:
         :param verbose: Whether to log client and server status messages.
         :param subscriptions: List of subscription parameters.
         :param max_reconnects: How many times to reconnect on network outage before ending .connect event loop.
+        :param custom_json: Optional module exposing loads/dumps functions (similar to Python's json module) to be used for JSON conversions.
         :return: A client.
         """
         if api_key is None:
@@ -67,9 +68,9 @@ class WebSocketClient:
         self.scheduled_subs: Set[str] = set(subscriptions)
         self.schedule_resub = True
         if custom_json:
-          self.json = custom_json
+            self.json = custom_json
         else:
-          self.json = json
+            self.json = json
 
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
     async def connect(
