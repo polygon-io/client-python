@@ -53,6 +53,10 @@ If it is a paginated :code:`list_*` response it's up to you to handle the "next_
 
 .. literalinclude:: ../../examples/rest/raw-list.py
 
+To provide your own JSON processing library (exposing loads/dumps functions) pass :code:`custom_json=my_module`:
+
+.. literalinclude:: ../../examples/websocket/custom-json-get.py
+
 WebSocket client usage
 ----------------------
 
@@ -80,3 +84,6 @@ To handle raw string or byte messages yourself pass :code:`raw=True`:
 
 .. literalinclude:: ../../examples/websocket/raw.py
 
+To provide your own JSON processing library (exposing loads/dumps functions) pass :code:`custom_json=my_module`:
+
+.. literalinclude:: ../../examples/websocket/custom-json.py
