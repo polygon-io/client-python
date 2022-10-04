@@ -4187,100 +4187,6 @@
         },
         "type": "object"
       },
-      "V2News": {
-        "properties": {
-          "amp_url": {
-            "description": "The mobile friendly Accelerated Mobile Page (AMP) URL.\n",
-            "format": "url",
-            "type": "string"
-          },
-          "article_url": {
-            "description": "A link to the news article.\n",
-            "format": "url",
-            "type": "string"
-          },
-          "author": {
-            "description": "The article's author.\n",
-            "type": "string"
-          },
-          "description": {
-            "description": "A description of the article.\n",
-            "type": "string"
-          },
-          "id": {
-            "description": "Unique identifier for the article.\n",
-            "type": "string"
-          },
-          "image_url": {
-            "description": "The article's image URL.\n",
-            "format": "url",
-            "type": "string"
-          },
-          "keywords": {
-            "description": "The keywords associated with the article (which will vary depending on\nthe publishing source).\n",
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "published_utc": {
-            "description": "The date the article was published on.\n",
-            "format": "date-time",
-            "type": "string"
-          },
-          "publisher": {
-            "properties": {
-              "favicon_url": {
-                "description": "The publisher's homepage favicon URL.\n",
-                "format": "url",
-                "type": "string"
-              },
-              "homepage_url": {
-                "description": "The publisher's homepage URL.\n",
-                "format": "url",
-                "type": "string"
-              },
-              "logo_url": {
-                "description": "The publisher's logo URL.\n",
-                "format": "url",
-                "type": "string"
-              },
-              "name": {
-                "description": "The publisher's name.\n",
-                "type": "string"
-              }
-            },
-            "required": [
-              "name",
-              "logo_url",
-              "homepage_url"
-            ],
-            "type": "object"
-          },
-          "tickers": {
-            "description": "The ticker symbols associated with the article.\n",
-            "items": {
-              "description": "The exchange symbol that this item is traded under.",
-              "type": "string"
-            },
-            "type": "array"
-          },
-          "title": {
-            "description": "The title of the news article.\n",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "publisher",
-          "title",
-          "author",
-          "published_utc",
-          "article_url",
-          "tickers"
-        ],
-        "type": "object"
-      },
       "V2TicksBase": {
         "properties": {
           "db_latency": {
@@ -4690,7 +4596,10 @@
                           }
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "LastQuoteCurrencies"
+                      }
                     },
                     "request_id": {
                       "description": "A request id assigned by the server.",
@@ -4710,6 +4619,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "ask,bid,exchange,timestamp\n1.3673344,1.3672596,48,1605555313000\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -5243,11 +5158,11 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/ema/X:BTC-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/ema/X:BTCUSD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTC-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTCUSD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -5381,6 +5296,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664164800000,297389,,0,,0,0,0,0,0,false,1664164800000,19846.01135387188\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664078400000,78936,,0,,0,0,0,0,0,false,1664078400000,19902.65703099573\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664064000000,78936,,0,,0,0,0,0,0,false,1664064000000,19948.29976695474\nX:BTCUSD,15457.24362826,19317.486,0,19529.04,19475.84,19651.2772302,18846.67,1664409600000,191936,,0,,0,0,0,0,0,false,1664409600000,19751.714760699124\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664337600000,225076,,0,,0,0,0,0,0,false,1664337600000,19762.974955013375\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664251200000,183075,,0,,0,0,0,0,0,false,1664251200000,19791.86053850303\nX:BTCUSD,2868.09828007,19069.8521,0,19210.31,18925.87,19400,18805.1,1663992000000,58721,,0,,0,0,0,0,0,false,1663992000000,19995.805471728403\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664323200000,225076,,0,,0,0,0,0,0,false,1664323200000,19777.128890923308\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664236800000,183075,,0,,0,0,0,0,0,false,1664236800000,19818.394438033767\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664150400000,297389,,0,,0,0,0,0,0,false,1664150400000,19873.767735662568\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -5555,11 +5476,11 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/ema/C:EUR-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/ema/C:USDAUD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/C:EUR-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/C:USDAUD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -5693,6 +5614,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664323200000,685,,0,,0,0,0,0,0,false,1664323200000,1.4915199239999994\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664164800000,550,,0,,0,0,0,0,0,false,1664164800000,1.4863299679999997\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664078400000,10,,0,,0,0,0,0,0,false,1664078400000,1.4826388699999997\nC:USDAUD,686,1.5442,0,1.53763,1.5404,1.5526022,1.537279,1664409600000,686,,0,,0,0,0,0,0,false,1664409600000,1.4942168479999998\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664251200000,536,,0,,0,0,0,0,0,false,1664251200000,1.4900704799999993\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664236800000,536,,0,,0,0,0,0,0,false,1664236800000,1.4882634499999994\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664150400000,550,,0,,0,0,0,0,0,false,1664150400000,1.4845906159999998\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664064000000,10,,0,,0,0,0,0,0,false,1664064000000,1.4809719239999999\nC:USDAUD,1,1.5314,0,1.5313936,1.5313936,1.5313936,1.5313936,1663977600000,1,,0,,0,0,0,0,0,false,1663977600000,1.4794745239999998\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664337600000,685,,0,,0,0,0,0,0,false,1664337600000,1.4928357579999996\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -6006,6 +5933,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649217600000,1,,0,,0,0,0,0,0,false,1649217600000,286.1730473491824 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649131200000,1,,0,,0,0,0,0,0,false,1649131200000,285.60990642465924 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649044800000,1,,0,,0,0,0,0,0,false,1649044800000,285.023780156278 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648785600000,1,,0,,0,0,0,0,0,false,1648785600000,284.4137303667383 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648526400000,1,,0,,0,0,0,0,0,false,1648526400000,282.43007426223943 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649304000000,1,,0,,0,0,0,0,0,false,1649304000000,286.7141043158811 O:SPY241220P00720000,2,270.49,0,270.49,270.49,270.49,270.49,1649390400000,1,,0,,0,0,0,0,0,false,1649390400000,286.0778649309446 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648699200000,1,,0,,0,0,0,0,0,false,1648699200000,283.77878058578887 O:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648612800000,1,,0,,0,0,0,0,0,false,1648612800000,283.11791448724966 O:SPY241220P00720000,3,277.8267,0,277.82,277.83,277.83,277.82,1649649600000,2,,0,,0,0,0,0,0,false,1649649600000,285.7544192473781",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Exponential Moving Average (EMA) data for each period."
@@ -6318,6 +6251,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nAAPL,8.1599225E+07,152.5505,0,149.31,154.48,154.56,149.1,1663560000000,671961,,0,,0,0,0,0,0,false,1663560000000,163.17972071441582\nAAPL,8.4461761E+07,152.1354,0,152.74,151.76,154.72,149.945,1664251200000,683781,,0,,0,0,0,0,0,false,1664251200000,160.92194334973746\nAAPL,9.3308449E+07,156.1877,0,157.34,153.72,158.61,153.6,1663732800000,712645,,0,,0,0,0,0,0,false,1663732800000,162.5721451116157\nAAPL,1.07691097E+08,156.1317,0,153.4,156.9,158.08,153.08,1663646400000,792177,,0,,0,0,0,0,0,false,1663646400000,162.93345715698777\nAAPL,9.6031641E+07,150.0222,0,151.19,150.43,151.47,148.56,1663905600000,766888,,0,,0,0,0,0,0,false,1663905600000,161.72552880161066\nAAPL,8.6651514E+07,152.5709,0,152.38,152.74,154.47,150.91,1663819200000,686866,,0,,0,0,0,0,0,false,1663819200000,162.18657079351314\nAAPL,1.64879031E+08,150.2387,0,151.21,150.7,151.35,148.37,1663300800000,850358,,0,,0,0,0,0,0,false,1663300800000,163.53481135582055\nAAPL,1.27842348E+08,142.9013,0,146.1,142.48,146.72,140.68,1664424000000,1061605,,0,,0,0,0,0,0,false,1664424000000,159.78118646009983\nAAPL,1.46755122E+08,147.599,0,147.64,149.84,150.6414,144.84,1664337600000,1140818,,0,,0,0,0,0,0,false,1664337600000,160.48735733602226\nAAPL,9.3339409E+07,151.5222,0,149.66,150.77,153.7701,149.64,1664164800000,747666,,0,,0,0,0,0,0,false,1664164800000,161.29590022115534\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Exponential Moving Average (EMA) data for each period."
@@ -6500,11 +6439,11 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/macd/X:BTC-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/macd/X:BTCUSD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTC-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTCUSD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -6662,6 +6601,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value,signal,histogram\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664323200000,225076,,0,,0,0,0,0,0,false,1664323200000,-200.79662915774315,-281.5009533935604,80.70432423581724\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664236800000,183075,,0,,0,0,0,0,0,false,1664236800000,-264.55324270273195,-316.4388906203941,51.88564791766214\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664150400000,297389,,0,,0,0,0,0,0,false,1664150400000,-317.75700272815084,-339.5909474061525,21.83394467800167\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664078400000,78936,,0,,0,0,0,0,0,false,1664078400000,-350.23805379084297,-345.0494335756529,-5.188620215190042\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664064000000,78936,,0,,0,0,0,0,0,false,1664064000000,-347.75055091027025,-343.7522785218554,-3.9982723884148754\nX:BTCUSD,2868.09828007,19069.8521,0,19210.31,18925.87,19400,18805.1,1663992000000,58721,,0,,0,0,0,0,0,false,1663992000000,-339.51740285673077,-342.7527104247516,3.2353075680208576\nX:BTCUSD,11337.77105153,19346.509,0,19527.23,19487.24,19640,18846.95,1664409600000,142239,,0,,0,0,0,0,0,false,1664409600000,-130.70646519456568,-232.81921860513586,102.11275341057018\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664337600000,225076,,0,,0,0,0,0,0,false,1664337600000,-165.73322121465026,-258.3474069577784,92.61418574312813\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664251200000,183075,,0,,0,0,0,0,0,false,1664251200000,-242.62960978099727,-301.6770344525147,59.04742467151743\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664164800000,297389,,0,,0,0,0,0,0,false,1664164800000,-288.68772337443806,-329.4103025998096,40.72257922537153\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -6856,11 +6801,11 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/macd/C:EUR-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/macd/C:USDAUD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/C:EUR-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/C:USDAUD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -7018,6 +6963,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value,signal,histogram\nC:USDAUD,687,1.5442,0,1.53763,1.5386983,1.5526022,1.537279,1664409600000,687,,0,,0,0,0,0,0,false,1664409600000,0.0160095063995076,0.016240853664654657,-0.0002313472651470569\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664251200000,536,,0,,0,0,0,0,0,false,1664251200000,0.019060448457087098,0.015690709670065223,0.0033697387870218753\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664164800000,550,,0,,0,0,0,0,0,false,1664164800000,0.017190795754692623,0.013971241529748895,0.003219554224943728\nC:USDAUD,1,1.5314,0,1.5313936,1.5313936,1.5313936,1.5313936,1663977600000,1,,0,,0,0,0,0,0,false,1663977600000,0.014349509127189686,0.010792069356789809,0.0035574397703998766\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664337600000,685,,0,,0,0,0,0,0,false,1664337600000,0.0169083298713677,0.016298690480941423,0.0006096393904262767\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664323200000,685,,0,,0,0,0,0,0,false,1664323200000,0.017968564486413374,0.016146280633334852,0.001822283853078522\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664236800000,536,,0,,0,0,0,0,0,false,1664236800000,0.018356408747553177,0.014848274973309752,0.0035081337742434247\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664150400000,550,,0,,0,0,0,0,0,false,1664150400000,0.016441299960100686,0.01316635297351296,0.0032749469865877255\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664078400000,10,,0,,0,0,0,0,0,false,1664078400000,0.015245524601038118,0.012347616226866026,0.002897908374172092\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664064000000,10,,0,,0,0,0,0,0,false,1664064000000,0.014947418239455779,0.011623139133323003,0.0033242791061327756\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -7375,6 +7326,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value,signal,histogram\nO:SPY241220P00720000,3,277.8267,0,277.82,277.83,277.83,277.82,1649649600000,2,,0,,0,0,0,0,0,false,1649649600000,-0.05105556065990413,3.5771695836806834,-3.6282251443405875\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649304000000,1,,0,,0,0,0,0,0,false,1649304000000,4.047960862047148,5.247666286053219,-1.199705424006071\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648785600000,1,,0,,0,0,0,0,0,false,1648785600000,5.255380647906861,6.466477305754766,-1.2110966578479045\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648699200000,1,,0,,0,0,0,0,0,false,1648699200000,5.591072756938104,6.769251470216741,-1.178178713278637\nO:SPY241220P00720000,2,270.49,0,270.49,270.49,270.49,270.49,1649390400000,1,,0,,0,0,0,0,0,false,1649390400000,1.4304642046162712,4.48422586976583,-3.053761665149559\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649217600000,1,,0,,0,0,0,0,0,false,1649217600000,4.32835898317461,5.547592642054737,-1.2192336588801274\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649131200000,1,,0,,0,0,0,0,0,false,1649131200000,4.623290999840208,5.852401056774768,-1.2291100569345605\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649044800000,1,,0,,0,0,0,0,0,false,1649044800000,4.932483632022979,6.159678571008409,-1.2271949389854298\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648612800000,1,,0,,0,0,0,0,0,false,1648612800000,5.93821326327344,7.063796148536399,-1.1255828852629595\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648526400000,1,,0,,0,0,0,0,0,false,1648526400000,6.294916771166584,7.345191869852139,-1.050275098685555\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Moving Average Convergence/Divergence (MACD) data for each period."
@@ -7731,6 +7688,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value,signal,histogram\nAAPL,1.27842348E+08,142.9013,0,146.1,142.48,146.72,140.68,1664424000000,1061605,,0,,0,0,0,0,0,false,1664424000000,-5.413804946923619,-3.8291158739479005,-1.5846890729757188\nAAPL,8.4461761E+07,152.1354,0,152.74,151.76,154.72,149.945,1664251200000,683781,,0,,0,0,0,0,0,false,1664251200000,-4.63165683097526,-3.098305244715017,-1.5333515862602427\nAAPL,9.3339409E+07,151.5222,0,149.66,150.77,153.7701,149.64,1664164800000,747666,,0,,0,0,0,0,0,false,1664164800000,-4.581291216131007,-2.7149673481499565,-1.86632386798105\nAAPL,9.3308449E+07,156.1877,0,157.34,153.72,158.61,153.6,1663732800000,712645,,0,,0,0,0,0,0,false,1663732800000,-3.6311474313744156,-1.1648824074663984,-2.4662650239080173\nAAPL,1.64879031E+08,150.2387,0,151.21,150.7,151.35,148.37,1663300800000,850358,,0,,0,0,0,0,0,false,1663300800000,-2.533545758578896,0.9308104167079131,-3.464356175286809\nAAPL,1.46755122E+08,147.599,0,147.64,149.84,150.6414,144.84,1664337600000,1140818,,0,,0,0,0,0,0,false,1664337600000,-4.771497049659786,-3.432943605703971,-1.3385534439558149\nAAPL,9.6031641E+07,150.0222,0,151.19,150.43,151.47,148.56,1663905600000,766888,,0,,0,0,0,0,0,false,1663905600000,-4.349569413677017,-2.2483863811546936,-2.1011830325223233\nAAPL,8.6651514E+07,152.5709,0,152.38,152.74,154.47,150.91,1663819200000,686866,,0,,0,0,0,0,0,false,1663819200000,-3.9559234852549707,-1.7230906230241128,-2.232832862230858\nAAPL,1.07691097E+08,156.1317,0,153.4,156.9,158.08,153.08,1663646400000,792177,,0,,0,0,0,0,0,false,1663646400000,-3.2635802145105117,-0.548316151489394,-2.7152640630211176\nAAPL,8.1599225E+07,152.5505,0,149.31,154.48,154.56,149.1,1663560000000,671961,,0,,0,0,0,0,0,false,1663560000000,-3.070742345502225,0.13049986426588545,-3.2012422097681106\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Moving Average Convergence/Divergence (MACD) data for each period."
@@ -7893,11 +7856,11 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/rsi/X:BTC-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/rsi/X:BTCUSD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTC-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTCUSD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -8031,6 +7994,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nX:BTCUSD,15457.24362826,19317.486,0,19529.04,19475.84,19651.2772302,18846.67,1664409600000,191936,,0,,0,0,0,0,0,false,1664409600000,52.040915721136884\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664251200000,183075,,0,,0,0,0,0,0,false,1664251200000,44.813590401722564\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664236800000,183075,,0,,0,0,0,0,0,false,1664236800000,44.813590401722564\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664164800000,297389,,0,,0,0,0,0,0,false,1664164800000,45.22751170711286\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664150400000,297389,,0,,0,0,0,0,0,false,1664150400000,45.22751170711286\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664078400000,78936,,0,,0,0,0,0,0,false,1664078400000,37.361825384231004\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664064000000,78936,,0,,0,0,0,0,0,false,1664064000000,37.361825384231004\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664337600000,225076,,0,,0,0,0,0,0,false,1664337600000,50.74235333598462\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664323200000,225076,,0,,0,0,0,0,0,false,1664323200000,50.74235333598462\nX:BTCUSD,2868.09828007,19069.8521,0,19210.31,18925.87,19400,18805.1,1663992000000,58721,,0,,0,0,0,0,0,false,1663992000000,39.159457782344376\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -8205,11 +8174,11 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/rsi/C:EUR-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/rsi/C:USDAUD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/C:EUR-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/C:USDAUD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -8343,6 +8312,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nC:USDAUD,686,1.5442,0,1.53763,1.5404,1.5526022,1.537279,1664409600000,686,,0,,0,0,0,0,0,false,1664409600000,65.97230488287764\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664164800000,550,,0,,0,0,0,0,0,false,1664164800000,79.3273623194404\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664150400000,550,,0,,0,0,0,0,0,false,1664150400000,79.32736231944038\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664064000000,10,,0,,0,0,0,0,0,false,1664064000000,74.64770184023104\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664337600000,685,,0,,0,0,0,0,0,false,1664337600000,64.43214811875563\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664323200000,685,,0,,0,0,0,0,0,false,1664323200000,64.43214811875563\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664251200000,536,,0,,0,0,0,0,0,false,1664251200000,81.95981214984681\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664236800000,536,,0,,0,0,0,0,0,false,1664236800000,81.95981214984683\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664078400000,10,,0,,0,0,0,0,0,false,1664078400000,74.64770184023104\nC:USDAUD,1,1.5314,0,1.5313936,1.5313936,1.5313936,1.5313936,1663977600000,1,,0,,0,0,0,0,0,false,1663977600000,74.98028072374902\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -8656,6 +8631,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nO:SPY241220P00720000,3,277.8267,0,277.82,277.83,277.83,277.82,1649649600000,2,,0,,0,0,0,0,0,false,1649649600000,30.837887188419387\nO:SPY241220P00720000,2,270.49,0,270.49,270.49,270.49,270.49,1649390400000,1,,0,,0,0,0,0,0,false,1649390400000,15.546598157051605\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648785600000,1,,0,,0,0,0,0,0,false,1648785600000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648699200000,1,,0,,0,0,0,0,0,false,1648699200000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648612800000,1,,0,,0,0,0,0,0,false,1648612800000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648526400000,1,,0,,0,0,0,0,0,false,1648526400000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649304000000,1,,0,,0,0,0,0,0,false,1649304000000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649217600000,1,,0,,0,0,0,0,0,false,1649217600000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649131200000,1,,0,,0,0,0,0,0,false,1649131200000,88.61520575036505\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649044800000,1,,0,,0,0,0,0,0,false,1649044800000,88.61520575036505\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Relative Strength Index (RSI) data for each period."
@@ -8968,6 +8949,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nAAPL,1.27849501E+08,142.9012,0,146.1,142.48,146.72,140.68,1664424000000,1061692,,0,,0,0,0,0,0,false,1664424000000,23.065352237561996\nAAPL,1.46755122E+08,147.599,0,147.64,149.84,150.6414,144.84,1664337600000,1140818,,0,,0,0,0,0,0,false,1664337600000,29.877761913419718\nAAPL,9.3339409E+07,151.5222,0,149.66,150.77,153.7701,149.64,1664164800000,747666,,0,,0,0,0,0,0,false,1664164800000,29.58201330468151\nAAPL,8.1599225E+07,152.5505,0,149.31,154.48,154.56,149.1,1663560000000,671961,,0,,0,0,0,0,0,false,1663560000000,30.233508748331047\nAAPL,1.64879031E+08,150.2387,0,151.21,150.7,151.35,148.37,1663300800000,850358,,0,,0,0,0,0,0,false,1663300800000,19.857312489527956\nAAPL,8.4461761E+07,152.1354,0,152.74,151.76,154.72,149.945,1664251200000,683781,,0,,0,0,0,0,0,false,1664251200000,32.18008680069761\nAAPL,9.6031641E+07,150.0222,0,151.19,150.43,151.47,148.56,1663905600000,766888,,0,,0,0,0,0,0,false,1663905600000,28.71109953239781\nAAPL,8.6651514E+07,152.5709,0,152.38,152.74,154.47,150.91,1663819200000,686866,,0,,0,0,0,0,0,false,1663819200000,31.140902927103383\nAAPL,9.3308449E+07,156.1877,0,157.34,153.72,158.61,153.6,1663732800000,712645,,0,,0,0,0,0,0,false,1663732800000,32.21491128713248\nAAPL,1.07691097E+08,156.1317,0,153.4,156.9,158.08,153.08,1663646400000,792177,,0,,0,0,0,0,0,false,1663646400000,35.950871523070575\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Relative strength Index data for each period."
@@ -9130,7 +9117,7 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/sma/X:BTC-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/sma/X:BTCUSD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
@@ -9156,7 +9143,7 @@
                           "vw": 74.7026
                         }
                       ],
-                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTC-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/X:BTCUSD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -9290,6 +9277,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664164800000,297389,,0,,0,0,0,0,0,false,1664164800000,19846.01135387188\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664078400000,78936,,0,,0,0,0,0,0,false,1664078400000,19902.65703099573\nX:BTCUSD,4798.38258637,18914.0766,0,18928,18784.41,19184.3,18636,1664064000000,78936,,0,,0,0,0,0,0,false,1664064000000,19948.29976695474\nX:BTCUSD,15457.24362826,19317.486,0,19529.04,19475.84,19651.2772302,18846.67,1664409600000,191936,,0,,0,0,0,0,0,false,1664409600000,19751.714760699124\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664337600000,225076,,0,,0,0,0,0,0,false,1664337600000,19762.974955013375\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664251200000,183075,,0,,0,0,0,0,0,false,1664251200000,19791.86053850303\nX:BTCUSD,2868.09828007,19069.8521,0,19210.31,18925.87,19400,18805.1,1663992000000,58721,,0,,0,0,0,0,0,false,1663992000000,19995.805471728403\nX:BTCUSD,23180.93663313,19103.9189,0,19090,19416.20352522,19791,18461,1664323200000,225076,,0,,0,0,0,0,0,false,1664323200000,19777.128890923308\nX:BTCUSD,17479.00092209,19776.6697,0,19228.2,19141.78,20372.17374536,18821.55,1664236800000,183075,,0,,0,0,0,0,0,false,1664236800000,19818.394438033767\nX:BTCUSD,55188.33773657,18970.3019,0,18816.66899332,19165.98,19333,18690,1664150400000,297389,,0,,0,0,0,0,0,false,1664150400000,19873.767735662568\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -9464,7 +9457,7 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/sma/C:EUR-USD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/sma/C:USDAUD?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
@@ -9490,7 +9483,7 @@
                           "vw": 74.7026
                         }
                       ],
-                      "url": "https://api.polygon.io/v2/aggs/ticker/C:EUR-USD/range/1/day/2003-01-01/2022-07-25"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/C:USDAUD/range/1/day/2003-01-01/2022-07-25"
                     },
                     "values": [
                       {
@@ -9624,6 +9617,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664323200000,685,,0,,0,0,0,0,0,false,1664323200000,1.4915199239999994\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664164800000,550,,0,,0,0,0,0,0,false,1664164800000,1.4863299679999997\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664078400000,10,,0,,0,0,0,0,0,false,1664078400000,1.4826388699999997\nC:USDAUD,686,1.5442,0,1.53763,1.5404,1.5526022,1.537279,1664409600000,686,,0,,0,0,0,0,0,false,1664409600000,1.4942168479999998\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664251200000,536,,0,,0,0,0,0,0,false,1664251200000,1.4900704799999993\nC:USDAUD,536,1.5459,0,1.5446162,1.5550165,1.5587,1.5364287,1664236800000,536,,0,,0,0,0,0,0,false,1664236800000,1.4882634499999994\nC:USDAUD,550,1.5405,0,1.5298,1.54531,1.5526263,1.5298,1664150400000,550,,0,,0,0,0,0,0,false,1664150400000,1.4845906159999998\nC:USDAUD,10,1.5312,0,1.5324261,1.53107,1.5326375,1.5301,1664064000000,10,,0,,0,0,0,0,0,false,1664064000000,1.4809719239999999\nC:USDAUD,1,1.5314,0,1.5313936,1.5313936,1.5313936,1.5313936,1663977600000,1,,0,,0,0,0,0,0,false,1663977600000,1.4794745239999998\nC:USDAUD,685,1.5537,0,1.5539533,1.5371372,1.5705737,1.5316281,1664337600000,685,,0,,0,0,0,0,0,false,1664337600000,1.4928357579999996\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -9959,6 +9958,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649304000000,1,,0,,0,0,0,0,0,false,1649304000000,286.0121999999996\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649131200000,1,,0,,0,0,0,0,0,false,1649131200000,284.61099999999965\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648699200000,1,,0,,0,0,0,0,0,false,1648699200000,282.50919999999974\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648612800000,1,,0,,0,0,0,0,0,false,1648612800000,281.80859999999973\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648526400000,1,,0,,0,0,0,0,0,false,1648526400000,281.1079999999998\nO:SPY241220P00720000,3,277.8267,0,277.82,277.83,277.83,277.82,1649649600000,2,,0,,0,0,0,0,0,false,1649649600000,285.4949999999996\nO:SPY241220P00720000,2,270.49,0,270.49,270.49,270.49,270.49,1649390400000,1,,0,,0,0,0,0,0,false,1649390400000,285.6801999999996\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649217600000,1,,0,,0,0,0,0,0,false,1649217600000,285.31159999999966\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1649044800000,1,,0,,0,0,0,0,0,false,1649044800000,283.9103999999997\nO:SPY241220P00720000,1,299.97,0,299.97,299.97,299.97,299.97,1648785600000,1,,0,,0,0,0,0,0,false,1648785600000,283.2097999999997\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Simple Moving Average (SMA) data for each period."
@@ -10293,6 +10298,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "aggregate_T,aggregate_v,aggregate_vw,aggregate_a,aggregate_o,aggregate_c,aggregate_h,aggregate_l,aggregate_t,aggregate_n,aggregate_m,aggregate_x,aggregate_g,aggregate_op,aggregate_z,aggregate_av,aggregate_s,aggregate_e,aggregate_otc,timestamp,value\nAAPL,1.27849501E+08,142.9012,0,146.1,142.48,146.72,140.68,1664424000000,1061692,,0,,0,0,0,0,0,false,1664424000000,164.19240000000005\nAAPL,1.46755122E+08,147.599,0,147.64,149.84,150.6414,144.84,1664337600000,1140818,,0,,0,0,0,0,0,false,1664337600000,164.40360000000007\nAAPL,8.4461761E+07,152.1354,0,152.74,151.76,154.72,149.945,1664251200000,683781,,0,,0,0,0,0,0,false,1664251200000,164.42680000000007\nAAPL,9.3339409E+07,151.5222,0,149.66,150.77,153.7701,149.64,1664164800000,747666,,0,,0,0,0,0,0,false,1664164800000,164.33300000000006\nAAPL,9.3308449E+07,156.1877,0,157.34,153.72,158.61,153.6,1663732800000,712645,,0,,0,0,0,0,0,false,1663732800000,164.13680000000005\nAAPL,9.6031641E+07,150.0222,0,151.19,150.43,151.47,148.56,1663905600000,766888,,0,,0,0,0,0,0,false,1663905600000,164.32100000000005\nAAPL,8.6651514E+07,152.5709,0,152.38,152.74,154.47,150.91,1663819200000,686866,,0,,0,0,0,0,0,false,1663819200000,164.28180000000003\nAAPL,1.07691097E+08,156.1317,0,153.4,156.9,158.08,153.08,1663646400000,792177,,0,,0,0,0,0,0,false,1663646400000,163.97960000000006\nAAPL,8.1599225E+07,152.5505,0,149.31,154.48,154.56,149.1,1663560000000,671961,,0,,0,0,0,0,0,false,1663560000000,163.73900000000006\nAAPL,1.64879031E+08,150.2387,0,151.21,150.7,151.35,148.37,1663300800000,850358,,0,,0,0,0,0,0,false,1663300800000,163.59020000000007\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Simple Moving Average (SMA) data for each period."
@@ -10363,12 +10374,13 @@
                         "conditions": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "format": "int32",
                             "type": "integer"
                           },
                           "type": "array",
                           "x-polygon-go-type": {
-                            "name": "[]*int32"
+                            "name": "Int32Array"
                           }
                         },
                         "exchange": {
@@ -10394,7 +10406,10 @@
                           }
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "LastTradeCrypto"
+                      }
                     },
                     "request_id": {
                       "description": "A request id assigned by the server.",
@@ -10410,6 +10425,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "conditions,exchange,price,size,timestamp\n1,4,16835.42,0.006909,1605560885027\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -10501,7 +10522,10 @@
                           }
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "LastQuoteCurrencies"
+                      }
                     },
                     "request_id": {
                       "description": "A request id assigned by the server.",
@@ -10517,6 +10541,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "ask,bid,exchange,timestamp\n0.73124,0.73122,48,1605557756000\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -10944,6 +10974,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "isUTC,day,open,close,openTrades,closingTrades\ntrue,2020-10-09,10932.44,11050.64,\"[{\\\"s\\\":0.002,\\\"p\\\":10932.44,\\\"x\\\":1,\\\"t\\\":1602201600056,\\\"c\\\":[2],\\\"i\\\":\\\"511235746\\\"},{\\\"s\\\":0.02,\\\"p\\\":10923.76,\\\"x\\\":4,\\\"t\\\":1602201600141,\\\"c\\\":[2],\\\"i\\\":\\\"511235751\\\"}]\",\"[{\\\"s\\\":0.006128,\\\"p\\\":11050.64,\\\"x\\\":4,\\\"t\\\":1602287999795,\\\"c\\\":[2],\\\"i\\\":\\\"973323250\\\"},{\\\"s\\\":0.014,\\\"p\\\":11049.4,\\\"x\\\":17,\\\"t\\\":1602287999659,\\\"c\\\":[1],\\\"i\\\":\\\"105717893\\\"}]\"\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "The open/close of this symbol."
@@ -11073,6 +11109,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "from,open,high,low,close,volume,afterHours,preMarket\n2021-07-22,25,26.35,25,26.35,2,26.35,25\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "The open/close of this stock symbol."
@@ -11201,6 +11243,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "from,open,high,low,close,volume,afterHours,preMarket\n2020-10-14,324.66,326.2,322.3,325.12,26122646,322.1,324.5\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -12298,6 +12346,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,n,o,t,v,vw\nX:ARDRUSD,0.0550762,0.0550762,0.0550762,18388,0.0550762,1580676480000,2,0.0551\nX:NGCUSD,0.0272983,0.0273733,0.0272983,18,0.0273733,1580674080000,4734,0.0273\nX:ZSCUSD,0.00028531,0.00028531,0.00028531,151,0.00028531,1580671080000,390,0.0003\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "The previous day OHLC for the ticker."
@@ -12472,6 +12526,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,n,o,t,v,vw\nC:ILSCHF,0.2704,0.2706,0.2693,689,0.2698,1602719999999,689,0.2702\nC:GBPCAD,1.71103,1.71642,1.69064,407324,1.69955,1602719999999,407324,1.7062\nC:DKKAUD,0.2214,0.2214,0.2195,10639,0.22,1602719999999,10639,0.2202\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -12660,6 +12720,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,n,o,t,v,vw\nKIMpL,25.9102,26.25,25.91,74,26.07,1602705600000,4369,26.0407\nTANH,23.4,24.763,22.65,1096,24.5,1602705600000,25933.6,23.493\nVSAT,34.24,35.47,34.21,4966,34.9,1602705600000,312583,34.4736\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Previous day OHLC for ticker"
@@ -12822,6 +12888,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,o,t,v,vw\nX:BTCUSD,16035.9,16180,15639.2,15937.1,1605416400000,95045.16897951,15954.2111\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -13062,6 +13134,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "c,h,l,n,o,t,v,vw\n10094.75,10429.26,9490,1,9557.9,1590984000000,303067.6562332156,9874.5529\n9492.62,10222.72,9135.68,1,10096.87,1591070400000,323339.6922892879,9729.5701\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Cryptocurrency Aggregates."
@@ -13225,6 +13303,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,n,o,t,v,vw\nC:EURUSD,1.06206,1.0631,1.0505,180300,1.05252,1651708799999,180300,1.055\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -13455,6 +13539,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "c,h,l,n,o,t,v,vw\n1.17721,1.18305,1.1756,125329,1.17921,1626912000000,125329,1.1789\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Forex Aggregates."
@@ -13614,6 +13704,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,n,o,t,v,vw\nO:TSLA210903C00700000,115.97,117.59,114.13,2,115.55,1605042000000,131704427.0,116.3058\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -13855,6 +13951,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "c,h,l,n,o,t,v,vw\n26.2,26.2,26.2,1,26.2,1632369600000,2,26.2\n28.3,28.3,28.3,1,28.3,1632456000000,2,28.3\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Options Aggregates."
@@ -14013,6 +14115,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,o,t,v,vw\nAAPL,115.97,117.59,114.13,115.55,1605042000000,131704427.0,116.3058\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -14257,6 +14365,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "c,h,l,n,o,t,v,vw\n75.0875,75.15,73.7975,1,74.06,1577941200000,135647456.0,74.6099\n74.3575,75.145,74.125,1,74.2875,1578027600000,146535512.0,74.7026\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Stock Aggregates."
@@ -14345,12 +14459,13 @@
                         "c": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "format": "int32",
                             "type": "integer"
                           },
                           "type": "array",
                           "x-polygon-go-type": {
-                            "name": "[]*int32"
+                            "name": "Int32Array"
                           }
                         },
                         "f": {
@@ -14358,12 +14473,16 @@
                           "type": "integer"
                         },
                         "i": {
-                          "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).",
+                          "description": "A list of indicator codes.",
                           "items": {
-                            "description": "The indicator code.",
+                            "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).",
+                            "format": "int32",
                             "type": "integer"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "x-polygon-go-type": {
+                            "name": "Int32Array"
+                          }
                         },
                         "p": {
                           "description": "The bid price.",
@@ -14407,6 +14526,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "P,S,T,X,p,q,s,t,x,y,z\n127.98,7,AAPL,19,127.96,83480742,1,1617827221349730300,11,1617827221349366000,3\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -14496,12 +14621,13 @@
                         "c": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "format": "int32",
                             "type": "integer"
                           },
                           "type": "array",
                           "x-polygon-go-type": {
-                            "name": "[]*int32"
+                            "name": "Int32Array"
                           }
                         },
                         "e": {
@@ -14563,6 +14689,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "T,c,f,i,p,q,r,s,t,x\nO:TSLA210903C00700000,227,1617901342969796400,,115.55,1325541950,202,25,1617901342969834000,312\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -14656,12 +14788,13 @@
                         "c": {
                           "description": "A list of condition codes.",
                           "items": {
-                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                            "format": "int32",
                             "type": "integer"
                           },
                           "type": "array",
                           "x-polygon-go-type": {
-                            "name": "[]*int32"
+                            "name": "Int32Array"
                           }
                         },
                         "e": {
@@ -14723,6 +14856,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "T,c,f,i,p,q,r,s,t,x,y,z\nAAPL,37,1617901342969796400,118749,129.8473,3135876,202,25,1617901342969834000,4,1617901342968000000,3\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -14951,8 +15090,8 @@
                     {
                       "amp_url": "https://amp.benzinga.com/amp/content/20784086",
                       "article_url": "https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square",
-                      "author": "Rachit Vats",
-                      "description": "<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ: <a class=\"ticker\" href=\"https://www.benzinga.com/stock/coin#NASDAQ\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p>\n<p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE: <a class=\"ticker\" href=\"https://www.benzinga.com/stock/arkk#NYSE\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p>\n<p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE: <a class=\"ticker\" href=\"https://www.benzinga.com/stock/sklz#NYSE\">SKLZ</a>), <a href=\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\">just a day after</a> snapping 1.2 million shares of the stock.</p>\n<p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>",
+                      "author": "Rachit  Vats",
+                      "description": "<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ <a class=\"ticker\" href=\"https://www.benzinga.com/stock/coin#NASDAQ\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p>\n<p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE <a class=\" ticker\" href=\"https://www.benzinga.com/stock/arkk#NYSE\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p>\n<p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE <a class=\" ticker\" href=\"https://www.benzinga.com/stock/sklz#NYSE\">SKLZ</a>), <a href=\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\" >just a day after</a> snapping 1.2 million shares of the stock.</p>\n <p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>",
                       "id": "nJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA",
                       "image_url": "https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720",
                       "keywords": [
@@ -15106,7 +15245,10 @@
                           "path": "github.com/polygon-io/go-lib-models/v2/globals"
                         }
                       },
-                      "type": "array"
+                      "type": "array",
+                      "x-polygon-go-type": {
+                        "name": "ListNewsArticlesResults"
+                      }
                     },
                     "status": {
                       "description": "The status of this request's response.",
@@ -15114,6 +15256,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "id,publisher_name,publisher_homepage_url,publisher_logo_url,publisher_favicon_url,title,author,published_utc,article_url,tickers,amp_url,image_url,description,keywords\nnJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA,Benzinga,https://www.benzinga.com/,https://s3.polygon.io/public/public/assets/news/logos/benzinga.svg,https://s3.polygon.io/public/public/assets/news/favicons/benzinga.ico,\"Cathie Wood Adds More Coinbase, Skillz, Trims Square\",Rachit  Vats,2021-04-26T02:33:17Z,https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square,\"DOCU,DDD,NIU,ARKF,NVDA,SKLZ,PCAR,MASS,PSTI,SPFR,TREE,PHR,IRDM,BEAM,ARKW,ARKK,ARKG,PSTG,SQ,IONS,SYRS\",https://amp.benzinga.com/amp/content/20784086,https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720,\"<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ <a class=\\\"ticker\\\" href=\\\"https://www.benzinga.com/stock/coin#NASDAQ\\\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p> <p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE <a class=\\\" ticker\\\" href=\\\"https://www.benzinga.com/stock/arkk#NYSE\\\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p> <p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE <a class=\\\" ticker\\\" href=\\\"https://www.benzinga.com/stock/sklz#NYSE\\\">SKLZ</a>), <a href=\\\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\\\" >just a day after</a> snapping 1.2 million shares of the stock.</p> <p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>\",\"Sector ETFs,Penny Stocks,Cryptocurrency,Small Cap,Markets,Trading Ideas,ETFs\"\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -15413,6 +15561,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n16260.85,16428.4,15830.4,16418.07,105008.84231068,0,\"[2]\",464569520,16242.31,0.001933,1605294230780,4,16235.1,16264.29,16129.3,16257.51,19.30791925,0,16399.24,16418.07,16399.24,16418.07,0.99167108,16402.6893\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -15715,6 +15869,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n16260.85,16428.4,15830.4,16418.07,105008.84231068,0,\"[2]\",464569520,16242.31,0.001933,1605294230780,4,16235.1,16264.29,16129.3,16257.51,19.30791925,0,16399.24,16418.07,16399.24,16418.07,0.99167108,16402.6893\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Get current state for a ticker"
@@ -15879,6 +16039,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "side,price,size,exchange\nbid,20292.97,0.01501,1\nbid,20291.93,0.00218483,1\nask,18445.61,0.22,1\nask,18463.07,0.00234104,1\nask,18464.83,0.04159475,1\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -16175,6 +16341,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,day_vw,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,day_c,day_h,day_l,day_o,day_v,day_vw,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n0.0374,0.062377,0.01162,0.044834,27313165.159427017,0,\"[2]\",517478762,0.0374,499,1604409649544,2,0.062377,0.062377,0.062377,0.062377,35420,0,0.01162,0.044834,0.01162,0.044834,53616273.36827199,0.0296\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Get the current gainers / losers of the day"
@@ -16431,6 +16603,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_i,lastQuote_t,lastQuote_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n1.18403,1.1906,1.18001,1.18725,83578,1.18403,1.18398,0,1606163759000,48,1.18396,1.18423,1.1838,1.18404,41,1.18724,1.18727,1.18725,1.18725,5,0\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -16694,6 +16872,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_i,lastQuote_t,lastQuote_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n1.18403,1.1906,1.18001,1.18725,83578,1.18403,1.18398,0,1606163759000,48,1.18396,1.18423,1.1838,1.18404,41,1.18724,1.18727,1.18725,1.18725,5,0\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Get current state for a ticker"
@@ -16953,6 +17137,14 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": {
+                  "tickers": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_t,lastQuote_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n0.886156,0.887111,0.8825327,0.8844732,1041,0.8879606,0.886156,1605283204000,48,0.886156,0.886156,0.886156,0.886156,1,0.8428527,0.889773,0.8428527,0.8848539,1078,0\n"
+                },
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -17303,6 +17495,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_i,lastQuote_t,lastQuote_x,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n120.4229,120.53,118.81,119.62,28727868,119.725,120.47,4,120.46,8,1605195918507251817,\"[14,41]\",4046,120.47,236,1605195918306274031,10,28724441,120.4201,120.468,120.37,120.435,270796,120.4129,119.49,119.63,116.44,117.19,110597265,118.4998\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Get current state for all tickers"
@@ -17642,6 +17840,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,lastQuote_a,lastQuote_b,lastQuote_i,lastQuote_t,lastQuote_x,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_c,min_h,min_l,min_o,min_v,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n120.4229,120.53,118.81,119.62,28727868,119.725,120.47,4,120.46,8,1605195918507251817,\"[14,41]\",4046,120.47,236,1605195918306274031,10,28724441,120.4201,120.468,120.37,120.435,270796,120.4129,119.49,119.63,116.44,117.19,110597265,118.4998\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -17988,6 +18192,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "day_c,day_h,day_l,day_o,day_v,day_vw,lastQuote_P,lastQuote_S,lastQuote_p,lastQuote_s,lastQuote_t,lastTrade_c,lastTrade_i,lastTrade_p,lastTrade_s,lastTrade_t,lastTrade_x,min_av,min_c,min_h,min_l,min_o,min_v,min_vw,prevDay_c,prevDay_h,prevDay_l,prevDay_o,prevDay_v,prevDay_vw\n14.2284,15.09,14.2,14.33,133963,14.5311,14.44,11,14.2,25,1605195929997325568,\"[63]\",79372124707124,14.2284,536,1605195848258266112,4,133963,14.2284,14.325,14.2,14.28,6108,14.2426,0.73,0.799,0.73,0.75,1568097,0.7721\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -18730,17 +18940,17 @@
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": [
                     {
-                      "ask_exchange": 48,
-                      "ask_price": 1.18565,
-                      "bid_exchange": 48,
-                      "bid_price": 1.18558,
+                      "ask_exchange": "48,",
+                      "ask_price": "1.18565,",
+                      "bid_exchange": "48,",
+                      "bid_price": "1.18558,",
                       "participant_timestamp": 1625097600000000000
                     },
                     {
-                      "ask_exchange": 48,
-                      "ask_price": 1.18565,
-                      "bid_exchange": 48,
-                      "bid_price": 1.18559,
+                      "ask_exchange": "48,",
+                      "ask_price": "1.18565,",
+                      "bid_exchange": "48,",
+                      "bid_price": "1.18559,",
                       "participant_timestamp": 1625097600000000000
                     }
                   ],
@@ -18793,6 +19003,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "ask_exchange,ask_price,bid_exchange,bid_price,participant_timestamp\n48,,1.18565,,48,,1.18558,,1625097600000000000\n48,,1.18565,,48,,1.18559,,1625097600000000000\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -19028,6 +19244,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "ask_exchange,ask_price,ask_size,bid_exchange,bid_price,bid_size,sequence_number,sip_timestamp\n323,282,10,316,277.5,1,789539218,1645119125346243600\n301,282,1,323,277.5,10,788994206,1645119118474271000\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "A list of quotes."
@@ -19246,16 +19468,22 @@
                               "format": "int32",
                               "type": "integer"
                             },
-                            "type": "array"
+                            "type": "array",
+                            "x-polygon-go-type": {
+                              "name": "Int32Array"
+                            }
                           },
                           "indicators": {
-                            "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).",
+                            "description": "A list of indicator codes.",
                             "items": {
-                              "description": "The indicator code.",
+                              "description": "The indicator codes. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).",
                               "format": "int32",
                               "type": "integer"
                             },
-                            "type": "array"
+                            "type": "array",
+                            "x-polygon-go-type": {
+                              "name": "Int32Array"
+                            }
                           },
                           "participant_timestamp": {
                             "description": "The nanosecond accuracy Participant/Exchange Unix Timestamp. This is the timestamp of when the quote was actually generated at the exchange.",
@@ -19305,6 +19533,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "ask_exchange,ask_price,ask_size,bid_exchange,bid_price,bid_size,conditions,participant_timestamp,sequence_number,sip_timestamp,tape\n0,0,0,11,102.7,60,1,1517562000065321216,2060,1517562000065700260,3\n0,0,0,11,170,2,1,1517562000065408256,2061,1517562000065791515,3\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -19670,6 +19904,12 @@
                     "results"
                   ],
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "id,type,abbreviation,name,description,asset_class,sip_mapping,exchange,consolidated_updates_high_low,consolidated_updates_open_close,consolidated_updates_volume,market_center_updates_high_low,market_center_updates_open_close,market_center_updates_volume,data_types,legacy\n0,regular,,Regular Trade,,crypto,null,0,,,,,,,trade,false\n1,buy_or_sell_side,,Sell Side,The asset was sold at the prevailing best bid price on an exchange.,crypto,null,0,,,,,,,trade,false\n2,buy_or_sell_side,,Buy Side,The asset was bought at the prevailing best ask price on an exchange.,crypto,null,0,,,,,,,trade,false\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -20525,15 +20765,7 @@
                           },
                           "declaration_date": {
                             "description": "The date that the dividend was announced.",
-                            "type": "string",
-                            "x-polygon-go-field-tags": {
-                              "tags": [
-                                {
-                                  "key": "binding",
-                                  "value": "required"
-                                }
-                              ]
-                            }
+                            "type": "string"
                           },
                           "dividend_type": {
                             "description": "The type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD.\nSpecial Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.\nLong-Term and Short-Term capital gain distributions are denoted as LT and ST, respectively.",
@@ -20579,27 +20811,11 @@
                           },
                           "pay_date": {
                             "description": "The date that the dividend is paid out.",
-                            "type": "string",
-                            "x-polygon-go-field-tags": {
-                              "tags": [
-                                {
-                                  "key": "binding",
-                                  "value": "required"
-                                }
-                              ]
-                            }
+                            "type": "string"
                           },
                           "record_date": {
                             "description": "The date that the stock must be held to receive the dividend, set by the company.",
-                            "type": "string",
-                            "x-polygon-go-field-tags": {
-                              "tags": [
-                                {
-                                  "key": "binding",
-                                  "value": "required"
-                                }
-                              ]
-                            }
+                            "type": "string"
                           },
                           "ticker": {
                             "description": "The ticker symbol of the dividend.",
@@ -20616,10 +20832,7 @@
                         },
                         "required": [
                           "ticker",
-                          "declaration_date",
                           "ex_dividend_date",
-                          "record_date",
-                          "pay_date",
                           "frequency",
                           "cash_amount",
                           "dividend_type"
@@ -20641,6 +20854,12 @@
                     "request_id"
                   ],
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "example": "ticker,declaration_date,ex_dividend_date,record_date,pay_date,frequency,cash_amount,dividend_type\nAAPL,2021-10-28,2021-11-05,2021-11-08,2021-11-11,4,0.22,CD\nAAPL,2021-07-27,2021-08-06,2021-08-09,2021-08-12,4,0.22,CD\n",
+                  "type": "string"
                 }
               }
             },
@@ -20717,15 +20936,7 @@
                   },
                   "declaration_date": {
                     "description": "The date that the dividend was announced.",
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
+                    "type": "string"
                   },
                   "dividend_type": {
                     "description": "The type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD.\nSpecial Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.\nLong-Term and Short-Term capital gain distributions are denoted as LT and ST, respectively.",
@@ -20771,27 +20982,11 @@
                   },
                   "pay_date": {
                     "description": "The date that the dividend is paid out.",
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
+                    "type": "string"
                   },
                   "record_date": {
                     "description": "The date that the stock must be held to receive the dividend, set by the company.",
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
+                    "type": "string"
                   },
                   "ticker": {
                     "description": "The ticker symbol of the dividend.",
@@ -20808,10 +21003,7 @@
                 },
                 "required": [
                   "ticker",
-                  "declaration_date",
                   "ex_dividend_date",
-                  "record_date",
-                  "pay_date",
                   "frequency",
                   "cash_amount",
                   "dividend_type"
@@ -20865,15 +21057,7 @@
                         },
                         "declaration_date": {
                           "description": "The date that the dividend was announced.",
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
+                          "type": "string"
                         },
                         "dividend_type": {
                           "description": "The type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD.\nSpecial Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.\nLong-Term and Short-Term capital gain distributions are denoted as LT and ST, respectively.",
@@ -20919,27 +21103,11 @@
                         },
                         "pay_date": {
                           "description": "The date that the dividend is paid out.",
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
+                          "type": "string"
                         },
                         "record_date": {
                           "description": "The date that the stock must be held to receive the dividend, set by the company.",
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
+                          "type": "string"
                         },
                         "ticker": {
                           "description": "The ticker symbol of the dividend.",
@@ -20956,10 +21124,7 @@
                       },
                       "required": [
                         "ticker",
-                        "declaration_date",
                         "ex_dividend_date",
-                        "record_date",
-                        "pay_date",
                         "frequency",
                         "cash_amount",
                         "dividend_type"
@@ -21214,6 +21379,12 @@
                     "request_id"
                   ],
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "id,type,asset_class,locale,name,acronym,mic,operating_mic,participant_id,url\n1,exchange,stocks,us,\"NYSE American, LLC\",AMEX,XASE,XNYS,65,https://www.nyse.com/markets/nyse-american\n2,exchange,stocks,us,\"Nasdaq OMX BX, Inc.\",,XBOS,XNAS,66,https://www.nasdaq.com/solutions/nasdaq-bx-stock-market\n3,exchange,stocks,us,\"NYSE National, Inc.\",NSX,XCIS,XNYS,67,https://www.nyse.com/markets/nyse-national\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -21652,6 +21823,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "schema": {
+                  "example": "cfi,contract_type,exercise_style,expiration_date,primary_exchange,shares_per_contract,strike_price,ticker,underlying_ticker,additional_underlyings_json\nOCASPS,call,american,2021-11-19,BATO,100,85,O:AAPL211119C00085000,AAPL,\nOCASPS,call,american,2021-11-19,BATO,100,90,O:AAPL211119C00090000,AAPL,\"[{'type': 'equity', 'underlying': 'VMW', 'amount': 44}, {'type': 'currency', 'underlying': 'USD', 'amount': 6.53}]\"\n",
+                  "type": "string"
+                }
               }
             },
             "description": "A list of options contracts"
@@ -21831,6 +22008,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "example": "cfi,contract_type,exercise_style,expiration_date,primary_exchange,shares_per_contract,strike_price,ticker,underlying_ticker,additional_underlyings_json\nOCASPS,call,american,2021-11-19,BATO,100,90,O:AAPL211119C00090000,AAPL,\"[{'type': 'equity', 'underlying': 'VMW', 'amount': 44}, {'type': 'currency', 'underlying': 'USD', 'amount': 6.53}]\"\n",
+                  "type": "string"
                 }
               }
             },
@@ -22062,6 +22245,12 @@
                   },
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "ticker,execution_date,split_from,split_to\nAAPL,2020-08-31,1.0,4.0\nAAPL,2005-02-28,1.0,2.0\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "A list of stock splits."
@@ -22267,25 +22456,41 @@
             "content": {
               "application/json": {
                 "example": {
-                  "count": 1,
-                  "next_url": "https://api.polygon.io/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
-                  "request_id": "e70013d92930de90e089dc8fa098888e",
-                  "results": [
-                    {
-                      "active": true,
-                      "cik": "0001090872",
-                      "composite_figi": "BBG000BWQYZ5",
-                      "currency_name": "usd",
-                      "last_updated_utc": "2021-04-25T00:00:00Z",
-                      "locale": "us",
-                      "market": "stocks",
-                      "name": "Agilent Technologies Inc.",
-                      "primary_exchange": "XNYS",
-                      "share_class_figi": "BBG001SCTQY4",
-                      "ticker": "A",
-                      "type": "CS"
-                    }
-                  ],
+                  "request_id": "aa118eb5574a45d8baea953484dc0336",
+                  "results": {
+                    "active": true,
+                    "address": {
+                      "address1": "One Apple Park Way",
+                      "city": "Cupertino",
+                      "postal_code": "95014",
+                      "state": "CA"
+                    },
+                    "branding": {
+                      "icon_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png",
+                      "logo_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg"
+                    },
+                    "cik": "0000320193",
+                    "composite_figi": "BBG000B9XRY4",
+                    "currency_name": "usd",
+                    "description": "Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.",
+                    "homepage_url": "https://www.apple.com",
+                    "list_date": "1980-12-12",
+                    "locale": "us",
+                    "market": "stocks",
+                    "market_cap": 2771126040150,
+                    "name": "Apple Inc.",
+                    "phone_number": "(408) 996-1010",
+                    "primary_exchange": "XNAS",
+                    "share_class_figi": "BBG001S5N8V8",
+                    "share_class_shares_outstanding": 16406400000,
+                    "sic_code": "3571",
+                    "sic_description": "ELECTRONIC COMPUTERS",
+                    "ticker": "AAPL",
+                    "ticker_root": "AAPL",
+                    "total_employees": 154000,
+                    "type": "CS",
+                    "weighted_shares_outstanding": 16334371000
+                  },
                   "status": "OK"
                 },
                 "schema": {
@@ -22406,6 +22611,12 @@
                       "type": "object"
                     }
                   ]
+                }
+              },
+              "text/csv": {
+                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -22533,6 +22744,12 @@
                     "request_id"
                   ],
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "code,description,asset_class,locale\nCS,Common Stock,stocks,us\nPFD,Preferred Stock,stocks,us\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -22874,6 +23091,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Reference Tickers."
@@ -23179,7 +23402,10 @@
                                 "x-polygon-go-id": "VWAP"
                               }
                             },
-                            "type": "object"
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Day"
+                            }
                           },
                           "details": {
                             "properties": {
@@ -23224,7 +23450,10 @@
                                 "type": "string"
                               }
                             },
-                            "type": "object"
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Details"
+                            }
                           },
                           "greeks": {
                             "description": "The greeks for this contract. This is only returned if your current plan includes greeks.",
@@ -23250,7 +23479,10 @@
                                 "type": "number"
                               }
                             },
-                            "type": "object"
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Greeks"
+                            }
                           },
                           "implied_volatility": {
                             "description": "The market's forecast for the volatility of the underlying asset, based on this option's current price.",
@@ -23303,7 +23535,10 @@
                                 "type": "string"
                               }
                             },
-                            "type": "object"
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "LastQuote"
+                            }
                           },
                           "open_interest": {
                             "description": "The quantity of this contract held at the end of the last trading day.",
@@ -23345,10 +23580,16 @@
                                 "type": "string"
                               }
                             },
-                            "type": "object"
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "UnderlyingAsset"
+                            }
                           }
                         },
-                        "type": "object"
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "OptionSnapshotResult"
+                        }
                       },
                       "type": "array"
                     },
@@ -23559,7 +23800,10 @@
                               "x-polygon-go-id": "VWAP"
                             }
                           },
-                          "type": "object"
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "Day"
+                          }
                         },
                         "details": {
                           "properties": {
@@ -23604,7 +23848,10 @@
                               "type": "string"
                             }
                           },
-                          "type": "object"
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "Details"
+                          }
                         },
                         "greeks": {
                           "description": "The greeks for this contract. This is only returned if your current plan includes greeks.",
@@ -23630,7 +23877,10 @@
                               "type": "number"
                             }
                           },
-                          "type": "object"
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "Greeks"
+                          }
                         },
                         "implied_volatility": {
                           "description": "The market's forecast for the volatility of the underlying asset, based on this option's current price.",
@@ -23683,7 +23933,10 @@
                               "type": "string"
                             }
                           },
-                          "type": "object"
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "LastQuote"
+                          }
                         },
                         "open_interest": {
                           "description": "The quantity of this contract held at the end of the last trading day.",
@@ -23725,10 +23978,16 @@
                               "type": "string"
                             }
                           },
-                          "type": "object"
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "UnderlyingAsset"
+                          }
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "OptionSnapshotResult"
+                      }
                     },
                     "status": {
                       "description": "The status of this request's response.",
@@ -23736,6 +23995,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "example": "break_even_price,day_close,day_high,day_last_updated,day_low,day_open,day_previous_close,day_volume,day_vwap,day_change,day_change_percent,details_contract_type,details_exercise_style,details_expiration_date,details_shares_per_contract,details_strike_price,details_ticker,greeks_delta,greeks_gamma,greeks_theta,greeks_vega,implied_volatility,last_quote_ask,last_quote_ask_size,last_quote_bid,last_quote_bid_size,last_quote_last_updated,last_quote_midpoint,last_quote_timeframe,open_interest,underlying_asset_change_to_break_even,underlying_asset_last_updated,underlying_asset_price,underlying_asset_ticker,underlying_asset_timeframe\n0,171.075,21.4,22.49,1636520400000000000,21.35,22.49,22.45,37,21.6741,-1.05,-4.67,call,american,2023-06-16,100,150,O:AAPL230616C00150000,0.5520187372272933,0.00706756515659829,-0.018532772783847958,0.7274811132998142,0.3048997097864957,21.25,110,20.9,172,1636573458756383500,21.075,REAL-TIME,8921,23.123999999999995,1636573459862384600,147.951,AAPL,REAL-TIME\n",
+                  "type": "string"
                 }
               }
             },
@@ -23911,7 +24176,10 @@
                               "format": "int32",
                               "type": "integer"
                             },
-                            "type": "array"
+                            "type": "array",
+                            "x-polygon-go-type": {
+                              "name": "Int32Array"
+                            }
                           },
                           "exchange": {
                             "description": "The exchange ID. See <a href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
@@ -23951,6 +24219,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "conditions,exchange,id,participant_timestamp,price,size\n1,1,191450340,1625097600103000000,35060,1.0434526\n2,1,191450341,1625097600368000000,35059.99,0.0058883\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -24136,7 +24410,10 @@
                               "format": "int32",
                               "type": "integer"
                             },
-                            "type": "array"
+                            "type": "array",
+                            "x-polygon-go-type": {
+                              "name": "Int32Array"
+                            }
                           },
                           "correction": {
                             "description": "The trade correction indicator.",
@@ -24185,6 +24462,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "conditions,exchange,participant_timestamp,price,sip_timestamp,size\n,46,1401715883806000000,6.91,1401715883806000000,1\n209,67,1401716547786000000,7.2,1401716547786000000,1\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
@@ -24374,7 +24657,10 @@
                               "format": "int32",
                               "type": "integer"
                             },
-                            "type": "array"
+                            "type": "array",
+                            "x-polygon-go-type": {
+                              "name": "Int32Array"
+                            }
                           },
                           "correction": {
                             "description": "The trade correction indicator.",
@@ -24450,6 +24736,12 @@
                     }
                   },
                   "type": "object"
+                }
+              },
+              "text/csv": {
+                "example": "conditions,exchange,id,participant_timestamp,price,sequence_number,sip_timestamp,size,tape\n\"12,41\",11,1,1517562000015577088,171.55,1063,1517562000016036581,100,3\n\"12,41\",11,2,1517562000015577600,171.55,1064,1517562000016038175,100,3\n",
+                "schema": {
+                  "type": "string"
                 }
               }
             },
