@@ -131,6 +131,8 @@ class BaseClient:
                 val = caller_locals.get(argname, v.default)
                 if isinstance(val, Enum):
                     val = val.value
+                elif isinstance(val, bool):
+                    val = str(val).lower()
                 elif isinstance(val, datetime):
                     val = int(val.timestamp() * self.time_mult(datetime_res))
                 if val is not None:
