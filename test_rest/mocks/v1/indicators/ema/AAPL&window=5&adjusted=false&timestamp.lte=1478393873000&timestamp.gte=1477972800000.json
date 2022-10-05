@@ -1,0 +1,27 @@
+{
+  "results": {
+    "underlying": {
+      "url": "http://localhost:8081/v2/aggs/ticker/AAPL/range/1/day/1477368000000/1478393873000?adjusted=false\u0026limit=50000\u0026sort=desc"
+    },
+    "values": [
+      {
+        "timestamp": 1478232000000,
+        "value": 110.96883950617286
+      },
+      {
+        "timestamp": 1478145600000,
+        "value": 112.03325925925927
+      },
+      {
+        "timestamp": 1478059200000,
+        "value": 113.1348888888889
+      },
+      {
+        "timestamp": 1477972800000,
+        "value": 113.90733333333334
+      }
+    ]
+  },
+  "status": "OK",
+  "request_id": "aaa162ba-e0b6-4c4a-aa05-dcac472aea71"
+}
