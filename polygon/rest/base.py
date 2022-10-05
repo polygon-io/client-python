@@ -47,7 +47,8 @@ class BaseClient:
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
-        self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
+        self.timeout = urllib3.Timeout(
+            connect=connect_timeout, read=read_timeout)
         self.retries = retries
         if verbose:
             logger.setLevel(logging.DEBUG)
@@ -126,6 +127,8 @@ class BaseClient:
                 val = caller_locals.get(argname, v.default)
                 if isinstance(val, Enum):
                     val = val.value
+                elif isinstance(val, bool):
+                    val = str(val).lower()
                 elif isinstance(val, datetime):
                     val = int(val.timestamp() * self.time_mult(datetime_res))
                 if val is not None:
