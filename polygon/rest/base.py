@@ -47,8 +47,7 @@ class BaseClient:
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
-        self.timeout = urllib3.Timeout(
-            connect=connect_timeout, read=read_timeout)
+        self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
         if verbose:
             logger.setLevel(logging.DEBUG)
