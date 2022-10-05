@@ -13,7 +13,7 @@ from .reference import (
     ContractsClient,
 )
 from .vX import VXClient
-from typing import Optional
+from typing import Optional, Any
 import os
 
 
