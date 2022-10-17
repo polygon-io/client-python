@@ -498,7 +498,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-setuptools"
-version = "65.4.0.0"
+version = "65.5.0.1"
 description = "Typing stubs for setuptools"
 category = "dev"
 optional = false
@@ -564,7 +564,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3e539d49fb8b15c5c0a203060d5ce3a0b7cd98d2408c671a7ec3ade03d1e2f8f"
+content-hash = "c07e0e0a4cf20352c34cfeefb577c3c088771803146e705d8994a23f2d4b58a8"
 
 [metadata.files]
 alabaster = [
@@ -835,8 +835,8 @@ types-certifi = [
     {file = "types_certifi-2021.10.8.3-py3-none-any.whl", hash = "sha256:b2d1e325e69f71f7c78e5943d410e650b4707bb0ef32e4ddf3da37f54176e88a"},
 ]
 types-setuptools = [
-    {file = "types-setuptools-65.4.0.0.tar.gz", hash = "sha256:d9021d6a70690b34e7bd2947e7ab10167c646fbf062508cb56581be2e2a1615e"},
-    {file = "types_setuptools-65.4.0.0-py3-none-any.whl", hash = "sha256:ce178b3f7dbd6c0e67f8eee7ae29c1be280ade7e5188bdd9e620843de4060d85"},
+    {file = "types-setuptools-65.5.0.1.tar.gz", hash = "sha256:5b297081c8f1fbd992cd8b305a97ed96ee6ffc765e9115124029597dd10b8a71"},
+    {file = "types_setuptools-65.5.0.1-py3-none-any.whl", hash = "sha256:601d45b5e9979d2b931de5403aa11153626a1eadd1ce9727b21f24673ced5ceb"},
 ]
 types-urllib3 = [
     {file = "types-urllib3-1.26.25.1.tar.gz", hash = "sha256:a948584944b2412c9a74b9cf64f6c48caf8652cb88b38361316f6d15d8a184cd"},
