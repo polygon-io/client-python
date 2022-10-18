@@ -19,6 +19,7 @@ section in our docs or view the [examples](./examples) directory.
 
 If you found a bug or have an idea for a new feature, please first discuss it with us by
 [submitting a new issue](https://github.com/polygon-io/client-python/issues/new/choose).
+We will respond to issues within at most 3 weeks.
 We're also open to volunteers if you want to submit a PR for any open issues but
 please discuss it with us beforehand. PRs that aren't linked to an existing issue or
 discussed with us ahead of time will generally be declined. If you have more general
