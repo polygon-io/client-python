@@ -4,6 +4,7 @@ from .models import (
     MarketHoliday,
     MarketStatus,
     Ticker,
+    TickerChangeResults,
     TickerDetails,
     TickerNews,
     TickerTypes,
@@ -141,6 +142,30 @@ class TickersClient(BaseClient):
             deserializer=TickerDetails.from_dict,
             raw=raw,
             result_key="results",
+        )
+
+    def get_ticker_events(
+        self,
+        ticker: Optional[str] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+    ) -> Union[TickerChangeResults, HTTPResponse]:
+
+        """
+        Get event history of ticker given particular point in time.
+        :param ticker: The ticker symbol of the asset.
+        :param params: Additional query parameters
+        :param raw: Return raw object instead of results object.
+        :return: Ticker Event VX
+        """
+        url = f"/vX/reference/tickers/{ticker}/events"
+
+        return self._get(
+            path=url,
+            params=params,
+            deserializer=TickerChangeResults.from_dict,
+            result_key="results",
+            raw=raw,
         )
 
     def list_ticker_news(
