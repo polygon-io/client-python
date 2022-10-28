@@ -1,6 +1,6 @@
 import os
 from enum import Enum
-from typing import Optional, Union, List, Set, Callable, Awaitable
+from typing import Optional, Union, List, Set, Callable, Awaitable, Any
 import logging
 import json
 import asyncio
@@ -28,6 +28,7 @@ class WebSocketClient:
         subscriptions: Optional[List[str]] = None,
         max_reconnects: Optional[int] = 5,
         secure: bool = True,
+        custom_json: Optional[Any] = None,
         **kwargs,
     ):
         """
@@ -39,6 +40,7 @@ class WebSocketClient:
         :param verbose: Whether to log client and server status messages.
         :param subscriptions: List of subscription parameters.
         :param max_reconnects: How many times to reconnect on network outage before ending .connect event loop.
+        :param custom_json: Optional module exposing loads/dumps functions (similar to Python's json module) to be used for JSON conversions.
         :return: A client.
         """
         if api_key is None:
@@ -65,6 +67,10 @@ class WebSocketClient:
             subscriptions = []
         self.scheduled_subs: Set[str] = set(subscriptions)
         self.schedule_resub = True
+        if custom_json:
+            self.json = custom_json
+        else:
+            self.json = json
 
     # https://websockets.readthedocs.io/en/stable/reference/client.html#opening-a-connection
     async def connect(
@@ -99,9 +105,11 @@ class WebSocketClient:
                 msg = await s.recv()
                 logger.debug("connected: %s", msg)
                 logger.debug("authing...")
-                await s.send(json.dumps({"action": "auth", "params": self.api_key}))
+                await s.send(
+                    self.json.dumps({"action": "auth", "params": self.api_key})
+                )
                 auth_msg = await s.recv()
-                auth_msg_parsed = json.loads(auth_msg)
+                auth_msg_parsed = self.json.loads(auth_msg)
                 logger.debug("authed: %s", auth_msg)
                 if auth_msg_parsed[0]["status"] == "auth_failed":
                     raise AuthError(auth_msg_parsed[0]["message"])
@@ -127,7 +135,7 @@ class WebSocketClient:
 
                     if not self.raw:
                         # we know cmsg is Data
-                        msgJson = json.loads(cmsg)  # type: ignore
+                        msgJson = self.json.loads(cmsg)  # type: ignore
                         for m in msgJson:
                             if m["ev"] == "status":
                                 logger.debug("status: %s", m["message"])
@@ -176,14 +184,18 @@ class WebSocketClient:
             return
         subs = ",".join(topics)
         logger.debug("subbing: %s", subs)
-        await self.websocket.send(json.dumps({"action": "subscribe", "params": subs}))
+        await self.websocket.send(
+            self.json.dumps({"action": "subscribe", "params": subs})
+        )
 
     async def _unsubscribe(self, topics: Union[List[str], Set[str]]):
         if self.websocket is None or len(topics) == 0:
             return
         subs = ",".join(topics)
         logger.debug("unsubbing: %s", subs)
-        await self.websocket.send(json.dumps({"action": "unsubscribe", "params": subs}))
+        await self.websocket.send(
+            self.json.dumps({"action": "unsubscribe", "params": subs})
+        )
 
     @staticmethod
     def _parse_subscription(s: str):
