@@ -44,7 +44,7 @@ class RESTClient(
         retries: int = 3,
         base: str = BASE,
         verbose: bool = False,
-        custom_json: Optional[Any] = None
+        custom_json: Optional[Any] = None,
     ):
         super().__init__(
             api_key=api_key,

@@ -28,7 +28,7 @@ class BaseClient:
         retries: int,
         base: str,
         verbose: bool,
-        custom_json: Optional[Any] = None
+        custom_json: Optional[Any] = None,
     ):
         if api_key is None:
             raise AuthError(

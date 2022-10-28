@@ -105,7 +105,9 @@ class WebSocketClient:
                 msg = await s.recv()
                 logger.debug("connected: %s", msg)
                 logger.debug("authing...")
-                await s.send(self.json.dumps({"action": "auth", "params": self.api_key}))
+                await s.send(
+                    self.json.dumps({"action": "auth", "params": self.api_key})
+                )
                 auth_msg = await s.recv()
                 auth_msg_parsed = self.json.loads(auth_msg)
                 logger.debug("authed: %s", auth_msg)
@@ -182,14 +184,18 @@ class WebSocketClient:
             return
         subs = ",".join(topics)
         logger.debug("subbing: %s", subs)
-        await self.websocket.send(self.json.dumps({"action": "subscribe", "params": subs}))
+        await self.websocket.send(
+            self.json.dumps({"action": "subscribe", "params": subs})
+        )
 
     async def _unsubscribe(self, topics: Union[List[str], Set[str]]):
         if self.websocket is None or len(topics) == 0:
             return
         subs = ",".join(topics)
         logger.debug("unsubbing: %s", subs)
-        await self.websocket.send(self.json.dumps({"action": "unsubscribe", "params": subs}))
+        await self.websocket.send(
+            self.json.dumps({"action": "unsubscribe", "params": subs})
+        )
 
     @staticmethod
     def _parse_subscription(s: str):

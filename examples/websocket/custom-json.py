@@ -1,9 +1,11 @@
 from polygon import WebSocketClient
 from polygon.websocket.models import WebSocketMessage
 from typing import List
-from examples import custom_json
 
-c = WebSocketClient(subscriptions=["T.*"], custom_json=custom_json)
+# type: ignore
+import orjson
+
+c = WebSocketClient(subscriptions=["T.*"], custom_json=orjson)
 
 
 def handle_msg(msgs: List[WebSocketMessage]):
