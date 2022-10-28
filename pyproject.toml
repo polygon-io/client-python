@@ -30,15 +30,15 @@ websockets = "^10.3"
 certifi = "^2022.5.18"
 
 [tool.poetry.dev-dependencies]
-black = "^22.8.0"
+black = "^22.10.0"
 mypy = "^0.982"
 types-urllib3 = "^1.26.25"
-Sphinx = "^5.2.3"
+Sphinx = "^5.3.0"
 sphinx-rtd-theme = "^1.0.0"
 # keep this in sync with docs/requirements.txt for readthedocs.org
 sphinx-autodoc-typehints = "^1.19.2"
 types-certifi = "^2021.10.8"
-types-setuptools = "^65.4.0"
+types-setuptools = "^65.5.0"
 pook = "^1.0.2"
 orjson = "^3.8.1"
 
