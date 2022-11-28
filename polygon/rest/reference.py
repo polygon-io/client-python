@@ -138,7 +138,7 @@ class TickersClient(BaseClient):
 
         return self._get(
             path=url,
-            params=params,
+            params=self._get_params(self.get_ticker_details, locals()),
             deserializer=TickerDetails.from_dict,
             raw=raw,
             result_key="results",

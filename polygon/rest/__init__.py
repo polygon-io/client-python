@@ -13,7 +13,7 @@ from .reference import (
     ContractsClient,
 )
 from .vX import VXClient
-from typing import Optional
+from typing import Optional, Any
 import os
 
 
@@ -44,6 +44,7 @@ class RESTClient(
         retries: int = 3,
         base: str = BASE,
         verbose: bool = False,
+        custom_json: Optional[Any] = None,
     ):
         super().__init__(
             api_key=api_key,
@@ -53,6 +54,7 @@ class RESTClient(
             retries=retries,
             base=base,
             verbose=verbose,
+            custom_json=custom_json,
         )
         self.vx = VXClient(
             api_key=api_key,
@@ -62,4 +64,5 @@ class RESTClient(
             retries=retries,
             base=base,
             verbose=verbose,
+            custom_json=custom_json,
         )

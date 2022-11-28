@@ -130,6 +130,11 @@ class TickersTest(BaseTest):
         )
         self.assertEqual(details, expected)
 
+        expected.market_cap = 1916103105630
+        details = self.c.get_ticker_details("AAPL", date="2020-10-01")
+
+        self.assertEqual(details, expected)
+
     def test_list_ticker_news(self):
         news = [t for t in self.c.list_ticker_news("NFLX")]
         expected = [
