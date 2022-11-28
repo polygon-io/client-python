@@ -185,3 +185,35 @@ class TickerTypes:
     @staticmethod
     def from_dict(d):
         return TickerTypes(**d)
+
+
+@modelclass
+class TickerChange:
+    ticker: str
+
+    @staticmethod
+    def from_dict(d):
+        return TickerChange(**d)
+
+
+@modelclass
+class TickerChangeEvent:
+    type: str
+    date: str
+    ticker_change: TickerChange
+
+    @staticmethod
+    def from_dict(d):
+        return TickerChangeEvent(**d)
+
+
+@modelclass
+class TickerChangeResults:
+    name: str
+    figi: str
+    cik: str
+    events: Optional[List[TickerChangeEvent]] = None
+
+    @staticmethod
+    def from_dict(d):
+        return TickerChangeResults(**d)
