@@ -185,6 +185,14 @@
                     "q": {
                       "type": "integer",
                       "description": "The sequence number represents the sequence in which message events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11).\n"
+                    },
+                    "trfi": {
+                      "type": "integer",
+                      "description": "The ID for the Trade Reporting Facility where the trade took place."
+                    },
+                    "trft": {
+                      "type": "integer",
+                      "description": "The TRF (Trade Reporting Facility) Timestamp in Unix MS. \nThis is the timestamp of when the trade reporting facility received this trade.\n"
                     }
                   }
                 },
@@ -2247,6 +2255,14 @@
           "q": {
             "type": "integer",
             "description": "The sequence number represents the sequence in which message events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11).\n"
+          },
+          "trfi": {
+            "type": "integer",
+            "description": "The ID for the Trade Reporting Facility where the trade took place."
+          },
+          "trft": {
+            "type": "integer",
+            "description": "The TRF (Trade Reporting Facility) Timestamp in Unix MS. \nThis is the timestamp of when the trade reporting facility received this trade.\n"
           }
         }
       },

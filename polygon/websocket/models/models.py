@@ -88,6 +88,8 @@ class EquityTrade:
     conditions: Optional[List[int]] = None
     timestamp: Optional[int] = None
     sequence_number: Optional[int] = None
+    trf_id: Optional[int] = None
+    trf_timestamp: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -102,6 +104,8 @@ class EquityTrade:
             d.get("c", None),
             d.get("t", None),
             d.get("q", None),
+            d.get("trfi", None),
+            d.get("trft", None),
         )
 
 
@@ -149,6 +153,8 @@ class EquityQuote:
     timestamp: Optional[int] = None
     tape: Optional[int] = None
     sequence_number: Optional[int] = None
+    trf_id: Optional[int] = None
+    trf_timestamp: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -166,6 +172,8 @@ class EquityQuote:
             d.get("t", None),
             d.get("z", None),
             d.get("q", None),
+            d.get("trfi", None),
+            d.get("trft", None),
         )
 
 
