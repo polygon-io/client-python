@@ -418,7 +418,7 @@ class ContractsClient(BaseClient):
     def get_options_contract(
         self,
         ticker: str,
-        as_of: Union[str, date] = None,
+        as_of: Optional[Union[str, date]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[OptionsContract, HTTPResponse]:
