@@ -3,6 +3,8 @@ from polygon.rest.models import (
     TickerDetails,
     TickerNews,
     TickerTypes,
+    TickerChangeEvent,
+    TickerChangeResults,
     Publisher,
     Branding,
     CompanyAddress,
@@ -235,3 +237,25 @@ class TickersTest(BaseTest):
         ]
 
         self.assertEqual(types, expected)
+
+    def test_get_ticker_events_ticker_change(self):
+        events = self.c.get_ticker_events(ticker="META")
+        expected = TickerChangeResults(
+            name="Meta Platforms, Inc. Class A Common Stock",
+            figi="BBG000MM2P62",
+            cik="0001326801",
+            events=[
+                {
+                    "ticker_change": {"ticker": "META"},
+                    "type": "ticker_change",
+                    "date": "2022-06-11",
+                },
+                {
+                    "ticker_change": {"ticker": "FB"},
+                    "type": "ticker_change",
+                    "date": "2012-05-18",
+                },
+            ],
+        )
+
+        self.assertEqual(expected, events)

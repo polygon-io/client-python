@@ -1,0 +1,25 @@
+{
+  "results":  {
+    "name": "Meta Platforms, Inc. Class A Common Stock",
+    "figi": "BBG000MM2P62",
+    "cik": "0001326801",
+    "events": [
+      {
+        "ticker_change": {
+          "ticker": "META"
+        },
+        "type": "ticker_change",
+        "date": "2022-06-11"
+      },
+      {
+        "ticker_change": {
+          "ticker": "FB"
+        },
+        "type": "ticker_change",
+        "date": "2012-05-18"
+      }
+    ]
+  },
+  "status": "OK",
+  "request_id": "8c911ff1-5ca8-41e8-9bbf-e625141caacc"
+}

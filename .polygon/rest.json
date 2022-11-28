@@ -4217,253 +4217,6 @@
         "description": "The volume weighted average price.",
         "format": "double",
         "type": "number"
-      },
-      "v3TickerDetails": {
-        "properties": {
-          "results": {
-            "description": "Ticker with details.\n",
-            "properties": {
-              "active": {
-                "description": "Whether or not the asset is actively traded. False means the asset has been delisted.",
-                "type": "boolean"
-              },
-              "address": {
-                "properties": {
-                  "address1": {
-                    "description": "The first line of the company's headquarters address.",
-                    "type": "string"
-                  },
-                  "city": {
-                    "description": "The city of the company's headquarters address.",
-                    "type": "string"
-                  },
-                  "postal_code": {
-                    "description": "The postal code of the company's headquarters address.",
-                    "type": "string"
-                  },
-                  "state": {
-                    "description": "The state of the company's headquarters address.",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              "branding": {
-                "properties": {
-                  "icon_url": {
-                    "description": "A link to this ticker's company's icon. Icon's are generally smaller, square images that represent the company at a glance.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.\n",
-                    "type": "string"
-                  },
-                  "logo_url": {
-                    "description": "A link to this ticker's company's logo.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.\n",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              "cik": {
-                "description": "The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).",
-                "type": "string"
-              },
-              "composite_figi": {
-                "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                "type": "string"
-              },
-              "currency_name": {
-                "description": "The name of the currency that this asset is traded with.",
-                "type": "string"
-              },
-              "delisted_utc": {
-                "description": "The last date that the asset was traded.",
-                "format": "date-time",
-                "type": "string"
-              },
-              "description": {
-                "description": "A description of the company and what they do/offer.",
-                "type": "string"
-              },
-              "homepage_url": {
-                "description": "The URL of the company's website homepage.",
-                "type": "string"
-              },
-              "list_date": {
-                "description": "The date that the symbol was first publicly listed in the format YYYY-MM-DD.",
-                "type": "string"
-              },
-              "locale": {
-                "description": "The locale of the asset.",
-                "enum": [
-                  "us",
-                  "global"
-                ],
-                "type": "string"
-              },
-              "market": {
-                "description": "The market type of the asset.",
-                "enum": [
-                  "stocks",
-                  "crypto",
-                  "fx",
-                  "otc"
-                ],
-                "type": "string"
-              },
-              "market_cap": {
-                "description": "The most recent close price of the ticker multiplied by weighted outstanding shares.",
-                "format": "double",
-                "type": "number"
-              },
-              "name": {
-                "description": "The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.\n",
-                "type": "string"
-              },
-              "phone_number": {
-                "description": "The phone number for the company behind this ticker.",
-                "type": "string"
-              },
-              "primary_exchange": {
-                "description": "The ISO code of the primary listing exchange for this asset.",
-                "type": "string"
-              },
-              "share_class_figi": {
-                "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                "type": "string"
-              },
-              "share_class_shares_outstanding": {
-                "description": "The recorded number of outstanding shares for this particular share class.",
-                "format": "double",
-                "type": "number"
-              },
-              "sic_code": {
-                "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's <a rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\">SIC Code List</a>.\n",
-                "type": "string"
-              },
-              "sic_description": {
-                "description": "A description of this ticker's SIC code.",
-                "type": "string"
-              },
-              "ticker": {
-                "description": "The exchange symbol that this item is traded under.",
-                "type": "string"
-              },
-              "ticker_root": {
-                "description": "The root of a specified ticker. For example, the root of BRK.A is BRK.",
-                "type": "string"
-              },
-              "ticker_suffix": {
-                "description": "The suffix of a specified ticker. For example, the suffix of BRK.A is A.",
-                "type": "string"
-              },
-              "total_employees": {
-                "description": "The approximate number of employees for the company.",
-                "type": "number"
-              },
-              "type": {
-                "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).",
-                "type": "string"
-              },
-              "weighted_shares_outstanding": {
-                "description": "The shares outstanding calculated assuming all shares of other share classes are converted to this share class.\n",
-                "format": "double",
-                "type": "number"
-              }
-            },
-            "required": [
-              "ticker",
-              "name",
-              "market",
-              "locale",
-              "active",
-              "currency_name"
-            ],
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
-      "v3Tickers": {
-        "properties": {
-          "results": {
-            "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.\n",
-            "items": {
-              "properties": {
-                "active": {
-                  "description": "Whether or not the asset is actively traded. False means the asset has been delisted.",
-                  "type": "boolean"
-                },
-                "cik": {
-                  "description": "The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).",
-                  "type": "string"
-                },
-                "composite_figi": {
-                  "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                  "type": "string"
-                },
-                "currency_name": {
-                  "description": "The name of the currency that this asset is traded with.",
-                  "type": "string"
-                },
-                "delisted_utc": {
-                  "description": "The last date that the asset was traded.",
-                  "format": "date-time",
-                  "type": "string"
-                },
-                "last_updated_utc": {
-                  "description": "The information is accurate up to this time.",
-                  "format": "date-time",
-                  "type": "string"
-                },
-                "locale": {
-                  "description": "The locale of the asset.",
-                  "enum": [
-                    "us",
-                    "global"
-                  ],
-                  "type": "string"
-                },
-                "market": {
-                  "description": "The market type of the asset.",
-                  "enum": [
-                    "stocks",
-                    "crypto",
-                    "fx",
-                    "otc"
-                  ],
-                  "type": "string"
-                },
-                "name": {
-                  "description": "The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.\n",
-                  "type": "string"
-                },
-                "primary_exchange": {
-                  "description": "The ISO code of the primary listing exchange for this asset.",
-                  "type": "string"
-                },
-                "share_class_figi": {
-                  "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                  "type": "string"
-                },
-                "ticker": {
-                  "description": "The exchange symbol that this item is traded under.",
-                  "type": "string"
-                },
-                "type": {
-                  "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "ticker",
-                "name",
-                "market",
-                "locale"
-              ],
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
       }
     },
     "securitySchemes": {
@@ -22281,10 +22034,11 @@
     },
     "/v3/reference/tickers": {
       "get": {
-        "description": "Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.\n",
+        "description": "Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.",
+        "operationId": "ListTickers",
         "parameters": [
           {
-            "description": "Specify a ticker symbol.\nDefaults to empty string which queries all tickers.\n",
+            "description": "Specify a ticker symbol.\nDefaults to empty string which queries all tickers.",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -22295,7 +22049,7 @@
             }
           },
           {
-            "description": "Specify the type of the tickers. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).\nDefaults to empty string which queries all types.\n",
+            "description": "Specify the type of the tickers. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).\nDefaults to empty string which queries all types.",
             "in": "query",
             "name": "type",
             "schema": {
@@ -22328,7 +22082,7 @@
             }
           },
           {
-            "description": "Filter by market type. By default all markets are included.\n",
+            "description": "Filter by market type. By default all markets are included.",
             "in": "query",
             "name": "market",
             "schema": {
@@ -22342,7 +22096,7 @@
             }
           },
           {
-            "description": "Specify the primary exchange of the asset in the ISO code format. Find more information about the ISO codes [at the ISO org website](https://www.iso20022.org/market-identifier-codes).\nDefaults to empty string which queries all exchanges.\n",
+            "description": "Specify the primary exchange of the asset in the ISO code format. Find more information about the ISO codes [at the ISO org website](https://www.iso20022.org/market-identifier-codes).\nDefaults to empty string which queries all exchanges.",
             "in": "query",
             "name": "exchange",
             "schema": {
@@ -22350,7 +22104,7 @@
             }
           },
           {
-            "description": "Specify the CUSIP code of the asset you want to search for. Find more information about CUSIP codes [at their website](https://www.cusip.com/identifiers.html#/CUSIP).\nDefaults to empty string which queries all CUSIPs.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.\n",
+            "description": "Specify the CUSIP code of the asset you want to search for. Find more information about CUSIP codes [at their website](https://www.cusip.com/identifiers.html#/CUSIP).\nDefaults to empty string which queries all CUSIPs.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.",
             "in": "query",
             "name": "cusip",
             "schema": {
@@ -22358,7 +22112,7 @@
             }
           },
           {
-            "description": "Specify the CIK of the asset you want to search for. Find more information about CIK codes [at their website](https://www.sec.gov/edgar/searchedgar/cik.htm).\nDefaults to empty string which queries all CIKs.\n",
+            "description": "Specify the CIK of the asset you want to search for. Find more information about CIK codes [at their website](https://www.sec.gov/edgar/searchedgar/cik.htm).\nDefaults to empty string which queries all CIKs.",
             "in": "query",
             "name": "cik",
             "schema": {
@@ -22366,24 +22120,16 @@
             }
           },
           {
-            "description": "Specify a point in time to retrieve tickers available on that date.\nDefaults to the most recent available date.\n",
+            "description": "Specify a point in time to retrieve tickers available on that date.\nDefaults to the most recent available date.",
             "in": "query",
             "name": "date",
             "schema": {
-              "oneOf": [
-                {
-                  "format": "date-time",
-                  "type": "string"
-                },
-                {
-                  "format": "date",
-                  "type": "string"
-                }
-              ]
+              "format": "date",
+              "type": "string"
             }
           },
           {
-            "description": "Search for terms within the ticker and/or company name.\n",
+            "description": "Search for terms within the ticker and/or company name.",
             "in": "query",
             "name": "search",
             "schema": {
@@ -22391,7 +22137,7 @@
             }
           },
           {
-            "description": "Specify if the tickers returned should be actively traded on the queried date. Default is true.\n",
+            "description": "Specify if the tickers returned should be actively traded on the queried date. Default is true.",
             "example": true,
             "in": "query",
             "name": "active",
@@ -22400,11 +22146,68 @@
             }
           },
           {
-            "description": "The field to sort the results on. Default is ticker.\nIf the `search` query parameter is present, `sort` is ignored and results are ordered by relevance.\n",
-            "example": "ticker",
+            "description": "Search by ticker.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by ticker.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by ticker.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by ticker.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Order results based on the `sort` field.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 100 and max is 1000.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "example": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field used for ordering.",
             "in": "query",
             "name": "sort",
             "schema": {
+              "default": "ticker",
               "enum": [
                 "ticker",
                 "name",
@@ -22422,32 +22225,8 @@
                 "last_updated_utc",
                 "delisted_utc"
               ],
+              "example": "ticker",
               "type": "string"
-            }
-          },
-          {
-            "description": "The order to sort the results on. Default is asc (ascending).\n",
-            "example": "asc",
-            "in": "query",
-            "name": "order",
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the size of the response, default is 100 and max is 1000.\n\nIf your query returns more than the max limit and you want to retrieve the next page of results,\nsee the `next_url` response attribute.\n",
-            "example": 10,
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 100,
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer"
             }
           }
         ],
@@ -22456,165 +22235,134 @@
             "content": {
               "application/json": {
                 "example": {
-                  "request_id": "aa118eb5574a45d8baea953484dc0336",
-                  "results": {
-                    "active": true,
-                    "address": {
-                      "address1": "One Apple Park Way",
-                      "city": "Cupertino",
-                      "postal_code": "95014",
-                      "state": "CA"
-                    },
-                    "branding": {
-                      "icon_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png",
-                      "logo_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg"
-                    },
-                    "cik": "0000320193",
-                    "composite_figi": "BBG000B9XRY4",
-                    "currency_name": "usd",
-                    "description": "Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.",
-                    "homepage_url": "https://www.apple.com",
-                    "list_date": "1980-12-12",
-                    "locale": "us",
-                    "market": "stocks",
-                    "market_cap": 2771126040150,
-                    "name": "Apple Inc.",
-                    "phone_number": "(408) 996-1010",
-                    "primary_exchange": "XNAS",
-                    "share_class_figi": "BBG001S5N8V8",
-                    "share_class_shares_outstanding": 16406400000,
-                    "sic_code": "3571",
-                    "sic_description": "ELECTRONIC COMPUTERS",
-                    "ticker": "AAPL",
-                    "ticker_root": "AAPL",
-                    "total_employees": 154000,
-                    "type": "CS",
-                    "weighted_shares_outstanding": 16334371000
-                  },
+                  "count": 1,
+                  "next_url": "https://api.polygon.io/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "request_id": "e70013d92930de90e089dc8fa098888e",
+                  "results": [
+                    {
+                      "active": true,
+                      "cik": "0001090872",
+                      "composite_figi": "BBG000BWQYZ5",
+                      "currency_name": "usd",
+                      "last_updated_utc": "2021-04-25T00:00:00Z",
+                      "locale": "us",
+                      "market": "stocks",
+                      "name": "Agilent Technologies Inc.",
+                      "primary_exchange": "XNYS",
+                      "share_class_figi": "BBG001SCTQY4",
+                      "ticker": "A",
+                      "type": "CS"
+                    }
+                  ],
                   "status": "OK"
                 },
                 "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "results": {
-                          "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.\n",
-                          "items": {
-                            "properties": {
-                              "active": {
-                                "description": "Whether or not the asset is actively traded. False means the asset has been delisted.",
-                                "type": "boolean"
-                              },
-                              "cik": {
-                                "description": "The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).",
-                                "type": "string"
-                              },
-                              "composite_figi": {
-                                "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                                "type": "string"
-                              },
-                              "currency_name": {
-                                "description": "The name of the currency that this asset is traded with.",
-                                "type": "string"
-                              },
-                              "delisted_utc": {
-                                "description": "The last date that the asset was traded.",
-                                "format": "date-time",
-                                "type": "string"
-                              },
-                              "last_updated_utc": {
-                                "description": "The information is accurate up to this time.",
-                                "format": "date-time",
-                                "type": "string"
-                              },
-                              "locale": {
-                                "description": "The locale of the asset.",
-                                "enum": [
-                                  "us",
-                                  "global"
-                                ],
-                                "type": "string"
-                              },
-                              "market": {
-                                "description": "The market type of the asset.",
-                                "enum": [
-                                  "stocks",
-                                  "crypto",
-                                  "fx",
-                                  "otc"
-                                ],
-                                "type": "string"
-                              },
-                              "name": {
-                                "description": "The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.\n",
-                                "type": "string"
-                              },
-                              "primary_exchange": {
-                                "description": "The ISO code of the primary listing exchange for this asset.",
-                                "type": "string"
-                              },
-                              "share_class_figi": {
-                                "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                                "type": "string"
-                              },
-                              "ticker": {
-                                "description": "The exchange symbol that this item is traded under.",
-                                "type": "string"
-                              },
-                              "type": {
-                                "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).",
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "ticker",
-                              "name",
-                              "market",
-                              "locale"
-                            ],
-                            "type": "object"
+                  "properties": {
+                    "count": {
+                      "description": "The total number of results for this request.",
+                      "type": "integer"
+                    },
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "An array of tickers that match your query.\n\nNote: Although you can query by CUSIP, due to legal reasons we do not return the CUSIP in the response.",
+                      "items": {
+                        "properties": {
+                          "active": {
+                            "description": "Whether or not the asset is actively traded. False means the asset has been delisted.",
+                            "type": "boolean"
                           },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "next_url": {
-                          "description": "If present, this value can be used to fetch the next page of data.",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "request_id": {
-                          "description": "A request id assigned by the server.",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "count": {
-                          "description": "The total number of results for this request.",
-                          "type": "integer"
+                          "cik": {
+                            "description": "The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).",
+                            "type": "string"
+                          },
+                          "composite_figi": {
+                            "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                            "type": "string"
+                          },
+                          "currency_name": {
+                            "description": "The name of the currency that this asset is traded with.",
+                            "type": "string"
+                          },
+                          "delisted_utc": {
+                            "description": "The last date that the asset was traded.",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "last_updated_utc": {
+                            "description": "The information is accurate up to this time.",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "locale": {
+                            "description": "The locale of the asset.",
+                            "enum": [
+                              "us",
+                              "global"
+                            ],
+                            "type": "string"
+                          },
+                          "market": {
+                            "description": "The market type of the asset.",
+                            "enum": [
+                              "stocks",
+                              "crypto",
+                              "fx",
+                              "otc"
+                            ],
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.",
+                            "type": "string"
+                          },
+                          "primary_exchange": {
+                            "description": "The ISO code of the primary listing exchange for this asset.",
+                            "type": "string"
+                          },
+                          "share_class_figi": {
+                            "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "The exchange symbol that this item is traded under.",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).",
+                            "type": "string"
+                          }
                         },
-                        "status": {
-                          "description": "The status of this request's response.",
-                          "type": "string"
+                        "required": [
+                          "ticker",
+                          "name",
+                          "market",
+                          "locale"
+                        ],
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "ReferenceTicker",
+                          "path": "github.com/polygon-io/go-lib-models/v2/globals"
                         }
                       },
-                      "type": "object"
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
                     }
-                  ]
+                  },
+                  "type": "object"
                 }
               },
               "text/csv": {
-                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
+                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,last_updated_utc\nA,Agilent Technologies Inc.,stocks,us,XNYS,CS,true,usd,0001090872,BBG000BWQYZ5,BBG001SCTQY4,2021-04-25T00:00:00Z\n",
                 "schema": {
                   "type": "string"
                 }
@@ -22633,6 +22381,32 @@
         "x-polygon-entitlement-data-type": {
           "description": "Reference data",
           "name": "reference"
+        },
+        "x-polygon-paginate": {
+          "limit": {
+            "default": 100,
+            "max": 1000
+          },
+          "sort": {
+            "default": "ticker",
+            "enum": [
+              "ticker",
+              "name",
+              "market",
+              "locale",
+              "primary_exchange",
+              "type",
+              "currency_symbol",
+              "currency_name",
+              "base_currency_symbol",
+              "base_currency_name",
+              "cik",
+              "composite_figi",
+              "share_class_figi",
+              "last_updated_utc",
+              "delisted_utc"
+            ]
+          }
         }
       }
     },
@@ -22830,7 +22604,8 @@
     },
     "/v3/reference/tickers/{ticker}": {
       "get": {
-        "description": "Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.\n",
+        "description": "Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.",
+        "operationId": "GetTicker",
         "parameters": [
           {
             "description": "The ticker symbol of the asset.",
@@ -22843,20 +22618,12 @@
             }
           },
           {
-            "description": "Specify a point in time to get information about the ticker available on that date.\nWhen retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.\n\nFor example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29.\nThat means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29.\nIf you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.\n\nDefaults to the most recent available date.\n",
+            "description": "Specify a point in time to get information about the ticker available on that date.\nWhen retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.\n\nFor example, consider an SEC filing submitted by AAPL on 2019-07-31, with a period of report date ending on 2019-06-29.\nThat means that the filing was submitted on 2019-07-31, but the filing was created based on information from 2019-06-29.\nIf you were to query for AAPL details on 2019-06-29, the ticker details would include information from the SEC filing.\n\nDefaults to the most recent available date.",
             "in": "query",
             "name": "date",
             "schema": {
-              "oneOf": [
-                {
-                  "format": "date-time",
-                  "type": "string"
-                },
-                {
-                  "format": "date",
-                  "type": "string"
-                }
-              ]
+              "format": "date",
+              "type": "string"
             }
           }
         ],
@@ -22903,193 +22670,183 @@
                   "status": "OK"
                 },
                 "schema": {
-                  "allOf": [
-                    {
+                  "properties": {
+                    "count": {
+                      "description": "The total number of results for this request.",
+                      "type": "integer"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "Ticker with details.",
                       "properties": {
-                        "results": {
-                          "description": "Ticker with details.\n",
+                        "active": {
+                          "description": "Whether or not the asset is actively traded. False means the asset has been delisted.",
+                          "type": "boolean"
+                        },
+                        "address": {
                           "properties": {
-                            "active": {
-                              "description": "Whether or not the asset is actively traded. False means the asset has been delisted.",
-                              "type": "boolean"
-                            },
-                            "address": {
-                              "properties": {
-                                "address1": {
-                                  "description": "The first line of the company's headquarters address.",
-                                  "type": "string"
-                                },
-                                "city": {
-                                  "description": "The city of the company's headquarters address.",
-                                  "type": "string"
-                                },
-                                "postal_code": {
-                                  "description": "The postal code of the company's headquarters address.",
-                                  "type": "string"
-                                },
-                                "state": {
-                                  "description": "The state of the company's headquarters address.",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "branding": {
-                              "properties": {
-                                "icon_url": {
-                                  "description": "A link to this ticker's company's icon. Icon's are generally smaller, square images that represent the company at a glance.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.\n",
-                                  "type": "string"
-                                },
-                                "logo_url": {
-                                  "description": "A link to this ticker's company's logo.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.\n",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "cik": {
-                              "description": "The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).",
+                            "address1": {
+                              "description": "The first line of the company's headquarters address.",
                               "type": "string"
                             },
-                            "composite_figi": {
-                              "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                            "city": {
+                              "description": "The city of the company's headquarters address.",
                               "type": "string"
                             },
-                            "currency_name": {
-                              "description": "The name of the currency that this asset is traded with.",
+                            "postal_code": {
+                              "description": "The postal code of the company's headquarters address.",
                               "type": "string"
                             },
-                            "delisted_utc": {
-                              "description": "The last date that the asset was traded.",
-                              "format": "date-time",
+                            "state": {
+                              "description": "The state of the company's headquarters address.",
                               "type": "string"
-                            },
-                            "description": {
-                              "description": "A description of the company and what they do/offer.",
-                              "type": "string"
-                            },
-                            "homepage_url": {
-                              "description": "The URL of the company's website homepage.",
-                              "type": "string"
-                            },
-                            "list_date": {
-                              "description": "The date that the symbol was first publicly listed in the format YYYY-MM-DD.",
-                              "type": "string"
-                            },
-                            "locale": {
-                              "description": "The locale of the asset.",
-                              "enum": [
-                                "us",
-                                "global"
-                              ],
-                              "type": "string"
-                            },
-                            "market": {
-                              "description": "The market type of the asset.",
-                              "enum": [
-                                "stocks",
-                                "crypto",
-                                "fx",
-                                "otc"
-                              ],
-                              "type": "string"
-                            },
-                            "market_cap": {
-                              "description": "The most recent close price of the ticker multiplied by weighted outstanding shares.",
-                              "format": "double",
-                              "type": "number"
-                            },
-                            "name": {
-                              "description": "The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.\n",
-                              "type": "string"
-                            },
-                            "phone_number": {
-                              "description": "The phone number for the company behind this ticker.",
-                              "type": "string"
-                            },
-                            "primary_exchange": {
-                              "description": "The ISO code of the primary listing exchange for this asset.",
-                              "type": "string"
-                            },
-                            "share_class_figi": {
-                              "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
-                              "type": "string"
-                            },
-                            "share_class_shares_outstanding": {
-                              "description": "The recorded number of outstanding shares for this particular share class.",
-                              "format": "double",
-                              "type": "number"
-                            },
-                            "sic_code": {
-                              "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's <a rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\">SIC Code List</a>.\n",
-                              "type": "string"
-                            },
-                            "sic_description": {
-                              "description": "A description of this ticker's SIC code.",
-                              "type": "string"
-                            },
-                            "ticker": {
-                              "description": "The exchange symbol that this item is traded under.",
-                              "type": "string"
-                            },
-                            "ticker_root": {
-                              "description": "The root of a specified ticker. For example, the root of BRK.A is BRK.",
-                              "type": "string"
-                            },
-                            "ticker_suffix": {
-                              "description": "The suffix of a specified ticker. For example, the suffix of BRK.A is A.",
-                              "type": "string"
-                            },
-                            "total_employees": {
-                              "description": "The approximate number of employees for the company.",
-                              "type": "number"
-                            },
-                            "type": {
-                              "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).",
-                              "type": "string"
-                            },
-                            "weighted_shares_outstanding": {
-                              "description": "The shares outstanding calculated assuming all shares of other share classes are converted to this share class.\n",
-                              "format": "double",
-                              "type": "number"
                             }
                           },
-                          "required": [
-                            "ticker",
-                            "name",
-                            "market",
-                            "locale",
-                            "active",
-                            "currency_name"
-                          ],
                           "type": "object"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "request_id": {
-                          "description": "A request id assigned by the server.",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "count": {
-                          "description": "The total number of results for this request.",
-                          "type": "integer"
                         },
-                        "status": {
-                          "description": "The status of this request's response.",
+                        "branding": {
+                          "properties": {
+                            "icon_url": {
+                              "description": "A link to this ticker's company's icon. Icon's are generally smaller, square images that represent the company at a glance.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.",
+                              "type": "string"
+                            },
+                            "logo_url": {
+                              "description": "A link to this ticker's company's logo.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "cik": {
+                          "description": "The CIK number for this ticker. Find more information [here](https://en.wikipedia.org/wiki/Central_Index_Key).",
                           "type": "string"
+                        },
+                        "composite_figi": {
+                          "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                          "type": "string"
+                        },
+                        "currency_name": {
+                          "description": "The name of the currency that this asset is traded with.",
+                          "type": "string"
+                        },
+                        "delisted_utc": {
+                          "description": "The last date that the asset was traded.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "description": {
+                          "description": "A description of the company and what they do/offer.",
+                          "type": "string"
+                        },
+                        "homepage_url": {
+                          "description": "The URL of the company's website homepage.",
+                          "type": "string"
+                        },
+                        "list_date": {
+                          "description": "The date that the symbol was first publicly listed in the format YYYY-MM-DD.",
+                          "type": "string"
+                        },
+                        "locale": {
+                          "description": "The locale of the asset.",
+                          "enum": [
+                            "us",
+                            "global"
+                          ],
+                          "type": "string"
+                        },
+                        "market": {
+                          "description": "The market type of the asset.",
+                          "enum": [
+                            "stocks",
+                            "crypto",
+                            "fx",
+                            "otc"
+                          ],
+                          "type": "string"
+                        },
+                        "market_cap": {
+                          "description": "The most recent close price of the ticker multiplied by weighted outstanding shares.",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "name": {
+                          "description": "The name of the asset. For stocks/equities this will be the companies registered name. For crypto/fx this will be the name of the currency or coin pair.",
+                          "type": "string"
+                        },
+                        "phone_number": {
+                          "description": "The phone number for the company behind this ticker.",
+                          "type": "string"
+                        },
+                        "primary_exchange": {
+                          "description": "The ISO code of the primary listing exchange for this asset.",
+                          "type": "string"
+                        },
+                        "share_class_figi": {
+                          "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                          "type": "string"
+                        },
+                        "share_class_shares_outstanding": {
+                          "description": "The recorded number of outstanding shares for this particular share class.",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "sic_code": {
+                          "description": "The standard industrial classification code for this ticker.  For a list of SIC Codes, see the SEC's <a rel=\"nofollow\" target=\"_blank\" href=\"https://www.sec.gov/info/edgar/siccodes.htm\">SIC Code List</a>.",
+                          "type": "string"
+                        },
+                        "sic_description": {
+                          "description": "A description of this ticker's SIC code.",
+                          "type": "string"
+                        },
+                        "ticker": {
+                          "description": "The exchange symbol that this item is traded under.",
+                          "type": "string"
+                        },
+                        "ticker_root": {
+                          "description": "The root of a specified ticker. For example, the root of BRK.A is BRK.",
+                          "type": "string"
+                        },
+                        "ticker_suffix": {
+                          "description": "The suffix of a specified ticker. For example, the suffix of BRK.A is A.",
+                          "type": "string"
+                        },
+                        "total_employees": {
+                          "description": "The approximate number of employees for the company.",
+                          "type": "number"
+                        },
+                        "type": {
+                          "description": "The type of the asset. Find the types that we support via our [Ticker Types API](https://polygon.io/docs/stocks/get_v3_reference_tickers_types).",
+                          "type": "string"
+                        },
+                        "weighted_shares_outstanding": {
+                          "description": "The shares outstanding calculated assuming all shares of other share classes are converted to this share class.",
+                          "format": "double",
+                          "type": "number"
                         }
                       },
-                      "type": "object"
+                      "required": [
+                        "ticker",
+                        "name",
+                        "market",
+                        "locale",
+                        "active",
+                        "currency_name"
+                      ],
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "ReferenceTicker",
+                        "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
                     }
-                  ]
+                  },
+                  "type": "object"
                 }
               },
               "text/csv": {
@@ -25284,6 +25041,133 @@
           }
         }
       }
+    },
+    "/vX/reference/tickers/{id}/events": {
+      "get": {
+        "description": "Get a timeline of events for the entity associated with the given ticker, CUSIP, or Composite FIGI.",
+        "operationId": "GetEvents",
+        "parameters": [
+          {
+            "description": "Identifier of an asset. This can currently be a Ticker, CUSIP, or Composite FIGI.\nWhen given a ticker, we return events for the entity currently represented by that ticker.\nTo find events for entities previously associated with a ticker, find the relevant identifier using the \n[Ticker Details Endpoint](https://polygon.io/docs/stocks/get_v3_reference_tickers__ticker)",
+            "example": "META",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A comma-separated list of the types of event to include. Currently ticker_change is the only supported event_type.\nLeave blank to return all supported event_types.",
+            "in": "query",
+            "name": "types",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "31d59dda-80e5-4721-8496-d0d32a654afe",
+                  "results": {
+                    "events": [
+                      {
+                        "date": "2022-06-09",
+                        "ticker_change": {
+                          "ticker": "META"
+                        },
+                        "type": "ticker_change"
+                      },
+                      {
+                        "date": "2012-05-18",
+                        "ticker_change": {
+                          "ticker": "FB"
+                        },
+                        "type": "ticker_change"
+                      }
+                    ],
+                    "name": "Meta Platforms, Inc. Class A Common Stock"
+                  },
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "properties": {
+                        "events": {
+                          "items": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "date": {
+                                    "description": "The date the event took place",
+                                    "format": "date",
+                                    "type": "string"
+                                  },
+                                  "event_type": {
+                                    "description": "The type of historical event for the asset",
+                                    "type": "string"
+                                  },
+                                  "ticker_change": {
+                                    "properties": {
+                                      "ticker": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "type": "object"
+                                  }
+                                },
+                                "required": [
+                                  "event_type",
+                                  "date"
+                                ],
+                                "type": "object"
+                              }
+                            ]
+                          },
+                          "type": "array"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "EventsResults"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Ticker Events."
+          },
+          "401": {
+            "description": "Unauthorized - Check our API Key and account status"
+          }
+        },
+        "summary": "Ticker Events",
+        "tags": [
+          "reference:tickers:get"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Reference data",
+          "name": "reference"
+        },
+        "x-polygon-experimental": {}
+      }
     }
   },
   "security": [
@@ -25734,6 +25618,11 @@
         {
           "paths": [
             "/v3/reference/tickers/{ticker}"
+          ]
+        },
+        {
+          "paths": [
+            "/vX/reference/tickers/{id}/events"
           ]
         },
         {
