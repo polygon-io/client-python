@@ -1,5 +1,5 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union
+from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import Agg, GroupedDailyAgg, DailyOpenCloseAgg, PreviousCloseAgg, Sort
 from urllib3 import HTTPResponse
 from datetime import datetime, date
@@ -60,7 +60,7 @@ class AggsClient(BaseClient):
         raw: bool = False,
         market_type: str = "stocks",
         include_otc: bool = False,
-    ) -> Union[GroupedDailyAgg, HTTPResponse]:
+    ) -> Union[Iterator[GroupedDailyAgg], HTTPResponse]:
         """
         Get the daily open, high, low, and close (OHLC) for the entire market.
 
