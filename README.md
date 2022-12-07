@@ -26,6 +26,20 @@ discussed with us ahead of time will generally be declined. If you have more gen
 feedback or want to discuss using this client with other users, feel free to reach out
 on our [Slack channel](https://polygon-io.slack.com/archives/C03FRFN7UF3).
 
+### Development
+
+If you plan to contribute by developing new features then you will need to install certain dependencies.
+
+#### Poetry
+
+Poetry is a packaging and dependency manager for Python.
+Installation instructions can be found [on their website](https://python-poetry.org/docs/#installation).
+Once installed run `poetry install` to install the required dependencies. This step should be run after incorporating new upstream changes.
+
+#### Makefile
+
+Our Makefile has the common operations needed when developing on this repo. Running tests and linting can both be run through our Makefile. Just run `make help` to see the list of available commands. 
+
 ## Release planning
 This client will attempt to follow the release cadence of our API.
 When endpoints are deprecated and newer versions are added, the client will
