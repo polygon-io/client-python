@@ -14,9 +14,6 @@ from base import BaseTest
 
 class TickersTest(BaseTest):
     def test_list_tickers(self):
-        self.c.get_summaries(ticker_any_of=["a", "b", "c"])
-
-        tickers = [t for t in self.c.list_tickers()]
         expected = [
             Ticker(
                 active=True,
