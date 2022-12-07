@@ -57,6 +57,7 @@ class BaseClient:
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
+
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
         if verbose:
@@ -82,8 +83,6 @@ class BaseClient:
             params = {}
         params = {str(k): str(v) for k, v in params.items() if v is not None}
         logger.debug("_get %s params %s", path, params)
-
-        # Todo: Handle Options
 
         resp = self.client.request(
             "GET",
