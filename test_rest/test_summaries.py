@@ -7,10 +7,10 @@ from polygon.rest.models import (
 from base import BaseTest
 
 
-class TickersTest(BaseTest):
-    def test_list_tickers(self):
-        ticker_any_of = ['NCLH', 'O:NCLH221014C00005000', 'C:EURUSD', 'X:BTCUSD']
-        summary_results = [t for t in self.c.get_summaries(ticker_any_of)]
+class SummariesTest(BaseTest):
+    def test_get_summaries(self):
+        ticker_any_of = ['NCLH']
+        summary_results = self.c.get_summaries(ticker_any_of)
         expected = [
             SummaryResult(
                 price=22.3,
@@ -21,10 +21,10 @@ class TickersTest(BaseTest):
                     logo_url="https://api.polygon.io/logo.svg",
                 ),
                 market_status="closed",
-                type=None,
+                type="stocks",
                 session=Session(
-                    change= -1.05,
-                    change_percent= -4.67,
+                    change=-1.05,
+                    change_percent=-4.67,
                     close=21.4,
                     early_trading_change=-0.39,
                     early_trading_change_percent=-0.07,
@@ -36,7 +36,6 @@ class TickersTest(BaseTest):
                     previous_close=22.45,
                     volume=37
                 ),
-                options=None,
             )
         ]
         self.assertEqual(summary_results, expected)

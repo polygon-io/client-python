@@ -12,7 +12,7 @@ class SummariesClient(BaseClient):
         ticker_any_of: Optional[List[str]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[Iterator[SummaryResult], HTTPResponse]:
+    ) -> Union[List[SummaryResult], HTTPResponse]:
         """
         GetSummaries retrieves summaries for the ticker list with the given params.
         For more details see https://polygon.io/docs/stocks/get_v1_summaries.
@@ -23,10 +23,11 @@ class SummariesClient(BaseClient):
         :return: SummaryResults
         """
 
-        url = f"/v1/summaries/"
-        return self._paginate(
+        url = f"/v1/summaries"
+        return self._get(
             path=url,
             params=self._get_params(self.get_summaries, locals()),
+            result_key="results",
             deserializer=SummaryResult.from_dict,
             raw=raw,
         )

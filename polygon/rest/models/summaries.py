@@ -1,7 +1,6 @@
 from sqlite3 import Timestamp
-from typing import Optional, Any, Dict, List, Union
+from typing import Optional
 from ...modelclass import modelclass
-from .aggs import Agg
 from .tickers import Branding
 
 
@@ -23,20 +22,7 @@ class Session:
 
     @staticmethod
     def from_dict(d):
-        return Session(
-            d.get("change", None),
-            d.get("change_percent", None),
-            d.get("early_trading_change", None),
-            d.get("early_trading_change_percent", None),
-            d.get("late_trading_change", None),
-            d.get("late_trading_change_percent", None),
-            d.get("close", None),
-            d.get("high", None),
-            d.get("low", None),
-            d.get("open", None),
-            d.get("previous_close", None),
-            d.get("volume", None),
-        )
+        return Session(**d)
 
 
 @modelclass
@@ -51,14 +37,7 @@ class Options:
 
     @staticmethod
     def from_dict(d):
-        return Options(
-            d.get("contract_type", None),
-            d.get("excercise_style", None),
-            d.get("expiration_date", None),
-            d.get("shares_per_contract", None),
-            d.get("strike_price", None),
-            d.get("underlying_ticker", None),
-        )
+        return Options(**d )
 
 
 @modelclass
@@ -70,8 +49,8 @@ class SummaryResult:
     branding: Optional[Branding] = None
     market_status: Optional[str] = None
     type: Optional[str] = None
-    session: Optional[str] = None
-    options: Optional[str] = None
+    session: Optional[Session] = None
+    options: Optional[Options] = None
 
     @staticmethod
     def from_dict(d):
@@ -82,6 +61,6 @@ class SummaryResult:
             branding=None if "branding" not in d else Branding.from_dict(d["branding"]),
             market_status=d.get("market_status", None),
             type=d.get("type", None),
-            session=d.get("session", None),
+            session=None if "session" not in d else Session.from_dict(d["session"]),
             options=None if "options" not in d else Options.from_dict(d["options"]),
         )
