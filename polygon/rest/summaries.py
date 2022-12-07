@@ -9,7 +9,7 @@ from datetime import datetime, date
 class SummariesClient(BaseClient):
     def get_summaries(
         self,
-        ticker_any_of: Optional[List[str]],
+        ticker_any_of: Optional[List[str]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[Iterator[SummaryResult], HTTPResponse]:
@@ -24,7 +24,6 @@ class SummariesClient(BaseClient):
         """
 
         url = f"/v1/summaries/"
-        ticker_any_of = ",".join(ticker_any_of)
         return self._paginate(
             path=url,
             params=self._get_params(self.get_summaries, locals()),
