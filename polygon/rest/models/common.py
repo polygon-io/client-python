@@ -92,3 +92,9 @@ class SeriesType(Enum):
     CLOSE = "close"
     HIGH = "high"
     LOW = "low"
+
+
+class LaunchPadOptions(Enum):
+    X_POLYGON_EDGE_ID = "X-Polygon-Edge-ID"
+    X_POLYGON_IP_ADDRESS = "X-Polygon-Edge-IP-Address"
+    X_POLYGON_EDGE_USER_AGENT = "X-Polygon-Edge-User-Agent"

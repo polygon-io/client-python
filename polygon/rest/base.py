@@ -6,6 +6,8 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
+
+from .models import LaunchPadOptions
 from ..logging import get_logger
 import logging
 from ..exceptions import AuthError, BadResponse, NoResultsError
@@ -34,8 +36,14 @@ class BaseClient:
             raise AuthError(
                 f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
             )
+
         self.API_KEY = api_key
         self.BASE = base
+        self.headers = {
+            "Authorization": "Bearer " + self.API_KEY,
+            "User-Agent": f"Polygon.io PythonClient/{version}",
+        }
+
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
             "User-Agent": f"Polygon.io PythonClient/{version}",
@@ -45,7 +53,7 @@ class BaseClient:
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
             num_pools=num_pools,
-            headers=self.headers,
+            headers=self.headers,  # default headers sent with each request.
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
