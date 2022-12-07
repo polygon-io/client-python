@@ -29,11 +29,13 @@ class VXClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[StockFinancial], HTTPResponse]:
         """
         Get historical financial data for a stock ticker.
 
+        :param headers: X-Edge Headers for Launchpad partners.
         :param ticker: Query by company ticker.
         :param cik: Query by central index key (CIK) Number.
         :param company_name: Query by company name.
@@ -63,6 +65,7 @@ class VXClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_stock_financials, locals()),
+            headers=headers,
             raw=raw,
             deserializer=StockFinancial.from_dict,
         )

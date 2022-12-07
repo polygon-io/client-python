@@ -84,6 +84,7 @@ class TickersClient(BaseClient):
         sort: Optional[Union[str, Sort]] = "ticker",
         order: Optional[Union[str, Order]] = "asc",
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
@@ -106,6 +107,7 @@ class TickersClient(BaseClient):
         :param sort: The field to sort the results on. Default is ticker. If the search query parameter is present, sort is ignored and results are ordered by relevance.
         :param order: The order to sort the results on. Default is asc (ascending).
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: List of tickers.
         """
@@ -114,6 +116,7 @@ class TickersClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_tickers, locals()),
+            headers=headers,
             raw=raw,
             deserializer=Ticker.from_dict,
         )
@@ -123,6 +126,7 @@ class TickersClient(BaseClient):
         ticker: Optional[str] = None,
         date: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[TickerDetails, HTTPResponse]:
         """
@@ -131,6 +135,7 @@ class TickersClient(BaseClient):
         :param ticker: The ticker symbol of the asset.
         :param date: Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.
         :param params: Any additional query params
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object
         :return: Ticker Details V3
         """
@@ -138,7 +143,8 @@ class TickersClient(BaseClient):
 
         return self._get(
             path=url,
-            params=self._get_params(self.get_ticker_details, locals()),
+            params=self._get_params(self.list_tickers, locals()),
+            headers=headers,
             deserializer=TickerDetails.from_dict,
             raw=raw,
             result_key="results",
@@ -148,13 +154,16 @@ class TickersClient(BaseClient):
         self,
         ticker: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[TickerChangeResults, HTTPResponse]:
 
         """
         Get event history of ticker given particular point in time.
+
         :param ticker: The ticker symbol of the asset.
         :param params: Additional query parameters
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: Ticker Event VX
         """
@@ -163,6 +172,7 @@ class TickersClient(BaseClient):
         return self._get(
             path=url,
             params=params,
+            headers=headers,
             deserializer=TickerChangeResults.from_dict,
             result_key="results",
             raw=raw,
@@ -184,6 +194,7 @@ class TickersClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[TickerNews], HTTPResponse]:
         """
@@ -195,6 +206,7 @@ class TickersClient(BaseClient):
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: Ticker News.
         """
@@ -203,6 +215,7 @@ class TickersClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_ticker_news, locals()),
+            headers=headers,
             raw=raw,
             deserializer=TickerNews.from_dict,
         )
@@ -212,6 +225,7 @@ class TickersClient(BaseClient):
         asset_class: Optional[Union[str, AssetClass]] = None,
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[List[TickerTypes], HTTPResponse]:
         """
@@ -220,6 +234,7 @@ class TickersClient(BaseClient):
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: Ticker Types.
         """
@@ -227,7 +242,8 @@ class TickersClient(BaseClient):
 
         return self._get(
             path=url,
-            params=params,
+            params=self._get_params(self.get_ticker_types, locals()),
+            headers=headers,
             deserializer=TickerTypes.from_dict,
             raw=raw,
             result_key="results",
@@ -252,6 +268,7 @@ class SplitsClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[Split], HTTPResponse]:
         """
@@ -272,6 +289,7 @@ class SplitsClient(BaseClient):
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: List of splits.
         """
@@ -280,6 +298,7 @@ class SplitsClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_splits, locals()),
+            headers=headers,
             raw=raw,
             deserializer=Split.from_dict,
         )
@@ -324,6 +343,7 @@ class DividendsClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[Dividend], HTTPResponse]:
         """
@@ -361,6 +381,7 @@ class DividendsClient(BaseClient):
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: List of dividends.
         """
@@ -369,6 +390,7 @@ class DividendsClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_dividends, locals()),
+            headers=headers,
             raw=raw,
             deserializer=Dividend.from_dict,
         )
@@ -385,6 +407,7 @@ class ConditionsClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[Condition], HTTPResponse]:
         """
@@ -398,6 +421,7 @@ class ConditionsClient(BaseClient):
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: List of conditions.
         """
@@ -406,6 +430,7 @@ class ConditionsClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_conditions, locals()),
+            headers=headers,
             raw=raw,
             deserializer=Condition.from_dict,
         )
@@ -417,6 +442,7 @@ class ExchangesClient(BaseClient):
         asset_class: Optional[Union[str, AssetClass]] = None,
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[List[Exchange], HTTPResponse]:
         """
@@ -425,6 +451,7 @@ class ExchangesClient(BaseClient):
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return HTTPResponse object instead of results object.
         :return: List of exchanges.
         """
@@ -432,7 +459,8 @@ class ExchangesClient(BaseClient):
 
         return self._get(
             path=url,
-            params=params,
+            params=self._get_params(self.get_exchanges, locals()),
+            headers=headers,
             deserializer=Exchange.from_dict,
             raw=raw,
             result_key="results",
@@ -443,8 +471,9 @@ class ContractsClient(BaseClient):
     def get_options_contract(
         self,
         ticker: str,
-        as_of: Optional[Union[str, date]] = None,
+        as_of: Union[str, date] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[OptionsContract, HTTPResponse]:
         """
@@ -453,6 +482,7 @@ class ContractsClient(BaseClient):
         :param ticker: The ticker symbol of the asset
         :param as_of: Specify a point in time for the contract as of this date with format YYYY-MM-DD.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object.
         :return: Last trade.
         """
@@ -461,6 +491,7 @@ class ContractsClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_options_contract, locals()),
+            headers=headers,
             result_key="results",
             deserializer=OptionsContract.from_dict,
             raw=raw,
@@ -490,6 +521,7 @@ class ContractsClient(BaseClient):
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str.str]] = None,
         raw: bool = False,
     ) -> Union[Iterator[OptionsContract], HTTPResponse]:
         """
@@ -505,6 +537,7 @@ class ContractsClient(BaseClient):
         :param sort: Sort field used for ordering.
         :param order: Order results based on the sort field.
         :param params: Any additional query params.
+        :param headers: X-Edge Headers for Launchpad partners.
         :param raw: Return raw object instead of results object
         :return: List of options contracts.
         """
@@ -513,6 +546,7 @@ class ContractsClient(BaseClient):
         return self._paginate(
             path=url,
             params=self._get_params(self.list_options_contracts, locals()),
+            headers=headers,
             raw=raw,
             deserializer=OptionsContract.from_dict,
         )

@@ -34,20 +34,24 @@ class BaseClient:
             raise AuthError(
                 f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
             )
+
         self.API_KEY = api_key
         self.BASE = base
+
+        headers = {
+            "Authorization": "Bearer " + self.API_KEY,
+            "User-Agent": f"Polygon.io PythonClient/{version}",
+        }
 
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
             num_pools=num_pools,
-            headers={
-                "Authorization": "Bearer " + self.API_KEY,
-                "User-Agent": f"Polygon.io PythonClient/{version}",
-            },
+            headers=headers,
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
+
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
         if verbose:
@@ -64,6 +68,7 @@ class BaseClient:
         self,
         path: str,
         params: Optional[dict] = None,
+        headers: Optional[dict] = None,
         result_key: Optional[str] = None,
         deserializer=None,
         raw: bool = False,
@@ -77,6 +82,7 @@ class BaseClient:
             self.BASE + path,
             fields=params,
             retries=self.retries,
+            headers=headers,
         )
 
         if resp.status != 200:
@@ -124,7 +130,7 @@ class BaseClient:
         # https://docs.python.org/3.8/library/inspect.html#inspect.Signature
         for argname, v in inspect.signature(fn).parameters.items():
             # https://docs.python.org/3.8/library/inspect.html#inspect.Parameter
-            if argname in ["params", "raw"]:
+            if argname in ["params", "raw", "headers"]:
                 continue
             if v.default != v.empty:
                 # timestamp_lt -> timestamp.lt
@@ -151,6 +157,7 @@ class BaseClient:
         self,
         path: str,
         params: dict,
+        headers: dict,
         deserializer,
         result_key: str = "results",
     ):
@@ -158,6 +165,7 @@ class BaseClient:
             resp = self._get(
                 path=path,
                 params=params,
+                headers=headers,
                 deserializer=deserializer,
                 result_key=result_key,
                 raw=True,
@@ -175,18 +183,24 @@ class BaseClient:
         self,
         path: str,
         params: dict,
+        headers: dict,
         raw: bool,
         deserializer,
         result_key: str = "results",
     ):
         if raw:
             return self._get(
-                path=path, params=params, deserializer=deserializer, raw=True
+                path=path,
+                params=params,
+                headers=headers,
+                deserializer=deserializer,
+                raw=True,
             )
 
         return self._paginate_iter(
             path=path,
             params=params,
+            headers=headers,
             deserializer=deserializer,
             result_key=result_key,
         )

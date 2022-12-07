@@ -23,6 +23,7 @@ class SnapshotClient(BaseClient):
         market_type: Union[str, SnapshotMarketType],
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
         include_otc: Optional[bool] = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
@@ -34,6 +35,7 @@ class SnapshotClient(BaseClient):
         :param market_type: Which market to get a snapshot of.
         :param tickers: A comma separated list of tickers to get snapshots for.
         :param include_otc: Include OTC securities in the response. Default is false (don't include OTC securities).
+        :param headers: X-Edge Headers for Launchpad partners.
         :return: List of Snapshots
         """
         locale = get_locale(market_type)
@@ -43,6 +45,7 @@ class SnapshotClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_all, locals()),
+            headers=headers,
             deserializer=TickerSnapshot.from_dict,
             raw=raw,
             result_key="tickers",
@@ -53,6 +56,7 @@ class SnapshotClient(BaseClient):
         market_type: Union[str, SnapshotMarketType],
         direction: Union[str, Direction],
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         include_otc: Optional[bool] = False,
         raw: bool = False,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
@@ -66,6 +70,7 @@ class SnapshotClient(BaseClient):
         :param market_type: Which market to get a snapshot of.
         :param direction: The direction ("gainers" or "losers")
         :param include_otc: Include OTC securities in the response. Default is false (don't include OTC securities).
+        :param headers: X-Edge Headers for Launchpad partners.
         :return: List of Snapshots
         """
         locale = get_locale(market_type)
@@ -73,6 +78,7 @@ class SnapshotClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_direction, locals()),
+            headers=headers,
             result_key="tickers",
             deserializer=TickerSnapshot.from_dict,
             raw=raw,
@@ -83,6 +89,7 @@ class SnapshotClient(BaseClient):
         market_type: Union[str, SnapshotMarketType],
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[TickerSnapshot, HTTPResponse]:
         """
@@ -92,6 +99,7 @@ class SnapshotClient(BaseClient):
 
         :param market_type: Which market to get a snapshot of.
         :param ticker: The ticker symbol.
+        :param headers: X-Edge Headers for Launchpad partners.
         :return: List of Snapshots
         """
         locale = get_locale(market_type)
@@ -99,6 +107,7 @@ class SnapshotClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_ticker, locals()),
+            headers=headers,
             result_key="ticker",
             deserializer=TickerSnapshot.from_dict,
             raw=raw,
@@ -109,11 +118,13 @@ class SnapshotClient(BaseClient):
         underlying_asset: str,
         option_contract: str,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[OptionContractSnapshot, HTTPResponse]:
         """
         Get the snapshot of an option contract for a stock equity.
 
+        :param headers: X-Edge Headers for Launchpad partners
         :param underlying_asset: The underlying ticker symbol of the option contract.
         :param option_contract: The option contract identifier.
         :return: List of Snapshots
@@ -122,6 +133,7 @@ class SnapshotClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_option, locals()),
+            headers=headers,
             result_key="results",
             deserializer=OptionContractSnapshot.from_dict,
             raw=raw,
@@ -131,6 +143,7 @@ class SnapshotClient(BaseClient):
         self,
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, str]] = None,
         raw: bool = False,
     ) -> Union[SnapshotTickerFullBook, HTTPResponse]:
         """
@@ -139,12 +152,14 @@ class SnapshotClient(BaseClient):
         Note: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges.
 
         :param ticker: The ticker symbol.
+        :param headers: X-Edge Headers for Launchpad partners.
         :return: List of Snapshots
         """
         url = f"/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_crypto_book, locals()),
+            headers=headers,
             result_key="data",
             deserializer=SnapshotTickerFullBook.from_dict,
             raw=raw,
