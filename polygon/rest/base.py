@@ -36,15 +36,16 @@ class BaseClient:
             )
         self.API_KEY = api_key
         self.BASE = base
+        self.headers = {
+            "Authorization": "Bearer " + self.API_KEY,
+            "User-Agent": f"Polygon.io PythonClient/{version}",
+        }
 
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
             num_pools=num_pools,
-            headers={
-                "Authorization": "Bearer " + self.API_KEY,
-                "User-Agent": f"Polygon.io PythonClient/{version}",
-            },
+            headers=self.headers,
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
@@ -81,6 +82,7 @@ class BaseClient:
             self.BASE + path,
             fields=params,
             retries=self.retries,
+            headers=self._get_headers_from_options(options),
         )
 
         if resp.status != 200:
@@ -150,6 +152,16 @@ class BaseClient:
                     params[argname] = val
 
         return params
+
+    def _get_headers_from_options(self, options: Optional[dict]) -> Dict[str, str]:
+        headers = self.headers
+        if options is None or "headers" not in options:
+            return headers
+
+        for k, v in options["headers"].items():
+            headers[k] = v
+
+        return headers
 
     def _paginate_iter(
         self,
