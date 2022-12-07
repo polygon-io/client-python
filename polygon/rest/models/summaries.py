@@ -37,7 +37,7 @@ class Options:
 
     @staticmethod
     def from_dict(d):
-        return Options(**d )
+        return Options(**d)
 
 
 @modelclass

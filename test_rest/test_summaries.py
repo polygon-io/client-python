@@ -1,15 +1,10 @@
-from polygon.rest.models import (
-    SummaryResult,
-    Branding,
-    Session,
-    Options
-)
+from polygon.rest.models import SummaryResult, Branding, Session, Options
 from base import BaseTest
 
 
 class SummariesTest(BaseTest):
     def test_get_summaries(self):
-        ticker_any_of = ['NCLH']
+        ticker_any_of = ["NCLH"]
         summary_results = self.c.get_summaries(ticker_any_of)
         expected = [
             SummaryResult(
@@ -34,7 +29,7 @@ class SummariesTest(BaseTest):
                     low=21.35,
                     open=22.49,
                     previous_close=22.45,
-                    volume=37
+                    volume=37,
                 ),
             )
         ]
