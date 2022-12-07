@@ -25,6 +25,7 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         include_otc: Optional[bool] = False,
+        options: Optional[dict] = None,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
@@ -46,6 +47,7 @@ class SnapshotClient(BaseClient):
             deserializer=TickerSnapshot.from_dict,
             raw=raw,
             result_key="tickers",
+            options=options,
         )
 
     def get_snapshot_direction(
@@ -55,6 +57,7 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         include_otc: Optional[bool] = False,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.
@@ -76,6 +79,7 @@ class SnapshotClient(BaseClient):
             result_key="tickers",
             deserializer=TickerSnapshot.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_snapshot_ticker(
@@ -84,6 +88,7 @@ class SnapshotClient(BaseClient):
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[TickerSnapshot, HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
@@ -102,6 +107,7 @@ class SnapshotClient(BaseClient):
             result_key="ticker",
             deserializer=TickerSnapshot.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_snapshot_option(
@@ -110,6 +116,7 @@ class SnapshotClient(BaseClient):
         option_contract: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[OptionContractSnapshot, HTTPResponse]:
         """
         Get the snapshot of an option contract for a stock equity.
@@ -125,6 +132,7 @@ class SnapshotClient(BaseClient):
             result_key="results",
             deserializer=OptionContractSnapshot.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_snapshot_crypto_book(
@@ -132,6 +140,7 @@ class SnapshotClient(BaseClient):
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[SnapshotTickerFullBook, HTTPResponse]:
         """
         Get the current level 2 book of a single ticker. This is the combined book from all of the exchanges.
@@ -148,4 +157,5 @@ class SnapshotClient(BaseClient):
             result_key="data",
             deserializer=SnapshotTickerFullBook.from_dict,
             raw=raw,
+            options=options,
         )

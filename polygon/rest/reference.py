@@ -85,6 +85,7 @@ class TickersClient(BaseClient):
         order: Optional[Union[str, Order]] = "asc",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
         Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
@@ -116,6 +117,7 @@ class TickersClient(BaseClient):
             params=self._get_params(self.list_tickers, locals()),
             raw=raw,
             deserializer=Ticker.from_dict,
+            options=options,
         )
 
     def get_ticker_details(
@@ -124,6 +126,7 @@ class TickersClient(BaseClient):
         date: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[TickerDetails, HTTPResponse]:
         """
         Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.
@@ -142,6 +145,7 @@ class TickersClient(BaseClient):
             deserializer=TickerDetails.from_dict,
             raw=raw,
             result_key="results",
+            options=options,
         )
 
     def get_ticker_events(
@@ -149,6 +153,7 @@ class TickersClient(BaseClient):
         ticker: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[TickerChangeResults, HTTPResponse]:
 
         """
@@ -166,6 +171,7 @@ class TickersClient(BaseClient):
             deserializer=TickerChangeResults.from_dict,
             result_key="results",
             raw=raw,
+            options=options,
         )
 
     def list_ticker_news(
@@ -185,6 +191,7 @@ class TickersClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[TickerNews], HTTPResponse]:
         """
         Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
@@ -205,6 +212,7 @@ class TickersClient(BaseClient):
             params=self._get_params(self.list_ticker_news, locals()),
             raw=raw,
             deserializer=TickerNews.from_dict,
+            options=options,
         )
 
     def get_ticker_types(
@@ -213,6 +221,7 @@ class TickersClient(BaseClient):
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[List[TickerTypes], HTTPResponse]:
         """
         List all ticker types that Polygon.io has.
@@ -231,6 +240,7 @@ class TickersClient(BaseClient):
             deserializer=TickerTypes.from_dict,
             raw=raw,
             result_key="results",
+            options=options,
         )
 
 
@@ -253,6 +263,7 @@ class SplitsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[Split], HTTPResponse]:
         """
         Get a list of historical stock splits, including the ticker symbol, the execution date, and the factors of the split ratio.
@@ -282,6 +293,7 @@ class SplitsClient(BaseClient):
             params=self._get_params(self.list_splits, locals()),
             raw=raw,
             deserializer=Split.from_dict,
+            options=options,
         )
 
 
@@ -325,6 +337,7 @@ class DividendsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[Dividend], HTTPResponse]:
         """
         Get a list of historical cash dividends, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount.
@@ -371,6 +384,7 @@ class DividendsClient(BaseClient):
             params=self._get_params(self.list_dividends, locals()),
             raw=raw,
             deserializer=Dividend.from_dict,
+            options=options,
         )
 
 
@@ -386,6 +400,7 @@ class ConditionsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[Condition], HTTPResponse]:
         """
         List all conditions that Polygon.io uses.
@@ -408,6 +423,7 @@ class ConditionsClient(BaseClient):
             params=self._get_params(self.list_conditions, locals()),
             raw=raw,
             deserializer=Condition.from_dict,
+            options=options,
         )
 
 
@@ -418,6 +434,7 @@ class ExchangesClient(BaseClient):
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[List[Exchange], HTTPResponse]:
         """
         List all exchanges that Polygon.io knows about.
@@ -436,6 +453,7 @@ class ExchangesClient(BaseClient):
             deserializer=Exchange.from_dict,
             raw=raw,
             result_key="results",
+            options=options,
         )
 
 
@@ -446,6 +464,7 @@ class ContractsClient(BaseClient):
         as_of: Optional[Union[str, date]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[OptionsContract, HTTPResponse]:
         """
         Get the most recent trade for a ticker.
@@ -464,6 +483,7 @@ class ContractsClient(BaseClient):
             result_key="results",
             deserializer=OptionsContract.from_dict,
             raw=raw,
+            options=options,
         )
 
     def list_options_contracts(
@@ -491,6 +511,7 @@ class ContractsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[OptionsContract], HTTPResponse]:
         """
         List historical options contracts.
@@ -515,4 +536,5 @@ class ContractsClient(BaseClient):
             params=self._get_params(self.list_options_contracts, locals()),
             raw=raw,
             deserializer=OptionsContract.from_dict,
+            options=options,
         )

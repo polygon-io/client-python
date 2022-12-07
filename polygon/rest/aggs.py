@@ -19,6 +19,7 @@ class AggsClient(BaseClient):
         limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[List[Agg], HTTPResponse]:
         """
         Get aggregate bars for a ticker over a given date range in custom time window sizes.
@@ -48,6 +49,7 @@ class AggsClient(BaseClient):
             result_key="results",
             deserializer=Agg.from_dict,
             raw=raw,
+            options=options,
         )
 
     # TODO: next breaking change release move "market_type" to be 2nd mandatory
@@ -60,6 +62,7 @@ class AggsClient(BaseClient):
         raw: bool = False,
         market_type: str = "stocks",
         include_otc: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[GroupedDailyAgg, HTTPResponse]:
         """
         Get the daily open, high, low, and close (OHLC) for the entire market.
@@ -78,6 +81,7 @@ class AggsClient(BaseClient):
             result_key="results",
             deserializer=GroupedDailyAgg.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_daily_open_close_agg(
@@ -87,6 +91,7 @@ class AggsClient(BaseClient):
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[DailyOpenCloseAgg, HTTPResponse]:
         """
         Get the open, close and afterhours prices of a stock symbol on a certain date.
@@ -105,6 +110,7 @@ class AggsClient(BaseClient):
             params=self._get_params(self.get_daily_open_close_agg, locals()),
             deserializer=DailyOpenCloseAgg.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_previous_close_agg(
@@ -113,6 +119,7 @@ class AggsClient(BaseClient):
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[PreviousCloseAgg, HTTPResponse]:
         """
         Get the previous day's open, high, low, and close (OHLC) for the specified stock ticker.
@@ -131,4 +138,5 @@ class AggsClient(BaseClient):
             result_key="results",
             deserializer=PreviousCloseAgg.from_dict,
             raw=raw,
+            options=options,
         )

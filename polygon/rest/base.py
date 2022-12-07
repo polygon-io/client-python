@@ -67,11 +67,15 @@ class BaseClient:
         result_key: Optional[str] = None,
         deserializer=None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Any:
         if params is None:
             params = {}
         params = {str(k): str(v) for k, v in params.items() if v is not None}
         logger.debug("_get %s params %s", path, params)
+
+        # Todo: Handle Options
+
         resp = self.client.request(
             "GET",
             self.BASE + path,
@@ -153,6 +157,7 @@ class BaseClient:
         params: dict,
         deserializer,
         result_key: str = "results",
+        options: Optional[dict] = None,
     ):
         while True:
             resp = self._get(
@@ -161,6 +166,7 @@ class BaseClient:
                 deserializer=deserializer,
                 result_key=result_key,
                 raw=True,
+                options=options,
             )
             decoded = self._decode(resp)
             for t in decoded[result_key]:
@@ -178,10 +184,15 @@ class BaseClient:
         raw: bool,
         deserializer,
         result_key: str = "results",
+        options: Optional[dict] = None,
     ):
         if raw:
             return self._get(
-                path=path, params=params, deserializer=deserializer, raw=True
+                path=path,
+                params=params,
+                deserializer=deserializer,
+                raw=True,
+                options=options,
             )
 
         return self._paginate_iter(
@@ -189,4 +200,5 @@ class BaseClient:
             params=params,
             deserializer=deserializer,
             result_key=result_key,
+            options=options,
         )
