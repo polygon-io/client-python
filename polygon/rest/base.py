@@ -6,7 +6,6 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
-
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
@@ -39,10 +38,6 @@ class BaseClient:
 
         self.API_KEY = api_key
         self.BASE = base
-        self.headers = {
-            "Authorization": "Bearer " + self.API_KEY,
-            "User-Agent": f"Polygon.io PythonClient/{version}",
-        }
 
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
