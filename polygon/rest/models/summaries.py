@@ -4,6 +4,7 @@ from ...modelclass import modelclass
 from .aggs import Agg
 from .tickers import Branding
 
+
 @modelclass
 class Session:
     "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
@@ -37,6 +38,7 @@ class Session:
             d.get("volume", None),
         )
 
+
 @modelclass
 class Options:
     "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
@@ -58,6 +60,7 @@ class Options:
             d.get("underlying_ticker", None),
         )
 
+
 @modelclass
 class SummaryResult:
     "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
@@ -76,14 +79,9 @@ class SummaryResult:
             price=d.get("price", None),
             name=d.get("name", None),
             ticker=d.get("ticker", None),
-            branding=None 
-            if "branding" not in d
-            else Branding.from_dict(d['branding']),
+            branding=None if "branding" not in d else Branding.from_dict(d["branding"]),
             market_status=d.get("market_status", None),
             type=d.get("type", None),
             session=d.get("session", None),
-            options=None 
-            if "options" not in d
-            else Options.from_dict(d['options']),
+            options=None if "options" not in d else Options.from_dict(d["options"]),
         )
-        

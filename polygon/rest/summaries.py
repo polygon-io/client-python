@@ -1,8 +1,6 @@
-from polygon.rest.models.summaries import (
-    SummaryResult
-)
+from polygon.rest.models.summaries import SummaryResult
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union
+from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
@@ -11,10 +9,10 @@ from datetime import datetime, date
 class SummariesClient(BaseClient):
     def get_summaries(
         self,
-        ticker_any_of: List[str],
+        ticker_any_of: Optional[List[str]],
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-    ) -> Union[SummaryResult, HTTPResponse]:
+    ) -> Union[Iterator[SummaryResult], HTTPResponse]:
         """
         GetSummaries retrieves summaries for the ticker list with the given params.
         For more details see https://polygon.io/docs/stocks/get_v1_summaries.
@@ -26,12 +24,10 @@ class SummariesClient(BaseClient):
         """
 
         url = f"/v1/summaries/"
-        ticker_any_of = ','.join(ticker_any_of)
+        ticker_any_of = ",".join(ticker_any_of)
         return self._paginate(
             path=url,
             params=self._get_params(self.get_summaries, locals()),
             deserializer=SummaryResult.from_dict,
             raw=raw,
         )
-
-
