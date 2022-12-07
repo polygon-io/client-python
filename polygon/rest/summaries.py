@@ -11,7 +11,7 @@ from datetime import datetime, date
 class SummariesClient(BaseClient):
     def get_summaries(
         self,
-        ticker_any_of: list[str],
+        ticker_any_of: List[str],
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
     ) -> Union[SummaryResult, HTTPResponse]:
