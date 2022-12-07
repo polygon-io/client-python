@@ -27,6 +27,7 @@ class QuotesClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[Quote], HTTPResponse]:
         """
         Get quotes for a ticker symbol in a given time range.
@@ -51,10 +52,15 @@ class QuotesClient(BaseClient):
             params=self._get_params(self.list_quotes, locals()),
             raw=raw,
             deserializer=Quote.from_dict,
+            options=options,
         )
 
     def get_last_quote(
-        self, ticker: str, params: Optional[Dict[str, Any]] = None, raw: bool = False
+        self,
+        ticker: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[LastQuote, HTTPResponse]:
         """
         Get the most recent NBBO (Quote) tick for a given stock.
@@ -72,6 +78,7 @@ class QuotesClient(BaseClient):
             result_key="results",
             deserializer=LastQuote.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_last_forex_quote(
@@ -80,6 +87,7 @@ class QuotesClient(BaseClient):
         to: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[LastForexQuote, HTTPResponse]:
         """
         Get the last quote tick for a forex currency pair.
@@ -97,6 +105,7 @@ class QuotesClient(BaseClient):
             params=params,
             deserializer=LastForexQuote.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_real_time_currency_conversion(
@@ -107,6 +116,7 @@ class QuotesClient(BaseClient):
         precision: Union[int, Precision] = 2,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[RealTimeCurrencyConversion, HTTPResponse]:
         """
         Get currency conversions using the latest market conversion rates.
@@ -129,4 +139,5 @@ class QuotesClient(BaseClient):
             params=params,
             deserializer=RealTimeCurrencyConversion.from_dict,
             raw=raw,
+            options=options,
         )

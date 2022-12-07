@@ -29,6 +29,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[SMAIndicatorResults, HTTPResponse]:
         """
         Get SMA values for a given ticker over a given range with the specified parameters
@@ -62,6 +63,7 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=SMAIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_ema(
@@ -80,6 +82,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[EMAIndicatorResults, HTTPResponse]:
         """
         Get EMA values for a given ticker over a given range with the specified parameters
@@ -131,6 +134,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[RSIIndicatorResults, HTTPResponse]:
         """
         Get RSI values for a given ticker over a given range with the specified parameters
@@ -164,6 +168,7 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=RSIIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_macd(
@@ -184,6 +189,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[MACDIndicatorResults, HTTPResponse]:
         """
         Get MACD values for a given ticker over a given range with the specified parameters
@@ -218,4 +224,5 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=MACDIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )

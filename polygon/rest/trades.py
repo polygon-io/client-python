@@ -19,6 +19,7 @@ class TradesClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[Iterator[Trade], HTTPResponse]:
         """
         Get trades for a ticker symbol in a given time range.
@@ -43,6 +44,7 @@ class TradesClient(BaseClient):
             params=self._get_params(self.list_trades, locals()),
             raw=raw,
             deserializer=Trade.from_dict,
+            options=options,
         )
 
     def get_last_trade(
@@ -50,6 +52,7 @@ class TradesClient(BaseClient):
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[LastTrade, HTTPResponse]:
         """
         Get the most recent trade for a ticker.
@@ -67,6 +70,7 @@ class TradesClient(BaseClient):
             result_key="results",
             deserializer=LastTrade.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_last_crypto_trade(
@@ -75,6 +79,7 @@ class TradesClient(BaseClient):
         to: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[dict] = None,
     ) -> Union[CryptoTrade, HTTPResponse]:
         """
         Get the last trade tick for a cryptocurrency pair.
@@ -93,4 +98,5 @@ class TradesClient(BaseClient):
             result_key="last",
             deserializer=CryptoTrade.from_dict,
             raw=raw,
+            options=options,
         )
