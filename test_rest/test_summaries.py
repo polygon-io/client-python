@@ -3,7 +3,6 @@ from base import BaseTest
 
 
 class SummariesTest(BaseTest):
-
     def test_get_summaries_list(self):
         ticker_any_of = ["NCLH", "O:NCLH221014C00005000", "C:EURUSD", "X:BTCUSD", "APx"]
         summary_results = self.c.get_summaries(ticker_any_of)
