@@ -86,10 +86,9 @@ class BaseClient:
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers={
-                **option.edge_headers,
-                **self.headers,
-            },  # merge supplied headers with standard headers
+            headers=self._concat_headers(
+                option.edge_headers
+            ),  # merge supplied headers with standard headers
         )
 
         if resp.status != 200:
@@ -159,6 +158,9 @@ class BaseClient:
                     params[argname] = val
 
         return params
+
+    def _concat_headers(self, headers: Dict[str, str]) -> Dict[str, str]:
+        return {**headers, **self.headers}
 
     def _paginate_iter(
         self,

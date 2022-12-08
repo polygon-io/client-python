@@ -86,8 +86,6 @@ class AggsClient(BaseClient):
             options=options,
         )
 
-    # TODO: next breaking change release move "market_type" to be 2nd mandatory
-    # param
     def get_daily_open_close_agg(
         self,
         ticker: str,

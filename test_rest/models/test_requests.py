@@ -1,5 +1,6 @@
 import unittest
 
+from polygon import RESTClient
 from polygon.rest.models.request import (
     RequestOptionBuilder,
     X_POLYGON_EDGE_ID,
@@ -48,3 +49,23 @@ class RequestTest(unittest.TestCase):
 
         options = options.optional_edge_headers("test")
         self.assertDictEqual(all_options, options.edge_headers)
+
+    def test_header_combination(self):
+        client = RESTClient(api_key="test")
+        options = RequestOptionBuilder(
+            edge_id="test", edge_ip_address="test", edge_user="test"
+        )
+
+        # this mocks the expected behavior during the request.get function call
+        # in the BaseClient.
+        headers = client._concat_headers(options.edge_headers)
+
+        expected_headers = {
+            "Authorization": "Bearer test",
+            "User-Agent": "Polygon.io PythonClient/0.0.0",
+            "X-Polygon-Edge-ID": "test",
+            "X-Polygon-Edge-IP-Address": "test",
+            "X-Polygon-Edge-User-Agent": "test",
+        }
+
+        self.assertDictEqual(headers, expected_headers)
