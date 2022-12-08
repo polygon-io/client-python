@@ -20,65 +20,85 @@ class RequestOptionBuilder:
         :param edge_ip_address: is a required Launchpad header. It denotes the originating IP Address of the Edge User
         :param edge_user: is an optional Launchpad header. It denotes the originating UserAgent of the Edge User requesting data.
         """
-        self.edge_headers: Dict[str, str] = {}
-        self.__handle_edge_header_options(
-            edge_id=edge_id, edge_ip_address=edge_ip_address, edge_user=edge_user
-        )
+        self.headers: Optional[Dict[str, str]] = None
+        if edge_id is not None and edge_ip_address is not None:
+            self.edge_headers(
+                edge_id=edge_id, edge_ip_address=edge_ip_address, edge_user=edge_user
+            )
 
-    def __handle_edge_header_options(
+    def edge_headers(
         self,
-        edge_id: Optional[str],
+        edge_id: Optional[str] = None,
         edge_ip_address: Optional[str] = None,
         edge_user: Optional[str] = None,
-    ):
-        edge_headers = {}
-        if edge_id is not None:
-            edge_headers[X_POLYGON_EDGE_ID] = edge_id
-        if edge_ip_address is not None:
-            edge_headers[X_POLYGON_EDGE_IP_ADDRESS] = edge_ip_address
-        if edge_user is not None:
-            edge_headers[X_POLYGON_EDGE_USER_AGENT] = edge_user
-        self.__set_edge_headers(edge_headers)
-
-    def __set_edge_headers(self, headers: Dict[str, str]):
-        self.edge_headers = headers
-
-    def __add_to_edge_headers(self, **headers):
-        for k, v in headers.items():
-            self.edge_headers[k] = v
-
-    def required_edge_headers(
-        self,
-        edge_id: str,
-        edge_ip_address: str,
     ):
         """
         require_edge_headers adds required headers to the headers' dictionary
         :param edge_id: is a required Launchpad header. It identifies the Edge User requesting data
         :param edge_ip_address: is a required Launchpad header. It denotes the originating IP Address of the Edge User
-        requesting data.
-        :return: RequestOptionBuilder
+        requesting data
+        :param edge_user: user_agent: is an optional Launchpad header. It denotes the originating UserAgent of the Edge
+        User requesting data
+        :return ResponseOptionBuilder
         """
-        self.__add_to_edge_headers(
-            **{
-                X_POLYGON_EDGE_ID: edge_id,
-                X_POLYGON_EDGE_IP_ADDRESS: edge_ip_address,
-            }  # object destructure is needed for correct key formatting.
-        )
+        if edge_id is None or edge_ip_address is None:
+            raise RequestOptionError(f"edge_id and edge_ip_address required.")
+
+        edge_headers: Dict[str, str] = {
+            X_POLYGON_EDGE_ID: edge_id,
+            X_POLYGON_EDGE_IP_ADDRESS: edge_ip_address,
+        }
+
+        if edge_user is not None:
+            edge_headers[X_POLYGON_EDGE_USER_AGENT] = edge_user
+
+        self._add_to_edge_headers(**edge_headers)
+
         return self
 
-    def optional_edge_headers(
+    def update_edge_header(
         self,
-        user_agent: str,
+        edge_id: Optional[str] = None,
+        edge_ip_address: Optional[str] = None,
+        edge_user: Optional[str] = None,
     ):
         """
-        edge_user_agent_header is used to add the optional X-Polygon-Edge-User-Agent key to the header dictionary
-        :param user_agent: is an optional Launchpad header. It denotes the originating UserAgent of the Edge User requesting data.
-        :return: RequestOptionBuilder
+        used to change individual edge elements of underlying headers' dictionary.
+        :param edge_id: is a required Launchpad header. It identifies the Edge User requesting data
+        :param edge_ip_address: is a required Launchpad header. It denotes the originating IP Address of the Edge User
+        requesting data
+        :param edge_user: user_agent: is an optional Launchpad header. It denotes the originating UserAgent of the Edge
+        User requesting data
+        :return:
         """
-        self.__add_to_edge_headers(
-            **{
-                X_POLYGON_EDGE_USER_AGENT: user_agent,
-            }
-        )
+        if self.headers is None:
+            raise RequestOptionError(
+                "must set required fields prior to using update function."
+            )
+        edge_headers: Dict[str, str] = {}
+
+        if edge_id is not None:
+            edge_headers[X_POLYGON_EDGE_ID] = edge_id
+
+        if edge_ip_address is not None:
+            edge_headers[X_POLYGON_EDGE_IP_ADDRESS] = edge_ip_address
+
+        if edge_user is not None:
+            edge_headers[X_POLYGON_EDGE_USER_AGENT] = edge_user
+
+        self._add_to_edge_headers(**edge_headers)
+
         return self
+
+    def _add_to_edge_headers(self, **headers):
+        if self.headers is None:
+            self.headers = {}
+
+        for k, v in headers.items():
+            self.headers[k] = v
+
+
+class RequestOptionError(Exception):
+    """
+    Missing required option.
+    """

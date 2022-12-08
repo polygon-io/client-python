@@ -11,16 +11,18 @@ def get_aggs_launchpad():
     Example:
     `options = RequestOptionBuilder(edge_id="", edge_ip_address="")
     
-    or you can use the builder patten
+    or you can use the builder patten for future modifications to 
+    underlying edge header dictionary.
     Example:
     options = RequestOptionBuilder()
-        .required_edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
-        .optional_edge_headers(user_agent="EDGE_USER_AGENT")
+        .edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
+        .update(edge_id="NEW")
+    options = options.update_edge_header(edge_ip_address="NEW_IP")
     """
     options = (
         RequestOptionBuilder()
-        .required_edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
-        .optional_edge_headers(user_agent="EDGE_USER_AGENT")
+        .edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
+        .update_edge_header(edge_user="EDGE_USER")
     )
 
     trades = []

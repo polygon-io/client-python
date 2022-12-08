@@ -79,16 +79,14 @@ class BaseClient:
         params = {str(k): str(v) for k, v in params.items() if v is not None}
         logger.debug("_get %s params %s", path, params)
 
-        option = RequestOptionBuilder() if options is None else options
+        option = options if options is not None else RequestOptionBuilder()
 
         resp = self.client.request(
             "GET",
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers=self._concat_headers(
-                option.edge_headers
-            ),  # merge supplied headers with standard headers
+            headers=self._concat_headers(option.headers),
         )
 
         if resp.status != 200:
@@ -159,7 +157,9 @@ class BaseClient:
 
         return params
 
-    def _concat_headers(self, headers: Dict[str, str]) -> Dict[str, str]:
+    def _concat_headers(self, headers: Optional[Dict[str, str]]) -> Dict[str, str]:
+        if headers is None:
+            return {**self.headers}
         return {**headers, **self.headers}
 
     def _paginate_iter(
