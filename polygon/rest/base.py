@@ -84,7 +84,7 @@ class BaseClient:
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers=options.edge_headers,
+            headers={**options.edge_headers, **self.headers},  # merge supplied headers with standard headers
         )
 
         if resp.status != 200:
