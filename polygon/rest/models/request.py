@@ -10,37 +10,42 @@ HEADER = "header"
 class RequestOptionBuilder:
     def __init__(
         self,
-        options: Optional[Dict[str, Dict[str, str]]] = None,
-        edge_headers: Optional[Dict[str, str]] = None,
+        edge_id: Optional[str] = None,
+        edge_ip_address: Optional[str] = None,
+        edge_user: Optional[str] = None,
     ):
         """
-        RequestOptionBuilder is a utility class used to format and produce options for Polygon Requests\
-        :param options: preset options object to be the base of the options dictionary.
-        :param options: preset options for launchpad edge headers
+        RequestOptionBuilder is a utility class to build polygon api options used in requests.
+        :param edge_id: is a required Launchpad header. It identifies the Edge User requesting data
+        :param edge_ip_address: is a required Launchpad header. It denotes the originating IP Address of the Edge User
+        :param edge_user: is an optional Launchpad header. It denotes the originating UserAgent of the Edge User requesting data.
         """
-        self.options = {} if options is None else options
-        self.edge_headers = {} if edge_headers is None else edge_headers
+        self.edge_headers: Dict[str, str] = {}
+        self.__handle_edge_header_options(
+            edge_id=edge_id, edge_ip_address=edge_ip_address, edge_user=edge_user
+        )
+
+    def __handle_edge_header_options(
+        self,
+        edge_id: Optional[str],
+        edge_ip_address: Optional[str] = None,
+        edge_user: Optional[str] = None,
+    ):
+        edge_headers = {}
+        if edge_id is not None:
+            edge_headers[X_POLYGON_EDGE_ID] = edge_id
+        if edge_ip_address is not None:
+            edge_headers[X_POLYGON_EDGE_IP_ADDRESS] = edge_ip_address
+        if edge_user is not None:
+            edge_headers[X_POLYGON_EDGE_USER_AGENT] = edge_user
+        self.__set_edge_headers(edge_headers)
 
     def __set_edge_headers(self, headers: Dict[str, str]):
         self.edge_headers = headers
 
-    def __add_to_options(self, key: str, **options):
-        """
-        __add_to_options is a utility method used to add dicts and values
-        to the options' dictionary.
-        :param key: name of the dict a user is adding values to
-        :param options: values to be added to specified dict
-        :return: RequestOptionBuilder
-        """
-        if key not in self.options:
-            self.options[key] = {}
-
-        for k, v in options.items():
-            self.options[key][k] = v
-
-        # python 3.8 does not support match case...
-        if key == HEADER:
-            self.__set_edge_headers(options[key])
+    def __add_to_edge_headers(self, **headers):
+        for k, v in headers.items():
+            self.edge_headers[k] = v
 
     def required_edge_headers(
         self,
@@ -54,14 +59,15 @@ class RequestOptionBuilder:
         requesting data.
         :return: RequestOptionBuilder
         """
-        self.__add_to_options(
-            key=HEADER,
-            X_POLYGON_EDGE_ID=edge_id,
-            X_POLYGON_EDGE_IP_ADDRESS=edge_ip_address,
+        self.__add_to_edge_headers(
+            **{
+                X_POLYGON_EDGE_ID: edge_id,
+                X_POLYGON_EDGE_IP_ADDRESS: edge_ip_address,
+            }  # object destructure is needed for correct key formatting.
         )
         return self
 
-    def edge_user_agent_header(
+    def optional_edge_headers(
         self,
         user_agent: str,
     ):
@@ -70,8 +76,9 @@ class RequestOptionBuilder:
         :param user_agent: is an optional Launchpad header. It denotes the originating UserAgent of the Edge User requesting data.
         :return: RequestOptionBuilder
         """
-        self.__add_to_options(
-            key=HEADER,
-            X_POLYGON_EDGE_USER_AGENT=user_agent,
+        self.__add_to_edge_headers(
+            **{
+                X_POLYGON_EDGE_USER_AGENT: user_agent,
+            }
         )
         return self

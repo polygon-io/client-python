@@ -2,13 +2,25 @@ from polygon import RESTClient
 from polygon.rest.models.request import RequestOptionBuilder
 
 
-def getAggsLaunchpad():
+def get_aggs_launchpad():
     client = RESTClient()
 
+    """
+    options can be added to the RequestOptionBuilder both directly in 
+    initialization 
+    Example:
+    `options = RequestOptionBuilder(edge_id="", edge_ip_address="")
+    
+    or you can use the builder patten
+    Example:
+    options = RequestOptionBuilder()
+        .required_edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
+        .optional_edge_headers(user_agent="EDGE_USER_AGENT")
+    """
     options = (
         RequestOptionBuilder()
         .required_edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
-        .edge_user_agent_header(user_agent="EDGE_USER_AGENT")
+        .optional_edge_headers(user_agent="EDGE_USER_AGENT")
     )
 
     trades = []
@@ -18,7 +30,7 @@ def getAggsLaunchpad():
 
 
 def main():
-    getAggsLaunchpad()
+    get_aggs_launchpad()
 
 
 if __name__ == "__main__":

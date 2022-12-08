@@ -14,26 +14,27 @@ get_aggs, and snapshots
 ...[DESCRIPTION PENDING]
 
 ## Example
+
  ```python
 
- # import RESTClient
- from polygon import RESTClient
- from polygon.rest.models.request import RequestOptionBuilder
+# import RESTClient
+from polygon import RESTClient
+from polygon.rest.models.request import RequestOptionBuilder
 
- # create client
- c = RESTClient(api_key="API_KEY")
+# create client
+c = RESTClient(api_key="API_KEY")
 
- # create request options
- options = RequestOptionBuilder().required_edge_headers(
-     edge_id="YOUR_EDGE_ID", # required
-     edge_ip_address="IP_ADDRESS" # required
- ).edge_user_agent_header(
-     user_agent="USER_AGENT_ID" # optional
- )
+# create request options
+options = RequestOptionBuilder().required_edge_headers(
+    edge_id="YOUR_EDGE_ID",  # required
+    edge_ip_address="IP_ADDRESS"  # required
+).optional_edge_headers(
+    user_agent="USER_AGENT_ID"  # optional
+)
 
- # get response
- res = c.get_ticker_events("META", options=options)
+# get response
+res = c.get_ticker_events("META", options=options)
 
- # do something with response
+# do something with response
 
  ```
