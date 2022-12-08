@@ -37,7 +37,7 @@ class SummariesTest(BaseTest):
                 name="NCLH $5 Call",
                 ticker="O:NCLH221014C00005000",
                 market_status="closed",
-                type="option",
+                type="options",
                 session=Session(
                     change=-0.05,
                     change_percent=-1.07,
