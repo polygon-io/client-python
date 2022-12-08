@@ -4,14 +4,15 @@ X_POLYGON_EDGE_ID = "X-Polygon-Edge-ID"
 X_POLYGON_EDGE_IP_ADDRESS = "X-Polygon-Edge-IP-Address"
 X_POLYGON_EDGE_USER_AGENT = "X-Polygon-Edge-User-Agent"
 
-HEADER = 'header'
+HEADER = "header"
 
 
 class RequestOptionBuilder:
-    def __init__(self,
-                 options: Optional[Dict[str, Dict[str, str]]] = None,
-                 edge_headers: Optional[Dict[str, Dict[str, str]]] = None,
-                 ):
+    def __init__(
+        self,
+        options: Optional[Dict[str, Dict[str, str]]] = None,
+        edge_headers: Optional[Dict[str, str]] = None,
+    ):
         """
         RequestOptionBuilder is a utility class used to format and produce options for Polygon Requests\
         :param options: preset options object to be the base of the options dictionary.
@@ -42,9 +43,9 @@ class RequestOptionBuilder:
             self.__set_edge_headers(options[key])
 
     def required_edge_headers(
-            self,
-            edge_id: str,
-            edge_ip_address: str,
+        self,
+        edge_id: str,
+        edge_ip_address: str,
     ):
         """
         require_edge_headers adds required headers to the headers' dictionary
@@ -60,7 +61,10 @@ class RequestOptionBuilder:
         )
         return self
 
-    def edge_user_agent_header(self, user_agent: str, ):
+    def edge_user_agent_header(
+        self,
+        user_agent: str,
+    ):
         """
         edge_user_agent_header is used to add the optional X-Polygon-Edge-User-Agent key to the header dictionary
         :param user_agent: is an optional Launchpad header. It denotes the originating UserAgent of the Edge User requesting data.

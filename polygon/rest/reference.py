@@ -25,6 +25,8 @@ from .models import (
 from urllib3 import HTTPResponse
 from datetime import date
 
+from .models.request import RequestOptionBuilder
+
 
 class MarketsClient(BaseClient):
     def get_market_holidays(
@@ -85,7 +87,7 @@ class TickersClient(BaseClient):
         order: Optional[Union[str, Order]] = "asc",
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
         Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
@@ -126,7 +128,7 @@ class TickersClient(BaseClient):
         date: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[TickerDetails, HTTPResponse]:
         """
         Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.
@@ -153,7 +155,7 @@ class TickersClient(BaseClient):
         ticker: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[TickerChangeResults, HTTPResponse]:
 
         """
@@ -191,7 +193,7 @@ class TickersClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[TickerNews], HTTPResponse]:
         """
         Get the most recent news articles relating to a stock ticker symbol, including a summary of the article and a link to the original source.
@@ -221,7 +223,7 @@ class TickersClient(BaseClient):
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[TickerTypes], HTTPResponse]:
         """
         List all ticker types that Polygon.io has.
@@ -263,7 +265,7 @@ class SplitsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Split], HTTPResponse]:
         """
         Get a list of historical stock splits, including the ticker symbol, the execution date, and the factors of the split ratio.
@@ -337,7 +339,7 @@ class DividendsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Dividend], HTTPResponse]:
         """
         Get a list of historical cash dividends, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount.
@@ -400,7 +402,7 @@ class ConditionsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Condition], HTTPResponse]:
         """
         List all conditions that Polygon.io uses.
@@ -434,7 +436,7 @@ class ExchangesClient(BaseClient):
         locale: Optional[Union[str, Locale]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[Exchange], HTTPResponse]:
         """
         List all exchanges that Polygon.io knows about.
@@ -464,7 +466,7 @@ class ContractsClient(BaseClient):
         as_of: Optional[Union[str, date]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[OptionsContract, HTTPResponse]:
         """
         Get the most recent trade for a ticker.
@@ -511,7 +513,7 @@ class ContractsClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[OptionsContract], HTTPResponse]:
         """
         List historical options contracts.

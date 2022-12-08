@@ -5,11 +5,10 @@ from polygon.rest.models.request import RequestOptionBuilder
 def getAggsLaunchpad():
     client = RESTClient()
 
-    options = RequestOptionBuilder().required_edge_headers(
-        edge_id="EDGE_ID",
-        edge_ip_address="EDGE_ID_ADDRESS"
-    ).edge_user_agent_header(
-        user_agent="EDGE_USER_AGENT"
+    options = (
+        RequestOptionBuilder()
+        .required_edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
+        .edge_user_agent_header(user_agent="EDGE_USER_AGENT")
     )
 
     trades = []

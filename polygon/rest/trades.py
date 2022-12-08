@@ -4,6 +4,8 @@ from .models import Trade, LastTrade, CryptoTrade, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
+from .models.request import RequestOptionBuilder
+
 
 class TradesClient(BaseClient):
     def list_trades(
@@ -19,7 +21,7 @@ class TradesClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Trade], HTTPResponse]:
         """
         Get trades for a ticker symbol in a given time range.
@@ -52,7 +54,7 @@ class TradesClient(BaseClient):
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[LastTrade, HTTPResponse]:
         """
         Get the most recent trade for a ticker.
@@ -79,7 +81,7 @@ class TradesClient(BaseClient):
         to: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[CryptoTrade, HTTPResponse]:
         """
         Get the last trade tick for a cryptocurrency pair.

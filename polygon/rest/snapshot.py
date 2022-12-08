@@ -9,6 +9,8 @@ from .models import (
 )
 from urllib3 import HTTPResponse
 
+from .models.request import RequestOptionBuilder
+
 
 def get_locale(market_type: Union[SnapshotMarketType, str]):
     if market_type == SnapshotMarketType.STOCKS.value:
@@ -25,7 +27,7 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         include_otc: Optional[bool] = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
@@ -57,7 +59,7 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         include_otc: Optional[bool] = False,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[TickerSnapshot], HTTPResponse]:
         """
         Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.
@@ -88,7 +90,7 @@ class SnapshotClient(BaseClient):
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[TickerSnapshot, HTTPResponse]:
         """
         Get the most up-to-date market data for all traded stock symbols.
@@ -116,7 +118,7 @@ class SnapshotClient(BaseClient):
         option_contract: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[OptionContractSnapshot, HTTPResponse]:
         """
         Get the snapshot of an option contract for a stock equity.
@@ -140,7 +142,7 @@ class SnapshotClient(BaseClient):
         ticker: str,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[SnapshotTickerFullBook, HTTPResponse]:
         """
         Get the current level 2 book of a single ticker. This is the combined book from all of the exchanges.

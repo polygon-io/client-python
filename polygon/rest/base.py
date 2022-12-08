@@ -79,12 +79,17 @@ class BaseClient:
         params = {str(k): str(v) for k, v in params.items() if v is not None}
         logger.debug("_get %s params %s", path, params)
 
+        option = RequestOptionBuilder() if options is None else options
+
         resp = self.client.request(
             "GET",
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers={**options.edge_headers, **self.headers},  # merge supplied headers with standard headers
+            headers={
+                **option.edge_headers,
+                **self.headers,
+            },  # merge supplied headers with standard headers
         )
 
         if resp.status != 200:
