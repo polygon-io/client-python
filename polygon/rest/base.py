@@ -7,7 +7,7 @@ from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
 
-from .models import LaunchPadOptions
+from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
 from ..exceptions import AuthError, BadResponse, NoResultsError
@@ -77,7 +77,7 @@ class BaseClient:
         result_key: Optional[str] = None,
         deserializer=None,
         raw: bool = False,
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Any:
         if params is None:
             params = {}
@@ -89,7 +89,7 @@ class BaseClient:
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers=self._get_headers_from_options(options),
+            headers=options.edge_headers,
         )
 
         if resp.status != 200:
@@ -160,23 +160,13 @@ class BaseClient:
 
         return params
 
-    def _get_headers_from_options(self, options: Optional[dict]) -> Dict[str, str]:
-        headers = self.headers
-        if options is None or "headers" not in options:
-            return headers
-
-        for k, v in options["headers"].items():
-            headers[k] = v
-
-        return headers
-
     def _paginate_iter(
         self,
         path: str,
         params: dict,
         deserializer,
         result_key: str = "results",
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ):
         while True:
             resp = self._get(
@@ -203,7 +193,7 @@ class BaseClient:
         raw: bool,
         deserializer,
         result_key: str = "results",
-        options: Optional[dict] = None,
+        options: Optional[RequestOptionBuilder] = None,
     ):
         if raw:
             return self._get(
