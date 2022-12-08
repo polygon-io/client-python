@@ -6,7 +6,7 @@ from .tickers import Branding
 
 @modelclass
 class Session:
-    "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
+    "Contains Session data for the summaries endpoint."
     change: Optional[float] = None
     change_percent: Optional[float] = None
     early_trading_change: Optional[float] = None
@@ -27,9 +27,9 @@ class Session:
 
 @modelclass
 class Options:
-    "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
+    "Contains options data for the summaries endpoint"
     contract_type: Optional[str] = None
-    excercise_style: Optional[str] = None
+    exercise_style: Optional[str] = None
     expiration_date: Optional[str] = None
     shares_per_contract: Optional[float] = None
     strike_price: Optional[float] = None
@@ -42,7 +42,7 @@ class Options:
 
 @modelclass
 class SummaryResult:
-    "Contains aggregate data for a given ticker symbol over a given date range in a custom time window size."
+    "Contains summary result data for a list of tickers"
     price: Optional[float] = None
     name: Optional[str] = None
     ticker: Optional[str] = None
@@ -51,6 +51,8 @@ class SummaryResult:
     type: Optional[str] = None
     session: Optional[Session] = None
     options: Optional[Options] = None
+    error: Optional[str] = None
+    message: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
@@ -63,4 +65,6 @@ class SummaryResult:
             type=d.get("type", None),
             session=None if "session" not in d else Session.from_dict(d["session"]),
             options=None if "options" not in d else Options.from_dict(d["options"]),
+            error=d.get("error", None),
+            message=d.get("message", None),
         )
