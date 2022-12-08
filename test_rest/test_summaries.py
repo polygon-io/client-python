@@ -14,7 +14,7 @@ class SummariesTest(BaseTest):
                 branding=Branding(
                     icon_url="https://api.polygon.io/icon.png",
                     logo_url="https://api.polygon.io/logo.svg",
-                ),  
+                ),
                 market_status="closed",
                 type="stocks",
                 session=Session(
@@ -30,7 +30,7 @@ class SummariesTest(BaseTest):
                     open=22.49,
                     previous_close=22.45,
                     volume=37,
-                ), 
+                ),
             )
         ]
         self.assertEqual(summary_results, expected)
@@ -46,7 +46,7 @@ class SummariesTest(BaseTest):
                 branding=Branding(
                     icon_url="https://api.polygon.io/icon.png",
                     logo_url="https://api.polygon.io/logo.svg",
-                ),  
+                ),
                 market_status="closed",
                 type="stocks",
                 session=Session(
@@ -62,12 +62,12 @@ class SummariesTest(BaseTest):
                     open=22.49,
                     previous_close=22.45,
                     volume=37,
-                ),  
+                ),
             ),
             SummaryResult(
                 price=6.6,
                 name="NCLH $5 Call",
-                ticker="O:NCLH221014C00005000", 
+                ticker="O:NCLH221014C00005000",
                 market_status="closed",
                 type="option",
                 session=Session(
@@ -83,15 +83,15 @@ class SummariesTest(BaseTest):
                     open=6.7,
                     previous_close=6.71,
                     volume=67,
-                ), 
+                ),
                 options=Options(
                     contract_type="call",
                     exercise_style="american",
                     expiration_date="2022-10-14",
                     shares_per_contract=100,
                     strike_price=5,
-                    underlying_ticker="NCLH"
-                )
+                    underlying_ticker="NCLH",
+                ),
             ),
             SummaryResult(
                 price=0.97989,
@@ -107,7 +107,7 @@ class SummariesTest(BaseTest):
                     low=0.96689,
                     open=0.97889,
                     previous_close=0.98001,
-                ),  
+                ),
             ),
             SummaryResult(
                 price=32154.68,
@@ -127,12 +127,12 @@ class SummariesTest(BaseTest):
                     low=28182.88,
                     open=31129.32,
                     previous_close=33362.18,
-                ),  
+                ),
             ),
             SummaryResult(
                 ticker="APx",
-                error='NOT_FOUND',
+                error="NOT_FOUND",
                 message="Ticker not found.",
-            )
+            ),
         ]
         self.assertEqual(summary_results, expected)
