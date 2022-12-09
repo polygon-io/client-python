@@ -159,7 +159,7 @@ class BaseClient:
 
     def _concat_headers(self, headers: Optional[Dict[str, str]]) -> Dict[str, str]:
         if headers is None:
-            return {**self.headers}
+            return self.headers
         return {**headers, **self.headers}
 
     def _paginate_iter(
