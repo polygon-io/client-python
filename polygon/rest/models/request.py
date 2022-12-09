@@ -28,10 +28,10 @@ class RequestOptionBuilder:
 
     def edge_headers(
         self,
-        edge_id: Optional[str] = None,
-        edge_ip_address: Optional[str] = None,
+        edge_id: str,
+        edge_ip_address: str,
         edge_user: Optional[str] = None,
-    ):
+    ) -> "RequestOptionBuilder":
         """
         require_edge_headers adds required headers to the headers' dictionary
         :param edge_id: is a required Launchpad header. It identifies the Edge User requesting data
@@ -41,9 +41,6 @@ class RequestOptionBuilder:
         User requesting data
         :return ResponseOptionBuilder
         """
-        if edge_id is None or edge_ip_address is None:
-            raise RequestOptionError(f"edge_id and edge_ip_address required.")
-
         edge_headers: Dict[str, str] = {
             X_POLYGON_EDGE_ID: edge_id,
             X_POLYGON_EDGE_IP_ADDRESS: edge_ip_address,
@@ -61,7 +58,7 @@ class RequestOptionBuilder:
         edge_id: Optional[str] = None,
         edge_ip_address: Optional[str] = None,
         edge_user: Optional[str] = None,
-    ):
+    ) -> "RequestOptionBuilder":
         """
         used to change individual edge elements of underlying headers' dictionary.
         :param edge_id: is a required Launchpad header. It identifies the Edge User requesting data
