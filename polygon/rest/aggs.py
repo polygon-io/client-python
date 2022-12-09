@@ -1,5 +1,5 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union, Iterator
+from typing import Optional, Any, Dict, List, Union
 from .models import Agg, GroupedDailyAgg, DailyOpenCloseAgg, PreviousCloseAgg, Sort
 from urllib3 import HTTPResponse
 from datetime import datetime, date
