@@ -8,7 +8,7 @@ def get_list_trades_launchpad():
     """
     set headers example:
     options = RequestOptionBuilder()
-        .edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS")
+        .edge_headers(edge_id="EDGE_ID", edge_ip_address="EDGE_ID_ADDRESS", edge_user="EDGE_USER")
         
     update headers example:
     options = options.update_edge_header(edge_ip_address="NEW_IP")
