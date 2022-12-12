@@ -151,8 +151,11 @@ class BaseClient:
                         or argname.endswith("_lte")
                         or argname.endswith("_gt")
                         or argname.endswith("_gte")
+                        or argname.endswith("_any_of")
                     ):
-                        argname = ".".join(argname.rsplit("_", 1))
+                        argname = ".".join(argname.split("_", 1))
+                    if argname.endswith("any_of"):
+                        val = ",".join(val)
                     params[argname] = val
 
         return params
