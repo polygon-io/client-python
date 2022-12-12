@@ -68,10 +68,6 @@ class BaseClient:
         deserializer=None,
         raw: bool = False,
     ) -> Any:
-        if params is None:
-            params = {}
-        params = {str(k): str(v) for k, v in params.items() if v is not None}
-        logger.debug("_get %s params %s", path, params)
         resp = self.client.request(
             "GET",
             self.BASE + path,

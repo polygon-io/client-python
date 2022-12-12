@@ -103,7 +103,7 @@ class QuotesClient(BaseClient):
         self,
         from_: str,
         to: str,
-        amount: float,
+        amount: Optional[float] = None,
         precision: Union[int, Precision] = 2,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -123,7 +123,9 @@ class QuotesClient(BaseClient):
 
         return self._get(
             path=url,
-            params=self._get_params(self.get_real_time_currency_conversion, locals()),
+            params=self._get_params(
+                fn=self.get_real_time_currency_conversion, caller_locals=locals()
+            ),
             deserializer=RealTimeCurrencyConversion.from_dict,
             raw=raw,
         )
