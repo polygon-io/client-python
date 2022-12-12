@@ -136,9 +136,7 @@ class QuotesClient(BaseClient):
 
         return self._get(
             path=url,
-            params=self._get_params(
-                self.get_real_time_currency_conversion, locals()
-            ),
+            params=self._get_params(self.get_real_time_currency_conversion, locals()),
             deserializer=RealTimeCurrencyConversion.from_dict,
             raw=raw,
             options=options,
