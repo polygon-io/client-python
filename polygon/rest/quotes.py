@@ -54,7 +54,10 @@ class QuotesClient(BaseClient):
         )
 
     def get_last_quote(
-        self, ticker: str, params: Optional[Dict[str, Any]] = None, raw: bool = False
+            self,
+            ticker: str,
+            params: Optional[Dict[str, Any]] = None,
+            raw: bool = False
     ) -> Union[LastQuote, HTTPResponse]:
         """
         Get the most recent NBBO (Quote) tick for a given stock.
@@ -120,13 +123,10 @@ class QuotesClient(BaseClient):
         :return: Real-Time Currency Conversion
         """
         url = f"/v1/conversion/{from_}/{to}"
-        if params is None:
-            params = {}
-        params["amount"] = amount
-        params["precision"] = precision
+
         return self._get(
             path=url,
-            params=params,
+            params=self._get_params(self.get_real_time_currency_conversion, locals()),
             deserializer=RealTimeCurrencyConversion.from_dict,
             raw=raw,
         )
