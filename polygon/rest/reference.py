@@ -239,7 +239,7 @@ class TickersClient(BaseClient):
 
         return self._get(
             path=url,
-            params=self._get_params(fn=self.get_ticker_types, caller_locals=locals()),
+            params=self._get_params(self.get_ticker_types, locals()),
             deserializer=TickerTypes.from_dict,
             raw=raw,
             result_key="results",
@@ -452,7 +452,7 @@ class ExchangesClient(BaseClient):
 
         return self._get(
             path=url,
-            params=self._get_params(fn=self.get_exchanges, caller_locals=locals()),
+            params=self._get_params(self.get_exchanges, locals()),
             deserializer=Exchange.from_dict,
             raw=raw,
             result_key="results",
