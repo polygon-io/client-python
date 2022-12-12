@@ -3,6 +3,7 @@ from .trades import TradesClient
 from .quotes import QuotesClient
 from .snapshot import SnapshotClient
 from .indicators import IndicatorsClient
+from .summaries import SummariesClient
 from .reference import (
     MarketsClient,
     TickersClient,
@@ -34,6 +35,7 @@ class RESTClient(
     ExchangesClient,
     ContractsClient,
     IndicatorsClient,
+    SummariesClient,
 ):
     def __init__(
         self,
