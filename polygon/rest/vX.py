@@ -4,6 +4,8 @@ from .models import StockFinancial, Timeframe, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
+from .models.request import RequestOptionBuilder
+
 
 class VXClient(BaseClient):
     def list_stock_financials(
@@ -30,6 +32,7 @@ class VXClient(BaseClient):
         order: Optional[Union[str, Order]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[StockFinancial], HTTPResponse]:
         """
         Get historical financial data for a stock ticker.
@@ -65,4 +68,5 @@ class VXClient(BaseClient):
             params=self._get_params(self.list_stock_financials, locals()),
             raw=raw,
             deserializer=StockFinancial.from_dict,
+            options=options,
         )
