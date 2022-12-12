@@ -54,10 +54,7 @@ class QuotesClient(BaseClient):
         )
 
     def get_last_quote(
-            self,
-            ticker: str,
-            params: Optional[Dict[str, Any]] = None,
-            raw: bool = False
+        self, ticker: str, params: Optional[Dict[str, Any]] = None, raw: bool = False
     ) -> Union[LastQuote, HTTPResponse]:
         """
         Get the most recent NBBO (Quote) tick for a given stock.
