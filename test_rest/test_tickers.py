@@ -239,7 +239,7 @@ class TickersTest(BaseTest):
         self.assertEqual(types, expected)
 
     def test_get_ticker_events_ticker_change(self):
-        events = self.c.get_ticker_events(ticker="META")
+        events = self.c.get_ticker_events(ticker="META", types="ticker_change")
         expected = TickerChangeResults(
             name="Meta Platforms, Inc. Class A Common Stock",
             figi="BBG000MM2P62",

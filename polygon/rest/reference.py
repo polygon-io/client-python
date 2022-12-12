@@ -152,7 +152,8 @@ class TickersClient(BaseClient):
 
     def get_ticker_events(
         self,
-        ticker: Optional[str] = None,
+        ticker: str,
+        types: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
@@ -169,7 +170,7 @@ class TickersClient(BaseClient):
 
         return self._get(
             path=url,
-            params=params,
+            params=self._get_params(self.get_ticker_events, locals()),
             deserializer=TickerChangeResults.from_dict,
             result_key="results",
             raw=raw,
