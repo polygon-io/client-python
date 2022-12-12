@@ -6,6 +6,7 @@ from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
 import pkg_resources  # part of setuptools
+from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
 from ..exceptions import AuthError, BadResponse, NoResultsError
@@ -34,20 +35,24 @@ class BaseClient:
             raise AuthError(
                 f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
             )
+
         self.API_KEY = api_key
         self.BASE = base
+
+        self.headers = {
+            "Authorization": "Bearer " + self.API_KEY,
+            "User-Agent": f"Polygon.io PythonClient/{version}",
+        }
 
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
             num_pools=num_pools,
-            headers={
-                "Authorization": "Bearer " + self.API_KEY,
-                "User-Agent": f"Polygon.io PythonClient/{version}",
-            },
+            headers=self.headers,  # default headers sent with each request.
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
         )
+
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
         self.retries = retries
         if verbose:
@@ -67,12 +72,16 @@ class BaseClient:
         result_key: Optional[str] = None,
         deserializer=None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Any:
+        option = options if options is not None else RequestOptionBuilder()
+
         resp = self.client.request(
             "GET",
             self.BASE + path,
             fields=params,
             retries=self.retries,
+            headers=self._concat_headers(option.headers),
         )
 
         if resp.status != 200:
@@ -143,12 +152,18 @@ class BaseClient:
 
         return params
 
+    def _concat_headers(self, headers: Optional[Dict[str, str]]) -> Dict[str, str]:
+        if headers is None:
+            return self.headers
+        return {**headers, **self.headers}
+
     def _paginate_iter(
         self,
         path: str,
         params: dict,
         deserializer,
         result_key: str = "results",
+        options: Optional[RequestOptionBuilder] = None,
     ):
         while True:
             resp = self._get(
@@ -157,6 +172,7 @@ class BaseClient:
                 deserializer=deserializer,
                 result_key=result_key,
                 raw=True,
+                options=options,
             )
             decoded = self._decode(resp)
             for t in decoded[result_key]:
@@ -174,10 +190,15 @@ class BaseClient:
         raw: bool,
         deserializer,
         result_key: str = "results",
+        options: Optional[RequestOptionBuilder] = None,
     ):
         if raw:
             return self._get(
-                path=path, params=params, deserializer=deserializer, raw=True
+                path=path,
+                params=params,
+                deserializer=deserializer,
+                raw=True,
+                options=options,
             )
 
         return self._paginate_iter(
@@ -185,4 +206,5 @@ class BaseClient:
             params=params,
             deserializer=deserializer,
             result_key=result_key,
+            options=options,
         )

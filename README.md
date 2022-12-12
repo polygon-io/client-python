@@ -15,6 +15,11 @@ Requires Python >= 3.8.
 See the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html)
 section in our docs or view the [examples](./examples) directory.
 
+#### Launchpad Usage
+
+Users of the Launchpad product will need to pass in certain headers in order to make API requests.
+Example can be found [here](./examples/launchpad).
+
 ## Contributing
 
 If you found a bug or have an idea for a new feature, please first discuss it with us by

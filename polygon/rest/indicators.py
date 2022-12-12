@@ -11,6 +11,8 @@ from .models import Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
+from .models.request import RequestOptionBuilder
+
 
 class IndicatorsClient(BaseClient):
     def get_sma(
@@ -29,6 +31,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[SMAIndicatorResults, HTTPResponse]:
         """
         Get SMA values for a given ticker over a given range with the specified parameters
@@ -62,6 +65,7 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=SMAIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_ema(
@@ -80,6 +84,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[EMAIndicatorResults, HTTPResponse]:
         """
         Get EMA values for a given ticker over a given range with the specified parameters
@@ -113,6 +118,7 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=EMAIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_rsi(
@@ -131,6 +137,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[RSIIndicatorResults, HTTPResponse]:
         """
         Get RSI values for a given ticker over a given range with the specified parameters
@@ -164,6 +171,7 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=RSIIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )
 
     def get_macd(
@@ -184,6 +192,7 @@ class IndicatorsClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[MACDIndicatorResults, HTTPResponse]:
         """
         Get MACD values for a given ticker over a given range with the specified parameters
@@ -218,4 +227,5 @@ class IndicatorsClient(BaseClient):
             result_key="results",
             deserializer=MACDIndicatorResults.from_dict,
             raw=raw,
+            options=options,
         )
