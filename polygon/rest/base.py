@@ -74,11 +74,6 @@ class BaseClient:
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Any:
-        if params is None:
-            params = {}
-        params = {str(k): str(v) for k, v in params.items() if v is not None}
-        logger.debug("_get %s params %s", path, params)
-
         option = options if options is not None else RequestOptionBuilder()
 
         resp = self.client.request(

@@ -115,7 +115,7 @@ class QuotesClient(BaseClient):
         self,
         from_: str,
         to: str,
-        amount: float,
+        amount: Optional[float] = None,
         precision: Union[int, Precision] = 2,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -133,13 +133,10 @@ class QuotesClient(BaseClient):
         :return: Real-Time Currency Conversion
         """
         url = f"/v1/conversion/{from_}/{to}"
-        if params is None:
-            params = {}
-        params["amount"] = amount
-        params["precision"] = precision
+
         return self._get(
             path=url,
-            params=params,
+            params=self._get_params(self.get_real_time_currency_conversion, locals()),
             deserializer=RealTimeCurrencyConversion.from_dict,
             raw=raw,
             options=options,
