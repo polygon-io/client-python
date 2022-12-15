@@ -29,7 +29,7 @@ class AggsClient(BaseClient):
         :param ticker: The ticker symbol.
         :param multiplier: The size of the timespan multiplier.
         :param timespan: The size of the time window.
-        :param _from: The start of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
+        :param from_: The start of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
         :param to: The end of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
         :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
         :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
