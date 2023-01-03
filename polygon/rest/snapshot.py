@@ -137,6 +137,30 @@ class SnapshotClient(BaseClient):
             options=options,
         )
 
+    def get_snapshot_options_chain(
+        self,
+        underlying_asset: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[OptionContractSnapshot, HTTPResponse]:
+        """
+        Get the snapshot of an option contract for a stock equity.
+
+        :param underlying_asset: The underlying ticker symbol of the option contract.
+        :param option_contract: The option contract identifier.
+        :return: List of Snapshots
+        """
+        url = f"/v3/snapshot/options/{underlying_asset}"
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_snapshot_options_chain, locals()),
+            result_key="results",
+            deserializer=OptionContractSnapshot.from_dict,
+            raw=raw,
+            options=options,
+        )
+
     def get_snapshot_crypto_book(
         self,
         ticker: str,

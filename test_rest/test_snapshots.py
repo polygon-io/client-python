@@ -210,6 +210,57 @@ class SnapshotsTest(BaseTest):
         )
         self.assertEqual(snapshots, expected)
 
+    def test_get_snapshot_options_chain(self):
+        snapshots = self.c.get_snapshot_options_chain("AAPL")
+        expected = OptionContractSnapshot(
+            break_even_price=179.075,
+            day=DayOptionContractSnapshot(
+                change=-2.3999999999999986,
+                change_percent=-7.643312101910824,
+                close=29,
+                high=32.25,
+                last_updated=1651204800000000000,
+                low=29,
+                open=29.99,
+                previous_close=31.4,
+                volume=8,
+                vwap=30.7738,
+            ),
+            details=OptionDetails(
+                contract_type="call",
+                exercise_style="american",
+                expiration_date="2023-06-16",
+                shares_per_contract=100,
+                strike_price=150,
+                ticker="O:AAPL230616C00150000",
+            ),
+            greeks=Greeks(
+                delta=0.6436614934293701,
+                gamma=0.0061735291012820675,
+                theta=-0.028227189324641973,
+                vega=0.6381159723175714,
+            ),
+            implied_volatility=0.3570277203465058,
+            last_quote=LastQuoteOptionContractSnapshot(
+                ask=29.25,
+                ask_size=209,
+                bid=28.9,
+                bid_size=294,
+                last_updated=1651254260800059648,
+                midpoint=29.075,
+                timeframe="REAL-TIME",
+            ),
+            open_interest=8133,
+            underlying_asset=UnderlyingAsset(
+                change_to_break_even=19.11439999999999,
+                last_updated=1651254263172073152,
+                price=159.9606,
+                ticker="AAPL",
+                timeframe="REAL-TIME",
+            ),
+        )
+        self.assertEqual(snapshots, expected)
+
     def test_get_snapshot_crypto_book(self):
         snapshots = self.c.get_snapshot_crypto_book("X:BTCUSD")
         expected = SnapshotTickerFullBook(
