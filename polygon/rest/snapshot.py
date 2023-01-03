@@ -143,7 +143,7 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
-    ) -> Union[OptionContractSnapshot, HTTPResponse]:
+    ) -> Union[List[OptionContractSnapshot], HTTPResponse]:
         """
         Get the snapshot of an option contract for a stock equity.
 

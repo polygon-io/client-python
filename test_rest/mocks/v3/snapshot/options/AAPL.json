@@ -1,6 +1,7 @@
-{
+
+  {
   "request_id": "104d9b901d0c9e81d284cb8b41c5cdd3",
-  "results": {
+  "results": [{
     "break_even_price": 179.075,
     "day": {
       "change": -2.3999999999999986,
@@ -46,6 +47,6 @@
       "ticker": "AAPL",
       "timeframe": "REAL-TIME"
     }
-  },
+  }],
   "status": "OK"
 }
