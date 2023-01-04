@@ -210,8 +210,8 @@ class SnapshotsTest(BaseTest):
         )
         self.assertEqual(snapshots, expected)
 
-    def test_get_snapshot_options_chain(self):
-        snapshots = self.c.get_snapshot_options_chain("AAPL")
+    def test_list_snapshot_options_chain(self):
+        snapshots = [s for s in self.c.list_snapshot_options_chain("AAPL")]
         expected = [
             OptionContractSnapshot(
                 break_even_price=179.075,

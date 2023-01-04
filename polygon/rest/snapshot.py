@@ -137,7 +137,7 @@ class SnapshotClient(BaseClient):
             options=options,
         )
 
-    def get_snapshot_options_chain(
+    def list_snapshot_options_chain(
         self,
         underlying_asset: str,
         params: Optional[Dict[str, Any]] = None,
@@ -152,9 +152,9 @@ class SnapshotClient(BaseClient):
         :return: List of Snapshots
         """
         url = f"/v3/snapshot/options/{underlying_asset}"
-        return self._get(
+        return self._paginate(
             path=url,
-            params=self._get_params(self.get_snapshot_options_chain, locals()),
+            params=self._get_params(self.list_snapshot_options_chain, locals()),
             result_key="results",
             deserializer=OptionContractSnapshot.from_dict,
             raw=raw,
