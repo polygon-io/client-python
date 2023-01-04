@@ -1,5 +1,5 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union
+from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import (
     TickerSnapshot,
     Direction,
@@ -143,12 +143,11 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
-    ) -> Union[List[OptionContractSnapshot], HTTPResponse]:
+    ) -> Union[Iterator[OptionContractSnapshot], HTTPResponse]:
         """
-        Get the snapshot of an option contract for a stock equity.
+        Get the snapshot of all options contracts for an underlying ticker.
 
         :param underlying_asset: The underlying ticker symbol of the option contract.
-        :param option_contract: The option contract identifier.
         :return: List of Snapshots
         """
         url = f"/v3/snapshot/options/{underlying_asset}"
