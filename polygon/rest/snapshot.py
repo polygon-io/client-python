@@ -1,5 +1,5 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union
+from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import (
     TickerSnapshot,
     Direction,
@@ -131,6 +131,29 @@ class SnapshotClient(BaseClient):
         return self._get(
             path=url,
             params=self._get_params(self.get_snapshot_option, locals()),
+            result_key="results",
+            deserializer=OptionContractSnapshot.from_dict,
+            raw=raw,
+            options=options,
+        )
+
+    def list_snapshot_options_chain(
+        self,
+        underlying_asset: str,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[Iterator[OptionContractSnapshot], HTTPResponse]:
+        """
+        Get the snapshot of all options contracts for an underlying ticker.
+
+        :param underlying_asset: The underlying ticker symbol of the option contract.
+        :return: List of Snapshots
+        """
+        url = f"/v3/snapshot/options/{underlying_asset}"
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_snapshot_options_chain, locals()),
             result_key="results",
             deserializer=OptionContractSnapshot.from_dict,
             raw=raw,
