@@ -1,9 +1,7 @@
 from polygon.rest.models.summaries import SummaryResult
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union, Iterator
-from .models import Order
+from typing import Optional, Any, Dict, List, Union
 from urllib3 import HTTPResponse
-from datetime import datetime, date
 
 from .models.request import RequestOptionBuilder
 
