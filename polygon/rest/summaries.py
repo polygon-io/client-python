@@ -5,6 +5,8 @@ from .models import Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
+from .models.request import RequestOptionBuilder
+
 
 class SummariesClient(BaseClient):
     def get_summaries(
@@ -12,6 +14,7 @@ class SummariesClient(BaseClient):
         ticker_any_of: Optional[List[str]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[SummaryResult], HTTPResponse]:
         """
         GetSummaries retrieves summaries for the ticker list with the given params.
@@ -30,4 +33,5 @@ class SummariesClient(BaseClient):
             result_key="results",
             deserializer=SummaryResult.from_dict,
             raw=raw,
+            options=options,
         )
