@@ -55,6 +55,33 @@ for quote in quotes:
 Note: For parameter argument examples check out our docs. All required arguments are annotated with red asterisks " * " and argument examples are set.
 Check out an example for Aggregates(client.get_aggs) [here](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to)
 
+## WebSocket Client 
+
+Import classes
+```python
+from polygon import WebSocketClient
+from polygon.websocket.models import WebSocketMessage
+from typing import List
+```
+### Using the client
+Create a new client with your [API key](https://polygon.io/dashboard/api-keys) and subscription options.
+```python
+# Note: Multiple subscriptions can be added to the array 
+# For example, if you want to subscribe to AAPL and META,
+# you can do so by adding "T.META" to the subscriptions array. ["T.AAPL", "T.META"]
+# If you want to subscribe to all tickers, place an asterisk in place of the symbol. ["T.*"]
+ws = WebSocketClient(api_key=<API_KEY>, subscriptions=["T.AAPL"])
+```
+Create a handler function and run the WebSocket.
+```python
+def handle_msg(msg: List[WebSocketMessage]):
+    for m in msg:
+        print(m)
+
+ws.run(handle_msg=handle_msg)
+```
+Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
+
 ## Launchpad
 Users of the Launchpad product will need to pass in certain headers in order to make API requests using the RequestOptionBuilder.
 Example can be found [here](./examples/launchpad).
@@ -85,32 +112,6 @@ res = c.get_aggs("AAPL", 1, "day", "2022-04-04", "2022-04-04", options=options)
 ```
 Checkout Launchpad readme for more details on RequestOptionBuilder [here](./examples/launchpad)
 
-## WebSocket Client 
-
-Import classes
-```python
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
-from typing import List
-```
-### Using the client
-Create a new client with your [API key](https://polygon.io/dashboard/api-keys) and subscription options.
-```python
-# Note: Multiple subscriptions can be added to the array 
-# For example, if you want to subscribe to AAPL and META,
-# you can do so by adding "T.META" to the subscriptions array. ["T.AAPL", "T.META"]
-# If you want to subscribe to all tickers, place an asterisk in place of the symbol. ["T.*"]
-ws = WebSocketClient(api_key=<API_KEY>, subscriptions=["T.AAPL"])
-```
-Create a handler function and run the WebSocket.
-```python
-def handle_msg(msg: List[WebSocketMessage]):
-    for m in msg:
-        print(m)
-
-ws.run(handle_msg=handle_msg)
-```
-Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
 
 ## Contributing
 
