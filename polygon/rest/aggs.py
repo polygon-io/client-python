@@ -62,6 +62,7 @@ class AggsClient(BaseClient):
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        locale: str = "us",
         market_type: str = "stocks",
         include_otc: bool = False,
         options: Optional[RequestOptionBuilder] = None,
@@ -75,7 +76,7 @@ class AggsClient(BaseClient):
         :param raw: Return raw object instead of results object
         :return: List of grouped daily aggregates
         """
-        url = f"/v2/aggs/grouped/locale/us/market/{market_type}/{date}"
+        url = f"/v2/aggs/grouped/locale/{locale}/market/{market_type}/{date}"
 
         return self._get(
             path=url,
