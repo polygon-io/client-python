@@ -445,6 +445,13 @@
               "type": "string"
             }
           },
+          "required": [
+            "id",
+            "type",
+            "market",
+            "name",
+            "url"
+          ],
           "type": "object"
         },
         "type": "array"
@@ -497,6 +504,15 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "v",
+                "t",
+                "T"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -557,11 +573,26 @@
                   "type": "integer"
                 }
               },
+              "required": [
+                "p",
+                "s",
+                "x",
+                "c",
+                "t",
+                "i"
+              ],
               "type": "object"
             },
             "type": "array"
           }
         },
+        "required": [
+          "day",
+          "map",
+          "msLatency",
+          "symbol",
+          "ticks"
+        ],
         "type": "object"
       },
       "CryptoLastTrade": {
@@ -595,6 +626,13 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "conditions",
+              "exchange",
+              "price",
+              "size",
+              "timestamp"
+            ],
             "type": "object"
           },
           "symbol": {
@@ -602,6 +640,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "symbol"
+        ],
         "type": "object"
       },
       "CryptoOpenClose": {
@@ -645,6 +686,14 @@
                   "type": "integer"
                 }
               },
+              "required": [
+                "p",
+                "s",
+                "x",
+                "c",
+                "t",
+                "i"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -697,6 +746,14 @@
                   "type": "integer"
                 }
               },
+              "required": [
+                "p",
+                "s",
+                "x",
+                "c",
+                "t",
+                "i"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -706,6 +763,15 @@
             "type": "string"
           }
         },
+        "required": [
+          "symbol",
+          "isUTC",
+          "day",
+          "open",
+          "close",
+          "openTrades",
+          "closingTrades"
+        ],
         "type": "object"
       },
       "CryptoSnapshotMinute": {
@@ -741,6 +807,14 @@
             "type": "number"
           }
         },
+        "required": [
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
+        ],
         "type": "object"
       },
       "CryptoSnapshotTicker": {
@@ -781,6 +855,14 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "lastTrade": {
@@ -819,6 +901,14 @@
                         "type": "integer"
                       }
                     },
+                    "required": [
+                      "c",
+                      "i",
+                      "p",
+                      "s",
+                      "t",
+                      "x"
+                    ],
                     "type": "object"
                   },
                   {
@@ -865,6 +955,14 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "prevDay": {
@@ -901,6 +999,14 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "ticker": {
@@ -922,6 +1028,16 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "day",
+              "lastTrade",
+              "min",
+              "prevDay",
+              "ticker",
+              "todaysChange",
+              "todaysChangePerc",
+              "updated"
+            ],
             "type": "object"
           }
         },
@@ -949,6 +1065,10 @@
                       "type": "object"
                     }
                   },
+                  "required": [
+                    "p",
+                    "x"
+                  ],
                   "type": "object"
                 },
                 "type": "array"
@@ -971,6 +1091,10 @@
                       "type": "object"
                     }
                   },
+                  "required": [
+                    "p",
+                    "x"
+                  ],
                   "type": "object"
                 },
                 "type": "array"
@@ -989,6 +1113,15 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "ticker",
+              "bids",
+              "asks",
+              "bidCount",
+              "askCount",
+              "spread",
+              "updated"
+            ],
             "type": "object"
           }
         },
@@ -1033,6 +1166,14 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "lastTrade": {
@@ -1071,6 +1212,14 @@
                           "type": "integer"
                         }
                       },
+                      "required": [
+                        "c",
+                        "i",
+                        "p",
+                        "s",
+                        "t",
+                        "x"
+                      ],
                       "type": "object"
                     },
                     {
@@ -1117,6 +1266,14 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "prevDay": {
@@ -1153,6 +1310,14 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "ticker": {
@@ -1174,6 +1339,16 @@
                   "type": "integer"
                 }
               },
+              "required": [
+                "day",
+                "lastTrade",
+                "min",
+                "prevDay",
+                "ticker",
+                "todaysChange",
+                "todaysChangePerc",
+                "updated"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -1214,6 +1389,14 @@
             "type": "integer"
           }
         },
+        "required": [
+          "p",
+          "s",
+          "x",
+          "c",
+          "t",
+          "i"
+        ],
         "type": "object"
       },
       "CryptoTradeExchange": {
@@ -1791,6 +1974,12 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "ask",
+              "bid",
+              "exchange",
+              "timestamp"
+            ],
             "type": "object"
           },
           "to": {
@@ -1798,6 +1987,12 @@
             "type": "string"
           }
         },
+        "required": [
+          "from",
+          "to",
+          "initialAmount",
+          "converted"
+        ],
         "type": "object"
       },
       "ForexExchangeId": {
@@ -1852,6 +2047,15 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "v",
+                "t",
+                "T"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -1900,11 +2104,24 @@
                   "type": "integer"
                 }
               },
+              "required": [
+                "a",
+                "b",
+                "x",
+                "t"
+              ],
               "type": "object"
             },
             "type": "array"
           }
         },
+        "required": [
+          "day",
+          "map",
+          "msLatency",
+          "pair",
+          "ticks"
+        ],
         "type": "object"
       },
       "ForexPairLastQuote": {
@@ -1930,6 +2147,12 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "ask",
+              "bid",
+              "exchange",
+              "timestamp"
+            ],
             "type": "object"
           },
           "symbol": {
@@ -1937,6 +2160,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "symbol"
+        ],
         "type": "object"
       },
       "ForexPreviousClose": {
@@ -1987,6 +2213,15 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "T",
+                "v",
+                "o",
+                "c",
+                "h",
+                "l",
+                "t"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -2015,6 +2250,12 @@
             "type": "integer"
           }
         },
+        "required": [
+          "a",
+          "b",
+          "t",
+          "x"
+        ],
         "type": "object"
       },
       "ForexSnapshotPrevDay": {
@@ -2050,6 +2291,14 @@
             "type": "number"
           }
         },
+        "required": [
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
+        ],
         "type": "object"
       },
       "ForexSnapshotTicker": {
@@ -2085,6 +2334,13 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v"
+                ],
                 "type": "object"
               },
               "lastQuote": {
@@ -2109,6 +2365,12 @@
                     "type": "integer"
                   }
                 },
+                "required": [
+                  "a",
+                  "b",
+                  "t",
+                  "x"
+                ],
                 "type": "object"
               },
               "min": {
@@ -2140,6 +2402,13 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v"
+                ],
                 "type": "object"
               },
               "prevDay": {
@@ -2176,6 +2445,14 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "ticker": {
@@ -2197,6 +2474,16 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "day",
+              "lastQuote",
+              "min",
+              "prevDay",
+              "ticker",
+              "todaysChange",
+              "todaysChangePerc",
+              "updated"
+            ],
             "type": "object"
           }
         },
@@ -2236,6 +2523,13 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v"
+                  ],
                   "type": "object"
                 },
                 "lastQuote": {
@@ -2260,6 +2554,12 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "a",
+                    "b",
+                    "t",
+                    "x"
+                  ],
                   "type": "object"
                 },
                 "min": {
@@ -2291,6 +2591,13 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v"
+                  ],
                   "type": "object"
                 },
                 "prevDay": {
@@ -2327,6 +2634,14 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "ticker": {
@@ -2348,6 +2663,16 @@
                   "type": "integer"
                 }
               },
+              "required": [
+                "day",
+                "lastQuote",
+                "min",
+                "prevDay",
+                "ticker",
+                "todaysChange",
+                "todaysChangePerc",
+                "updated"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -2399,6 +2724,14 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "v",
+                "t"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -2716,6 +3049,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "request_id"
+        ],
         "type": "object"
       },
       "SequenceNumber": {
@@ -2759,6 +3095,14 @@
             "type": "integer"
           }
         },
+        "required": [
+          "c",
+          "i",
+          "p",
+          "s",
+          "t",
+          "x"
+        ],
         "type": "object"
       },
       "SnapshotOHLCV": {
@@ -2789,6 +3133,13 @@
             "type": "number"
           }
         },
+        "required": [
+          "o",
+          "h",
+          "l",
+          "c",
+          "v"
+        ],
         "type": "object"
       },
       "SnapshotOHLCVVW": {
@@ -2824,6 +3175,14 @@
             "type": "number"
           }
         },
+        "required": [
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
+        ],
         "type": "object"
       },
       "SnapshotOHLCVVWOtc": {
@@ -2863,6 +3222,14 @@
             "type": "number"
           }
         },
+        "required": [
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
+        ],
         "type": "object"
       },
       "StandardBase": {
@@ -2874,6 +3241,9 @@
                 "type": "string"
               }
             },
+            "required": [
+              "request_id"
+            ],
             "type": "object"
           },
           {
@@ -2887,6 +3257,9 @@
                 "type": "string"
               }
             },
+            "required": [
+              "status"
+            ],
             "type": "object"
           }
         ]
@@ -2902,6 +3275,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "status"
+        ],
         "type": "object"
       },
       "StatusCountBase": {
@@ -2915,6 +3291,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "status"
+        ],
         "type": "object"
       },
       "StockSymbol": {
@@ -2973,6 +3352,15 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "t",
+                "v",
+                "T"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -3034,6 +3422,16 @@
             "type": "number"
           }
         },
+        "required": [
+          "status",
+          "from",
+          "symbol",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
         "type": "object"
       },
       "StocksSnapshotLastQuote": {
@@ -3061,6 +3459,13 @@
             "type": "integer"
           }
         },
+        "required": [
+          "p",
+          "s",
+          "P",
+          "S",
+          "t"
+        ],
         "type": "object"
       },
       "StocksSnapshotMinute": {
@@ -3100,6 +3505,15 @@
             "type": "number"
           }
         },
+        "required": [
+          "av",
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
+        ],
         "type": "object"
       },
       "StocksSnapshotMinuteOTC": {
@@ -3143,6 +3557,15 @@
             "type": "number"
           }
         },
+        "required": [
+          "av",
+          "o",
+          "h",
+          "l",
+          "c",
+          "v",
+          "vw"
+        ],
         "type": "object"
       },
       "StocksSnapshotTicker": {
@@ -3187,6 +3610,14 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "lastQuote": {
@@ -3215,6 +3646,13 @@
                     "type": "integer"
                   }
                 },
+                "required": [
+                  "p",
+                  "s",
+                  "P",
+                  "S",
+                  "t"
+                ],
                 "type": "object"
               },
               "lastTrade": {
@@ -3249,6 +3687,14 @@
                     "type": "integer"
                   }
                 },
+                "required": [
+                  "c",
+                  "i",
+                  "p",
+                  "s",
+                  "t",
+                  "x"
+                ],
                 "type": "object"
               },
               "min": {
@@ -3293,6 +3739,15 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "av",
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "prevDay": {
@@ -3333,6 +3788,14 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "o",
+                  "h",
+                  "l",
+                  "c",
+                  "v",
+                  "vw"
+                ],
                 "type": "object"
               },
               "ticker": {
@@ -3402,6 +3865,14 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "lastQuote": {
@@ -3430,6 +3901,13 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "p",
+                    "s",
+                    "P",
+                    "S",
+                    "t"
+                  ],
                   "type": "object"
                 },
                 "lastTrade": {
@@ -3464,6 +3942,14 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "c",
+                    "i",
+                    "p",
+                    "s",
+                    "t",
+                    "x"
+                  ],
                   "type": "object"
                 },
                 "min": {
@@ -3508,6 +3994,15 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "av",
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "prevDay": {
@@ -3548,6 +4043,14 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "o",
+                    "h",
+                    "l",
+                    "c",
+                    "v",
+                    "vw"
+                  ],
                   "type": "object"
                 },
                 "ticker": {
@@ -3624,6 +4127,14 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "v",
+                "t"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -3655,6 +4166,13 @@
             "type": "integer"
           }
         },
+        "required": [
+          "T",
+          "t",
+          "y",
+          "f",
+          "q"
+        ],
         "type": "object"
       },
       "StocksV2NBBO": {
@@ -3683,6 +4201,13 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "T",
+              "t",
+              "y",
+              "f",
+              "q"
+            ],
             "type": "object"
           },
           {
@@ -3748,6 +4273,17 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "c",
+              "i",
+              "p",
+              "s",
+              "x",
+              "P",
+              "S",
+              "X",
+              "z"
+            ],
             "type": "object"
           }
         ]
@@ -3781,6 +4317,13 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "T",
+                    "t",
+                    "y",
+                    "f",
+                    "q"
+                  ],
                   "type": "object"
                 },
                 {
@@ -3846,6 +4389,17 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "c",
+                    "i",
+                    "p",
+                    "s",
+                    "x",
+                    "P",
+                    "S",
+                    "X",
+                    "z"
+                  ],
                   "type": "object"
                 }
               ]
@@ -3881,6 +4435,13 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "T",
+              "t",
+              "y",
+              "f",
+              "q"
+            ],
             "type": "object"
           },
           {
@@ -3924,6 +4485,16 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "c",
+              "i",
+              "p",
+              "s",
+              "e",
+              "x",
+              "r",
+              "z"
+            ],
             "type": "object"
           }
         ]
@@ -3957,6 +4528,13 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "T",
+                    "t",
+                    "y",
+                    "f",
+                    "q"
+                  ],
                   "type": "object"
                 },
                 {
@@ -4000,6 +4578,16 @@
                       "type": "integer"
                     }
                   },
+                  "required": [
+                    "c",
+                    "i",
+                    "p",
+                    "s",
+                    "e",
+                    "x",
+                    "r",
+                    "z"
+                  ],
                   "type": "object"
                 }
               ]
@@ -4024,6 +4612,9 @@
             "type": "string"
           }
         },
+        "required": [
+          "ticker"
+        ],
         "type": "object"
       },
       "TickerResults": {
@@ -4070,6 +4661,14 @@
                   "type": "number"
                 }
               },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "v",
+                "t"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -4147,6 +4746,11 @@
             "type": "string"
           }
         },
+        "required": [
+          "symbol",
+          "status",
+          "request_id"
+        ],
         "type": "object"
       },
       "V2AggsBase": {
@@ -4172,6 +4776,13 @@
             "type": "string"
           }
         },
+        "required": [
+          "status",
+          "adjusted",
+          "queryCount",
+          "resultsCount",
+          "request_id"
+        ],
         "type": "object"
       },
       "V2LastBase": {
@@ -4185,6 +4796,10 @@
             "type": "string"
           }
         },
+        "required": [
+          "status",
+          "request_id"
+        ],
         "type": "object"
       },
       "V2TicksBase": {
@@ -4234,6 +4849,535 @@
   },
   "openapi": "3.0.3",
   "paths": {
+    "/delete-me/{underlyingAsset}": {
+      "get": {
+        "description": "Get the snapshot of all options contracts for an underlying ticker.",
+        "operationId": "OptionsChain",
+        "parameters": [
+          {
+            "description": "The underlying ticker symbol of the option contract.",
+            "example": "AAPL",
+            "in": "path",
+            "name": "underlyingAsset",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query by strike price of a contract.",
+            "in": "query",
+            "name": "strike_price",
+            "schema": {
+              "type": "number"
+            },
+            "x-polygon-filter-field": {
+              "range": true,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Query by contract expiration with date format YYYY-MM-DD.",
+            "in": "query",
+            "name": "expiration_date",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true
+            }
+          },
+          {
+            "description": "Query by the type of contract.",
+            "in": "query",
+            "name": "contract_type",
+            "schema": {
+              "enum": [
+                "call",
+                "put"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by strike_price.",
+            "in": "query",
+            "name": "strike_price.gte",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "description": "Search by strike_price.",
+            "in": "query",
+            "name": "strike_price.gt",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "description": "Search by strike_price.",
+            "in": "query",
+            "name": "strike_price.lte",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "description": "Search by strike_price.",
+            "in": "query",
+            "name": "strike_price.lt",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "description": "Search by expiration_date.",
+            "in": "query",
+            "name": "expiration_date.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by expiration_date.",
+            "in": "query",
+            "name": "expiration_date.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by expiration_date.",
+            "in": "query",
+            "name": "expiration_date.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by expiration_date.",
+            "in": "query",
+            "name": "expiration_date.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Order results based on the `sort` field.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 1000.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field used for ordering.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker",
+              "enum": [
+                "ticker",
+                "expiration_date",
+                "strike_price"
+              ],
+              "example": "ticker",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "6a7e466379af0a71039d60cc78e72282",
+                  "results": [
+                    {
+                      "break_even_price": 151.2,
+                      "day": {
+                        "change": 4.5,
+                        "change_percent": 6.76,
+                        "close": 120.73,
+                        "high": 120.81,
+                        "last_updated": 1605195918507251700,
+                        "low": 118.9,
+                        "open": 119.32,
+                        "previous_close": 119.12,
+                        "volume": 868,
+                        "vwap": 119.31
+                      },
+                      "details": {
+                        "contract_type": "call",
+                        "exercise_style": "american",
+                        "expiration_date": "2022-01-21",
+                        "shares_per_contract": 100,
+                        "strike_price": 150,
+                        "ticker": "AAPL211022C000150000"
+                      },
+                      "greeks": {
+                        "delta": 1,
+                        "gamma": 0,
+                        "implied_volatility": 5,
+                        "theta": 0.00229,
+                        "vega": 0
+                      },
+                      "last_quote": {
+                        "ask": 120.3,
+                        "ask_size": 4,
+                        "bid": 120.28,
+                        "bid_size": 8,
+                        "last_updated": 1605195918507251700,
+                        "midpoint": 120.29
+                      },
+                      "open_interest": 1543,
+                      "underlying_asset": {
+                        "change_to_break_even": 4.2,
+                        "last_updated": 1605195918507251700,
+                        "price": 147,
+                        "ticker": "AAPL",
+                        "timeframe": "DELAYED"
+                      }
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "break_even_price": {
+                            "description": "The price the underlying asset for the contract to break even. For a call this value is (strike price + premium paid), where a put this value is (strike price - premium paid)",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "day": {
+                            "description": "The most recent daily bar for this contract.",
+                            "properties": {
+                              "change": {
+                                "description": "The value of the price change for the contract from the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "change_percent": {
+                                "description": "The percent of the price change for the contract from the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "close": {
+                                "description": "The closing price for the contract of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price for the contract of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The nanosecond timestamp of when this information was updated.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "low": {
+                                "description": "The lowest price for the contract of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The open price for the contract of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "previous_close": {
+                                "description": "The closing price for the contract of previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "volume": {
+                                "description": "The trading volume for the contract of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "vwap": {
+                                "description": "The trading volume weighted average price for the contract of the day.",
+                                "format": "double",
+                                "type": "number",
+                                "x-polygon-go-id": "VWAP"
+                              }
+                            },
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Day"
+                            }
+                          },
+                          "details": {
+                            "properties": {
+                              "contract_type": {
+                                "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
+                                "enum": [
+                                  "put",
+                                  "call",
+                                  "other"
+                                ],
+                                "type": "string"
+                              },
+                              "exercise_style": {
+                                "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
+                                "enum": [
+                                  "american",
+                                  "european",
+                                  "bermudan"
+                                ],
+                                "type": "string"
+                              },
+                              "expiration_date": {
+                                "description": "The contract's expiration date in YYYY-MM-DD format.",
+                                "format": "date",
+                                "type": "string",
+                                "x-polygon-go-type": {
+                                  "name": "IDaysPolygonDateString",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "shares_per_contract": {
+                                "description": "The number of shares per contract for this contract.",
+                                "type": "number"
+                              },
+                              "strike_price": {
+                                "description": "The strike price of the option contract.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ticker": {
+                                "description": "The ticker for the option contract.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Details"
+                            }
+                          },
+                          "greeks": {
+                            "description": "The greeks for this contract. This is only returned if your current plan includes greeks.",
+                            "properties": {
+                              "delta": {
+                                "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "gamma": {
+                                "description": "The change in delta per $0.01 change in the price of the underlying asset.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "theta": {
+                                "description": "The change in the option's price per day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "vega": {
+                                "description": "The change in the option's price per 1% increment in volatility.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Greeks"
+                            }
+                          },
+                          "implied_volatility": {
+                            "description": "The market's forecast for the volatility of the underlying asset, based on this option's current price.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "last_quote": {
+                            "description": "The most recent quote for this contract. This is only returned if your current plan includes quotes.",
+                            "properties": {
+                              "ask": {
+                                "description": "The ask price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ask_size": {
+                                "description": "The ask size.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "bid": {
+                                "description": "The bid price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "bid_size": {
+                                "description": "The bid size.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The nanosecond timestamp of when this information was updated.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "midpoint": {
+                                "description": "The average of the bid and ask price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "timeframe": {
+                                "description": "The time relevance of the data.",
+                                "enum": [
+                                  "DELAYED",
+                                  "REAL-TIME"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "LastQuote"
+                            }
+                          },
+                          "open_interest": {
+                            "description": "The quantity of this contract held at the end of the last trading day.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "underlying_asset": {
+                            "description": "Information on the underlying stock for this options contract.  The market data returned depends on your current stocks plan.",
+                            "properties": {
+                              "change_to_break_even": {
+                                "description": "The change in price for the contract to break even.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The nanosecond timestamp of when this information was updated.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "price": {
+                                "description": "The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ticker": {
+                                "description": "The ticker symbol for the contract's underlying asset.",
+                                "type": "string"
+                              },
+                              "timeframe": {
+                                "description": "The time relevance of the data.",
+                                "enum": [
+                                  "DELAYED",
+                                  "REAL-TIME"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "UnderlyingAsset"
+                            }
+                          }
+                        },
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "OptionSnapshotResult"
+                        }
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Snapshots for options contracts of the underlying ticker"
+          }
+        },
+        "summary": "Options Chain",
+        "tags": [
+          "options:snapshot"
+        ],
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "description": "Real Time Data",
+            "name": "realtime"
+          },
+          {
+            "description": "15 minute delayed data",
+            "name": "delayed"
+          }
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Options data",
+          "name": "options"
+        },
+        "x-polygon-paginate": {
+          "limit": {
+            "default": 10,
+            "max": 1000
+          },
+          "sort": {
+            "default": "ticker",
+            "enum": [
+              "ticker",
+              "expiration_date",
+              "strike_price"
+            ]
+          }
+        }
+      },
+      "x-polygon-draft": true
+    },
     "/v1/conversion/{from}/{to}": {
       "get": {
         "description": "Get currency conversions using the latest market conversion rates. Note than you can convert in both directions. For example USD to CAD or CAD to USD.",
@@ -4551,11 +5695,26 @@
                                 "type": "integer"
                               }
                             },
+                            "required": [
+                              "p",
+                              "s",
+                              "x",
+                              "c",
+                              "t",
+                              "i"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
                         }
                       },
+                      "required": [
+                        "day",
+                        "map",
+                        "msLatency",
+                        "symbol",
+                        "ticks"
+                      ],
                       "type": "object"
                     }
                   ]
@@ -4687,6 +5846,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -4730,11 +5892,24 @@
                                 "type": "integer"
                               }
                             },
+                            "required": [
+                              "a",
+                              "b",
+                              "x",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
                         }
                       },
+                      "required": [
+                        "day",
+                        "map",
+                        "msLatency",
+                        "pair",
+                        "ticks"
+                      ],
                       "type": "object"
                     }
                   ]
@@ -10664,6 +11839,14 @@
                             "type": "integer"
                           }
                         },
+                        "required": [
+                          "p",
+                          "s",
+                          "x",
+                          "c",
+                          "t",
+                          "i"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -10716,6 +11899,14 @@
                             "type": "integer"
                           }
                         },
+                        "required": [
+                          "p",
+                          "s",
+                          "x",
+                          "c",
+                          "t",
+                          "i"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -10725,6 +11916,15 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "symbol",
+                    "isUTC",
+                    "day",
+                    "open",
+                    "close",
+                    "openTrades",
+                    "closingTrades"
+                  ],
                   "type": "object"
                 }
               },
@@ -10860,6 +12060,16 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "status",
+                    "from",
+                    "symbol",
+                    "open",
+                    "high",
+                    "low",
+                    "close",
+                    "volume"
+                  ],
                   "type": "object"
                 }
               },
@@ -10932,7 +12142,7 @@
                 "example": {
                   "afterHours": 322.1,
                   "close": 325.12,
-                  "from": "2020-10-14T00:00:00.000Z",
+                  "from": "2020-10-14",
                   "high": 326.2,
                   "low": 322.3,
                   "open": 324.66,
@@ -10995,6 +12205,16 @@
                       "type": "number"
                     }
                   },
+                  "required": [
+                    "status",
+                    "from",
+                    "symbol",
+                    "open",
+                    "high",
+                    "low",
+                    "close",
+                    "volume"
+                  ],
                   "type": "object"
                 }
               },
@@ -11946,6 +13166,364 @@
       },
       "x-polygon-draft": true
     },
+    "/v1/summaries": {
+      "get": {
+        "description": "Get everything needed to visualize the tick-by-tick movement of a list of tickers.",
+        "operationId": "SnapshotSummary",
+        "parameters": [
+          {
+            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.",
+            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "abc123",
+                  "results": [
+                    {
+                      "branding": {
+                        "icon_url": "https://api.polygon.io/icon.png",
+                        "logo_url": "https://api.polygon.io/logo.svg"
+                      },
+                      "market_status": "closed",
+                      "name": "Norwegian Cruise Lines",
+                      "price": 22.3,
+                      "session": {
+                        "change": -1.05,
+                        "change_percent": -4.67,
+                        "close": 21.4,
+                        "early_trading_change": -0.39,
+                        "early_trading_change_percent": -0.07,
+                        "high": 22.49,
+                        "late_trading_change": 1.2,
+                        "late_trading_change_percent": 3.92,
+                        "low": 21.35,
+                        "open": 22.49,
+                        "previous_close": 22.45,
+                        "volume": 37
+                      },
+                      "ticker": "NCLH",
+                      "type": "stock"
+                    },
+                    {
+                      "market_status": "closed",
+                      "name": "NCLH $5 Call",
+                      "options": {
+                        "contract_type": "call",
+                        "exercise_style": "american",
+                        "expiration_date": "2022-10-14",
+                        "shares_per_contract": 100,
+                        "strike_price": 5,
+                        "underlying_ticker": "NCLH"
+                      },
+                      "price": 6.6,
+                      "session": {
+                        "change": -0.05,
+                        "change_percent": -1.07,
+                        "close": 6.65,
+                        "early_trading_change": -0.01,
+                        "early_trading_change_percent": -0.03,
+                        "high": 7.01,
+                        "late_trading_change": -0.4,
+                        "late_trading_change_percent": -0.02,
+                        "low": 5.42,
+                        "open": 6.7,
+                        "previous_close": 6.71,
+                        "volume": 67
+                      },
+                      "ticker": "O:NCLH221014C00005000",
+                      "type": "options"
+                    },
+                    {
+                      "market_status": "open",
+                      "name": "Euro - United States Dollar",
+                      "price": 0.97989,
+                      "session": {
+                        "change": -0.0001,
+                        "change_percent": -0.67,
+                        "close": 0.97989,
+                        "high": 0.98999,
+                        "low": 0.96689,
+                        "open": 0.97889,
+                        "previous_close": 0.98001
+                      },
+                      "ticker": "C:EURUSD",
+                      "type": "forex"
+                    },
+                    {
+                      "branding": {
+                        "icon_url": "https://api.polygon.io/icon.png",
+                        "logo_url": "https://api.polygon.io/logo.svg"
+                      },
+                      "market_status": "open",
+                      "name": "Bitcoin - United States Dollar",
+                      "price": 32154.68,
+                      "session": {
+                        "change": -201.23,
+                        "change_percent": -0.77,
+                        "close": 32154.68,
+                        "high": 33124.28,
+                        "low": 28182.88,
+                        "open": 31129.32,
+                        "previous_close": 33362.18
+                      },
+                      "ticker": "X:BTCUSD",
+                      "type": "crypto"
+                    },
+                    {
+                      "error": "NOT_FOUND",
+                      "message": "Ticker not found.",
+                      "ticker": "APx"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "branding": {
+                            "properties": {
+                              "icon_url": {
+                                "description": "A link to this ticker's company's icon. Icon's are generally smaller, square images that represent the company at a glance.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.",
+                                "type": "string"
+                              },
+                              "logo_url": {
+                                "description": "A link to this ticker's company's logo.\nNote that you must provide an API key when accessing this URL. See the \"Authentication\" section at the top of this page for more details.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Branding"
+                            }
+                          },
+                          "error": {
+                            "description": "The error while looking for this ticker.",
+                            "type": "string"
+                          },
+                          "market_status": {
+                            "description": "The market status for the market that trades this ticker.",
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "The error message while looking for this ticker.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of ticker, forex, or crypto asset.",
+                            "type": "string"
+                          },
+                          "options": {
+                            "properties": {
+                              "contract_type": {
+                                "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
+                                "enum": [
+                                  "put",
+                                  "call",
+                                  "other"
+                                ],
+                                "type": "string"
+                              },
+                              "exercise_style": {
+                                "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
+                                "enum": [
+                                  "american",
+                                  "european",
+                                  "bermudan"
+                                ],
+                                "type": "string"
+                              },
+                              "expiration_date": {
+                                "description": "The contract's expiration date in YYYY-MM-DD format.",
+                                "format": "date",
+                                "type": "string",
+                                "x-polygon-go-type": {
+                                  "name": "IDaysPolygonDateString",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "shares_per_contract": {
+                                "description": "The number of shares per contract for this contract.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "strike_price": {
+                                "description": "The strike price of the option contract",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "underlying_ticker": {
+                                "description": "The ticker for the option contract.",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "contract_type",
+                              "expiration_date",
+                              "exercise_style",
+                              "shares_per_contract",
+                              "strike_price",
+                              "underlying_ticker"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Options"
+                            }
+                          },
+                          "price": {
+                            "description": "The most up to date ticker price.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "session": {
+                            "properties": {
+                              "change": {
+                                "description": "The value of the price change for the contract from the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "change_percent": {
+                                "description": "The percent of the price change for the contract from the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "close": {
+                                "description": "The closing price for the asset of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "early_trading_change": {
+                                "description": "Today\u2019s early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "early_trading_change_percent": {
+                                "description": "Today\u2019s early trading change as a percentage.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price for the asset of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "late_trading_change": {
+                                "description": "Today\u2019s late trading change amount, difference between price and today\u2019s close if in late trading hours, otherwise difference between last price during late trading and today\u2019s close.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "late_trading_change_percent": {
+                                "description": "Today\u2019s late trading change as a percentage.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "low": {
+                                "description": "The lowest price for the asset of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The open price for the asset of the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "previous_close": {
+                                "description": "The closing price for the asset of previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "volume": {
+                                "description": "The trading volume for the asset of the day.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "change",
+                              "change_percent",
+                              "close",
+                              "high",
+                              "low",
+                              "open",
+                              "previous_close"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Session"
+                            }
+                          },
+                          "ticker": {
+                            "description": "Ticker of asset queried.",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "The market for this ticker, of stock, crypto, forex, option.",
+                            "enum": [
+                              "stocks",
+                              "crypto",
+                              "options",
+                              "fx"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "ticker",
+                          "name",
+                          "price",
+                          "branding",
+                          "market_status",
+                          "type",
+                          "session",
+                          "options"
+                        ],
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "SummaryResult"
+                        }
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Snapshot Summary for ticker list"
+          }
+        },
+        "summary": "Summaries",
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Stocks data",
+          "name": "stocks"
+        }
+      }
+    },
     "/v2/aggs/grouped/locale/global/market/crypto/{date}": {
       "get": {
         "description": "Get the daily open, high, low, and close (OHLC) for the entire cryptocurrency markets.\n",
@@ -12040,6 +13618,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12090,6 +13675,15 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t",
+                              "T"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -12221,6 +13815,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12271,6 +13872,15 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t",
+                              "T"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -12410,6 +14020,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12464,6 +14081,15 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "t",
+                              "v",
+                              "T"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -12558,6 +14184,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12583,6 +14212,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12633,6 +14269,15 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t",
+                              "T"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -12807,6 +14452,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12832,6 +14480,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12878,6 +14533,14 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -12973,6 +14636,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -12998,6 +14664,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13048,6 +14721,15 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "T",
+                              "v",
+                              "o",
+                              "c",
+                              "h",
+                              "l",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -13212,6 +14894,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13237,6 +14922,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13283,6 +14975,14 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -13378,6 +15078,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13403,6 +15106,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13449,6 +15159,14 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -13624,6 +15342,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13649,6 +15370,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13695,6 +15423,14 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -13789,6 +15525,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13814,6 +15553,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -13860,6 +15606,14 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -14034,6 +15788,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "ticker"
+                      ],
                       "type": "object"
                     },
                     {
@@ -14059,6 +15816,13 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status",
+                        "adjusted",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -14109,6 +15873,14 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "v",
+                              "t"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -15124,6 +16896,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -15165,6 +16940,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "lastTrade": {
@@ -15203,6 +16986,14 @@
                                         "type": "integer"
                                       }
                                     },
+                                    "required": [
+                                      "c",
+                                      "i",
+                                      "p",
+                                      "s",
+                                      "t",
+                                      "x"
+                                    ],
                                     "type": "object"
                                   },
                                   {
@@ -15249,6 +17040,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -15285,6 +17084,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "ticker": {
@@ -15306,6 +17113,16 @@
                                 "type": "integer"
                               }
                             },
+                            "required": [
+                              "day",
+                              "lastTrade",
+                              "min",
+                              "prevDay",
+                              "ticker",
+                              "todaysChange",
+                              "todaysChangePerc",
+                              "updated"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -15425,6 +17242,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -15434,6 +17254,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -15474,6 +17297,14 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "lastTrade": {
@@ -15512,6 +17343,14 @@
                                       "type": "integer"
                                     }
                                   },
+                                  "required": [
+                                    "c",
+                                    "i",
+                                    "p",
+                                    "s",
+                                    "t",
+                                    "x"
+                                  ],
                                   "type": "object"
                                 },
                                 {
@@ -15558,6 +17397,14 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "prevDay": {
@@ -15594,6 +17441,14 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "ticker": {
@@ -15615,6 +17470,16 @@
                               "type": "integer"
                             }
                           },
+                          "required": [
+                            "day",
+                            "lastTrade",
+                            "min",
+                            "prevDay",
+                            "ticker",
+                            "todaysChange",
+                            "todaysChangePerc",
+                            "updated"
+                          ],
                           "type": "object"
                         }
                       },
@@ -15746,6 +17611,10 @@
                                     "type": "object"
                                   }
                                 },
+                                "required": [
+                                  "p",
+                                  "x"
+                                ],
                                 "type": "object"
                               },
                               "type": "array"
@@ -15768,6 +17637,10 @@
                                     "type": "object"
                                   }
                                 },
+                                "required": [
+                                  "p",
+                                  "x"
+                                ],
                                 "type": "object"
                               },
                               "type": "array"
@@ -15786,6 +17659,15 @@
                               "type": "integer"
                             }
                           },
+                          "required": [
+                            "ticker",
+                            "bids",
+                            "asks",
+                            "bidCount",
+                            "askCount",
+                            "spread",
+                            "updated"
+                          ],
                           "type": "object"
                         }
                       },
@@ -15944,6 +17826,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "lastTrade": {
@@ -15982,6 +17872,14 @@
                                         "type": "integer"
                                       }
                                     },
+                                    "required": [
+                                      "c",
+                                      "i",
+                                      "p",
+                                      "s",
+                                      "t",
+                                      "x"
+                                    ],
                                     "type": "object"
                                   },
                                   {
@@ -16028,6 +17926,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -16064,6 +17970,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "ticker": {
@@ -16085,6 +17999,16 @@
                                 "type": "integer"
                               }
                             },
+                            "required": [
+                              "day",
+                              "lastTrade",
+                              "min",
+                              "prevDay",
+                              "ticker",
+                              "todaysChange",
+                              "todaysChangePerc",
+                              "updated"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -16200,6 +18124,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -16236,6 +18163,13 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v"
+                                ],
                                 "type": "object"
                               },
                               "lastQuote": {
@@ -16260,6 +18194,12 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "a",
+                                  "b",
+                                  "t",
+                                  "x"
+                                ],
                                 "type": "object"
                               },
                               "min": {
@@ -16291,6 +18231,13 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v"
+                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -16327,6 +18274,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "ticker": {
@@ -16348,6 +18303,16 @@
                                 "type": "integer"
                               }
                             },
+                            "required": [
+                              "day",
+                              "lastQuote",
+                              "min",
+                              "prevDay",
+                              "ticker",
+                              "todaysChange",
+                              "todaysChangePerc",
+                              "updated"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -16462,6 +18427,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -16471,6 +18439,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -16506,6 +18477,13 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v"
+                              ],
                               "type": "object"
                             },
                             "lastQuote": {
@@ -16530,6 +18508,12 @@
                                   "type": "integer"
                                 }
                               },
+                              "required": [
+                                "a",
+                                "b",
+                                "t",
+                                "x"
+                              ],
                               "type": "object"
                             },
                             "min": {
@@ -16561,6 +18545,13 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v"
+                              ],
                               "type": "object"
                             },
                             "prevDay": {
@@ -16597,6 +18588,14 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "ticker": {
@@ -16618,6 +18617,16 @@
                               "type": "integer"
                             }
                           },
+                          "required": [
+                            "day",
+                            "lastQuote",
+                            "min",
+                            "prevDay",
+                            "ticker",
+                            "todaysChange",
+                            "todaysChangePerc",
+                            "updated"
+                          ],
                           "type": "object"
                         }
                       },
@@ -16734,6 +18743,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -16770,6 +18782,13 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v"
+                                ],
                                 "type": "object"
                               },
                               "lastQuote": {
@@ -16794,6 +18813,12 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "a",
+                                  "b",
+                                  "t",
+                                  "x"
+                                ],
                                 "type": "object"
                               },
                               "min": {
@@ -16825,6 +18850,13 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v"
+                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -16861,6 +18893,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "ticker": {
@@ -16882,6 +18922,16 @@
                                 "type": "integer"
                               }
                             },
+                            "required": [
+                              "day",
+                              "lastQuote",
+                              "min",
+                              "prevDay",
+                              "ticker",
+                              "todaysChange",
+                              "todaysChangePerc",
+                              "updated"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -17027,6 +19077,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -17072,6 +19125,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "lastQuote": {
@@ -17100,6 +19161,13 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "p",
+                                  "s",
+                                  "P",
+                                  "S",
+                                  "t"
+                                ],
                                 "type": "object"
                               },
                               "lastTrade": {
@@ -17134,6 +19202,14 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "c",
+                                  "i",
+                                  "p",
+                                  "s",
+                                  "t",
+                                  "x"
+                                ],
                                 "type": "object"
                               },
                               "min": {
@@ -17178,6 +19254,15 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "av",
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -17218,6 +19303,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "ticker": {
@@ -17367,6 +19460,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -17376,6 +19472,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "request_id"
+                      ],
                       "type": "object"
                     },
                     {
@@ -17420,6 +19519,14 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "lastQuote": {
@@ -17448,6 +19555,13 @@
                                   "type": "integer"
                                 }
                               },
+                              "required": [
+                                "p",
+                                "s",
+                                "P",
+                                "S",
+                                "t"
+                              ],
                               "type": "object"
                             },
                             "lastTrade": {
@@ -17482,6 +19596,14 @@
                                   "type": "integer"
                                 }
                               },
+                              "required": [
+                                "c",
+                                "i",
+                                "p",
+                                "s",
+                                "t",
+                                "x"
+                              ],
                               "type": "object"
                             },
                             "min": {
@@ -17526,6 +19648,15 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "av",
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "prevDay": {
@@ -17566,6 +19697,14 @@
                                   "type": "number"
                                 }
                               },
+                              "required": [
+                                "o",
+                                "h",
+                                "l",
+                                "c",
+                                "v",
+                                "vw"
+                              ],
                               "type": "object"
                             },
                             "ticker": {
@@ -17725,6 +19864,9 @@
                           "type": "string"
                         }
                       },
+                      "required": [
+                        "status"
+                      ],
                       "type": "object"
                     },
                     {
@@ -17770,6 +19912,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "lastQuote": {
@@ -17798,6 +19948,13 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "p",
+                                  "s",
+                                  "P",
+                                  "S",
+                                  "t"
+                                ],
                                 "type": "object"
                               },
                               "lastTrade": {
@@ -17832,6 +19989,14 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "c",
+                                  "i",
+                                  "p",
+                                  "s",
+                                  "t",
+                                  "x"
+                                ],
                                 "type": "object"
                               },
                               "min": {
@@ -17876,6 +20041,15 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "av",
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -17916,6 +20090,14 @@
                                     "type": "number"
                                   }
                                 },
+                                "required": [
+                                  "o",
+                                  "h",
+                                  "l",
+                                  "c",
+                                  "v",
+                                  "vw"
+                                ],
                                 "type": "object"
                               },
                               "ticker": {
@@ -18192,6 +20374,13 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "T",
+                                  "t",
+                                  "y",
+                                  "f",
+                                  "q"
+                                ],
                                 "type": "object"
                               },
                               {
@@ -18257,6 +20446,17 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "c",
+                                  "i",
+                                  "p",
+                                  "s",
+                                  "x",
+                                  "P",
+                                  "S",
+                                  "X",
+                                  "z"
+                                ],
                                 "type": "object"
                               }
                             ]
@@ -18503,6 +20703,13 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "T",
+                                  "t",
+                                  "y",
+                                  "f",
+                                  "q"
+                                ],
                                 "type": "object"
                               },
                               {
@@ -18546,6 +20753,16 @@
                                     "type": "integer"
                                   }
                                 },
+                                "required": [
+                                  "c",
+                                  "i",
+                                  "p",
+                                  "s",
+                                  "e",
+                                  "x",
+                                  "r",
+                                  "z"
+                                ],
                                 "type": "object"
                               }
                             ]
@@ -23000,13 +25217,13 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 1000.",
+            "description": "Limit the number of results returned, default is 10 and max is 250.",
             "in": "query",
             "name": "limit",
             "schema": {
               "default": 10,
               "example": 10,
-              "maximum": 1000,
+              "maximum": 250,
               "minimum": 1,
               "type": "integer"
             }
@@ -23059,10 +25276,10 @@
                       "greeks": {
                         "delta": 1,
                         "gamma": 0,
-                        "implied_volatility": 5,
                         "theta": 0.00229,
                         "vega": 0
                       },
+                      "implied_volatility": 5,
                       "last_quote": {
                         "ask": 120.3,
                         "ask_size": 4,
@@ -23159,6 +25376,18 @@
                                 "x-polygon-go-id": "VWAP"
                               }
                             },
+                            "required": [
+                              "last_updated",
+                              "open",
+                              "high",
+                              "low",
+                              "close",
+                              "previous_close",
+                              "volume",
+                              "vwap",
+                              "change_percent",
+                              "change"
+                            ],
                             "type": "object",
                             "x-polygon-go-type": {
                               "name": "Day"
@@ -23207,6 +25436,14 @@
                                 "type": "string"
                               }
                             },
+                            "required": [
+                              "ticker",
+                              "contract_type",
+                              "exercise_style",
+                              "expiration_date",
+                              "shares_per_contract",
+                              "strike_price"
+                            ],
                             "type": "object",
                             "x-polygon-go-type": {
                               "name": "Details"
@@ -23292,6 +25529,15 @@
                                 "type": "string"
                               }
                             },
+                            "required": [
+                              "last_updated",
+                              "timeframe",
+                              "ask",
+                              "ask_size",
+                              "bid_size",
+                              "bid",
+                              "midpoint"
+                            ],
                             "type": "object",
                             "x-polygon-go-type": {
                               "name": "LastQuote"
@@ -23337,12 +25583,28 @@
                                 "type": "string"
                               }
                             },
+                            "required": [
+                              "last_updated",
+                              "timeframe",
+                              "ticker",
+                              "price",
+                              "change_to_break_even"
+                            ],
                             "type": "object",
                             "x-polygon-go-type": {
                               "name": "UnderlyingAsset"
                             }
                           }
                         },
+                        "required": [
+                          "day",
+                          "last_quote",
+                          "underlying_asset",
+                          "details",
+                          "break_even_price",
+                          "implied_volatility",
+                          "open_interest"
+                        ],
                         "type": "object",
                         "x-polygon-go-type": {
                           "name": "OptionSnapshotResult"
@@ -23355,6 +25617,10 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
                   "type": "object"
                 }
               }
@@ -23387,7 +25653,7 @@
         "x-polygon-paginate": {
           "limit": {
             "default": 10,
-            "max": 1000
+            "max": 250
           },
           "sort": {
             "default": "ticker",
@@ -23398,8 +25664,7 @@
             ]
           }
         }
-      },
-      "x-polygon-draft": true
+      }
     },
     "/v3/snapshot/options/{underlyingAsset}/{optionContract}": {
       "get": {
@@ -24719,12 +26984,12 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 1 and max is 100.",
+            "description": "Limit the number of results returned, default is 10 and max is 100.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 1,
-              "example": 1,
+              "default": 10,
+              "example": 10,
               "maximum": 100,
               "minimum": 1,
               "type": "integer"
@@ -24749,128 +27014,294 @@
           "200": {
             "content": {
               "application/json": {
-                "count": 1,
                 "description": "FIXME",
                 "example": {
-                  "cik": "0000789019",
-                  "company_name": "MICROSOFT CORPORATION",
-                  "end_date": "2020-12-31",
-                  "financials": {
-                    "balance_sheet": {
-                      "assets": {
-                        "label": "Assets",
-                        "order": 100,
-                        "unit": "USD",
-                        "value": 304137000000,
-                        "xpath": "//*[local-name()='Assets' and @id='F_000165']"
+                  "count": 1,
+                  "next_url": "https://api.polygon.io/vX/reference/financials?",
+                  "request_id": "55eb92ed43b25568ab0cce159830ea34",
+                  "results": [
+                    {
+                      "cik": "0001650729",
+                      "company_name": "SiteOne Landscape Supply, Inc.",
+                      "end_date": "2022-04-03",
+                      "filing_date": "2022-05-04",
+                      "financials": {
+                        "balance_sheet": {
+                          "assets": {
+                            "label": "Assets",
+                            "order": 100,
+                            "unit": "USD",
+                            "value": 2407400000
+                          },
+                          "current_assets": {
+                            "label": "Current Assets",
+                            "order": 200,
+                            "unit": "USD",
+                            "value": 1385900000
+                          },
+                          "current_liabilities": {
+                            "label": "Current Liabilities",
+                            "order": 700,
+                            "unit": "USD",
+                            "value": 597500000
+                          },
+                          "equity": {
+                            "label": "Equity",
+                            "order": 1400,
+                            "unit": "USD",
+                            "value": 1099200000
+                          },
+                          "equity_attributable_to_noncontrolling_interest": {
+                            "label": "Equity Attributable To Noncontrolling Interest",
+                            "order": 1500,
+                            "unit": "USD",
+                            "value": 0
+                          },
+                          "equity_attributable_to_parent": {
+                            "label": "Equity Attributable To Parent",
+                            "order": 1600,
+                            "unit": "USD",
+                            "value": 1099200000
+                          },
+                          "liabilities": {
+                            "label": "Liabilities",
+                            "order": 600,
+                            "unit": "USD",
+                            "value": 1308200000
+                          },
+                          "liabilities_and_equity": {
+                            "label": "Liabilities And Equity",
+                            "order": 1900,
+                            "unit": "USD",
+                            "value": 2407400000
+                          },
+                          "noncurrent_assets": {
+                            "label": "Noncurrent Assets",
+                            "order": 300,
+                            "unit": "USD",
+                            "value": 1021500000
+                          },
+                          "noncurrent_liabilities": {
+                            "label": "Noncurrent Liabilities",
+                            "order": 800,
+                            "unit": "USD",
+                            "value": 710700000
+                          }
+                        },
+                        "cash_flow_statement": {
+                          "exchange_gains_losses": {
+                            "label": "Exchange Gains/Losses",
+                            "order": 1000,
+                            "unit": "USD",
+                            "value": 100000
+                          },
+                          "net_cash_flow": {
+                            "label": "Net Cash Flow",
+                            "order": 1100,
+                            "unit": "USD",
+                            "value": -8600000
+                          },
+                          "net_cash_flow_continuing": {
+                            "label": "Net Cash Flow, Continuing",
+                            "order": 1200,
+                            "unit": "USD",
+                            "value": -8700000
+                          },
+                          "net_cash_flow_from_financing_activities": {
+                            "label": "Net Cash Flow From Financing Activities",
+                            "order": 700,
+                            "unit": "USD",
+                            "value": 150600000
+                          },
+                          "net_cash_flow_from_financing_activities_continuing": {
+                            "label": "Net Cash Flow From Financing Activities, Continuing",
+                            "order": 800,
+                            "unit": "USD",
+                            "value": 150600000
+                          },
+                          "net_cash_flow_from_investing_activities": {
+                            "label": "Net Cash Flow From Investing Activities",
+                            "order": 400,
+                            "unit": "USD",
+                            "value": -41000000
+                          },
+                          "net_cash_flow_from_investing_activities_continuing": {
+                            "label": "Net Cash Flow From Investing Activities, Continuing",
+                            "order": 500,
+                            "unit": "USD",
+                            "value": -41000000
+                          },
+                          "net_cash_flow_from_operating_activities": {
+                            "label": "Net Cash Flow From Operating Activities",
+                            "order": 100,
+                            "unit": "USD",
+                            "value": -118300000
+                          },
+                          "net_cash_flow_from_operating_activities_continuing": {
+                            "label": "Net Cash Flow From Operating Activities, Continuing",
+                            "order": 200,
+                            "unit": "USD",
+                            "value": -118300000
+                          }
+                        },
+                        "comprehensive_income": {
+                          "comprehensive_income_loss": {
+                            "label": "Comprehensive Income/Loss",
+                            "order": 100,
+                            "unit": "USD",
+                            "value": 40500000
+                          },
+                          "comprehensive_income_loss_attributable_to_noncontrolling_interest": {
+                            "label": "Comprehensive Income/Loss Attributable To Noncontrolling Interest",
+                            "order": 200,
+                            "unit": "USD",
+                            "value": 0
+                          },
+                          "comprehensive_income_loss_attributable_to_parent": {
+                            "label": "Comprehensive Income/Loss Attributable To Parent",
+                            "order": 300,
+                            "unit": "USD",
+                            "value": 40500000
+                          },
+                          "other_comprehensive_income_loss": {
+                            "label": "Other Comprehensive Income/Loss",
+                            "order": 400,
+                            "unit": "USD",
+                            "value": 40500000
+                          },
+                          "other_comprehensive_income_loss_attributable_to_parent": {
+                            "label": "Other Comprehensive Income/Loss Attributable To Parent",
+                            "order": 600,
+                            "unit": "USD",
+                            "value": 8200000
+                          }
+                        },
+                        "income_statement": {
+                          "basic_earnings_per_share": {
+                            "label": "Basic Earnings Per Share",
+                            "order": 4200,
+                            "unit": "USD / shares",
+                            "value": 0.72
+                          },
+                          "benefits_costs_expenses": {
+                            "label": "Benefits Costs and Expenses",
+                            "order": 200,
+                            "unit": "USD",
+                            "value": 768400000
+                          },
+                          "cost_of_revenue": {
+                            "label": "Cost Of Revenue",
+                            "order": 300,
+                            "unit": "USD",
+                            "value": 536100000
+                          },
+                          "costs_and_expenses": {
+                            "label": "Costs And Expenses",
+                            "order": 600,
+                            "unit": "USD",
+                            "value": 768400000
+                          },
+                          "diluted_earnings_per_share": {
+                            "label": "Diluted Earnings Per Share",
+                            "order": 4300,
+                            "unit": "USD / shares",
+                            "value": 0.7
+                          },
+                          "gross_profit": {
+                            "label": "Gross Profit",
+                            "order": 800,
+                            "unit": "USD",
+                            "value": 269200000
+                          },
+                          "income_loss_from_continuing_operations_after_tax": {
+                            "label": "Income/Loss From Continuing Operations After Tax",
+                            "order": 1400,
+                            "unit": "USD",
+                            "value": 32300000
+                          },
+                          "income_loss_from_continuing_operations_before_tax": {
+                            "label": "Income/Loss From Continuing Operations Before Tax",
+                            "order": 1500,
+                            "unit": "USD",
+                            "value": 36900000
+                          },
+                          "income_tax_expense_benefit": {
+                            "label": "Income Tax Expense/Benefit",
+                            "order": 2200,
+                            "unit": "USD",
+                            "value": 4600000
+                          },
+                          "interest_expense_operating": {
+                            "label": "Interest Expense, Operating",
+                            "order": 2700,
+                            "unit": "USD",
+                            "value": 4300000
+                          },
+                          "net_income_loss": {
+                            "label": "Net Income/Loss",
+                            "order": 3200,
+                            "unit": "USD",
+                            "value": 32300000
+                          },
+                          "net_income_loss_attributable_to_noncontrolling_interest": {
+                            "label": "Net Income/Loss Attributable To Noncontrolling Interest",
+                            "order": 3300,
+                            "unit": "USD",
+                            "value": 0
+                          },
+                          "net_income_loss_attributable_to_parent": {
+                            "label": "Net Income/Loss Attributable To Parent",
+                            "order": 3500,
+                            "unit": "USD",
+                            "value": 32300000
+                          },
+                          "net_income_loss_available_to_common_stockholders_basic": {
+                            "label": "Net Income/Loss Available To Common Stockholders, Basic",
+                            "order": 3700,
+                            "unit": "USD",
+                            "value": 32300000
+                          },
+                          "operating_expenses": {
+                            "label": "Operating Expenses",
+                            "order": 1000,
+                            "unit": "USD",
+                            "value": 228000000
+                          },
+                          "operating_income_loss": {
+                            "label": "Operating Income/Loss",
+                            "order": 1100,
+                            "unit": "USD",
+                            "value": 41200000
+                          },
+                          "participating_securities_distributed_and_undistributed_earnings_loss_basic": {
+                            "label": "Participating Securities, Distributed And Undistributed Earnings/Loss, Basic",
+                            "order": 3800,
+                            "unit": "USD",
+                            "value": 0
+                          },
+                          "preferred_stock_dividends_and_other_adjustments": {
+                            "label": "Preferred Stock Dividends And Other Adjustments",
+                            "order": 3900,
+                            "unit": "USD",
+                            "value": 0
+                          },
+                          "revenues": {
+                            "label": "Revenues",
+                            "order": 100,
+                            "unit": "USD",
+                            "value": 805300000
+                          }
+                        }
                       },
-                      "equity": {
-                        "formula": "BS-Impute-07",
-                        "label": "Equity",
-                        "order": 1400,
-                        "unit": "USD",
-                        "value": 130236000000
-                      },
-                      "liabilities": {
-                        "label": "Liabilities",
-                        "order": 600,
-                        "unit": "USD",
-                        "value": 173901000000,
-                        "xpath": "//*[local-name()='Liabilities' and @id='F_000193']"
-                      }
-                    },
-                    "cash_flow_statement": {
-                      "exchange_gains_losses": {
-                        "label": "Exchange Gains/Losses",
-                        "order": 1000,
-                        "unit": "USD",
-                        "value": 14000000,
-                        "xpath": "//*[local-name()='EffectOfExchangeRateOnCashAndCashEquivalents' and @id='F_000327']"
-                      },
-                      "net_cash_flow": {
-                        "formula": "CF-Impute-20",
-                        "label": "Net Cash Flow",
-                        "order": 1100,
-                        "unit": "USD",
-                        "value": -2773000000
-                      },
-                      "net_cash_flow_from_financing_activities": {
-                        "label": "Net Cash Flow From Financing Activities",
-                        "order": 700,
-                        "unit": "USD",
-                        "value": -13634000000,
-                        "xpath": "//*[local-name()='NetCashProvidedByUsedInFinancingActivities' and @id='F_000295']"
-                      }
-                    },
-                    "comprehensive_income": {
-                      "comprehensive_income_loss": {
-                        "formula": "CI-Impute-04",
-                        "label": "Comprehensive Income/Loss",
-                        "order": 100,
-                        "unit": "USD",
-                        "value": 15720000000
-                      },
-                      "comprehensive_income_loss_attributable_to_parent": {
-                        "label": "Comprehensive Income/Loss Attributable To Parent",
-                        "order": 300,
-                        "unit": "USD",
-                        "value": 15720000000,
-                        "xpath": "//*[local-name()='ComprehensiveIncomeNetOfTax' and @id='F_000135']"
-                      },
-                      "other_comprehensive_income_loss": {
-                        "formula": "CI-Impute-07",
-                        "label": "Other Comprehensive Income/Loss",
-                        "order": 400,
-                        "unit": "USD",
-                        "value": 15720000000
-                      }
-                    },
-                    "income_statement": {
-                      "basic_earnings_per_share": {
-                        "label": "Basic Earnings Per Share",
-                        "order": 4200,
-                        "unit": "USD / shares",
-                        "value": 2.05,
-                        "xpath": "//*[local-name()='EarningsPerShareBasic' and @id='F_000099']"
-                      },
-                      "cost_of_revenue": {
-                        "label": "Cost Of Revenue",
-                        "order": 300,
-                        "unit": "USD",
-                        "value": 14194000000,
-                        "xpath": "//*[local-name()='CostOfGoodsAndServicesSold' and @id='F_000059']"
-                      },
-                      "gross_profit": {
-                        "label": "Gross Profit",
-                        "order": 800,
-                        "unit": "USD",
-                        "value": 28882000000,
-                        "xpath": "//*[local-name()='GrossProfit' and @id='F_000063']"
-                      },
-                      "operating_expenses": {
-                        "formula": "IS-Impute-22",
-                        "label": "Operating Expenses",
-                        "order": 1000,
-                        "unit": "USD",
-                        "value": 10985000000
-                      },
-                      "revenues": {
-                        "label": "Revenues",
-                        "order": 100,
-                        "unit": "USD",
-                        "value": 43076000000,
-                        "xpath": "//*[local-name()='RevenueFromContractWithCustomerExcludingAssessedTax' and @id='F_000047']"
-                      }
+                      "fiscal_period": "Q1",
+                      "fiscal_year": "2022",
+                      "source_filing_file_url": "https://api.polygon.io/v1/reference/sec/filings/0001650729-22-000010/files/site-20220403_htm.xml",
+                      "source_filing_url": "https://api.polygon.io/v1/reference/sec/filings/0001650729-22-000010",
+                      "start_date": "2022-01-03"
                     }
-                  },
-                  "fiscal_period": "Q2",
-                  "fiscal_year": "2021",
-                  "source_filing_file_url": "https:/api.polygon.io/v1/reference/sec/filings/0001564590-21-002316/files/0001564590-21-002316:12:msft-10q_20201231_htm.xml",
-                  "source_filing_url": "https://api.polygon.io/v1/reference/sec/filings/0001564590-21-002316",
-                  "start_date": "2020-10-01"
+                  ],
+                  "status": "OK"
                 },
-                "next_url": "https:/api.polygon.io/vX/reference/financials?",
-                "request_id": "28173f20a0751f3479afd9e2cc9246ea",
                 "schema": {
                   "properties": {
                     "count": {
@@ -24888,6 +27319,9 @@
                     "results": {
                       "items": {
                         "properties": {
+                          "acceptance_datetime": {
+                            "description": "The datetime (EST timezone) the filing was accepted by EDGAR in YYYYMMDDHHMMSS format."
+                          },
                           "cik": {
                             "description": "The CIK number for the company.",
                             "type": "string"
@@ -25011,8 +27445,7 @@
                     "results"
                   ],
                   "type": "object"
-                },
-                "status": "OK"
+                }
               }
             },
             "description": "FIXME"
@@ -25029,7 +27462,7 @@
         "x-polygon-experimental": {},
         "x-polygon-paginate": {
           "limit": {
-            "default": 1,
+            "default": 10,
             "max": 100
           },
           "sort": {
@@ -25168,6 +27601,443 @@
         },
         "x-polygon-experimental": {}
       }
+    },
+    "/vX/snapshot/options/{underlyingAsset}/{optionContract}": {
+      "get": {
+        "description": "Get the snapshot of an option contract for a stock equity.",
+        "operationId": "OptionContract",
+        "parameters": [
+          {
+            "description": "The underlying ticker symbol of the option contract.",
+            "example": "AAPL",
+            "in": "path",
+            "name": "underlyingAsset",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The option contract identifier.",
+            "example": "O:AAPL230616C00150000",
+            "in": "path",
+            "name": "optionContract",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "d9ff18dac69f55c218f69e4753706acd",
+                  "results": {
+                    "break_even_price": 171.075,
+                    "day": {
+                      "change": -1.05,
+                      "change_percent": -4.67,
+                      "close": 21.4,
+                      "high": 22.49,
+                      "last_updated": 1636520400000000000,
+                      "low": 21.35,
+                      "open": 22.49,
+                      "previous_close": 22.45,
+                      "volume": 37,
+                      "vwap": 21.6741
+                    },
+                    "details": {
+                      "contract_type": "call",
+                      "exercise_style": "american",
+                      "expiration_date": "2023-06-16",
+                      "shares_per_contract": 100,
+                      "strike_price": 150,
+                      "ticker": "O:AAPL230616C00150000"
+                    },
+                    "greeks": {
+                      "delta": 0.5520187372272933,
+                      "gamma": 0.00706756515659829,
+                      "theta": -0.018532772783847958,
+                      "vega": 0.7274811132998142
+                    },
+                    "implied_volatility": 0.3048997097864957,
+                    "last_quote": {
+                      "ask": 21.25,
+                      "ask_size": 110,
+                      "bid": 20.9,
+                      "bid_size": 172,
+                      "last_updated": 1636573458756383500,
+                      "midpoint": 21.075,
+                      "timeframe": "REAL-TIME"
+                    },
+                    "open_interest": 8921,
+                    "underlying_asset": {
+                      "change_to_break_even": 23.123999999999995,
+                      "last_updated": 1636573459862384600,
+                      "price": 147.951,
+                      "ticker": "AAPL",
+                      "timeframe": "REAL-TIME"
+                    }
+                  },
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "properties": {
+                        "break_even_price": {
+                          "description": "The price the underlying asset for the contract to break even. For a call this value is (strike price + premium paid), where a put this value is (strike price - premium paid)",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "day": {
+                          "description": "The most recent daily bar for this contract.",
+                          "properties": {
+                            "change": {
+                              "description": "The value of the price change for the contract from the previous trading day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "change_percent": {
+                              "description": "The percent of the price change for the contract from the previous trading day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "close": {
+                              "description": "The closing price for the contract of the day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "high": {
+                              "description": "The highest price for the contract of the day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "last_updated": {
+                              "description": "The nanosecond timestamp of when this information was updated.",
+                              "format": "int64",
+                              "type": "integer",
+                              "x-polygon-go-type": {
+                                "name": "INanoseconds",
+                                "path": "github.com/polygon-io/ptime"
+                              }
+                            },
+                            "low": {
+                              "description": "The lowest price for the contract of the day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "open": {
+                              "description": "The open price for the contract of the day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "previous_close": {
+                              "description": "The closing price for the contract of previous trading day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "volume": {
+                              "description": "The trading volume for the contract of the day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "vwap": {
+                              "description": "The trading volume weighted average price for the contract of the day.",
+                              "format": "double",
+                              "type": "number",
+                              "x-polygon-go-id": "VWAP"
+                            }
+                          },
+                          "required": [
+                            "last_updated",
+                            "open",
+                            "high",
+                            "low",
+                            "close",
+                            "previous_close",
+                            "volume",
+                            "vwap",
+                            "change_percent",
+                            "change"
+                          ],
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "Day"
+                          }
+                        },
+                        "details": {
+                          "properties": {
+                            "contract_type": {
+                              "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
+                              "enum": [
+                                "put",
+                                "call",
+                                "other"
+                              ],
+                              "type": "string"
+                            },
+                            "exercise_style": {
+                              "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
+                              "enum": [
+                                "american",
+                                "european",
+                                "bermudan"
+                              ],
+                              "type": "string"
+                            },
+                            "expiration_date": {
+                              "description": "The contract's expiration date in YYYY-MM-DD format.",
+                              "format": "date",
+                              "type": "string",
+                              "x-polygon-go-type": {
+                                "name": "IDaysPolygonDateString",
+                                "path": "github.com/polygon-io/ptime"
+                              }
+                            },
+                            "shares_per_contract": {
+                              "description": "The number of shares per contract for this contract.",
+                              "type": "number"
+                            },
+                            "strike_price": {
+                              "description": "The strike price of the option contract.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "ticker": {
+                              "description": "The ticker for the option contract.",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "ticker",
+                            "contract_type",
+                            "exercise_style",
+                            "expiration_date",
+                            "shares_per_contract",
+                            "strike_price"
+                          ],
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "Details"
+                          }
+                        },
+                        "greeks": {
+                          "description": "The greeks for this contract. This is only returned if your current plan includes greeks.",
+                          "properties": {
+                            "delta": {
+                              "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "gamma": {
+                              "description": "The change in delta per $0.01 change in the price of the underlying asset.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "theta": {
+                              "description": "The change in the option's price per day.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "vega": {
+                              "description": "The change in the option's price per 1% increment in volatility.",
+                              "format": "double",
+                              "type": "number"
+                            }
+                          },
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "Greeks"
+                          }
+                        },
+                        "implied_volatility": {
+                          "description": "The market's forecast for the volatility of the underlying asset, based on this option's current price.",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "last_quote": {
+                          "description": "The most recent quote for this contract. This is only returned if your current plan includes quotes.",
+                          "properties": {
+                            "ask": {
+                              "description": "The ask price.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "ask_size": {
+                              "description": "The ask size.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "bid": {
+                              "description": "The bid price.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "bid_size": {
+                              "description": "The bid size.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "last_updated": {
+                              "description": "The nanosecond timestamp of when this information was updated.",
+                              "format": "int64",
+                              "type": "integer",
+                              "x-polygon-go-type": {
+                                "name": "INanoseconds",
+                                "path": "github.com/polygon-io/ptime"
+                              }
+                            },
+                            "midpoint": {
+                              "description": "The average of the bid and ask price.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "timeframe": {
+                              "description": "The time relevance of the data.",
+                              "enum": [
+                                "DELAYED",
+                                "REAL-TIME"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "last_updated",
+                            "timeframe",
+                            "ask",
+                            "ask_size",
+                            "bid_size",
+                            "bid",
+                            "midpoint"
+                          ],
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "LastQuote"
+                          }
+                        },
+                        "open_interest": {
+                          "description": "The quantity of this contract held at the end of the last trading day.",
+                          "format": "double",
+                          "type": "number"
+                        },
+                        "underlying_asset": {
+                          "description": "Information on the underlying stock for this options contract.  The market data returned depends on your current stocks plan.",
+                          "properties": {
+                            "change_to_break_even": {
+                              "description": "The change in price for the contract to break even.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "last_updated": {
+                              "description": "The nanosecond timestamp of when this information was updated.",
+                              "format": "int64",
+                              "type": "integer",
+                              "x-polygon-go-type": {
+                                "name": "INanoseconds",
+                                "path": "github.com/polygon-io/ptime"
+                              }
+                            },
+                            "price": {
+                              "description": "The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.",
+                              "format": "double",
+                              "type": "number"
+                            },
+                            "ticker": {
+                              "description": "The ticker symbol for the contract's underlying asset.",
+                              "type": "string"
+                            },
+                            "timeframe": {
+                              "description": "The time relevance of the data.",
+                              "enum": [
+                                "DELAYED",
+                                "REAL-TIME"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "last_updated",
+                            "timeframe",
+                            "ticker",
+                            "price",
+                            "change_to_break_even"
+                          ],
+                          "type": "object",
+                          "x-polygon-go-type": {
+                            "name": "UnderlyingAsset"
+                          }
+                        }
+                      },
+                      "required": [
+                        "day",
+                        "last_quote",
+                        "underlying_asset",
+                        "details",
+                        "break_even_price",
+                        "implied_volatility",
+                        "open_interest"
+                      ],
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "OptionSnapshotResult"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
+                  "type": "object"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "example": "break_even_price,day_close,day_high,day_last_updated,day_low,day_open,day_previous_close,day_volume,day_vwap,day_change,day_change_percent,details_contract_type,details_exercise_style,details_expiration_date,details_shares_per_contract,details_strike_price,details_ticker,greeks_delta,greeks_gamma,greeks_theta,greeks_vega,implied_volatility,last_quote_ask,last_quote_ask_size,last_quote_bid,last_quote_bid_size,last_quote_last_updated,last_quote_midpoint,last_quote_timeframe,open_interest,underlying_asset_change_to_break_even,underlying_asset_last_updated,underlying_asset_price,underlying_asset_ticker,underlying_asset_timeframe\n0,171.075,21.4,22.49,1636520400000000000,21.35,22.49,22.45,37,21.6741,-1.05,-4.67,call,american,2023-06-16,100,150,O:AAPL230616C00150000,0.5520187372272933,0.00706756515659829,-0.018532772783847958,0.7274811132998142,0.3048997097864957,21.25,110,20.9,172,1636573458756383500,21.075,REAL-TIME,8921,23.123999999999995,1636573459862384600,147.951,AAPL,REAL-TIME\n",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Snapshot of the option contract."
+          }
+        },
+        "summary": "Option Contract",
+        "tags": [
+          "options:snapshot"
+        ],
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "description": "Real Time Data",
+            "name": "realtime"
+          },
+          {
+            "description": "15 minute delayed data",
+            "name": "delayed"
+          }
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Options data",
+          "name": "options"
+        }
+      },
+      "x-polygon-draft": true
     }
   },
   "security": [
@@ -25263,8 +28133,15 @@
     "crypto": {
       "market": [
         {
+          "launchpad": "shared",
           "paths": [
             "/v2/aggs/ticker/{cryptoTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "launchpad": "exclusive",
+          "paths": [
+            "/v1/summaries"
           ]
         },
         {
@@ -25347,8 +28224,15 @@
     "fx": {
       "market": [
         {
+          "launchpad": "shared",
           "paths": [
             "/v2/aggs/ticker/{forexTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "launchpad": "exclusive",
+          "paths": [
+            "/v1/summaries"
           ]
         },
         {
@@ -25430,8 +28314,15 @@
     "options": {
       "market": [
         {
+          "launchpad": "shared",
           "paths": [
             "/v2/aggs/ticker/{optionsTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "launchpad": "exclusive",
+          "paths": [
+            "/v1/summaries"
           ]
         },
         {
@@ -25537,8 +28428,15 @@
     "stocks": {
       "market": [
         {
+          "launchpad": "shared",
           "paths": [
             "/v2/aggs/ticker/{stocksTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "launchpad": "exclusive",
+          "paths": [
+            "/v1/summaries"
           ]
         },
         {
