@@ -85,6 +85,7 @@ class TickerDetails:
     delisted_utc: Optional[str] = None
     description: Optional[str] = None
     ticker_root: Optional[str] = None
+    ticker_suffix: Optional[str] = None
     homepage_url: Optional[str] = None
     list_date: Optional[str] = None
     locale: Optional[str] = None
@@ -119,6 +120,7 @@ class TickerDetails:
             delisted_utc=d.get("delisted_utc", None),
             description=d.get("description", None),
             ticker_root=d.get("ticker_root", None),
+            ticker_suffix=d.get("ticker_suffix", None),
             homepage_url=d.get("homepage_url", None),
             list_date=d.get("list_date", None),
             locale=d.get("locale", None),
