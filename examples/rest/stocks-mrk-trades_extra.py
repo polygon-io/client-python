@@ -1,8 +1,9 @@
 # This code retrieves trade records and counts the amount of money that changes hands.
 from polygon import RESTClient
+from polygon.rest import models
 
-#client = RESTClient() # POLYGON_API_KEY is used
-client = RESTClient("XXXXXX") # api_key is used
+# client = RESTClient() # POLYGON_API_KEY is used
+client = RESTClient("XXXXXX")  # api_key is used
 
 # docs
 # https://polygon.io/docs/stocks/get_v3_trades__stockticker

@@ -1,16 +1,16 @@
 from polygon import RESTClient
 
-#client = RESTClient() # POLYGON_API_KEY is used
-client = RESTClient("XXXXXX") # api_key is used
+# client = RESTClient() # POLYGON_API_KEY is used
+client = RESTClient("XXXXXX")  # api_key is used
 
 # docs
 # https://polygon.io/docs/stocks/get_v3_trades__stockticker
 # https://polygon-api-client.readthedocs.io/en/latest/Trades.html#polygon.RESTClient.list_trades
 
-# Trade data refers to the tick records of individual transactions that have 
-# taken place in a financial market, such as the price, size, and time of 
-# each trade. It provides a high-frequency, granular view of market activity, 
-# and is used by traders, investors, and researchers to gain insights into 
+# Trade data refers to the tick records of individual transactions that have
+# taken place in a financial market, such as the price, size, and time of
+# each trade. It provides a high-frequency, granular view of market activity,
+# and is used by traders, investors, and researchers to gain insights into
 # market behavior and inform their investment decisions.
 
 trades = []

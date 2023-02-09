@@ -1,7 +1,8 @@
 from polygon import RESTClient
+from polygon.rest import models
 
-#client = RESTClient() # POLYGON_API_KEY is used
-client = RESTClient("XXXXXX") # api_key is used
+# client = RESTClient() # POLYGON_API_KEY is used
+client = RESTClient("XXXXXX")  # api_key is used
 
 # docs
 # https://polygon.io/docs/stocks/get_v2_reference_news
@@ -11,7 +12,7 @@ news = []
 for n in client.list_ticker_news("BBBY", order="desc", limit=1000):
     news.append(n)
 
-#print(news)
+# print(news)
 
 # print date + title
 for index, item in enumerate(news):

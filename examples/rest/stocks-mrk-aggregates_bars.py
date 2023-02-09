@@ -6,11 +6,11 @@ from polygon import RESTClient
 # setx POLYGON_API_KEY "<your_api_key>"   <- windows
 # export POLYGON_API_KEY="<your_api_key>" <- mac/linux
 #
-# Note: To persist the environment variable you need to add the above command 
+# Note: To persist the environment variable you need to add the above command
 # to the shell startup script (e.g. .bashrc or .bash_profile.
 #
-#client = RESTClient() # POLYGON_API_KEY environment variable used
-client = RESTClient("XXXXXX") # api_key is used
+# client = RESTClient() # POLYGON_API_KEY environment variable used
+client = RESTClient("XXXXXX")  # api_key is used
 
 # docs
 # https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to
