@@ -1,8 +1,5 @@
 from polygon import RESTClient
 
-# client = RESTClient() # POLYGON_API_KEY is used
-client = RESTClient("XXXXXX")  # api_key is used
-
 # docs
 # https://polygon.io/docs/stocks/get_v3_trades__stockticker
 # https://polygon-api-client.readthedocs.io/en/latest/Trades.html#polygon.RESTClient.list_trades
@@ -12,6 +9,9 @@ client = RESTClient("XXXXXX")  # api_key is used
 # each trade. It provides a high-frequency, granular view of market activity,
 # and is used by traders, investors, and researchers to gain insights into
 # market behavior and inform their investment decisions.
+
+# client = RESTClient("XXXXXX") # hardcoded api_key is used
+client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 trades = []
 for t in client.list_trades("IBIO", "2023-02-01", limit=50000):

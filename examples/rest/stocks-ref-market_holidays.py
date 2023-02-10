@@ -1,15 +1,22 @@
 from polygon import RESTClient
-
-# client = RESTClient() # POLYGON_API_KEY is used
-client = RESTClient("XXXXXX")  # api_key is used
+from polygon.rest.models import (
+    MarketHoliday,
+)
 
 # docs
 # https://polygon.io/docs/stocks/get_v1_marketstatus_upcoming
 # https://polygon-api-client.readthedocs.io/en/latest/Reference.html#get-market-holidays
 
+# client = RESTClient("XXXXXX") # hardcoded api_key is used
+client = RESTClient()  # POLYGON_API_KEY environment variable is used
+
 holidays = client.get_market_holidays()
 # print(holidays)
 
 # print date, name, and exchange
-for item in holidays:
-    print("{:<15}{:<15}".format(item.date, item.name + " (" + item.exchange + ")"))
+for holiday in holidays:
+
+    # verify this is an exchange
+    if isinstance(holiday, MarketHoliday):
+
+        print("{:<15}{:<15} ({})".format(holiday.date, holiday.name, holiday.exchange))

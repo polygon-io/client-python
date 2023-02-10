@@ -1,8 +1,5 @@
 from polygon import RESTClient
 
-# client = RESTClient() # POLYGON_API_KEY is used
-client = RESTClient("XXXXXX")  # api_key is used
-
 # docs
 # https://polygon.io/docs/stocks/get_v3_quotes__stockticker
 # https://polygon-api-client.readthedocs.io/en/latest/Quotes.html#list-quotes
@@ -14,6 +11,9 @@ client = RESTClient("XXXXXX")  # api_key is used
 # bid) and the lowest price a seller is willing to accept (best offer) for a
 # particular security. This information is used by traders to make informed
 # investment decisions and execute trades at the best available price.
+
+# client = RESTClient("XXXXXX") # hardcoded api_key is used
+client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 quotes = []
 for t in client.list_quotes("IBIO", "2023-02-01", limit=50000):
