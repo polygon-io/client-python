@@ -10,6 +10,12 @@ import threading
 # https://polygon.io/docs/stocks/ws_stocks_am
 # https://polygon-api-client.readthedocs.io/en/latest/WebSocket.html#
 
+# This program connects to the Polygon WebSocket API, authenticates the
+# connection, and subscribes to receive trades. Every 5 seconds, it counts
+# the number of trades per symbol and stores the results in a map. The
+# program then prints the map, which gives a readout of the top stocks
+# traded in the past 5 seconds.
+
 # aggregates
 # client.subscribe("AM.*") # aggregates (per minute)
 # client.subscribe("A.*") # aggregates (per second)
@@ -51,19 +57,18 @@ def handle_msg(msgs: List[WebSocketMessage]):
 # client.run(handle_msg)
 
 
-def your_function():
+def top_function():
     sorted_string_map = sorted(string_map.items(), key=lambda x: x[1], reverse=True)
     print("\033c", end="")  # ANSI escape sequence to clear the screen
-    # print(sorted_string_map[:10])
+
     for index, item in sorted_string_map[:10]:
         print("{:<15}{:<15}".format(index, item))
-    string_map.clear()  # reset
-    # print()
+    string_map.clear()  # clear map for next loop
 
 
 def run_function_periodically():
     while True:
-        your_function()
+        top_function()
         time.sleep(5)
 
 
