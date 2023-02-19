@@ -8,9 +8,21 @@ import socketserver
 import traceback
 import json
 
+# This program retrieves stock price data for the AAPL stock from the Polygon
+# API using a REST client, and formats the data in a format expected by the
+# Highcharts JavaScript library. The program creates a web server that serves
+# an HTML page that includes a candlestick chart of the AAPL stock prices using
+# Highcharts. The chart displays data for the time range from January 1, 2019,
+# to February 16, 2023. The chart data is updated by retrieving the latest data
+# from the Polygon API every time the HTML page is loaded or refreshed. The
+# server listens on port 8888 and exits gracefully when a KeyboardInterrupt is
+# received.
+#
+# Connect to http://localhost:8888 in your browser to view candlestick chart.
+
 PORT = 8888
 
-# https://canvasjs.com/javascript-stockcharts/stockchart-date-time-axis/
+# https://www.highcharts.com/blog/products/stock/
 # JavaScript StockChart with Date-Time Axis
 html = """
 <!DOCTYPE HTML>
