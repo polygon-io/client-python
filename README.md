@@ -13,8 +13,9 @@ pip install polygon-api-client
 Requires Python >= 3.8.
 
 ## Getting started
-See the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html)
-section in our docs or view the [examples](./examples) directory for additional examples.
+
+To get started, please see the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html) section in our docs, view the [examples](./examples) directory for code snippets, or view the [blog post with videos](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) to learn more.
+
 ## REST API Client
 Import the RESTClient.
 ```python
