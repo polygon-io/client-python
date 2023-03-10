@@ -312,6 +312,10 @@
                       "type": "integer",
                       "description": "The Timestamp in Unix MS."
                     },
+                    "q": {
+                      "type": "integer",
+                      "description": "The sequence number represents the sequence in which quote events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.\n"
+                    },
                     "z": {
                       "type": "integer",
                       "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq)."
@@ -332,6 +336,7 @@
                     604
                   ],
                   "t": 1536036818784,
+                  "q": 50385480,
                   "z": 3
                 }
               }
@@ -2320,6 +2325,10 @@
           "t": {
             "type": "integer",
             "description": "The Timestamp in Unix MS."
+          },
+          "q": {
+            "type": "integer",
+            "description": "The sequence number represents the sequence in which quote events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.\n"
           },
           "z": {
             "type": "integer",
