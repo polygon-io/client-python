@@ -21,6 +21,7 @@ class Market(Enum):
     CRYPTO = "crypto"
     FX = "fx"
     OTC = "otc"
+    INDICES = "indices"
 
 
 class AssetClass(Enum):
@@ -28,6 +29,7 @@ class AssetClass(Enum):
     OPTIONS = "options"
     CRYPTO = "crypto"
     FX = "fx"
+    INDICES = "indices"
 
 
 class DividendType(Enum):
@@ -72,6 +74,7 @@ class SnapshotMarketType(Enum):
     STOCKS = "stocks"
     FOREX = "forex"
     CRYPTO = "crypto"
+    INDICES = "indices"
 
 
 class Timeframe(Enum):
