@@ -157,6 +157,21 @@ class LastQuoteOptionContractSnapshot:
 
 
 @modelclass
+class LastTradeOptionContractSnapshot:
+    "Contains data for the most recent trade for an options contract."
+    price: Optional[float] = None
+    sip_timestamp: Optional[int] = None
+    size: Optional[int] = None
+    conditions: Optional[List[int]] = None
+    exchange: Optional[int] = None
+    timeframe: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return LastTradeOptionContractSnapshot(**d)
+
+
+@modelclass
 class Greeks:
     "Contains data for the greeks in an options contract."
     delta: Optional[float] = None
@@ -193,6 +208,7 @@ class OptionContractSnapshot:
     greeks: Optional[Greeks] = None
     implied_volatility: Optional[float] = None
     last_quote: Optional[LastQuoteOptionContractSnapshot] = None
+    last_trade: Optional[LastTradeOptionContractSnapshot] = None
     open_interest: Optional[float] = None
     underlying_asset: Optional[UnderlyingAsset] = None
 
@@ -211,6 +227,9 @@ class OptionContractSnapshot:
             last_quote=None
             if "last_quote" not in d
             else LastQuoteOptionContractSnapshot.from_dict(d["last_quote"]),
+            last_trade=None
+            if "last_trade" not in d
+            else LastTradeOptionContractSnapshot.from_dict(d["last_trade"]),
             open_interest=d.get("open_interest", None),
             underlying_asset=None
             if "underlying_asset" not in d
