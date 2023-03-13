@@ -112,6 +112,7 @@ class LastQuoteOptionContractSnapshot:
     def from_dict(d):
         return LastQuoteOptionContractSnapshot(**d)
 
+
 @modelclass
 class LastTradeOptionContractSnapshot:
     "Contains data for the most recent trade for an options contract."
