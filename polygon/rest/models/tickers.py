@@ -64,6 +64,7 @@ class Ticker:
     share_class_figi: Optional[str] = None
     ticker: Optional[str] = None
     type: Optional[str] = None
+    source_feed: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
