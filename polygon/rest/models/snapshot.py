@@ -183,6 +183,9 @@ class OptionContractSnapshot:
             last_quote=None
             if "last_quote" not in d
             else LastQuoteOptionContractSnapshot.from_dict(d["last_quote"]),
+            last_trade=None
+            if "last_trade" not in d
+            else LastTradeOptionContractSnapshot.from_dict(d["last_trade"]),
             open_interest=d.get("open_interest", None),
             underlying_asset=None
             if "underlying_asset" not in d
