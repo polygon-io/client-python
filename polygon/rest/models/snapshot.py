@@ -112,6 +112,20 @@ class LastQuoteOptionContractSnapshot:
     def from_dict(d):
         return LastQuoteOptionContractSnapshot(**d)
 
+@modelclass
+class LastTradeOptionContractSnapshot:
+    "Contains data for the most recent trade for an options contract."
+    price: Optional[float] = None
+    sip_timestamp: Optional[int] = None
+    size: Optional[int] = None
+    conditions: Optional[List[int]] = None
+    exchange: Optional[int] = None
+    timeframe: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return LastTradeOptionContractSnapshot(**d)
+
 
 @modelclass
 class Greeks:
@@ -149,6 +163,7 @@ class OptionContractSnapshot:
     greeks: Optional[Greeks] = None
     implied_volatility: Optional[float] = None
     last_quote: Optional[LastQuoteOptionContractSnapshot] = None
+    last_trade: Optional[LastTradeOptionContractSnapshot] = None
     open_interest: Optional[float] = None
     underlying_asset: Optional[UnderlyingAsset] = None
 

@@ -39,6 +39,14 @@
       "midpoint": 29.075,
       "timeframe": "REAL-TIME"
     },
+    "last_trade":{
+      "price": 29.25,
+      "sip_timestamp": 1678718527714665700,
+      "size": 1,
+      "conditions": [209],
+      "exchange": 309,
+      "timeframe": "REAL-TIME"
+    },
     "open_interest": 8133,
     "underlying_asset": {
       "change_to_break_even": 19.11439999999999,
