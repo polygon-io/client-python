@@ -128,6 +128,36 @@
           "type": "boolean"
         }
       },
+      "IndicesAggregateTimeFrom": {
+        "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+        "example": "2023-03-10",
+        "in": "path",
+        "name": "from",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "IndicesAggregateTimeTo": {
+        "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+        "example": "2023-03-10",
+        "in": "path",
+        "name": "to",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "IndicesTickerPathParam": {
+        "description": "The ticker symbol of Index.",
+        "example": "I:SPX",
+        "in": "path",
+        "name": "indicesTicker",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
       "LimitMax10000": {
         "description": "Limit the size of the response, max 10000.",
         "example": 100,
@@ -271,6 +301,11 @@
       },
       "Close": {
         "description": "The close price for the symbol in the given time period.",
+        "format": "double",
+        "type": "number"
+      },
+      "CloseIndices": {
+        "description": "The close value for the symbol in the given time period.",
         "format": "double",
         "type": "number"
       },
@@ -2728,6 +2763,38 @@
         "format": "double",
         "type": "number"
       },
+      "HighIndices": {
+        "description": "The highest value for the symbol in the given time period.",
+        "format": "double",
+        "type": "number"
+      },
+      "IndexAggsBase": {
+        "properties": {
+          "queryCount": {
+            "description": "The number of aggregates (minute or day) used to generate the response.",
+            "type": "integer"
+          },
+          "request_id": {
+            "description": "A request id assigned by the server.",
+            "type": "string"
+          },
+          "resultsCount": {
+            "description": "The total number of results for this request.",
+            "type": "integer"
+          },
+          "status": {
+            "description": "The status of this request's response.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "queryCount",
+          "resultsCount",
+          "request_id"
+        ],
+        "type": "object"
+      },
       "Indicators": {
         "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).\n",
         "items": {
@@ -2735,6 +2802,154 @@
           "type": "integer"
         },
         "type": "array"
+      },
+      "IndicesGroupedResults": {
+        "properties": {
+          "results": {
+            "items": {
+              "properties": {
+                "c": {
+                  "description": "The close value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "h": {
+                  "description": "The highest value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "l": {
+                  "description": "The lowest value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "o": {
+                  "description": "The open value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "t": {
+                  "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "t"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "IndicesOpenClose": {
+        "properties": {
+          "afterHours": {
+            "description": "The close value of the ticker symbol in after hours trading.",
+            "format": "double",
+            "type": "number"
+          },
+          "close": {
+            "description": "The close value for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "from": {
+            "description": "The requested date.",
+            "format": "date",
+            "type": "string"
+          },
+          "high": {
+            "description": "The highest value for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "low": {
+            "description": "The lowest value for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "open": {
+            "description": "The open value for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "preMarket": {
+            "description": "The open value of the ticker symbol in pre-market trading.",
+            "type": "integer"
+          },
+          "status": {
+            "description": "The status of this request's response.",
+            "type": "string"
+          },
+          "symbol": {
+            "description": "The exchange symbol that this item is traded under.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "from",
+          "symbol",
+          "open",
+          "high",
+          "low",
+          "close"
+        ],
+        "type": "object"
+      },
+      "IndicesTickerResults": {
+        "properties": {
+          "results": {
+            "items": {
+              "properties": {
+                "c": {
+                  "description": "The close value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "h": {
+                  "description": "The highest value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "l": {
+                  "description": "The lowest value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "n": {
+                  "description": "The number of transactions in the aggregate window.",
+                  "type": "integer"
+                },
+                "o": {
+                  "description": "The open value for the symbol in the given time period.",
+                  "format": "double",
+                  "type": "number"
+                },
+                "t": {
+                  "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "o",
+                "h",
+                "l",
+                "c",
+                "t"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
       },
       "Locales": {
         "properties": {
@@ -2759,6 +2974,11 @@
       },
       "Low": {
         "description": "The lowest price for the symbol in the given time period.",
+        "format": "double",
+        "type": "number"
+      },
+      "LowIndices": {
+        "description": "The lowest value for the symbol in the given time period.",
         "format": "double",
         "type": "number"
       },
@@ -2960,6 +3180,11 @@
       },
       "Open": {
         "description": "The open price for the symbol in the given time period.",
+        "format": "double",
+        "type": "number"
+      },
+      "OpenIndices": {
+        "description": "The open value for the symbol in the given time period.",
         "format": "double",
         "type": "number"
       },
@@ -5983,6 +6208,318 @@
       },
       "x-polygon-ignore": true
     },
+    "/v1/indicators/ema/{indicesTicker}": {
+      "get": {
+        "description": "Get the exponential moving average (EMA) for a ticker symbol over a given time range.",
+        "operationId": "IndicesEMA",
+        "parameters": [
+          {
+            "description": "The ticker symbol for which to get exponential moving average (EMA) data.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-go-id": "Ticker"
+          },
+          {
+            "description": "Query by timestamp. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true
+            }
+          },
+          {
+            "description": "The size of the aggregate time window.",
+            "example": "day",
+            "in": "query",
+            "name": "timespan",
+            "schema": {
+              "default": "day",
+              "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "year"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not the aggregates used to calculate the exponential moving average are adjusted for splits. By default, aggregates are adjusted.\nSet this to false to get results that are NOT adjusted for splits.",
+            "example": true,
+            "in": "query",
+            "name": "adjusted",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The window size used to calculate the exponential moving average (EMA). i.e. a window size of 10 with daily aggregates would result in a 10 day moving average.",
+            "example": 50,
+            "in": "query",
+            "name": "window",
+            "schema": {
+              "default": 50,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The value in the aggregate which will be used to calculate the exponential moving average. i.e. 'close' will result in using close values to \ncalculate the exponential moving average (EMA).",
+            "example": "close",
+            "in": "query",
+            "name": "series_type",
+            "schema": {
+              "default": "close",
+              "enum": [
+                "open",
+                "high",
+                "low",
+                "close"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not to include the aggregates used to calculate this indicator in the response.",
+            "in": "query",
+            "name": "expand_underlying",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The order in which to return the results, ordered by timestamp.",
+            "example": "desc",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 5000",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 5000,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.polygon.io/v1/indicators/ema/I:SPX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
+                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "results": {
+                    "underlying": {
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678726291180?limit=35&sort=desc"
+                    },
+                    "values": [
+                      {
+                        "timestamp": 1678165200000,
+                        "value": 4033.086001449211
+                      }
+                    ]
+                  },
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "properties": {
+                        "underlying": {
+                          "properties": {
+                            "aggregates": {
+                              "items": {
+                                "properties": {
+                                  "c": {
+                                    "description": "The close price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "h": {
+                                    "description": "The highest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "l": {
+                                    "description": "The lowest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
+                                  "o": {
+                                    "description": "The open price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "otc": {
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
+                                    "type": "boolean"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "v": {
+                                    "description": "The trading volume of the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "vw": {
+                                    "description": "The volume weighted average price.",
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "v",
+                                  "vw",
+                                  "o",
+                                  "c",
+                                  "h",
+                                  "l",
+                                  "t",
+                                  "n"
+                                ],
+                                "type": "object",
+                                "x-polygon-go-type": {
+                                  "name": "Aggregate",
+                                  "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                                }
+                              },
+                              "type": "array"
+                            },
+                            "url": {
+                              "description": "The URL which can be used to request the underlying aggregates used in this request.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "values": {
+                          "items": {
+                            "properties": {
+                              "timestamp": {
+                                "description": "The Unix Msec timestamp from the last aggregate used in this calculation.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "IMicroseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "value": {
+                                "description": "The indicator value for this period.",
+                                "format": "float",
+                                "type": "number",
+                                "x-polygon-go-type": {
+                                  "name": "*float64"
+                                }
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "EMAResults"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Exponential Moving Average (EMA) data for each period."
+          }
+        },
+        "summary": "Exponential Moving Average (EMA)",
+        "tags": [
+          "indices:aggregates"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
+        }
+      },
+      "x-polygon-ignore": true
+    },
     "/v1/indicators/ema/{optionsTicker}": {
       "get": {
         "description": "Get the exponential moving average (EMA) for a ticker symbol over a given time range.",
@@ -7328,6 +7865,362 @@
         "x-polygon-entitlement-market-type": {
           "description": "Forex data",
           "name": "fx"
+        }
+      },
+      "x-polygon-ignore": true
+    },
+    "/v1/indicators/macd/{indicesTicker}": {
+      "get": {
+        "description": "Get moving average convergence/divergence (MACD) for a ticker symbol over a given time range.",
+        "operationId": "IndicesMACD",
+        "parameters": [
+          {
+            "description": "The ticker symbol for which to get MACD data.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-go-id": "Ticker"
+          },
+          {
+            "description": "Query by timestamp. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true
+            }
+          },
+          {
+            "description": "The size of the aggregate time window.",
+            "example": "day",
+            "in": "query",
+            "name": "timespan",
+            "schema": {
+              "default": "day",
+              "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "year"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not the aggregates used to calculate the MACD are adjusted for splits. By default, aggregates are adjusted.\nSet this to false to get results that are NOT adjusted for splits.",
+            "example": true,
+            "in": "query",
+            "name": "adjusted",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The short window size used to calculate MACD data.",
+            "example": 12,
+            "in": "query",
+            "name": "short_window",
+            "schema": {
+              "default": 12,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The long window size used to calculate MACD data.",
+            "example": 26,
+            "in": "query",
+            "name": "long_window",
+            "schema": {
+              "default": 26,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The window size used to calculate the MACD signal line.",
+            "example": 9,
+            "in": "query",
+            "name": "signal_window",
+            "schema": {
+              "default": 9,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The value in the aggregate which will be used to calculate the MACD. i.e. 'close' will result in using close values to \ncalculate the MACD.",
+            "example": "close",
+            "in": "query",
+            "name": "series_type",
+            "schema": {
+              "default": "close",
+              "enum": [
+                "open",
+                "high",
+                "low",
+                "close"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not to include the aggregates used to calculate this indicator in the response.",
+            "in": "query",
+            "name": "expand_underlying",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The order in which to return the results, ordered by timestamp.",
+            "example": "desc",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 5000",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 5000,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.polygon.io/v1/indicators/macd/I:SPX?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "results": {
+                    "underlying": {
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678726155743?limit=129&sort=desc"
+                    },
+                    "values": [
+                      {
+                        "histogram": 10.897861258863195,
+                        "signal": -25.314340901212,
+                        "timestamp": 1678168800000,
+                        "value": -14.416479642348804
+                      },
+                      {
+                        "histogram": 15.308854617117138,
+                        "signal": -28.038806215927796,
+                        "timestamp": 1678165200000,
+                        "value": -12.729951598810658
+                      }
+                    ]
+                  },
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "properties": {
+                        "underlying": {
+                          "properties": {
+                            "aggregates": {
+                              "items": {
+                                "properties": {
+                                  "c": {
+                                    "description": "The close price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "h": {
+                                    "description": "The highest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "l": {
+                                    "description": "The lowest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
+                                  "o": {
+                                    "description": "The open price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "otc": {
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
+                                    "type": "boolean"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "v": {
+                                    "description": "The trading volume of the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "vw": {
+                                    "description": "The volume weighted average price.",
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "v",
+                                  "vw",
+                                  "o",
+                                  "c",
+                                  "h",
+                                  "l",
+                                  "t",
+                                  "n"
+                                ],
+                                "type": "object",
+                                "x-polygon-go-type": {
+                                  "name": "Aggregate",
+                                  "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                                }
+                              },
+                              "type": "array"
+                            },
+                            "url": {
+                              "description": "The URL which can be used to request the underlying aggregates used in this request.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "values": {
+                          "items": {
+                            "properties": {
+                              "histogram": {
+                                "description": "The indicator value for this period.",
+                                "format": "float",
+                                "type": "number",
+                                "x-polygon-go-type": {
+                                  "name": "*float64"
+                                }
+                              },
+                              "signal": {
+                                "description": "The indicator value for this period.",
+                                "format": "float",
+                                "type": "number",
+                                "x-polygon-go-type": {
+                                  "name": "*float64"
+                                }
+                              },
+                              "timestamp": {
+                                "description": "The Unix Msec timestamp from the last aggregate used in this calculation.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "IMicroseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "value": {
+                                "description": "The indicator value for this period.",
+                                "format": "float",
+                                "type": "number",
+                                "x-polygon-go-type": {
+                                  "name": "*float64"
+                                }
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "MACDResults"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Moving Average Convergence/Divergence (MACD) data for each period."
+          }
+        },
+        "summary": "Moving Average Convergence/Divergence (MACD)",
+        "tags": [
+          "indices:aggregates"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
         }
       },
       "x-polygon-ignore": true
@@ -8681,6 +9574,318 @@
       },
       "x-polygon-ignore": true
     },
+    "/v1/indicators/rsi/{indicesTicker}": {
+      "get": {
+        "description": "Get the relative strength index (RSI) for a ticker symbol over a given time range.",
+        "operationId": "IndicesRSI",
+        "parameters": [
+          {
+            "description": "The ticker symbol for which to get relative strength index (RSI) data.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-go-id": "Ticker"
+          },
+          {
+            "description": "Query by timestamp. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true
+            }
+          },
+          {
+            "description": "The size of the aggregate time window.",
+            "example": "day",
+            "in": "query",
+            "name": "timespan",
+            "schema": {
+              "default": "day",
+              "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "year"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not the aggregates used to calculate the relative strength index are adjusted for splits. By default, aggregates are adjusted.\nSet this to false to get results that are NOT adjusted for splits.",
+            "example": true,
+            "in": "query",
+            "name": "adjusted",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The window size used to calculate the relative strength index (RSI).",
+            "example": 14,
+            "in": "query",
+            "name": "window",
+            "schema": {
+              "default": 14,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The value in the aggregate which will be used to calculate the relative strength index. i.e. 'close' will result in using close values to \ncalculate the relative strength index (RSI).",
+            "example": "close",
+            "in": "query",
+            "name": "series_type",
+            "schema": {
+              "default": "close",
+              "enum": [
+                "open",
+                "high",
+                "low",
+                "close"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not to include the aggregates used to calculate this indicator in the response.",
+            "in": "query",
+            "name": "expand_underlying",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The order in which to return the results, ordered by timestamp.",
+            "example": "desc",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 5000",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 5000,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.polygon.io/v1/indicators/rsi/I:SPX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
+                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "results": {
+                    "underlying": {
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
+                    },
+                    "values": [
+                      {
+                        "timestamp": 1678165200000,
+                        "value": 82.621486402274
+                      }
+                    ]
+                  },
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "properties": {
+                        "underlying": {
+                          "properties": {
+                            "aggregates": {
+                              "items": {
+                                "properties": {
+                                  "c": {
+                                    "description": "The close price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "h": {
+                                    "description": "The highest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "l": {
+                                    "description": "The lowest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
+                                  "o": {
+                                    "description": "The open price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "otc": {
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
+                                    "type": "boolean"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "v": {
+                                    "description": "The trading volume of the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "vw": {
+                                    "description": "The volume weighted average price.",
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "v",
+                                  "vw",
+                                  "o",
+                                  "c",
+                                  "h",
+                                  "l",
+                                  "t",
+                                  "n"
+                                ],
+                                "type": "object",
+                                "x-polygon-go-type": {
+                                  "name": "Aggregate",
+                                  "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                                }
+                              },
+                              "type": "array"
+                            },
+                            "url": {
+                              "description": "The URL which can be used to request the underlying aggregates used in this request.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "values": {
+                          "items": {
+                            "properties": {
+                              "timestamp": {
+                                "description": "The Unix Msec timestamp from the last aggregate used in this calculation.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "IMicroseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "value": {
+                                "description": "The indicator value for this period.",
+                                "format": "float",
+                                "type": "number",
+                                "x-polygon-go-type": {
+                                  "name": "*float64"
+                                }
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "RSIResults"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Relative Strength Index (RSI) data for each period."
+          }
+        },
+        "summary": "Relative Strength Index (RSI)",
+        "tags": [
+          "indices:aggregates"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
+        }
+      },
+      "x-polygon-ignore": true
+    },
     "/v1/indicators/rsi/{optionsTicker}": {
       "get": {
         "description": "Get the relative strength index (RSI) for a ticker symbol over a given time range.",
@@ -9982,6 +11187,318 @@
         "x-polygon-entitlement-market-type": {
           "description": "Forex data",
           "name": "fx"
+        }
+      },
+      "x-polygon-ignore": true
+    },
+    "/v1/indicators/sma/{indicesTicker}": {
+      "get": {
+        "description": "Get the simple moving average (SMA) for a ticker symbol over a given time range.",
+        "operationId": "IndicesSMA",
+        "parameters": [
+          {
+            "description": "The ticker symbol for which to get simple moving average (SMA) data.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-go-id": "Ticker"
+          },
+          {
+            "description": "Query by timestamp. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true
+            }
+          },
+          {
+            "description": "The size of the aggregate time window.",
+            "example": "day",
+            "in": "query",
+            "name": "timespan",
+            "schema": {
+              "default": "day",
+              "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "year"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not the aggregates used to calculate the simple moving average are adjusted for splits. By default, aggregates are adjusted.\nSet this to false to get results that are NOT adjusted for splits.",
+            "example": true,
+            "in": "query",
+            "name": "adjusted",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The window size used to calculate the simple moving average (SMA). i.e. a window size of 10 with daily aggregates would result in a 10 day moving average.",
+            "example": 50,
+            "in": "query",
+            "name": "window",
+            "schema": {
+              "default": 50,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The value in the aggregate which will be used to calculate the simple moving average. i.e. 'close' will result in using close values to \ncalculate the simple moving average (SMA).",
+            "example": "close",
+            "in": "query",
+            "name": "series_type",
+            "schema": {
+              "default": "close",
+              "enum": [
+                "open",
+                "high",
+                "low",
+                "close"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Whether or not to include the aggregates used to calculate this indicator in the response.",
+            "in": "query",
+            "name": "expand_underlying",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "The order in which to return the results, ordered by timestamp.",
+            "example": "desc",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 5000",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 5000,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search by timestamp.",
+            "in": "query",
+            "name": "timestamp.lt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.polygon.io/v1/indicators/sma/I:SPX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
+                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "results": {
+                    "underlying": {
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
+                    },
+                    "values": [
+                      {
+                        "timestamp": 1678165200000,
+                        "value": 4035.913999999998
+                      }
+                    ]
+                  },
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "properties": {
+                        "underlying": {
+                          "properties": {
+                            "aggregates": {
+                              "items": {
+                                "properties": {
+                                  "c": {
+                                    "description": "The close price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "h": {
+                                    "description": "The highest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "l": {
+                                    "description": "The lowest price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
+                                  "o": {
+                                    "description": "The open price for the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "otc": {
+                                    "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
+                                    "type": "boolean"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "v": {
+                                    "description": "The trading volume of the symbol in the given time period.",
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "vw": {
+                                    "description": "The volume weighted average price.",
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "v",
+                                  "vw",
+                                  "o",
+                                  "c",
+                                  "h",
+                                  "l",
+                                  "t",
+                                  "n"
+                                ],
+                                "type": "object",
+                                "x-polygon-go-type": {
+                                  "name": "Aggregate",
+                                  "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                                }
+                              },
+                              "type": "array"
+                            },
+                            "url": {
+                              "description": "The URL which can be used to request the underlying aggregates used in this request.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "values": {
+                          "items": {
+                            "properties": {
+                              "timestamp": {
+                                "description": "The Unix Msec timestamp from the last aggregate used in this calculation.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "IMicroseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "value": {
+                                "description": "The indicator value for this period.",
+                                "format": "float",
+                                "type": "number",
+                                "x-polygon-go-type": {
+                                  "name": "*float64"
+                                }
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "SMAResults"
+                      }
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Simple Moving Average (SMA) data for each period."
+          }
+        },
+        "summary": "Simple Moving Average (SMA)",
+        "tags": [
+          "indices:aggregates"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
         }
       },
       "x-polygon-ignore": true
@@ -11366,6 +12883,125 @@
         "x-polygon-entitlement-market-type": {
           "description": "Crypto data",
           "name": "crypto"
+        }
+      }
+    },
+    "/v1/open-close/{indicesTicker}/{date}": {
+      "get": {
+        "description": "Get the open, close and afterhours values of a index symbol on a certain date.\n",
+        "parameters": [
+          {
+            "description": "The ticker symbol of Index.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The date of the requested open/close in the format YYYY-MM-DD.",
+            "example": "2023-03-10",
+            "in": "path",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "afterHours": "4,078.49",
+                  "close": "4,045.64",
+                  "from": "2023-01-09",
+                  "high": "4,078.49",
+                  "low": "4,051.82",
+                  "open": "4,055.15",
+                  "preMarket": "4,078.49",
+                  "status": "OK",
+                  "symbol": "SPX"
+                },
+                "schema": {
+                  "properties": {
+                    "afterHours": {
+                      "description": "The close value of the ticker symbol in after hours trading.",
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "close": {
+                      "description": "The close value for the symbol in the given time period.",
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "from": {
+                      "description": "The requested date.",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "high": {
+                      "description": "The highest value for the symbol in the given time period.",
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "low": {
+                      "description": "The lowest value for the symbol in the given time period.",
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "open": {
+                      "description": "The open value for the symbol in the given time period.",
+                      "format": "double",
+                      "type": "number"
+                    },
+                    "preMarket": {
+                      "description": "The open value of the ticker symbol in pre-market trading.",
+                      "type": "integer"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    },
+                    "symbol": {
+                      "description": "The exchange symbol that this item is traded under.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "from",
+                    "symbol",
+                    "open",
+                    "high",
+                    "low",
+                    "close"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The open/close of this stock symbol."
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        },
+        "summary": "Daily Open/Close",
+        "tags": [
+          "stocks:open-close"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
         }
       }
     },
@@ -14444,6 +16080,374 @@
         "x-polygon-entitlement-market-type": {
           "description": "Forex data",
           "name": "fx"
+        }
+      }
+    },
+    "/v2/aggs/ticker/{indicesTicker}/prev": {
+      "get": {
+        "description": "Get the previous day's open, high, low, and close (OHLC) for the specified index.\n",
+        "parameters": [
+          {
+            "description": "The ticker symbol of Index.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "queryCount": 1,
+                  "request_id": "b2170df985474b6d21a6eeccfb6bee67",
+                  "results": [
+                    {
+                      "T": "SPX",
+                      "c": "4,048.42",
+                      "h": "4,050.00",
+                      "l": "3,980.31",
+                      "o": "4,048.26",
+                      "t": 1678221584688
+                    }
+                  ],
+                  "resultsCount": 1,
+                  "status": "OK",
+                  "ticker": "I:SPX"
+                },
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "ticker": {
+                          "description": "The exchange symbol that this item is traded under.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "ticker"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "queryCount": {
+                          "description": "The number of aggregates (minute or day) used to generate the response.",
+                          "type": "integer"
+                        },
+                        "request_id": {
+                          "description": "A request id assigned by the server.",
+                          "type": "string"
+                        },
+                        "resultsCount": {
+                          "description": "The total number of results for this request.",
+                          "type": "integer"
+                        },
+                        "status": {
+                          "description": "The status of this request's response.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "results": {
+                          "items": {
+                            "properties": {
+                              "c": {
+                                "description": "The close value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "h": {
+                                "description": "The highest value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "l": {
+                                "description": "The lowest value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "o": {
+                                "description": "The open value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "t": {
+                                "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "t"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "The previous day OHLC for a index."
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        },
+        "summary": "Previous Close",
+        "tags": [
+          "indices:aggregates"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
+        }
+      }
+    },
+    "/v2/aggs/ticker/{indicesTicker}/range/{multiplier}/{timespan}/{from}/{to}": {
+      "get": {
+        "description": "Get aggregate bars for an index over a given date range in custom time window sizes.\n<br />\n<br />\nFor example, if timespan = \u2018minute\u2019 and multiplier = \u20185\u2019 then 5-minute bars will be returned.\n",
+        "parameters": [
+          {
+            "description": "The ticker symbol of Index.",
+            "example": "I:SPX",
+            "in": "path",
+            "name": "indicesTicker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The size of the timespan multiplier.",
+            "example": 1,
+            "in": "path",
+            "name": "multiplier",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The size of the time window.",
+            "example": "day",
+            "in": "path",
+            "name": "timespan",
+            "required": true,
+            "schema": {
+              "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "quarter",
+                "year"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+            "example": "2023-03-10",
+            "in": "path",
+            "name": "from",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
+            "example": "2023-03-10",
+            "in": "path",
+            "name": "to",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sort the results by timestamp.\n`asc` will return results in ascending order (oldest at the top),\n`desc` will return results in descending order (newest at the top).\n",
+            "example": "asc",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "description": "Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000.\nRead more about how limit is used to calculate aggregate results in our article on\n<a href=\"https://polygon.io/blog/aggs-api-updates/\" target=\"_blank\" alt=\"Aggregate Data API Improvements\">Aggregate Data API Improvements</a>.\n",
+            "example": 120,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "queryCount": 2,
+                  "request_id": "0cf72b6da685bcd386548ffe2895904a",
+                  "results": [
+                    {
+                      "c": "4,048.42",
+                      "h": "4,050.00",
+                      "l": "3,980.31",
+                      "n": 1,
+                      "o": "4,048.26",
+                      "t": 1678221133236
+                    },
+                    {
+                      "c": "4,048.42",
+                      "h": "4,050.00",
+                      "l": "3,980.31",
+                      "n": 1,
+                      "o": "4,048.26",
+                      "t": 1678221139690
+                    }
+                  ],
+                  "resultsCount": 2,
+                  "status": "OK",
+                  "ticker": "I:SPX"
+                },
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "ticker": {
+                          "description": "The exchange symbol that this item is traded under.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "ticker"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "queryCount": {
+                          "description": "The number of aggregates (minute or day) used to generate the response.",
+                          "type": "integer"
+                        },
+                        "request_id": {
+                          "description": "A request id assigned by the server.",
+                          "type": "string"
+                        },
+                        "resultsCount": {
+                          "description": "The total number of results for this request.",
+                          "type": "integer"
+                        },
+                        "status": {
+                          "description": "The status of this request's response.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "queryCount",
+                        "resultsCount",
+                        "request_id"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "results": {
+                          "items": {
+                            "properties": {
+                              "c": {
+                                "description": "The close value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "h": {
+                                "description": "The highest value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "l": {
+                                "description": "The lowest value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "o": {
+                                "description": "The open value for the symbol in the given time period.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "t": {
+                                "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "o",
+                              "h",
+                              "l",
+                              "c",
+                              "t"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Index Aggregates."
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        },
+        "summary": "Aggregates (Bars)",
+        "tags": [
+          "indices:aggregates"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Aggregate data",
+          "name": "aggregates"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "Indices data",
+          "name": "indices"
         }
       }
     },
@@ -23174,7 +25178,7 @@
                             }
                           },
                           "primary_exchange": {
-                            "description": "The MIC code of the primarcy exchange that this contract is listed on.",
+                            "description": "The MIC code of the primary exchange that this contract is listed on.",
                             "type": "string"
                           },
                           "shares_per_contract": {
@@ -23362,7 +25366,7 @@
                           }
                         },
                         "primary_exchange": {
-                          "description": "The MIC code of the primarcy exchange that this contract is listed on.",
+                          "description": "The MIC code of the primary exchange that this contract is listed on.",
                           "type": "string"
                         },
                         "shares_per_contract": {
@@ -24292,6 +26296,7 @@
                     "name": "Apple Inc.",
                     "phone_number": "(408) 996-1010",
                     "primary_exchange": "XNAS",
+                    "round_lot": 100,
                     "share_class_figi": "BBG001S5N8V8",
                     "share_class_shares_outstanding": 16406400000,
                     "sic_code": "3571",
@@ -24420,6 +26425,11 @@
                           "description": "The ISO code of the primary listing exchange for this asset.",
                           "type": "string"
                         },
+                        "round_lot": {
+                          "description": "Round lot size of this security.",
+                          "format": "double",
+                          "type": "number"
+                        },
                         "share_class_figi": {
                           "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
                           "type": "string"
@@ -24486,7 +26496,7 @@
                 }
               },
               "text/csv": {
-                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
+                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,round_lot,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,100,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
                 "schema": {
                   "type": "string"
                 }
@@ -24518,7 +26528,6 @@
             "example": "I:SPX",
             "in": "query",
             "name": "ticker.any_of",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -24562,10 +26571,6 @@
                 },
                 "schema": {
                   "properties": {
-                    "next_url": {
-                      "description": "If present, this value can be used to fetch the next page of data.",
-                      "type": "string"
-                    },
                     "request_id": {
                       "type": "string"
                     },
@@ -24591,78 +26596,44 @@
                           "session": {
                             "properties": {
                               "change": {
-                                "description": "The value of the price change for the contract from the previous trading day.",
+                                "description": "The value of the change for the index from the previous trading day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "change_percent": {
-                                "description": "The percent of the price change for the contract from the previous trading day.",
+                                "description": "The percent of the change for the index from the previous trading day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "close": {
-                                "description": "The closing price for the asset of the day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "early_trading_change": {
-                                "description": "Today\u2019s early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "early_trading_change_percent": {
-                                "description": "Today\u2019s early trading change as a percentage.",
+                                "description": "The closing value for the index of the day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "high": {
-                                "description": "The highest price for the asset of the day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "late_trading_change": {
-                                "description": "Today\u2019s late trading change amount, difference between price and today\u2019s close if in late trading hours, otherwise difference between last price during late trading and today\u2019s close.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "late_trading_change_percent": {
-                                "description": "Today\u2019s late trading change as a percentage.",
+                                "description": "The highest value for the index of the day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "low": {
-                                "description": "The lowest price for the asset of the day.",
+                                "description": "The lowest value for the index of the day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "open": {
-                                "description": "The open price for the asset of the day.",
+                                "description": "The open value for the index of the day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "previous_close": {
-                                "description": "The closing price for the asset of previous trading day.",
-                                "format": "double",
-                                "type": "number"
-                              },
-                              "volume": {
-                                "description": "The trading volume for the asset of the day.",
+                                "description": "The closing value for the index of previous trading day.",
                                 "format": "double",
                                 "type": "number"
                               }
                             },
-                            "required": [
-                              "change",
-                              "change_percent",
-                              "close",
-                              "high",
-                              "low",
-                              "open",
-                              "previous_close"
-                            ],
                             "type": "object",
                             "x-polygon-go-type": {
-                              "name": "Session"
+                              "name": "IndicesSession"
                             }
                           },
                           "ticker": {
@@ -26699,7 +28670,8 @@
             "schema": {
               "enum": [
                 "annual",
-                "quarterly"
+                "quarterly",
+                "ttm"
               ],
               "type": "string"
             }
@@ -26837,7 +28809,6 @@
           "200": {
             "content": {
               "application/json": {
-                "description": "FIXME",
                 "example": {
                   "count": 1,
                   "next_url": "https://api.polygon.io/vX/reference/financials?",
@@ -27168,8 +29139,16 @@
                                   "*": {
                                     "description": "An individual financial data point.",
                                     "properties": {
+                                      "derived_from": {
+                                        "description": "The list of report IDs (or errata) which were used to derive this data point.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true` and if source is SourceInterReportDerived.",
+                                        "items": {
+                                          "type": "string"
+                                        },
+                                        "type": "array"
+                                      },
                                       "formula": {
-                                        "description": "The name of the formula used to derive this data point from other financial data points.\nInformation about the formulas can be found <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrlsite.azurewebsites.net/2020/reporting-scheme/us-gaap/fac/documentation/ImputeRulesList.html\">here</a>.\nThis value is only returned for data points that are not explicitly expressed within the XBRL source file when the `include_sources` query parameter is `true`."
+                                        "description": "The name of the formula used to derive this data point from other financial data points.\nInformation about the formulas can be found <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://xbrlsite.azurewebsites.net/2020/reporting-scheme/us-gaap/fac/documentation/ImputeRulesList.html\">here</a>.\nThis value is only returned for data points that are not explicitly expressed within the XBRL source file when the `include_sources` query parameter is `true` and if source is SourceIntraReportImpute.",
+                                        "type": "string"
                                       },
                                       "label": {
                                         "description": "A human readable label for the financial data point.",
@@ -27178,6 +29157,9 @@
                                       "order": {
                                         "description": "An indicator of what order within the statement that you would find this data point.",
                                         "type": "integer"
+                                      },
+                                      "source": {
+                                        "description": "The source where this data point came from. This will be one of: SourceDirectReport, SourceIntraReportImpute or SourceInterReportDerived."
                                       },
                                       "unit": {
                                         "description": "The unit of the financial data point.",
@@ -27188,7 +29170,8 @@
                                         "type": "number"
                                       },
                                       "xpath": {
-                                        "description": "The <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/XPath\">XPath 1.0</a> query that identifies the fact from within the XBRL source file.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true`."
+                                        "description": "The <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/XPath\">XPath 1.0</a> query that identifies the fact from within the XBRL source file.\nThis value is only returned for data points taken directly from XBRL when the `include_sources` query parameter is `true` and if source is SourceDirectReport.",
+                                        "type": "string"
                                       }
                                     },
                                     "required": [
@@ -27235,23 +29218,29 @@
                           "start_date": {
                             "description": "The start date of the period that these financials cover in YYYYMMDD format.",
                             "type": "string"
+                          },
+                          "tickers": {
+                            "description": "The list of ticker symbols for the company.",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "timeframe": {
+                            "description": "The timeframe of the report (quarterly, annual or ttm).",
+                            "type": "string"
                           }
                         },
                         "required": [
-                          "reporting_period",
                           "cik",
                           "company_name",
                           "financials",
-                          "fiscal_period",
-                          "fiscal_year",
-                          "filing_type",
-                          "source_filing_url",
-                          "source_filing_file_url"
+                          "timeframe",
+                          "fiscal_period"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
-                          "name": "ResolvedFinancials",
-                          "path": "github.com/polygon-io/go-app-api-financials/extract"
+                          "name": "FinancialReport"
                         }
                       },
                       "type": "array"
@@ -27513,6 +29502,17 @@
         "aggregates",
         "snapshot"
       ]
+    },
+    {
+      "description": "Indices API",
+      "name": "indices",
+      "x-polygon-sub-tags": [
+        "trades",
+        "last:trade",
+        "open-close",
+        "aggregates",
+        "snapshot"
+      ]
     }
   ],
   "x-polygon-order": {
@@ -27693,6 +29693,63 @@
         {
           "paths": [
             "/v3/reference/exchanges"
+          ]
+        }
+      ]
+    },
+    "indices": {
+      "market": [
+        {
+          "launchpad": "shared",
+          "paths": [
+            "/v2/aggs/ticker/{indicesTicker}/range/{multiplier}/{timespan}/{from}/{to}"
+          ]
+        },
+        {
+          "paths": [
+            "/v2/aggs/ticker/{indicesTicker}/prev"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/open-close/{indicesTicker}/{date}"
+          ]
+        },
+        {
+          "group": "Technical Indicators",
+          "paths": [
+            "/v1/indicators/sma/{indicesTicker}",
+            "/v1/indicators/ema/{indicesTicker}",
+            "/v1/indicators/macd/{indicesTicker}",
+            "/v1/indicators/rsi/{indicesTicker}"
+          ]
+        },
+        {
+          "group": "Snapshots",
+          "paths": [
+            "/v3/snapshot/indices"
+          ]
+        }
+      ],
+      "reference": [
+        {
+          "paths": [
+            "/v3/reference/tickers"
+          ]
+        },
+        {
+          "paths": [
+            "/v3/reference/tickers/types"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/upcoming"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/marketstatus/now"
           ]
         }
       ]
