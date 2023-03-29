@@ -4,7 +4,7 @@ from polygon.rest.models import (
 )
 
 # docs
-# https://polygon.io/docs/indices/get_v1_marketstatus_upcoming
+# https://polygon.io/docs/options/get_v1_marketstatus_upcoming
 # https://polygon-api-client.readthedocs.io/en/latest/Reference.html#get-market-holidays
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used

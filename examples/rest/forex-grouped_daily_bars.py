@@ -10,8 +10,8 @@ client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 grouped = client.get_grouped_daily_aggs(
     "2023-03-27",
-    locale='global',
-    market_type='fx',
+    locale="global",
+    market_type="fx",
 )
 
 # print(grouped)

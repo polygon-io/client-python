@@ -8,6 +8,6 @@ from polygon import RESTClient
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 tickers = []
-for t in client.list_tickers(market='fx', limit=1000):
+for t in client.list_tickers(market="fx", limit=1000):
     tickers.append(t)
 print(tickers)

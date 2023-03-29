@@ -11,7 +11,7 @@ from polygon.rest.models import (
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-snapshot = client.get_snapshot_all("forex") # all tickers
+snapshot = client.get_snapshot_all("forex")  # all tickers
 
 # print raw values
 print(snapshot)

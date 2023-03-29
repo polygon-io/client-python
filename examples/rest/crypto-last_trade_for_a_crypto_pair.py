@@ -7,9 +7,6 @@ from polygon import RESTClient
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-trade = client.get_last_crypto_trade(
-    "BTC",
-    "USD"
-)
+trade = client.get_last_crypto_trade("BTC", "USD")
 
 print(trade)
