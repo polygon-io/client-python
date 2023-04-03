@@ -30,5 +30,16 @@ for item in snapshot:
                 item.prev_day.close, float
             ):
 
-                percent_change = ((item.prev_day.close - item.prev_day.open)/item.prev_day.open*100)
-                print("{:<15}{:<15}{:<15}{:.2f} %".format(item.ticker,item.prev_day.open,item.prev_day.close,percent_change))
+                percent_change = (
+                    (item.prev_day.close - item.prev_day.open)
+                    / item.prev_day.open
+                    * 100
+                )
+                print(
+                    "{:<15}{:<15}{:<15}{:.2f} %".format(
+                        item.ticker,
+                        item.prev_day.open,
+                        item.prev_day.close,
+                        percent_change,
+                    )
+                )
