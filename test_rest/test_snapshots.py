@@ -9,9 +9,12 @@ from polygon.rest.models import (
     OrderBookQuote,
     UnderlyingAsset,
     LastQuoteOptionContractSnapshot,
+    LastTradeOptionContractSnapshot,
     Greeks,
     OptionDetails,
     DayOptionContractSnapshot,
+    IndicesSnapshot,
+    IndicesSession,
 )
 from base import BaseTest
 
@@ -199,6 +202,14 @@ class SnapshotsTest(BaseTest):
                 midpoint=29.075,
                 timeframe="REAL-TIME",
             ),
+            last_trade=LastTradeOptionContractSnapshot(
+                price=29.25,
+                sip_timestamp=1678718527714665700,
+                size=1,
+                conditions=[209],
+                exchange=309,
+                timeframe="REAL-TIME",
+            ),
             open_interest=8133,
             underlying_asset=UnderlyingAsset(
                 change_to_break_even=19.11439999999999,
@@ -251,6 +262,14 @@ class SnapshotsTest(BaseTest):
                     midpoint=29.075,
                     timeframe="REAL-TIME",
                 ),
+                last_trade=LastTradeOptionContractSnapshot(
+                    price=29.25,
+                    sip_timestamp=1678718527714665700,
+                    size=1,
+                    conditions=[209],
+                    exchange=309,
+                    timeframe="REAL-TIME",
+                ),
                 open_interest=8133,
                 underlying_asset=UnderlyingAsset(
                     change_to_break_even=19.11439999999999,
@@ -283,3 +302,36 @@ class SnapshotsTest(BaseTest):
             updated=1605295074162,
         )
         self.assertEqual(snapshots, expected)
+
+    def test_get_snapshot_indices(self):
+        ticker_any_of = ["SPX", "APx", "APy"]
+        summary_results = self.c.get_snapshot_indices(ticker_any_of)
+        expected = [
+            IndicesSnapshot(
+                value=3822.39,
+                name="S&P 500",
+                type="indices",
+                ticker="SPX",
+                market_status="closed",
+                session=IndicesSession(
+                    change=-50.01,
+                    change_percent=-1.45,
+                    close=3822.39,
+                    high=3834.41,
+                    low=38217.11,
+                    open=3827.38,
+                    previous_close=3812.19,
+                ),
+            ),
+            IndicesSnapshot(
+                ticker="APx",
+                message="Ticker not found.",
+                error="NOT_FOUND",
+            ),
+            IndicesSnapshot(
+                ticker="APy",
+                error="NOT_ENTITLED",
+                message="Not entitled to this ticker.",
+            ),
+        ]
+        self.assertEqual(summary_results, expected)

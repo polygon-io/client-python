@@ -6,6 +6,7 @@ from .models import (
     OptionContractSnapshot,
     SnapshotMarketType,
     SnapshotTickerFullBook,
+    IndicesSnapshot,
 )
 from urllib3 import HTTPResponse
 
@@ -182,5 +183,23 @@ class SnapshotClient(BaseClient):
             result_key="data",
             deserializer=SnapshotTickerFullBook.from_dict,
             raw=raw,
+            options=options,
+        )
+
+    def get_snapshot_indices(
+        self,
+        ticker_any_of: Optional[Union[str, List[str]]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[IndicesSnapshot], HTTPResponse]:
+        url = f"/v3/snapshot/indices"
+
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_snapshot_indices, locals()),
+            deserializer=IndicesSnapshot.from_dict,
+            raw=raw,
+            result_key="results",
             options=options,
         )

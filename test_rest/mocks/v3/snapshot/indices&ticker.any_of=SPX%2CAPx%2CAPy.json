@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "value": 3822.39,
+      "name": "S&P 500",
+      "ticker": "SPX",
+      "type": "indices",
+      "market_status": "closed",
+      "session": {
+        "change": -50.01,
+        "change_percent": -1.45,
+        "close": 3822.39,
+        "high": 3834.41,
+        "low": 38217.11,
+        "open": 3827.38,
+        "previous_close": 3812.19
+      }
+    },
+    {
+      "ticker": "APx",
+      "error": "NOT_FOUND",
+      "message": "Ticker not found."
+    },
+    {
+      "ticker": "APy",
+      "error": "NOT_ENTITLED",
+      "message": "Not entitled to this ticker."
+    }
+  ]
+}

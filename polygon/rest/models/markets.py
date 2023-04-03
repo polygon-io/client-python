@@ -26,6 +26,24 @@ class MarketExchanges:
 
 
 @modelclass
+class MarketIndices:
+    "Contains indices market status data."
+    s_and_p: Optional[str] = None
+    societe_generale: Optional[str] = None
+    msci: Optional[str] = None
+    ftse_russell: Optional[str] = None
+    mstar: Optional[str] = None
+    mstarc: Optional[str] = None
+    cccy: Optional[str] = None
+    nasdaq: Optional[str] = None
+    dow_jones: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return MarketIndices(**d)
+
+
+@modelclass
 class MarketHoliday:
     "MarketHoliday contains data for upcoming market holidays and their open/close times."
     close: Optional[str] = None
@@ -47,6 +65,7 @@ class MarketStatus:
     currencies: Optional[MarketCurrencies] = None
     early_hours: Optional[bool] = None
     exchanges: Optional[MarketExchanges] = None
+    indicesGroups: Optional[MarketIndices] = None
     market: Optional[str] = None
     server_time: Optional[str] = None
 
@@ -61,6 +80,9 @@ class MarketStatus:
             exchanges=None
             if "exchanges" not in d
             else MarketExchanges.from_dict(d["exchanges"]),
+            indicesGroups=None
+            if "indicesGroups" not in d
+            else MarketIndices.from_dict(d["indicesGroups"]),
             market=d.get("market", None),
             server_time=d.get("serverTime", None),
         )

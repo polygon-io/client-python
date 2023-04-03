@@ -41,6 +41,7 @@ class BaseClient:
 
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
+            "Accept-Encoding": "gzip",
             "User-Agent": f"Polygon.io PythonClient/{version}",
         }
 

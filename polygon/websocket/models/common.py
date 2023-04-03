@@ -15,6 +15,7 @@ class Market(Enum):
     Options = "options"
     Forex = "forex"
     Crypto = "crypto"
+    Indices = "indices"
 
 
 class EventType(Enum):
@@ -30,3 +31,4 @@ class EventType(Enum):
     Imbalances = "NOI"
     LimitUpLimitDown = "LULD"
     CryptoL2 = "XL2"
+    Value = "V"
