@@ -9,7 +9,7 @@ import pprint
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 grouped = client.get_grouped_daily_aggs(
-    "2023-02-07",
+    "2023-02-16",
 )
 
 # print(grouped)

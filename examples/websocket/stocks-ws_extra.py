@@ -1,10 +1,10 @@
 from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
+from polygon.websocket.models import WebSocketMessage, EquityTrade
 from typing import List
 from typing import Dict
+from datetime import datetime
 import time
 import threading
-
 
 # docs
 # https://polygon.io/docs/stocks/ws_stocks_am
@@ -16,18 +16,6 @@ import threading
 # program then prints the map, which gives a readout of the top stocks
 # traded in the past 5 seconds.
 
-# aggregates
-# client.subscribe("AM.*") # aggregates (per minute)
-# client.subscribe("A.*") # aggregates (per second)
-
-# trades
-# client.subscribe("T.*") # all trades
-# client.subscribe("T.TSLA", "T.UBER") # limited trades
-
-# quotes
-# client.subscribe("Q.*") # all quotes
-# client.subscribe("Q.TSLA", "Q.UBER") # limited quotes
-
 
 def run_websocket_client():
     # client = WebSocketClient("XXXXXX") # hardcoded api_key is used
@@ -38,32 +26,73 @@ def run_websocket_client():
 
 string_map: Dict[str, int]
 string_map = {}  #
+cash_traded = float(0)
 
 
 def handle_msg(msgs: List[WebSocketMessage]):
     for m in msgs:
         # print(m)
 
-        # verify this is a string
-        if isinstance(m, str):
+        if type(m) == EquityTrade:
 
-            if m.symbol in string_map:
-                string_map[m.symbol] += 1
-            else:
-                string_map[m.symbol] = 1
+            # verify this is a string
+            if isinstance(m.symbol, str):
 
+                if m.symbol in string_map:
+                    string_map[m.symbol] += 1
+                else:
+                    string_map[m.symbol] = 1
 
-# print messages
-# client.run(handle_msg)
+            # verify these are float
+            if isinstance(m.price, float) and isinstance(m.size, int):
+
+                global cash_traded
+                cash_traded += m.price * m.size
+                # print(cash_traded)
 
 
 def top_function():
+
+    # start timer
+    start_time = time.time()
+
     sorted_string_map = sorted(string_map.items(), key=lambda x: x[1], reverse=True)
     print("\033c", end="")  # ANSI escape sequence to clear the screen
 
-    for index, item in sorted_string_map[:10]:
+    for index, item in sorted_string_map[:25]:
         print("{:<15}{:<15}".format(index, item))
-    string_map.clear()  # clear map for next loop
+
+    # end timer
+    end_time = time.time()
+
+    # print stats
+    print()
+
+    # current time
+    current_time = datetime.now()
+    print(f"Time: {current_time}")
+
+    # how many tickers seen
+    ticker_count = len(sorted_string_map)
+    print(f"Tickers seen: {ticker_count}")
+
+    # how many trades seen
+    trade_count = 0
+    for index, item in sorted_string_map:
+        trade_count += item
+    print(f"Trades seen: {trade_count}")
+
+    # cash traded
+    global cash_traded
+    formatted_number = "{:,.2f}".format(cash_traded)
+    print("Roughly " + formatted_number + " cash changed hands")
+
+    # performance?
+    print(f"Time taken: {end_time - start_time:.6f} seconds")
+
+    # clear map and cash for next loop
+    string_map.clear()
+    cash_traded = 0
 
 
 def run_function_periodically():
