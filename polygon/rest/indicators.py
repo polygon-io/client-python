@@ -28,6 +28,7 @@ class IndicatorsClient(BaseClient):
         adjusted: Optional[bool] = None,
         expand_underlying: Optional[bool] = None,
         order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
@@ -50,6 +51,7 @@ class IndicatorsClient(BaseClient):
         :param expand_underlying: Whether to include the aggregates used to calculate this indicator in the response
         :param order: Sort the results by timestamp. asc will return results in ascending order (oldest at the top),
          desc will return results in descending order (newest at the top).The end of the aggregate time window
+        :param limit: Limit the number of results returned, default is 10 and max is 5000
         :param params: Any additional query params
         :param series_type: The price in the aggregate which will be used to calculate the simple moving average
          i.e. 'close' will result in using close prices to calculate the simple moving average
@@ -81,6 +83,7 @@ class IndicatorsClient(BaseClient):
         adjusted: Optional[bool] = None,
         expand_underlying: Optional[bool] = None,
         order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
@@ -103,6 +106,7 @@ class IndicatorsClient(BaseClient):
         :param expand_underlying: Whether to include the aggregates used to calculate this indicator in the response
         :param order: Sort the results by timestamp. asc will return results in ascending order (oldest at the top),
          desc will return results in descending order (newest at the top).The end of the aggregate time window
+        :param limit: Limit the number of results returned, default is 10 and max is 5000
         :param params: Any additional query params
         :param series_type: The price in the aggregate which will be used to calculate the simple moving average
          i.e. 'close' will result in using close prices to calculate the simple moving average
@@ -134,6 +138,7 @@ class IndicatorsClient(BaseClient):
         adjusted: Optional[bool] = None,
         expand_underlying: Optional[bool] = None,
         order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
@@ -156,6 +161,7 @@ class IndicatorsClient(BaseClient):
         :param expand_underlying: Whether to include the aggregates used to calculate this indicator in the response
         :param order: Sort the results by timestamp. asc will return results in ascending order (oldest at the top),
          desc will return results in descending order (newest at the top).The end of the aggregate time window
+        :param limit: Limit the number of results returned, default is 10 and max is 5000
         :param params: Any additional query params
         :param series_type: The price in the aggregate which will be used to calculate the simple moving average
          i.e. 'close' will result in using close prices to calculate the simple moving average
@@ -189,6 +195,7 @@ class IndicatorsClient(BaseClient):
         adjusted: Optional[bool] = None,
         expand_underlying: Optional[bool] = None,
         order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = None,
         params: Optional[Dict[str, Any]] = None,
         series_type: Optional[Union[str, SeriesType]] = None,
         raw: bool = False,
@@ -212,6 +219,7 @@ class IndicatorsClient(BaseClient):
         :param expand_underlying: Whether to include the aggregates used to calculate this indicator in the response
         :param order: Sort the results by timestamp. asc will return results in ascending order (oldest at the top),
          desc will return results in descending order (newest at the top).The end of the aggregate time window
+        :param limit: Limit the number of results returned, default is 10 and max is 5000
         :param params: Any additional query params
         :param series_type: The price in the aggregate which will be used to calculate the simple moving average
          i.e. 'close' will result in using close prices to calculate the simple moving average
