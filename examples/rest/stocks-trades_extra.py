@@ -21,7 +21,7 @@ for t in client.list_trades("DIS", "2023-02-07", limit=50000):
     if isinstance(t, Trade):
 
         # verify these are float
-        if isinstance(t.price, float) and isinstance(t.size, float):
+        if isinstance(t.price, float) and isinstance(t.size, int):
 
             money += t.price * t.size
 
