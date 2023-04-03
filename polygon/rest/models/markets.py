@@ -80,6 +80,9 @@ class MarketStatus:
             exchanges=None
             if "exchanges" not in d
             else MarketExchanges.from_dict(d["exchanges"]),
+            indicesGroups=None
+            if "indicesGroups" not in d
+            else MarketIndices.from_dict(d["indicesGroups"]),
             market=d.get("market", None),
             server_time=d.get("serverTime", None),
         )
