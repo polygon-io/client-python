@@ -13,6 +13,7 @@ for o in client.list_snapshot_options_chain(
     params={
         "expiration_date.gte": "2024-03-16",
         "strike_price.gte": 20,
-    }):
+    },
+):
     options_chain.append(o)
 print(options_chain)
