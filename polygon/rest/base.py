@@ -9,6 +9,8 @@ import pkg_resources  # part of setuptools
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
+from .trace_handler import is_trace
+from urllib.parse import urlencode
 from ..exceptions import AuthError, BadResponse, NoResultsError
 
 logger = get_logger("RESTClient")
@@ -77,12 +79,26 @@ class BaseClient:
     ) -> Any:
         option = options if options is not None else RequestOptionBuilder()
 
+        # Concatenate the headers
+        headers = self._concat_headers(option.headers)
+
+        # turns on --trace-api-calls
+        if is_trace():
+            # Construct the full URL
+            full_url = f"{self.BASE}{path}"
+            if params:
+                full_url += f"?{urlencode(params)}"
+
+            # Print the full URL and headers
+            print(f"Full URL: {full_url}")
+            print(f"Headers: {headers}")
+
         resp = self.client.request(
             "GET",
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers=self._concat_headers(option.headers),
+            headers=headers,
         )
 
         if resp.status != 200:
