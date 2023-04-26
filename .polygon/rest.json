@@ -12917,15 +12917,15 @@
             "content": {
               "application/json": {
                 "example": {
-                  "afterHours": "4,078.49",
-                  "close": "4,045.64",
-                  "from": "2023-01-09",
-                  "high": "4,078.49",
-                  "low": "4,051.82",
-                  "open": "4,055.15",
-                  "preMarket": "4,078.49",
+                  "afterHours": 31909.64,
+                  "close": 32245.14,
+                  "from": "2023-03-10",
+                  "high": 32988.26,
+                  "low": 32200.66,
+                  "open": 32922.75,
+                  "preMarket": 32338.23,
                   "status": "OK",
-                  "symbol": "SPX"
+                  "symbol": "I:DJI"
                 },
                 "schema": {
                   "properties": {
@@ -14235,7 +14235,7 @@
         "operationId": "SnapshotSummary",
         "parameters": [
           {
-            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.",
+            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
             "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD",
             "in": "query",
             "name": "ticker.any_of",
