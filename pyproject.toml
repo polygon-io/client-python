@@ -25,7 +25,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-urllib3 = "^1.26.9"
+urllib3 = ">=1.26.9,<3.0.0"
 websockets = "^10.3"
 certifi = "^2022.5.18"
 
