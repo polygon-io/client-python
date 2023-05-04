@@ -7,7 +7,8 @@ from polygon import RESTClient
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-snapshot = client.get_snapshot_indices("I:SPX")
+tickers = ["I:SPX", "I:DJI", "I:VIX"]
+snapshot = client.get_snapshot_indices(tickers)
 
 # print raw values
 print(snapshot)
