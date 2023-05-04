@@ -90,7 +90,7 @@ class TickersClient(BaseClient):
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
-        Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.
+        Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Indices, Forex, and Crypto.
 
         :param ticker: Specify a ticker symbol. Defaults to empty string which queries all tickers.
         :param ticker_lt: Ticker less than.
