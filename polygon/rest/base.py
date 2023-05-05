@@ -9,7 +9,6 @@ import pkg_resources  # part of setuptools
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
-from .trace_handler import is_trace
 from urllib.parse import urlencode
 from ..exceptions import AuthError, BadResponse, NoResultsError
 
@@ -31,6 +30,7 @@ class BaseClient:
         retries: int,
         base: str,
         verbose: bool,
+        trace: bool,
         custom_json: Optional[Any] = None,
     ):
         if api_key is None:
@@ -60,6 +60,7 @@ class BaseClient:
         self.retries = retries
         if verbose:
             logger.setLevel(logging.DEBUG)
+        self.trace = trace
         if custom_json:
             self.json = custom_json
         else:
@@ -83,15 +84,22 @@ class BaseClient:
         headers = self._concat_headers(option.headers)
 
         # turns on --trace-api-calls
-        if is_trace():
+        if self.trace:
             # Construct the full URL
             full_url = f"{self.BASE}{path}"
             if params:
                 full_url += f"?{urlencode(params)}"
 
+            # Create a copy of the headers for printing purposes
+            print_headers = headers.copy()
+
+            # Replace the API key with 'REDACTED' in the copied headers for printing
+            if "Authorization" in print_headers:
+                print_headers["Authorization"] = print_headers["Authorization"].replace(self.API_KEY, "REDACTED")
+
             # Print the full URL and headers
             print(f"Full URL: {full_url}")
-            print(f"Headers: {headers}")
+            print(f"Headers: {print_headers}")
 
         resp = self.client.request(
             "GET",
