@@ -80,24 +80,17 @@ class BaseClient:
     ) -> Any:
         option = options if options is not None else RequestOptionBuilder()
 
-        # Concatenate the headers
         headers = self._concat_headers(option.headers)
 
-        # turns on --trace-api-calls
         if self.trace:
-            # Construct the full URL
             full_url = f"{self.BASE}{path}"
             if params:
                 full_url += f"?{urlencode(params)}"
-
-            # Create a copy of the headers for printing purposes
             print_headers = headers.copy()
-
-            # Replace the API key with 'REDACTED' in the copied headers for printing
             if "Authorization" in print_headers:
-                print_headers["Authorization"] = print_headers["Authorization"].replace(self.API_KEY, "REDACTED")
-
-            # Print the full URL and headers
+                print_headers["Authorization"] = print_headers["Authorization"].replace(
+                    self.API_KEY, "REDACTED"
+                )
             print(f"Full URL: {full_url}")
             print(f"Headers: {print_headers}")
 
