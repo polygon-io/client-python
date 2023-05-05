@@ -91,8 +91,8 @@ class BaseClient:
                 print_headers["Authorization"] = print_headers["Authorization"].replace(
                     self.API_KEY, "REDACTED"
                 )
-            print(f"Full URL: {full_url}")
-            print(f"Headers: {print_headers}")
+            print(f"Request URL: {full_url}")
+            print(f"Request Headers: {print_headers}")
 
         resp = self.client.request(
             "GET",
@@ -101,6 +101,10 @@ class BaseClient:
             retries=self.retries,
             headers=headers,
         )
+
+        if self.trace:
+            resp_headers_dict = dict(resp.headers.items())
+            print(f"Response Headers: {resp_headers_dict}")
 
         if resp.status != 200:
             raise BadResponse(resp.data.decode("utf-8"))
