@@ -37,10 +37,10 @@ as it can help manage risk and inform investment strategies. It's always
 essential to do your own research or consult a financial advisor for 
 personalized advice when investing.
 """
-import pandas as pd # type: ignore
-import numpy as np # type: ignore
-import seaborn as sns # type: ignore
-import matplotlib.pyplot as plt # type: ignore
+import pandas as pd  # type: ignore
+import numpy as np  # type: ignore
+import seaborn as sns  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
 from polygon import RESTClient
 
 # Less likely to be correlated due to being in different sectors and are
