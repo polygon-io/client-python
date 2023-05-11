@@ -84,9 +84,6 @@ def fetch_stock_data(symbols, start_date, end_date):
             df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
             df.set_index("timestamp", inplace=True)
 
-            # Remove duplicate index values (dates)
-            df = df.loc[~df.index.duplicated(keep="first")]
-
             df.rename(columns={"close": symbol}, inplace=True)
             stocks.append(df)
     finally:
