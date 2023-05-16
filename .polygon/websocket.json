@@ -111,6 +111,20 @@
           ]
         }
       ]
+    },
+    "indices": {
+      "market": [
+        {
+          "paths": [
+            "/indices/AM"
+          ]
+        },
+        {
+          "paths": [
+            "/indices/V"
+          ]
+        }
+      ]
     }
   },
   "paths": {
@@ -312,6 +326,10 @@
                       "type": "integer",
                       "description": "The Timestamp in Unix MS."
                     },
+                    "q": {
+                      "type": "integer",
+                      "description": "The sequence number represents the sequence in which quote events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.\n"
+                    },
                     "z": {
                       "type": "integer",
                       "description": "The tape. (1 = NYSE, 2 = AMEX, 3 = Nasdaq)."
@@ -332,6 +350,7 @@
                     604
                   ],
                   "t": 1536036818784,
+                  "q": 50385480,
                   "z": 3
                 }
               }
@@ -1972,6 +1991,195 @@
           }
         ]
       }
+    },
+    "/indices/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time minute aggregates for a given index ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(I:[a-zA-Z0-9]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "description": "The event type."
+                        },
+                        "sym": {
+                          "type": "string",
+                          "description": "The symbol representing the given index."
+                        },
+                        "op": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Today's official opening value."
+                        },
+                        "o": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The opening index value for this aggregate window."
+                        },
+                        "c": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The closing index value for this aggregate window."
+                        },
+                        "h": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The highest index value for this aggregate window."
+                        },
+                        "l": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The lowest index value for this aggregate window."
+                        },
+                        "s": {
+                          "type": "integer",
+                          "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+                        },
+                        "e": {
+                          "type": "integer",
+                          "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "AM"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "I:SPX",
+                  "op": 3985.67,
+                  "o": 3985.67,
+                  "c": 3985.67,
+                  "h": 3985.67,
+                  "l": 3985.67,
+                  "s": 1678220675805,
+                  "e": 1678220675805
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "indices",
+          "description": "Indices data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/indices/V": {
+      "get": {
+        "summary": "Value",
+        "description": "Real-time value for a given index ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(I:[a-zA-Z0-9]+)$/"
+            },
+            "example": "I:SPX"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a value event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "V"
+                      ],
+                      "description": "The event type."
+                    },
+                    "val": {
+                      "description": "The value of the index."
+                    },
+                    "T": {
+                      "description": "The assigned ticker of the index."
+                    },
+                    "t": {
+                      "description": "The Timestamp in Unix MS."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "V",
+                  "val": 3988.5,
+                  "T": "I:SPX",
+                  "t": 1678220098130
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "value",
+          "description": "Index value data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "indices",
+          "description": "Indices data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -2320,6 +2528,10 @@
           "t": {
             "type": "integer",
             "description": "The Timestamp in Unix MS."
+          },
+          "q": {
+            "type": "integer",
+            "description": "The sequence number represents the sequence in which quote events happened.\nThese are increasing and unique per ticker symbol, but will not always be\nsequential (e.g., 1, 2, 6, 9, 10, 11). Values reset after each trading session/day.\n"
           },
           "z": {
             "type": "integer",
@@ -3340,6 +3552,131 @@
       "CryptoReceivedTimestamp": {
         "type": "integer",
         "description": "The timestamp that the tick was received by Polygon."
+      },
+      "IndicesBaseAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The symbol representing the given index."
+          },
+          "op": {
+            "type": "number",
+            "format": "double",
+            "description": "Today's official opening value."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The opening index value for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The closing index value for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The highest index value for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The lowest index value for this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+          }
+        }
+      },
+      "IndicesMinuteAggregateEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "description": "The event type."
+              },
+              "sym": {
+                "type": "string",
+                "description": "The symbol representing the given index."
+              },
+              "op": {
+                "type": "number",
+                "format": "double",
+                "description": "Today's official opening value."
+              },
+              "o": {
+                "type": "number",
+                "format": "double",
+                "description": "The opening index value for this aggregate window."
+              },
+              "c": {
+                "type": "number",
+                "format": "double",
+                "description": "The closing index value for this aggregate window."
+              },
+              "h": {
+                "type": "number",
+                "format": "double",
+                "description": "The highest index value for this aggregate window."
+              },
+              "l": {
+                "type": "number",
+                "format": "double",
+                "description": "The lowest index value for this aggregate window."
+              },
+              "s": {
+                "type": "integer",
+                "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+              },
+              "e": {
+                "type": "integer",
+                "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "AM"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "IndicesValueEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "V"
+            ],
+            "description": "The event type."
+          },
+          "val": {
+            "description": "The value of the index."
+          },
+          "T": {
+            "description": "The assigned ticker of the index."
+          },
+          "t": {
+            "description": "The Timestamp in Unix MS."
+          }
+        }
       }
     },
     "parameters": {
@@ -3397,6 +3734,28 @@
           "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
         },
         "example": "*"
+      },
+      "IndicesIndexParam": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^(I:[a-zA-Z0-9]+)$/"
+        },
+        "example": "*"
+      },
+      "IndicesIndexParamWithoutWildcard": {
+        "name": "ticker",
+        "in": "query",
+        "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "/^(I:[a-zA-Z0-9]+)$/"
+        },
+        "example": "I:SPX"
       }
     }
   }
