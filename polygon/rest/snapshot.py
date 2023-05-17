@@ -23,7 +23,7 @@ def get_locale(market_type: Union[SnapshotMarketType, str]):
 class SnapshotClient(BaseClient):
     def list_asset_snapshots(
         self,
-        market_type: Union[str, SnapshotMarketType] = None,
+        market_type: Optional[Union[str, SnapshotMarketType]] = None,
         tickers: Optional[Union[str, List[str]]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
