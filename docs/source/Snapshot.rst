@@ -4,7 +4,7 @@ Snapshot
 =================================
 
 =================================
-Get all snapshots
+Get snapshots for all asset types
 =================================
 
 - `Stocks snapshot all tickers`_
