@@ -18,7 +18,7 @@ from polygon.rest.models import (
     UniversalSnapshotLastQuote,
     UniversalSnapshotLastTrade,
     UniversalSnapshotUnderlyingAsset,
-    UniversalSnapshotSession
+    UniversalSnapshotSession,
 )
 
 
@@ -39,13 +39,13 @@ class SnapshotsTest(BaseTest):
                     expiration_date="2022-10-14",
                     shares_per_contract=100,
                     strike_price=5,
-                    underlying_ticker="NCLH"
+                    underlying_ticker="NCLH",
                 ),
                 greeks=Greeks(
                     delta=0.5520187372272933,
                     gamma=0.00706756515659829,
                     theta=-0.018532772783847958,
-                    vega=0.7274811132998142
+                    vega=0.7274811132998142,
                 ),
                 last_quote=UniversalSnapshotLastQuote(
                     ask=21.25,
@@ -54,17 +54,15 @@ class SnapshotsTest(BaseTest):
                     bid_size=172,
                     last_updated=1636573458756383500,
                     midpoint=21.075,
-                    timeframe="REAL-TIME"
+                    timeframe="REAL-TIME",
                 ),
                 last_trade=UniversalSnapshotLastTrade(
-                    conditions=[
-                        209
-                    ],
+                    conditions=[209],
                     exchange=316,
                     price=0.05,
                     sip_timestamp=1675280958783136800,
                     size=2,
-                    timeframe="REAL-TIME"
+                    timeframe="REAL-TIME",
                 ),
                 session=UniversalSnapshotSession(
                     change=-0.05,
@@ -78,15 +76,15 @@ class SnapshotsTest(BaseTest):
                     low=5.42,
                     open=6.7,
                     previous_close=6.71,
-                    volume=67
+                    volume=67,
                 ),
                 underlying_asset=UniversalSnapshotUnderlyingAsset(
                     change_to_break_even=23.123999999999995,
                     last_updated=1636573459862384600,
                     price=147.951,
                     ticker="AAPL",
-                    timeframe="REAL-TIME"
-                )
+                    timeframe="REAL-TIME",
+                ),
             ),
             UniversalSnapshot(
                 last_quote=UniversalSnapshotLastQuote(
@@ -95,18 +93,16 @@ class SnapshotsTest(BaseTest):
                     bid=20.9,
                     bid_size=172,
                     last_updated=1636573458756383500,
-                    timeframe="REAL-TIME"
+                    timeframe="REAL-TIME",
                 ),
                 last_trade=UniversalSnapshotLastTrade(
-                    conditions=[
-                        209
-                    ],
+                    conditions=[209],
                     exchange=316,
                     id="4064",
                     last_updated=1675280958783136800,
                     price=0.05,
                     size=2,
-                    timeframe="REAL-TIME"
+                    timeframe="REAL-TIME",
                 ),
                 market_status="closed",
                 name="Apple Inc.",
@@ -122,16 +118,14 @@ class SnapshotsTest(BaseTest):
                     low=21.35,
                     open=22.49,
                     previous_close=22.45,
-                    volume=37
+                    volume=37,
                 ),
                 ticker="AAPL",
-                type="stocks"
+                type="stocks",
             ),
             UniversalSnapshot(
-                error="NOT_FOUND",
-                message="Ticker not found.",
-                ticker="TSLAAPL"
-            )
+                error="NOT_FOUND", message="Ticker not found.", ticker="TSLAAPL"
+            ),
         ]
         snapshots = [s for s in self.c.list_asset_snapshots()]
         self.assertEqual(snapshots, expected)
