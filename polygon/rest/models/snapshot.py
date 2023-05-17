@@ -382,7 +382,7 @@ class UniversalSnapshot:
     greeks: Optional[Greeks] = None
     underlying_asset: Optional[UniversalSnapshotUnderlyingAsset] = None
     details: Optional[UniversalSnapshotDetails] = None
-    break_event_price: Optional[float] = None
+    break_even_price: Optional[float] = None
     implied_volatility: Optional[float] = None
     open_interest: Optional[float] = None
     market_status: Optional[str] = None
