@@ -26,6 +26,8 @@ def parse_single(data: Dict[str, Any]):
         return LimitUpLimitDown.from_dict(data)
     elif event_type == EventType.CryptoL2.value:
         return Level2Book.from_dict(data)
+    elif event_type == EventType.Value.value:
+        return IndexValue.from_dict(data)
     return None
 
 
