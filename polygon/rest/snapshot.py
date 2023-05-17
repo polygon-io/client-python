@@ -31,11 +31,11 @@ class SnapshotClient(BaseClient):
     ) -> Union[Iterator[TickerSnapshot], HTTPResponse]:
         """
         Get snapshots for assets of all types
-        - https://staging.polygon.io/docs/stocks/get_v3_snapshot
-        - https://staging.polygon.io/docs/options/get_v3_snapshot
-        - https://staging.polygon.io/docs/indices/get_v3_snapshot TODO include?
-        - https://staging.polygon.io/docs/forex/get_v3_snapshot TODO include?
-        - https://staging.polygon.io/docs/crypto/get_v3_snapshot TODO include?
+        - https://polygon.io/docs/stocks/get_v3_snapshot
+        - https://polygon.io/docs/options/get_v3_snapshot
+        - https://polygon.io/docs/indices/get_v3_snapshot
+        - https://polygon.io/docs/forex/get_v3_snapshot
+        - https://polygon.io/docs/crypto/get_v3_snapshot
 
         :param market_type: the type of the asset
         :param tickers: Comma-separated list of tickers, up to a maximum of 250. If no tickers are passed then all
