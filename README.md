@@ -43,7 +43,19 @@ Once installed run `poetry install` to install the required dependencies. This s
 
 #### Makefile
 
-Our Makefile has the common operations needed when developing on this repo. Running tests and linting can both be run through our Makefile. Just run `make help` to see the list of available commands. 
+Our Makefile has the common operations needed when developing on this repo. Running tests and linting can both be
+run through our Makefile. Just run `make help` to see the list of available commands.
+
+If you're using `pyenv` to manage active Python versions then you might need to launch a Poetry shell before running
+Make commands in order to actually use your chosen Python version. This is because Poetry uses the system Python version
+by default.
+
+```shell
+poetry shell # start shell
+poetry install # install deps
+
+make test # run your make commands
+```
 
 ## Release planning
 This client will attempt to follow the release cadence of our API.
