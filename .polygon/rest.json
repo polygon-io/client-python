@@ -26805,7 +26805,7 @@
     },
     "/v3/snapshot": {
       "get": {
-        "description": "Get snapshots of assets of all types",
+        "description": "Get snapshots for assets of all types",
         "operationId": "Snapshots",
         "parameters": [
           {
@@ -26832,7 +26832,9 @@
             "schema": {
               "enum": [
                 "stocks",
-                "options"
+                "options",
+                "crypto",
+                "fx"
               ],
               "type": "string"
             }
@@ -27673,7 +27675,9 @@
                             "description": "The asset class for this ticker.",
                             "enum": [
                               "stocks",
-                              "options"
+                              "options",
+                              "fx",
+                              "crypto"
                             ],
                             "type": "string"
                           }
@@ -27708,7 +27712,7 @@
             "description": "Snapshots for the ticker list"
           }
         },
-        "summary": "Asset Snapshots",
+        "summary": "Universal Snapshot",
         "x-polygon-entitlement-allowed-timeframes": [
           {
             "description": "Real Time Data",
