@@ -5,7 +5,8 @@ from ...modelclass import modelclass
 
 @modelclass
 class EquityAgg:
-    "EquityAgg contains aggregate data for either stock tickers or option contracts."
+    """EquityAgg contains aggregate data for either stock tickers, option contracts or index tickers."""
+
     event_type: Optional[Union[str, EventType]] = None
     symbol: Optional[str] = None
     volume: Optional[float] = None
@@ -307,6 +308,23 @@ class Level2Book:
         )
 
 
+@modelclass
+class IndexValue:
+    event_type: Optional[Union[str, EventType]] = None
+    value: Optional[float] = None
+    ticker: Optional[str] = None
+    timestamp: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return IndexValue(
+            d.get("ev", None),
+            d.get("val", None),
+            d.get("T", None),
+            d.get("t", None),
+        )
+
+
 WebSocketMessage = NewType(
     "WebSocketMessage",
     List[
@@ -321,6 +339,7 @@ WebSocketMessage = NewType(
             Imbalance,
             LimitUpLimitDown,
             Level2Book,
+            IndexValue,
         ]
     ],
 )

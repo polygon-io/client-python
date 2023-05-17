@@ -41,6 +41,7 @@ class BaseClient:
 
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
+            "Accept-Encoding": "gzip",
             "User-Agent": f"Polygon.io PythonClient/{version}",
         }
 
@@ -141,14 +142,12 @@ class BaseClient:
                 elif isinstance(val, datetime):
                     val = int(val.timestamp() * self.time_mult(datetime_res))
                 if val is not None:
-                    if (
-                        argname.endswith("_lt")
-                        or argname.endswith("_lte")
-                        or argname.endswith("_gt")
-                        or argname.endswith("_gte")
-                        or argname.endswith("_any_of")
-                    ):
-                        argname = ".".join(argname.split("_", 1))
+                    for ext in ["lt", "lte", "gt", "gte", "any_of"]:
+                        if argname.endswith(f"_{ext}"):
+                            # lop off ext, then rebuild argname with ext,
+                            # using ., and not _ (removesuffix would work)
+                            # but that is python 3.9+
+                            argname = argname[: -len(f"_{ext}")] + f".{ext}"
                     if argname.endswith("any_of"):
                         val = ",".join(val)
                     params[argname] = val

@@ -1,5 +1,5 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, List, Union
+from typing import Optional, Any, Dict, List, Union, Iterator
 from .models import Agg, GroupedDailyAgg, DailyOpenCloseAgg, PreviousCloseAgg, Sort
 from urllib3 import HTTPResponse
 from datetime import datetime, date
@@ -8,6 +8,51 @@ from .models.request import RequestOptionBuilder
 
 
 class AggsClient(BaseClient):
+    def list_aggs(
+        self,
+        ticker: str,
+        multiplier: int,
+        timespan: str,
+        # "from" is a keyword in python https://www.w3schools.com/python/python_ref_keywords.asp
+        from_: Union[str, int, datetime, date],
+        to: Union[str, int, datetime, date],
+        adjusted: Optional[bool] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        limit: Optional[int] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[Iterator[Agg], HTTPResponse]:
+        """
+        List aggregate bars for a ticker over a given date range in custom time window sizes.
+
+        :param ticker: The ticker symbol.
+        :param multiplier: The size of the timespan multiplier.
+        :param timespan: The size of the time window.
+        :param from_: The start of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
+        :param to: The end of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
+        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
+        :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
+        :param limit: Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        :return: Iterator of aggregates
+        """
+        if isinstance(from_, datetime):
+            from_ = int(from_.timestamp() * self.time_mult("millis"))
+
+        if isinstance(to, datetime):
+            to = int(to.timestamp() * self.time_mult("millis"))
+        url = f"/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_}/{to}"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_aggs, locals()),
+            raw=raw,
+            deserializer=Agg.from_dict,
+            options=options,
+        )
+
     def get_aggs(
         self,
         ticker: str,
@@ -62,6 +107,7 @@ class AggsClient(BaseClient):
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
+        locale: str = "us",
         market_type: str = "stocks",
         include_otc: bool = False,
         options: Optional[RequestOptionBuilder] = None,
@@ -75,7 +121,7 @@ class AggsClient(BaseClient):
         :param raw: Return raw object instead of results object
         :return: List of grouped daily aggregates
         """
-        url = f"/v2/aggs/grouped/locale/us/market/{market_type}/{date}"
+        url = f"/v2/aggs/grouped/locale/{locale}/market/{market_type}/{date}"
 
         return self._get(
             path=url,

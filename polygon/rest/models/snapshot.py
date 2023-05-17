@@ -32,6 +32,49 @@ class MinuteSnapshot:
 
 
 @modelclass
+class IndicesSession:
+    "Contains data for the most recent daily bar in an options contract."
+    change: Optional[float] = None
+    change_percent: Optional[float] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    previous_close: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return IndicesSession(**d)
+
+
+@modelclass
+class IndicesSnapshot:
+    value: Optional[float] = None
+    name: Optional[str] = None
+    type: Optional[str] = None
+    ticker: Optional[str] = None
+    market_status: Optional[str] = None
+    session: Optional[IndicesSession] = None
+    error: Optional[str] = None
+    message: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return IndicesSnapshot(
+            value=d.get("value", None),
+            name=d.get("name", None),
+            type=d.get("type", None),
+            ticker=d.get("ticker", None),
+            market_status=d.get("market_status", None),
+            session=None
+            if "session" not in d
+            else IndicesSession.from_dict(d["session"]),
+            error=d.get("error", None),
+            message=d.get("message", None),
+        )
+
+
+@modelclass
 class TickerSnapshot:
     "Contains the most up-to-date market data for all traded ticker symbols."
     day: Optional[Agg] = None
@@ -114,6 +157,21 @@ class LastQuoteOptionContractSnapshot:
 
 
 @modelclass
+class LastTradeOptionContractSnapshot:
+    "Contains data for the most recent trade for an options contract."
+    price: Optional[float] = None
+    sip_timestamp: Optional[int] = None
+    size: Optional[int] = None
+    conditions: Optional[List[int]] = None
+    exchange: Optional[int] = None
+    timeframe: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return LastTradeOptionContractSnapshot(**d)
+
+
+@modelclass
 class Greeks:
     "Contains data for the greeks in an options contract."
     delta: Optional[float] = None
@@ -132,6 +190,7 @@ class UnderlyingAsset:
     change_to_break_even: Optional[float] = None
     last_updated: Optional[int] = None
     price: Optional[float] = None
+    value: Optional[float] = None
     ticker: Optional[str] = None
     timeframe: Optional[str] = None
 
@@ -149,6 +208,7 @@ class OptionContractSnapshot:
     greeks: Optional[Greeks] = None
     implied_volatility: Optional[float] = None
     last_quote: Optional[LastQuoteOptionContractSnapshot] = None
+    last_trade: Optional[LastTradeOptionContractSnapshot] = None
     open_interest: Optional[float] = None
     underlying_asset: Optional[UnderlyingAsset] = None
 
@@ -167,6 +227,9 @@ class OptionContractSnapshot:
             last_quote=None
             if "last_quote" not in d
             else LastQuoteOptionContractSnapshot.from_dict(d["last_quote"]),
+            last_trade=None
+            if "last_trade" not in d
+            else LastTradeOptionContractSnapshot.from_dict(d["last_trade"]),
             open_interest=d.get("open_interest", None),
             underlying_asset=None
             if "underlying_asset" not in d
