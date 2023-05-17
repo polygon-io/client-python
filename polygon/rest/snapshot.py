@@ -6,6 +6,7 @@ from .models import (
     OptionContractSnapshot,
     SnapshotMarketType,
     SnapshotTickerFullBook,
+    UniversalSnapshot,
 )
 from urllib3 import HTTPResponse
 
@@ -20,6 +21,42 @@ def get_locale(market_type: Union[SnapshotMarketType, str]):
 
 
 class SnapshotClient(BaseClient):
+    def list_asset_snapshots(
+        self,
+        market_type: Union[str, SnapshotMarketType] = None,
+        tickers: Optional[Union[str, List[str]]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[Iterator[TickerSnapshot], HTTPResponse]:
+        """
+        Get snapshots for assets of all types
+        - https://staging.polygon.io/docs/stocks/get_v3_snapshot
+        - https://staging.polygon.io/docs/options/get_v3_snapshot
+        - https://staging.polygon.io/docs/indices/get_v3_snapshot TODO include?
+        - https://staging.polygon.io/docs/forex/get_v3_snapshot TODO include?
+        - https://staging.polygon.io/docs/crypto/get_v3_snapshot TODO include?
+
+        :param market_type: the type of the asset
+        :param tickers: Comma-separated list of tickers, up to a maximum of 250. If no tickers are passed then all
+        results will be returned in a paginated manner. Warning: The maximum number of characters allowed in a URL
+        are subject to your technology stack.
+        :param raw: returns the raw HTTP response if true, else the response is deserialized into a structured object
+        :param options: request options
+        :return: list of Snapshots
+        """
+        if type(tickers) is list:
+            tickers = ",".join(tickers)
+        url = f"/v3/snapshot"
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_asset_snapshots, locals()),
+            result_key="results",
+            deserializer=UniversalSnapshot.from_dict,
+            raw=raw,
+            options=options,
+        )
+
     def get_snapshot_all(
         self,
         market_type: Union[str, SnapshotMarketType],

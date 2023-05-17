@@ -214,3 +214,145 @@ class SnapshotTickerFullBook:
             spread=d.get("spread", None),
             updated=d.get("updated", None),
         )
+
+
+@modelclass
+class UniversalSnapshotSession:
+    """Contains data about the most recent trading session for an asset."""
+
+    price: Optional[float] = None
+    change: Optional[float] = None
+    change_percent: Optional[float] = None
+    early_trading_change: Optional[float] = None
+    early_trading_change_percent: Optional[float] = None
+    late_trading_change: Optional[float] = None
+    late_trading_change_percent: Optional[float] = None
+    open: Optional[float] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    previous_close: Optional[float] = None
+    volume: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UniversalSnapshotSession(**d)
+
+
+@modelclass
+class UniversalSnapshotLastQuote:
+    """Contains the most recent quote for an asset."""
+
+    ask: Optional[float] = None
+    ask_size: Optional[float] = None
+    bid: Optional[float] = None
+    bid_size: Optional[float] = None
+    midpoint: Optional[float] = None
+    exchange: Optional[int] = None
+    timeframe: Optional[str] = None
+    last_updated: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UniversalSnapshotLastQuote(**d)
+
+
+@modelclass
+class UniversalSnapshotLastTrade:
+    """Contains the most recent trade for an asset."""
+
+    id: Optional[int] = None
+    price: Optional[float] = None
+    size: Optional[int] = None
+    exchange: Optional[int] = None
+    conditions: Optional[List[int]] = None
+    timeframe: Optional[str] = None
+    last_updated: Optional[int] = None
+    participant_timestamp: Optional[int] = None
+    sip_timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UniversalSnapshotLastTrade(**d)
+
+
+@modelclass
+class UniversalSnapshotUnderlyingAsset:
+    """Contains data for the underlying stock in an options contract."""
+
+    ticker: Optional[str] = None
+    price: Optional[float] = None
+    value: Optional[float] = None
+    change_to_break_even: Optional[float] = None
+    timeframe: Optional[str] = None
+    last_updated: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UniversalSnapshotUnderlyingAsset(**d)
+
+
+@modelclass
+class UniversalSnapshotDetails:
+    """Contains details for an options contract."""
+
+    contract_type: Optional[str] = None
+    exercise_style: Optional[str] = None
+    expiration_date: Optional[str] = None
+    shares_per_contract: Optional[float] = None
+    strike_price: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UniversalSnapshotDetails(**d)
+
+
+@modelclass
+class UniversalSnapshot:
+    """Contains snapshot data for an asset."""
+
+    ticker: Optional[str] = None
+    type: Optional[str] = None
+    session: Optional[UniversalSnapshotSession] = None
+    last_quote: Optional[UniversalSnapshotLastQuote] = None
+    last_trade: Optional[UniversalSnapshotLastTrade] = None
+    greeks: Optional[Greeks] = None
+    underlying_asset: Optional[UniversalSnapshotUnderlyingAsset] = None
+    details: Optional[UniversalSnapshotDetails] = None
+    break_event_price: Optional[float] = None
+    implied_volatility: Optional[float] = None
+    open_interest: Optional[float] = None
+    market_status: Optional[str] = None
+    name: Optional[str] = None
+    error: Optional[str] = None
+    message: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return UniversalSnapshot(
+            ticker=d.get("ticker", None),
+            type=d.get("type", None),
+            session=None
+            if "session" not in d
+            else UniversalSnapshotSession.from_dict(d["session"]),
+            last_quote=None
+            if "last_quote" not in d
+            else UniversalSnapshotLastQuote.from_dict(d["last_quote"]),
+            last_trade=None
+            if "last_trade" not in d
+            else UniversalSnapshotLastTrade.from_dict(d["last_trade"]),
+            greeks=None if "greeks" not in d else Greeks.from_dict(d["greeks"]),
+            underlying_asset=None
+            if "underlying_asset" not in d
+            else UniversalSnapshotUnderlyingAsset.from_dict(d["underlying_asset"]),
+            details=None
+            if "details" not in d
+            else UniversalSnapshotDetails.from_dict(d["details"]),
+            break_even_price=d.get("break_even_price", None),
+            implied_volatility=d.get("implied_volatility", None),
+            open_interest=d.get("open_interest", None),
+            market_status=d.get("market_status", None),
+            name=d.get("name", None),
+            error=d.get("error", None),
+            message=d.get("message", None),
+        )

@@ -1,3 +1,4 @@
+from base import BaseTest
 from polygon.rest.models import (
     TickerSnapshot,
     OptionContractSnapshot,
@@ -12,11 +13,129 @@ from polygon.rest.models import (
     Greeks,
     OptionDetails,
     DayOptionContractSnapshot,
+    UniversalSnapshot,
+    UniversalSnapshotDetails,
+    UniversalSnapshotLastQuote,
+    UniversalSnapshotLastTrade,
+    UniversalSnapshotUnderlyingAsset,
+    UniversalSnapshotSession
 )
-from base import BaseTest
 
 
 class SnapshotsTest(BaseTest):
+    def test_list_asset_snapshots(self):
+        expected = [
+            UniversalSnapshot(
+                ticker="O:NCLH221014C00005000",
+                implied_volatility=0.3048997097864957,
+                type="options",
+                market_status="closed",
+                name="NCLH $5 Call",
+                open_interest=8921,
+                break_even_price=171.075,
+                details=UniversalSnapshotDetails(
+                    contract_type="call",
+                    exercise_style="american",
+                    expiration_date="2022-10-14",
+                    shares_per_contract=100,
+                    strike_price=5,
+                    underlying_ticker="NCLH"
+                ),
+                greeks=Greeks(
+                    delta=0.5520187372272933,
+                    gamma=0.00706756515659829,
+                    theta=-0.018532772783847958,
+                    vega=0.7274811132998142
+                ),
+                last_quote=UniversalSnapshotLastQuote(
+                    ask=21.25,
+                    ask_size=110,
+                    bid=20.9,
+                    bid_size=172,
+                    last_updated=1636573458756383500,
+                    midpoint=21.075,
+                    timeframe="REAL-TIME"
+                ),
+                last_trade=UniversalSnapshotLastTrade(
+                    conditions=[
+                        209
+                    ],
+                    exchange=316,
+                    price=0.05,
+                    sip_timestamp=1675280958783136800,
+                    size=2,
+                    timeframe="REAL-TIME"
+                ),
+                session=UniversalSnapshotSession(
+                    change=-0.05,
+                    change_percent=-1.07,
+                    close=6.65,
+                    early_trading_change=-0.01,
+                    early_trading_change_percent=-0.03,
+                    high=7.01,
+                    late_trading_change=-0.4,
+                    late_trading_change_percent=-0.02,
+                    low=5.42,
+                    open=6.7,
+                    previous_close=6.71,
+                    volume=67
+                ),
+                underlying_asset=UniversalSnapshotUnderlyingAsset(
+                    change_to_break_even=23.123999999999995,
+                    last_updated=1636573459862384600,
+                    price=147.951,
+                    ticker="AAPL",
+                    timeframe="REAL-TIME"
+                )
+            ),
+            UniversalSnapshot(
+                last_quote=UniversalSnapshotLastQuote(
+                    ask=21.25,
+                    ask_size=110,
+                    bid=20.9,
+                    bid_size=172,
+                    last_updated=1636573458756383500,
+                    timeframe="REAL-TIME"
+                ),
+                last_trade=UniversalSnapshotLastTrade(
+                    conditions=[
+                        209
+                    ],
+                    exchange=316,
+                    id="4064",
+                    last_updated=1675280958783136800,
+                    price=0.05,
+                    size=2,
+                    timeframe="REAL-TIME"
+                ),
+                market_status="closed",
+                name="Apple Inc.",
+                session=UniversalSnapshotSession(
+                    change=-1.05,
+                    change_percent=-4.67,
+                    close=21.4,
+                    early_trading_change=-0.39,
+                    early_trading_change_percent=-0.07,
+                    high=22.49,
+                    late_trading_change=1.2,
+                    late_trading_change_percent=3.92,
+                    low=21.35,
+                    open=22.49,
+                    previous_close=22.45,
+                    volume=37
+                ),
+                ticker="AAPL",
+                type="stocks"
+            ),
+            UniversalSnapshot(
+                error="NOT_FOUND",
+                message="Ticker not found.",
+                ticker="TSLAAPL"
+            )
+        ]
+        snapshots = [s for s in self.c.list_asset_snapshots()]
+        self.assertEqual(snapshots, expected)
+
     def test_get_snapshot_all(self):
         snapshots = self.c.get_snapshot_all("stocks")
         expected = [
