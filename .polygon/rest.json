@@ -150,7 +150,7 @@
       },
       "IndicesTickerPathParam": {
         "description": "The ticker symbol of Index.",
-        "example": "I:SPX",
+        "example": "I:DJI",
         "in": "path",
         "name": "indicesTicker",
         "required": true,
@@ -1041,7 +1041,7 @@
                 "type": "string"
               },
               "todaysChange": {
-                "description": "The value of the change the from previous day.",
+                "description": "The value of the change from the previous day.",
                 "format": "double",
                 "type": "number"
               },
@@ -1127,7 +1127,7 @@
                 "type": "array"
               },
               "spread": {
-                "description": "The difference between the best bid and the best ask price accross exchanges.",
+                "description": "The difference between the best bid and the best ask price across exchanges.",
                 "format": "double",
                 "type": "number"
               },
@@ -1344,7 +1344,7 @@
                   "type": "string"
                 },
                 "todaysChange": {
-                  "description": "The value of the change the from previous day.",
+                  "description": "The value of the change from the previous day.",
                   "format": "double",
                   "type": "number"
                 },
@@ -2479,7 +2479,7 @@
                 "type": "string"
               },
               "todaysChange": {
-                "description": "The value of the change the from previous day.",
+                "description": "The value of the change from the previous day.",
                 "format": "double",
                 "type": "number"
               },
@@ -2668,7 +2668,7 @@
                   "type": "string"
                 },
                 "todaysChange": {
-                  "description": "The value of the change the from previous day.",
+                  "description": "The value of the change from the previous day.",
                   "format": "double",
                   "type": "number"
                 },
@@ -3971,7 +3971,7 @@
                 "type": "string"
               },
               "todaysChange": {
-                "description": "The value of the change the from previous day.",
+                "description": "The value of the change from the previous day.",
                 "format": "double",
                 "type": "number"
               },
@@ -4226,7 +4226,7 @@
                   "type": "string"
                 },
                 "todaysChange": {
-                  "description": "The value of the change the from previous day.",
+                  "description": "The value of the change from the previous day.",
                   "format": "double",
                   "type": "number"
                 },
@@ -4865,7 +4865,7 @@
         "type": "integer"
       },
       "TodaysChange": {
-        "description": "The value of the change the from previous day.",
+        "description": "The value of the change from the previous day.",
         "format": "double",
         "type": "number"
       },
@@ -5589,7 +5589,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get exponential moving average (EMA) data.",
-            "example": "X:BTC-USD",
+            "example": "X:BTCUSD",
             "in": "path",
             "name": "cryptoTicker",
             "required": true,
@@ -6215,7 +6215,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get exponential moving average (EMA) data.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -6361,16 +6361,16 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/ema/I:SPX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
+                  "next_url": "https://api.polygon.io/v1/indicators/ema/I:DJI?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678726291180?limit=35&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678726291180?limit=35&sort=desc"
                     },
                     "values": [
                       {
-                        "timestamp": 1678165200000,
-                        "value": 4033.086001449211
+                        "timestamp": 1681966800000,
+                        "value": 33355.64416487007
                       }
                     ]
                   },
@@ -7162,7 +7162,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get MACD data.",
-            "example": "X:BTC-USD",
+            "example": "X:BTCUSD",
             "in": "path",
             "name": "cryptoTicker",
             "required": true,
@@ -7876,7 +7876,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get MACD data.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -8042,24 +8042,24 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/macd/I:SPX?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "next_url": "https://api.polygon.io/v1/indicators/macd/I:DJI?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678726155743?limit=129&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678726155743?limit=129&sort=desc"
                     },
                     "values": [
                       {
-                        "histogram": 10.897861258863195,
-                        "signal": -25.314340901212,
-                        "timestamp": 1678168800000,
-                        "value": -14.416479642348804
+                        "histogram": -48.29157370302107,
+                        "signal": 225.60959338746886,
+                        "timestamp": 1681966800000,
+                        "value": 177.3180196844478
                       },
                       {
-                        "histogram": 15.308854617117138,
-                        "signal": -28.038806215927796,
-                        "timestamp": 1678165200000,
-                        "value": -12.729951598810658
+                        "histogram": -37.55634001543484,
+                        "signal": 237.6824868132241,
+                        "timestamp": 1681963200000,
+                        "value": 200.12614679778926
                       }
                     ]
                   },
@@ -8955,7 +8955,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get relative strength index (RSI) data.",
-            "example": "X:BTC-USD",
+            "example": "X:BTCUSD",
             "in": "path",
             "name": "cryptoTicker",
             "required": true,
@@ -9581,7 +9581,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get relative strength index (RSI) data.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -9727,16 +9727,16 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/rsi/I:SPX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
+                  "next_url": "https://api.polygon.io/v1/indicators/rsi/I:DJI?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
                     },
                     "values": [
                       {
-                        "timestamp": 1678165200000,
-                        "value": 82.621486402274
+                        "timestamp": 1681966800000,
+                        "value": 55.89394103205648
                       }
                     ]
                   },
@@ -10528,7 +10528,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get simple moving average (SMA) data.",
-            "example": "X:BTC-USD",
+            "example": "X:BTCUSD",
             "in": "path",
             "name": "cryptoTicker",
             "required": true,
@@ -11198,7 +11198,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get simple moving average (SMA) data.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -11344,16 +11344,16 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/sma/I:SPX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
+                  "next_url": "https://api.polygon.io/v1/indicators/sma/I:DJI?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:SPX/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
                     },
                     "values": [
                       {
-                        "timestamp": 1678165200000,
-                        "value": 4035.913999999998
+                        "timestamp": 1681966800000,
+                        "value": 33236.3424
                       }
                     ]
                   },
@@ -12892,7 +12892,7 @@
         "parameters": [
           {
             "description": "The ticker symbol of Index.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -12917,15 +12917,15 @@
             "content": {
               "application/json": {
                 "example": {
-                  "afterHours": "4,078.49",
-                  "close": "4,045.64",
-                  "from": "2023-01-09",
-                  "high": "4,078.49",
-                  "low": "4,051.82",
-                  "open": "4,055.15",
-                  "preMarket": "4,078.49",
+                  "afterHours": 31909.64,
+                  "close": 32245.14,
+                  "from": "2023-03-10",
+                  "high": 32988.26,
+                  "low": 32200.66,
+                  "open": 32922.75,
+                  "preMarket": 32338.23,
                   "status": "OK",
-                  "symbol": "SPX"
+                  "symbol": "I:DJI"
                 },
                 "schema": {
                   "properties": {
@@ -14235,7 +14235,7 @@
         "operationId": "SnapshotSummary",
         "parameters": [
           {
-            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.",
+            "description": "Comma separated list of tickers. This API currently supports Stocks/Equities, Crypto, Options, and Forex. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_tickers\">the tickers endpoint</a> for more details on supported tickers. If no tickers are passed then no results will be returned.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
             "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD",
             "in": "query",
             "name": "ticker.any_of",
@@ -14454,17 +14454,17 @@
                           "session": {
                             "properties": {
                               "change": {
-                                "description": "The value of the price change for the contract from the previous trading day.",
+                                "description": "The value of the price change for the asset from the previous trading day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "change_percent": {
-                                "description": "The percent of the price change for the contract from the previous trading day.",
+                                "description": "The percent of the price change for the asset from the previous trading day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "close": {
-                                "description": "The closing price for the asset of the day.",
+                                "description": "The closing price of the asset for the day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -14479,7 +14479,7 @@
                                 "type": "number"
                               },
                               "high": {
-                                "description": "The highest price for the asset of the day.",
+                                "description": "The highest price of the asset for the day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -14494,22 +14494,22 @@
                                 "type": "number"
                               },
                               "low": {
-                                "description": "The lowest price for the asset of the day.",
+                                "description": "The lowest price of the asset for the day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "open": {
-                                "description": "The open price for the asset of the day.",
+                                "description": "The open price of the asset for the day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "previous_close": {
-                                "description": "The closing price for the asset of previous trading day.",
+                                "description": "The closing price of the asset for the previous trading day.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "volume": {
-                                "description": "The trading volume for the asset of the day.",
+                                "description": "The trading volume for the asset for the day.",
                                 "format": "double",
                                 "type": "number"
                               }
@@ -16089,7 +16089,7 @@
         "parameters": [
           {
             "description": "The ticker symbol of Index.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -16107,17 +16107,17 @@
                   "request_id": "b2170df985474b6d21a6eeccfb6bee67",
                   "results": [
                     {
-                      "T": "SPX",
-                      "c": "4,048.42",
-                      "h": "4,050.00",
-                      "l": "3,980.31",
-                      "o": "4,048.26",
-                      "t": 1678221584688
+                      "T": "I:DJI",
+                      "c": 33786.62,
+                      "h": 33786.62,
+                      "l": 33677.74,
+                      "o": 33677.74,
+                      "t": 1682020800000
                     }
                   ],
                   "resultsCount": 1,
                   "status": "OK",
-                  "ticker": "I:SPX"
+                  "ticker": "I:DJI"
                 },
                 "schema": {
                   "allOf": [
@@ -16234,7 +16234,7 @@
         "parameters": [
           {
             "description": "The ticker symbol of Index.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -16318,29 +16318,27 @@
             "content": {
               "application/json": {
                 "example": {
+                  "count": 2,
                   "queryCount": 2,
                   "request_id": "0cf72b6da685bcd386548ffe2895904a",
                   "results": [
                     {
-                      "c": "4,048.42",
-                      "h": "4,050.00",
-                      "l": "3,980.31",
-                      "n": 1,
-                      "o": "4,048.26",
-                      "t": 1678221133236
+                      "c": 32245.14,
+                      "h": 32988.26,
+                      "l": 32200.66,
+                      "o": 32922.75,
+                      "t": 1678341600000
                     },
                     {
-                      "c": "4,048.42",
-                      "h": "4,050.00",
-                      "l": "3,980.31",
-                      "n": 1,
-                      "o": "4,048.26",
-                      "t": 1678221139690
+                      "c": 31787.7,
+                      "h": 32422.100000000002,
+                      "l": 31786.06,
+                      "o": 32198.9,
+                      "t": 1678428000000
                     }
                   ],
-                  "resultsCount": 2,
                   "status": "OK",
-                  "ticker": "I:SPX"
+                  "ticker": "I:DJI"
                 },
                 "schema": {
                   "allOf": [
@@ -18532,7 +18530,7 @@
                                 "type": "string"
                               },
                               "todaysChange": {
-                                "description": "The value of the change the from previous day.",
+                                "description": "The value of the change from the previous day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -18881,7 +18879,7 @@
                               "type": "string"
                             },
                             "todaysChange": {
-                              "description": "The value of the change the from previous day.",
+                              "description": "The value of the change from the previous day.",
                               "format": "double",
                               "type": "number"
                             },
@@ -19071,7 +19069,7 @@
                               "type": "array"
                             },
                             "spread": {
-                              "description": "The difference between the best bid and the best ask price accross exchanges.",
+                              "description": "The difference between the best bid and the best ask price across exchanges.",
                               "format": "double",
                               "type": "number"
                             },
@@ -19402,7 +19400,7 @@
                                 "type": "string"
                               },
                               "todaysChange": {
-                                "description": "The value of the change the from previous day.",
+                                "description": "The value of the change from the previous day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -19706,7 +19704,7 @@
                                 "type": "string"
                               },
                               "todaysChange": {
-                                "description": "The value of the change the from previous day.",
+                                "description": "The value of the change from the previous day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -20020,7 +20018,7 @@
                               "type": "string"
                             },
                             "todaysChange": {
-                              "description": "The value of the change the from previous day.",
+                              "description": "The value of the change from the previous day.",
                               "format": "double",
                               "type": "number"
                             },
@@ -20325,7 +20323,7 @@
                                 "type": "string"
                               },
                               "todaysChange": {
-                                "description": "The value of the change the from previous day.",
+                                "description": "The value of the change from the previous day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -20735,7 +20733,7 @@
                                 "type": "string"
                               },
                               "todaysChange": {
-                                "description": "The value of the change the from previous day.",
+                                "description": "The value of the change from the previous day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -21129,7 +21127,7 @@
                               "type": "string"
                             },
                             "todaysChange": {
-                              "description": "The value of the change the from previous day.",
+                              "description": "The value of the change from the previous day.",
                               "format": "double",
                               "type": "number"
                             },
@@ -21522,7 +21520,7 @@
                                 "type": "string"
                               },
                               "todaysChange": {
-                                "description": "The value of the change the from previous day.",
+                                "description": "The value of the change from the previous day.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -26524,7 +26522,7 @@
         "operationId": "IndicesSnapshot",
         "parameters": [
           {
-            "description": "Comma separated list of tickers",
+            "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
             "example": "I:SPX",
             "in": "query",
             "name": "ticker.any_of",
@@ -26553,6 +26551,7 @@
                         "previous_close": 3812.19
                       },
                       "ticker": "I:SPX",
+                      "timeframe": "REAL-TIME",
                       "type": "indices",
                       "value": 3822.39
                     },
@@ -26884,7 +26883,7 @@
                         "expiration_date": "2022-01-21",
                         "shares_per_contract": 100,
                         "strike_price": 150,
-                        "ticker": "AAPL211022C000150000"
+                        "ticker": "O:AAPL211022C000150000"
                       },
                       "greeks": {
                         "delta": 1,

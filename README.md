@@ -3,7 +3,7 @@
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
-Python client for the [Polygon.io API](https://polygon.io).
+Welcome to the official Python client library for the [Polygon](https://polygon.io/) REST and WebSocket API. To get started, please see the [Getting Started](https://polygon.io/docs/stocks/getting-started) section in our documentation, view the [examples](./examples/) directory for code snippets, or the [blog post](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) with video tutorials to learn more.
 
 ## Install
 

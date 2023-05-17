@@ -8,6 +8,12 @@ from polygon import RESTClient
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 options_chain = []
-for o in client.list_snapshot_options_chain("HCP"):
+for o in client.list_snapshot_options_chain(
+    "HCP",
+    params={
+        "expiration_date.gte": "2024-03-16",
+        "strike_price.gte": 20,
+    },
+):
     options_chain.append(o)
 print(options_chain)
