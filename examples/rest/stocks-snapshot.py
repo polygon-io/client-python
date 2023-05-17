@@ -4,8 +4,8 @@ from polygon import RESTClient
 from polygon.rest.models import UniversalSnapshot, SnapshotMarketType
 
 # docs
-# https://polygon.io/docs/stocks/get_v2_snapshot_locale_us_markets_stocks_tickers
-# https://polygon-api-client.readthedocs.io/en/latest/Snapshot.html#get-all-snapshots
+# https://polygon.io/docs/stocks/get_v3_snapshot
+# https://polygon-api-client.readthedocs.io/en/latest/Snapshot.html
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
@@ -16,9 +16,7 @@ def print_snapshots(iterator: Iterator[UniversalSnapshot]):
 
     print(f"count: {len(snapshots)}")
 
-    # crunch some numbers
     for item in snapshots:
-        # verify this is a UniversalSnapshot
         if isinstance(item, UniversalSnapshot):
             item = cast(UniversalSnapshot, item)
             print(item)
