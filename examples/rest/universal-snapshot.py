@@ -19,9 +19,7 @@ def print_snapshots(iterator: Union[Iterator[UniversalSnapshot], HTTPResponse]):
     print(f"count: {len(snapshots)}")
 
     for item in snapshots:
-        if isinstance(item, UniversalSnapshot):
-            item = cast(UniversalSnapshot, item)
-            print(item)
+        print(item)
 
 
 # it = client.list_asset_snapshots() # all tickers for all assets types in lexicographical order
