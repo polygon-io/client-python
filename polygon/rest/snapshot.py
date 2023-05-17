@@ -33,7 +33,7 @@ class SnapshotClient(BaseClient):
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
-    ) -> Union[Iterator[TickerSnapshot], HTTPResponse]:
+    ) -> Union[Iterator[UniversalSnapshot], HTTPResponse]:
         """
         Get snapshots for assets of all types
         - https://polygon.io/docs/stocks/get_v3_snapshot
