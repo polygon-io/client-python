@@ -3,7 +3,10 @@ This script computes and visualizes the correlation matrix of a selected set of
 stocks using Polygon's API. This script is for educational purposes only and is
 not intended to provide investment advice. The examples provided analyze the 
 correlation between different stocks from diverse sectors, as well as within 
-specific sectors. 
+specific sectors.
+
+Blog: https://polygon.io/blog/finding-correlation-between-stocks/
+Video: https://www.youtube.com/watch?v=q0TgaUGWPFc
 
 Before running this script, there are 4 prerequisites:
 
