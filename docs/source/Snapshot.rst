@@ -12,7 +12,7 @@ Get snapshots for all asset types
 - `Forex snapshot all tickers`_
 - `Crypto snapshot all tickers`_
 
-.. automethod:: polygon.RESTClient.list_asset_snapshots
+.. automethod:: polygon.RESTClient.list_universal_snapshots
 
 =================================
 Get all snapshots

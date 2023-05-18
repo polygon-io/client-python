@@ -22,9 +22,9 @@ def print_snapshots(iterator: Union[Iterator[UniversalSnapshot], HTTPResponse]):
         print(item)
 
 
-# it = client.list_asset_snapshots() # all tickers for all assets types in lexicographical order
+# it = client.list_universal_snapshots() # all tickers for all assets types in lexicographical order
 
-it = client.list_asset_snapshots(
+it = client.list_universal_snapshots(
     ticker_any_of=[
         "AAPL",
         "O:AAPL230519C00055000",
@@ -35,12 +35,12 @@ it = client.list_asset_snapshots(
 )
 print_snapshots(it)
 
-it = client.list_asset_snapshots(
+it = client.list_universal_snapshots(
     market_type=SnapshotMarketType.STOCKS, ticker_gt="A", ticker_lt="AAPL"
 )
 print_snapshots(it)
 
-it = client.list_asset_snapshots(
+it = client.list_universal_snapshots(
     market_type=SnapshotMarketType.STOCKS, ticker_gte="AAPL", ticker_lte="ABB"
 )
 print_snapshots(it)

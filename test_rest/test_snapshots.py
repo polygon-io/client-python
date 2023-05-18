@@ -26,7 +26,7 @@ from polygon.rest.models import (
 
 
 class SnapshotsTest(BaseTest):
-    def test_list_asset_snapshots(self):
+    def test_list_universal_snapshots(self):
         expected = [
             UniversalSnapshot(
                 ticker="O:NCLH221014C00005000",
@@ -130,7 +130,7 @@ class SnapshotsTest(BaseTest):
                 error="NOT_FOUND", message="Ticker not found.", ticker="TSLAAPL"
             ),
         ]
-        snapshots = [s for s in self.c.list_asset_snapshots()]
+        snapshots = [s for s in self.c.list_universal_snapshots()]
         self.assertEqual(snapshots, expected)
 
     def test_get_snapshot_all(self):

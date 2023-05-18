@@ -22,7 +22,7 @@ def get_locale(market_type: Union[SnapshotMarketType, str]):
 
 
 class SnapshotClient(BaseClient):
-    def list_asset_snapshots(
+    def list_universal_snapshots(
         self,
         market_type: Optional[Union[str, SnapshotMarketType]] = None,
         ticker_any_of: Optional[List[str]] = None,
@@ -57,7 +57,7 @@ class SnapshotClient(BaseClient):
         url = f"/v3/snapshot"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_asset_snapshots, locals()),
+            params=self._get_params(self.list_universal_snapshots, locals()),
             result_key="results",
             deserializer=UniversalSnapshot.from_dict,
             raw=raw,
