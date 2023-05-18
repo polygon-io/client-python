@@ -317,10 +317,12 @@ class IndexValue:
 
     @staticmethod
     def from_dict(d):
-        d.get("ev", None),
-        d.get("val", None),
-        d.get("T", None),
-        d.get("t", None)
+        return IndexValue(
+            d.get("ev", None),
+            d.get("val", None),
+            d.get("T", None),
+            d.get("t", None),
+        )
 
 
 WebSocketMessage = NewType(
