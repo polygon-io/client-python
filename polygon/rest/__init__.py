@@ -17,7 +17,6 @@ from .vX import VXClient
 from typing import Optional, Any
 import os
 
-
 BASE = "https://api.polygon.io"
 ENV_KEY = "POLYGON_API_KEY"
 
@@ -46,6 +45,7 @@ class RESTClient(
         retries: int = 3,
         base: str = BASE,
         verbose: bool = False,
+        trace: bool = False,
         custom_json: Optional[Any] = None,
     ):
         super().__init__(
@@ -56,6 +56,7 @@ class RESTClient(
             retries=retries,
             base=base,
             verbose=verbose,
+            trace=trace,
             custom_json=custom_json,
         )
         self.vx = VXClient(
@@ -66,5 +67,6 @@ class RESTClient(
             retries=retries,
             base=base,
             verbose=verbose,
+            trace=trace,
             custom_json=custom_json,
         )
