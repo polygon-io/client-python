@@ -6,6 +6,7 @@ from .models import (
     OptionContractSnapshot,
     SnapshotMarketType,
     SnapshotTickerFullBook,
+    UniversalSnapshot,
     IndicesSnapshot,
 )
 from urllib3 import HTTPResponse
@@ -21,6 +22,48 @@ def get_locale(market_type: Union[SnapshotMarketType, str]):
 
 
 class SnapshotClient(BaseClient):
+    def list_universal_snapshots(
+        self,
+        market_type: Optional[Union[str, SnapshotMarketType]] = None,
+        ticker_any_of: Optional[List[str]] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[Iterator[UniversalSnapshot], HTTPResponse]:
+        """
+        Get snapshots for assets of all types
+        - https://polygon.io/docs/stocks/get_v3_snapshot
+        - https://polygon.io/docs/options/get_v3_snapshot
+        - https://polygon.io/docs/indices/get_v3_snapshot
+        - https://polygon.io/docs/forex/get_v3_snapshot
+        - https://polygon.io/docs/crypto/get_v3_snapshot
+
+        :param market_type: the type of the asset
+        :param ticker_any_of: Comma-separated list of tickers, up to a maximum of 250. If no tickers are passed then all
+        results will be returned in a paginated manner. Warning: The maximum number of characters allowed in a URL
+        are subject to your technology stack.
+        :param ticker_lt search for tickers less than
+        :param ticker_lte search for tickers less than or equal to
+        :param ticker_gt search for tickers greater than
+        :param ticker_gte search for tickers greater than or equal to
+        :param raw: returns the raw HTTP response if true, else the response is deserialized into a structured object
+        :param options: request options
+        :return: list of Snapshots
+        """
+        url = f"/v3/snapshot"
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_universal_snapshots, locals()),
+            result_key="results",
+            deserializer=UniversalSnapshot.from_dict,
+            raw=raw,
+            options=options,
+        )
+
     def get_snapshot_all(
         self,
         market_type: Union[str, SnapshotMarketType],

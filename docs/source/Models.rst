@@ -4,6 +4,36 @@ Models
 ==============================================================
 
 ==============================================================
+Universal Snapshot
+==============================================================
+.. autoclass:: polygon.rest.models.UniversalSnapshot
+
+==============================================================
+Universal Snapshot Session
+==============================================================
+.. autoclass:: polygon.rest.models.UniversalSnapshotSession
+
+==============================================================
+Universal Snapshot Last Quote
+==============================================================
+.. autoclass:: polygon.rest.models.UniversalSnapshotLastQuote
+
+==============================================================
+Universal Snapshot Last Trade
+==============================================================
+.. autoclass:: polygon.rest.models.UniversalSnapshotLastTrade
+
+==============================================================
+Universal Snapshot Details
+==============================================================
+.. autoclass:: polygon.rest.models.UniversalSnapshotDetails
+
+==============================================================
+Universal Snapshot Underlying Asset
+==============================================================
+.. autoclass:: polygon.rest.models.UniversalSnapshotUnderlyingAsset
+
+==============================================================
 Agg
 ==============================================================
 .. autoclass:: polygon.rest.models.Agg
