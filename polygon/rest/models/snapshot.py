@@ -16,6 +16,8 @@ class MinuteSnapshot:
     volume: Optional[float] = None
     vwap: Optional[float] = None
     otc: Optional[bool] = None
+    timestamp: Optional[int] = None
+    transactions: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -28,6 +30,8 @@ class MinuteSnapshot:
             d.get("v", None),
             d.get("vw", None),
             d.get("otc", None),
+            d.get("t", None),
+            d.get("n", None),
         )
 
 

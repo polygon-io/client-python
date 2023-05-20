@@ -186,6 +186,8 @@ class SnapshotsTest(BaseTest):
                     close=20.506,
                     volume=5000,
                     vwap=20.5105,
+                    timestamp=1684428600000,
+                    transactions=5,
                 ),
                 prev_day=Agg(
                     open=20.79,
@@ -257,6 +259,8 @@ class SnapshotsTest(BaseTest):
                 close=160.3,
                 volume=197226,
                 vwap=160.5259,
+                timestamp=1684428600000,
+                transactions=5,
             ),
             prev_day=Agg(
                 open=159.25,
