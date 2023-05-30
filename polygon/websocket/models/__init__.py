@@ -28,6 +28,8 @@ def parse_single(data: Dict[str, Any]):
         return Level2Book.from_dict(data)
     elif event_type == EventType.Value.value:
         return IndexValue.from_dict(data)
+    elif event_type == EventType.LaunchpadValue.value:
+        return LaunchpadValue.from_dict(data)
     return None
 
 
