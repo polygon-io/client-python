@@ -330,7 +330,7 @@ class LaunchpadValue:
     event_type: Optional[Union[str, EventType]] = None
     value: Optional[float] = None
     symbol: Optional[str] = None
-    timestamp: Optional[str] = None
+    timestamp: Optional[int] = None
 
     @staticmethod
     def from_dict(d):
@@ -338,7 +338,7 @@ class LaunchpadValue:
             event_type=d.get("ev", None),
             value=d.get("val", None),
             symbol=d.get("sym", None),
-            timestamp=d.get("s", None),
+            timestamp=d.get("t", None),
         )
 
 
