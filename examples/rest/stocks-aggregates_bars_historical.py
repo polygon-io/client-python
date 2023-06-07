@@ -1,8 +1,8 @@
-# This Python script uses the Polygon.io API to fetch and aggregate monthly
-# stock market data for a specified ticker symbol from the start of 2020 to
-# June 8, 2023. This provides you with a method to pull a large set of
-# aggregate market data for a specific ticker symbol over an extended period
-# of time, storing all data in a single list for later use or analysis.
+# This script uses the Polygon.io API to fetch stock market data for a
+# specified ticker symbol from the start of 2020 to June 8, 2023. This
+# provides you with an example method to pull a large set of aggregate
+# market data for a specific ticker symbol over an extended period
+# of time, storing all data in a single list for analysis.
 #
 # Just set your API key, the start_year, and final_end_date.
 #
