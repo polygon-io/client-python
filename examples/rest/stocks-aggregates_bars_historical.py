@@ -8,7 +8,7 @@
 #
 from polygon import RESTClient
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta  # type: ignore
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
