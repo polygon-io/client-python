@@ -22,6 +22,7 @@ aggs = client.get_aggs(
     "day",
     "2023-01-30",
     "2023-02-03",
+    limit=50000,
 )
 
 print(aggs)
