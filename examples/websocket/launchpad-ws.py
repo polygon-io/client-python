@@ -3,9 +3,8 @@ from polygon.websocket.models import WebSocketMessage, Feed, Market
 from typing import List
 
 client = WebSocketClient(
-    api_key="<POLYGON_API_KEY>",
-    feed=Feed.Launchpad,
-    market=Market.Stocks)
+    api_key="<POLYGON_API_KEY>", feed=Feed.Launchpad, market=Market.Stocks
+)
 
 client.subscribe("AM.*")  # all aggregates
 # client.subscribe("LV.*")  # all aggregates
