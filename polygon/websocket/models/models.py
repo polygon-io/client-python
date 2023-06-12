@@ -325,6 +325,23 @@ class IndexValue:
         )
 
 
+@modelclass
+class LaunchpadValue:
+    event_type: Optional[Union[str, EventType]] = None
+    value: Optional[float] = None
+    symbol: Optional[str] = None
+    timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return LaunchpadValue(
+            event_type=d.get("ev", None),
+            value=d.get("val", None),
+            symbol=d.get("sym", None),
+            timestamp=d.get("t", None),
+        )
+
+
 WebSocketMessage = NewType(
     "WebSocketMessage",
     List[
@@ -340,6 +357,7 @@ WebSocketMessage = NewType(
             LimitUpLimitDown,
             Level2Book,
             IndexValue,
+            LaunchpadValue,
         ]
     ],
 )

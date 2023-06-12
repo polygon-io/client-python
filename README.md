@@ -83,7 +83,7 @@ ws.run(handle_msg=handle_msg)
 ```
 Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
 
-## Launchpad
+## Launchpad REST API Client
 Users of the Launchpad product will need to pass in certain headers in order to make API requests using the RequestOptionBuilder.
 Example can be found [here](./examples/launchpad).
 
@@ -113,6 +113,23 @@ res = c.get_aggs("AAPL", 1, "day", "2022-04-04", "2022-04-04", options=options)
 ```
 Checkout Launchpad readme for more details on RequestOptionBuilder [here](./examples/launchpad)
 
+
+## Launchpad WebSocket Client
+
+```python
+from polygon import WebSocketClient
+from polygon.websocket.models import WebSocketMessage
+from polygon.websocket.models.common import Feed, Market
+from typing import List
+
+ws = WebSocketClient(api_key="API_KEY",feed=Feed.Launchpad,market=Market.Stocks, subscriptions=["AM.AAPL"])
+
+def handle_msg(msg: List[WebSocketMessage]):
+    for m in msg:
+        print(m)
+
+ws.run(handle_msg=handle_msg)
+```
 
 ## Contributing
 
