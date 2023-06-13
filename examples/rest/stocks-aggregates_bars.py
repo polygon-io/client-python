@@ -14,7 +14,7 @@ from polygon import RESTClient
 # to the shell startup script (e.g. .bashrc or .bash_profile.
 #
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient(trace=True)  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 aggs = []
 for a in client.list_aggs(
