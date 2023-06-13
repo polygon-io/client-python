@@ -4,6 +4,17 @@ Aggs
 ==========
 
 ===========
+List aggs
+===========
+
+- `Stocks aggs`_
+- `Options aggs`_
+- `Forex aggs`_
+- `Crypto aggs`_
+
+.. automethod:: polygon.RESTClient.list_aggs
+
+===========
 Get aggs
 ===========
 
