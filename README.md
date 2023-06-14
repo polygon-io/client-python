@@ -31,9 +31,11 @@ Request data using client methods.
 ticker = "AAPL"
 
 # List Aggregates (Bars)
-bars = client.get_aggs(ticker=ticker, multiplier=1, timespan="day", from_="2023-01-09", to="2023-01-10")
-for bar in bars:
-    print(bar)
+aggs = []
+for a in client.list_aggs(ticker=ticker, multiplier=1, timespan="minute", from_="2023-01-01", to="2023-06-13", limit=50000):
+    aggs.append(a)
+
+print(aggs)
 
 # Get Last Trade
 trade = client.get_last_trade(ticker=ticker)
