@@ -16,18 +16,21 @@ import io
 
 # docs
 # https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to
-# https://polygon-api-client.readthedocs.io/en/latest/Aggs.html#polygon.RESTClient.get_aggs
+# https://polygon-api-client.readthedocs.io/en/latest/Aggs.html#polygon.RESTClient.list_aggs
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-aggs = client.get_aggs(
+aggs = []
+for a in client.list_aggs(
     "AAPL",
     1,
     "hour",
     "2023-01-30",
     "2023-02-03",
-)
+    limit=50000,
+):
+    aggs.append(a)
 
 print(aggs)
 
