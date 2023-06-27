@@ -7,8 +7,9 @@ Welcome to the official Python client library for the [Polygon](https://polygon.
 
 ## Install
 
+Please use pip to install or update to the latest stable version.
 ```
-pip install polygon-api-client
+pip install -U polygon-api-client
 ```
 Requires Python >= 3.8.
 
