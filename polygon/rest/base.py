@@ -151,7 +151,10 @@ class BaseClient:
         # https://docs.python.org/3.8/library/inspect.html#inspect.Signature
         for argname, v in inspect.signature(fn).parameters.items():
             # https://docs.python.org/3.8/library/inspect.html#inspect.Parameter
-            if argname in ["params", "raw"]:
+
+            # do not excluding params which can contain _gte/_lte/etc modifiers
+            # that need to be converted to .gte/.lte/etc
+            if argname in ["raw"]:
                 continue
             if v.default != v.empty:
                 # timestamp_lt -> timestamp.lt
