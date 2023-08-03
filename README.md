@@ -56,8 +56,35 @@ quotes = client.list_quotes(ticker=ticker, timestamp="2022-01-04")
 for quote in quotes:
     print(quote)
 ```
-Note: For parameter argument examples check out our docs. All required arguments are annotated with red asterisks " * " and argument examples are set.
-Check out an example for Aggregates(client.get_aggs) [here](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to)
+
+### Additional Filter Parameters
+
+Many of the APIs in this client library support the use of additional filter parameters to refine your queries. Please refer to the specific API documentation for details on which filter parameters are supported for each endpoint. These filters can be applied using the following operators:
+
+- `.gt`: greater than
+- `.gte`: greater than or equal to
+- `.lt`: less than
+- `.lte`: less than or equal to
+
+Here's a sample code snippet that demonstrates how to use these filter parameters when requesting an Options Chain using the `list_snapshot_options_chain` method. In this example, the filter parameters ensure that the returned options chain data will only include options with an expiration date that is greater than or equal to "2024-03-16" and a strike price that falls between 29 and 30 (inclusive).
+
+```python
+options_chain = []
+for o in client.list_snapshot_options_chain(
+    "HCP",
+    params={
+        "expiration_date.gte": "2024-03-16",
+        "strike_price.gte": 29,
+        "strike_price.lte": 30,
+    },
+):
+    options_chain.append(o)
+
+print(options_chain)
+print(len(options_chain))
+```
+
+Also, please refer to the API documentation to get a full understanding of how the API works and the supported arguments. All required arguments are annotated with red asterisks " * " and argument examples are set.
 
 ## WebSocket Client 
 
