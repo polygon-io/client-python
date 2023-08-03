@@ -8,6 +8,7 @@ class Feed(Enum):
     PolyFeed = "polyfeed.polygon.io"
     PolyFeedPlus = "polyfeedplus.polygon.io"
     StarterFeed = "starterfeed.polygon.io"
+    Launchpad = "launchpad.polygon.io"
 
 
 class Market(Enum):
@@ -22,7 +23,9 @@ class EventType(Enum):
     EquityAgg = "A"
     EquityAggMin = "AM"
     CryptoAgg = "XA"
+    CryptoAggSec = "XAS"
     ForexAgg = "CA"
+    ForexAggSec = "CAS"
     EquityTrade = "T"
     CryptoTrade = "XT"
     EquityQuote = "Q"
@@ -32,3 +35,8 @@ class EventType(Enum):
     LimitUpLimitDown = "LULD"
     CryptoL2 = "XL2"
     Value = "V"
+    """Launchpad* EventTypes are only available to Launchpad users. These values are the same across all asset classes (
+    stocks, options, forex, crypto).
+    """
+    LaunchpadValue = "LV"
+    LaunchpadAggMin = "AM"
