@@ -15,8 +15,6 @@ holidays = client.get_market_holidays()
 
 # print date, name, and exchange
 for holiday in holidays:
-
     # verify this is an exchange
     if isinstance(holiday, MarketHoliday):
-
         print("{:<15}{:<15} ({})".format(holiday.date, holiday.name, holiday.exchange))

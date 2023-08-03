@@ -87,13 +87,10 @@ data = []
 
 # writing data
 for agg in aggs:
-
     # verify this is an agg
     if isinstance(agg, Agg):
-
         # verify this is an int
         if isinstance(agg.timestamp, int):
-
             new_record = {
                 "date": agg.timestamp,
                 "open": agg.open,
