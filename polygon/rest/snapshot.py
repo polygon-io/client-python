@@ -8,6 +8,8 @@ from .models import (
     SnapshotTickerFullBook,
     UniversalSnapshot,
     IndicesSnapshot,
+    Sort,
+    Order,
 )
 from urllib3 import HTTPResponse
 
@@ -24,8 +26,11 @@ def get_locale(market_type: Union[SnapshotMarketType, str]):
 class SnapshotClient(BaseClient):
     def list_universal_snapshots(
         self,
-        market_type: Optional[Union[str, SnapshotMarketType]] = None,
+        type: Optional[Union[str, SnapshotMarketType]] = None,
         ticker_any_of: Optional[List[str]] = None,
+        order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = 10,
+        sort: Optional[Union[str, Sort]] = None,
         ticker_lt: Optional[str] = None,
         ticker_lte: Optional[str] = None,
         ticker_gt: Optional[str] = None,
@@ -42,8 +47,11 @@ class SnapshotClient(BaseClient):
         - https://polygon.io/docs/forex/get_v3_snapshot
         - https://polygon.io/docs/crypto/get_v3_snapshot
 
-        :param market_type: the type of the asset
+        :param type: the type of the asset
         :param ticker_any_of: Comma-separated list of tickers, up to a maximum of 250. If no tickers are passed then all
+        :param order: The order to sort the results on. Default is asc (ascending).
+        :param limit: Limit the size of the response per-page, default is 10 and max is 250.
+        :param sort: The field to sort the results on. Default is ticker. If the search query parameter is present, sort is ignored and results are ordered by relevance.
         results will be returned in a paginated manner. Warning: The maximum number of characters allowed in a URL
         are subject to your technology stack.
         :param ticker_lt search for tickers less than
