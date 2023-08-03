@@ -213,7 +213,7 @@ class TickerChangeEvent:
 @modelclass
 class TickerChangeResults:
     name: str
-    figi: str
+    composite_figi: str
     cik: str
     events: Optional[List[TickerChangeEvent]] = None
 
