@@ -116,11 +116,7 @@ class BaseClient:
 
         if result_key:
             if result_key not in obj:
-                raise NoResultsError(
-                    f'Expected key "{result_key}" in response {obj}.'
-                    + "Make sure you have sufficient permissions and your request parameters are valid."
-                    + f"This is the url that returned no results: {resp.geturl()}"
-                )
+                return []
             obj = obj[result_key]
 
         if deserializer:
@@ -198,6 +194,8 @@ class BaseClient:
                 options=options,
             )
             decoded = self._decode(resp)
+            if result_key not in decoded:
+                return []
             for t in decoded[result_key]:
                 yield deserializer(t)
             if "next_url" in decoded:

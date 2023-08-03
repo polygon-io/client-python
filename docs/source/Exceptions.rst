@@ -17,10 +17,3 @@ BadResponse
     :members:
     :undoc-members:  
 
-==============================================================
-NoResultsError
-==============================================================
-.. autoclass:: polygon.exceptions.NoResultsError
-    :members:
-    :undoc-members:  
-
