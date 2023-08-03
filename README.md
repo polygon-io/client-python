@@ -3,12 +3,13 @@
 
 # Polygon Python Client - WebSocket & RESTful APIs
 
-Python client for the [Polygon.io API](https://polygon.io).
+Welcome to the official Python client library for the [Polygon](https://polygon.io/) REST and WebSocket API. To get started, please see the [Getting Started](https://polygon.io/docs/stocks/getting-started) section in our documentation, view the [examples](./examples/) directory for code snippets, or the [blog post](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) with video tutorials to learn more.
 
 ## Install
 
+Please use pip to install or update to the latest stable version.
 ```
-pip install polygon-api-client
+pip install -U polygon-api-client
 ```
 Requires Python >= 3.8.
 
@@ -31,9 +32,11 @@ Request data using client methods.
 ticker = "AAPL"
 
 # List Aggregates (Bars)
-bars = client.get_aggs(ticker=ticker, multiplier=1, timespan="day", from_="2023-01-09", to="2023-01-10")
-for bar in bars:
-    print(bar)
+aggs = []
+for a in client.list_aggs(ticker=ticker, multiplier=1, timespan="minute", from_="2023-01-01", to="2023-06-13", limit=50000):
+    aggs.append(a)
+
+print(aggs)
 
 # Get Last Trade
 trade = client.get_last_trade(ticker=ticker)
@@ -53,8 +56,35 @@ quotes = client.list_quotes(ticker=ticker, timestamp="2022-01-04")
 for quote in quotes:
     print(quote)
 ```
-Note: For parameter argument examples check out our docs. All required arguments are annotated with red asterisks " * " and argument examples are set.
-Check out an example for Aggregates(client.get_aggs) [here](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to)
+
+### Additional Filter Parameters
+
+Many of the APIs in this client library support the use of additional filter parameters to refine your queries. Please refer to the specific API documentation for details on which filter parameters are supported for each endpoint. These filters can be applied using the following operators:
+
+- `.gt`: greater than
+- `.gte`: greater than or equal to
+- `.lt`: less than
+- `.lte`: less than or equal to
+
+Here's a sample code snippet that demonstrates how to use these filter parameters when requesting an Options Chain using the `list_snapshot_options_chain` method. In this example, the filter parameters ensure that the returned options chain data will only include options with an expiration date that is greater than or equal to "2024-03-16" and a strike price that falls between 29 and 30 (inclusive).
+
+```python
+options_chain = []
+for o in client.list_snapshot_options_chain(
+    "HCP",
+    params={
+        "expiration_date.gte": "2024-03-16",
+        "strike_price.gte": 29,
+        "strike_price.lte": 30,
+    },
+):
+    options_chain.append(o)
+
+print(options_chain)
+print(len(options_chain))
+```
+
+Also, please refer to the API documentation to get a full understanding of how the API works and the supported arguments. All required arguments are annotated with red asterisks " * " and argument examples are set.
 
 ## WebSocket Client 
 
@@ -83,7 +113,7 @@ ws.run(handle_msg=handle_msg)
 ```
 Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
 
-## Launchpad
+## Launchpad REST API Client
 Users of the Launchpad product will need to pass in certain headers in order to make API requests using the RequestOptionBuilder.
 Example can be found [here](./examples/launchpad).
 
@@ -114,6 +144,23 @@ res = c.get_aggs("AAPL", 1, "day", "2022-04-04", "2022-04-04", options=options)
 Checkout Launchpad readme for more details on RequestOptionBuilder [here](./examples/launchpad)
 
 
+## Launchpad WebSocket Client
+
+```python
+from polygon import WebSocketClient
+from polygon.websocket.models import WebSocketMessage
+from polygon.websocket.models.common import Feed, Market
+from typing import List
+
+ws = WebSocketClient(api_key="API_KEY",feed=Feed.Launchpad,market=Market.Stocks, subscriptions=["AM.AAPL"])
+
+def handle_msg(msg: List[WebSocketMessage]):
+    for m in msg:
+        print(m)
+
+ws.run(handle_msg=handle_msg)
+```
+
 ## Contributing
 
 If you found a bug or have an idea for a new feature, please first discuss it with us by
@@ -137,7 +184,19 @@ Once installed run `poetry install` to install the required dependencies. This s
 
 #### Makefile
 
-Our Makefile has the common operations needed when developing on this repo. Running tests and linting can both be run through our Makefile. Just run `make help` to see the list of available commands. 
+Our Makefile has the common operations needed when developing on this repo. Running tests and linting can both be
+run through our Makefile. Just run `make help` to see the list of available commands.
+
+If you're using `pyenv` to manage active Python versions then you might need to launch a Poetry shell before running
+Make commands in order to actually use your chosen Python version. This is because Poetry uses the system Python version
+by default.
+
+```shell
+poetry shell # start shell
+poetry install # install deps
+
+make test # run your make commands
+```
 
 ## Release planning
 This client will attempt to follow the release cadence of our API.

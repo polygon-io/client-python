@@ -242,7 +242,7 @@ class TickersTest(BaseTest):
         events = self.c.get_ticker_events(ticker="META", types="ticker_change")
         expected = TickerChangeResults(
             name="Meta Platforms, Inc. Class A Common Stock",
-            figi="BBG000MM2P62",
+            composite_figi="BBG000MM2P62",
             cik="0001326801",
             events=[
                 {

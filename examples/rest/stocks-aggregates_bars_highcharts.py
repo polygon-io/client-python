@@ -70,14 +70,16 @@ Highcharts.getJSON('/data', function (data) {
 
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-aggs = client.get_aggs(
+aggs = []
+for a in client.list_aggs(
     "AAPL",
     1,
     "day",
     "2019-01-01",
     "2023-02-16",
     limit=50000,
-)
+):
+    aggs.append(a)
 
 # print(aggs)
 

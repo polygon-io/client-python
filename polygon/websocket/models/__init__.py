@@ -8,7 +8,12 @@ def parse_single(data: Dict[str, Any]):
     event_type = data["ev"]
     if event_type in [EventType.EquityAgg.value, EventType.EquityAggMin.value]:
         return EquityAgg.from_dict(data)
-    elif event_type in [EventType.CryptoAgg.value, EventType.ForexAgg.value]:
+    elif event_type in [
+        EventType.CryptoAgg.value,
+        EventType.CryptoAggSec.value,
+        EventType.ForexAgg.value,
+        EventType.ForexAggSec.value,
+    ]:
         return CurrencyAgg.from_dict(data)
     elif event_type == EventType.EquityTrade.value:
         return EquityTrade.from_dict(data)
@@ -26,6 +31,10 @@ def parse_single(data: Dict[str, Any]):
         return LimitUpLimitDown.from_dict(data)
     elif event_type == EventType.CryptoL2.value:
         return Level2Book.from_dict(data)
+    elif event_type == EventType.Value.value:
+        return IndexValue.from_dict(data)
+    elif event_type == EventType.LaunchpadValue.value:
+        return LaunchpadValue.from_dict(data)
     return None
 
 

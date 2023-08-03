@@ -9,7 +9,8 @@ import pkg_resources  # part of setuptools
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
-from ..exceptions import AuthError, BadResponse, NoResultsError
+from urllib.parse import urlencode
+from ..exceptions import AuthError, BadResponse
 
 logger = get_logger("RESTClient")
 version = "unknown"
@@ -29,6 +30,7 @@ class BaseClient:
         retries: int,
         base: str,
         verbose: bool,
+        trace: bool,
         custom_json: Optional[Any] = None,
     ):
         if api_key is None:
@@ -58,6 +60,7 @@ class BaseClient:
         self.retries = retries
         if verbose:
             logger.setLevel(logging.DEBUG)
+        self.trace = trace
         if custom_json:
             self.json = custom_json
         else:
@@ -77,13 +80,31 @@ class BaseClient:
     ) -> Any:
         option = options if options is not None else RequestOptionBuilder()
 
+        headers = self._concat_headers(option.headers)
+
+        if self.trace:
+            full_url = f"{self.BASE}{path}"
+            if params:
+                full_url += f"?{urlencode(params)}"
+            print_headers = headers.copy()
+            if "Authorization" in print_headers:
+                print_headers["Authorization"] = print_headers["Authorization"].replace(
+                    self.API_KEY, "REDACTED"
+                )
+            print(f"Request URL: {full_url}")
+            print(f"Request Headers: {print_headers}")
+
         resp = self.client.request(
             "GET",
             self.BASE + path,
             fields=params,
             retries=self.retries,
-            headers=self._concat_headers(option.headers),
+            headers=headers,
         )
+
+        if self.trace:
+            resp_headers_dict = dict(resp.headers.items())
+            print(f"Response Headers: {resp_headers_dict}")
 
         if resp.status != 200:
             raise BadResponse(resp.data.decode("utf-8"))
@@ -95,11 +116,7 @@ class BaseClient:
 
         if result_key:
             if result_key not in obj:
-                raise NoResultsError(
-                    f'Expected key "{result_key}" in response {obj}.'
-                    + "Make sure you have sufficient permissions and your request parameters are valid."
-                    + f"This is the url that returned no results: {resp.geturl()}"
-                )
+                return []
             obj = obj[result_key]
 
         if deserializer:
@@ -177,6 +194,8 @@ class BaseClient:
                 options=options,
             )
             decoded = self._decode(resp)
+            if result_key not in decoded:
+                return []
             for t in decoded[result_key]:
                 yield deserializer(t)
             if "next_url" in decoded:
