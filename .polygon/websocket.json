@@ -47,6 +47,18 @@
           "paths": [
             "/stocks/LULD"
           ]
+        },
+        {
+          "paths": [
+            "/launchpad/stocks/AM"
+          ],
+          "launchpad": "exclusive"
+        },
+        {
+          "paths": [
+            "/launchpad/stocks/LV"
+          ],
+          "launchpad": "exclusive"
         }
       ]
     },
@@ -71,6 +83,18 @@
           "paths": [
             "/options/Q"
           ]
+        },
+        {
+          "paths": [
+            "/launchpad/options/AM"
+          ],
+          "launchpad": "exclusive"
+        },
+        {
+          "paths": [
+            "/launchpad/options/LV"
+          ],
+          "launchpad": "exclusive"
         }
       ]
     },
@@ -85,6 +109,18 @@
           "paths": [
             "/forex/C"
           ]
+        },
+        {
+          "paths": [
+            "/launchpad/forex/AM"
+          ],
+          "launchpad": "exclusive"
+        },
+        {
+          "paths": [
+            "/launchpad/forex/LV"
+          ],
+          "launchpad": "exclusive"
         }
       ]
     },
@@ -109,6 +145,18 @@
           "paths": [
             "/crypto/XL2"
           ]
+        },
+        {
+          "paths": [
+            "/launchpad/crypto/AM"
+          ],
+          "launchpad": "exclusive"
+        },
+        {
+          "paths": [
+            "/launchpad/crypto/LV"
+          ],
+          "launchpad": "exclusive"
         }
       ]
     },
@@ -867,6 +915,208 @@
         ]
       }
     },
+    "/launchpad/stocks/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time minute aggregates for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The tick volume."
+                    },
+                    "av": {
+                      "type": "integer",
+                      "description": "Today's accumulated volume."
+                    },
+                    "op": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "Today's official opening price."
+                    },
+                    "vw": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "The volume-weighted average value for the aggregate window."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for the symbol in the given time period."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for the symbol in the given time period."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The highest price for the symbol in the given time period."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The lowest price for the symbol in the given time period."
+                    },
+                    "a": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Today's volume weighted average price."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The average trade size for this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "GTE",
+                  "v": 4110,
+                  "av": 9470157,
+                  "op": 0.4372,
+                  "vw": 0.4488,
+                  "o": 0.4488,
+                  "c": 0.4486,
+                  "h": 0.4489,
+                  "l": 0.4486,
+                  "a": 0.4352,
+                  "z": 685,
+                  "s": 1610144640000,
+                  "e": 1610144700000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/launchpad/stocks/LV": {
+      "get": {
+        "summary": "Value",
+        "description": "Real-time value for a given stock ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^([a-zA-Z]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a value event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "LV"
+                      ],
+                      "description": "The event type."
+                    },
+                    "val": {
+                      "description": "The current value of the security."
+                    },
+                    "sym": {
+                      "description": "The ticker symbol for the given security."
+                    },
+                    "t": {
+                      "description": "The nanosecond timestamp."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "LV",
+                  "val": 3988.5,
+                  "sym": "AAPL",
+                  "t": 1678220098130
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "value",
+          "description": "Value data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "stocks",
+          "description": "Stocks data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
     "/options/T": {
       "get": {
         "summary": "Trades",
@@ -1358,6 +1608,208 @@
         ]
       }
     },
+    "/launchpad/options/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time minute aggregates for a given option contract.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+            },
+            "example": "O:SPY241220P00720000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The tick volume."
+                    },
+                    "av": {
+                      "type": "integer",
+                      "description": "Today's accumulated volume."
+                    },
+                    "op": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "Today's official opening price."
+                    },
+                    "vw": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "The volume-weighted average value for the aggregate window."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for the symbol in the given time period."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for the symbol in the given time period."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The highest price for the symbol in the given time period."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The lowest price for the symbol in the given time period."
+                    },
+                    "a": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Today's volume weighted average price."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The average trade size for this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "O:ONEM220121C00025000",
+                  "v": 2,
+                  "av": 8,
+                  "op": 2.2,
+                  "vw": 2.05,
+                  "o": 2.05,
+                  "c": 2.05,
+                  "h": 2.05,
+                  "l": 2.05,
+                  "a": 2.1312,
+                  "z": 1,
+                  "s": 1632419640000,
+                  "e": 1632419700000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "options",
+          "description": "Options data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/launchpad/options/LV": {
+      "get": {
+        "summary": "Value",
+        "description": "Real-time value for a given options ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(([a-zA-Z]+|[0-9])+)$/"
+            },
+            "example": "O:SPY241220P00720000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a value event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "LV"
+                      ],
+                      "description": "The event type."
+                    },
+                    "val": {
+                      "description": "The current value of the security."
+                    },
+                    "sym": {
+                      "description": "The ticker symbol for the given security."
+                    },
+                    "t": {
+                      "description": "The nanosecond timestamp."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "LV",
+                  "val": 7.2,
+                  "sym": "O:TSLA210903C00700000",
+                  "t": 1401715883806000000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "value",
+          "description": "Value data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "options",
+          "description": "Options data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
     "/forex/C": {
       "get": {
         "summary": "Quotes",
@@ -1546,6 +1998,208 @@
           "description": "Forex data"
         },
         "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/launchpad/forex/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time per-minute forex aggregates for a given forex pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]{3})\\/?<to>([A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The tick volume."
+                    },
+                    "av": {
+                      "type": "integer",
+                      "description": "Today's accumulated volume."
+                    },
+                    "op": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "Today's official opening price."
+                    },
+                    "vw": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "The volume-weighted average value for the aggregate window."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for the symbol in the given time period."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for the symbol in the given time period."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The highest price for the symbol in the given time period."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The lowest price for the symbol in the given time period."
+                    },
+                    "a": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Today's volume weighted average price."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The average trade size for this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "C:USD-EUR",
+                  "v": 4110,
+                  "av": 9470157,
+                  "op": 0.9272,
+                  "vw": 0.9288,
+                  "o": 0.9288,
+                  "c": 0.9286,
+                  "h": 0.9289,
+                  "l": 0.9206,
+                  "a": 0.9352,
+                  "z": 685,
+                  "s": 1610144640000,
+                  "e": 1610144700000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "fx",
+          "description": "Forex data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/launchpad/forex/LV": {
+      "get": {
+        "summary": "Value",
+        "description": "Real-time value for a given forex ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]{3})\\/?<to>([A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a value event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "LV"
+                      ],
+                      "description": "The event type."
+                    },
+                    "val": {
+                      "description": "The current value of the security."
+                    },
+                    "sym": {
+                      "description": "The ticker symbol for the given security."
+                    },
+                    "t": {
+                      "description": "The nanosecond timestamp."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "LV",
+                  "val": 1.0631,
+                  "sym": "C:EURUSD",
+                  "t": 1678220098130
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "value",
+          "description": "Value data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "fx",
+          "description": "Forex data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -1992,6 +2646,208 @@
         ]
       }
     },
+    "/launchpad/crypto/AM": {
+      "get": {
+        "summary": "Aggregates (Per Minute)",
+        "description": "Stream real-time per-minute crypto aggregates for a given crypto pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a minute aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "description": "The event type."
+                    },
+                    "sym": {
+                      "type": "string",
+                      "description": "The ticker symbol for the given stock."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The tick volume."
+                    },
+                    "av": {
+                      "type": "integer",
+                      "description": "Today's accumulated volume."
+                    },
+                    "op": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "Today's official opening price."
+                    },
+                    "vw": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "The volume-weighted average value for the aggregate window."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for the symbol in the given time period."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for the symbol in the given time period."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The highest price for the symbol in the given time period."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The lowest price for the symbol in the given time period."
+                    },
+                    "a": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Today's volume weighted average price."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The average trade size for this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "AM",
+                  "sym": "X:BTC-USD",
+                  "v": 951.6112,
+                  "av": 738.6112,
+                  "op": 26503.8,
+                  "vw": 26503.8,
+                  "o": 27503.8,
+                  "c": 27203.8,
+                  "h": 27893.8,
+                  "l": 26503.8,
+                  "a": 26503.8,
+                  "z": 10,
+                  "s": 1610463240000,
+                  "e": 1610463300000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/launchpad/crypto/LV": {
+      "get": {
+        "summary": "Value",
+        "description": "Real-time value for a given crypto ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a value event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "LV"
+                      ],
+                      "description": "The event type."
+                    },
+                    "val": {
+                      "description": "The current value of the security."
+                    },
+                    "sym": {
+                      "description": "The ticker symbol for the given security."
+                    },
+                    "t": {
+                      "description": "The nanosecond timestamp."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "LV",
+                  "val": 33021.9,
+                  "sym": "X:BTC-USD",
+                  "t": 1610462007425
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "value",
+          "description": "Value data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
     "/indices/AM": {
       "get": {
         "summary": "Aggregates (Per Minute)",
@@ -2163,7 +3019,7 @@
         },
         "x-polygon-entitlement-data-type": {
           "name": "value",
-          "description": "Index value data"
+          "description": "Value data"
         },
         "x-polygon-entitlement-market-type": {
           "name": "indices",
@@ -3675,6 +4531,94 @@
           },
           "t": {
             "description": "The Timestamp in Unix MS."
+          }
+        }
+      },
+      "LaunchpadWebsocketMinuteAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "description": "The event type."
+          },
+          "sym": {
+            "type": "string",
+            "description": "The ticker symbol for the given stock."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The tick volume."
+          },
+          "av": {
+            "type": "integer",
+            "description": "Today's accumulated volume."
+          },
+          "op": {
+            "type": "number",
+            "format": "double",
+            "description": "Today's official opening price."
+          },
+          "vw": {
+            "type": "number",
+            "format": "float",
+            "description": "The volume-weighted average value for the aggregate window."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for the symbol in the given time period."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for the symbol in the given time period."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The highest price for the symbol in the given time period."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The lowest price for the symbol in the given time period."
+          },
+          "a": {
+            "type": "number",
+            "format": "float",
+            "description": "Today's volume weighted average price."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The average trade size for this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+          }
+        }
+      },
+      "LaunchpadWebsocketValueEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "LV"
+            ],
+            "description": "The event type."
+          },
+          "val": {
+            "description": "The current value of the security."
+          },
+          "sym": {
+            "description": "The ticker symbol for the given security."
+          },
+          "t": {
+            "description": "The nanosecond timestamp."
           }
         }
       }
