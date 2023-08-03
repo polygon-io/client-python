@@ -22,18 +22,14 @@ print(snapshot)
 
 # crunch some numbers
 for item in snapshot:
-
     # verify this is an TickerSnapshot
     if isinstance(item, TickerSnapshot):
-
         # verify this is an Agg
         if isinstance(item.prev_day, Agg):
-
             # verify this is a float
             if isinstance(item.prev_day.open, float) and isinstance(
                 item.prev_day.close, float
             ):
-
                 percent_change = (
                     (item.prev_day.close - item.prev_day.open)
                     / item.prev_day.open
