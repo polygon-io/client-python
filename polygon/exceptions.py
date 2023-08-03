@@ -12,11 +12,3 @@ class BadResponse(Exception):
     """
 
     pass
-
-
-class NoResultsError(Exception):
-    """
-    Missing results key
-    """
-
-    pass
