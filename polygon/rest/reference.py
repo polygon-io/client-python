@@ -158,7 +158,6 @@ class TickersClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[TickerChangeResults, HTTPResponse]:
-
         """
         Get event history of ticker given particular point in time.
         :param ticker: The ticker symbol of the asset.

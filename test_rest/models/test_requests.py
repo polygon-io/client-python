@@ -51,7 +51,6 @@ class RequestTest(unittest.TestCase):
         self.assertDictEqual(all_options, options.headers)
 
     def test_header_update(self):
-
         options = RequestOptionBuilder(
             edge_id="test", edge_ip_address="test", edge_user="test"
         )
