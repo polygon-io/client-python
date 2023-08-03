@@ -11,10 +11,10 @@ def modelclass(cls):
     ]
 
     def init(self, *args, **kwargs):
-        for (i, a) in enumerate(args):
+        for i, a in enumerate(args):
             if i < len(attributes):
                 self.__dict__[attributes[i]] = a
-        for (k, v) in kwargs.items():
+        for k, v in kwargs.items():
             if k in attributes:
                 self.__dict__[k] = v
 

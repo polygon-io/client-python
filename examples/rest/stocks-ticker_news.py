@@ -18,10 +18,8 @@ for n in client.list_ticker_news("BBBY", order="desc", limit=1000):
 
 # print date + title
 for index, item in enumerate(news):
-
     # verify this is an agg
     if isinstance(item, TickerNews):
-
         print("{:<25}{:<15}".format(item.published_utc, item.title))
 
         if index == 20:
