@@ -8,7 +8,12 @@ def parse_single(data: Dict[str, Any]):
     event_type = data["ev"]
     if event_type in [EventType.EquityAgg.value, EventType.EquityAggMin.value]:
         return EquityAgg.from_dict(data)
-    elif event_type in [EventType.CryptoAgg.value, EventType.ForexAgg.value]:
+    elif event_type in [
+        EventType.CryptoAgg.value,
+        EventType.CryptoAggSec.value,
+        EventType.ForexAgg.value,
+        EventType.ForexAggSec.value,
+    ]:
         return CurrencyAgg.from_dict(data)
     elif event_type == EventType.EquityTrade.value:
         return EquityTrade.from_dict(data)
