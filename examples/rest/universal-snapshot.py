@@ -10,6 +10,7 @@ from polygon.rest.models import UniversalSnapshot, SnapshotMarketType
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
+
 def print_snapshots(iterator: Union[Iterator[UniversalSnapshot], HTTPResponse]):
     snapshots = [s for s in iterator]
 
@@ -32,17 +33,15 @@ it = client.list_universal_snapshots(
 )
 print_snapshots(it)
 
-it = client.list_universal_snapshots(
-    type="stocks", ticker_gt="A", ticker_lt="AAPL"
-)
+it = client.list_universal_snapshots(type="stocks", ticker_gt="A", ticker_lt="AAPL")
+print_snapshots(it)
+
+it = client.list_universal_snapshots(type="stocks", ticker_gte="AAPL", ticker_lte="ABB")
 print_snapshots(it)
 
 it = client.list_universal_snapshots(
-    type="stocks", ticker_gte="AAPL", ticker_lte="ABB"
-)
-print_snapshots(it)
-
-it = client.list_universal_snapshots(
-    type="options", ticker_gte="O:AAPL230804C00050000", ticker_lte="O:AAPL230804C00070000"
+    type="options",
+    ticker_gte="O:AAPL230804C00050000",
+    ticker_lte="O:AAPL230804C00070000",
 )
 print_snapshots(it)
