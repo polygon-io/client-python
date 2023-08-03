@@ -8,7 +8,7 @@ from polygon.rest.models import UniversalSnapshot, SnapshotMarketType
 # https://polygon-api-client.readthedocs.io/en/latest/Snapshot.html
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient(trace=True)  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 def print_snapshots(iterator: Union[Iterator[UniversalSnapshot], HTTPResponse]):
     snapshots = [s for s in iterator]
