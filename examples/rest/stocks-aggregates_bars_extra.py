@@ -56,13 +56,10 @@ writer.writeheader()
 
 # writing data
 for agg in aggs:
-
     # verify this is an agg
     if isinstance(agg, Agg):
-
         # verify this is an int
         if isinstance(agg.timestamp, int):
-
             writer.writerow(
                 {
                     "timestamp": datetime.datetime.fromtimestamp(agg.timestamp / 1000),

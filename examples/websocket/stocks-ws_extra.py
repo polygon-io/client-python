@@ -34,10 +34,8 @@ def handle_msg(msgs: List[WebSocketMessage]):
         # print(m)
 
         if type(m) == EquityTrade:
-
             # verify this is a string
             if isinstance(m.symbol, str):
-
                 if m.symbol in string_map:
                     string_map[m.symbol] += 1
                 else:
@@ -45,14 +43,12 @@ def handle_msg(msgs: List[WebSocketMessage]):
 
             # verify these are float
             if isinstance(m.price, float) and isinstance(m.size, int):
-
                 global cash_traded
                 cash_traded += m.price * m.size
                 # print(cash_traded)
 
 
 def top_function():
-
     # start timer
     start_time = time.time()
 

@@ -16,13 +16,10 @@ money = float(0)
 
 # loop through and count price * volume
 for t in client.list_trades("DIS", "2023-02-07", limit=50000):
-
     # verify this is an Trade
     if isinstance(t, Trade):
-
         # verify these are float
         if isinstance(t.price, float) and isinstance(t.size, int):
-
             money += t.price * t.size
 
 # format the number so it's human readable

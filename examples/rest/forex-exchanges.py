@@ -15,10 +15,8 @@ print(exchanges)
 
 # loop over exchanges
 for exchange in exchanges:
-
     # verify this is an exchange
     if isinstance(exchange, Exchange):
-
         # print exchange info
         print(
             "{:<15}{} ({})".format(
