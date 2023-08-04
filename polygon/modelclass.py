@@ -1,8 +1,12 @@
 import inspect
+import typing
 from dataclasses import dataclass
 
 
-def modelclass(cls):
+_T = typing.TypeVar("_T")
+
+
+def modelclass(cls: typing.Type[_T]) -> typing.Type[_T]:
     cls = dataclass(cls)
     attributes = [
         a
@@ -18,6 +22,6 @@ def modelclass(cls):
             if k in attributes:
                 self.__dict__[k] = v
 
-    cls.__init__ = init
+    cls.__init__ = init  # type: ignore[assignment]
 
     return cls
