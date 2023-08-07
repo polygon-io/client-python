@@ -33,14 +33,14 @@ certifi = ">=2022.5.18,<2024.0.0"
 black = "^23.7.0"
 mypy = "^1.4"
 types-urllib3 = "^1.26.25"
-Sphinx = "^5.3.0"
+Sphinx = "^6.2.1"
 sphinx-rtd-theme = "^1.2.2"
 # keep this in sync with docs/requirements.txt for readthedocs.org
 sphinx-autodoc-typehints = "^1.23.0"
 types-certifi = "^2021.10.8"
-types-setuptools = "^67.8.0"
+types-setuptools = "^68.0.0"
 pook = "^1.1.1"
-orjson = "^3.8.13"
+orjson = "^3.9.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
