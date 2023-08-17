@@ -112,7 +112,11 @@ class BaseClient:
         if raw:
             return resp
 
-        obj = self._decode(resp)
+        try:
+            obj = self._decode(resp)
+        except ValueError as e:
+            print(f"Error decoding json response: {e}")
+            return []
 
         if result_key:
             if result_key not in obj:
@@ -193,7 +197,13 @@ class BaseClient:
                 raw=True,
                 options=options,
             )
-            decoded = self._decode(resp)
+
+            try:
+                decoded = self._decode(resp)
+            except ValueError as e:
+                print(f"Error decoding json response: {e}")
+                return []
+
             if result_key not in decoded:
                 return []
             for t in decoded[result_key]:
