@@ -5,6 +5,7 @@ from typing import Dict
 from datetime import datetime
 import time
 import threading
+import os
 
 # docs
 # https://polygon.io/docs/stocks/ws_stocks_am
@@ -76,6 +77,11 @@ total_string_map: Dict[str, int] = {}
 total_cash_map: Dict[str, float] = {}
 
 
+def print_centered(s: str):
+    term_width = os.get_terminal_size().columns
+    print(s.center(term_width))
+
+
 def run_websocket_client():
     # client = WebSocketClient("XXXXXX") # hardcoded api_key is used
     client = WebSocketClient()  # POLYGON_API_KEY environment variable is used
@@ -124,20 +130,22 @@ def top_function():
     print("\033c", end="")
 
     # Print 5-second snapshot
-    print("\n  --- Past 5 seconds ---")
-    print(f"   Tickers seen (5s): {len(string_map)}")
-    print(f"    Trades seen (5s): {sum(string_map.values())}")
-    print(f"    Cash traded (5s): {cash_traded:,.2f}")
-    print("\n  --- Running Totals ---")
-    print(f"  Total Tickers seen: {total_tickers_seen}")
-    print(f"   Total Trades seen: {total_trades_seen}")
-    print(f"   Total Cash traded: {total_cash_traded:,.2f}")
+    print()
+    print_centered("--- Past 5 seconds ---")
+    print_centered(f"Tickers seen (5s): {len(string_map)}")
+    print_centered(f"Trades seen (5s): {sum(string_map.values())}")
+    print()
+    print_centered("--- Running Totals ---")
+    print_centered(f"Total Tickers seen: {total_tickers_seen}")
+    print_centered(f"Total Trades seen: {total_trades_seen}")
+    print_centered(f"Total Cash traded: {total_cash_traded:,.2f}")
 
     # Separator
-    print("\n" + "-" * 100 + "\n")
+    print()
+    print_centered("-" * 100 + "\n")
 
     # Print table header
-    print(
+    print_centered(
         "{:<15}{:<20}{:<20}{:<20}{:<20}".format(
             "Ticker", "Trades (5s)", "Cash (5s)", "Total Trades", "Total Cash"
         )
@@ -150,7 +158,7 @@ def top_function():
         cash_5s = cash_map_5s.get(ticker, 0)
         total_trades = total_string_map[ticker]
         total_cash = total_cash_map.get(ticker, 0.0)
-        print(
+        print_centered(
             "{:<15}{:<20}{:<20,.2f}{:<20}{:<20,.2f}".format(
                 ticker, trades, cash_5s, total_trades, total_cash
             )
@@ -166,8 +174,9 @@ def top_function():
     minutes, seconds = divmod(rem, 60)
 
     # Print the time and quick stats
-    print(
-        f"\nCurrent Time: {current_time} | App Uptime: {int(hours):02}:{int(minutes):02}:{int(seconds):02} | Time taken: {end_time - start_time:.6f} seconds"
+    print()
+    print_centered(
+        f"Current Time: {current_time} | App Uptime: {int(hours):02}:{int(minutes):02}:{int(seconds):02} | Time taken: {end_time - start_time:.6f} seconds"
     )
 
     # clear map and cash for next loop
