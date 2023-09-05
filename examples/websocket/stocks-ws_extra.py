@@ -134,6 +134,7 @@ def top_function():
     print_centered("--- Past 5 seconds ---")
     print_centered(f"Tickers seen (5s): {len(string_map)}")
     print_centered(f"Trades seen (5s): {sum(string_map.values())}")
+    print_centered(f"Cash traded (5s): {cash_traded:,.2f}")
     print()
     print_centered("--- Running Totals ---")
     print_centered(f"Total Tickers seen: {total_tickers_seen}")
