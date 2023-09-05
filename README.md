@@ -86,6 +86,34 @@ print(len(options_chain))
 
 Also, please refer to the API documentation to get a full understanding of how the API works and the supported arguments. All required arguments are annotated with red asterisks " * " and argument examples are set.
 
+## Debugging with RESTClient
+
+Sometimes you may find it useful to see the actual request and response details while working with the API. The `RESTClient` allows for this through its `trace=True` option.
+
+### How to Enable Debug Mode
+
+You can activate the debug mode as follows:
+
+```python
+client = RESTClient(trace=True)
+```
+
+### What Does Debug Mode Do?
+
+When debug mode is enabled, the client will print out useful debugging information for each API request. This includes: the request URL, the headers sent in the request, and the headers received in the response.
+
+### Example Output
+
+For instance, if you made a request for `TSLA` data for the date `2023-08-01`, you would see debug output similar to the following:
+
+```
+Request URL: https://api.polygon.io/v2/aggs/ticker/TSLA/range/1/minute/2023-08-01/2023-08-01?limit=50000
+Request Headers: {'Authorization': 'Bearer REDACTED', 'Accept-Encoding': 'gzip', 'User-Agent': 'Polygon.io PythonClient/1.12.4'}
+Response Headers: {'Server': 'nginx/1.19.2', 'Date': 'Tue, 05 Sep 2023 23:07:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-Request-Id': '727c82feed3790b44084c3f4cae1d7d4', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains'}
+```
+
+This can be an invaluable tool for debugging issues or understanding how the client interacts with the API.
+
 ## WebSocket Client 
 
 Import classes
