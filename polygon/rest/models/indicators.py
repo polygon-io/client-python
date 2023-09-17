@@ -31,8 +31,8 @@ class MACDIndicatorValue:
         return MACDIndicatorValue(
             timestamp=d.get("timestamp", None),
             value=d.get("value", None),
-            signal=d.get("histogram", None),
-            histogram=d.get("signal", None),
+            signal=d.get("signal", None),
+            histogram=d.get("histogram", None),
         )
 
 
