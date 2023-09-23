@@ -1098,8 +1098,8 @@
           }
         },
         "x-polygon-entitlement-data-type": {
-          "name": "value",
-          "description": "Value data"
+          "name": "indicative-price",
+          "description": "Indicative Price"
         },
         "x-polygon-entitlement-market-type": {
           "name": "stocks",
@@ -1791,8 +1791,8 @@
           }
         },
         "x-polygon-entitlement-data-type": {
-          "name": "value",
-          "description": "Value data"
+          "name": "indicative-price",
+          "description": "Indicative Price"
         },
         "x-polygon-entitlement-market-type": {
           "name": "options",
@@ -2188,8 +2188,8 @@
           }
         },
         "x-polygon-entitlement-data-type": {
-          "name": "value",
-          "description": "Value data"
+          "name": "indicative-price",
+          "description": "Indicative Price"
         },
         "x-polygon-entitlement-market-type": {
           "name": "fx",
@@ -2829,8 +2829,8 @@
           }
         },
         "x-polygon-entitlement-data-type": {
-          "name": "value",
-          "description": "Value data"
+          "name": "indicative-price",
+          "description": "Indicative Price"
         },
         "x-polygon-entitlement-market-type": {
           "name": "crypto",
