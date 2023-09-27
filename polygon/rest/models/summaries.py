@@ -48,6 +48,7 @@ class SummaryResult:
     ticker: Optional[str] = None
     branding: Optional[Branding] = None
     market_status: Optional[str] = None
+    last_updated: Optional[int] = None
     type: Optional[str] = None
     session: Optional[Session] = None
     options: Optional[Options] = None
@@ -62,6 +63,7 @@ class SummaryResult:
             ticker=d.get("ticker", None),
             branding=None if "branding" not in d else Branding.from_dict(d["branding"]),
             market_status=d.get("market_status", None),
+            last_updated=d.get("last_updated", None),
             type=d.get("type", None),
             session=None if "session" not in d else Session.from_dict(d["session"]),
             options=None if "options" not in d else Options.from_dict(d["options"]),
