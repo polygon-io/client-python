@@ -2,6 +2,7 @@ import certifi
 import json
 import urllib3
 import inspect
+from urllib3.util.retry import Retry
 from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
@@ -47,6 +48,16 @@ class BaseClient:
             "User-Agent": f"Polygon.io PythonClient/{version}",
         }
 
+        # initialize self.retries with the parameter value before using it
+        self.retries = retries
+
+        # https://urllib3.readthedocs.io/en/stable/reference/urllib3.util.html#urllib3.util.Retry.RETRY_AFTER_STATUS_CODES
+        retry_strategy = Retry(
+            total=self.retries,
+            status_forcelist=[413, 429, 500, 502, 503, 504], # default 413, 429, 503
+            backoff_factor=0.1 # [0.0s, 0.2s, 0.4s, 0.8s, 1.6s, ...]
+        )
+
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
@@ -54,10 +65,11 @@ class BaseClient:
             headers=self.headers,  # default headers sent with each request.
             ca_certs=certifi.where(),
             cert_reqs="CERT_REQUIRED",
+            retries=retry_strategy  # use the customized Retry instance
         )
 
         self.timeout = urllib3.Timeout(connect=connect_timeout, read=read_timeout)
-        self.retries = retries
+
         if verbose:
             logger.setLevel(logging.DEBUG)
         self.trace = trace
