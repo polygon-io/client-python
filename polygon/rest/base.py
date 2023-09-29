@@ -110,7 +110,6 @@ class BaseClient:
             "GET",
             self.BASE + path,
             fields=params,
-            retries=self.retries,
             headers=headers,
         )
 
