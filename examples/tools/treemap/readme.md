@@ -36,9 +36,10 @@ The repo consists of:
 
 ### Running the Treemap Server
 
-Execute the `treemap_server.py` script:
+Change into the treemap example directory and execute the `treemap_server.py` script:
 ```
-python treemap_server.py
+cd examples/tools/treemap
+python3 treemap_server.py
 ```
 
 Upon successful execution, the server will start, and you can view the treemap visualization by navigating to:
