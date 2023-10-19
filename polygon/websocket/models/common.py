@@ -9,6 +9,16 @@ class Feed(Enum):
     PolyFeedPlus = "polyfeedplus.polygon.io"
     StarterFeed = "starterfeed.polygon.io"
     Launchpad = "launchpad.polygon.io"
+    Business = "business.polygon.io"
+    EdgxBusiness = "edgx-business.polygon.io"
+    DelayedBusiness = "delayed-business.polygon.io"
+    DelayedEdgxBusiness = "delayed-edgx-business.polygon.io"
+    DelayedNasdaqLastSaleBusiness = "delayed-nasdaq-last-sale-business.polygon.io"
+    DelayedNasdaqBasic = "delayed-nasdaq-basic-business.polygon.io"
+    DelayedFullMarketBusiness = "delayed-fullmarket-business.polygon.io"
+    FullMarketBusiness = "fullmarket-business.polygon.io"
+    NasdaqfeedLastSaleBusiness = "nasdaq-last-sale-business.polygon.io"
+    NasdaqfeedBasicBusiness = "nasdaq-basic-business.polygon.io"
 
 
 class Market(Enum):
@@ -40,3 +50,7 @@ class EventType(Enum):
     """
     LaunchpadValue = "LV"
     LaunchpadAggMin = "AM"
+    """Business* EventTypes are only available to Business users. These values are the same across all asset classes (
+    stocks, options, forex, crypto).
+    """
+    BusinessFairMarketValue = "FMV"
