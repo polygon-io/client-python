@@ -342,6 +342,23 @@ class LaunchpadValue:
         )
 
 
+@modelclass
+class FairMarketValue:
+    event_type: Optional[Union[str, EventType]] = None
+    fmv: Optional[float] = None
+    ticker: Optional[str] = None
+    timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return LaunchpadValue(
+            event_type=d.get("ev", None),
+            fmv=d.get("fmv", None),
+            ticker=d.get("sym", None),
+            timestamp=d.get("t", None),
+        )
+
+
 WebSocketMessage = NewType(
     "WebSocketMessage",
     List[

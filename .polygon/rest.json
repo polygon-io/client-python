@@ -79,6 +79,7 @@
         "required": true,
         "schema": {
           "enum": [
+            "second",
             "minute",
             "hour",
             "day",
@@ -150,7 +151,7 @@
       },
       "IndicesTickerPathParam": {
         "description": "The ticker symbol of Index.",
-        "example": "I:DJI",
+        "example": "I:NDX",
         "in": "path",
         "name": "indicesTicker",
         "required": true,
@@ -826,10 +827,18 @@
             "format": "double",
             "type": "number"
           },
+          "n": {
+            "description": "The number of transactions in the aggregate window.",
+            "type": "integer"
+          },
           "o": {
             "description": "The open price for the symbol in the given time period.",
             "format": "double",
             "type": "number"
+          },
+          "t": {
+            "description": "The Unix Msec timestamp for the start of the aggregate window.",
+            "type": "integer"
           },
           "v": {
             "description": "The trading volume of the symbol in the given time period.",
@@ -848,7 +857,9 @@
           "l",
           "c",
           "v",
-          "vw"
+          "vw",
+          "t",
+          "n"
         ],
         "type": "object"
       },
@@ -899,6 +910,11 @@
                   "vw"
                 ],
                 "type": "object"
+              },
+              "fmv": {
+                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                "format": "double",
+                "type": "number"
               },
               "lastTrade": {
                 "allOf": [
@@ -966,10 +982,18 @@
                     "format": "double",
                     "type": "number"
                   },
+                  "n": {
+                    "description": "The number of transactions in the aggregate window.",
+                    "type": "integer"
+                  },
                   "o": {
                     "description": "The open price for the symbol in the given time period.",
                     "format": "double",
                     "type": "number"
+                  },
+                  "t": {
+                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                    "type": "integer"
                   },
                   "v": {
                     "description": "The trading volume of the symbol in the given time period.",
@@ -988,7 +1012,9 @@
                   "l",
                   "c",
                   "v",
-                  "vw"
+                  "vw",
+                  "t",
+                  "n"
                 ],
                 "type": "object"
               },
@@ -1203,6 +1229,11 @@
                   ],
                   "type": "object"
                 },
+                "fmv": {
+                  "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                  "format": "double",
+                  "type": "number"
+                },
                 "lastTrade": {
                   "allOf": [
                     {
@@ -1269,10 +1300,18 @@
                       "format": "double",
                       "type": "number"
                     },
+                    "n": {
+                      "description": "The number of transactions in the aggregate window.",
+                      "type": "integer"
+                    },
                     "o": {
                       "description": "The open price for the symbol in the given time period.",
                       "format": "double",
                       "type": "number"
+                    },
+                    "t": {
+                      "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                      "type": "integer"
                     },
                     "v": {
                       "description": "The trading volume of the symbol in the given time period.",
@@ -1291,7 +1330,9 @@
                     "l",
                     "c",
                     "v",
-                    "vw"
+                    "vw",
+                    "t",
+                    "n"
                   ],
                   "type": "object"
                 },
@@ -1956,6 +1997,11 @@
         ],
         "type": "object"
       },
+      "Fmv": {
+        "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+        "format": "double",
+        "type": "number"
+      },
       "ForexConversion": {
         "properties": {
           "converted": {
@@ -2362,6 +2408,11 @@
                 ],
                 "type": "object"
               },
+              "fmv": {
+                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                "format": "double",
+                "type": "number"
+              },
               "lastQuote": {
                 "description": "The most recent quote for this ticker.",
                 "properties": {
@@ -2410,10 +2461,18 @@
                     "format": "double",
                     "type": "number"
                   },
+                  "n": {
+                    "description": "The number of transactions in the aggregate window.",
+                    "type": "integer"
+                  },
                   "o": {
                     "description": "The open price for the symbol in the given time period.",
                     "format": "double",
                     "type": "number"
+                  },
+                  "t": {
+                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                    "type": "integer"
                   },
                   "v": {
                     "description": "The trading volume of the symbol in the given time period.",
@@ -2421,13 +2480,6 @@
                     "type": "number"
                   }
                 },
-                "required": [
-                  "o",
-                  "h",
-                  "l",
-                  "c",
-                  "v"
-                ],
                 "type": "object"
               },
               "prevDay": {
@@ -2551,6 +2603,11 @@
                   ],
                   "type": "object"
                 },
+                "fmv": {
+                  "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                  "format": "double",
+                  "type": "number"
+                },
                 "lastQuote": {
                   "description": "The most recent quote for this ticker.",
                   "properties": {
@@ -2599,10 +2656,18 @@
                       "format": "double",
                       "type": "number"
                     },
+                    "n": {
+                      "description": "The number of transactions in the aggregate window.",
+                      "type": "integer"
+                    },
                     "o": {
                       "description": "The open price for the symbol in the given time period.",
                       "format": "double",
                       "type": "number"
+                    },
+                    "t": {
+                      "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                      "type": "integer"
                     },
                     "v": {
                       "description": "The trading volume of the symbol in the given time period.",
@@ -2610,13 +2675,6 @@
                       "type": "number"
                     }
                   },
-                  "required": [
-                    "o",
-                    "h",
-                    "l",
-                    "c",
-                    "v"
-                  ],
                   "type": "object"
                 },
                 "prevDay": {
@@ -3273,6 +3331,44 @@
         "format": "double",
         "type": "number"
       },
+      "SnapshotMinOHLCV": {
+        "properties": {
+          "c": {
+            "description": "The close price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "h": {
+            "description": "The highest price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "l": {
+            "description": "The lowest price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "n": {
+            "description": "The number of transactions in the aggregate window.",
+            "type": "integer"
+          },
+          "o": {
+            "description": "The open price for the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          },
+          "t": {
+            "description": "The Unix Msec timestamp for the start of the aggregate window.",
+            "type": "integer"
+          },
+          "v": {
+            "description": "The trading volume of the symbol in the given time period.",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
       "SnapshotOHLCV": {
         "properties": {
           "c": {
@@ -3657,10 +3753,18 @@
             "format": "double",
             "type": "number"
           },
+          "n": {
+            "description": "The number of transactions in the aggregate window.",
+            "type": "integer"
+          },
           "o": {
             "description": "The open price for the symbol in the given time period.",
             "format": "double",
             "type": "number"
+          },
+          "t": {
+            "description": "The Unix Msec timestamp for the start of the aggregate window.",
+            "type": "integer"
           },
           "v": {
             "description": "The trading volume of the symbol in the given time period.",
@@ -3680,7 +3784,9 @@
           "l",
           "c",
           "v",
-          "vw"
+          "vw",
+          "t",
+          "n"
         ],
         "type": "object"
       },
@@ -3705,6 +3811,10 @@
             "format": "double",
             "type": "number"
           },
+          "n": {
+            "description": "The number of transactions in the aggregate window.",
+            "type": "integer"
+          },
           "o": {
             "description": "The open price for the symbol in the given time period.",
             "format": "double",
@@ -3713,6 +3823,10 @@
           "otc": {
             "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
             "type": "boolean"
+          },
+          "t": {
+            "description": "The Unix Msec timestamp for the start of the aggregate window.",
+            "type": "integer"
           },
           "v": {
             "description": "The trading volume of the symbol in the given time period.",
@@ -3732,7 +3846,9 @@
           "l",
           "c",
           "v",
-          "vw"
+          "vw",
+          "t",
+          "n"
         ],
         "type": "object"
       },
@@ -3787,6 +3903,11 @@
                   "vw"
                 ],
                 "type": "object"
+              },
+              "fmv": {
+                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                "format": "double",
+                "type": "number"
               },
               "lastQuote": {
                 "description": "The most recent quote for this ticker.  This is only returned if your current plan includes quotes.",
@@ -3887,6 +4008,10 @@
                     "format": "double",
                     "type": "number"
                   },
+                  "n": {
+                    "description": "The number of transactions in the aggregate window.",
+                    "type": "integer"
+                  },
                   "o": {
                     "description": "The open price for the symbol in the given time period.",
                     "format": "double",
@@ -3895,6 +4020,10 @@
                   "otc": {
                     "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
                     "type": "boolean"
+                  },
+                  "t": {
+                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                    "type": "integer"
                   },
                   "v": {
                     "description": "The trading volume of the symbol in the given time period.",
@@ -3914,7 +4043,9 @@
                   "l",
                   "c",
                   "v",
-                  "vw"
+                  "vw",
+                  "t",
+                  "n"
                 ],
                 "type": "object"
               },
@@ -4043,6 +4174,11 @@
                   ],
                   "type": "object"
                 },
+                "fmv": {
+                  "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                  "format": "double",
+                  "type": "number"
+                },
                 "lastQuote": {
                   "description": "The most recent quote for this ticker.  This is only returned if your current plan includes quotes.",
                   "properties": {
@@ -4142,6 +4278,10 @@
                       "format": "double",
                       "type": "number"
                     },
+                    "n": {
+                      "description": "The number of transactions in the aggregate window.",
+                      "type": "integer"
+                    },
                     "o": {
                       "description": "The open price for the symbol in the given time period.",
                       "format": "double",
@@ -4150,6 +4290,10 @@
                     "otc": {
                       "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
                       "type": "boolean"
+                    },
+                    "t": {
+                      "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                      "type": "integer"
                     },
                     "v": {
                       "description": "The trading volume of the symbol in the given time period.",
@@ -4169,7 +4313,9 @@
                     "l",
                     "c",
                     "v",
-                    "vw"
+                    "vw",
+                    "t",
+                    "n"
                   ],
                   "type": "object"
                 },
@@ -5047,9 +5193,8 @@
             "example": 100,
             "in": "query",
             "name": "amount",
-            "required": true,
             "schema": {
-              "default": 100,
+              "default": 1,
               "type": "number"
             }
           },
@@ -5085,7 +5230,9 @@
                     "exchange": 48,
                     "timestamp": 1605555313000
                   },
+                  "request_id": "a73a29dbcab4613eeaf48583d3baacf0",
                   "status": "success",
+                  "symbol": "AUD/USD",
                   "to": "USD"
                 },
                 "schema": {
@@ -5132,6 +5279,12 @@
                           }
                         }
                       },
+                      "required": [
+                        "exchange",
+                        "timestamp",
+                        "ask",
+                        "bid"
+                      ],
                       "type": "object",
                       "x-polygon-go-type": {
                         "name": "LastQuoteCurrencies"
@@ -5154,6 +5307,15 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "from",
+                    "to",
+                    "symbol",
+                    "initialAmount",
+                    "converted"
+                  ],
                   "type": "object"
                 }
               },
@@ -5688,7 +5850,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -5696,7 +5858,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -5704,7 +5866,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -5712,7 +5874,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -5897,7 +6059,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get exponential moving average (EMA) data.",
-            "example": "C:EUR-USD",
+            "example": "C:EURUSD",
             "in": "path",
             "name": "fxTicker",
             "required": true,
@@ -6006,7 +6168,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -6014,7 +6176,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -6022,7 +6184,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -6030,7 +6192,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -6215,7 +6377,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get exponential moving average (EMA) data.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -6324,7 +6486,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -6332,7 +6494,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -6340,7 +6502,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -6348,7 +6510,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -6361,16 +6523,16 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/ema/I:DJI?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
-                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "next_url": "https://api.polygon.io/v1/indicators/ema/I:NDX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTE1MDg0Ljk5OTM4OTgyMDAzJTJDJTIyaCUyMiUzQTAlMkMlMjJsJTIyJTNBMCUyQyUyMnQlMjIlM0ExNjg3MjE5MjAwMDAwJTdEJmFzPSZleHBhbmRfdW5kZXJseWluZz1mYWxzZSZsaW1pdD0xJm9yZGVyPWRlc2Mmc2VyaWVzX3R5cGU9Y2xvc2UmdGltZXNwYW49ZGF5JnRpbWVzdGFtcC5sdD0xNjg3MjM3MjAwMDAwJndpbmRvdz01MA",
+                  "request_id": "b9201816341441eed663a90443c0623a",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678726291180?limit=35&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:NDX/range/1/day/1678338000000/1687366449650?limit=226&sort=desc"
                     },
                     "values": [
                       {
-                        "timestamp": 1681966800000,
-                        "value": 33355.64416487007
+                        "timestamp": 1687237200000,
+                        "value": 14452.002555459003
                       }
                     ]
                   },
@@ -6509,6 +6671,7 @@
         "tags": [
           "indices:aggregates"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -6636,7 +6799,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -6644,7 +6807,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -6652,7 +6815,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -6660,7 +6823,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -6954,7 +7117,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -6962,7 +7125,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -6970,7 +7133,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -6978,7 +7141,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -7281,7 +7444,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -7289,7 +7452,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -7297,7 +7460,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -7305,7 +7468,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -7514,7 +7677,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get MACD data.",
-            "example": "C:EUR-USD",
+            "example": "C:EURUSD",
             "in": "path",
             "name": "fxTicker",
             "required": true,
@@ -7643,7 +7806,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -7651,7 +7814,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -7659,7 +7822,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -7667,7 +7830,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -7876,7 +8039,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get MACD data.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -8005,7 +8168,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -8013,7 +8176,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -8021,7 +8184,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -8029,7 +8192,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -8042,24 +8205,24 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/macd/I:DJI?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
-                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "next_url": "https://api.polygon.io/v1/indicators/macd/I:NDX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTE1MDg0Ljk5OTM4OTgyMDAzJTJDJTIyaCUyMiUzQTAlMkMlMjJsJTIyJTNBMCUyQyUyMnQlMjIlM0ExNjg3MTUwODAwMDAwJTdEJmFzPSZleHBhbmRfdW5kZXJseWluZz1mYWxzZSZsaW1pdD0yJmxvbmdfd2luZG93PTI2Jm9yZGVyPWRlc2Mmc2VyaWVzX3R5cGU9Y2xvc2Umc2hvcnRfd2luZG93PTEyJnNpZ25hbF93aW5kb3c9OSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2ODcyMTkyMDAwMDA",
+                  "request_id": "2eeda0be57e83cbc64cc8d1a74e84dbd",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678726155743?limit=129&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:NDX/range/1/day/1678338000000/1687366537196?limit=121&sort=desc"
                     },
                     "values": [
                       {
-                        "histogram": -48.29157370302107,
-                        "signal": 225.60959338746886,
-                        "timestamp": 1681966800000,
-                        "value": 177.3180196844478
+                        "histogram": -4.7646219788108795,
+                        "signal": 220.7596784587801,
+                        "timestamp": 1687237200000,
+                        "value": 215.9950564799692
                       },
                       {
-                        "histogram": -37.55634001543484,
-                        "signal": 237.6824868132241,
-                        "timestamp": 1681963200000,
-                        "value": 200.12614679778926
+                        "histogram": 3.4518937661882205,
+                        "signal": 221.9508339534828,
+                        "timestamp": 1687219200000,
+                        "value": 225.40272771967102
                       }
                     ]
                   },
@@ -8214,6 +8377,7 @@
         "tags": [
           "indices:aggregates"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -8361,7 +8525,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -8369,7 +8533,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -8377,7 +8541,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -8385,7 +8549,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -8723,7 +8887,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -8731,7 +8895,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -8739,7 +8903,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -8747,7 +8911,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -9054,7 +9218,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -9062,7 +9226,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -9070,7 +9234,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -9078,7 +9242,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -9100,7 +9264,7 @@
                     "values": [
                       {
                         "timestamp": 1517562000016,
-                        "value": 140.139
+                        "value": 82.19
                       }
                     ]
                   },
@@ -9263,7 +9427,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get relative strength index (RSI) data.",
-            "example": "C:EUR-USD",
+            "example": "C:EURUSD",
             "in": "path",
             "name": "fxTicker",
             "required": true,
@@ -9372,7 +9536,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -9380,7 +9544,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -9388,7 +9552,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -9396,7 +9560,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -9418,7 +9582,7 @@
                     "values": [
                       {
                         "timestamp": 1517562000016,
-                        "value": 140.139
+                        "value": 82.19
                       }
                     ]
                   },
@@ -9581,7 +9745,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get relative strength index (RSI) data.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -9690,7 +9854,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -9698,7 +9862,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -9706,7 +9870,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -9714,7 +9878,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -9727,16 +9891,16 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/rsi/I:DJI?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
-                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "next_url": "https://api.polygon.io/v1/indicators/rsi/I:NDX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTE1MDg0Ljk5OTM4OTgyMDAzJTJDJTIyaCUyMiUzQTAlMkMlMjJsJTIyJTNBMCUyQyUyMnQlMjIlM0ExNjg3MjE5MjAwMDAwJTdEJmFzPSZleHBhbmRfdW5kZXJseWluZz1mYWxzZSZsaW1pdD0xJm9yZGVyPWRlc2Mmc2VyaWVzX3R5cGU9Y2xvc2UmdGltZXNwYW49ZGF5JnRpbWVzdGFtcC5sdD0xNjg3MjM3MjAwMDAwJndpbmRvdz0xNA",
+                  "request_id": "28a8417f521f98e1d08f6ed7d1fbcad3",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:NDX/range/1/day/1678338000000/1687366658253?limit=66&sort=desc"
                     },
                     "values": [
                       {
-                        "timestamp": 1681966800000,
-                        "value": 55.89394103205648
+                        "timestamp": 1687237200000,
+                        "value": 73.98019439047955
                       }
                     ]
                   },
@@ -9875,6 +10039,7 @@
         "tags": [
           "indices:aggregates"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -10002,7 +10167,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -10010,7 +10175,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -10018,7 +10183,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -10026,7 +10191,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -10048,7 +10213,7 @@
                     "values": [
                       {
                         "timestamp": 1517562000016,
-                        "value": 140.139
+                        "value": 82.19
                       }
                     ]
                   },
@@ -10320,7 +10485,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -10328,7 +10493,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -10336,7 +10501,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -10344,7 +10509,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -10366,7 +10531,7 @@
                     "values": [
                       {
                         "timestamp": 1517562000016,
-                        "value": 140.139
+                        "value": 82.19
                       }
                     ]
                   },
@@ -10627,7 +10792,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -10635,7 +10800,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -10643,7 +10808,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -10651,7 +10816,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -10858,7 +11023,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get simple moving average (SMA) data.",
-            "example": "C:EUR-USD",
+            "example": "C:EURUSD",
             "in": "path",
             "name": "fxTicker",
             "required": true,
@@ -10967,7 +11132,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -10975,7 +11140,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -10983,7 +11148,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -10991,7 +11156,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -11198,7 +11363,7 @@
         "parameters": [
           {
             "description": "The ticker symbol for which to get simple moving average (SMA) data.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -11307,7 +11472,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -11315,7 +11480,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -11323,7 +11488,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -11331,7 +11496,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -11344,16 +11509,16 @@
             "content": {
               "application/json": {
                 "example": {
-                  "next_url": "https://api.polygon.io/v1/indicators/sma/I:DJI?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTQwNDcuNDEwMDAwMDAwMDAwMyUyQyUyMmglMjIlM0EwJTJDJTIybCUyMiUzQTAlMkMlMjJ0JTIyJTNBMTY3ODA4MjQwMDAwMCU3RCZhcz0mZXhwYW5kX3VuZGVybHlpbmc9ZmFsc2UmbGltaXQ9MTAmb3JkZXI9ZGVzYyZzZXJpZXNfdHlwZT1jbG9zZSZ0aW1lc3Bhbj1kYXkmdGltZXN0YW1wLmx0PTE2NzgxNjUyMDAwMDAmd2luZG93PTU",
-                  "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
+                  "next_url": "https://api.polygon.io/v1/indicators/sma/I:NDX?cursor=YWRqdXN0ZWQ9dHJ1ZSZhcD0lN0IlMjJ2JTIyJTNBMCUyQyUyMm8lMjIlM0EwJTJDJTIyYyUyMiUzQTE1MDg0Ljk5OTM4OTgyMDAzJTJDJTIyaCUyMiUzQTAlMkMlMjJsJTIyJTNBMCUyQyUyMnQlMjIlM0ExNjg3MjE5MjAwMDAwJTdEJmFzPSZleHBhbmRfdW5kZXJseWluZz1mYWxzZSZsaW1pdD0xJm9yZGVyPWRlc2Mmc2VyaWVzX3R5cGU9Y2xvc2UmdGltZXNwYW49ZGF5JnRpbWVzdGFtcC5sdD0xNjg3MjM3MjAwMDAwJndpbmRvdz01Mw",
+                  "request_id": "4cae270008cb3f947e3f92c206e3888a",
                   "results": {
                     "underlying": {
-                      "url": "https://api.polygon.io/v2/aggs/ticker/I:DJI/range/1/day/1063281600000/1678725829099?limit=35&sort=desc"
+                      "url": "https://api.polygon.io/v2/aggs/ticker/I:NDX/range/1/day/1678338000000/1687366378997?limit=240&sort=desc"
                     },
                     "values": [
                       {
-                        "timestamp": 1681966800000,
-                        "value": 33236.3424
+                        "timestamp": 1687237200000,
+                        "value": 14362.676417589264
                       }
                     ]
                   },
@@ -11492,6 +11657,7 @@
         "tags": [
           "indices:aggregates"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -11619,7 +11785,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -11627,7 +11793,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -11635,7 +11801,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -11643,7 +11809,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -11959,7 +12125,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -11967,7 +12133,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -11975,7 +12141,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -11983,7 +12149,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -12265,6 +12431,12 @@
                           }
                         }
                       },
+                      "required": [
+                        "exchange",
+                        "price",
+                        "size",
+                        "timestamp"
+                      ],
                       "type": "object",
                       "x-polygon-go-type": {
                         "name": "LastTradeCrypto"
@@ -12283,6 +12455,11 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "symbol"
+                  ],
                   "type": "object"
                 }
               },
@@ -12381,6 +12558,12 @@
                           }
                         }
                       },
+                      "required": [
+                        "ask",
+                        "bid",
+                        "exchange",
+                        "timestamp"
+                      ],
                       "type": "object",
                       "x-polygon-go-type": {
                         "name": "LastQuoteCurrencies"
@@ -12399,6 +12582,11 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id",
+                    "symbol"
+                  ],
                   "type": "object"
                 }
               },
@@ -12892,7 +13080,7 @@
         "parameters": [
           {
             "description": "The ticker symbol of Index.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -12907,7 +13095,6 @@
             "name": "date",
             "required": true,
             "schema": {
-              "format": "date",
               "type": "string"
             }
           }
@@ -12917,15 +13104,15 @@
             "content": {
               "application/json": {
                 "example": {
-                  "afterHours": 31909.64,
-                  "close": 32245.14,
-                  "from": "2023-03-10",
-                  "high": 32988.26,
-                  "low": 32200.66,
-                  "open": 32922.75,
-                  "preMarket": 32338.23,
+                  "afterHours": 11830.43006295237,
+                  "close": 11830.28178808306,
+                  "from": "2023-03-10T00:00:00.000Z",
+                  "high": 12069.62262033557,
+                  "low": 11789.85923449393,
+                  "open": 12001.69552583921,
+                  "preMarket": 12001.69552583921,
                   "status": "OK",
-                  "symbol": "I:DJI"
+                  "symbol": "I:NDX"
                 },
                 "schema": {
                   "properties": {
@@ -12983,6 +13170,12 @@
                   ],
                   "type": "object"
                 }
+              },
+              "text/csv": {
+                "example": "from,open,high,low,close,afterHours,preMarket\n2023-01-10,12001.69552583921,12069.62262033557,11789.85923449393,11830.28178808306,26122646,11830.43006295237,12001.69552583921\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "The open/close of this stock symbol."
@@ -12995,6 +13188,7 @@
         "tags": [
           "stocks:open-close"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -14256,6 +14450,7 @@
                         "icon_url": "https://api.polygon.io/icon.png",
                         "logo_url": "https://api.polygon.io/logo.svg"
                       },
+                      "last_updated": 1679597116344223500,
                       "market_status": "closed",
                       "name": "Norwegian Cruise Lines",
                       "price": 22.3,
@@ -14277,6 +14472,7 @@
                       "type": "stock"
                     },
                     {
+                      "last_updated": 1679597116344223500,
                       "market_status": "closed",
                       "name": "NCLH $5 Call",
                       "options": {
@@ -14306,6 +14502,7 @@
                       "type": "options"
                     },
                     {
+                      "last_updated": 1679597116344223500,
                       "market_status": "open",
                       "name": "Euro - United States Dollar",
                       "price": 0.97989,
@@ -14326,6 +14523,7 @@
                         "icon_url": "https://api.polygon.io/icon.png",
                         "logo_url": "https://api.polygon.io/logo.svg"
                       },
+                      "last_updated": 1679597116344223500,
                       "market_status": "open",
                       "name": "Bitcoin - United States Dollar",
                       "price": 32154.68,
@@ -14377,6 +14575,15 @@
                             "description": "The error while looking for this ticker.",
                             "type": "string"
                           },
+                          "last_updated": {
+                            "description": "The nanosecond timestamp of when this information was updated.",
+                            "format": "int64",
+                            "type": "integer",
+                            "x-polygon-go-type": {
+                              "name": "INanoseconds",
+                              "path": "github.com/polygon-io/ptime"
+                            }
+                          },
                           "market_status": {
                             "description": "The market status for the market that trades this ticker.",
                             "type": "string"
@@ -14424,7 +14631,7 @@
                                 "type": "number"
                               },
                               "strike_price": {
-                                "description": "The strike price of the option contract",
+                                "description": "The strike price of the option contract.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -14469,12 +14676,12 @@
                                 "type": "number"
                               },
                               "early_trading_change": {
-                                "description": "Today\u2019s early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
+                                "description": "Today's early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "early_trading_change_percent": {
-                                "description": "Today\u2019s early trading change as a percentage.",
+                                "description": "Today's early trading change as a percentage.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -14484,12 +14691,12 @@
                                 "type": "number"
                               },
                               "late_trading_change": {
-                                "description": "Today\u2019s late trading change amount, difference between price and today\u2019s close if in late trading hours, otherwise difference between last price during late trading and today\u2019s close.",
+                                "description": "Today's late trading change amount, difference between price and today's close if in late trading hours, otherwise difference between last price during late trading and today's close.",
                                 "format": "double",
                                 "type": "number"
                               },
                               "late_trading_change_percent": {
-                                "description": "Today\u2019s late trading change as a percentage.",
+                                "description": "Today's late trading change as a percentage.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -14505,6 +14712,11 @@
                               },
                               "previous_close": {
                                 "description": "The closing price of the asset for the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "price": {
+                                "description": "The price of the most recent trade or bid price for this asset.",
                                 "format": "double",
                                 "type": "number"
                               },
@@ -14551,7 +14763,8 @@
                           "market_status",
                           "type",
                           "session",
-                          "options"
+                          "options",
+                          "last_updated"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -15410,6 +15623,7 @@
             "required": true,
             "schema": {
               "enum": [
+                "second",
                 "minute",
                 "hour",
                 "day",
@@ -15862,6 +16076,7 @@
             "required": true,
             "schema": {
               "enum": [
+                "second",
                 "minute",
                 "hour",
                 "day",
@@ -16089,7 +16304,7 @@
         "parameters": [
           {
             "description": "The ticker symbol of Index.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -16107,17 +16322,17 @@
                   "request_id": "b2170df985474b6d21a6eeccfb6bee67",
                   "results": [
                     {
-                      "T": "I:DJI",
-                      "c": 33786.62,
-                      "h": 33786.62,
-                      "l": 33677.74,
-                      "o": 33677.74,
-                      "t": 1682020800000
+                      "T": "I:NDX",
+                      "c": 15070.14948566977,
+                      "h": 15127.4195807999,
+                      "l": 14946.7243781848,
+                      "o": 15036.48391066877,
+                      "t": 1687291200000
                     }
                   ],
                   "resultsCount": 1,
                   "status": "OK",
-                  "ticker": "I:DJI"
+                  "ticker": "I:NDX"
                 },
                 "schema": {
                   "allOf": [
@@ -16206,6 +16421,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "T,c,h,l,o,t,v,vw\nI:NDX,15036.48391066877,15070.14948566977,15127.4195807999,14946.7243781848,1687291200000\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "The previous day OHLC for a index."
@@ -16218,6 +16439,7 @@
         "tags": [
           "indices:aggregates"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -16234,7 +16456,7 @@
         "parameters": [
           {
             "description": "The ticker symbol of Index.",
-            "example": "I:DJI",
+            "example": "I:NDX",
             "in": "path",
             "name": "indicesTicker",
             "required": true,
@@ -16260,6 +16482,7 @@
             "required": true,
             "schema": {
               "enum": [
+                "second",
                 "minute",
                 "hour",
                 "day",
@@ -16323,22 +16546,22 @@
                   "request_id": "0cf72b6da685bcd386548ffe2895904a",
                   "results": [
                     {
-                      "c": 32245.14,
-                      "h": 32988.26,
-                      "l": 32200.66,
-                      "o": 32922.75,
+                      "c": 11995.88235998666,
+                      "h": 12340.44936267155,
+                      "l": 11970.34221717375,
+                      "o": 12230.83658266843,
                       "t": 1678341600000
                     },
                     {
-                      "c": 31787.7,
-                      "h": 32422.100000000002,
-                      "l": 31786.06,
-                      "o": 32198.9,
+                      "c": 11830.28178808306,
+                      "h": 12069.62262033557,
+                      "l": 11789.85923449393,
+                      "o": 12001.69552583921,
                       "t": 1678428000000
                     }
                   ],
                   "status": "OK",
-                  "ticker": "I:DJI"
+                  "ticker": "I:NDX"
                 },
                 "schema": {
                   "allOf": [
@@ -16427,6 +16650,12 @@
                     }
                   ]
                 }
+              },
+              "text/csv": {
+                "example": "c,h,l,n,o,t\n11995.88235998666,12340.44936267155,11970.34221717375,12230.83658266843,1678341600000\n11830.28178808306,12069.62262033557,11789.85923449393,12001.69552583921,1678341600000\n",
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "description": "Index Aggregates."
@@ -16439,6 +16668,7 @@
         "tags": [
           "indices:aggregates"
         ],
+        "x-polygon-entitlement-allowed-limited-tickers": true,
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
           "name": "aggregates"
@@ -16665,6 +16895,7 @@
             "required": true,
             "schema": {
               "enum": [
+                "second",
                 "minute",
                 "hour",
                 "day",
@@ -17112,6 +17343,7 @@
             "required": true,
             "schema": {
               "enum": [
+                "second",
                 "minute",
                 "hour",
                 "day",
@@ -17479,6 +17711,12 @@
                           "type": "integer"
                         }
                       },
+                      "required": [
+                        "T",
+                        "t",
+                        "y",
+                        "q"
+                      ],
                       "type": "object",
                       "x-polygon-go-type": {
                         "name": "LastQuoteResult"
@@ -17489,6 +17727,10 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
                   "type": "object"
                 }
               },
@@ -17566,7 +17808,8 @@
                     "r": 202,
                     "s": 25,
                     "t": 1617901342969834000,
-                    "x": 312
+                    "x": 312,
+                    "y": 1617901342969834000
                   },
                   "status": "OK"
                 },
@@ -17642,6 +17885,15 @@
                           "type": "integer"
                         }
                       },
+                      "required": [
+                        "T",
+                        "t",
+                        "y",
+                        "q",
+                        "i",
+                        "p",
+                        "x"
+                      ],
                       "type": "object",
                       "x-polygon-go-type": {
                         "name": "LastTradeResult"
@@ -17652,6 +17904,10 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
                   "type": "object"
                 }
               },
@@ -17809,6 +18065,15 @@
                           "type": "integer"
                         }
                       },
+                      "required": [
+                        "T",
+                        "t",
+                        "y",
+                        "q",
+                        "i",
+                        "p",
+                        "x"
+                      ],
                       "type": "object",
                       "x-polygon-go-type": {
                         "name": "LastTradeResult"
@@ -17819,6 +18084,10 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
                   "type": "object"
                 }
               },
@@ -18307,7 +18576,9 @@
                         "c": 0.296,
                         "h": 0.296,
                         "l": 0.294,
+                        "n": 2,
                         "o": 0.296,
+                        "t": 1684427880000,
                         "v": 123.4866,
                         "vw": 0
                       },
@@ -18389,6 +18660,11 @@
                                 ],
                                 "type": "object"
                               },
+                              "fmv": {
+                                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                                "format": "double",
+                                "type": "number"
+                              },
                               "lastTrade": {
                                 "allOf": [
                                   {
@@ -18455,10 +18731,18 @@
                                     "format": "double",
                                     "type": "number"
                                   },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
                                   "o": {
                                     "description": "The open price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "type": "integer"
                                   },
                                   "v": {
                                     "description": "The trading volume of the symbol in the given time period.",
@@ -18477,7 +18761,9 @@
                                   "l",
                                   "c",
                                   "v",
-                                  "vw"
+                                  "vw",
+                                  "t",
+                                  "n"
                                 ],
                                 "type": "object"
                               },
@@ -18646,7 +18932,9 @@
                       "c": 16235.1,
                       "h": 16264.29,
                       "l": 16129.3,
+                      "n": 558,
                       "o": 16257.51,
+                      "t": 1684428960000,
                       "v": 19.30791925,
                       "vw": 0
                     },
@@ -18738,6 +19026,11 @@
                               ],
                               "type": "object"
                             },
+                            "fmv": {
+                              "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                              "format": "double",
+                              "type": "number"
+                            },
                             "lastTrade": {
                               "allOf": [
                                 {
@@ -18804,10 +19097,18 @@
                                   "format": "double",
                                   "type": "number"
                                 },
+                                "n": {
+                                  "description": "The number of transactions in the aggregate window.",
+                                  "type": "integer"
+                                },
                                 "o": {
                                   "description": "The open price for the symbol in the given time period.",
                                   "format": "double",
                                   "type": "number"
+                                },
+                                "t": {
+                                  "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                  "type": "integer"
                                 },
                                 "v": {
                                   "description": "The trading volume of the symbol in the given time period.",
@@ -18826,7 +19127,9 @@
                                 "l",
                                 "c",
                                 "v",
-                                "vw"
+                                "vw",
+                                "t",
+                                "n"
                               ],
                               "type": "object"
                             },
@@ -19185,7 +19488,9 @@
                         "c": 0.062377,
                         "h": 0.062377,
                         "l": 0.062377,
+                        "n": 2,
                         "o": 0.062377,
+                        "t": 1684426740000,
                         "v": 35420,
                         "vw": 0
                       },
@@ -19259,6 +19564,11 @@
                                 ],
                                 "type": "object"
                               },
+                              "fmv": {
+                                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                                "format": "double",
+                                "type": "number"
+                              },
                               "lastTrade": {
                                 "allOf": [
                                   {
@@ -19325,10 +19635,18 @@
                                     "format": "double",
                                     "type": "number"
                                   },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
                                   "o": {
                                     "description": "The open price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "type": "integer"
                                   },
                                   "v": {
                                     "description": "The trading volume of the symbol in the given time period.",
@@ -19347,7 +19665,9 @@
                                   "l",
                                   "c",
                                   "v",
-                                  "vw"
+                                  "vw",
+                                  "t",
+                                  "n"
                                 ],
                                 "type": "object"
                               },
@@ -19512,7 +19832,9 @@
                         "c": 0.117769,
                         "h": 0.11779633,
                         "l": 0.11773698,
+                        "n": 1,
                         "o": 0.11778,
+                        "t": 1684422000000,
                         "v": 202
                       },
                       "prevDay": {
@@ -19587,6 +19909,11 @@
                                 ],
                                 "type": "object"
                               },
+                              "fmv": {
+                                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                                "format": "double",
+                                "type": "number"
+                              },
                               "lastQuote": {
                                 "description": "The most recent quote for this ticker.",
                                 "properties": {
@@ -19635,10 +19962,18 @@
                                     "format": "double",
                                     "type": "number"
                                   },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
                                   "o": {
                                     "description": "The open price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "type": "integer"
                                   },
                                   "v": {
                                     "description": "The trading volume of the symbol in the given time period.",
@@ -19646,13 +19981,6 @@
                                     "type": "number"
                                   }
                                 },
-                                "required": [
-                                  "o",
-                                  "h",
-                                  "l",
-                                  "c",
-                                  "v"
-                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -19816,7 +20144,9 @@
                       "c": 1.18396,
                       "h": 1.18423,
                       "l": 1.1838,
+                      "n": 85,
                       "o": 1.18404,
+                      "t": 1684422000000,
                       "v": 41
                     },
                     "prevDay": {
@@ -19901,6 +20231,11 @@
                               ],
                               "type": "object"
                             },
+                            "fmv": {
+                              "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                              "format": "double",
+                              "type": "number"
+                            },
                             "lastQuote": {
                               "description": "The most recent quote for this ticker.",
                               "properties": {
@@ -19949,10 +20284,18 @@
                                   "format": "double",
                                   "type": "number"
                                 },
+                                "n": {
+                                  "description": "The number of transactions in the aggregate window.",
+                                  "type": "integer"
+                                },
                                 "o": {
                                   "description": "The open price for the symbol in the given time period.",
                                   "format": "double",
                                   "type": "number"
+                                },
+                                "t": {
+                                  "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                  "type": "integer"
                                 },
                                 "v": {
                                   "description": "The trading volume of the symbol in the given time period.",
@@ -19960,13 +20303,6 @@
                                   "type": "number"
                                 }
                               },
-                              "required": [
-                                "o",
-                                "h",
-                                "l",
-                                "c",
-                                "v"
-                              ],
                               "type": "object"
                             },
                             "prevDay": {
@@ -20131,7 +20467,9 @@
                         "c": 0.886156,
                         "h": 0.886156,
                         "l": 0.886156,
+                        "n": 1,
                         "o": 0.886156,
+                        "t": 1684422000000,
                         "v": 1
                       },
                       "prevDay": {
@@ -20206,6 +20544,11 @@
                                 ],
                                 "type": "object"
                               },
+                              "fmv": {
+                                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                                "format": "double",
+                                "type": "number"
+                              },
                               "lastQuote": {
                                 "description": "The most recent quote for this ticker.",
                                 "properties": {
@@ -20254,10 +20597,18 @@
                                     "format": "double",
                                     "type": "number"
                                   },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
                                   "o": {
                                     "description": "The open price for the symbol in the given time period.",
                                     "format": "double",
                                     "type": "number"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "type": "integer"
                                   },
                                   "v": {
                                     "description": "The trading volume of the symbol in the given time period.",
@@ -20265,13 +20616,6 @@
                                     "type": "number"
                                   }
                                 },
-                                "required": [
-                                  "o",
-                                  "h",
-                                  "l",
-                                  "c",
-                                  "v"
-                                ],
                                 "type": "object"
                               },
                               "prevDay": {
@@ -20460,7 +20804,9 @@
                         "c": 20.506,
                         "h": 20.506,
                         "l": 20.506,
+                        "n": 1,
                         "o": 20.506,
+                        "t": 1684428600000,
                         "v": 5000,
                         "vw": 20.5105
                       },
@@ -20549,6 +20895,11 @@
                                   "vw"
                                 ],
                                 "type": "object"
+                              },
+                              "fmv": {
+                                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                                "format": "double",
+                                "type": "number"
                               },
                               "lastQuote": {
                                 "description": "The most recent quote for this ticker.  This is only returned if your current plan includes quotes.",
@@ -20649,6 +21000,10 @@
                                     "format": "double",
                                     "type": "number"
                                   },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
                                   "o": {
                                     "description": "The open price for the symbol in the given time period.",
                                     "format": "double",
@@ -20657,6 +21012,10 @@
                                   "otc": {
                                     "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
                                     "type": "boolean"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "type": "integer"
                                   },
                                   "v": {
                                     "description": "The trading volume of the symbol in the given time period.",
@@ -20676,7 +21035,9 @@
                                   "l",
                                   "c",
                                   "v",
-                                  "vw"
+                                  "vw",
+                                  "t",
+                                  "n"
                                 ],
                                 "type": "object"
                               },
@@ -20848,7 +21209,9 @@
                       "c": 120.4201,
                       "h": 120.468,
                       "l": 120.37,
+                      "n": 762,
                       "o": 120.435,
+                      "t": 1684428720000,
                       "v": 270796,
                       "vw": 120.4129
                     },
@@ -20943,6 +21306,11 @@
                                 "vw"
                               ],
                               "type": "object"
+                            },
+                            "fmv": {
+                              "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                              "format": "double",
+                              "type": "number"
                             },
                             "lastQuote": {
                               "description": "The most recent quote for this ticker.  This is only returned if your current plan includes quotes.",
@@ -21043,6 +21411,10 @@
                                   "format": "double",
                                   "type": "number"
                                 },
+                                "n": {
+                                  "description": "The number of transactions in the aggregate window.",
+                                  "type": "integer"
+                                },
                                 "o": {
                                   "description": "The open price for the symbol in the given time period.",
                                   "format": "double",
@@ -21051,6 +21423,10 @@
                                 "otc": {
                                   "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
                                   "type": "boolean"
+                                },
+                                "t": {
+                                  "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                  "type": "integer"
                                 },
                                 "v": {
                                   "description": "The trading volume of the symbol in the given time period.",
@@ -21070,7 +21446,9 @@
                                 "l",
                                 "c",
                                 "v",
-                                "vw"
+                                "vw",
+                                "t",
+                                "n"
                               ],
                               "type": "object"
                             },
@@ -21251,7 +21629,9 @@
                         "c": 14.2284,
                         "h": 14.325,
                         "l": 14.2,
+                        "n": 5,
                         "o": 14.28,
+                        "t": 1684428600000,
                         "v": 6108,
                         "vw": 14.2426
                       },
@@ -21336,6 +21716,11 @@
                                   "vw"
                                 ],
                                 "type": "object"
+                              },
+                              "fmv": {
+                                "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                                "format": "double",
+                                "type": "number"
                               },
                               "lastQuote": {
                                 "description": "The most recent quote for this ticker.  This is only returned if your current plan includes quotes.",
@@ -21436,6 +21821,10 @@
                                     "format": "double",
                                     "type": "number"
                                   },
+                                  "n": {
+                                    "description": "The number of transactions in the aggregate window.",
+                                    "type": "integer"
+                                  },
                                   "o": {
                                     "description": "The open price for the symbol in the given time period.",
                                     "format": "double",
@@ -21444,6 +21833,10 @@
                                   "otc": {
                                     "description": "Whether or not this aggregate is for an OTC ticker. This field will be left off if false.",
                                     "type": "boolean"
+                                  },
+                                  "t": {
+                                    "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                    "type": "integer"
                                   },
                                   "v": {
                                     "description": "The trading volume of the symbol in the given time period.",
@@ -21463,7 +21856,9 @@
                                   "l",
                                   "c",
                                   "v",
-                                  "vw"
+                                  "vw",
+                                  "t",
+                                  "n"
                                 ],
                                 "type": "object"
                               },
@@ -22245,7 +22640,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -22253,7 +22648,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -22261,7 +22656,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -22269,7 +22664,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -22325,17 +22720,17 @@
                   "request_id": "a47d1beb8c11b6ae897ab76cdbbf35a3",
                   "results": [
                     {
-                      "ask_exchange": "48,",
-                      "ask_price": "1.18565,",
-                      "bid_exchange": "48,",
-                      "bid_price": "1.18558,",
+                      "ask_exchange": 48,
+                      "ask_price": 1.18565,
+                      "bid_exchange": 48,
+                      "bid_price": 1.18558,
                       "participant_timestamp": 1625097600000000000
                     },
                     {
-                      "ask_exchange": "48,",
-                      "ask_price": "1.18565,",
-                      "bid_exchange": "48,",
-                      "bid_price": "1.18559,",
+                      "ask_exchange": 48,
+                      "ask_price": 1.18565,
+                      "bid_exchange": 48,
+                      "bid_price": 1.18559,
                       "participant_timestamp": 1625097600000000000
                     }
                   ],
@@ -22378,6 +22773,9 @@
                             }
                           }
                         },
+                        "required": [
+                          "participant_timestamp"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -22387,6 +22785,9 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status"
+                  ],
                   "type": "object"
                 }
               },
@@ -22464,7 +22865,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -22472,7 +22873,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -22480,7 +22881,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -22488,7 +22889,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -22618,6 +23019,10 @@
                             }
                           }
                         },
+                        "required": [
+                          "sip_timestamp",
+                          "sequence_number"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -22627,6 +23032,9 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status"
+                  ],
                   "type": "object"
                 }
               },
@@ -22697,7 +23105,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -22705,7 +23113,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -22713,7 +23121,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -22721,7 +23129,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -22908,7 +23316,15 @@
                             }
                           }
                         },
-                        "type": "object"
+                        "required": [
+                          "participant_timestamp",
+                          "sequence_number",
+                          "sip_timestamp"
+                        ],
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "CommonQuote"
+                        }
                       },
                       "type": "array"
                     },
@@ -22917,6 +23333,9 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status"
+                  ],
                   "type": "object"
                 }
               },
@@ -23830,7 +24249,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.gte",
             "schema": {
@@ -23838,7 +24257,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.gt",
             "schema": {
@@ -23846,7 +24265,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.lte",
             "schema": {
@@ -23854,7 +24273,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.lt",
             "schema": {
@@ -23862,7 +24281,7 @@
             }
           },
           {
-            "description": "Search by ex_dividend_date.",
+            "description": "Range by ex_dividend_date.",
             "in": "query",
             "name": "ex_dividend_date.gte",
             "schema": {
@@ -23871,7 +24290,7 @@
             }
           },
           {
-            "description": "Search by ex_dividend_date.",
+            "description": "Range by ex_dividend_date.",
             "in": "query",
             "name": "ex_dividend_date.gt",
             "schema": {
@@ -23880,7 +24299,7 @@
             }
           },
           {
-            "description": "Search by ex_dividend_date.",
+            "description": "Range by ex_dividend_date.",
             "in": "query",
             "name": "ex_dividend_date.lte",
             "schema": {
@@ -23889,7 +24308,7 @@
             }
           },
           {
-            "description": "Search by ex_dividend_date.",
+            "description": "Range by ex_dividend_date.",
             "in": "query",
             "name": "ex_dividend_date.lt",
             "schema": {
@@ -23898,7 +24317,7 @@
             }
           },
           {
-            "description": "Search by record_date.",
+            "description": "Range by record_date.",
             "in": "query",
             "name": "record_date.gte",
             "schema": {
@@ -23907,7 +24326,7 @@
             }
           },
           {
-            "description": "Search by record_date.",
+            "description": "Range by record_date.",
             "in": "query",
             "name": "record_date.gt",
             "schema": {
@@ -23916,7 +24335,7 @@
             }
           },
           {
-            "description": "Search by record_date.",
+            "description": "Range by record_date.",
             "in": "query",
             "name": "record_date.lte",
             "schema": {
@@ -23925,7 +24344,7 @@
             }
           },
           {
-            "description": "Search by record_date.",
+            "description": "Range by record_date.",
             "in": "query",
             "name": "record_date.lt",
             "schema": {
@@ -23934,7 +24353,7 @@
             }
           },
           {
-            "description": "Search by declaration_date.",
+            "description": "Range by declaration_date.",
             "in": "query",
             "name": "declaration_date.gte",
             "schema": {
@@ -23943,7 +24362,7 @@
             }
           },
           {
-            "description": "Search by declaration_date.",
+            "description": "Range by declaration_date.",
             "in": "query",
             "name": "declaration_date.gt",
             "schema": {
@@ -23952,7 +24371,7 @@
             }
           },
           {
-            "description": "Search by declaration_date.",
+            "description": "Range by declaration_date.",
             "in": "query",
             "name": "declaration_date.lte",
             "schema": {
@@ -23961,7 +24380,7 @@
             }
           },
           {
-            "description": "Search by declaration_date.",
+            "description": "Range by declaration_date.",
             "in": "query",
             "name": "declaration_date.lt",
             "schema": {
@@ -23970,7 +24389,7 @@
             }
           },
           {
-            "description": "Search by pay_date.",
+            "description": "Range by pay_date.",
             "in": "query",
             "name": "pay_date.gte",
             "schema": {
@@ -23979,7 +24398,7 @@
             }
           },
           {
-            "description": "Search by pay_date.",
+            "description": "Range by pay_date.",
             "in": "query",
             "name": "pay_date.gt",
             "schema": {
@@ -23988,7 +24407,7 @@
             }
           },
           {
-            "description": "Search by pay_date.",
+            "description": "Range by pay_date.",
             "in": "query",
             "name": "pay_date.lte",
             "schema": {
@@ -23997,7 +24416,7 @@
             }
           },
           {
-            "description": "Search by pay_date.",
+            "description": "Range by pay_date.",
             "in": "query",
             "name": "pay_date.lt",
             "schema": {
@@ -24006,7 +24425,7 @@
             }
           },
           {
-            "description": "Search by cash_amount.",
+            "description": "Range by cash_amount.",
             "in": "query",
             "name": "cash_amount.gte",
             "schema": {
@@ -24014,7 +24433,7 @@
             }
           },
           {
-            "description": "Search by cash_amount.",
+            "description": "Range by cash_amount.",
             "in": "query",
             "name": "cash_amount.gt",
             "schema": {
@@ -24022,7 +24441,7 @@
             }
           },
           {
-            "description": "Search by cash_amount.",
+            "description": "Range by cash_amount.",
             "in": "query",
             "name": "cash_amount.lte",
             "schema": {
@@ -24030,7 +24449,7 @@
             }
           },
           {
-            "description": "Search by cash_amount.",
+            "description": "Range by cash_amount.",
             "in": "query",
             "name": "cash_amount.lt",
             "schema": {
@@ -24275,349 +24694,6 @@
               "ticker"
             ]
           }
-        }
-      },
-      "post": {
-        "description": "Manually add Polygon a dividend.",
-        "operationId": "CreateDividend",
-        "parameters": [
-          {
-            "description": "If true don't trigger overlay",
-            "in": "query",
-            "name": "skip_overlay_trigger",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "cash_amount": {
-                    "description": "The cash amount of the dividend per share owned.",
-                    "type": "number",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
-                  },
-                  "currency": {
-                    "description": "The currency in which the dividend is paid.",
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
-                  },
-                  "declaration_date": {
-                    "description": "The date that the dividend was announced.",
-                    "type": "string"
-                  },
-                  "dividend_type": {
-                    "description": "The type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD.\nSpecial Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.\nLong-Term and Short-Term capital gain distributions are denoted as LT and ST, respectively.",
-                    "enum": [
-                      "CD",
-                      "SC",
-                      "LT",
-                      "ST"
-                    ],
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
-                  },
-                  "ex_dividend_date": {
-                    "description": "The date that the stock first trades without the dividend, determined by the exchange.",
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
-                  },
-                  "frequency": {
-                    "description": "The number of times per year the dividend is paid out.  Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), and 12 (monthly).",
-                    "type": "integer",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
-                  },
-                  "pay_date": {
-                    "description": "The date that the dividend is paid out.",
-                    "type": "string"
-                  },
-                  "record_date": {
-                    "description": "The date that the stock must be held to receive the dividend, set by the company.",
-                    "type": "string"
-                  },
-                  "ticker": {
-                    "description": "The ticker symbol of the dividend.",
-                    "type": "string",
-                    "x-polygon-go-field-tags": {
-                      "tags": [
-                        {
-                          "key": "binding",
-                          "value": "required"
-                        }
-                      ]
-                    }
-                  }
-                },
-                "required": [
-                  "ticker",
-                  "ex_dividend_date",
-                  "frequency",
-                  "cash_amount",
-                  "dividend_type"
-                ],
-                "type": "object",
-                "x-polygon-go-struct-tags": {
-                  "tags": [
-                    "db"
-                  ]
-                }
-              }
-            }
-          },
-          "description": "Pass the desired dividend in the request body.",
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "request_id": {
-                      "type": "string"
-                    },
-                    "results": {
-                      "properties": {
-                        "cash_amount": {
-                          "description": "The cash amount of the dividend per share owned.",
-                          "type": "number",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
-                        },
-                        "currency": {
-                          "description": "The currency in which the dividend is paid.",
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
-                        },
-                        "declaration_date": {
-                          "description": "The date that the dividend was announced.",
-                          "type": "string"
-                        },
-                        "dividend_type": {
-                          "description": "The type of dividend. Dividends that have been paid and/or are expected to be paid on consistent schedules are denoted as CD.\nSpecial Cash dividends that have been paid that are infrequent or unusual, and/or can not be expected to occur in the future are denoted as SC.\nLong-Term and Short-Term capital gain distributions are denoted as LT and ST, respectively.",
-                          "enum": [
-                            "CD",
-                            "SC",
-                            "LT",
-                            "ST"
-                          ],
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
-                        },
-                        "ex_dividend_date": {
-                          "description": "The date that the stock first trades without the dividend, determined by the exchange.",
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
-                        },
-                        "frequency": {
-                          "description": "The number of times per year the dividend is paid out.  Possible values are 0 (one-time), 1 (annually), 2 (bi-annually), 4 (quarterly), and 12 (monthly).",
-                          "type": "integer",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
-                        },
-                        "pay_date": {
-                          "description": "The date that the dividend is paid out.",
-                          "type": "string"
-                        },
-                        "record_date": {
-                          "description": "The date that the stock must be held to receive the dividend, set by the company.",
-                          "type": "string"
-                        },
-                        "ticker": {
-                          "description": "The ticker symbol of the dividend.",
-                          "type": "string",
-                          "x-polygon-go-field-tags": {
-                            "tags": [
-                              {
-                                "key": "binding",
-                                "value": "required"
-                              }
-                            ]
-                          }
-                        }
-                      },
-                      "required": [
-                        "ticker",
-                        "ex_dividend_date",
-                        "frequency",
-                        "cash_amount",
-                        "dividend_type"
-                      ],
-                      "type": "object",
-                      "x-polygon-go-struct-tags": {
-                        "tags": [
-                          "db"
-                        ]
-                      }
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "request_id"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "request_id",
-                    "error"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "the requested update was unable to be performed due to an invalid request body"
-          },
-          "409": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "request_id",
-                    "error"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "a dividend already exists for this date and ticker"
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    },
-                    "request_id": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "request_id",
-                    "error"
-                  ],
-                  "type": "object"
-                }
-              }
-            },
-            "description": "unknown error"
-          }
-        },
-        "summary": "Dividends v3",
-        "tags": [
-          "reference:stocks"
-        ],
-        "x-polygon-entitlement-data-type": {
-          "description": "Reference data",
-          "name": "reference"
         }
       }
     },
@@ -24926,7 +25002,7 @@
             }
           },
           {
-            "description": "Search by underlying_ticker.",
+            "description": "Range by underlying_ticker.",
             "in": "query",
             "name": "underlying_ticker.gte",
             "schema": {
@@ -24934,7 +25010,7 @@
             }
           },
           {
-            "description": "Search by underlying_ticker.",
+            "description": "Range by underlying_ticker.",
             "in": "query",
             "name": "underlying_ticker.gt",
             "schema": {
@@ -24942,7 +25018,7 @@
             }
           },
           {
-            "description": "Search by underlying_ticker.",
+            "description": "Range by underlying_ticker.",
             "in": "query",
             "name": "underlying_ticker.lte",
             "schema": {
@@ -24950,7 +25026,7 @@
             }
           },
           {
-            "description": "Search by underlying_ticker.",
+            "description": "Range by underlying_ticker.",
             "in": "query",
             "name": "underlying_ticker.lt",
             "schema": {
@@ -24958,7 +25034,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.gte",
             "schema": {
@@ -24966,7 +25042,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.gt",
             "schema": {
@@ -24974,7 +25050,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.lte",
             "schema": {
@@ -24982,7 +25058,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.lt",
             "schema": {
@@ -24990,7 +25066,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.gte",
             "schema": {
@@ -24998,7 +25074,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.gt",
             "schema": {
@@ -25006,7 +25082,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.lte",
             "schema": {
@@ -25014,7 +25090,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.lt",
             "schema": {
@@ -25667,7 +25743,7 @@
     },
     "/v3/reference/tickers": {
       "get": {
-        "description": "Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Crypto, and Forex.",
+        "description": "Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Indices, Forex, and Crypto.",
         "operationId": "ListTickers",
         "parameters": [
           {
@@ -25780,7 +25856,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.gte",
             "schema": {
@@ -25788,7 +25864,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.gt",
             "schema": {
@@ -25796,7 +25872,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.lte",
             "schema": {
@@ -25804,7 +25880,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.lt",
             "schema": {
@@ -26516,6 +26592,723 @@
         }
       }
     },
+    "/v3/snapshot": {
+      "get": {
+        "description": "Get snapshots for assets of all types",
+        "operationId": "Snapshots",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "anyOf": {
+                "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
+                "enabled": true,
+                "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX"
+              },
+              "range": true,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query by the type of asset.",
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "enum": [
+                "stocks",
+                "options",
+                "crypto",
+                "fx",
+                "indices"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
+            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Order results based on the `sort` field.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 250.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field used for ordering.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker",
+              "enum": [
+                "ticker"
+              ],
+              "example": "ticker",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "abc123",
+                  "results": [
+                    {
+                      "break_even_price": 171.075,
+                      "details": {
+                        "contract_type": "call",
+                        "exercise_style": "american",
+                        "expiration_date": "2022-10-14",
+                        "shares_per_contract": 100,
+                        "strike_price": 5,
+                        "underlying_ticker": "NCLH"
+                      },
+                      "greeks": {
+                        "delta": 0.5520187372272933,
+                        "gamma": 0.00706756515659829,
+                        "theta": -0.018532772783847958,
+                        "vega": 0.7274811132998142
+                      },
+                      "implied_volatility": 0.3048997097864957,
+                      "last_quote": {
+                        "ask": 21.25,
+                        "ask_exchange": 12,
+                        "ask_size": 110,
+                        "bid": 20.9,
+                        "bid_exchange": 10,
+                        "bid_size": 172,
+                        "last_updated": 1636573458756383500,
+                        "midpoint": 21.075,
+                        "timeframe": "REAL-TIME"
+                      },
+                      "last_trade": {
+                        "conditions": [
+                          209
+                        ],
+                        "exchange": 316,
+                        "price": 0.05,
+                        "sip_timestamp": 1675280958783136800,
+                        "size": 2,
+                        "timeframe": "REAL-TIME"
+                      },
+                      "market_status": "closed",
+                      "name": "NCLH $5 Call",
+                      "open_interest": 8921,
+                      "session": {
+                        "change": -0.05,
+                        "change_percent": -1.07,
+                        "close": 6.65,
+                        "early_trading_change": -0.01,
+                        "early_trading_change_percent": -0.03,
+                        "high": 7.01,
+                        "late_trading_change": -0.4,
+                        "late_trading_change_percent": -0.02,
+                        "low": 5.42,
+                        "open": 6.7,
+                        "previous_close": 6.71,
+                        "volume": 67
+                      },
+                      "ticker": "O:NCLH221014C00005000",
+                      "type": "options",
+                      "underlying_asset": {
+                        "change_to_break_even": 23.123999999999995,
+                        "last_updated": 1636573459862384600,
+                        "price": 147.951,
+                        "ticker": "AAPL",
+                        "timeframe": "REAL-TIME"
+                      }
+                    },
+                    {
+                      "last_quote": {
+                        "ask": 21.25,
+                        "ask_exchange": 300,
+                        "ask_size": 110,
+                        "bid": 20.9,
+                        "bid_exchange": 323,
+                        "bid_size": 172,
+                        "last_updated": 1636573458756383500,
+                        "timeframe": "REAL-TIME"
+                      },
+                      "last_trade": {
+                        "conditions": [
+                          209
+                        ],
+                        "exchange": 316,
+                        "id": "4064",
+                        "last_updated": 1675280958783136800,
+                        "price": 0.05,
+                        "size": 2,
+                        "timeframe": "REAL-TIME"
+                      },
+                      "market_status": "closed",
+                      "name": "Apple Inc.",
+                      "session": {
+                        "change": -1.05,
+                        "change_percent": -4.67,
+                        "close": 21.4,
+                        "early_trading_change": -0.39,
+                        "early_trading_change_percent": -0.07,
+                        "high": 22.49,
+                        "late_trading_change": 1.2,
+                        "late_trading_change_percent": 3.92,
+                        "low": 21.35,
+                        "open": 22.49,
+                        "previous_close": 22.45,
+                        "volume": 37
+                      },
+                      "ticker": "AAPL",
+                      "type": "stocks"
+                    },
+                    {
+                      "error": "NOT_FOUND",
+                      "message": "Ticker not found.",
+                      "ticker": "TSLAAPL"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "break_even_price": {
+                            "description": "The price of the underlying asset for the contract to break even. For a call, this value is (strike price + premium paid). For a put, this value is (strike price - premium paid).",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "details": {
+                            "description": "The details for this contract.",
+                            "properties": {
+                              "contract_type": {
+                                "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
+                                "enum": [
+                                  "put",
+                                  "call",
+                                  "other"
+                                ],
+                                "type": "string"
+                              },
+                              "exercise_style": {
+                                "description": "The exercise style of this contract. See <a rel=\"nofollow\" target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Option_style\">this link</a> for more details on exercise styles.",
+                                "enum": [
+                                  "american",
+                                  "european",
+                                  "bermudan"
+                                ],
+                                "type": "string"
+                              },
+                              "expiration_date": {
+                                "description": "The contract's expiration date in YYYY-MM-DD format.",
+                                "format": "date",
+                                "type": "string",
+                                "x-polygon-go-type": {
+                                  "name": "IDaysPolygonDateString",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "shares_per_contract": {
+                                "description": "The number of shares per contract for this contract.",
+                                "type": "number"
+                              },
+                              "strike_price": {
+                                "description": "The strike price of the option contract.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "contract_type",
+                              "exercise_style",
+                              "expiration_date",
+                              "shares_per_contract",
+                              "strike_price"
+                            ],
+                            "type": "object"
+                          },
+                          "error": {
+                            "description": "The error while looking for this ticker.",
+                            "type": "string"
+                          },
+                          "greeks": {
+                            "description": "The greeks for this contract. \nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
+                            "properties": {
+                              "delta": {
+                                "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "gamma": {
+                                "description": "The change in delta per $0.01 change in the price of the underlying asset.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "theta": {
+                                "description": "The change in the option's price per day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "vega": {
+                                "description": "The change in the option's price per 1% increment in volatility.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "delta",
+                              "gamma",
+                              "theta",
+                              "vega"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Greeks"
+                            }
+                          },
+                          "implied_volatility": {
+                            "description": "The market's forecast for the volatility of the underlying asset, based on this option's current price.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "last_quote": {
+                            "description": "The most recent quote for this contract. This is only returned if your current plan includes quotes.",
+                            "properties": {
+                              "ask": {
+                                "description": "The ask price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ask_exchange": {
+                                "description": "The ask side exchange ID. See <a href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                                "type": "integer"
+                              },
+                              "ask_size": {
+                                "description": "The ask size. This represents the number of round lot orders at the given ask price. The normal round lot size is 100 shares. An ask size of 2 means there are 200 shares available to purchase at the given ask price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "bid": {
+                                "description": "The bid price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "bid_exchange": {
+                                "description": "The bid side exchange ID. See <a href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                                "type": "integer"
+                              },
+                              "bid_size": {
+                                "description": "The bid size. This represents the number of round lot orders at the given bid price. The normal round lot size is 100 shares. A bid size of 2 means there are 200 shares for purchase at the given bid price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The nanosecond timestamp of when this information was updated.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "midpoint": {
+                                "description": "The average of the bid and ask price.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "timeframe": {
+                                "description": "The time relevance of the data.",
+                                "enum": [
+                                  "DELAYED",
+                                  "REAL-TIME"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "last_updated",
+                              "timeframe",
+                              "ask",
+                              "bid",
+                              "last_updated",
+                              "timeframe"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "SnapshotLastQuote"
+                            }
+                          },
+                          "last_trade": {
+                            "description": "The most recent quote for this contract. This is only returned if your current plan includes quotes.",
+                            "properties": {
+                              "conditions": {
+                                "description": "A list of condition codes.",
+                                "items": {
+                                  "description": "The condition code. These are the conditions of this message. See\n[Condition Mappings](https://polygon.io/docs/stocks/get_v3_reference_conditions)\nfor a mapping to exchange conditions.",
+                                  "format": "int32",
+                                  "type": "integer"
+                                },
+                                "type": "array"
+                              },
+                              "exchange": {
+                                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                                "type": "integer"
+                              },
+                              "id": {
+                                "description": "The Trade ID which uniquely identifies a trade. These are unique per combination of ticker, exchange, and TRF. For example: A trade for AAPL executed on NYSE and a trade for AAPL executed on NASDAQ could potentially have the same Trade ID.",
+                                "type": "string"
+                              },
+                              "last_updated": {
+                                "description": "The nanosecond timestamp of when this information was updated.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "participant_timestamp": {
+                                "description": "The nanosecond Exchange Unix Timestamp. This is the timestamp of when the trade was generated at the exchange.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "price": {
+                                "description": "The price of the trade. This is the actual dollar value per whole share of\nthis trade. A trade of 100 shares with a price of $2.00 would be worth a\ntotal dollar value of $200.00.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "sip_timestamp": {
+                                "description": "The nanosecond accuracy SIP Unix Timestamp. This is the timestamp of when the SIP received this trade from the exchange which produced it.",
+                                "format": "int64",
+                                "type": "integer"
+                              },
+                              "size": {
+                                "description": "The size of a trade (also known as volume).",
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "timeframe": {
+                                "description": "The time relevance of the data.",
+                                "enum": [
+                                  "DELAYED",
+                                  "REAL-TIME"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "last_updated",
+                              "timeframe",
+                              "participant_timestamp",
+                              "price",
+                              "size"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "SnapshotLastTrade"
+                            }
+                          },
+                          "market_status": {
+                            "description": "The market status for the market that trades this ticker. Possible values for stocks, options, crypto, and forex snapshots are open, closed, early_trading, or late_trading.\nPossible values for indices snapshots are regular_trading, closed, early_trading, and late_trading.",
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "The error message while looking for this ticker.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The name of this contract.",
+                            "type": "string"
+                          },
+                          "open_interest": {
+                            "description": "The quantity of this contract held at the end of the last trading day.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "session": {
+                            "properties": {
+                              "change": {
+                                "description": "The value of the price change for the asset from the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "change_percent": {
+                                "description": "The percent of the price change for the asset from the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "close": {
+                                "description": "The closing price of the asset for the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "early_trading_change": {
+                                "description": "Today's early trading change amount, difference between price and previous close if in early trading hours, otherwise difference between last price during early trading and previous close.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "early_trading_change_percent": {
+                                "description": "Today's early trading change as a percentage.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "high": {
+                                "description": "The highest price of the asset for the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "late_trading_change": {
+                                "description": "Today's late trading change amount, difference between price and today's close if in late trading hours, otherwise difference between last price during late trading and today's close.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "late_trading_change_percent": {
+                                "description": "Today's late trading change as a percentage.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "low": {
+                                "description": "The lowest price of the asset for the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "open": {
+                                "description": "The open price of the asset for the day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "previous_close": {
+                                "description": "The closing price of the asset for the previous trading day.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "price": {
+                                "description": "The price of the most recent trade or bid price for this asset.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "volume": {
+                                "description": "The trading volume for the asset for the day.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "change",
+                              "change_percent",
+                              "close",
+                              "high",
+                              "low",
+                              "open",
+                              "previous_close"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "Session"
+                            }
+                          },
+                          "ticker": {
+                            "description": "The ticker symbol for the asset.",
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "The asset class for this ticker.",
+                            "enum": [
+                              "stocks",
+                              "options",
+                              "fx",
+                              "crypto"
+                            ],
+                            "type": "string"
+                          },
+                          "underlying_asset": {
+                            "description": "Information on the underlying stock for this options contract.  The market data returned depends on your current stocks plan.",
+                            "properties": {
+                              "change_to_break_even": {
+                                "description": "The change in price for the contract to break even.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "last_updated": {
+                                "description": "The nanosecond timestamp of when this information was updated.",
+                                "format": "int64",
+                                "type": "integer",
+                                "x-polygon-go-type": {
+                                  "name": "INanoseconds",
+                                  "path": "github.com/polygon-io/ptime"
+                                }
+                              },
+                              "price": {
+                                "description": "The price of the trade. This is the actual dollar value per whole share of this trade. A trade of 100 shares with a price of $2.00 would be worth a total dollar value of $200.00.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "ticker": {
+                                "description": "The ticker symbol for the contract's underlying asset.",
+                                "type": "string"
+                              },
+                              "timeframe": {
+                                "description": "The time relevance of the data.",
+                                "enum": [
+                                  "DELAYED",
+                                  "REAL-TIME"
+                                ],
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "The value of the underlying index.",
+                                "format": "double",
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "last_updated",
+                              "timeframe",
+                              "ticker",
+                              "change_to_break_even"
+                            ],
+                            "type": "object",
+                            "x-polygon-go-type": {
+                              "name": "UnderlyingAsset"
+                            }
+                          },
+                          "value": {
+                            "description": "Value of Index.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "ticker"
+                        ],
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "SnapshotResponseModel"
+                        }
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Snapshots for the ticker list"
+          }
+        },
+        "summary": "Universal Snapshot",
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "description": "Real Time Data",
+            "name": "realtime"
+          },
+          {
+            "description": "15 minute delayed data",
+            "name": "delayed"
+          }
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Snapshot data",
+          "name": "snapshots"
+        },
+        "x-polygon-entitlement-market-type": {
+          "description": "All asset classes",
+          "name": "universal"
+        },
+        "x-polygon-paginate": {
+          "limit": {
+            "default": 10,
+            "max": 250,
+            "min": 1
+          },
+          "sort": {
+            "default": "ticker",
+            "enum": [
+              "ticker"
+            ]
+          }
+        }
+      }
+    },
     "/v3/snapshot/indices": {
       "get": {
         "description": "Get a Snapshot of indices data for said tickers",
@@ -26523,10 +27316,92 @@
         "parameters": [
           {
             "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.",
-            "example": "I:SPX",
+            "example": "I:DJI",
             "in": "query",
             "name": "ticker.any_of",
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search a range of tickers lexicographically.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Order results based on the `sort` field.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 250.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field used for ordering.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker",
+              "enum": [
+                "ticker"
+              ],
+              "example": "ticker",
               "type": "string"
             }
           }
@@ -26539,8 +27414,9 @@
                   "request_id": "6a7e466379af0a71039d60cc78e72282",
                   "results": [
                     {
+                      "last_updated": 1679597116344223500,
                       "market_status": "closed",
-                      "name": "S&P 500",
+                      "name": "Dow Jones Industrial Average",
                       "session": {
                         "change": -50.01,
                         "change_percent": -1.45,
@@ -26550,7 +27426,7 @@
                         "open": 3827.38,
                         "previous_close": 3812.19
                       },
-                      "ticker": "I:SPX",
+                      "ticker": "I:DJI",
                       "timeframe": "REAL-TIME",
                       "type": "indices",
                       "value": 3822.39
@@ -26570,6 +27446,10 @@
                 },
                 "schema": {
                   "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
                     "request_id": {
                       "type": "string"
                     },
@@ -26579,6 +27459,15 @@
                           "error": {
                             "description": "The error while looking for this ticker.",
                             "type": "string"
+                          },
+                          "last_updated": {
+                            "description": "The nanosecond timestamp of when this information was updated.",
+                            "format": "int64",
+                            "type": "integer",
+                            "x-polygon-go-type": {
+                              "name": "INanoseconds",
+                              "path": "github.com/polygon-io/ptime"
+                            }
                           },
                           "market_status": {
                             "description": "The market status for the market that trades this ticker.",
@@ -26639,6 +27528,14 @@
                             "description": "Ticker of asset queried.",
                             "type": "string"
                           },
+                          "timeframe": {
+                            "description": "The time relevance of the data.",
+                            "enum": [
+                              "DELAYED",
+                              "REAL-TIME"
+                            ],
+                            "type": "string"
+                          },
                           "type": {
                             "description": "The indices market.",
                             "enum": [
@@ -26652,7 +27549,9 @@
                           }
                         },
                         "required": [
-                          "ticker"
+                          "ticker",
+                          "timeframe",
+                          "last_updated"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -26698,6 +27597,18 @@
         "x-polygon-entitlement-market-type": {
           "description": "Indices data",
           "name": "indices"
+        },
+        "x-polygon-paginate": {
+          "limit": {
+            "default": 10,
+            "max": 250
+          },
+          "sort": {
+            "default": "ticker",
+            "enum": [
+              "ticker"
+            ]
+          }
         }
       }
     },
@@ -26708,7 +27619,7 @@
         "parameters": [
           {
             "description": "The underlying ticker symbol of the option contract.",
-            "example": "AAPL",
+            "example": "EVRI",
             "in": "path",
             "name": "underlyingAsset",
             "required": true,
@@ -26752,7 +27663,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.gte",
             "schema": {
@@ -26760,7 +27671,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.gt",
             "schema": {
@@ -26768,7 +27679,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.lte",
             "schema": {
@@ -26776,7 +27687,7 @@
             }
           },
           {
-            "description": "Search by strike_price.",
+            "description": "Range by strike_price.",
             "in": "query",
             "name": "strike_price.lt",
             "schema": {
@@ -26784,7 +27695,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.gte",
             "schema": {
@@ -26792,7 +27703,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.gt",
             "schema": {
@@ -26800,7 +27711,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.lte",
             "schema": {
@@ -26808,7 +27719,7 @@
             }
           },
           {
-            "description": "Search by expiration_date.",
+            "description": "Range by expiration_date.",
             "in": "query",
             "name": "expiration_date.lt",
             "schema": {
@@ -26935,7 +27846,7 @@
                       "items": {
                         "properties": {
                           "break_even_price": {
-                            "description": "The price the underlying asset for the contract to break even. For a call this value is (strike price + premium paid), where a put this value is (strike price - premium paid)",
+                            "description": "The price of the underlying asset for the contract to break even. For a call, this value is (strike price + premium paid). For a put, this value is (strike price - premium paid).",
                             "format": "double",
                             "type": "number"
                           },
@@ -27016,6 +27927,7 @@
                             }
                           },
                           "details": {
+                            "description": "The details for this contract.",
                             "properties": {
                               "contract_type": {
                                 "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
@@ -27054,7 +27966,7 @@
                                 "type": "number"
                               },
                               "ticker": {
-                                "description": "The ticker for the option contract.",
+                                "description": "The ticker symbol for the asset.",
                                 "type": "string"
                               }
                             },
@@ -27072,7 +27984,7 @@
                             }
                           },
                           "greeks": {
-                            "description": "The greeks for this contract. This is only returned if your current plan includes greeks.",
+                            "description": "The greeks for this contract. \nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
                             "properties": {
                               "delta": {
                                 "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
@@ -27095,6 +28007,12 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "delta",
+                              "gamma",
+                              "theta",
+                              "vega"
+                            ],
                             "type": "object",
                             "x-polygon-go-type": {
                               "name": "Greeks"
@@ -27113,6 +28031,11 @@
                                 "format": "double",
                                 "type": "number"
                               },
+                              "ask_exchange": {
+                                "description": "The ask side exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                                "format": "int32",
+                                "type": "number"
+                              },
                               "ask_size": {
                                 "description": "The ask size.",
                                 "format": "double",
@@ -27121,6 +28044,11 @@
                               "bid": {
                                 "description": "The bid price.",
                                 "format": "double",
+                                "type": "number"
+                              },
+                              "bid_exchange": {
+                                "description": "The bid side exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                                "format": "int32",
                                 "type": "number"
                               },
                               "bid_size": {
@@ -27279,8 +28207,8 @@
                           "last_quote",
                           "underlying_asset",
                           "details",
+                          "cha",
                           "break_even_price",
-                          "implied_volatility",
                           "open_interest"
                         ],
                         "type": "object",
@@ -27351,7 +28279,7 @@
         "parameters": [
           {
             "description": "The underlying ticker symbol of the option contract.",
-            "example": "AAPL",
+            "example": "EVRI",
             "in": "path",
             "name": "underlyingAsset",
             "required": true,
@@ -27361,7 +28289,7 @@
           },
           {
             "description": "The option contract identifier.",
-            "example": "O:AAPL230616C00150000",
+            "example": "O:EVRI240119C00002500",
             "in": "path",
             "name": "optionContract",
             "required": true,
@@ -27407,8 +28335,10 @@
                     "implied_volatility": 0.3048997097864957,
                     "last_quote": {
                       "ask": 21.25,
+                      "ask_exchange": 301,
                       "ask_size": 110,
                       "bid": 20.9,
+                      "bid_exchange": 301,
                       "bid_size": 172,
                       "last_updated": 1636573458756383500,
                       "midpoint": 21.075,
@@ -27447,7 +28377,7 @@
                     "results": {
                       "properties": {
                         "break_even_price": {
-                          "description": "The price the underlying asset for the contract to break even. For a call this value is (strike price + premium paid), where a put this value is (strike price - premium paid)",
+                          "description": "The price of the underlying asset for the contract to break even. For a call, this value is (strike price + premium paid). For a put, this value is (strike price - premium paid).",
                           "format": "double",
                           "type": "number"
                         },
@@ -27528,6 +28458,7 @@
                           }
                         },
                         "details": {
+                          "description": "The details for this contract.",
                           "properties": {
                             "contract_type": {
                               "description": "The type of contract. Can be \"put\", \"call\", or in some rare cases, \"other\".",
@@ -27566,7 +28497,7 @@
                               "type": "number"
                             },
                             "ticker": {
-                              "description": "The ticker for the option contract.",
+                              "description": "The ticker symbol for the asset.",
                               "type": "string"
                             }
                           },
@@ -27584,7 +28515,7 @@
                           }
                         },
                         "greeks": {
-                          "description": "The greeks for this contract. This is only returned if your current plan includes greeks.",
+                          "description": "The greeks for this contract. \nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
                           "properties": {
                             "delta": {
                               "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
@@ -27607,6 +28538,12 @@
                               "type": "number"
                             }
                           },
+                          "required": [
+                            "delta",
+                            "gamma",
+                            "theta",
+                            "vega"
+                          ],
                           "type": "object",
                           "x-polygon-go-type": {
                             "name": "Greeks"
@@ -27625,6 +28562,11 @@
                               "format": "double",
                               "type": "number"
                             },
+                            "ask_exchange": {
+                              "description": "The ask side exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                              "format": "int32",
+                              "type": "number"
+                            },
                             "ask_size": {
                               "description": "The ask size.",
                               "format": "double",
@@ -27633,6 +28575,11 @@
                             "bid": {
                               "description": "The bid price.",
                               "format": "double",
+                              "type": "number"
+                            },
+                            "bid_exchange": {
+                              "description": "The bid side exchange ID. See <a href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs.",
+                              "format": "int32",
                               "type": "number"
                             },
                             "bid_size": {
@@ -27791,8 +28738,8 @@
                         "last_quote",
                         "underlying_asset",
                         "details",
+                        "cha",
                         "break_even_price",
-                        "implied_volatility",
                         "open_interest"
                       ],
                       "type": "object",
@@ -27873,7 +28820,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -27881,7 +28828,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -27889,7 +28836,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -27897,7 +28844,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -28024,6 +28971,12 @@
                             "type": "number"
                           }
                         },
+                        "required": [
+                          "exchange",
+                          "price",
+                          "size",
+                          "id"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -28033,6 +28986,9 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status"
+                  ],
                   "type": "object"
                 }
               },
@@ -28110,7 +29066,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -28118,7 +29074,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -28126,7 +29082,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -28134,7 +29090,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -28267,6 +29223,12 @@
                             "type": "number"
                           }
                         },
+                        "required": [
+                          "exchange",
+                          "price",
+                          "sip_timestamp",
+                          "size"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -28276,6 +29238,9 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status"
+                  ],
                   "type": "object"
                 }
               },
@@ -28346,7 +29311,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gte",
             "schema": {
@@ -28354,7 +29319,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.gt",
             "schema": {
@@ -28362,7 +29327,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lte",
             "schema": {
@@ -28370,7 +29335,7 @@
             }
           },
           {
-            "description": "Search by timestamp.",
+            "description": "Range by timestamp.",
             "in": "query",
             "name": "timestamp.lt",
             "schema": {
@@ -28541,7 +29506,19 @@
                             }
                           }
                         },
-                        "type": "object"
+                        "required": [
+                          "exchange",
+                          "id",
+                          "price",
+                          "sequence_number",
+                          "sip_timestamp",
+                          "participant_timestamp",
+                          "size"
+                        ],
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "CommonTrade"
+                        }
                       },
                       "type": "array"
                     },
@@ -28550,6 +29527,9 @@
                       "type": "string"
                     }
                   },
+                  "required": [
+                    "status"
+                  ],
                   "type": "object"
                 }
               },
@@ -29133,7 +30113,7 @@
                           "financials": {
                             "properties": {
                               "balance_sheet": {
-                                "description": "Balance sheet.\nNote that the keys in this object can be any of the balance sheet concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.",
+                                "description": "Balance sheet.\nThe keys in this object can be any of the fields listed in the Balance Sheet section of the <a target=\"_blank\" href=\"https://polygon.io/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.",
                                 "properties": {
                                   "*": {
                                     "description": "An individual financial data point.",
@@ -29185,15 +30165,15 @@
                                 "type": "object"
                               },
                               "cash_flow_statement": {
-                                "description": "Cash flow statement.\nNote that the keys in this object can be any of the cash flow statement concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
+                                "description": "Cash flow statement.\nThe keys in this object can be any of the fields listed in the Cash Flow Statement section of the <a target=\"_blank\" href=\"https://polygon.io/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
                                 "type": "object"
                               },
                               "comprehensive_income": {
-                                "description": "Comprehensive income.\nNote that the keys in this object can be any of the comprehensive income statement concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
+                                "description": "Comprehensive income.\nThe keys in this object can be any of the fields listed in the Comprehensive Income section of the <a target=\"_blank\" href=\"https://polygon.io/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
                                 "type": "object"
                               },
                               "income_statement": {
-                                "description": "Income statement.\nNote that the keys in this object can be any of the income statement concepts defined in <a rel=\"noopener noreferrer nofollow\" target=\"_blank\" href=\"http://www.xbrlsite.com/2016/fac/v3/Documentation/FundamentalAccountingConceptsList.html\">this table of fundamental accounting concepts</a> but converted to `snake_case`.\nSee the attributes of the objects within `balance_sheet` for more details.",
+                                "description": "Income statement.\nThe keys in this object can be any of the fields listed in the Income Statement section of the <a target=\"_blank\" href=\"https://polygon.io/blog/financials-api-glossary-of-fields\">financials API glossary of terms</a>.\nSee the attributes of the objects within `balance_sheet` for more details.",
                                 "type": "object"
                               }
                             },
@@ -29565,7 +30545,8 @@
             "/v2/snapshot/locale/global/markets/crypto/tickers",
             "/v2/snapshot/locale/global/markets/crypto/{direction}",
             "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}",
-            "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book"
+            "/v2/snapshot/locale/global/markets/crypto/tickers/{ticker}/book",
+            "/v3/snapshot"
           ]
         },
         {
@@ -29655,7 +30636,8 @@
           "paths": [
             "/v2/snapshot/locale/global/markets/forex/tickers",
             "/v2/snapshot/locale/global/markets/forex/{direction}",
-            "/v2/snapshot/locale/global/markets/forex/tickers/{ticker}"
+            "/v2/snapshot/locale/global/markets/forex/tickers/{ticker}",
+            "/v3/snapshot"
           ]
         },
         {
@@ -29726,7 +30708,8 @@
         {
           "group": "Snapshots",
           "paths": [
-            "/v3/snapshot/indices"
+            "/v3/snapshot/indices",
+            "/v3/snapshot"
           ]
         }
       ],
@@ -29796,7 +30779,8 @@
           "group": "Snapshots",
           "paths": [
             "/v3/snapshot/options/{underlyingAsset}/{optionContract}",
-            "/v3/snapshot/options/{underlyingAsset}"
+            "/v3/snapshot/options/{underlyingAsset}",
+            "/v3/snapshot"
           ]
         },
         {
@@ -29931,7 +30915,8 @@
           "paths": [
             "/v2/snapshot/locale/us/markets/stocks/tickers",
             "/v2/snapshot/locale/us/markets/stocks/{direction}",
-            "/v2/snapshot/locale/us/markets/stocks/tickers/{stocksTicker}"
+            "/v2/snapshot/locale/us/markets/stocks/tickers/{stocksTicker}",
+            "/v3/snapshot"
           ]
         },
         {
@@ -29973,6 +30958,11 @@
         {
           "paths": [
             "/v3/reference/tickers/types"
+          ]
+        },
+        {
+          "paths": [
+            "/vX/reference/tickers/taxonomies"
           ]
         },
         {

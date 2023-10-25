@@ -44,6 +44,7 @@ class SnapshotsTest(BaseTest):
                     strike_price=5,
                     underlying_ticker="NCLH",
                 ),
+                fair_market_value=20.5,
                 greeks=Greeks(
                     delta=0.5520187372272933,
                     gamma=0.00706756515659829,
@@ -90,6 +91,7 @@ class SnapshotsTest(BaseTest):
                 ),
             ),
             UniversalSnapshot(
+                fair_market_value=0.05,
                 last_quote=UniversalSnapshotLastQuote(
                     ask=21.25,
                     ask_size=110,
@@ -147,6 +149,7 @@ class SnapshotsTest(BaseTest):
                     timestamp=None,
                     transactions=None,
                 ),
+                fair_market_value=20.5,
                 last_quote=LastQuote(
                     ticker=None,
                     trf_timestamp=None,
@@ -220,6 +223,7 @@ class SnapshotsTest(BaseTest):
                 timestamp=None,
                 transactions=None,
             ),
+            fair_market_value=160.315,
             last_quote=LastQuote(
                 ticker=None,
                 trf_timestamp=None,
@@ -303,6 +307,7 @@ class SnapshotsTest(BaseTest):
                 strike_price=150,
                 ticker="O:AAPL230616C00150000",
             ),
+            fair_market_value=29.2,
             greeks=Greeks(
                 delta=0.6436614934293701,
                 gamma=0.0061735291012820675,
@@ -363,6 +368,7 @@ class SnapshotsTest(BaseTest):
                     strike_price=150,
                     ticker="O:AAPL230616C00150000",
                 ),
+                fair_market_value=20.5,
                 greeks=Greeks(
                     delta=0.6436614934293701,
                     gamma=0.0061735291012820675,

@@ -90,6 +90,7 @@ class TickerSnapshot:
     todays_change: Optional[float] = None
     todays_change_percent: Optional[float] = None
     updated: Optional[int] = None
+    fair_market_value: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -107,6 +108,7 @@ class TickerSnapshot:
             todays_change=d.get("todaysChange", None),
             todays_change_percent=d.get("todaysChangePerc", None),
             updated=d.get("updated", None),
+            fair_market_value=d.get("fmv", None),
         )
 
 
@@ -215,6 +217,7 @@ class OptionContractSnapshot:
     last_trade: Optional[LastTradeOptionContractSnapshot] = None
     open_interest: Optional[float] = None
     underlying_asset: Optional[UnderlyingAsset] = None
+    fair_market_value: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
@@ -238,6 +241,7 @@ class OptionContractSnapshot:
             underlying_asset=None
             if "underlying_asset" not in d
             else UnderlyingAsset.from_dict(d["underlying_asset"]),
+            fair_market_value=d.get("fmv", None),
         )
 
 
@@ -391,6 +395,7 @@ class UniversalSnapshot:
     open_interest: Optional[float] = None
     market_status: Optional[str] = None
     name: Optional[str] = None
+    fair_market_value: Optional[float] = None
     error: Optional[str] = None
     message: Optional[str] = None
 
@@ -420,6 +425,7 @@ class UniversalSnapshot:
             open_interest=d.get("open_interest", None),
             market_status=d.get("market_status", None),
             name=d.get("name", None),
+            fair_market_value=d.get("fmv", None),
             error=d.get("error", None),
             message=d.get("message", None),
         )
