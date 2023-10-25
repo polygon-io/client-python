@@ -17,8 +17,8 @@ class Feed(Enum):
     DelayedNasdaqBasic = "delayed-nasdaq-basic-business.polygon.io"
     DelayedFullMarketBusiness = "delayed-fullmarket-business.polygon.io"
     FullMarketBusiness = "fullmarket-business.polygon.io"
-    NasdaqfeedLastSaleBusiness = "nasdaq-last-sale-business.polygon.io"
-    NasdaqfeedBasicBusiness = "nasdaq-basic-business.polygon.io"
+    NasdaqLastSaleBusiness = "nasdaq-last-sale-business.polygon.io"
+    NasdaqBasicBusiness = "nasdaq-basic-business.polygon.io"
 
 
 class Market(Enum):
