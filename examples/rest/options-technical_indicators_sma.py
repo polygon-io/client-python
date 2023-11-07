@@ -8,10 +8,7 @@ from polygon import RESTClient
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 sma = client.get_sma(
-    ticker="O:SPY241220P00720000",
-    timespan="day",
-    window=50,
-    series_type="close"
+    ticker="O:SPY241220P00720000", timespan="day", window=50, series_type="close"
 )
 
 print(sma)
