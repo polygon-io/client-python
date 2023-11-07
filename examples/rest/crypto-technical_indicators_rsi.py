@@ -7,5 +7,11 @@ from polygon import RESTClient
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-rsi = client.get_rsi("X:BTCUSD")
+rsi = client.get_rsi(
+    ticker="X:BTCUSD",
+    timespan="day",
+    window=14,
+    series_type="close",
+)
+
 print(rsi)

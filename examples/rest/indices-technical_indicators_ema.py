@@ -7,5 +7,11 @@ from polygon import RESTClient
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-ema = client.get_ema("I:SPX")
+ema = client.get_ema(
+	ticker="I:SPX",
+    timespan="day",
+    window=50,
+    series_type="close",
+)
+
 print(ema)
