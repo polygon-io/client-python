@@ -7,5 +7,11 @@ from polygon import RESTClient
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
-sma = client.get_sma("X:BTCUSD")
+sma = client.get_sma(
+    ticker="X:BTCUSD",
+    timespan="day",
+    window=50,
+    series_type="close",
+)
+
 print(sma)
