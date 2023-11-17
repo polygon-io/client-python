@@ -11,6 +11,13 @@ client.subscribe("AM.I:DJI")  # Dow Jones Industrial Average
 client.subscribe("AM.I:NDX")  # Nasdaq-100
 client.subscribe("AM.I:VIX")  # Volatility Index
 
+# aggregates (per second)
+# client.subscribe("A.*") # all aggregates
+# client.subscribe("A.I:SPX")  # Standard & Poor's 500
+# client.subscribe("A.I:DJI")  # Dow Jones Industrial Average
+# client.subscribe("A.I:NDX")  # Nasdaq-100
+# client.subscribe("A.I:VIX")  # Volatility Index
+
 # single index
 # client.subscribe("V.*") # all tickers
 # client.subscribe("V.I:SPX") # Standard & Poor's 500
