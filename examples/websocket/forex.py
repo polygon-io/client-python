@@ -4,19 +4,19 @@ from typing import List
 
 client = WebSocketClient(market=Market.Forex)
 
-# aggregates (per minute)
+# Aggregates (per minute)
 # client.subscribe("CA.*") # all forex pair
 client.subscribe("CA.USD/CAD")
 client.subscribe("CA.USD/EUR")
 client.subscribe("CA.USD/AUD")
 
-# aggregates (per second)
+# Aggregates (per second)
 # client.subscribe("CAS.*") # all forex pair
 # client.subscribe("CAS.USD/CAD")
 # client.subscribe("CAS.USD/EUR")
 # client.subscribe("CAS.USD/AUD")
 
-# quotes
+# Quotes
 # client.subscribe("C.*") # all forex pair
 # client.subscribe("C.USD/CAD")
 # client.subscribe("C.USD/EUR")
