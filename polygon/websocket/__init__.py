@@ -197,15 +197,26 @@ class WebSocketClient:
             self.json.dumps({"action": "unsubscribe", "params": subs})
         )
 
+
     @staticmethod
     def _parse_subscription(s: str):
         s = s.strip()
         split = s.split(".")
-        if len(split) != 2:
-            logger.warning("invalid subscription:", s)
-            return [None, None]
+        length = len(split)
 
-        return split
+        match length:
+            case _ if length < 2: 
+                logger.warning("invalid subscription:", s)      
+                return [None, None]
+            case 3:
+                return split[0], split[1] + "." + split[2]
+            case _ if length > 3:
+                logger.warning("invalid subscription:", s)
+                return [None, None]
+            case _:
+                return split[0], split[1]
+
+
 
     def subscribe(self, *subscriptions: str):
         """
