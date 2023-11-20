@@ -204,18 +204,16 @@ class WebSocketClient:
         split = s.split(".")
         length = len(split)
 
-        match length:
-            case _ if length < 2: 
-                logger.warning("invalid subscription:", s)      
-                return [None, None]
-            case 3:
-                return split[0], split[1] + "." + split[2]
-            case _ if length > 3:
-                logger.warning("invalid subscription:", s)
-                return [None, None]
-            case _:
-                return split[0], split[1]
-
+        if length < 2:
+            logger.warning("invalid subscription:", s)  
+            return [None, None]
+        if length == 2:
+            return split[0], split[1]
+        if length == 3:
+            return split[0], split[1] + "." + split[2]
+        if length > 3:
+            logger.warning("invalid subscription:", s)  
+            return [None, None]
 
 
     def subscribe(self, *subscriptions: str):
