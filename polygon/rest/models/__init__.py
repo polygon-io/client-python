@@ -13,3 +13,4 @@ from .splits import *
 from .tickers import *
 from .trades import *
 from .summaries import *
+from .taxonomies import *

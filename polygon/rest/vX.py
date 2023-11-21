@@ -1,6 +1,6 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, Union, Iterator
-from .models import StockFinancial, Timeframe, Sort, Order
+from typing import Optional, Any, Dict, List, Union, Iterator
+from .models import StockFinancial, Taxonomy, Timeframe, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -68,5 +68,47 @@ class VXClient(BaseClient):
             params=self._get_params(self.list_stock_financials, locals()),
             raw=raw,
             deserializer=StockFinancial.from_dict,
+            options=options,
+        )
+
+    def list_taxonomies(
+        self,
+        ticker_any_of: Optional[List[str]] = None,
+        category: Optional[str] = None,
+        tag: Optional[str] = None,
+        order: Optional[Union[str, Order]] = None,
+        limit: Optional[int] = 10,
+        sort: Optional[Union[str, Sort]] = None,
+        ticker_lt: Optional[str] = None,
+        ticker_lte: Optional[str] = None,
+        ticker_gt: Optional[str] = None,
+        ticker_gte: Optional[str] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[Iterator[Taxonomy], HTTPResponse]:
+        """
+        Retrieve taxonomy classifications for one or more tickers.
+
+            :param ticker_any_of: Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner. Warning: The maximum number of characters allowed in a URL are subject to your technology stack.
+            :param category: Filter by taxonomy category.
+            :param tag: Filter by taxonomy tag. Each category has a set of associated tags.
+            :param order: Order results based on the `sort` field.
+            :param limit: Limit the number of results returned, default is 10 and max is 250.
+            :param sort: Sort field used for ordering.
+            :param ticker_lt Range by ticker.
+            :param ticker_lte Range by ticker.
+            :param ticker_gt Range by ticker.
+            :param ticker_gte Range by ticker.
+        :param params: Any additional query params
+        :param raw: Return raw object instead of results object
+        """
+        url = f"/vX/reference/tickers/taxonomies"
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_taxonomies, locals()),
+            result_key="results",
+            deserializer=Taxonomy.from_dict,
+            raw=raw,
             options=options,
         )
