@@ -54,7 +54,15 @@ class BaseClient:
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.util.html#urllib3.util.Retry.RETRY_AFTER_STATUS_CODES
         retry_strategy = Retry(
             total=self.retries,
-            status_forcelist=[413, 429, 500, 502, 503, 504],  # default 413, 429, 503
+            status_forcelist=[
+                413,
+                429,
+                499,
+                500,
+                502,
+                503,
+                504,
+            ],  # default 413, 429, 503
             backoff_factor=0.1,  # [0.0s, 0.2s, 0.4s, 0.8s, 1.6s, ...]
         )
 
