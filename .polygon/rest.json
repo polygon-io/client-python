@@ -12619,7 +12619,8 @@
     },
     "/v1/marketstatus/now": {
       "get": {
-        "description": "Get the current trading status of the exchanges and overall financial markets.\n",
+        "description": "Get the current trading status of the exchanges and overall financial markets.",
+        "operationId": "GetMarketStatus",
         "responses": {
           "200": {
             "content": {
@@ -12637,13 +12638,16 @@
                     "otc": "closed"
                   },
                   "market": "extended-hours",
-                  "serverTime": "2020-11-10T22:37:37.000Z"
+                  "serverTime": "2020-11-10T17:37:37-05:00"
                 },
                 "schema": {
                   "properties": {
                     "afterHours": {
                       "description": "Whether or not the market is in post-market hours.",
-                      "type": "boolean"
+                      "type": "boolean",
+                      "x-polygon-go-type": {
+                        "name": "*bool"
+                      }
                     },
                     "currencies": {
                       "properties": {
@@ -12656,11 +12660,17 @@
                           "type": "string"
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "Currencies"
+                      }
                     },
                     "earlyHours": {
                       "description": "Whether or not the market is in pre-market hours.",
-                      "type": "boolean"
+                      "type": "boolean",
+                      "x-polygon-go-type": {
+                        "name": "*bool"
+                      }
                     },
                     "exchanges": {
                       "properties": {
@@ -12677,15 +12687,60 @@
                           "type": "string"
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "Exchanges"
+                      }
+                    },
+                    "indicesGroups": {
+                      "properties": {
+                        "cccy": {
+                          "description": "The status of Cboe Streaming Market Indices Cryptocurrency (\"CCCY\") indices trading hours.",
+                          "type": "string"
+                        },
+                        "dow_jones": {
+                          "description": "The status of Dow Jones indices trading hours",
+                          "type": "string"
+                        },
+                        "ftse_russell": {
+                          "description": "The status of Financial Times Stock Exchange Group (\"FTSE\") Russell indices trading hours.",
+                          "type": "string"
+                        },
+                        "msci": {
+                          "description": "The status of Morgan Stanley Capital International (\"MSCI\") indices trading hours.",
+                          "type": "string"
+                        },
+                        "mstar": {
+                          "description": "The status of Morningstar (\"MSTAR\") indices trading hours.",
+                          "type": "string"
+                        },
+                        "mstarc": {
+                          "description": "The status of Morningstar Customer (\"MSTARC\") indices trading hours."
+                        },
+                        "nasdaq": {
+                          "description": "The status of National Association of Securities Dealers Automated Quotations (\"Nasdaq\") indices trading hours.",
+                          "type": "string"
+                        },
+                        "s_and_p": {
+                          "description": "The status of Standard & Poors's (\"S&P\") indices trading hours.",
+                          "type": "string"
+                        },
+                        "societe_generale": {
+                          "description": "The status of Societe Generale indices trading hours.",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "IndicesGroups"
+                      }
                     },
                     "market": {
                       "description": "The status of the market as a whole.",
                       "type": "string"
                     },
                     "serverTime": {
-                      "description": "The current time of the server.",
-                      "format": "date-time",
+                      "description": "The current time of the server, returned as a date-time in RFC3339 format.",
                       "type": "string"
                     }
                   },
@@ -12693,16 +12748,7 @@
                 }
               }
             },
-            "description": "Status of the market and each exchange"
-          },
-          "401": {
-            "description": "Unauthorized - Check our API Key and account status"
-          },
-          "404": {
-            "description": "The specified resource was not found"
-          },
-          "409": {
-            "description": "Parameter is invalid or incorrect."
+            "description": "OK"
           }
         },
         "summary": "Market Status",
@@ -12717,33 +12763,34 @@
     },
     "/v1/marketstatus/upcoming": {
       "get": {
-        "description": "Get upcoming market holidays and their open/close times.\n",
+        "description": "Get upcoming market holidays and their open/close times.",
+        "operationId": "GetMarketHolidays",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "example": [
                   {
-                    "date": "2020-11-26T00:00:00.000Z",
+                    "date": "2020-11-26",
                     "exchange": "NYSE",
                     "name": "Thanksgiving",
                     "status": "closed"
                   },
                   {
-                    "date": "2020-11-26T00:00:00.000Z",
+                    "date": "2020-11-26",
                     "exchange": "NASDAQ",
                     "name": "Thanksgiving",
                     "status": "closed"
                   },
                   {
-                    "date": "2020-11-26T00:00:00.000Z",
+                    "date": "2020-11-26",
                     "exchange": "OTC",
                     "name": "Thanksgiving",
                     "status": "closed"
                   },
                   {
                     "close": "2020-11-27T18:00:00.000Z",
-                    "date": "2020-11-27T00:00:00.000Z",
+                    "date": "2020-11-27",
                     "exchange": "NASDAQ",
                     "name": "Thanksgiving",
                     "open": "2020-11-27T14:30:00.000Z",
@@ -12751,7 +12798,7 @@
                   },
                   {
                     "close": "2020-11-27T18:00:00.000Z",
-                    "date": "2020-11-27T00:00:00.000Z",
+                    "date": "2020-11-27",
                     "exchange": "NYSE",
                     "name": "Thanksgiving",
                     "open": "2020-11-27T14:30:00.000Z",
@@ -12763,12 +12810,10 @@
                     "properties": {
                       "close": {
                         "description": "The market close time on the holiday (if it's not closed).",
-                        "format": "date-time",
                         "type": "string"
                       },
                       "date": {
                         "description": "The date of the holiday.",
-                        "format": "date",
                         "type": "string"
                       },
                       "exchange": {
@@ -12781,7 +12826,6 @@
                       },
                       "open": {
                         "description": "The market open time on the holiday (if it's not closed).",
-                        "format": "date-time",
                         "type": "string"
                       },
                       "status": {
@@ -12789,22 +12833,16 @@
                         "type": "string"
                       }
                     },
-                    "type": "object"
+                    "type": "object",
+                    "x-polygon-go-type": {
+                      "name": "MarketHoliday"
+                    }
                   },
                   "type": "array"
                 }
               }
             },
-            "description": "Holidays for each market in the near future."
-          },
-          "401": {
-            "description": "Unauthorized - Check our API Key and account status"
-          },
-          "404": {
-            "description": "The specified resource was not found"
-          },
-          "409": {
-            "description": "Parameter is invalid or incorrect."
+            "description": "OK"
           }
         },
         "summary": "Market Holidays",
@@ -26725,6 +26763,7 @@
                         "strike_price": 5,
                         "underlying_ticker": "NCLH"
                       },
+                      "fmv": 0.05,
                       "greeks": {
                         "delta": 0.5520187372272933,
                         "gamma": 0.00706756515659829,
@@ -26781,6 +26820,7 @@
                       }
                     },
                     {
+                      "fmv": 0.05,
                       "last_quote": {
                         "ask": 21.25,
                         "ask_exchange": 300,
@@ -26899,8 +26939,12 @@
                             "description": "The error while looking for this ticker.",
                             "type": "string"
                           },
+                          "fmv": {
+                            "description": "Fair market value is only available on Business plans. It's it our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security.\nFor more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                            "type": "number"
+                          },
                           "greeks": {
-                            "description": "The greeks for this contract. \nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
+                            "description": "The greeks for this contract.\nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
                             "properties": {
                               "delta": {
                                 "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
@@ -27007,7 +27051,7 @@
                             }
                           },
                           "last_trade": {
-                            "description": "The most recent quote for this contract. This is only returned if your current plan includes quotes.",
+                            "description": "The most recent quote for this contract. This is only returned if your current plan includes trades.",
                             "properties": {
                               "conditions": {
                                 "description": "A list of condition codes.",
@@ -27189,7 +27233,8 @@
                               "stocks",
                               "options",
                               "fx",
-                              "crypto"
+                              "crypto",
+                              "indices"
                             ],
                             "type": "string"
                           },
@@ -27796,6 +27841,7 @@
                         "strike_price": 150,
                         "ticker": "O:AAPL211022C000150000"
                       },
+                      "fmv": 0.05,
                       "greeks": {
                         "delta": 1,
                         "gamma": 0,
@@ -27983,8 +28029,12 @@
                               "name": "Details"
                             }
                           },
+                          "fmv": {
+                            "description": "Fair market value is only available on Business plans. It's it our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security.\nFor more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                            "type": "number"
+                          },
                           "greeks": {
-                            "description": "The greeks for this contract. \nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
+                            "description": "The greeks for this contract.\nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
                             "properties": {
                               "delta": {
                                 "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
@@ -28326,6 +28376,7 @@
                       "strike_price": 150,
                       "ticker": "O:AAPL230616C00150000"
                     },
+                    "fmv": 0.05,
                     "greeks": {
                       "delta": 0.5520187372272933,
                       "gamma": 0.00706756515659829,
@@ -28514,8 +28565,12 @@
                             "name": "Details"
                           }
                         },
+                        "fmv": {
+                          "description": "Fair market value is only available on Business plans. It's it our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security.\nFor more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.",
+                          "type": "number"
+                        },
                         "greeks": {
-                          "description": "The greeks for this contract. \nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
+                          "description": "The greeks for this contract.\nThere are certain circumstances where greeks will not be returned, such as options contracts that are deep in the money.\nSee this <a href=\"https://polygon.io/blog/greeks-and-implied-volatility/#testing\"\nalt=\"link\">article</a> for more information.",
                           "properties": {
                             "delta": {
                               "description": "The change in the option's price per $0.01 increment in the price of the underlying asset.",
@@ -30265,6 +30320,233 @@
           }
         }
       }
+    },
+    "/vX/reference/tickers/taxonomies": {
+      "get": {
+        "description": "Retrieve taxonomy classifications for one or more tickers.",
+        "operationId": "ListTickerTaxonomyClassifications",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "anyOf": {
+                "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
+                "enabled": true,
+                "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX"
+              },
+              "range": true,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by taxonomy category.",
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by taxonomy tag. Each category has a set of associated tags.",
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.gte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.gt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.lte",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by ticker.",
+            "in": "query",
+            "name": "ticker.lt",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
+            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX",
+            "in": "query",
+            "name": "ticker.any_of",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Order results based on the `sort` field.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 250.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field used for ordering.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "ticker",
+              "enum": [
+                "ticker"
+              ],
+              "example": "ticker",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "31d59dda-80e5-4721-8496-d0d32a654afe",
+                  "results": [
+                    {
+                      "category": "revenue_streams",
+                      "reason": "Company recognizes revenue from the sales of consumer electronics such as the iPhone and iPad.",
+                      "relevance": 0.99,
+                      "tag": "physical_product_sales_electronics",
+                      "ticker": "AAPL"
+                    },
+                    {
+                      "category": "revenue_streams",
+                      "reason": "Company recognizes revenue from the sales of digital products  such as digital storage and app store fees.",
+                      "relevance": 0.99,
+                      "tag": "digital_product_sales_software",
+                      "ticker": "AAPL"
+                    },
+                    {
+                      "category": "cost_structure",
+                      "relevance": 0.86,
+                      "tag": "economies_of_scale",
+                      "ticker": "AAPL"
+                    }
+                  ]
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "category": {
+                            "description": "The classification category.",
+                            "type": "string"
+                          },
+                          "reason": {
+                            "description": "The reason why the classification was given.",
+                            "type": "string"
+                          },
+                          "relevance": {
+                            "description": "The relevance score for the tag. This is a measure of confidence in the tag classification.",
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "tag": {
+                            "description": "The classification tag. Each category has a set of associated tags.",
+                            "type": "string"
+                          },
+                          "ticker": {
+                            "description": "The ticker symbol for the asset.",
+                            "type": "string"
+                          }
+                        },
+                        "x-polygon-go-type": {
+                          "name": "TaxonomyClassificationResult"
+                        }
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "request_id"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Taxonomy classification data."
+          }
+        },
+        "summary": "Ticker Taxonomies",
+        "tags": [
+          "Internal",
+          "Public"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Reference data",
+          "name": "reference"
+        },
+        "x-polygon-experimental": {},
+        "x-polygon-paginate": {
+          "limit": {
+            "default": 10,
+            "max": 250,
+            "min": 1
+          },
+          "sort": {
+            "default": "ticker",
+            "enum": [
+              "ticker"
+            ]
+          }
+        }
+      },
+      "x-polygon-draft": true
     },
     "/vX/reference/tickers/{id}/events": {
       "get": {
