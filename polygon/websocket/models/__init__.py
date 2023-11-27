@@ -35,6 +35,8 @@ def parse_single(data: Dict[str, Any]):
         return IndexValue.from_dict(data)
     elif event_type == EventType.LaunchpadValue.value:
         return LaunchpadValue.from_dict(data)
+    elif event_type == EventType.BusinessFairMarketValue.value:
+        return FairMarketValue.from_dict(data)
     return None
 
 

@@ -351,7 +351,7 @@ class FairMarketValue:
 
     @staticmethod
     def from_dict(d):
-        return LaunchpadValue(
+        return FairMarketValue(
             event_type=d.get("ev", None),
             fmv=d.get("fmv", None),
             ticker=d.get("sym", None),
@@ -375,6 +375,7 @@ WebSocketMessage = NewType(
             Level2Book,
             IndexValue,
             LaunchpadValue,
+            FairMarketValue,
         ]
     ],
 )
