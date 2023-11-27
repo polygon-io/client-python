@@ -4,11 +4,12 @@ from typing import List
 
 client = WebSocketClient(feed=Feed.Business, market=Market.Stocks, verbose=True)
 
-# Aggregates (per minute)
+# FMV
 client.subscribe("FMV.*")  # all ticker symbols
-# client.subscribe("XA.BTC-USD")
-# client.subscribe("XA.BTC-EUR")
-# client.subscribe("XA.ETH-USD")
+# client.subscribe("FMV.TSLA")
+# client.subscribe("FMV.AAPL")
+# client.subscribe("FMV.NVDA")
+
 
 def handle_msg(msgs: List[WebSocketMessage]):
     for m in msgs:
