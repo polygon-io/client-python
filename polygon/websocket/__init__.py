@@ -200,7 +200,7 @@ class WebSocketClient:
     @staticmethod
     def _parse_subscription(s: str):
         s = s.strip()
-        split = s.split(".")
+        split = s.split(".", 1)  # Split at the first period
         if len(split) != 2:
             logger.warning("invalid subscription:", s)
             return [None, None]
