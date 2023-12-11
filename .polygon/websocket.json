@@ -117,6 +117,11 @@
         },
         {
           "paths": [
+            "/forex/CAS"
+          ]
+        },
+        {
+          "paths": [
             "/forex/C"
           ]
         },
@@ -144,6 +149,11 @@
         {
           "paths": [
             "/crypto/XA"
+          ]
+        },
+        {
+          "paths": [
+            "/crypto/XAS"
           ]
         },
         {
@@ -185,6 +195,11 @@
         {
           "paths": [
             "/indices/AM"
+          ]
+        },
+        {
+          "paths": [
+            "/indices/A"
           ]
         },
         {
@@ -2171,6 +2186,106 @@
         ]
       }
     },
+    "/forex/CAS": {
+      "get": {
+        "summary": "Aggregates (Per Second)",
+        "description": "Stream real-time per-second forex aggregates for a given forex pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]{3})\\/?<to>([A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a forex per-second aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "CAS"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The currency pair."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for this aggregate window."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for this aggregate window."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The high price for this aggregate window."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The low price for this aggregate window."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The volume of trades during this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "CAS",
+                  "pair": "USD/EUR",
+                  "o": 0.8687,
+                  "c": 0.86889,
+                  "h": 0.86889,
+                  "l": 0.8686,
+                  "v": 20,
+                  "s": 1539145740000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "fx",
+          "description": "Forex data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
     "/business/forex/FMV": {
       "get": {
         "summary": "Fair Market Value",
@@ -2885,6 +3000,118 @@
         ]
       }
     },
+    "/crypto/XAS": {
+      "get": {
+        "summary": "Aggregates (Per Second)",
+        "description": "Stream real-time per-second crypto aggregates for a given crypto pair.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(?<from>([A-Z]*)-(?<to>[A-Z]{3}))$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a crypto per-second aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ev": {
+                      "type": "string",
+                      "enum": [
+                        "XAS"
+                      ],
+                      "description": "The event type."
+                    },
+                    "pair": {
+                      "type": "string",
+                      "description": "The crypto pair."
+                    },
+                    "o": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The open price for this aggregate window."
+                    },
+                    "c": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The close price for this aggregate window."
+                    },
+                    "h": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The high price for this aggregate window."
+                    },
+                    "l": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The low price for this aggregate window."
+                    },
+                    "v": {
+                      "type": "integer",
+                      "description": "The volume of trades during this aggregate window."
+                    },
+                    "s": {
+                      "type": "integer",
+                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                    },
+                    "e": {
+                      "type": "integer",
+                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                    },
+                    "vw": {
+                      "type": "number",
+                      "format": "double",
+                      "description": "The volume weighted average price."
+                    },
+                    "z": {
+                      "type": "integer",
+                      "description": "The average trade size for this aggregate window."
+                    }
+                  }
+                },
+                "example": {
+                  "ev": "XAS",
+                  "pair": "BCD-USD",
+                  "v": 951.6112,
+                  "vw": 0.7756,
+                  "z": 73,
+                  "o": 0.772,
+                  "c": 0.784,
+                  "h": 0.784,
+                  "l": 0.771,
+                  "s": 1610463240000,
+                  "e": 1610463300000
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "crypto",
+          "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
     "/business/crypto/FMV": {
       "get": {
         "summary": "Fair Market Value",
@@ -3147,6 +3374,122 @@
         "x-polygon-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
+        },
+        "x-polygon-entitlement-allowed-timeframes": [
+          {
+            "name": "delayed",
+            "description": "15 minute delayed data"
+          },
+          {
+            "name": "realtime",
+            "description": "Real Time Data"
+          }
+        ]
+      }
+    },
+    "/indices/A": {
+      "get": {
+        "summary": "Aggregates (Per Second)",
+        "description": "Stream real-time second aggregates for a given index ticker symbol.\n",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "query",
+            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "/^(I:[a-zA-Z0-9]+)$/"
+            },
+            "example": "*"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The WebSocket message for a second aggregate event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "ev": {
+                          "description": "The event type."
+                        },
+                        "sym": {
+                          "type": "string",
+                          "description": "The symbol representing the given index."
+                        },
+                        "op": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Today's official opening value."
+                        },
+                        "o": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The opening index value for this aggregate window."
+                        },
+                        "c": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The closing index value for this aggregate window."
+                        },
+                        "h": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The highest index value for this aggregate window."
+                        },
+                        "l": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "The lowest index value for this aggregate window."
+                        },
+                        "s": {
+                          "type": "integer",
+                          "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+                        },
+                        "e": {
+                          "type": "integer",
+                          "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "ev": {
+                          "enum": [
+                            "A"
+                          ],
+                          "description": "The event type."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "ev": "A",
+                  "sym": "I:SPX",
+                  "op": 3985.67,
+                  "o": 3985.67,
+                  "c": 3985.67,
+                  "h": 3985.67,
+                  "l": 3985.67,
+                  "s": 1678220675805,
+                  "e": 1678220675805
+                }
+              }
+            }
+          }
+        },
+        "x-polygon-entitlement-data-type": {
+          "name": "aggregates",
+          "description": "Aggregate data"
+        },
+        "x-polygon-entitlement-market-type": {
+          "name": "indices",
+          "description": "Indices data"
         },
         "x-polygon-entitlement-allowed-timeframes": [
           {
@@ -4454,13 +4797,61 @@
           }
         ]
       },
-      "ForexAggregateEvent": {
+      "ForexMinuteAggregateEvent": {
         "type": "object",
         "properties": {
           "ev": {
             "type": "string",
             "enum": [
               "CA"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The currency pair."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The high price for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The low price for this aggregate window."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The volume of trades during this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The start time for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The end time for this aggregate window in Unix Milliseconds."
+          }
+        }
+      },
+      "ForexSecondAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "CAS"
             ],
             "description": "The event type."
           },
@@ -4600,13 +4991,70 @@
           }
         }
       },
-      "CryptoAggregateEvent": {
+      "CryptoMinuteAggregateEvent": {
         "type": "object",
         "properties": {
           "ev": {
             "type": "string",
             "enum": [
               "XA"
+            ],
+            "description": "The event type."
+          },
+          "pair": {
+            "type": "string",
+            "description": "The crypto pair."
+          },
+          "o": {
+            "type": "number",
+            "format": "double",
+            "description": "The open price for this aggregate window."
+          },
+          "c": {
+            "type": "number",
+            "format": "double",
+            "description": "The close price for this aggregate window."
+          },
+          "h": {
+            "type": "number",
+            "format": "double",
+            "description": "The high price for this aggregate window."
+          },
+          "l": {
+            "type": "number",
+            "format": "double",
+            "description": "The low price for this aggregate window."
+          },
+          "v": {
+            "type": "integer",
+            "description": "The volume of trades during this aggregate window."
+          },
+          "s": {
+            "type": "integer",
+            "description": "The start time for this aggregate window in Unix Milliseconds."
+          },
+          "e": {
+            "type": "integer",
+            "description": "The end time for this aggregate window in Unix Milliseconds."
+          },
+          "vw": {
+            "type": "number",
+            "format": "double",
+            "description": "The volume weighted average price."
+          },
+          "z": {
+            "type": "integer",
+            "description": "The average trade size for this aggregate window."
+          }
+        }
+      },
+      "CryptoSecondAggregateEvent": {
+        "type": "object",
+        "properties": {
+          "ev": {
+            "type": "string",
+            "enum": [
+              "XAS"
             ],
             "description": "The event type."
           },
@@ -4818,6 +5266,65 @@
               "ev": {
                 "enum": [
                   "AM"
+                ],
+                "description": "The event type."
+              }
+            }
+          }
+        ]
+      },
+      "IndicesSecondAggregateEvent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "ev": {
+                "description": "The event type."
+              },
+              "sym": {
+                "type": "string",
+                "description": "The symbol representing the given index."
+              },
+              "op": {
+                "type": "number",
+                "format": "double",
+                "description": "Today's official opening value."
+              },
+              "o": {
+                "type": "number",
+                "format": "double",
+                "description": "The opening index value for this aggregate window."
+              },
+              "c": {
+                "type": "number",
+                "format": "double",
+                "description": "The closing index value for this aggregate window."
+              },
+              "h": {
+                "type": "number",
+                "format": "double",
+                "description": "The highest index value for this aggregate window."
+              },
+              "l": {
+                "type": "number",
+                "format": "double",
+                "description": "The lowest index value for this aggregate window."
+              },
+              "s": {
+                "type": "integer",
+                "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+              },
+              "e": {
+                "type": "integer",
+                "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+              }
+            }
+          },
+          {
+            "properties": {
+              "ev": {
+                "enum": [
+                  "A"
                 ],
                 "description": "The event type."
               }

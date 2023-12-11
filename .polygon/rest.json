@@ -220,7 +220,7 @@
         }
       },
       "StocksTickerPathParam": {
-        "description": "The ticker symbol of the stock/equity.",
+        "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
         "example": "AAPL",
         "in": "path",
         "name": "stocksTicker",
@@ -230,7 +230,7 @@
         }
       },
       "TickersQueryParam": {
-        "description": "A comma separated list of tickers to get snapshots for.",
+        "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
         "in": "query",
         "name": "tickers",
         "schema": {
@@ -3602,7 +3602,7 @@
                   "type": "boolean"
                 },
                 "t": {
-                  "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                  "description": "The Unix Msec timestamp for the end of the aggregate window.",
                   "type": "integer"
                 },
                 "v": {
@@ -13387,7 +13387,7 @@
         "description": "Get the open, close and afterhours prices of a stock symbol on a certain date.\n",
         "parameters": [
           {
-            "description": "The ticker symbol of the stock/equity.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stocksTicker",
@@ -15381,7 +15381,7 @@
                                 "type": "boolean"
                               },
                               "t": {
-                                "description": "The Unix Msec timestamp for the start of the aggregate window.",
+                                "description": "The Unix Msec timestamp for the end of the aggregate window.",
                                 "type": "integer"
                               },
                               "v": {
@@ -17171,7 +17171,7 @@
         "description": "Get the previous day's open, high, low, and close (OHLC) for the specified stock ticker.\n",
         "parameters": [
           {
-            "description": "The ticker symbol of the stock/equity.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stocksTicker",
@@ -17354,7 +17354,7 @@
         "description": "Get aggregate bars for a stock over a given date range in custom time window sizes.\n<br />\n<br />\nFor example, if timespan = \u2018minute\u2019 and multiplier = \u20185\u2019 then 5-minute bars will be returned.\n",
         "parameters": [
           {
-            "description": "The ticker symbol of the stock/equity.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stocksTicker",
@@ -18573,7 +18573,7 @@
         "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded cryptocurrency symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A comma separated list of tickers to get snapshots for.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -19834,7 +19834,7 @@
         "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded forex symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A comma separated list of tickers to get snapshots for.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -20783,7 +20783,7 @@
         "description": "Get the most up-to-date market data for all traded stock symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A comma separated list of tickers to get snapshots for.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -21198,7 +21198,7 @@
         "description": "Get the most up-to-date market data for a single traded stock ticker.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "The ticker symbol of the stock/equity.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stocksTicker",
