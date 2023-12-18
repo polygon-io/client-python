@@ -539,11 +539,11 @@
                         },
                         "s": {
                           "type": "integer",
-                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                          "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "e": {
                           "type": "integer",
-                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                          "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "otc": {
                           "type": "boolean",
@@ -686,11 +686,11 @@
                         },
                         "s": {
                           "type": "integer",
-                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                          "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "e": {
                           "type": "integer",
-                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                          "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "otc": {
                           "type": "boolean",
@@ -1104,11 +1104,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     }
                   }
                 },
@@ -1513,11 +1513,11 @@
                         },
                         "s": {
                           "type": "integer",
-                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                          "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "e": {
                           "type": "integer",
-                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                          "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                         }
                       }
                     },
@@ -1656,11 +1656,11 @@
                         },
                         "s": {
                           "type": "integer",
-                          "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                          "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "e": {
                           "type": "integer",
-                          "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                          "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                         }
                       }
                     },
@@ -1870,11 +1870,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     }
                   }
                 },
@@ -2148,11 +2148,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     }
                   }
                 },
@@ -2248,11 +2248,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     }
                   }
                 },
@@ -2440,11 +2440,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     }
                   }
                 },
@@ -2805,7 +2805,7 @@
                     },
                     "b": {
                       "type": "array",
-                      "description": "An array of bid prices with a maximum depth of 100.",
+                      "description": "An array of bid prices, where each entry contains two elements: the first is the bid price, and the second is the size, with a maximum depth of 100.",
                       "items": {
                         "type": "array",
                         "description": "An array where the first item is bid price and the second item is size.",
@@ -2817,7 +2817,7 @@
                     },
                     "a": {
                       "type": "array",
-                      "description": "An array of ask prices with a maximum depth of 100.",
+                      "description": "An array of ask prices, where each entry contains two elements: the first is the ask price, and the second is the size, with a maximum depth of 100.",
                       "items": {
                         "type": "array",
                         "description": "An array where the first item is ask price and the second item is size.",
@@ -2950,11 +2950,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "vw": {
                       "type": "number",
@@ -3062,11 +3062,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The start time for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The end time for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "vw": {
                       "type": "number",
@@ -3266,11 +3266,11 @@
                     },
                     "s": {
                       "type": "integer",
-                      "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                      "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                     },
                     "e": {
                       "type": "integer",
-                      "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                      "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                     }
                   }
                 },
@@ -3448,11 +3448,11 @@
                         },
                         "s": {
                           "type": "integer",
-                          "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+                          "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "e": {
                           "type": "integer",
-                          "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+                          "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                         }
                       }
                     },
@@ -3564,11 +3564,11 @@
                         },
                         "s": {
                           "type": "integer",
-                          "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+                          "description": "The start timestamp of this aggregate window in Unix Milliseconds."
                         },
                         "e": {
                           "type": "integer",
-                          "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+                          "description": "The end timestamp of this aggregate window in Unix Milliseconds."
                         }
                       }
                     },
@@ -3919,11 +3919,11 @@
       },
       "AggsStartTime": {
         "type": "integer",
-        "description": "The start time for this aggregate window in Unix Milliseconds."
+        "description": "The start timestamp of this aggregate window in Unix Milliseconds."
       },
       "AggsEndTime": {
         "type": "integer",
-        "description": "The end time for this aggregate window in Unix Milliseconds."
+        "description": "The end timestamp of this aggregate window in Unix Milliseconds."
       },
       "StockTradeEvent": {
         "type": "object",
@@ -4109,11 +4109,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           },
           "otc": {
             "type": "boolean",
@@ -4182,11 +4182,11 @@
               },
               "s": {
                 "type": "integer",
-                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                "description": "The start timestamp of this aggregate window in Unix Milliseconds."
               },
               "e": {
                 "type": "integer",
-                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                "description": "The end timestamp of this aggregate window in Unix Milliseconds."
               },
               "otc": {
                 "type": "boolean",
@@ -4267,11 +4267,11 @@
               },
               "s": {
                 "type": "integer",
-                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                "description": "The start timestamp of this aggregate window in Unix Milliseconds."
               },
               "e": {
                 "type": "integer",
-                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                "description": "The end timestamp of this aggregate window in Unix Milliseconds."
               },
               "otc": {
                 "type": "boolean",
@@ -4547,11 +4547,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           }
         }
       },
@@ -4616,11 +4616,11 @@
               },
               "s": {
                 "type": "integer",
-                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                "description": "The start timestamp of this aggregate window in Unix Milliseconds."
               },
               "e": {
                 "type": "integer",
-                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                "description": "The end timestamp of this aggregate window in Unix Milliseconds."
               }
             }
           },
@@ -4697,11 +4697,11 @@
               },
               "s": {
                 "type": "integer",
-                "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+                "description": "The start timestamp of this aggregate window in Unix Milliseconds."
               },
               "e": {
                 "type": "integer",
-                "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+                "description": "The end timestamp of this aggregate window in Unix Milliseconds."
               }
             }
           },
@@ -4837,11 +4837,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The start time for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The end time for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           }
         }
       },
@@ -4885,11 +4885,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The start time for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The end time for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           }
         }
       },
@@ -5031,11 +5031,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The start time for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The end time for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           },
           "vw": {
             "type": "number",
@@ -5088,11 +5088,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The start time for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The end time for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           },
           "vw": {
             "type": "number",
@@ -5121,7 +5121,7 @@
           },
           "b": {
             "type": "array",
-            "description": "An array of bid prices with a maximum depth of 100.",
+            "description": "An array of bid prices, where each entry contains two elements: the first is the bid price, and the second is the size, with a maximum depth of 100.",
             "items": {
               "type": "array",
               "description": "An array where the first item is bid price and the second item is size.",
@@ -5133,7 +5133,7 @@
           },
           "a": {
             "type": "array",
-            "description": "An array of ask prices with a maximum depth of 100.",
+            "description": "An array of ask prices, where each entry contains two elements: the first is the ask price, and the second is the size, with a maximum depth of 100.",
             "items": {
               "type": "array",
               "description": "An array where the first item is ask price and the second item is size.",
@@ -5206,11 +5206,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           }
         }
       },
@@ -5253,11 +5253,11 @@
               },
               "s": {
                 "type": "integer",
-                "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+                "description": "The start timestamp of this aggregate window in Unix Milliseconds."
               },
               "e": {
                 "type": "integer",
-                "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+                "description": "The end timestamp of this aggregate window in Unix Milliseconds."
               }
             }
           },
@@ -5312,11 +5312,11 @@
               },
               "s": {
                 "type": "integer",
-                "description": "The timestamp of the starting index for this aggregate window in Unix Milliseconds."
+                "description": "The start timestamp of this aggregate window in Unix Milliseconds."
               },
               "e": {
                 "type": "integer",
-                "description": "The timestamp of the ending index for this aggregate window in Unix Milliseconds."
+                "description": "The end timestamp of this aggregate window in Unix Milliseconds."
               }
             }
           },
@@ -5412,11 +5412,11 @@
           },
           "s": {
             "type": "integer",
-            "description": "The timestamp of the starting tick for this aggregate window in Unix Milliseconds."
+            "description": "The start timestamp of this aggregate window in Unix Milliseconds."
           },
           "e": {
             "type": "integer",
-            "description": "The timestamp of the ending tick for this aggregate window in Unix Milliseconds."
+            "description": "The end timestamp of this aggregate window in Unix Milliseconds."
           }
         }
       },
