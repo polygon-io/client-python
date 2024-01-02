@@ -26031,7 +26031,7 @@
                             "type": "string"
                           },
                           "composite_figi": {
-                            "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                            "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)",
                             "type": "string"
                           },
                           "currency_name": {
@@ -26076,7 +26076,7 @@
                             "type": "string"
                           },
                           "share_class_figi": {
-                            "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                            "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)",
                             "type": "string"
                           },
                           "ticker": {
@@ -26477,7 +26477,7 @@
                           "type": "string"
                         },
                         "composite_figi": {
-                          "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                          "description": "The composite OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)",
                           "type": "string"
                         },
                         "currency_name": {
@@ -26543,7 +26543,7 @@
                           "type": "number"
                         },
                         "share_class_figi": {
-                          "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/assets/content/Open_Symbology_Fields-2a61f8aa4d.pdf)",
+                          "description": "The share Class OpenFIGI number for this ticker. Find more information [here](https://www.openfigi.com/about/figi)",
                           "type": "string"
                         },
                         "share_class_shares_outstanding": {
