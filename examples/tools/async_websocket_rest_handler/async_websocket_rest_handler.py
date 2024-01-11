@@ -7,6 +7,7 @@ from typing import Optional, Union
 from polygon import RESTClient, WebSocketClient
 from polygon.websocket.models import Market, Feed
 
+
 class ApiCallHandler:
     def __init__(self):
         self.api_call_queue = asyncio.Queue()
@@ -20,7 +21,8 @@ class ApiCallHandler:
             options_ticker = await self.api_call_queue.get()
             try:
                 contract = await asyncio.get_running_loop().run_in_executor(
-                    self.executor, self.get_options_contract, options_ticker)
+                    self.executor, self.get_options_contract, options_ticker
+                )
                 print(contract)  # Or process the contract data as needed
             except Exception as e:
                 logging.error(f"Error processing API call for {options_ticker}: {e}")
@@ -30,6 +32,7 @@ class ApiCallHandler:
     def get_options_contract(self, options_ticker):
         client = RESTClient()  # Assumes POLYGON_API_KEY is set in the environment
         return client.get_options_contract(options_ticker)
+
 
 class MessageHandler:
     def __init__(self, api_call_handler):
@@ -50,23 +53,32 @@ class MessageHandler:
                 for trade in message_response:
                     ticker = self.extract_symbol(trade.symbol)
                     if ticker == "NVDA":
-                        asyncio.create_task(self.api_call_handler.enqueue_api_call(trade.symbol))
+                        asyncio.create_task(
+                            self.api_call_handler.enqueue_api_call(trade.symbol)
+                        )
             except Exception as e:
                 logging.error(f"Error handling message: {e}")
             finally:
                 self.handler_queue.task_done()
 
     def extract_symbol(self, input_string):
-        match = re.search(r'O:([A-Z]+)', input_string)
+        match = re.search(r"O:([A-Z]+)", input_string)
         if match:
             return match.group(1)
         else:
             return None
 
+
 class MyClient:
     def __init__(self, feed, market, subscriptions):
         api_key = os.getenv("POLYGON_API_KEY")
-        self.polygon_websocket_client = WebSocketClient(api_key=api_key, feed=feed, market=market, verbose=True, subscriptions=subscriptions)
+        self.polygon_websocket_client = WebSocketClient(
+            api_key=api_key,
+            feed=feed,
+            market=market,
+            verbose=True,
+            subscriptions=subscriptions,
+        )
         self.api_call_handler = ApiCallHandler()
         self.message_handler = MessageHandler(self.api_call_handler)
 
@@ -75,15 +87,19 @@ class MyClient:
             await asyncio.gather(
                 self.polygon_websocket_client.connect(self.message_handler.add),
                 self.message_handler.start_handling(),
-                self.api_call_handler.start_processing_api_calls()
+                self.api_call_handler.start_processing_api_calls(),
             )
         except Exception as e:
             logging.error(f"Error in event stream: {e}")
 
+
 async def main():
     logging.basicConfig(level=logging.INFO)
-    my_client = MyClient(feed=Feed.RealTime, market=Market.Options, subscriptions=["T.*"])
+    my_client = MyClient(
+        feed=Feed.RealTime, market=Market.Options, subscriptions=["T.*"]
+    )
     await my_client.start_event_stream()
+
 
 # Entry point for the asyncio program
 asyncio.run(main())
