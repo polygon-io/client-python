@@ -20,6 +20,9 @@ class ApiCallHandler:
         while True:
             options_ticker = await self.api_call_queue.get()
             try:
+                # TODO:
+                # Here, you can process the rest api requets as needed
+                # Example: Get the options contract for this
                 contract = await asyncio.get_running_loop().run_in_executor(
                     self.executor, self.get_options_contract, options_ticker
                 )
@@ -47,6 +50,7 @@ class MessageHandler:
             message_response = await self.handler_queue.get()
             logging.info(f"Received message: {message_response}")
             try:
+                # TODO:
                 # Here, you can process the websocket messages as needed
                 # Example: Extract ticker symbol and enqueue REST API call
                 # to get the options contract for this trade (non-blocking)
