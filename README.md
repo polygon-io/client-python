@@ -24,6 +24,8 @@ pip install -U polygon-api-client
 
 To get started, please see the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html) section in our docs, view the [examples](./examples) directory for code snippets, or view the [blog post with videos](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) to learn more.
 
+When using a free API key, please be mindful that it supports up to 5 API calls per minute. Exceeding this limit will throw an error message related to rate limits. For uninterrupted access and higher limits, consider upgrading to our [Starter plan](https://polygon.io/pricing), which offers unlimited API calls. This ensures a smoother experience, especially when working with real-time data or building applications that require higher request volumes.
+
 ## REST API Client
 Import the RESTClient.
 ```python
