@@ -5,13 +5,20 @@
 
 Welcome to the official Python client library for the [Polygon](https://polygon.io/) REST and WebSocket API. To get started, please see the [Getting Started](https://polygon.io/docs/stocks/getting-started) section in our documentation, view the [examples](./examples/) directory for code snippets, or the [blog post](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) with video tutorials to learn more.
 
+## Prerequisites
+
+Before installing the Polygon Python client, ensure your environment has Python 3.8 or higher. While most Python environments come with setuptools installed, it is a dependency for this library. In the rare case it's not already present, you can install setuptools using pip:
+
+```
+pip install setuptools
+```
+
 ## Install
 
 Please use pip to install or update to the latest stable version.
 ```
 pip install -U polygon-api-client
 ```
-Requires Python >= 3.8.
 
 ## Getting started
 
