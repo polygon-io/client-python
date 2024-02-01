@@ -12,6 +12,7 @@ class ApiCallHandler:
     def __init__(self):
         self.api_call_queue = asyncio.Queue()
         self.executor = ThreadPoolExecutor()  # Thread pool for running synchronous code
+        self.client = RESTClient()  # Assumes POLYGON_API_KEY is set in the environment
 
     async def enqueue_api_call(self, options_ticker):
         await self.api_call_queue.put(options_ticker)
@@ -33,8 +34,7 @@ class ApiCallHandler:
                 self.api_call_queue.task_done()
 
     def get_options_contract(self, options_ticker):
-        client = RESTClient()  # Assumes POLYGON_API_KEY is set in the environment
-        return client.get_options_contract(options_ticker)
+        return self.client.get_options_contract(options_ticker)
 
 
 class MessageHandler:
