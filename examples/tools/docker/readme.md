@@ -15,6 +15,8 @@ This Docker setup provides a ready-to-use environment for running Python scripts
 
 ### Building the Docker Image
 
+Any modifications to the Python script will require rebuilding the Docker image to reflect the changes in the containerized environment. Use the docker build command each time your script is updated to ensure the latest version is used in your Docker container.
+
 Navigate to the directory containing your Dockerfile and execute the following command to build your Docker image:
 
 ```
