@@ -491,13 +491,13 @@ test = ["appdirs (==1.4.4)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-mock 
 
 [[package]]
 name = "pook"
-version = "1.4.0"
+version = "1.4.1"
 description = "HTTP traffic mocking and expectations made easy"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pook-1.4.0-py3-none-any.whl", hash = "sha256:1b47fcc75a8a063fc977ee55c7360a0f70bcf3ac0de9be584c8ec09cb127da49"},
-    {file = "pook-1.4.0.tar.gz", hash = "sha256:9261e576e7fe9e9df22f77ffe630560dc6297945382cb4ab9d9c1bb33ddfc62b"},
+    {file = "pook-1.4.1-py3-none-any.whl", hash = "sha256:429ae72d2e808db2e5ea9f80d25783139222d9c27b5145ea210f1b5a14f41c92"},
+    {file = "pook-1.4.1.tar.gz", hash = "sha256:00081a1987428f99e79a44ef0c6afc6c1c6cee8895043f586528b51a4043b0c5"},
 ]
 
 [package.dependencies]
@@ -961,4 +961,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "53b17f952d05b15b988cb2af878bf9c8f9f6877df6831d3cfd4df61b7d0a82c1"
+content-hash = "2c67897dbf7a62bba2beb41885d6534e7595c7f320e209d556760b4b11ea165d"
