@@ -6,7 +6,7 @@ from urllib3.util.retry import Retry
 from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
-import pkg_resources  # part of setuptools
+import pkg_resources  
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
@@ -48,7 +48,7 @@ class BaseClient:
             "User-Agent": f"Polygon.io PythonClient/{version}",
         }
 
-        # initialize self.retries with the parameter value before using it
+       
         self.retries = retries
 
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.util.html#urllib3.util.Retry.RETRY_AFTER_STATUS_CODES
