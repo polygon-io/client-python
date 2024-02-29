@@ -23,21 +23,7 @@ class AggsClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Agg], HTTPResponse]:
-        """
-        List aggregate bars for a ticker over a given date range in custom time window sizes.
-
-        :param ticker: The ticker symbol.
-        :param multiplier: The size of the timespan multiplier.
-        :param timespan: The size of the time window.
-        :param from_: The start of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
-        :param to: The end of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
-        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
-        :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
-        :param limit: Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Iterator of aggregates
-        """
+        
         if isinstance(from_, datetime):
             from_ = int(from_.timestamp() * self.time_mult("millis"))
 
@@ -68,21 +54,7 @@ class AggsClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[Agg], HTTPResponse]:
-        """
-        Get aggregate bars for a ticker over a given date range in custom time window sizes.
-
-        :param ticker: The ticker symbol.
-        :param multiplier: The size of the timespan multiplier.
-        :param timespan: The size of the time window.
-        :param from_: The start of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
-        :param to: The end of the aggregate time window as YYYY-MM-DD, a date, Unix MS Timestamp, or a datetime.
-        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
-        :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
-        :param limit: Limits the number of base aggregates queried to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of aggregates
-        """
+       
         if isinstance(from_, datetime):
             from_ = int(from_.timestamp() * self.time_mult("millis"))
 
@@ -112,15 +84,7 @@ class AggsClient(BaseClient):
         include_otc: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[GroupedDailyAgg], HTTPResponse]:
-        """
-        Get the daily open, high, low, and close (OHLC) for the entire market.
-
-        :param date: The beginning date for the aggregate window.
-        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: List of grouped daily aggregates
-        """
+        
         url = f"/v2/aggs/grouped/locale/{locale}/market/{market_type}/{date}"
 
         return self._get(
@@ -141,16 +105,7 @@ class AggsClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[DailyOpenCloseAgg, HTTPResponse]:
-        """
-        Get the open, close and afterhours prices of a stock symbol on a certain date.
-
-        :param ticker: The exchange symbol that this item is traded under.
-        :param date: The beginning date for the aggregate window.
-        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Daily open close aggregate
-        """
+        
         url = f"/v1/open-close/{ticker}/{date}"
 
         return self._get(
@@ -169,15 +124,7 @@ class AggsClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[PreviousCloseAgg, HTTPResponse]:
-        """
-        Get the previous day's open, high, low, and close (OHLC) for the specified stock ticker.
-
-        :param ticker: The ticker symbol of the stock/equity.
-        :param adjusted: Whether or not the results are adjusted for splits. By default, results are adjusted. Set this to false to get results that are NOT adjusted for splits.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Previous close aggregate
-        """
+        
         url = f"/v2/aggs/ticker/{ticker}/prev"
 
         return self._get(
