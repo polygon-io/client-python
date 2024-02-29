@@ -62,7 +62,7 @@ class BaseClient:
                 502,
                 503,
                 504,
-            ],  # default 413, 429, 503
+            ],  
             backoff_factor=0.1,  # [0.0s, 0.2s, 0.4s, 0.8s, 1.6s, ...]
         )
 
@@ -184,9 +184,6 @@ class BaseClient:
                 if val is not None:
                     for ext in ["lt", "lte", "gt", "gte", "any_of"]:
                         if argname.endswith(f"_{ext}"):
-                            # lop off ext, then rebuild argname with ext,
-                            # using ., and not _ (removesuffix would work)
-                            # but that is python 3.9+
                             argname = argname[: -len(f"_{ext}")] + f".{ext}"
                     if argname.endswith("any_of"):
                         val = ",".join(val)
