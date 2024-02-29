@@ -17,11 +17,6 @@ class SummariesClient(BaseClient):
         """
         GetSummaries retrieves summaries for the ticker list with the given params.
         For more details see https://polygon.io/docs/stocks/get_v1_summaries.
-
-        :param ticker_any_of: The ticker symbol
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: SummaryResults
         """
 
         url = f"/v1/summaries"
