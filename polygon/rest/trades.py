@@ -23,22 +23,7 @@ class TradesClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Trade], HTTPResponse]:
-        """
-        Get trades for a ticker symbol in a given time range.
-
-        :param ticker: The ticker symbol.
-        :param timestamp: Either a date with the format YYYY-MM-DD or a nanosecond timestamp.
-        :param timestamp_lt: Timestamp less than
-        :param timestamp_lte: Timestamp less than or equal to
-        :param timestamp_gt: Timestamp greater than
-        :param timestamp_gte: Timestamp greater than or equal to
-        :param limit: Limits the number of base aggregates queried per-page to create the aggregate results. Max 50000 and Default 5000. Read more about how limit is used to calculate aggregate results in our article on Aggregate Data API Improvements.
-        :param sort: Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).The end of the aggregate time window.
-        :param order: Order results based on the sort field
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Iterator of trades
-        """
+        
         url = f"/v3/trades/{ticker}"
 
         return self._paginate(
@@ -56,14 +41,7 @@ class TradesClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[LastTrade, HTTPResponse]:
-        """
-        Get the most recent trade for a ticker.
-
-        :param ticker: The ticker symbol of the asset
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Last trade
-        """
+       
         url = f"/v2/last/trade/{ticker}"
 
         return self._get(
@@ -83,15 +61,7 @@ class TradesClient(BaseClient):
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[CryptoTrade, HTTPResponse]:
-        """
-        Get the last trade tick for a cryptocurrency pair.
-
-        :param from_: The "from" symbol of the pair.
-        :param to: The "to" symbol of the pair.
-        :param params: Any additional query params
-        :param raw: Return raw object instead of results object
-        :return: Last crypto trade
-        """
+       
         url = f"/v1/last/crypto/{from_}/{to}"
 
         return self._get(
