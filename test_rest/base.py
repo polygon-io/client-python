@@ -5,7 +5,6 @@ import re
 import unittest
 import pook  # type: ignore
 
-# mocks are stored in file tree
 mocks = []
 dirname = os.path.dirname(__file__)
 mockdir = os.path.join(dirname, "mocks")
@@ -24,7 +23,6 @@ for dname, _, files in os.walk(mockdir):
                 if ":" in urllpath:
                     raise Exception(f"use ; instead of : in path ${urllpath}")
                 urllpath = urllpath.replace(";", ":", 1)
-                # print(abspath, urllpath)
                 mocks.append((urllpath, f.read()))
 
 
