@@ -67,6 +67,7 @@ class BaseClient:
             backoff_factor=0.1,  # [0.0s, 0.2s, 0.4s, 0.8s, 1.6s, ...]
         )
 
+        # global cache ssl context and use (vs on each init of pool manager)
         ssl_context = ssl.create_default_context()
         ssl_context.load_verify_locations(certifi.where())
 
