@@ -32,9 +32,11 @@ class OptionsContract:
     @staticmethod
     def from_dict(d):
         return OptionsContract(
-            additional_underlyings=None
-            if "additional_underlyings" not in d
-            else [Underlying.from_dict(u) for u in d["additional_underlyings"]],
+            additional_underlyings=(
+                None
+                if "additional_underlyings" not in d
+                else [Underlying.from_dict(u) for u in d["additional_underlyings"]]
+            ),
             cfi=d.get("cfi", None),
             contract_type=d.get("contract_type", None),
             correction=d.get("correction", None),
