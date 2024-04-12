@@ -3,11 +3,11 @@
 # trade flows, including opening hours and peak activity times, across the
 # exchanges. Please see https://polygon.io/blog/insights-from-trade-level-data
 #
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import numpy as np
-import pytz
+import pandas as pd  # type: ignore
+import seaborn as sns  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
+import numpy as np  # type: ignore
+import pytz  # type: ignore
 
 # Replace '2024-04-05.csv' with the path to your actual file
 file_path = "2024-04-05.csv"

@@ -3,7 +3,7 @@
 # respective percentages of the total trades. Please see
 # https://polygon.io/blog/insights-from-trade-level-data
 #
-import pandas as pd
+import pandas as pd  # type: ignore
 
 # Replace '2024-04-05.csv' with the path to your actual file
 file_path = "2024-04-05.csv"

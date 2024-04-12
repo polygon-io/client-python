@@ -4,8 +4,8 @@
 # the distribution of trading volume across the day, from pre-market to after-
 # hours. Please see https://polygon.io/blog/insights-from-trade-level-data
 #
-import pandas as pd
-import matplotlib.pyplot as plt
+import pandas as pd  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
 
 # Replace '2024-04-05.csv' with the path to your actual file
 file_path = "2024-04-05.csv"
