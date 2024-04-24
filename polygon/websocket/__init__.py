@@ -127,9 +127,9 @@ class WebSocketClient:
                         self.schedule_resub = False
 
                     try:
-                        cmsg: Union[List[WebSocketMessage], Union[str, bytes]] = (
-                            await asyncio.wait_for(s.recv(), timeout=1)
-                        )
+                        cmsg: Union[
+                            List[WebSocketMessage], Union[str, bytes]
+                        ] = await asyncio.wait_for(s.recv(), timeout=1)
                     except asyncio.TimeoutError:
                         continue
 
