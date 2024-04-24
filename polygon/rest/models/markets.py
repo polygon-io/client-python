@@ -30,6 +30,7 @@ class MarketIndices:
     "Contains indices market status data."
     s_and_p: Optional[str] = None
     societe_generale: Optional[str] = None
+    cgi: Optional[str] = None
     msci: Optional[str] = None
     ftse_russell: Optional[str] = None
     mstar: Optional[str] = None

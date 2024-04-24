@@ -40,7 +40,7 @@ sphinx-autodoc-typehints = "^2.0.1"
 types-certifi = "^2021.10.8"
 types-setuptools = "^69.5.0"
 pook = "^1.4.3"
-orjson = "^3.10.0"
+orjson = "^3.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
