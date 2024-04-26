@@ -150,54 +150,6 @@ ws.run(handle_msg=handle_msg)
 ```
 Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
 
-## Launchpad REST API Client
-Users of the Launchpad product will need to pass in certain headers in order to make API requests using the RequestOptionBuilder.
-Example can be found [here](./examples/launchpad).
-
-Import classes
-```python
-from polygon import RESTClient
-from polygon.rest.models.request import RequestOptionBuilder
-```
-### Using the client
-Create client and set options
-```python
-# create client
-c = RESTClient(api_key="API_KEY")
-
-# create request options
-options = RequestOptionBuilder().edge_headers(
-    edge_id="YOUR_EDGE_ID",  # required
-    edge_ip_address="IP_ADDRESS",  # required
-)
-```
-Request data using client methods.
-```python
-# get response
-res = c.get_aggs("AAPL", 1, "day", "2022-04-04", "2022-04-04", options=options)
-
-# do something with response
-```
-Checkout Launchpad readme for more details on RequestOptionBuilder [here](./examples/launchpad)
-
-
-## Launchpad WebSocket Client
-
-```python
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
-from polygon.websocket.models.common import Feed, Market
-from typing import List
-
-ws = WebSocketClient(api_key="API_KEY",feed=Feed.Launchpad,market=Market.Stocks, subscriptions=["AM.AAPL"])
-
-def handle_msg(msg: List[WebSocketMessage]):
-    for m in msg:
-        print(m)
-
-ws.run(handle_msg=handle_msg)
-```
-
 ## Contributing
 
 If you found a bug or have an idea for a new feature, please first discuss it with us by
