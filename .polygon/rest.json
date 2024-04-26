@@ -12698,6 +12698,10 @@
                           "description": "The status of Cboe Streaming Market Indices Cryptocurrency (\"CCCY\") indices trading hours.",
                           "type": "string"
                         },
+                        "cgi": {
+                          "description": "The status of Cboe Global Indices (\"CGI\") trading hours.",
+                          "type": "string"
+                        },
                         "dow_jones": {
                           "description": "The status of Dow Jones indices trading hours",
                           "type": "string"
@@ -26444,6 +26448,10 @@
                               "description": "The first line of the company's headquarters address.",
                               "type": "string"
                             },
+                            "address2": {
+                              "description": "The second line of the company's headquarters address, if applicable.",
+                              "type": "string"
+                            },
                             "city": {
                               "description": "The city of the company's headquarters address.",
                               "type": "string"
@@ -26608,7 +26616,7 @@
                 }
               },
               "text/csv": {
-                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,round_lot,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,100,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
+                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,round_lot,market_cap,phone_number,address1,address2,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,100,2771126040150,(408) 996-1010,One Apple Park Way,,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
                 "schema": {
                   "type": "string"
                 }
@@ -30323,7 +30331,7 @@
     },
     "/vX/reference/tickers/taxonomies": {
       "get": {
-        "description": "Retrieve taxonomy classifications for one or more tickers.",
+        "description": "Many investors place a high value on sector data. It is used to measure economic activity, identify peers and competitors, build ETF products, quantify market share, and compare company performance. However, there are some limitations to industry standard sectors:\n* They have difficulty identifying the primary area of activity for large, complex businesses.\n* Studies confirm significant disagreement between classification schemes when attempting to categorize the same companies.\n* The systems' hierarchical nature is inflexible and struggles to convey business nuances.\n<br />\n<br />\nAs a result, we've developed a new taxonomy to supplement existing sector classifications. The taxonomy is created by reviewing related 10K filings to create a set of structured categories and tags.\n<br />\n<br />\nThe categories are based on company operating models and are industry agnostic. Our current version only supports one category, Revenue Streams, with future plans to support more.\n<br />\n<br />\nThe tags define a specific type within the category. Within the Revenue Streams category, for example, tags for \"product sales\" and \"advertising\" may be found. A company may have many tags in a given category. The complete Revenue Streams taxonomy is shown below.\n<br />\n<br />\nOur taxonomy is powered by AI and is currently in early beta testing. You should expect some inaccuracies in the responses.\n<br />\n<br />\n## **Revenue Streams**\n  *Latest Revision (7/7/2023)*\n<br />\n<br />\n- **Physical Product Sales:**\n  Revenue generated from the sale of tangible goods or physical products to customers, either in-store or online.\n  - Consumer Goods\n  - Industrial Goods\n  - Electronics\n  - Vehicles\n  - Healthcare Products\n<br />\n<br />\n- **Digital Product Sales:**\n  Revenue earned from the sale of digital goods or products, such as software licenses, e-books, music downloads, or digital media content. It also includes revenue obtained by selling aggregated, anonymized, or processed data to third parties for market research, analytics, or other purposes.\n  - Software\n  - E-books and Digital Media\n  - Mobile Applications\n  - Games\n  - Online Courses\n  - Market Research Data\n  - Customer Behavior Data\n<br />\n<br />\n- **Professional Services:**\n  Revenue obtained by providing specialized services, expertise, or consulting to clients in exchange for fees. This includes services offered by professionals such as lawyers, accountants, or consultants.\n  - Consulting\n  - Legal Services\n  - Financial Services\n  - Marketing Services\n  - Construction Services\n  - Education & Tutoring\n<br />\n<br />\n- **Consumer Services:**\n  Revenue earned from providing services directly to consumers, including services like healthcare, personal grooming, fitness, or hospitality.\n  - Dining & Hospitality\n  - Personal Care\n  - Entertainment & Recreation\n  - Fitness & Wellness\n  - Travel & Tourism\n  - Transportation\n  - Home Services\n  - Child & Family Care\n  - Automotive\n<br />\n<br />\n- **Subscription-based Revenue:**\n  Revenue obtained from recurring fees charged to customers for accessing a product or service over a defined period. This includes revenue from subscription-based models, membership programs, or software-as-a-service (SaaS) offerings.\n  - Software as a Service (SaaS)\n  - Streaming Services\n  - Physical Media\n  - Memberships\n<br />\n<br />\n- **Licensing and Royalties:**\n  Revenue generated from the licensing of intellectual property rights to third parties, including franchise rights, patent licensing, brand licensing, and the receipt of royalties for authorized use of intellectual property like music royalties, book royalties, or patent royalties.\n  - Franchise Fees\n  - Patent Licensing\n  - Brand Licensing\n  - Media Royalties\n<br />\n<br />\n- **Advertising:**\n  Revenue generated by displaying ads or promotional content to customers, whether through traditional or digital advertising channels, including revenue from display ads, sponsored content, or affiliate marketing.\n  - Print Advertising\n  - Online Display Advertising\n  - Social Media Advertising\n  - Influencer Marketing\n<br />\n<br />\n- **Commission-Based Revenue:**\n  Revenue earned by acting as an intermediary and receiving a percentage or commission on sales made on behalf of another party. This includes revenue from affiliate programs, referral fees, or any other commission-based revenue models.\n  - Real Estate Commissions\n  - Affiliate Marketing Commissions\n  - Online Marketplace Commissions\n<br />\n<br />\n- **Rentals or Leasing:**\n  Revenue earned by leasing or renting out assets, properties, or equipment to customers, including rental income from real estate properties, equipment leasing, or vehicle rentals.\n  - Property Rentals\n  - Equipment Leasing\n  - Vehicle Rentals",
         "operationId": "ListTickerTaxonomyClassifications",
         "parameters": [
           {
@@ -30334,16 +30342,16 @@
             },
             "x-polygon-filter-field": {
               "anyOf": {
-                "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
+                "description": "Comma separated list of tickers, up to a maximum of 250.\n\nWarning: The maximum number of characters allowed in a URL are subject to your own technology stack.\n",
                 "enabled": true,
-                "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX"
+                "example": "AAPL,AMD,MSFT"
               },
               "range": true,
               "type": "string"
             }
           },
           {
-            "description": "Filter by taxonomy category.",
+            "description": "Filter by taxonomy category. The current version of this API supports the following category: revenue_streams",
             "in": "query",
             "name": "category",
             "schema": {
@@ -30356,6 +30364,29 @@
             "name": "tag",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "Order results ascending or descending based on the ticker.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned. The default is 10 and the max is 250.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
             }
           },
           {
@@ -30391,49 +30422,11 @@
             }
           },
           {
-            "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
-            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX",
+            "description": "Comma separated list of tickers, up to a maximum of 250.\n\nWarning: The maximum number of characters allowed in a URL are subject to your own technology stack.\n",
+            "example": "AAPL,AMD,MSFT",
             "in": "query",
             "name": "ticker.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Order results based on the `sort` field.",
-            "in": "query",
-            "name": "order",
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "example": "asc",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the number of results returned, default is 10 and max is 250.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 10,
-              "example": 10,
-              "maximum": 250,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Sort field used for ordering.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "ticker",
-              "enum": [
-                "ticker"
-              ],
-              "example": "ticker",
               "type": "string"
             }
           }
@@ -30443,29 +30436,22 @@
             "content": {
               "application/json": {
                 "example": {
-                  "request_id": "31d59dda-80e5-4721-8496-d0d32a654afe",
+                  "request_id": "a4f9947955398c28905337f003bfee7c",
                   "results": [
                     {
                       "category": "revenue_streams",
-                      "reason": "Company recognizes revenue from the sales of consumer electronics such as the iPhone and iPad.",
-                      "relevance": 0.99,
-                      "tag": "physical_product_sales_electronics",
+                      "reason": "The text mentions revenue earned from the sale of digital goods or products, such as software licenses, e-books, music downloads, or digital media content.",
+                      "tag": "digital_product_sales",
                       "ticker": "AAPL"
                     },
                     {
                       "category": "revenue_streams",
-                      "reason": "Company recognizes revenue from the sales of digital products  such as digital storage and app store fees.",
-                      "relevance": 0.99,
-                      "tag": "digital_product_sales_software",
-                      "ticker": "AAPL"
-                    },
-                    {
-                      "category": "cost_structure",
-                      "relevance": 0.86,
-                      "tag": "economies_of_scale",
+                      "reason": "The text mentions revenue generated from the licensing of intellectual property rights to third parties, including franchise rights, patent licensing, brand licensing, and the receipt of royalties for authorized use of intellectual property like music royalties, book royalties, or patent royalties.",
+                      "tag": "licensing_and_royalties",
                       "ticker": "AAPL"
                     }
-                  ]
+                  ],
+                  "status": "OK"
                 },
                 "schema": {
                   "properties": {
@@ -30480,27 +30466,23 @@
                       "items": {
                         "properties": {
                           "category": {
-                            "description": "The classification category.",
+                            "description": "A dimension of a company\u2019s operating model that is agnostic to industry.  Category contains a comprehensive list of tags which reflect defined types within that category. The current version of this API supports the following category: revenue_streams",
                             "type": "string"
                           },
                           "reason": {
-                            "description": "The reason why the classification was given.",
+                            "description": "The reason why the classification was given. The reason is provided by our AI to help you determine whether or not you agree with its applicability for your uses.",
                             "type": "string"
                           },
-                          "relevance": {
-                            "description": "The relevance score for the tag. This is a measure of confidence in the tag classification.",
-                            "format": "double",
-                            "type": "number"
-                          },
                           "tag": {
-                            "description": "The classification tag. Each category has a set of associated tags.",
+                            "description": "A specific type within a category. For example \u201cproduct_sales\u201d is a type of revenue stream. A company may have multiple tags within a given category. A taxonomy of tags are determined based on 10k filings.",
                             "type": "string"
                           },
                           "ticker": {
-                            "description": "The ticker symbol for the asset.",
+                            "description": "The identifying ticker symbol for the asset.",
                             "type": "string"
                           }
                         },
+                        "type": "object",
                         "x-polygon-go-type": {
                           "name": "TaxonomyClassificationResult"
                         }
@@ -30531,20 +30513,7 @@
           "description": "Reference data",
           "name": "reference"
         },
-        "x-polygon-experimental": {},
-        "x-polygon-paginate": {
-          "limit": {
-            "default": 10,
-            "max": 250,
-            "min": 1
-          },
-          "sort": {
-            "default": "ticker",
-            "enum": [
-              "ticker"
-            ]
-          }
-        }
+        "x-polygon-experimental": {}
       },
       "x-polygon-draft": true
     },
