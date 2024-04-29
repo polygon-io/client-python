@@ -6039,7 +6039,7 @@
         },
         "summary": "Exponential Moving Average (EMA)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -9407,7 +9407,7 @@
         },
         "summary": "Relative Strength Index (RSI)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -11003,7 +11003,7 @@
         },
         "summary": "Simple Moving Average (SMA)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
