@@ -101,6 +101,17 @@
           "type": "string"
         }
       },
+      "CryptoTickersQueryParam": {
+        "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, X:BTCUSD, X:ETHBTC, and X:BOBAUSD. Empty string defaults to querying all tickers.",
+        "in": "query",
+        "name": "tickers",
+        "schema": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
       "ForexTickerPathParam": {
         "description": "The ticker symbol of the currency pair.",
         "example": "C:EURUSD",
@@ -109,6 +120,17 @@
         "required": true,
         "schema": {
           "type": "string"
+        }
+      },
+      "ForexTickersQueryParam": {
+        "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, C:EURUSD, C:GBPCAD, and C:AUDINR. Empty string defaults to querying all tickers.",
+        "in": "query",
+        "name": "tickers",
+        "schema": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "GeneralTickerPathParam": {
@@ -6039,7 +6061,7 @@
         },
         "summary": "Exponential Moving Average (EMA)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -9407,7 +9429,7 @@
         },
         "summary": "Relative Strength Index (RSI)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -11003,7 +11025,7 @@
         },
         "summary": "Simple Moving Average (SMA)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -18577,7 +18599,7 @@
         "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded cryptocurrency symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, X:BTCUSD, X:ETHBTC, and X:BOBAUSD. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -19461,6 +19483,9 @@
         "tags": [
           "crypto:snapshot"
         ],
+        "x-polygon-deprecation": {
+          "date": 1719838800000
+        },
         "x-polygon-entitlement-allowed-timeframes": [
           {
             "description": "Real Time Data",
@@ -19838,7 +19863,7 @@
         "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded forex symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, C:EURUSD, C:GBPCAD, and C:AUDINR. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -21608,7 +21633,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/{direction}": {
       "get": {
-        "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\nThis output will only include tickers with a trading volume of 10,000 or more.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The direction of the snapshot results to return.\n",
