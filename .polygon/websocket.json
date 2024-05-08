@@ -995,7 +995,7 @@
                 },
                 "example": {
                   "ev": "FMV",
-                  "val": 189.22,
+                  "fmv": 189.22,
                   "sym": "AAPL",
                   "t": 1678220098130
                 }
@@ -1761,7 +1761,7 @@
                 },
                 "example": {
                   "ev": "FMV",
-                  "val": 7.2,
+                  "fmv": 7.2,
                   "sym": "O:TSLA210903C00700000",
                   "t": 1401715883806000000
                 }
@@ -2331,7 +2331,7 @@
                 },
                 "example": {
                   "ev": "FMV",
-                  "val": 1.0631,
+                  "fmv": 1.0631,
                   "sym": "C:EURUSD",
                   "t": 1678220098130
                 }
@@ -2885,7 +2885,10 @@
             "name": "realtime",
             "description": "Real Time Data"
           }
-        ]
+        ],
+        "x-polygon-deprecation": {
+          "date": 1719838800000
+        }
       }
     },
     "/crypto/XA": {
@@ -3157,7 +3160,7 @@
                 },
                 "example": {
                   "ev": "FMV",
-                  "val": 33021.9,
+                  "fmv": 33021.9,
                   "sym": "X:BTC-USD",
                   "t": 1610462007425
                 }
