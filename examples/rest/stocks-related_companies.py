@@ -7,5 +7,4 @@ from polygon import RESTClient
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 related_companies = client.get_related_companies("AAPL")
-for company in related_companies:
-    print(company)
+print(related_companies)
