@@ -195,6 +195,7 @@ class RelatedCompany:
     """
     Get a list of tickers related to the queried ticker based on News and Returns data.
     """
+
     ticker: Optional[str] = None
 
     @staticmethod
