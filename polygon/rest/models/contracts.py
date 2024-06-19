@@ -1,8 +1,8 @@
-from typing import Optional, List
-from ...modelclass import modelclass
+from dataclasses import dataclass
+from typing import List, Optional
 
 
-@modelclass
+@dataclass
 class Underlying:
     "Underlying contains data for an underlying or deliverable associated with an option contract."
     amount: Optional[float] = None
@@ -14,7 +14,7 @@ class Underlying:
         return Underlying(**d)
 
 
-@modelclass
+@dataclass
 class OptionsContract:
     "OptionsContract contains data for a specified ticker symbol."
     additional_underlyings: Optional[List[Underlying]] = None
