@@ -45,7 +45,6 @@ class OptionsContract:
             primary_exchange=d.get("primary_exchange", None),
             shares_per_contract=d.get("shares_per_contract", None),
             strike_price=d.get("strike_price", None),
-            size=d.get("size", None),
             ticker=d.get("ticker", None),
             underlying_ticker=d.get("underlying_ticker", None),
         )

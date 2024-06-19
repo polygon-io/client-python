@@ -385,6 +385,7 @@ class UniversalSnapshotDetails:
     expiration_date: Optional[str] = None
     shares_per_contract: Optional[float] = None
     strike_price: Optional[float] = None
+    underlying_ticker: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
