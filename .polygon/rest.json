@@ -63,7 +63,7 @@
       },
       "AggregateTimeTo": {
         "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-01-09",
+        "example": "2023-02-10",
         "in": "path",
         "name": "to",
         "required": true,
@@ -153,7 +153,7 @@
       },
       "IndicesAggregateTimeFrom": {
         "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-03-10",
+        "example": "2023-03-13",
         "in": "path",
         "name": "from",
         "required": true,
@@ -163,7 +163,7 @@
       },
       "IndicesAggregateTimeTo": {
         "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-03-10",
+        "example": "2023-03-24",
         "in": "path",
         "name": "to",
         "required": true,
@@ -13911,8 +13911,7 @@
                           "files_count",
                           "source_url",
                           "download_url",
-                          "entities",
-                          "acceptance_datetime"
+                          "entities"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -13982,121 +13981,125 @@
                 "example": {},
                 "schema": {
                   "properties": {
-                    "acceptance_datetime": {
-                      "description": "The datetime when the filing was accepted by EDGAR in EST (format: YYYYMMDDHHMMSS)",
-                      "type": "string"
-                    },
-                    "accession_number": {
-                      "description": "Filing Accession Number",
-                      "type": "string"
-                    },
-                    "entities": {
-                      "description": "Entities related to the filing (e.g. the document filers).",
-                      "items": {
-                        "description": "A filing entity (e.g. the document filer).",
-                        "properties": {
-                          "company_data": {
+                    "results": {
+                      "properties": {
+                        "acceptance_datetime": {
+                          "description": "The datetime when the filing was accepted by EDGAR in EST (format: YYYYMMDDHHMMSS)",
+                          "type": "string"
+                        },
+                        "accession_number": {
+                          "description": "Filing Accession Number",
+                          "type": "string"
+                        },
+                        "entities": {
+                          "description": "Entities related to the filing (e.g. the document filers).",
+                          "items": {
+                            "description": "A filing entity (e.g. the document filer).",
                             "properties": {
-                              "cik": {
-                                "description": "Central Index Key (CIK) Number",
-                                "type": "string"
+                              "company_data": {
+                                "properties": {
+                                  "cik": {
+                                    "description": "Central Index Key (CIK) Number",
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "example": "Facebook Inc",
+                                    "type": "string"
+                                  },
+                                  "sic": {
+                                    "description": "Standard Industrial Classification (SIC)",
+                                    "type": "string"
+                                  },
+                                  "ticker": {
+                                    "description": "Ticker",
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "cik",
+                                  "sic"
+                                ],
+                                "type": "object",
+                                "x-polygon-go-type": {
+                                  "name": "SECCompanyData",
+                                  "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                                }
                               },
-                              "name": {
-                                "example": "Facebook Inc",
-                                "type": "string"
-                              },
-                              "sic": {
-                                "description": "Standard Industrial Classification (SIC)",
-                                "type": "string"
-                              },
-                              "ticker": {
-                                "description": "Ticker",
+                              "relation": {
+                                "description": "Relationship of this entity to the filing.",
+                                "enum": [
+                                  "filer"
+                                ],
                                 "type": "string"
                               }
                             },
                             "required": [
-                              "name",
-                              "cik",
-                              "sic"
+                              "relation"
                             ],
                             "type": "object",
                             "x-polygon-go-type": {
-                              "name": "SECCompanyData",
+                              "name": "SECFilingEntity",
                               "path": "github.com/polygon-io/go-lib-models/v2/globals"
                             }
                           },
-                          "relation": {
-                            "description": "Relationship of this entity to the filing.",
-                            "enum": [
-                              "filer"
-                            ],
-                            "type": "string"
-                          }
+                          "type": "array"
                         },
-                        "required": [
-                          "relation"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "SECFilingEntity",
-                          "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                        "files_count": {
+                          "description": "The number of files associated with the filing.",
+                          "format": "int64",
+                          "type": "integer"
+                        },
+                        "filing_date": {
+                          "description": "The date when the filing was filed in YYYYMMDD format.",
+                          "example": "20210101",
+                          "pattern": "^[0-9]{8}$",
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "Unique identifier for the filing.",
+                          "type": "string"
+                        },
+                        "period_of_report_date": {
+                          "description": "The period of report for the filing in YYYYMMDD format.",
+                          "example": "20210101",
+                          "pattern": "^[0-9]{8}$",
+                          "type": "string"
+                        },
+                        "source_url": {
+                          "description": "The source URL is a link back to the upstream source for this filing\ndocument.",
+                          "example": "https://www.sec.gov/Archives/edgar/data/0001326801/000132680119000037/0001326801-19-000037-index.html",
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "Filing Type",
+                          "enum": [
+                            "10-K",
+                            "10-Q"
+                          ],
+                          "type": "string"
                         }
                       },
-                      "type": "array"
-                    },
-                    "files_count": {
-                      "description": "The number of files associated with the filing.",
-                      "format": "int64",
-                      "type": "integer"
-                    },
-                    "filing_date": {
-                      "description": "The date when the filing was filed in YYYYMMDD format.",
-                      "example": "20210101",
-                      "pattern": "^[0-9]{8}$",
-                      "type": "string"
-                    },
-                    "id": {
-                      "description": "Unique identifier for the filing.",
-                      "type": "string"
-                    },
-                    "period_of_report_date": {
-                      "description": "The period of report for the filing in YYYYMMDD format.",
-                      "example": "20210101",
-                      "pattern": "^[0-9]{8}$",
-                      "type": "string"
-                    },
-                    "source_url": {
-                      "description": "The source URL is a link back to the upstream source for this filing\ndocument.",
-                      "example": "https://www.sec.gov/Archives/edgar/data/0001326801/000132680119000037/0001326801-19-000037-index.html",
-                      "format": "uri",
-                      "type": "string"
-                    },
-                    "type": {
-                      "description": "Filing Type",
-                      "enum": [
-                        "10-K",
-                        "10-Q"
+                      "required": [
+                        "id",
+                        "accession_number",
+                        "type",
+                        "filing_date",
+                        "period_of_report_date",
+                        "files_count",
+                        "source_url",
+                        "download_url",
+                        "entities"
                       ],
-                      "type": "string"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "SECFiling",
+                        "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                      }
                     }
                   },
-                  "required": [
-                    "id",
-                    "accession_number",
-                    "type",
-                    "filing_date",
-                    "period_of_report_date",
-                    "files_count",
-                    "source_url",
-                    "download_url",
-                    "entities",
-                    "acceptance_datetime"
-                  ],
-                  "type": "object",
-                  "x-polygon-go-type": {
-                    "name": "SECFiling",
-                    "path": "github.com/polygon-io/go-lib-models/v2/globals"
-                  }
+                  "type": "object"
                 }
               }
             },
@@ -14486,6 +14489,114 @@
         }
       },
       "x-polygon-draft": true
+    },
+    "/v1/related-companies/{ticker}": {
+      "get": {
+        "description": "Get a list of tickers related to the queried ticker based on News and Returns data.",
+        "operationId": "GetRelatedCompanies",
+        "parameters": [
+          {
+            "description": "The ticker symbol to search.",
+            "example": "AAPL",
+            "in": "path",
+            "name": "ticker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "31d59dda-80e5-4721-8496-d0d32a654afe",
+                  "results": [
+                    {
+                      "ticker": "MSFT"
+                    },
+                    {
+                      "ticker": "GOOGL"
+                    },
+                    {
+                      "ticker": "AMZN"
+                    },
+                    {
+                      "ticker": "FB"
+                    },
+                    {
+                      "ticker": "TSLA"
+                    },
+                    {
+                      "ticker": "NVDA"
+                    },
+                    {
+                      "ticker": "INTC"
+                    },
+                    {
+                      "ticker": "ADBE"
+                    },
+                    {
+                      "ticker": "NFLX"
+                    },
+                    {
+                      "ticker": "PYPL"
+                    }
+                  ],
+                  "status": "OK",
+                  "stock_symbol": "AAPL"
+                },
+                "schema": {
+                  "properties": {
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "description": "The tickers related to the requested ticker.",
+                        "properties": {
+                          "ticker": {
+                            "description": "A ticker related to the requested ticker.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "ticker"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    },
+                    "ticker": {
+                      "description": "The ticker being queried.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Related Companies."
+          },
+          "401": {
+            "description": "Unauthorized - Check our API Key and account status"
+          }
+        },
+        "summary": "Related Companies",
+        "tags": [
+          "reference:related:companies"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Reference data",
+          "name": "reference"
+        }
+      }
     },
     "/v1/summaries": {
       "get": {
@@ -15711,7 +15822,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -16164,7 +16275,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -16560,7 +16671,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-03-10",
+            "example": "2023-03-13",
             "in": "path",
             "name": "from",
             "required": true,
@@ -16570,7 +16681,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-03-10",
+            "example": "2023-03-24",
             "in": "path",
             "name": "to",
             "required": true,
@@ -16983,7 +17094,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -17431,7 +17542,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -22882,6 +22993,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 10,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -23129,6 +23242,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 10,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -23430,6 +23545,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 10,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -25395,7 +25512,7 @@
         "parameters": [
           {
             "description": "Query for a contract by options ticker. You can learn more about the structure of options tickers [here](https://polygon.io/blog/how-to-read-a-stock-options-ticker/).",
-            "example": "O:EVRI240119C00002500",
+            "example": "O:SPY251219C00650000",
             "in": "path",
             "name": "options_ticker",
             "required": true,
@@ -29104,6 +29221,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 10,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -29356,6 +29475,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 10,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -29645,6 +29766,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 10,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -31283,6 +31406,11 @@
         {
           "paths": [
             "/v3/reference/exchanges"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/related-companies/{ticker}"
           ]
         }
       ]

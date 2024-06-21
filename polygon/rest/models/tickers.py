@@ -190,6 +190,21 @@ class TickerTypes:
 
 
 @dataclass
+class RelatedCompany:
+    """
+    Get a list of tickers related to the queried ticker based on News and Returns data.
+    """
+
+    ticker: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return RelatedCompany(
+            ticker=d.get("ticker", None),
+        )
+
+
+@dataclass
 class TickerChange:
     ticker: str
 
