@@ -1,6 +1,5 @@
 import certifi
 import json
-import ssl
 import urllib3
 import inspect
 from urllib3.util.retry import Retry
@@ -67,16 +66,13 @@ class BaseClient:
             backoff_factor=0.1,  # [0.0s, 0.2s, 0.4s, 0.8s, 1.6s, ...]
         )
 
-        # global cache ssl context and use (vs on each init of pool manager)
-        ssl_context = ssl.create_default_context()
-        ssl_context.load_verify_locations(certifi.where())
-
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.poolmanager.html
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.connectionpool.html#urllib3.HTTPConnectionPool
         self.client = urllib3.PoolManager(
             num_pools=num_pools,
             headers=self.headers,  # default headers sent with each request.
-            ssl_context=ssl_context,
+            ca_certs=certifi.where(),
+            cert_reqs="CERT_REQUIRED",
             retries=retry_strategy,  # use the customized Retry instance
         )
 
