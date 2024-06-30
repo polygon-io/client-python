@@ -46,7 +46,7 @@ class BaseClient:
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
             "Accept-Encoding": "gzip",
-            "User-Agent": f"Polygon.io PythonClient/{version}",
+            "User-Agent": f"Polygon.io PythonClient/{version_number}",
         }
 
         # initialize self.retries with the parameter value before using it
