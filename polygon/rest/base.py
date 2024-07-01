@@ -7,7 +7,7 @@ from urllib3.util.retry import Retry
 from enum import Enum
 from typing import Optional, Any, Dict
 from datetime import datetime
-import pkg_resources  # part of setuptools
+from importlib.metadata import version, PackageNotFoundError
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
@@ -15,10 +15,10 @@ from urllib.parse import urlencode
 from ..exceptions import AuthError, BadResponse
 
 logger = get_logger("RESTClient")
-version = "unknown"
+version_number = "unknown"
 try:
-    version = pkg_resources.require("polygon-api-client")[0].version
-except:
+    version_number = version("polygon-api-client")
+except PackageNotFoundError:
     pass
 
 
@@ -46,7 +46,7 @@ class BaseClient:
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
             "Accept-Encoding": "gzip",
-            "User-Agent": f"Polygon.io PythonClient/{version}",
+            "User-Agent": f"Polygon.io PythonClient/{version_number}",
         }
 
         # initialize self.retries with the parameter value before using it
