@@ -39,7 +39,7 @@ sphinx-rtd-theme = "^2.0.0"
 sphinx-autodoc-typehints = "^2.0.1"
 types-certifi = "^2021.10.8"
 types-setuptools = "^70.0.0"
-pook = "^1.4.3"
+pook = "^2.0.0"
 orjson = "^3.10.5"
 
 [build-system]
