@@ -18312,7 +18312,7 @@
         "operationId": "ListNews",
         "parameters": [
           {
-            "description": "Return results that contain this ticker.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -18496,52 +18496,35 @@
                   "request_id": "831afdb0b8078549fed053476984947a",
                   "results": [
                     {
-                      "amp_url": "https://amp.benzinga.com/amp/content/20784086",
-                      "article_url": "https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square",
-                      "author": "Rachit  Vats",
-                      "description": "<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ <a class=\"ticker\" href=\"https://www.benzinga.com/stock/coin#NASDAQ\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p>\n<p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE <a class=\" ticker\" href=\"https://www.benzinga.com/stock/arkk#NYSE\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p>\n<p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE <a class=\" ticker\" href=\"https://www.benzinga.com/stock/sklz#NYSE\">SKLZ</a>), <a href=\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\" >just a day after</a> snapping 1.2 million shares of the stock.</p>\n <p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>",
-                      "id": "nJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA",
-                      "image_url": "https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720",
-                      "keywords": [
-                        "Sector ETFs",
-                        "Penny Stocks",
-                        "Cryptocurrency",
-                        "Small Cap",
-                        "Markets",
-                        "Trading Ideas",
-                        "ETFs"
+                      "amp_url": "https://m.uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968?ampMode=1",
+                      "article_url": "https://uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968",
+                      "author": "Sam Boughedda",
+                      "description": "UBS analysts warn that markets are underestimating the extent of future interest rate cuts by the Federal Reserve, as the weakening economy is likely to justify more cuts than currently anticipated.",
+                      "id": "8ec638777ca03b553ae516761c2a22ba2fdd2f37befae3ab6fdab74e9e5193eb",
+                      "image_url": "https://i-invdn-com.investing.com/news/LYNXNPEC4I0AL_L.jpg",
+                      "insights": [
+                        {
+                          "sentiment": "positive",
+                          "sentiment_reasoning": "UBS analysts are providing a bullish outlook on the extent of future Federal Reserve rate cuts, suggesting that markets are underestimating the number of cuts that will occur.",
+                          "ticker": "UBS"
+                        }
                       ],
-                      "published_utc": "2021-04-26T02:33:17Z",
+                      "keywords": [
+                        "Federal Reserve",
+                        "interest rates",
+                        "economic data"
+                      ],
+                      "published_utc": "2024-06-24T18:33:53Z",
                       "publisher": {
-                        "favicon_url": "https://s3.polygon.io/public/public/assets/news/favicons/benzinga.ico",
-                        "homepage_url": "https://www.benzinga.com/",
-                        "logo_url": "https://s3.polygon.io/public/public/assets/news/logos/benzinga.svg",
-                        "name": "Benzinga"
+                        "favicon_url": "https://s3.polygon.io/public/assets/news/favicons/investing.ico",
+                        "homepage_url": "https://www.investing.com/",
+                        "logo_url": "https://s3.polygon.io/public/assets/news/logos/investing.png",
+                        "name": "Investing.com"
                       },
                       "tickers": [
-                        "DOCU",
-                        "DDD",
-                        "NIU",
-                        "ARKF",
-                        "NVDA",
-                        "SKLZ",
-                        "PCAR",
-                        "MASS",
-                        "PSTI",
-                        "SPFR",
-                        "TREE",
-                        "PHR",
-                        "IRDM",
-                        "BEAM",
-                        "ARKW",
-                        "ARKK",
-                        "ARKG",
-                        "PSTG",
-                        "SQ",
-                        "IONS",
-                        "SYRS"
+                        "UBS"
                       ],
-                      "title": "Cathie Wood Adds More Coinbase, Skillz, Trims Square"
+                      "title": "Markets are underestimating Fed cuts: UBS By Investing.com - Investing.com UK"
                     }
                   ],
                   "status": "OK"
@@ -18586,6 +18569,32 @@
                           "image_url": {
                             "description": "The article's image URL.",
                             "type": "string"
+                          },
+                          "insights": {
+                            "description": "The insights related to the article.",
+                            "items": {
+                              "properties": {
+                                "sentiment": {
+                                  "description": "The sentiment of the insight.",
+                                  "type": "string"
+                                },
+                                "sentiment_reasoning": {
+                                  "description": "The reasoning behind the sentiment.",
+                                  "type": "string"
+                                },
+                                "ticker": {
+                                  "description": "The ticker symbol associated with the insight.",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "ticker",
+                                "sentiment",
+                                "sentiment_reasoning"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
                           },
                           "keywords": {
                             "description": "The keywords associated with the article (which will vary depending on\nthe publishing source).",
@@ -18667,7 +18676,7 @@
                 }
               },
               "text/csv": {
-                "example": "id,publisher_name,publisher_homepage_url,publisher_logo_url,publisher_favicon_url,title,author,published_utc,article_url,tickers,amp_url,image_url,description,keywords\nnJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA,Benzinga,https://www.benzinga.com/,https://s3.polygon.io/public/public/assets/news/logos/benzinga.svg,https://s3.polygon.io/public/public/assets/news/favicons/benzinga.ico,\"Cathie Wood Adds More Coinbase, Skillz, Trims Square\",Rachit  Vats,2021-04-26T02:33:17Z,https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square,\"DOCU,DDD,NIU,ARKF,NVDA,SKLZ,PCAR,MASS,PSTI,SPFR,TREE,PHR,IRDM,BEAM,ARKW,ARKK,ARKG,PSTG,SQ,IONS,SYRS\",https://amp.benzinga.com/amp/content/20784086,https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720,\"<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ <a class=\\\"ticker\\\" href=\\\"https://www.benzinga.com/stock/coin#NASDAQ\\\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p> <p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE <a class=\\\" ticker\\\" href=\\\"https://www.benzinga.com/stock/arkk#NYSE\\\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p> <p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE <a class=\\\" ticker\\\" href=\\\"https://www.benzinga.com/stock/sklz#NYSE\\\">SKLZ</a>), <a href=\\\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\\\" >just a day after</a> snapping 1.2 million shares of the stock.</p> <p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>\",\"Sector ETFs,Penny Stocks,Cryptocurrency,Small Cap,Markets,Trading Ideas,ETFs\"\n",
+                "example": "id,publisher_name,publisher_homepage_url,publisher_logo_url,publisher_favicon_url,title,author,published_utc,article_url,ticker,amp_url,image_url,description,keywords,sentiment,sentiment_reasoning\n8ec638777ca03b553ae516761c2a22ba2fdd2f37befae3ab6fdab74e9e5193eb,Investing.com,https://www.investing.com/,https://s3.polygon.io/public/assets/news/logos/investing.png,https://s3.polygon.io/public/assets/news/favicons/investing.ico,Markets are underestimating Fed cuts: UBS By Investing.com - Investing.com UK,Sam Boughedda,1719254033000000000,https://uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968,UBS,https://m.uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968?ampMode=1,https://i-invdn-com.investing.com/news/LYNXNPEC4I0AL_L.jpg,\"UBS analysts warn that markets are underestimating the extent of future interest rate cuts by the Federal Reserve, as the weakening economy is likely to justify more cuts than currently anticipated.\",\"Federal Reserve,interest rates,economic data\",positive,\"UBS analysts are providing a bullish outlook on the extent of future Federal Reserve rate cuts, suggesting that markets are underestimating the number of cuts that will occur.\"\n",
                 "schema": {
                   "type": "string"
                 }
@@ -22864,11 +22873,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -22993,7 +23002,7 @@
         },
         "x-polygon-paginate": {
           "limit": {
-            "default": 10,
+            "default": 1000,
             "example": 10,
             "max": 50000
           },
@@ -23091,11 +23100,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -23242,7 +23251,7 @@
         },
         "x-polygon-paginate": {
           "limit": {
-            "default": 10,
+            "default": 1000,
             "example": 10,
             "max": 50000
           },
@@ -23333,11 +23342,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -23545,7 +23554,7 @@
         },
         "x-polygon-paginate": {
           "limit": {
-            "default": 10,
+            "default": 1000,
             "example": 10,
             "max": 50000
           },
@@ -29071,11 +29080,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -29221,7 +29230,7 @@
         },
         "x-polygon-paginate": {
           "limit": {
-            "default": 10,
+            "default": 1000,
             "example": 10,
             "max": 50000
           },
@@ -29319,11 +29328,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -29475,7 +29484,7 @@
         },
         "x-polygon-paginate": {
           "limit": {
-            "default": 10,
+            "default": 1000,
             "example": 10,
             "max": 50000
           },
@@ -29566,11 +29575,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -29766,7 +29775,7 @@
         },
         "x-polygon-paginate": {
           "limit": {
-            "default": 10,
+            "default": 1000,
             "example": 10,
             "max": 50000
           },

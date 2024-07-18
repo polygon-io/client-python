@@ -33,6 +33,18 @@ class Branding:
 
 
 @modelclass
+class Insight:
+    "Contains the insights related to the article."
+    sentiment: Optional[str] = None
+    sentiment_reasoning: Optional[str] = None
+    ticker: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return Insight(**d)
+
+
+@modelclass
 class Publisher:
     "Contains publisher data for ticker news."
     favicon_url: Optional[str] = None
@@ -152,6 +164,7 @@ class TickerNews:
     description: Optional[str] = None
     id: Optional[str] = None
     image_url: Optional[str] = None
+    insights: Optional[List[Insight]] = None
     keywords: Optional[List[str]] = None
     published_utc: Optional[str] = None
     publisher: Optional[Publisher] = None
@@ -167,6 +180,11 @@ class TickerNews:
             description=d.get("description", None),
             id=d.get("id", None),
             image_url=d.get("image_url", None),
+            insights=(
+                [Insight.from_dict(insight) for insight in d["insights"]]
+                if "insights" in d
+                else None
+            ),
             keywords=d.get("keywords", None),
             published_utc=d.get("published_utc", None),
             publisher=(
