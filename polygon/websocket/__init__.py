@@ -175,7 +175,7 @@ class WebSocketClient:
         """
 
         async def handle_msg_wrapper(msgs):
-            handle_msg(msgs)
+            await handle_msg(msgs)
 
         asyncio.run(self.connect(handle_msg_wrapper, close_timeout, **kwargs))
 
