@@ -2,6 +2,8 @@
 
 This repository contains the Python script and HTML file used in our tutorial to demonstrate how to identify and visualize relationships between companies using Polygon.io's Related Companies API. The tutorial showcases how to fetch related company data and create a dynamic network graph using Python and vis.js, providing insights into the interconnected corporate landscape.
 
+![Related Companies](./related-companies.png)
+
 Please see the [tutorial](https://polygon.io/blog/related-companies-api) for more details.
 
 ### Prerequisites
