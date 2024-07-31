@@ -249,6 +249,66 @@ class Revenues:
 
 
 @modelclass
+class NetIncomeLoss:
+    "Contains net income loss data for an income statement."
+    formula: Optional[str] = None
+    label: Optional[str] = None
+    order: Optional[int] = None
+    unit: Optional[str] = None
+    value: Optional[float] = None
+    xpath: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return NetIncomeLoss(**d)
+
+
+@modelclass
+class NetIncomeLossAttributableToNoncontrollingInterest:
+    "Contains net income loss attributable to noncontrolling interest data for an income statement."
+    formula: Optional[str] = None
+    label: Optional[str] = None
+    order: Optional[int] = None
+    unit: Optional[str] = None
+    value: Optional[float] = None
+    xpath: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return NetIncomeLossAttributableToNoncontrollingInterest(**d)
+
+
+@modelclass
+class NetIncomeLossAttributableToParent:
+    "Contains net income loss attributable to parent data for an income statement."
+    formula: Optional[str] = None
+    label: Optional[str] = None
+    order: Optional[int] = None
+    unit: Optional[str] = None
+    value: Optional[float] = None
+    xpath: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return NetIncomeLossAttributableToParent(**d)
+
+
+@modelclass
+class NetIncomeLossAvailableToCommonStockholdersBasic:
+    "Contains net income loss available to common stockholders basic data for an income statement."
+    formula: Optional[str] = None
+    label: Optional[str] = None
+    order: Optional[int] = None
+    unit: Optional[str] = None
+    value: Optional[float] = None
+    xpath: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return NetIncomeLossAvailableToCommonStockholdersBasic(**d)
+
+
+@modelclass
 class IncomeStatement:
     "Contains income statement data."
     basic_earnings_per_share: Optional[BasicEarningsPerShare] = None
@@ -256,6 +316,16 @@ class IncomeStatement:
     gross_profit: Optional[GrossProfit] = None
     operating_expenses: Optional[OperatingExpenses] = None
     revenues: Optional[Revenues] = None
+    net_income_loss: Optional[NetIncomeLoss] = None
+    net_income_loss_attributable_to_noncontrolling_interest: Optional[
+        NetIncomeLossAttributableToNoncontrollingInterest
+    ] = None
+    net_income_loss_attributable_to_parent: Optional[
+        NetIncomeLossAttributableToParent
+    ] = None
+    net_income_loss_available_to_common_stockholders_basic: Optional[
+        NetIncomeLossAvailableToCommonStockholdersBasic
+    ] = None
 
     @staticmethod
     def from_dict(d):
@@ -281,6 +351,32 @@ class IncomeStatement:
                 else OperatingExpenses.from_dict(d["operating_expenses"])
             ),
             revenues=None if "revenues" not in d else Revenues.from_dict(d["revenues"]),
+            net_income_loss=(
+                None
+                if "net_income_loss" not in d
+                else NetIncomeLoss.from_dict(d["net_income_loss"])
+            ),
+            net_income_loss_attributable_to_noncontrolling_interest=(
+                None
+                if "net_income_loss_attributable_to_noncontrolling_interest" not in d
+                else NetIncomeLoss.from_dict(
+                    d["net_income_loss_attributable_to_noncontrolling_interest"]
+                )
+            ),
+            net_income_loss_attributable_to_parent=(
+                None
+                if "net_income_loss_attributable_to_parent" not in d
+                else NetIncomeLoss.from_dict(
+                    d["net_income_loss_attributable_to_parent"]
+                )
+            ),
+            net_income_loss_available_to_common_stockholders_basic=(
+                None
+                if "net_income_loss_available_to_common_stockholders_basic" not in d
+                else NetIncomeLoss.from_dict(
+                    d["net_income_loss_available_to_common_stockholders_basic"]
+                )
+            ),
         )
 
 
