@@ -30,7 +30,7 @@ websockets = ">=10.3,<13.0"
 certifi = ">=2022.5.18,<2025.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^24.4.2"
+black = "^24.8.0"
 mypy = "^1.11"
 types-urllib3 = "^1.26.25"
 Sphinx = "^7.1.2"
