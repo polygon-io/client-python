@@ -7,11 +7,7 @@ Welcome to the official Python client library for the [Polygon](https://polygon.
 
 ## Prerequisites
 
-Before installing the Polygon Python client, ensure your environment has Python 3.8 or higher. While most Python environments come with setuptools installed, it is a dependency for this library. In the rare case it's not already present, you can install setuptools using pip:
-
-```
-pip install setuptools
-```
+Before installing the Polygon Python client, ensure your environment has Python 3.8 or higher.
 
 ## Install
 
@@ -149,54 +145,6 @@ def handle_msg(msg: List[WebSocketMessage]):
 ws.run(handle_msg=handle_msg)
 ```
 Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
-
-## Launchpad REST API Client
-Users of the Launchpad product will need to pass in certain headers in order to make API requests using the RequestOptionBuilder.
-Example can be found [here](./examples/launchpad).
-
-Import classes
-```python
-from polygon import RESTClient
-from polygon.rest.models.request import RequestOptionBuilder
-```
-### Using the client
-Create client and set options
-```python
-# create client
-c = RESTClient(api_key="API_KEY")
-
-# create request options
-options = RequestOptionBuilder().edge_headers(
-    edge_id="YOUR_EDGE_ID",  # required
-    edge_ip_address="IP_ADDRESS",  # required
-)
-```
-Request data using client methods.
-```python
-# get response
-res = c.get_aggs("AAPL", 1, "day", "2022-04-04", "2022-04-04", options=options)
-
-# do something with response
-```
-Checkout Launchpad readme for more details on RequestOptionBuilder [here](./examples/launchpad)
-
-
-## Launchpad WebSocket Client
-
-```python
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
-from polygon.websocket.models.common import Feed, Market
-from typing import List
-
-ws = WebSocketClient(api_key="API_KEY",feed=Feed.Launchpad,market=Market.Stocks, subscriptions=["AM.AAPL"])
-
-def handle_msg(msg: List[WebSocketMessage]):
-    for m in msg:
-        print(m)
-
-ws.run(handle_msg=handle_msg)
-```
 
 ## Contributing
 

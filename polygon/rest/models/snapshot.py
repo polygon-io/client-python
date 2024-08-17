@@ -70,9 +70,9 @@ class IndicesSnapshot:
             type=d.get("type", None),
             ticker=d.get("ticker", None),
             market_status=d.get("market_status", None),
-            session=None
-            if "session" not in d
-            else IndicesSession.from_dict(d["session"]),
+            session=(
+                None if "session" not in d else IndicesSession.from_dict(d["session"])
+            ),
             error=d.get("error", None),
             message=d.get("message", None),
         )
@@ -96,12 +96,12 @@ class TickerSnapshot:
     def from_dict(d):
         return TickerSnapshot(
             day=None if "day" not in d else Agg.from_dict(d["day"]),
-            last_quote=None
-            if "lastQuote" not in d
-            else LastQuote.from_dict(d["lastQuote"]),
-            last_trade=None
-            if "lastTrade" not in d
-            else LastTrade.from_dict(d["lastTrade"]),
+            last_quote=(
+                None if "lastQuote" not in d else LastQuote.from_dict(d["lastQuote"])
+            ),
+            last_trade=(
+                None if "lastTrade" not in d else LastTrade.from_dict(d["lastTrade"])
+            ),
             min=None if "min" not in d else MinuteSnapshot.from_dict(d["min"]),
             prev_day=None if "prevDay" not in d else Agg.from_dict(d["prevDay"]),
             ticker=d.get("ticker", None),
@@ -223,24 +223,32 @@ class OptionContractSnapshot:
     def from_dict(d):
         return OptionContractSnapshot(
             break_even_price=d.get("break_even_price", None),
-            day=None
-            if "day" not in d
-            else DayOptionContractSnapshot.from_dict(d["day"]),
-            details=None
-            if "details" not in d
-            else OptionDetails.from_dict(d["details"]),
+            day=(
+                None
+                if "day" not in d
+                else DayOptionContractSnapshot.from_dict(d["day"])
+            ),
+            details=(
+                None if "details" not in d else OptionDetails.from_dict(d["details"])
+            ),
             greeks=None if "greeks" not in d else Greeks.from_dict(d["greeks"]),
             implied_volatility=d.get("implied_volatility", None),
-            last_quote=None
-            if "last_quote" not in d
-            else LastQuoteOptionContractSnapshot.from_dict(d["last_quote"]),
-            last_trade=None
-            if "last_trade" not in d
-            else LastTradeOptionContractSnapshot.from_dict(d["last_trade"]),
+            last_quote=(
+                None
+                if "last_quote" not in d
+                else LastQuoteOptionContractSnapshot.from_dict(d["last_quote"])
+            ),
+            last_trade=(
+                None
+                if "last_trade" not in d
+                else LastTradeOptionContractSnapshot.from_dict(d["last_trade"])
+            ),
             open_interest=d.get("open_interest", None),
-            underlying_asset=None
-            if "underlying_asset" not in d
-            else UnderlyingAsset.from_dict(d["underlying_asset"]),
+            underlying_asset=(
+                None
+                if "underlying_asset" not in d
+                else UnderlyingAsset.from_dict(d["underlying_asset"])
+            ),
             fair_market_value=d.get("fmv", None),
         )
 
@@ -274,12 +282,16 @@ class SnapshotTickerFullBook:
     def from_dict(d):
         return SnapshotTickerFullBook(
             ticker=d.get("ticker", None),
-            bids=None
-            if "bids" not in d
-            else [OrderBookQuote.from_dict(o) for o in d["bids"]],
-            asks=None
-            if "asks" not in d
-            else [OrderBookQuote.from_dict(o) for o in d["asks"]],
+            bids=(
+                None
+                if "bids" not in d
+                else [OrderBookQuote.from_dict(o) for o in d["bids"]]
+            ),
+            asks=(
+                None
+                if "asks" not in d
+                else [OrderBookQuote.from_dict(o) for o in d["asks"]]
+            ),
             bid_count=d.get("bidCount", None),
             ask_count=d.get("askCount", None),
             spread=d.get("spread", None),
@@ -404,22 +416,32 @@ class UniversalSnapshot:
         return UniversalSnapshot(
             ticker=d.get("ticker", None),
             type=d.get("type", None),
-            session=None
-            if "session" not in d
-            else UniversalSnapshotSession.from_dict(d["session"]),
-            last_quote=None
-            if "last_quote" not in d
-            else UniversalSnapshotLastQuote.from_dict(d["last_quote"]),
-            last_trade=None
-            if "last_trade" not in d
-            else UniversalSnapshotLastTrade.from_dict(d["last_trade"]),
+            session=(
+                None
+                if "session" not in d
+                else UniversalSnapshotSession.from_dict(d["session"])
+            ),
+            last_quote=(
+                None
+                if "last_quote" not in d
+                else UniversalSnapshotLastQuote.from_dict(d["last_quote"])
+            ),
+            last_trade=(
+                None
+                if "last_trade" not in d
+                else UniversalSnapshotLastTrade.from_dict(d["last_trade"])
+            ),
             greeks=None if "greeks" not in d else Greeks.from_dict(d["greeks"]),
-            underlying_asset=None
-            if "underlying_asset" not in d
-            else UniversalSnapshotUnderlyingAsset.from_dict(d["underlying_asset"]),
-            details=None
-            if "details" not in d
-            else UniversalSnapshotDetails.from_dict(d["details"]),
+            underlying_asset=(
+                None
+                if "underlying_asset" not in d
+                else UniversalSnapshotUnderlyingAsset.from_dict(d["underlying_asset"])
+            ),
+            details=(
+                None
+                if "details" not in d
+                else UniversalSnapshotDetails.from_dict(d["details"])
+            ),
             break_even_price=d.get("break_even_price", None),
             implied_volatility=d.get("implied_volatility", None),
             open_interest=d.get("open_interest", None),

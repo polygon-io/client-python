@@ -63,7 +63,7 @@
       },
       "AggregateTimeTo": {
         "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-01-09",
+        "example": "2023-02-10",
         "in": "path",
         "name": "to",
         "required": true,
@@ -101,6 +101,17 @@
           "type": "string"
         }
       },
+      "CryptoTickersQueryParam": {
+        "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, X:BTCUSD, X:ETHBTC, and X:BOBAUSD. Empty string defaults to querying all tickers.",
+        "in": "query",
+        "name": "tickers",
+        "schema": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
       "ForexTickerPathParam": {
         "description": "The ticker symbol of the currency pair.",
         "example": "C:EURUSD",
@@ -109,6 +120,17 @@
         "required": true,
         "schema": {
           "type": "string"
+        }
+      },
+      "ForexTickersQueryParam": {
+        "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, C:EURUSD, C:GBPCAD, and C:AUDINR. Empty string defaults to querying all tickers.",
+        "in": "query",
+        "name": "tickers",
+        "schema": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "GeneralTickerPathParam": {
@@ -131,7 +153,7 @@
       },
       "IndicesAggregateTimeFrom": {
         "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-03-10",
+        "example": "2023-03-13",
         "in": "path",
         "name": "from",
         "required": true,
@@ -141,7 +163,7 @@
       },
       "IndicesAggregateTimeTo": {
         "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-        "example": "2023-03-10",
+        "example": "2023-03-24",
         "in": "path",
         "name": "to",
         "required": true,
@@ -6039,7 +6061,7 @@
         },
         "summary": "Exponential Moving Average (EMA)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -7007,7 +7029,7 @@
         "operationId": "EMA",
         "parameters": [
           {
-            "description": "The ticker symbol for which to get exponential moving average (EMA) data.",
+            "description": "Specify a case-sensitive ticker symbol for which to get exponential moving average (EMA) data. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stockTicker",
@@ -8757,7 +8779,7 @@
         "operationId": "MACD",
         "parameters": [
           {
-            "description": "The ticker symbol for which to get MACD data.",
+            "description": "Specify a case-sensitive ticker symbol for which to get moving average convergence/divergence (MACD) data. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stockTicker",
@@ -9407,7 +9429,7 @@
         },
         "summary": "Relative Strength Index (RSI)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -10375,7 +10397,7 @@
         "operationId": "RSI",
         "parameters": [
           {
-            "description": "The ticker symbol for which to get relative strength index (RSI) data.",
+            "description": "Specify a case-sensitive ticker symbol for which to get relative strength index (RSI) data. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stockTicker",
@@ -11003,7 +11025,7 @@
         },
         "summary": "Simple Moving Average (SMA)",
         "tags": [
-          "crpyto:aggregates"
+          "crypto:aggregates"
         ],
         "x-polygon-entitlement-data-type": {
           "description": "Aggregate data",
@@ -12015,7 +12037,7 @@
         "operationId": "SMA",
         "parameters": [
           {
-            "description": "The ticker symbol for which to get simple moving average (SMA) data.",
+            "description": "Specify a case-sensitive ticker symbol for which to get simple moving average (SMA) data. For example, AAPL represents Apple Inc.",
             "example": "AAPL",
             "in": "path",
             "name": "stockTicker",
@@ -12696,6 +12718,10 @@
                       "properties": {
                         "cccy": {
                           "description": "The status of Cboe Streaming Market Indices Cryptocurrency (\"CCCY\") indices trading hours.",
+                          "type": "string"
+                        },
+                        "cgi": {
+                          "description": "The status of Cboe Global Indices (\"CGI\") trading hours.",
                           "type": "string"
                         },
                         "dow_jones": {
@@ -13885,8 +13911,7 @@
                           "files_count",
                           "source_url",
                           "download_url",
-                          "entities",
-                          "acceptance_datetime"
+                          "entities"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -13956,121 +13981,125 @@
                 "example": {},
                 "schema": {
                   "properties": {
-                    "acceptance_datetime": {
-                      "description": "The datetime when the filing was accepted by EDGAR in EST (format: YYYYMMDDHHMMSS)",
-                      "type": "string"
-                    },
-                    "accession_number": {
-                      "description": "Filing Accession Number",
-                      "type": "string"
-                    },
-                    "entities": {
-                      "description": "Entities related to the filing (e.g. the document filers).",
-                      "items": {
-                        "description": "A filing entity (e.g. the document filer).",
-                        "properties": {
-                          "company_data": {
+                    "results": {
+                      "properties": {
+                        "acceptance_datetime": {
+                          "description": "The datetime when the filing was accepted by EDGAR in EST (format: YYYYMMDDHHMMSS)",
+                          "type": "string"
+                        },
+                        "accession_number": {
+                          "description": "Filing Accession Number",
+                          "type": "string"
+                        },
+                        "entities": {
+                          "description": "Entities related to the filing (e.g. the document filers).",
+                          "items": {
+                            "description": "A filing entity (e.g. the document filer).",
                             "properties": {
-                              "cik": {
-                                "description": "Central Index Key (CIK) Number",
-                                "type": "string"
+                              "company_data": {
+                                "properties": {
+                                  "cik": {
+                                    "description": "Central Index Key (CIK) Number",
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "example": "Facebook Inc",
+                                    "type": "string"
+                                  },
+                                  "sic": {
+                                    "description": "Standard Industrial Classification (SIC)",
+                                    "type": "string"
+                                  },
+                                  "ticker": {
+                                    "description": "Ticker",
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "cik",
+                                  "sic"
+                                ],
+                                "type": "object",
+                                "x-polygon-go-type": {
+                                  "name": "SECCompanyData",
+                                  "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                                }
                               },
-                              "name": {
-                                "example": "Facebook Inc",
-                                "type": "string"
-                              },
-                              "sic": {
-                                "description": "Standard Industrial Classification (SIC)",
-                                "type": "string"
-                              },
-                              "ticker": {
-                                "description": "Ticker",
+                              "relation": {
+                                "description": "Relationship of this entity to the filing.",
+                                "enum": [
+                                  "filer"
+                                ],
                                 "type": "string"
                               }
                             },
                             "required": [
-                              "name",
-                              "cik",
-                              "sic"
+                              "relation"
                             ],
                             "type": "object",
                             "x-polygon-go-type": {
-                              "name": "SECCompanyData",
+                              "name": "SECFilingEntity",
                               "path": "github.com/polygon-io/go-lib-models/v2/globals"
                             }
                           },
-                          "relation": {
-                            "description": "Relationship of this entity to the filing.",
-                            "enum": [
-                              "filer"
-                            ],
-                            "type": "string"
-                          }
+                          "type": "array"
                         },
-                        "required": [
-                          "relation"
-                        ],
-                        "type": "object",
-                        "x-polygon-go-type": {
-                          "name": "SECFilingEntity",
-                          "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                        "files_count": {
+                          "description": "The number of files associated with the filing.",
+                          "format": "int64",
+                          "type": "integer"
+                        },
+                        "filing_date": {
+                          "description": "The date when the filing was filed in YYYYMMDD format.",
+                          "example": "20210101",
+                          "pattern": "^[0-9]{8}$",
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "Unique identifier for the filing.",
+                          "type": "string"
+                        },
+                        "period_of_report_date": {
+                          "description": "The period of report for the filing in YYYYMMDD format.",
+                          "example": "20210101",
+                          "pattern": "^[0-9]{8}$",
+                          "type": "string"
+                        },
+                        "source_url": {
+                          "description": "The source URL is a link back to the upstream source for this filing\ndocument.",
+                          "example": "https://www.sec.gov/Archives/edgar/data/0001326801/000132680119000037/0001326801-19-000037-index.html",
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "Filing Type",
+                          "enum": [
+                            "10-K",
+                            "10-Q"
+                          ],
+                          "type": "string"
                         }
                       },
-                      "type": "array"
-                    },
-                    "files_count": {
-                      "description": "The number of files associated with the filing.",
-                      "format": "int64",
-                      "type": "integer"
-                    },
-                    "filing_date": {
-                      "description": "The date when the filing was filed in YYYYMMDD format.",
-                      "example": "20210101",
-                      "pattern": "^[0-9]{8}$",
-                      "type": "string"
-                    },
-                    "id": {
-                      "description": "Unique identifier for the filing.",
-                      "type": "string"
-                    },
-                    "period_of_report_date": {
-                      "description": "The period of report for the filing in YYYYMMDD format.",
-                      "example": "20210101",
-                      "pattern": "^[0-9]{8}$",
-                      "type": "string"
-                    },
-                    "source_url": {
-                      "description": "The source URL is a link back to the upstream source for this filing\ndocument.",
-                      "example": "https://www.sec.gov/Archives/edgar/data/0001326801/000132680119000037/0001326801-19-000037-index.html",
-                      "format": "uri",
-                      "type": "string"
-                    },
-                    "type": {
-                      "description": "Filing Type",
-                      "enum": [
-                        "10-K",
-                        "10-Q"
+                      "required": [
+                        "id",
+                        "accession_number",
+                        "type",
+                        "filing_date",
+                        "period_of_report_date",
+                        "files_count",
+                        "source_url",
+                        "download_url",
+                        "entities"
                       ],
-                      "type": "string"
+                      "type": "object",
+                      "x-polygon-go-type": {
+                        "name": "SECFiling",
+                        "path": "github.com/polygon-io/go-lib-models/v2/globals"
+                      }
                     }
                   },
-                  "required": [
-                    "id",
-                    "accession_number",
-                    "type",
-                    "filing_date",
-                    "period_of_report_date",
-                    "files_count",
-                    "source_url",
-                    "download_url",
-                    "entities",
-                    "acceptance_datetime"
-                  ],
-                  "type": "object",
-                  "x-polygon-go-type": {
-                    "name": "SECFiling",
-                    "path": "github.com/polygon-io/go-lib-models/v2/globals"
-                  }
+                  "type": "object"
                 }
               }
             },
@@ -14460,6 +14489,114 @@
         }
       },
       "x-polygon-draft": true
+    },
+    "/v1/related-companies/{ticker}": {
+      "get": {
+        "description": "Get a list of tickers related to the queried ticker based on News and Returns data.",
+        "operationId": "GetRelatedCompanies",
+        "parameters": [
+          {
+            "description": "The ticker symbol to search.",
+            "example": "AAPL",
+            "in": "path",
+            "name": "ticker",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "request_id": "31d59dda-80e5-4721-8496-d0d32a654afe",
+                  "results": [
+                    {
+                      "ticker": "MSFT"
+                    },
+                    {
+                      "ticker": "GOOGL"
+                    },
+                    {
+                      "ticker": "AMZN"
+                    },
+                    {
+                      "ticker": "FB"
+                    },
+                    {
+                      "ticker": "TSLA"
+                    },
+                    {
+                      "ticker": "NVDA"
+                    },
+                    {
+                      "ticker": "INTC"
+                    },
+                    {
+                      "ticker": "ADBE"
+                    },
+                    {
+                      "ticker": "NFLX"
+                    },
+                    {
+                      "ticker": "PYPL"
+                    }
+                  ],
+                  "status": "OK",
+                  "stock_symbol": "AAPL"
+                },
+                "schema": {
+                  "properties": {
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "description": "The tickers related to the requested ticker.",
+                        "properties": {
+                          "ticker": {
+                            "description": "A ticker related to the requested ticker.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "ticker"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    },
+                    "ticker": {
+                      "description": "The ticker being queried.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Related Companies."
+          },
+          "401": {
+            "description": "Unauthorized - Check our API Key and account status"
+          }
+        },
+        "summary": "Related Companies",
+        "tags": [
+          "reference:related:companies"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Reference data",
+          "name": "reference"
+        }
+      }
     },
     "/v1/summaries": {
       "get": {
@@ -15685,7 +15822,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -16138,7 +16275,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -16534,7 +16671,7 @@
           },
           {
             "description": "The start of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-03-10",
+            "example": "2023-03-13",
             "in": "path",
             "name": "from",
             "required": true,
@@ -16544,7 +16681,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-03-10",
+            "example": "2023-03-24",
             "in": "path",
             "name": "to",
             "required": true,
@@ -16957,7 +17094,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -17405,7 +17542,7 @@
           },
           {
             "description": "The end of the aggregate time window. Either a date with the format YYYY-MM-DD or a millisecond timestamp.",
-            "example": "2023-01-09",
+            "example": "2023-02-10",
             "in": "path",
             "name": "to",
             "required": true,
@@ -18175,7 +18312,7 @@
         "operationId": "ListNews",
         "parameters": [
           {
-            "description": "Return results that contain this ticker.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -18359,52 +18496,35 @@
                   "request_id": "831afdb0b8078549fed053476984947a",
                   "results": [
                     {
-                      "amp_url": "https://amp.benzinga.com/amp/content/20784086",
-                      "article_url": "https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square",
-                      "author": "Rachit  Vats",
-                      "description": "<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ <a class=\"ticker\" href=\"https://www.benzinga.com/stock/coin#NASDAQ\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p>\n<p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE <a class=\" ticker\" href=\"https://www.benzinga.com/stock/arkk#NYSE\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p>\n<p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE <a class=\" ticker\" href=\"https://www.benzinga.com/stock/sklz#NYSE\">SKLZ</a>), <a href=\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\" >just a day after</a> snapping 1.2 million shares of the stock.</p>\n <p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>",
-                      "id": "nJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA",
-                      "image_url": "https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720",
-                      "keywords": [
-                        "Sector ETFs",
-                        "Penny Stocks",
-                        "Cryptocurrency",
-                        "Small Cap",
-                        "Markets",
-                        "Trading Ideas",
-                        "ETFs"
+                      "amp_url": "https://m.uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968?ampMode=1",
+                      "article_url": "https://uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968",
+                      "author": "Sam Boughedda",
+                      "description": "UBS analysts warn that markets are underestimating the extent of future interest rate cuts by the Federal Reserve, as the weakening economy is likely to justify more cuts than currently anticipated.",
+                      "id": "8ec638777ca03b553ae516761c2a22ba2fdd2f37befae3ab6fdab74e9e5193eb",
+                      "image_url": "https://i-invdn-com.investing.com/news/LYNXNPEC4I0AL_L.jpg",
+                      "insights": [
+                        {
+                          "sentiment": "positive",
+                          "sentiment_reasoning": "UBS analysts are providing a bullish outlook on the extent of future Federal Reserve rate cuts, suggesting that markets are underestimating the number of cuts that will occur.",
+                          "ticker": "UBS"
+                        }
                       ],
-                      "published_utc": "2021-04-26T02:33:17Z",
+                      "keywords": [
+                        "Federal Reserve",
+                        "interest rates",
+                        "economic data"
+                      ],
+                      "published_utc": "2024-06-24T18:33:53Z",
                       "publisher": {
-                        "favicon_url": "https://s3.polygon.io/public/public/assets/news/favicons/benzinga.ico",
-                        "homepage_url": "https://www.benzinga.com/",
-                        "logo_url": "https://s3.polygon.io/public/public/assets/news/logos/benzinga.svg",
-                        "name": "Benzinga"
+                        "favicon_url": "https://s3.polygon.io/public/assets/news/favicons/investing.ico",
+                        "homepage_url": "https://www.investing.com/",
+                        "logo_url": "https://s3.polygon.io/public/assets/news/logos/investing.png",
+                        "name": "Investing.com"
                       },
                       "tickers": [
-                        "DOCU",
-                        "DDD",
-                        "NIU",
-                        "ARKF",
-                        "NVDA",
-                        "SKLZ",
-                        "PCAR",
-                        "MASS",
-                        "PSTI",
-                        "SPFR",
-                        "TREE",
-                        "PHR",
-                        "IRDM",
-                        "BEAM",
-                        "ARKW",
-                        "ARKK",
-                        "ARKG",
-                        "PSTG",
-                        "SQ",
-                        "IONS",
-                        "SYRS"
+                        "UBS"
                       ],
-                      "title": "Cathie Wood Adds More Coinbase, Skillz, Trims Square"
+                      "title": "Markets are underestimating Fed cuts: UBS By Investing.com - Investing.com UK"
                     }
                   ],
                   "status": "OK"
@@ -18449,6 +18569,32 @@
                           "image_url": {
                             "description": "The article's image URL.",
                             "type": "string"
+                          },
+                          "insights": {
+                            "description": "The insights related to the article.",
+                            "items": {
+                              "properties": {
+                                "sentiment": {
+                                  "description": "The sentiment of the insight.",
+                                  "type": "string"
+                                },
+                                "sentiment_reasoning": {
+                                  "description": "The reasoning behind the sentiment.",
+                                  "type": "string"
+                                },
+                                "ticker": {
+                                  "description": "The ticker symbol associated with the insight.",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "ticker",
+                                "sentiment",
+                                "sentiment_reasoning"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
                           },
                           "keywords": {
                             "description": "The keywords associated with the article (which will vary depending on\nthe publishing source).",
@@ -18530,7 +18676,7 @@
                 }
               },
               "text/csv": {
-                "example": "id,publisher_name,publisher_homepage_url,publisher_logo_url,publisher_favicon_url,title,author,published_utc,article_url,tickers,amp_url,image_url,description,keywords\nnJsSJJdwViHZcw5367rZi7_qkXLfMzacXBfpv-vD9UA,Benzinga,https://www.benzinga.com/,https://s3.polygon.io/public/public/assets/news/logos/benzinga.svg,https://s3.polygon.io/public/public/assets/news/favicons/benzinga.ico,\"Cathie Wood Adds More Coinbase, Skillz, Trims Square\",Rachit  Vats,2021-04-26T02:33:17Z,https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square,\"DOCU,DDD,NIU,ARKF,NVDA,SKLZ,PCAR,MASS,PSTI,SPFR,TREE,PHR,IRDM,BEAM,ARKW,ARKK,ARKG,PSTG,SQ,IONS,SYRS\",https://amp.benzinga.com/amp/content/20784086,https://cdn2.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/andre-francois-mckenzie-auhr4gcqcce-unsplash.jpg?width=720,\"<p>Cathie Wood-led Ark Investment Management on Friday snapped up another 221,167 shares of the cryptocurrency exchange <strong>Coinbase Global Inc </strong>(NASDAQ <a class=\\\"ticker\\\" href=\\\"https://www.benzinga.com/stock/coin#NASDAQ\\\">COIN</a>) worth about $64.49 million on the stock&rsquo;s Friday&rsquo;s dip and also its fourth-straight loss.</p> <p>The investment firm&rsquo;s <strong>Ark Innovation ETF</strong> (NYSE <a class=\\\" ticker\\\" href=\\\"https://www.benzinga.com/stock/arkk#NYSE\\\">ARKK</a>) bought the shares of the company that closed 0.63% lower at $291.60 on Friday, giving the cryptocurrency exchange a market cap of $58.09 billion. Coinbase&rsquo;s market cap has dropped from $85.8 billion on its blockbuster listing earlier this month.</p> <p>The New York-based company also added another 3,873 shares of the mobile gaming company <strong>Skillz Inc</strong> (NYSE <a class=\\\" ticker\\\" href=\\\"https://www.benzinga.com/stock/sklz#NYSE\\\">SKLZ</a>), <a href=\\\"http://www.benzinga.com/markets/cryptocurrency/21/04/20762794/cathie-woods-ark-loads-up-another-1-2-million-shares-in-skillz-also-adds-coinbase-draftkin\\\" >just a day after</a> snapping 1.2 million shares of the stock.</p> <p>ARKK bought the shares of the company which closed ...</p><p><a href=https://www.benzinga.com/markets/cryptocurrency/21/04/20784086/cathie-wood-adds-more-coinbase-skillz-trims-square alt=Cathie Wood Adds More Coinbase, Skillz, Trims Square>Full story available on Benzinga.com</a></p>\",\"Sector ETFs,Penny Stocks,Cryptocurrency,Small Cap,Markets,Trading Ideas,ETFs\"\n",
+                "example": "id,publisher_name,publisher_homepage_url,publisher_logo_url,publisher_favicon_url,title,author,published_utc,article_url,ticker,amp_url,image_url,description,keywords,sentiment,sentiment_reasoning\n8ec638777ca03b553ae516761c2a22ba2fdd2f37befae3ab6fdab74e9e5193eb,Investing.com,https://www.investing.com/,https://s3.polygon.io/public/assets/news/logos/investing.png,https://s3.polygon.io/public/assets/news/favicons/investing.ico,Markets are underestimating Fed cuts: UBS By Investing.com - Investing.com UK,Sam Boughedda,1719254033000000000,https://uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968,UBS,https://m.uk.investing.com/news/stock-market-news/markets-are-underestimating-fed-cuts-ubs-3559968?ampMode=1,https://i-invdn-com.investing.com/news/LYNXNPEC4I0AL_L.jpg,\"UBS analysts warn that markets are underestimating the extent of future interest rate cuts by the Federal Reserve, as the weakening economy is likely to justify more cuts than currently anticipated.\",\"Federal Reserve,interest rates,economic data\",positive,\"UBS analysts are providing a bullish outlook on the extent of future Federal Reserve rate cuts, suggesting that markets are underestimating the number of cuts that will occur.\"\n",
                 "schema": {
                   "type": "string"
                 }
@@ -18573,7 +18719,7 @@
         "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded cryptocurrency symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, X:BTCUSD, X:ETHBTC, and X:BOBAUSD. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -19457,6 +19603,9 @@
         "tags": [
           "crypto:snapshot"
         ],
+        "x-polygon-deprecation": {
+          "date": 1719838800000
+        },
         "x-polygon-entitlement-allowed-timeframes": [
           {
             "description": "Real Time Data",
@@ -19834,7 +19983,7 @@
         "description": "Get the current minute, day, and previous day\u2019s aggregate, as well as the last trade and quote for all traded forex symbols.\n<br />\n<br />\nNote: Snapshot data is cleared at 12am EST and gets populated as data is received from the exchanges. This can happen as early as 4am EST.\n",
         "parameters": [
           {
-            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, AAPL,TSLA,GOOG. Empty string defaults to querying all tickers.",
+            "description": "A case-sensitive comma separated list of tickers to get snapshots for. For example, C:EURUSD, C:GBPCAD, and C:AUDINR. Empty string defaults to querying all tickers.",
             "in": "query",
             "name": "tickers",
             "schema": {
@@ -21604,7 +21753,7 @@
     },
     "/v2/snapshot/locale/us/markets/stocks/{direction}": {
       "get": {
-        "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges.\n",
+        "description": "Get the most up-to-date market data for the current top 20 gainers or losers of the day in the stocks/equities markets.\n<br />\n<br />\nTop gainers are those tickers whose price has increased by the highest percentage since the previous day's close.\nTop losers are those tickers whose price has decreased by the highest percentage since the previous day's close.\nThis output will only include tickers with a trading volume of 10,000 or more.\n<br />\n<br />\nNote: Snapshot data is cleared at 3:30am EST and gets populated as data is received from the exchanges.\n",
         "parameters": [
           {
             "description": "The direction of the snapshot results to return.\n",
@@ -22724,11 +22873,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -22853,6 +23002,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 1000,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -22949,11 +23100,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -23100,6 +23251,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 1000,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -23189,11 +23342,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -23401,6 +23554,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 1000,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -24822,7 +24977,7 @@
                             "type": "string"
                           },
                           "mic": {
-                            "description": "The Market Identifer Code of this exchange (see ISO 10383).",
+                            "description": "The Market Identifier Code of this exchange (see ISO 10383).",
                             "example": "XASE",
                             "type": "string"
                           },
@@ -25366,7 +25521,7 @@
         "parameters": [
           {
             "description": "Query for a contract by options ticker. You can learn more about the structure of options tickers [here](https://polygon.io/blog/how-to-read-a-stock-options-ticker/).",
-            "example": "O:EVRI240119C00002500",
+            "example": "O:SPY251219C00650000",
             "in": "path",
             "name": "options_ticker",
             "required": true,
@@ -25536,7 +25691,7 @@
         "operationId": "ListStockSplits",
         "parameters": [
           {
-            "description": "Return the stock splits that contain this ticker.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -25570,7 +25725,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.gte",
             "schema": {
@@ -25578,7 +25733,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.gt",
             "schema": {
@@ -25586,7 +25741,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.lte",
             "schema": {
@@ -25594,7 +25749,7 @@
             }
           },
           {
-            "description": "Search by ticker.",
+            "description": "Range by ticker.",
             "in": "query",
             "name": "ticker.lt",
             "schema": {
@@ -25602,7 +25757,7 @@
             }
           },
           {
-            "description": "Search by execution_date.",
+            "description": "Range by execution_date.",
             "in": "query",
             "name": "execution_date.gte",
             "schema": {
@@ -25611,7 +25766,7 @@
             }
           },
           {
-            "description": "Search by execution_date.",
+            "description": "Range by execution_date.",
             "in": "query",
             "name": "execution_date.gt",
             "schema": {
@@ -25620,7 +25775,7 @@
             }
           },
           {
-            "description": "Search by execution_date.",
+            "description": "Range by execution_date.",
             "in": "query",
             "name": "execution_date.lte",
             "schema": {
@@ -25629,7 +25784,7 @@
             }
           },
           {
-            "description": "Search by execution_date.",
+            "description": "Range by execution_date.",
             "in": "query",
             "name": "execution_date.lt",
             "schema": {
@@ -26444,6 +26599,10 @@
                               "description": "The first line of the company's headquarters address.",
                               "type": "string"
                             },
+                            "address2": {
+                              "description": "The second line of the company's headquarters address, if applicable.",
+                              "type": "string"
+                            },
                             "city": {
                               "description": "The city of the company's headquarters address.",
                               "type": "string"
@@ -26608,7 +26767,7 @@
                 }
               },
               "text/csv": {
-                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,round_lot,market_cap,phone_number,address1,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,100,2771126040150,(408) 996-1010,One Apple Park Way,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
+                "example": "ticker,name,market,locale,primary_exchange,type,active,currency_name,cik,composite_figi,share_class_figi,share_class_shares_outstanding,weighted_shares_outstanding,round_lot,market_cap,phone_number,address1,address2,city,state,postal_code,sic_code,sic_description,ticker_root,total_employees,list_date,homepage_url,description,branding/logo_url,branding/icon_url\nAAPL,Apple Inc.,stocks,us,XNAS,CS,true,usd,0000320193,BBG000B9XRY4,BBG001S5N8V8,16406400000,16334371000,100,2771126040150,(408) 996-1010,One Apple Park Way,,Cupertino,CA,95014,3571,ELECTRONIC COMPUTERS,AAPL,154000,1980-12-12,https://www.apple.com,\"Apple designs a wide variety of consumer electronic devices, including smartphones (iPhone), tablets (iPad), PCs (Mac), smartwatches (Apple Watch), AirPods, and TV boxes (Apple TV), among others. The iPhone makes up the majority of Apple's total revenue. In addition, Apple offers its customers a variety of services such as Apple Music, iCloud, Apple Care, Apple TV+, Apple Arcade, Apple Card, and Apple Pay, among others. Apple's products run internally developed software and semiconductors, and the firm is well known for its integration of hardware, software and services. Apple's products are distributed online as well as through company-owned stores and third-party retailers. The company generates roughly 40% of its revenue from the Americas, with the remainder earned internationally.\",https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_logo.svg,https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-01-10_icon.png\n",
                 "schema": {
                   "type": "string"
                 }
@@ -28339,7 +28498,7 @@
           },
           {
             "description": "The option contract identifier.",
-            "example": "O:EVRI240119C00002500",
+            "example": "O:EVRI240920P00012500",
             "in": "path",
             "name": "optionContract",
             "required": true,
@@ -28921,11 +29080,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -29071,6 +29230,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 1000,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -29167,11 +29328,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -29323,6 +29484,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 1000,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -29412,11 +29575,11 @@
             }
           },
           {
-            "description": "Limit the number of results returned, default is 10 and max is 50000.",
+            "description": "Limit the number of results returned, default is 1000 and max is 50000.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "default": 10,
+              "default": 1000,
               "example": 10,
               "maximum": 50000,
               "minimum": 1,
@@ -29612,6 +29775,8 @@
         },
         "x-polygon-paginate": {
           "limit": {
+            "default": 1000,
+            "example": 10,
             "max": 50000
           },
           "order": {
@@ -30323,7 +30488,7 @@
     },
     "/vX/reference/tickers/taxonomies": {
       "get": {
-        "description": "Retrieve taxonomy classifications for one or more tickers.",
+        "description": "Many investors place a high value on sector data. It is used to measure economic activity, identify peers and competitors, build ETF products, quantify market share, and compare company performance. However, there are some limitations to industry standard sectors:\n* They have difficulty identifying the primary area of activity for large, complex businesses.\n* Studies confirm significant disagreement between classification schemes when attempting to categorize the same companies.\n* The systems' hierarchical nature is inflexible and struggles to convey business nuances.\n<br />\n<br />\nAs a result, we've developed a new taxonomy to supplement existing sector classifications. The taxonomy is created by reviewing related 10K filings to create a set of structured categories and tags.\n<br />\n<br />\nThe categories are based on company operating models and are industry agnostic. Our current version only supports one category, Revenue Streams, with future plans to support more.\n<br />\n<br />\nThe tags define a specific type within the category. Within the Revenue Streams category, for example, tags for \"product sales\" and \"advertising\" may be found. A company may have many tags in a given category. The complete Revenue Streams taxonomy is shown below.\n<br />\n<br />\nOur taxonomy is powered by AI and is currently in early beta testing. You should expect some inaccuracies in the responses.\n<br />\n<br />\n## **Revenue Streams**\n  *Latest Revision (7/7/2023)*\n<br />\n<br />\n- **Physical Product Sales:**\n  Revenue generated from the sale of tangible goods or physical products to customers, either in-store or online.\n  - Consumer Goods\n  - Industrial Goods\n  - Electronics\n  - Vehicles\n  - Healthcare Products\n<br />\n<br />\n- **Digital Product Sales:**\n  Revenue earned from the sale of digital goods or products, such as software licenses, e-books, music downloads, or digital media content. It also includes revenue obtained by selling aggregated, anonymized, or processed data to third parties for market research, analytics, or other purposes.\n  - Software\n  - E-books and Digital Media\n  - Mobile Applications\n  - Games\n  - Online Courses\n  - Market Research Data\n  - Customer Behavior Data\n<br />\n<br />\n- **Professional Services:**\n  Revenue obtained by providing specialized services, expertise, or consulting to clients in exchange for fees. This includes services offered by professionals such as lawyers, accountants, or consultants.\n  - Consulting\n  - Legal Services\n  - Financial Services\n  - Marketing Services\n  - Construction Services\n  - Education & Tutoring\n<br />\n<br />\n- **Consumer Services:**\n  Revenue earned from providing services directly to consumers, including services like healthcare, personal grooming, fitness, or hospitality.\n  - Dining & Hospitality\n  - Personal Care\n  - Entertainment & Recreation\n  - Fitness & Wellness\n  - Travel & Tourism\n  - Transportation\n  - Home Services\n  - Child & Family Care\n  - Automotive\n<br />\n<br />\n- **Subscription-based Revenue:**\n  Revenue obtained from recurring fees charged to customers for accessing a product or service over a defined period. This includes revenue from subscription-based models, membership programs, or software-as-a-service (SaaS) offerings.\n  - Software as a Service (SaaS)\n  - Streaming Services\n  - Physical Media\n  - Memberships\n<br />\n<br />\n- **Licensing and Royalties:**\n  Revenue generated from the licensing of intellectual property rights to third parties, including franchise rights, patent licensing, brand licensing, and the receipt of royalties for authorized use of intellectual property like music royalties, book royalties, or patent royalties.\n  - Franchise Fees\n  - Patent Licensing\n  - Brand Licensing\n  - Media Royalties\n<br />\n<br />\n- **Advertising:**\n  Revenue generated by displaying ads or promotional content to customers, whether through traditional or digital advertising channels, including revenue from display ads, sponsored content, or affiliate marketing.\n  - Print Advertising\n  - Online Display Advertising\n  - Social Media Advertising\n  - Influencer Marketing\n<br />\n<br />\n- **Commission-Based Revenue:**\n  Revenue earned by acting as an intermediary and receiving a percentage or commission on sales made on behalf of another party. This includes revenue from affiliate programs, referral fees, or any other commission-based revenue models.\n  - Real Estate Commissions\n  - Affiliate Marketing Commissions\n  - Online Marketplace Commissions\n<br />\n<br />\n- **Rentals or Leasing:**\n  Revenue earned by leasing or renting out assets, properties, or equipment to customers, including rental income from real estate properties, equipment leasing, or vehicle rentals.\n  - Property Rentals\n  - Equipment Leasing\n  - Vehicle Rentals",
         "operationId": "ListTickerTaxonomyClassifications",
         "parameters": [
           {
@@ -30334,16 +30499,16 @@
             },
             "x-polygon-filter-field": {
               "anyOf": {
-                "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
+                "description": "Comma separated list of tickers, up to a maximum of 250.\n\nWarning: The maximum number of characters allowed in a URL are subject to your own technology stack.\n",
                 "enabled": true,
-                "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX"
+                "example": "AAPL,AMD,MSFT"
               },
               "range": true,
               "type": "string"
             }
           },
           {
-            "description": "Filter by taxonomy category.",
+            "description": "Filter by taxonomy category. The current version of this API supports the following category: revenue_streams",
             "in": "query",
             "name": "category",
             "schema": {
@@ -30356,6 +30521,29 @@
             "name": "tag",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "Order results ascending or descending based on the ticker.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned. The default is 10 and the max is 250.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "maximum": 250,
+              "minimum": 1,
+              "type": "integer"
             }
           },
           {
@@ -30391,49 +30579,11 @@
             }
           },
           {
-            "description": "Comma separated list of tickers, up to a maximum of 250. If no tickers are passed then all results will be returned in a paginated manner.\n\nWarning: The maximum number of characters allowed in a URL are subject to your technology stack.\n",
-            "example": "NCLH,O:SPY250321C00380000,C:EURUSD,X:BTCUSD,I:SPX",
+            "description": "Comma separated list of tickers, up to a maximum of 250.\n\nWarning: The maximum number of characters allowed in a URL are subject to your own technology stack.\n",
+            "example": "AAPL,AMD,MSFT",
             "in": "query",
             "name": "ticker.any_of",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Order results based on the `sort` field.",
-            "in": "query",
-            "name": "order",
-            "schema": {
-              "enum": [
-                "asc",
-                "desc"
-              ],
-              "example": "asc",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit the number of results returned, default is 10 and max is 250.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "default": 10,
-              "example": 10,
-              "maximum": 250,
-              "minimum": 1,
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Sort field used for ordering.",
-            "in": "query",
-            "name": "sort",
-            "schema": {
-              "default": "ticker",
-              "enum": [
-                "ticker"
-              ],
-              "example": "ticker",
               "type": "string"
             }
           }
@@ -30443,29 +30593,22 @@
             "content": {
               "application/json": {
                 "example": {
-                  "request_id": "31d59dda-80e5-4721-8496-d0d32a654afe",
+                  "request_id": "a4f9947955398c28905337f003bfee7c",
                   "results": [
                     {
                       "category": "revenue_streams",
-                      "reason": "Company recognizes revenue from the sales of consumer electronics such as the iPhone and iPad.",
-                      "relevance": 0.99,
-                      "tag": "physical_product_sales_electronics",
+                      "reason": "The text mentions revenue earned from the sale of digital goods or products, such as software licenses, e-books, music downloads, or digital media content.",
+                      "tag": "digital_product_sales",
                       "ticker": "AAPL"
                     },
                     {
                       "category": "revenue_streams",
-                      "reason": "Company recognizes revenue from the sales of digital products  such as digital storage and app store fees.",
-                      "relevance": 0.99,
-                      "tag": "digital_product_sales_software",
-                      "ticker": "AAPL"
-                    },
-                    {
-                      "category": "cost_structure",
-                      "relevance": 0.86,
-                      "tag": "economies_of_scale",
+                      "reason": "The text mentions revenue generated from the licensing of intellectual property rights to third parties, including franchise rights, patent licensing, brand licensing, and the receipt of royalties for authorized use of intellectual property like music royalties, book royalties, or patent royalties.",
+                      "tag": "licensing_and_royalties",
                       "ticker": "AAPL"
                     }
-                  ]
+                  ],
+                  "status": "OK"
                 },
                 "schema": {
                   "properties": {
@@ -30480,27 +30623,23 @@
                       "items": {
                         "properties": {
                           "category": {
-                            "description": "The classification category.",
+                            "description": "A dimension of a company\u2019s operating model that is agnostic to industry.  Category contains a comprehensive list of tags which reflect defined types within that category. The current version of this API supports the following category: revenue_streams",
                             "type": "string"
                           },
                           "reason": {
-                            "description": "The reason why the classification was given.",
+                            "description": "The reason why the classification was given. The reason is provided by our AI to help you determine whether or not you agree with its applicability for your uses.",
                             "type": "string"
                           },
-                          "relevance": {
-                            "description": "The relevance score for the tag. This is a measure of confidence in the tag classification.",
-                            "format": "double",
-                            "type": "number"
-                          },
                           "tag": {
-                            "description": "The classification tag. Each category has a set of associated tags.",
+                            "description": "A specific type within a category. For example \u201cproduct_sales\u201d is a type of revenue stream. A company may have multiple tags within a given category. A taxonomy of tags are determined based on 10k filings.",
                             "type": "string"
                           },
                           "ticker": {
-                            "description": "The ticker symbol for the asset.",
+                            "description": "The identifying ticker symbol for the asset.",
                             "type": "string"
                           }
                         },
+                        "type": "object",
                         "x-polygon-go-type": {
                           "name": "TaxonomyClassificationResult"
                         }
@@ -30531,20 +30670,7 @@
           "description": "Reference data",
           "name": "reference"
         },
-        "x-polygon-experimental": {},
-        "x-polygon-paginate": {
-          "limit": {
-            "default": 10,
-            "max": 250,
-            "min": 1
-          },
-          "sort": {
-            "default": "ticker",
-            "enum": [
-              "ticker"
-            ]
-          }
-        }
+        "x-polygon-experimental": {}
       },
       "x-polygon-draft": true
     },
@@ -31289,6 +31415,11 @@
         {
           "paths": [
             "/v3/reference/exchanges"
+          ]
+        },
+        {
+          "paths": [
+            "/v1/related-companies/{ticker}"
           ]
         }
       ]

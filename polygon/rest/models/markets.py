@@ -30,6 +30,7 @@ class MarketIndices:
     "Contains indices market status data."
     s_and_p: Optional[str] = None
     societe_generale: Optional[str] = None
+    cgi: Optional[str] = None
     msci: Optional[str] = None
     ftse_russell: Optional[str] = None
     mstar: Optional[str] = None
@@ -73,16 +74,22 @@ class MarketStatus:
     def from_dict(d):
         return MarketStatus(
             after_hours=d.get("afterHours", None),
-            currencies=None
-            if "currencies" not in d
-            else MarketCurrencies.from_dict(d["currencies"]),
+            currencies=(
+                None
+                if "currencies" not in d
+                else MarketCurrencies.from_dict(d["currencies"])
+            ),
             early_hours=d.get("earlyHours", None),
-            exchanges=None
-            if "exchanges" not in d
-            else MarketExchanges.from_dict(d["exchanges"]),
-            indicesGroups=None
-            if "indicesGroups" not in d
-            else MarketIndices.from_dict(d["indicesGroups"]),
+            exchanges=(
+                None
+                if "exchanges" not in d
+                else MarketExchanges.from_dict(d["exchanges"])
+            ),
+            indicesGroups=(
+                None
+                if "indicesGroups" not in d
+                else MarketIndices.from_dict(d["indicesGroups"])
+            ),
             market=d.get("market", None),
             server_time=d.get("serverTime", None),
         )

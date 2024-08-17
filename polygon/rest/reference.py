@@ -7,6 +7,7 @@ from .models import (
     TickerChangeResults,
     TickerDetails,
     TickerNews,
+    RelatedCompany,
     TickerTypes,
     Sort,
     Order,
@@ -173,6 +174,32 @@ class TickersClient(BaseClient):
             path=url,
             params=self._get_params(self.get_ticker_types, locals()),
             deserializer=TickerTypes.from_dict,
+            raw=raw,
+            result_key="results",
+            options=options,
+        )
+
+    def get_related_companies(
+        self,
+        ticker: Optional[str] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[RelatedCompany, HTTPResponse]:
+        """
+        Get a list of tickers related to the queried ticker based on News and Returns data.
+
+        :param ticker: The ticker symbol to search.
+        :param params: Any additional query params.
+        :param raw: Return raw object instead of results object.
+        :return: Related Companies.
+        """
+        url = f"/v1/related-companies/{ticker}"
+
+        return self._get(
+            path=url,
+            params=self._get_params(self.get_related_companies, locals()),
+            deserializer=RelatedCompany.from_dict,
             raw=raw,
             result_key="results",
             options=options,

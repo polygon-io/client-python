@@ -75,7 +75,7 @@ class AggsClient(BaseClient):
     # param
     def get_grouped_daily_aggs(
         self,
-        date: str,
+        date: Union[str, date],
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -99,7 +99,7 @@ class AggsClient(BaseClient):
     def get_daily_open_close_agg(
         self,
         ticker: str,
-        date: str,
+        date: Union[str, date],
         adjusted: Optional[bool] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,

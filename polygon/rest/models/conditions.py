@@ -47,12 +47,16 @@ class UpdateRules:
     @staticmethod
     def from_dict(d):
         return UpdateRules(
-            consolidated=None
-            if "consolidated" not in d
-            else Consolidated.from_dict(d["consolidated"]),
-            market_center=None
-            if "market_center" not in d
-            else MarketCenter.from_dict(d["market_center"]),
+            consolidated=(
+                None
+                if "consolidated" not in d
+                else Consolidated.from_dict(d["consolidated"])
+            ),
+            market_center=(
+                None
+                if "market_center" not in d
+                else MarketCenter.from_dict(d["market_center"])
+            ),
         )
 
 
@@ -82,11 +86,15 @@ class Condition:
             id=d.get("id", None),
             legacy=d.get("legacy", None),
             name=d.get("name", None),
-            sip_mapping=None
-            if "sip_mapping" not in d
-            else SipMapping.from_dict(d["sip_mapping"]),
+            sip_mapping=(
+                None
+                if "sip_mapping" not in d
+                else SipMapping.from_dict(d["sip_mapping"])
+            ),
             type=d.get("type", None),
-            update_rules=None
-            if "update_rules" not in d
-            else UpdateRules.from_dict(d["update_rules"]),
+            update_rules=(
+                None
+                if "update_rules" not in d
+                else UpdateRules.from_dict(d["update_rules"])
+            ),
         )
