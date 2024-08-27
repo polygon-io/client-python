@@ -33,6 +33,8 @@ class FinancialsTest(BaseTest):
                 company_name="NXP Semiconductors N.V.",
                 end_date="2022-04-03",
                 filing_date="2022-05-03",
+                sic="3674",
+                tickers=["NXPI"],
                 financials=Financials(
                     balance_sheet={
                         "equity_attributable_to_noncontrolling_interest": DataPoint(
