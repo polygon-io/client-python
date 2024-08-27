@@ -429,6 +429,8 @@ class StockFinancial:
     source_filing_file_url: Optional[str] = None
     source_filing_url: Optional[str] = None
     start_date: Optional[str] = None
+    sic: Optional[str] = None
+    tickers: Optional[List[str]] = None
 
     @staticmethod
     def from_dict(d):
@@ -445,4 +447,6 @@ class StockFinancial:
             source_filing_file_url=d.get("source_filing_file_url", None),
             source_filing_url=d.get("source_filing_url", None),
             start_date=d.get("start_date", None),
+            sic=d.get("sic", None),
+            tickers=d.get("tickers", None)
         )
