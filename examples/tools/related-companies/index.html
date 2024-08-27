@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vis Network | Related Companies</title>
+    <style type="text/css">
+      #mynetwork {
+        width: 2400px;
+        height: 1200px;
+        border: 1px solid lightgray;
+      }
+    </style>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script type="text/javascript">
+      var nodes = null;
+      var edges = null;
+      var network = null;
+      function draw() {
+      	nodes = [{"id": 1, "label": "MSFT"}, {"id": 2, "label": "GOOGL"}, {"id": 3, "label": "NVDA"}, {"id": 4, "label": "AMZN"}, {"id": 5, "label": "GOOG"}, {"id": 6, "label": "META"}, {"id": 7, "label": "TSLA"}, {"id": 8, "label": "AAPL"}, {"id": 9, "label": "CRM"}, {"id": 10, "label": "ORCL"}, {"id": 11, "label": "AMD"}, {"id": 12, "label": "NFLX"}, {"id": 13, "label": "WMT"}, {"id": 14, "label": "DIS"}, {"id": 15, "label": "SNAP"}, {"id": 16, "label": "SHOP"}, {"id": 17, "label": "INTC"}, {"id": 18, "label": "ANET"}, {"id": 19, "label": "RIVN"}, {"id": 20, "label": "GM"}, {"id": 21, "label": "F"}, {"id": 22, "label": "LCID"}, {"id": 23, "label": "GME"}, {"id": 24, "label": "AMC"}, {"id": 25, "label": "HOOD"}, {"id": 26, "label": "BB"}, {"id": 27, "label": "CHWY"}, {"id": 28, "label": "CLOV"}, {"id": 29, "label": "PLTR"}, {"id": 30, "label": "SNDL"}, {"id": 31, "label": "WBD"}, {"id": 32, "label": "CMCSA"}, {"id": 33, "label": "PARA"}, {"id": 34, "label": "T"}, {"id": 35, "label": "ROKU"}];
+      	edges = [{"from": 1, "to": 2}, {"from": 1, "to": 3}, {"from": 1, "to": 4}, {"from": 1, "to": 5}, {"from": 1, "to": 6}, {"from": 1, "to": 7}, {"from": 1, "to": 8}, {"from": 1, "to": 9}, {"from": 1, "to": 10}, {"from": 1, "to": 11}, {"from": 4, "to": 1}, {"from": 4, "to": 2}, {"from": 4, "to": 5}, {"from": 4, "to": 8}, {"from": 4, "to": 7}, {"from": 4, "to": 3}, {"from": 4, "to": 6}, {"from": 4, "to": 12}, {"from": 4, "to": 13}, {"from": 4, "to": 14}, {"from": 6, "to": 5}, {"from": 6, "to": 2}, {"from": 6, "to": 1}, {"from": 6, "to": 4}, {"from": 6, "to": 8}, {"from": 6, "to": 7}, {"from": 6, "to": 3}, {"from": 6, "to": 15}, {"from": 6, "to": 12}, {"from": 6, "to": 11}, {"from": 8, "to": 1}, {"from": 8, "to": 2}, {"from": 8, "to": 4}, {"from": 8, "to": 5}, {"from": 8, "to": 7}, {"from": 8, "to": 3}, {"from": 8, "to": 6}, {"from": 8, "to": 12}, {"from": 8, "to": 14}, {"from": 8, "to": 11}, {"from": 5, "to": 2}, {"from": 5, "to": 1}, {"from": 5, "to": 6}, {"from": 5, "to": 4}, {"from": 5, "to": 8}, {"from": 5, "to": 7}, {"from": 5, "to": 3}, {"from": 5, "to": 15}, {"from": 5, "to": 12}, {"from": 5, "to": 16}, {"from": 3, "to": 11}, {"from": 3, "to": 6}, {"from": 3, "to": 2}, {"from": 3, "to": 7}, {"from": 3, "to": 5}, {"from": 3, "to": 1}, {"from": 3, "to": 8}, {"from": 3, "to": 4}, {"from": 3, "to": 17}, {"from": 3, "to": 18}, {"from": 7, "to": 19}, {"from": 7, "to": 2}, {"from": 7, "to": 4}, {"from": 7, "to": 20}, {"from": 7, "to": 21}, {"from": 7, "to": 22}, {"from": 7, "to": 5}, {"from": 7, "to": 6}, {"from": 7, "to": 8}, {"from": 7, "to": 3}, {"from": 23, "to": 24}, {"from": 23, "to": 7}, {"from": 23, "to": 25}, {"from": 23, "to": 26}, {"from": 23, "to": 27}, {"from": 23, "to": 28}, {"from": 23, "to": 4}, {"from": 23, "to": 29}, {"from": 23, "to": 2}, {"from": 23, "to": 30}, {"from": 14, "to": 12}, {"from": 14, "to": 31}, {"from": 14, "to": 4}, {"from": 14, "to": 32}, {"from": 14, "to": 33}, {"from": 14, "to": 8}, {"from": 14, "to": 2}, {"from": 14, "to": 34}, {"from": 14, "to": 5}, {"from": 14, "to": 35}];
+        var container = document.getElementById("mynetwork");
+        var data = { nodes: nodes, edges: edges };
+		var options = { nodes: { shape: 'dot' }	};
+        network = new vis.Network(container, data, options);
+      }
+    </script>
+  </head>
+  <body onload="draw()">
+    <div id="mynetwork"></div>
+  </body>
+</html>
