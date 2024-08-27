@@ -448,5 +448,5 @@ class StockFinancial:
             source_filing_url=d.get("source_filing_url", None),
             start_date=d.get("start_date", None),
             sic=d.get("sic", None),
-            tickers=d.get("tickers", None)
+            tickers=d.get("tickers", None),
         )
