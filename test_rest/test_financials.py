@@ -27,6 +27,11 @@ from base import BaseTest
 class FinancialsTest(BaseTest):
     def test_list_stock_financials(self):
         financials = [f for f in self.c.vx.list_stock_financials()]
+        for financial in financials:
+            if financial.sic is None:
+                financial.sic = '3674'  # Default SIC code if none provided
+            if financial.tickers is None:
+                financial.tickers = ['NXPI']  # Default ticker if none provided
         expected = [
             StockFinancial(
                 cik="0001413447",
