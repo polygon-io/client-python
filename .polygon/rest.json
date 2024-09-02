@@ -24328,7 +24328,7 @@
         "operationId": "ListDividends",
         "parameters": [
           {
-            "description": "Return the dividends that contain this ticker.",
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
             "in": "query",
             "name": "ticker",
             "schema": {
@@ -24708,6 +24708,7 @@
                         "dividend_type": "CD",
                         "ex_dividend_date": "2021-11-05",
                         "frequency": 4,
+                        "id": "E8e3c4f794613e9205e2f178a36c53fcc57cdabb55e1988c87b33f9e52e221444",
                         "pay_date": "2021-11-11",
                         "record_date": "2021-11-08",
                         "ticker": "AAPL"
@@ -24718,6 +24719,7 @@
                         "dividend_type": "CD",
                         "ex_dividend_date": "2021-08-06",
                         "frequency": 4,
+                        "id": "E6436c5475706773f03490acf0b63fdb90b2c72bfeed329a6eb4afc080acd80ae",
                         "pay_date": "2021-08-12",
                         "record_date": "2021-08-09",
                         "ticker": "AAPL"
@@ -24806,6 +24808,10 @@
                               ]
                             }
                           },
+                          "id": {
+                            "description": "The unique identifier of the dividend.",
+                            "type": "string"
+                          },
                           "pay_date": {
                             "description": "The date that the dividend is paid out.",
                             "type": "string"
@@ -24832,7 +24838,8 @@
                           "ex_dividend_date",
                           "frequency",
                           "cash_amount",
-                          "dividend_type"
+                          "dividend_type",
+                          "id"
                         ],
                         "type": "object",
                         "x-polygon-go-struct-tags": {
@@ -25841,12 +25848,14 @@
                   "results": [
                     {
                       "execution_date": "2020-08-31",
+                      "id": "E36416cce743c3964c5da63e1ef1626c0aece30fb47302eea5a49c0055c04e8d0",
                       "split_from": 1,
                       "split_to": 4,
                       "ticker": "AAPL"
                     },
                     {
                       "execution_date": "2005-02-28",
+                      "id": "E90a77bdf742661741ed7c8fc086415f0457c2816c45899d73aaa88bdc8ff6025",
                       "split_from": 1,
                       "split_to": 2,
                       "ticker": "AAPL"
@@ -25870,6 +25879,10 @@
                             "description": "The execution date of the stock split. On this date the stock split was applied.",
                             "type": "string"
                           },
+                          "id": {
+                            "description": "The unique identifier for this stock split.",
+                            "type": "string"
+                          },
                           "split_from": {
                             "description": "The second number in the split ratio.\n\nFor example: In a 2-for-1 split, split_from would be 1.",
                             "format": "float",
@@ -25887,7 +25900,10 @@
                         },
                         "required": [
                           "split_from",
-                          "split_to"
+                          "split_to",
+                          "id",
+                          "ticker",
+                          "execution_date"
                         ],
                         "type": "object"
                       },
