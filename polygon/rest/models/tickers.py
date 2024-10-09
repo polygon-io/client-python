@@ -254,6 +254,7 @@ class TickerChangeResults:
     def from_dict(d):
         return TickerChangeResults(**d)
 
+
 @modelclass
 class ShortInterest:
     """
@@ -283,6 +284,7 @@ class ShortInterest:
             ticker=d.get("ticker"),
             us_code=d.get("us_code"),
         )
+
 
 @modelclass
 class IPOListing:

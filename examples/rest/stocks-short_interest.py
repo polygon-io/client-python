@@ -8,13 +8,13 @@ client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 short_interest = []
 for si in client.list_short_interest(
-	identifier="AMD",
+    identifier="AMD",
     identifier_type="ticker",
     params={
         "date.gte": "2024-10-07",
         "date.lte": "2024-10-07",
     },
-    limit=100
+    limit=100,
 ):
     short_interest.append(si)
 
