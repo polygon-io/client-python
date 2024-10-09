@@ -22,6 +22,8 @@ from .models import (
     SIP,
     Exchange,
     OptionsContract,
+    ShortInterest,
+    IPOListing,
 )
 from urllib3 import HTTPResponse
 from datetime import date
@@ -565,5 +567,75 @@ class ContractsClient(BaseClient):
             params=self._get_params(self.list_options_contracts, locals()),
             raw=raw,
             deserializer=OptionsContract.from_dict,
+            options=options,
+        )
+
+    def list_short_interest(
+        self,
+        identifier: str,
+        identifier_type: str = "ticker",
+        date: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[ShortInterest], HTTPResponse]:
+        """
+        Query for short interest data by Identifier and Date.
+
+        :param identifier: The case-sensitive identifier (e.g., "AAPL").
+        :param identifier_type: The type of identifier ("ticker", "us_code", "isin").
+        :param date: Either a date with the format YYYY-MM-DD or a nanosecond timestamp.
+        :param params: Additional query parameters (e.g., date, order, limit, sort).
+        :param raw: Return raw HTTPResponse instead of parsed data.
+        :return: List of ShortInterest objects or HTTPResponse.
+        """
+        url = f"/v1/reference/short-interest/{identifier_type}/{identifier}"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_short_interest, locals()),
+            deserializer=ShortInterest.from_dict,
+            raw=raw,
+            result_key="results",
+            options=options,
+        )
+
+    def list_ipos(
+        self,
+        ticker: Optional[str] = None,
+        us_code: Optional[str] = None,
+        isin: Optional[str] = None,
+        listing_date: Optional[str] = None,
+        ipo_status: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[IPOListing], HTTPResponse]:
+        """
+        Retrieve upcoming or historical IPOs.
+
+        :param ticker: Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.
+        :param us_code: Specify a us_code. This is a unique nine-character alphanumeric code that identifies a North American financial security for the purposes of facilitating clearing and settlement of trades.
+        :param isin: Specify an International Securities Identification Number (ISIN). This is a unique twelve-digit code that is assigned to every security issuance in the world.
+        :param listing_date: Specify a listing date. This is the first trading date for the newly listed entity.
+        :param ipo_status: Specify an IPO status.
+        :param params: Query parameters (e.g., ticker, us_code, isin, listing_date, order, limit, sort).
+        :param raw: Return raw HTTPResponse instead of parsed data.
+        :return: List of IPOListing objects or HTTPResponse.
+        """
+        url = "/v1/reference/ipos"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_ipos, locals()),
+            deserializer=IPOListing.from_dict,
+            raw=raw,
+            result_key="results",
             options=options,
         )

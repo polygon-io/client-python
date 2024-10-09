@@ -253,3 +253,89 @@ class TickerChangeResults:
     @staticmethod
     def from_dict(d):
         return TickerChangeResults(**d)
+
+@modelclass
+class ShortInterest:
+    """
+    Short Interest data for a specific identifier.
+    """
+
+    currency_code: Optional[str] = None
+    date: Optional[str] = None
+    isin: Optional[str] = None
+    name: Optional[str] = None
+    security_description: Optional[str] = None
+    short_volume: Optional[int] = None
+    short_volume_exempt: Optional[int] = None
+    ticker: Optional[str] = None
+    us_code: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return ShortInterest(
+            currency_code=d.get("currency_code"),
+            date=d.get("date"),
+            isin=d.get("isin"),
+            name=d.get("name"),
+            security_description=d.get("security_description"),
+            short_volume=d.get("short_volume"),
+            short_volume_exempt=d.get("short_volume_exempt"),
+            ticker=d.get("ticker"),
+            us_code=d.get("us_code"),
+        )
+
+@modelclass
+class IPOListing:
+    """
+    IPO Listing data.
+    """
+
+    currency_code: Optional[str] = None
+    final_issue_price: Optional[float] = None
+    highest_offer_price: Optional[float] = None
+    ipo_status: Optional[str] = None
+    isin: Optional[str] = None
+    issue_end_date: Optional[str] = None
+    issue_start_date: Optional[str] = None
+    issuer_name: Optional[str] = None
+    last_updated: Optional[str] = None
+    listing_date: Optional[str] = None
+    listing_price: Optional[float] = None
+    lot_size: Optional[int] = None
+    lowest_offer_price: Optional[float] = None
+    max_shares_offered: Optional[int] = None
+    min_shares_offered: Optional[int] = None
+    primary_exchange: Optional[str] = None
+    security_description: Optional[str] = None
+    security_type: Optional[str] = None
+    shares_outstanding: Optional[int] = None
+    ticker: Optional[str] = None
+    total_offer_size: Optional[float] = None
+    us_code: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return IPOListing(
+            currency_code=d.get("currency_code"),
+            final_issue_price=d.get("final_issue_price"),
+            highest_offer_price=d.get("highest_offer_price"),
+            ipo_status=d.get("ipo_status"),
+            isin=d.get("isin"),
+            issue_end_date=d.get("issue_end_date"),
+            issue_start_date=d.get("issue_start_date"),
+            issuer_name=d.get("issuer_name"),
+            last_updated=d.get("last_updated"),
+            listing_date=d.get("listing_date"),
+            listing_price=d.get("listing_price"),
+            lot_size=d.get("lot_size"),
+            lowest_offer_price=d.get("lowest_offer_price"),
+            max_shares_offered=d.get("max_shares_offered"),
+            min_shares_offered=d.get("min_shares_offered"),
+            primary_exchange=d.get("primary_exchange"),
+            security_description=d.get("security_description"),
+            security_type=d.get("security_type"),
+            shares_outstanding=d.get("shares_outstanding"),
+            ticker=d.get("ticker"),
+            total_offer_size=d.get("total_offer_size"),
+            us_code=d.get("us_code"),
+        )
