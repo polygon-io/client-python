@@ -592,7 +592,7 @@ class ContractsClient(BaseClient):
         :param raw: Return raw HTTPResponse instead of parsed data.
         :return: List of ShortInterest objects or HTTPResponse.
         """
-        url = f"/v1/reference/short-interest/{identifier_type}/{identifier}"
+        url = f"/vX/reference/short-interest/{identifier_type}/{identifier}"
 
         return self._paginate(
             path=url,
@@ -629,7 +629,7 @@ class ContractsClient(BaseClient):
         :param raw: Return raw HTTPResponse instead of parsed data.
         :return: List of IPOListing objects or HTTPResponse.
         """
-        url = "/v1/reference/ipos"
+        url = "/vX/reference/ipos"
 
         return self._paginate(
             path=url,
