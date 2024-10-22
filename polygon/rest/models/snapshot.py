@@ -308,6 +308,8 @@ class UniversalSnapshotSession:
     change_percent: Optional[float] = None
     early_trading_change: Optional[float] = None
     early_trading_change_percent: Optional[float] = None
+    regular_trading_change: Optional[float] = None
+    regular_trading_change_percent: Optional[float] = None
     late_trading_change: Optional[float] = None
     late_trading_change_percent: Optional[float] = None
     open: Optional[float] = None
