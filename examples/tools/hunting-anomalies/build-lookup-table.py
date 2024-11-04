@@ -1,8 +1,9 @@
 import os
-import pandas as pd # type: ignore
+import pandas as pd  # type: ignore
 from collections import defaultdict
 import pickle
 import json
+from typing import DefaultDict, Dict, Any, BinaryIO
 
 # Directory containing the daily CSV files
 data_dir = "./aggregates_day/"
@@ -34,7 +35,9 @@ print("Finished processing files.")
 print("Building lookup table...")
 
 # Now, build the lookup table with rolling averages and percentage price change
-lookup_table = defaultdict(dict)  # Nested dict: ticker -> date -> stats
+lookup_table: DefaultDict[str, Dict[str, Any]] = defaultdict(
+    dict
+)  # Nested dict: ticker -> date -> stats
 
 for ticker, records in trades_data.items():
     # Convert records to DataFrame
@@ -79,16 +82,16 @@ for ticker, records in trades_data.items():
 print("Lookup table built successfully.")
 
 # Convert defaultdict to regular dict for JSON serialization
-lookup_table = {k: v for k, v in lookup_table.items()}
+lookup_table_dict = {k: v for k, v in lookup_table.items()}
 
 # Save the lookup table to a JSON file
 with open("lookup_table.json", "w") as f:
-    json.dump(lookup_table, f, indent=4)
+    json.dump(lookup_table_dict, f, indent=4)
 
 print("Lookup table saved to 'lookup_table.json'.")
 
 # Save the lookup table to a file for later use
-with open("lookup_table.pkl", "wb") as f:
-    pickle.dump(lookup_table, f)
+with open("lookup_table.pkl", "wb") as f:  # type: BinaryIO
+    pickle.dump(lookup_table_dict, f)
 
 print("Lookup table saved to 'lookup_table.pkl'.")
