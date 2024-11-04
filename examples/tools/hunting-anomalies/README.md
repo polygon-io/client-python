@@ -22,7 +22,7 @@ This repository contains all the necessary scripts and data directories used in 
 
 2. **Set up your API key:** Make sure you have an active paid Polygon.io Stock subscription for accessing Flat Files. Set up your API key in your environment or directly in the scripts where required.
 
-3. **Download Historical Data:** Use the MinIO client to download historical stock market data:
+3. **Download Historical Data:** Use the MinIO client to download historical stock market data. Adjust the commands and paths based on the data you are interested in.
    ```bash
    mc alias set s3polygon https://files.polygon.io YOUR_ACCESS_KEY YOUR_SECRET_KEY
    mc cp --recursive s3polygon/flatfiles/us_stocks_sip/day_aggs_v1/2024/08/ ./aggregates_day/
@@ -30,7 +30,6 @@ This repository contains all the necessary scripts and data directories used in 
    mc cp --recursive s3polygon/flatfiles/us_stocks_sip/day_aggs_v1/2024/10/ ./aggregates_day/
    gunzip ./aggregates_day/*.gz
    ```
-   Adjust the commands and paths based on the data you're interested in.
 
 4. **Build the Lookup Table:** This script processes the downloaded data and builds a lookup table, saving it as `lookup_table.pkl`.
    ```bash
@@ -47,4 +46,4 @@ This repository contains all the necessary scripts and data directories used in 
    python gui-lookup-table.py
    ```
 
-For a complete step-by-step guide on each phase of the anomaly detection process, including additional configurations and troubleshooting, refer to the detailed [tutorial on our blog](https://polygon.io/blog/hunting-anomalies-in-stock-market).
+For a complete step-by-step guide on each phase of the anomaly detection process, including additional configurations and troubleshooting, refer to the detailed [tutorial on our blog](https://polygon.io/blog/hunting-anomalies-in-stock-market/).
