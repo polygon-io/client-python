@@ -84,12 +84,6 @@ print("Lookup table built successfully.")
 # Convert defaultdict to regular dict for JSON serialization
 lookup_table_dict = {k: v for k, v in lookup_table.items()}
 
-# Save the lookup table to a JSON file
-with open("lookup_table.json", "w") as f:
-    json.dump(lookup_table_dict, f, indent=4)
-
-print("Lookup table saved to 'lookup_table.json'.")
-
 # Save the lookup table to a file for later use
 with open("lookup_table.pkl", "wb") as f:  # type: BinaryIO
     pickle.dump(lookup_table_dict, f)
