@@ -12,6 +12,7 @@ from polygon.rest.models import (
     OtherComprehensiveIncomeLoss,
     IncomeStatement,
     BasicEarningsPerShare,
+    DilutedEarningsPerShare,  
     CostOfRevenue,
     GrossProfit,
     OperatingExpenses,
@@ -187,6 +188,14 @@ class FinancialsTest(BaseTest):
                             order=4200,
                             unit="USD / shares",
                             value=2.5,
+                            xpath=None,
+                        ),
+                        diluted_earnings_per_share=DilutedEarningsPerShare(  
+                            formula=None,
+                            label="Diluted Earnings Per Share",
+                            order=4300,
+                            unit="USD / shares",
+                            value=2.3,
                             xpath=None,
                         ),
                         cost_of_revenue=CostOfRevenue(
