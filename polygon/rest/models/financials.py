@@ -1,7 +1,6 @@
 from typing import Optional, Dict
 from ...modelclass import modelclass
 
-
 @modelclass
 class DataPoint:
     "An individual financial data point."
@@ -15,7 +14,6 @@ class DataPoint:
     @staticmethod
     def from_dict(d):
         return DataPoint(**d)
-
 
 @modelclass
 class ExchangeGainsLosses:
@@ -31,7 +29,6 @@ class ExchangeGainsLosses:
     def from_dict(d):
         return ExchangeGainsLosses(**d)
 
-
 @modelclass
 class NetCashFlow:
     "Contains net cash flow data for a cash flow statement."
@@ -46,7 +43,6 @@ class NetCashFlow:
     def from_dict(d):
         return NetCashFlow(**d)
 
-
 @modelclass
 class NetCashFlowFromFinancingActivities:
     "Contains net cash flow from financing activities data for a cash flow statement."
@@ -60,7 +56,6 @@ class NetCashFlowFromFinancingActivities:
     @staticmethod
     def from_dict(d):
         return NetCashFlowFromFinancingActivities(**d)
-
 
 @modelclass
 class CashFlowStatement:
@@ -93,7 +88,6 @@ class CashFlowStatement:
             ),
         )
 
-
 @modelclass
 class ComprehensiveIncomeLoss:
     "Contains comprehensive income loss data for comprehensive income."
@@ -107,7 +101,6 @@ class ComprehensiveIncomeLoss:
     @staticmethod
     def from_dict(d):
         return ComprehensiveIncomeLoss(**d)
-
 
 @modelclass
 class ComprehensiveIncomeLossAttributableToParent:
@@ -123,7 +116,6 @@ class ComprehensiveIncomeLossAttributableToParent:
     def from_dict(d):
         return ComprehensiveIncomeLossAttributableToParent(**d)
 
-
 @modelclass
 class OtherComprehensiveIncomeLoss:
     "Contains other comprehensive income loss data for comprehensive income."
@@ -137,7 +129,6 @@ class OtherComprehensiveIncomeLoss:
     @staticmethod
     def from_dict(d):
         return OtherComprehensiveIncomeLoss(**d)
-
 
 @modelclass
 class ComprehensiveIncome:
@@ -172,7 +163,6 @@ class ComprehensiveIncome:
             ),
         )
 
-
 @modelclass
 class BasicEarningsPerShare:
     "Contains basic earning per share data for an income statement."
@@ -187,6 +177,19 @@ class BasicEarningsPerShare:
     def from_dict(d):
         return BasicEarningsPerShare(**d)
 
+@modelclass
+class DilutedEarningsPerShare:
+    "Contains diluted earnings per share data for an income statement."
+    formula: Optional[str] = None
+    label: Optional[str] = None
+    order: Optional[int] = None
+    unit: Optional[str] = None
+    value: Optional[float] = None
+    xpath: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return DilutedEarningsPerShare(**d)
 
 @modelclass
 class CostOfRevenue:
@@ -202,7 +205,6 @@ class CostOfRevenue:
     def from_dict(d):
         return CostOfRevenue(**d)
 
-
 @modelclass
 class GrossProfit:
     "Contains gross profit data for an income statement."
@@ -216,7 +218,6 @@ class GrossProfit:
     @staticmethod
     def from_dict(d):
         return GrossProfit(**d)
-
 
 @modelclass
 class OperatingExpenses:
@@ -232,7 +233,6 @@ class OperatingExpenses:
     def from_dict(d):
         return OperatingExpenses(**d)
 
-
 @modelclass
 class Revenues:
     "Contains revenues data for an income statement."
@@ -247,11 +247,11 @@ class Revenues:
     def from_dict(d):
         return Revenues(**d)
 
-
 @modelclass
 class IncomeStatement:
     "Contains income statement data."
     basic_earnings_per_share: Optional[BasicEarningsPerShare] = None
+    diluted_earnings_per_share: Optional[DilutedEarningsPerShare] = None
     cost_of_revenue: Optional[CostOfRevenue] = None
     gross_profit: Optional[GrossProfit] = None
     operating_expenses: Optional[OperatingExpenses] = None
@@ -264,6 +264,11 @@ class IncomeStatement:
                 None
                 if "basic_earnings_per_share" not in d
                 else BasicEarningsPerShare.from_dict(d["basic_earnings_per_share"])
+            ),
+            diluted_earnings_per_share=(
+                None
+                if "diluted_earnings_per_share" not in d
+                else DilutedEarningsPerShare.from_dict(d["diluted_earnings_per_share"])
             ),
             cost_of_revenue=(
                 None
@@ -282,7 +287,6 @@ class IncomeStatement:
             ),
             revenues=None if "revenues" not in d else Revenues.from_dict(d["revenues"]),
         )
-
 
 @modelclass
 class Financials:
@@ -318,7 +322,6 @@ class Financials:
                 else IncomeStatement.from_dict(d["income_statement"])
             ),
         )
-
 
 @modelclass
 class StockFinancial:
