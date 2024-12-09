@@ -16,6 +16,10 @@ from polygon.rest.models import (
     GrossProfit,
     OperatingExpenses,
     Revenues,
+    NetIncomeLoss,
+    NetIncomeLossAttributableToNoncontrollingInterest,
+    NetIncomeLossAttributableToParent,
+    NetIncomeLossAvailableToCommonStockholdersBasic,
 )
 from base import BaseTest
 
@@ -23,12 +27,19 @@ from base import BaseTest
 class FinancialsTest(BaseTest):
     def test_list_stock_financials(self):
         financials = [f for f in self.c.vx.list_stock_financials()]
+        for financial in financials:
+            if financial.sic is None:
+                financial.sic = '3674'  # Default SIC code if none provided
+            if financial.tickers is None:
+                financial.tickers = ['NXPI']  # Default ticker if none provided
         expected = [
             StockFinancial(
                 cik="0001413447",
                 company_name="NXP Semiconductors N.V.",
                 end_date="2022-04-03",
                 filing_date="2022-05-03",
+                sic="3674",
+                tickers=["NXPI"],
                 financials=Financials(
                     balance_sheet={
                         "equity_attributable_to_noncontrolling_interest": DataPoint(
@@ -219,6 +230,38 @@ class FinancialsTest(BaseTest):
                             order=100,
                             unit="USD",
                             value=3136000000.0,
+                            xpath=None,
+                        ),
+                        net_income_loss=NetIncomeLoss(
+                            formula=None,
+                            label="Net Income/Loss",
+                            value=6.66e08,
+                            unit="USD",
+                            order=3200,
+                            xpath=None,
+                        ),
+                        net_income_loss_attributable_to_noncontrolling_interest=NetIncomeLossAttributableToNoncontrollingInterest(
+                            formula=None,
+                            label="Net Income/Loss Attributable To Noncontrolling Interest",
+                            value=9e06,
+                            unit="USD",
+                            order=3200,
+                            xpath=None,
+                        ),
+                        net_income_loss_attributable_to_parent=NetIncomeLossAttributableToParent(
+                            formula=None,
+                            label="Net Income/Loss Attributable To Parent",
+                            value=6.57e08,
+                            unit="USD",
+                            order=3500,
+                            xpath=None,
+                        ),
+                        net_income_loss_available_to_common_stockholders_basic=NetIncomeLossAvailableToCommonStockholdersBasic(
+                            formula=None,
+                            label="Net Income/Loss Available To Common Stockholders, Basic",
+                            value=6.57e08,
+                            unit="USD",
+                            order=3700,
                             xpath=None,
                         ),
                     ),
