@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "polygon-api-client"
-version = "0.0.0"
+version = "2.0.0"
 description = "Official Polygon.io REST and Websocket client."
 authors = ["polygon.io"]
 license = "MIT"
