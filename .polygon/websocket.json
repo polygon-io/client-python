@@ -277,7 +277,7 @@
                     },
                     "t": {
                       "type": "integer",
-                      "description": "The Timestamp in Unix MS."
+                      "description": "The SIP timestamp in Unix MS."
                     },
                     "q": {
                       "type": "integer",
@@ -407,7 +407,7 @@
                     },
                     "t": {
                       "type": "integer",
-                      "description": "The Timestamp in Unix MS."
+                      "description": "The SIP timestamp in Unix MS."
                     },
                     "q": {
                       "type": "integer",
@@ -3972,7 +3972,7 @@
           },
           "t": {
             "type": "integer",
-            "description": "The Timestamp in Unix MS."
+            "description": "The SIP timestamp in Unix MS."
           },
           "q": {
             "type": "integer",
@@ -4041,7 +4041,7 @@
           },
           "t": {
             "type": "integer",
-            "description": "The Timestamp in Unix MS."
+            "description": "The SIP timestamp in Unix MS."
           },
           "q": {
             "type": "integer",
