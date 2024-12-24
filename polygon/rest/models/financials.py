@@ -330,8 +330,6 @@ class Financials:
 class StockFinancial:
     """
     StockFinancial contains historical financial data for a stock ticker.
-    Augmented with new fields such as net_income_loss, diluted_earnings_per_share, etc.
-    to avoid repeated dictionary lookups into 'financials' for common data.
     """
 
     # Existing fields (unchanged):
@@ -345,9 +343,6 @@ class StockFinancial:
     source_filing_file_url: Optional[str] = None
     source_filing_url: Optional[str] = None
     start_date: Optional[str] = None
-    net_income_loss: Optional[float] = None
-    net_income_loss_attributable_to_parent: Optional[float] = None
-    diluted_earnings_per_share: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
