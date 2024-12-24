@@ -1,6 +1,6 @@
 from .base import BaseClient
-from typing import Optional, Any, Dict, Union, Iterator
-from .models import StockFinancial, Timeframe, Sort, Order
+from typing import Optional, Any, Dict, List, Union, Iterator
+from .models import StockFinancial, IPOListing, Timeframe, Sort, Order
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 
@@ -68,5 +68,46 @@ class VXClient(BaseClient):
             params=self._get_params(self.list_stock_financials, locals()),
             raw=raw,
             deserializer=StockFinancial.from_dict,
+            options=options,
+        )
+
+    def list_ipos(
+        self,
+        ticker: Optional[str] = None,
+        us_code: Optional[str] = None,
+        isin: Optional[str] = None,
+        listing_date: Optional[str] = None,
+        ipo_status: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[IPOListing], HTTPResponse]:
+        """
+        Retrieve upcoming or historical IPOs.
+
+        :param ticker: Filter by a case-sensitive ticker symbol.
+        :param us_code: Filter by a US code (unique identifier for a North American financial security).
+        :param isin: Filter by an International Securities Identification Number (ISIN).
+        :param listing_date: Filter by the listing date (YYYY-MM-DD).
+        :param ipo_status: Filter by IPO status (e.g. "new", "pending", "history", etc.).
+        :param limit: Limit the number of results per page. Default 10, max 1000.
+        :param sort: Field to sort by. Default is "listing_date".
+        :param order: Order results based on the sort field ("asc" or "desc"). Default "desc".
+        :param params: Additional query params.
+        :param raw: Return raw HTTPResponse object if True, else return List[IPOListing].
+        :param options: RequestOptionBuilder for additional headers or params.
+        :return: A list of IPOListing objects or HTTPResponse if raw=True.
+        """
+        url = "/vX/reference/ipos"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_ipos, locals()),
+            deserializer=IPOListing.from_dict,
+            raw=raw,
+            result_key="results",
             options=options,
         )

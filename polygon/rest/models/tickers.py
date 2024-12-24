@@ -253,3 +253,60 @@ class TickerChangeResults:
     @staticmethod
     def from_dict(d):
         return TickerChangeResults(**d)
+
+
+from typing import Optional
+from ...modelclass import modelclass
+
+
+@modelclass
+class IPOListing:
+    """
+    IPO Listing data as returned by the /vX/reference/ipos endpoint.
+    """
+
+    announced_date: Optional[str] = None
+    currency_code: Optional[str] = None
+    final_issue_price: Optional[float] = None
+    highest_offer_price: Optional[float] = None
+    ipo_status: Optional[str] = None
+    isin: Optional[str] = None
+    issuer_name: Optional[str] = None
+    last_updated: Optional[str] = None
+    listing_date: Optional[str] = None
+    lot_size: Optional[int] = None
+    lowest_offer_price: Optional[float] = None
+    max_shares_offered: Optional[int] = None
+    min_shares_offered: Optional[int] = None
+    primary_exchange: Optional[str] = None
+    security_description: Optional[str] = None
+    security_type: Optional[str] = None
+    shares_outstanding: Optional[int] = None
+    ticker: Optional[str] = None
+    total_offer_size: Optional[float] = None
+    us_code: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return IPOListing(
+            announced_date=d.get("announced_date"),
+            currency_code=d.get("currency_code"),
+            final_issue_price=d.get("final_issue_price"),
+            highest_offer_price=d.get("highest_offer_price"),
+            ipo_status=d.get("ipo_status"),
+            isin=d.get("isin"),
+            issuer_name=d.get("issuer_name"),
+            last_updated=d.get("last_updated"),
+            listing_date=d.get("listing_date"),
+            lot_size=d.get("lot_size"),
+            lowest_offer_price=d.get("lowest_offer_price"),
+            max_shares_offered=d.get("max_shares_offered"),
+            min_shares_offered=d.get("min_shares_offered"),
+            primary_exchange=d.get("primary_exchange"),
+            security_description=d.get("security_description"),
+            security_type=d.get("security_type"),
+            shares_outstanding=d.get("shares_outstanding"),
+            ticker=d.get("ticker"),
+            total_offer_size=d.get("total_offer_size"),
+            us_code=d.get("us_code"),
+        )
