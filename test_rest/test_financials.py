@@ -23,6 +23,7 @@ from base import BaseTest
 class FinancialsTest(BaseTest):
     def test_list_stock_financials(self):
         financials = [f for f in self.c.vx.list_stock_financials()]
+
         expected = [
             StockFinancial(
                 cik="0001413447",
@@ -85,14 +86,6 @@ class FinancialsTest(BaseTest):
                             order=400,
                             unit="USD",
                             value=2814000000.0,
-                            xpath=None,
-                        ),
-                        "other_than_fixed_noncurrent_assets": DataPoint(
-                            formula=None,
-                            label="Other Than Fixed Noncurrent Assets",
-                            order=500,
-                            unit="USD",
-                            value=16046000000.0,
                             xpath=None,
                         ),
                         "noncurrent_liabilities": DataPoint(
