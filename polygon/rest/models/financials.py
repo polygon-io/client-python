@@ -4,17 +4,28 @@ from ...modelclass import modelclass
 
 @modelclass
 class DataPoint:
-    "An individual financial data point."
-    formula: Optional[str] = None
+    "Represents a single financial data point."
     label: Optional[str] = None
     order: Optional[int] = None
     unit: Optional[str] = None
     value: Optional[float] = None
+    derived_from: Optional[list] = None
+    formula: Optional[str] = None
+    source: Optional[dict] = None
     xpath: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
-        return DataPoint(**d)
+        return DataPoint(
+            label=d.get("label"),
+            order=d.get("order"),
+            unit=d.get("unit"),
+            value=d.get("value"),
+            derived_from=d.get("derived_from"),
+            formula=d.get("formula"),
+            source=d.get("source"),
+            xpath=d.get("xpath"),
+        )
 
 
 @modelclass
@@ -286,43 +297,44 @@ class IncomeStatement:
 
 @modelclass
 class Financials:
-    "Contains financial data."
-    balance_sheet: Optional[Dict[str, DataPoint]] = None
-    cash_flow_statement: Optional[CashFlowStatement] = None
-    comprehensive_income: Optional[ComprehensiveIncome] = None
-    income_statement: Optional[IncomeStatement] = None
+    """
+    Contains data for:
+      - balance_sheet
+      - cash_flow_statement
+      - comprehensive_income
+      - income_statement
+    Each is a dict of { 'SomeTag': DataPoint }, e.g. { 'NetIncomeLoss': DataPoint(...) }
+    """
+
+    balance_sheet: Optional[dict] = None
+    cash_flow_statement: Optional[dict] = None
+    comprehensive_income: Optional[dict] = None
+    income_statement: Optional[dict] = None
 
     @staticmethod
     def from_dict(d):
+        def parse_statement(x):
+            if not x or not isinstance(x, dict):
+                return None
+            return {k: DataPoint.from_dict(v) for k, v in x.items()}
+
         return Financials(
-            balance_sheet=(
-                None
-                if "balance_sheet" not in d
-                else {
-                    k: DataPoint.from_dict(v) for (k, v) in d["balance_sheet"].items()
-                }
-            ),
-            cash_flow_statement=(
-                None
-                if "cash_flow_statement" not in d
-                else CashFlowStatement.from_dict(d["cash_flow_statement"])
-            ),
-            comprehensive_income=(
-                None
-                if "comprehensive_income" not in d
-                else ComprehensiveIncome.from_dict(d["comprehensive_income"])
-            ),
-            income_statement=(
-                None
-                if "income_statement" not in d
-                else IncomeStatement.from_dict(d["income_statement"])
-            ),
+            balance_sheet=parse_statement(d.get("balance_sheet")),
+            cash_flow_statement=parse_statement(d.get("cash_flow_statement")),
+            comprehensive_income=parse_statement(d.get("comprehensive_income")),
+            income_statement=parse_statement(d.get("income_statement")),
         )
 
 
 @modelclass
 class StockFinancial:
-    "StockFinancial contains historical financial data for a stock ticker."
+    """
+    StockFinancial contains historical financial data for a stock ticker.
+    Augmented with new fields such as net_income_loss, diluted_earnings_per_share, etc.
+    to avoid repeated dictionary lookups into 'financials' for common data.
+    """
+
+    # Existing fields (unchanged):
     cik: Optional[str] = None
     company_name: Optional[str] = None
     end_date: Optional[str] = None
@@ -333,20 +345,50 @@ class StockFinancial:
     source_filing_file_url: Optional[str] = None
     source_filing_url: Optional[str] = None
     start_date: Optional[str] = None
+    net_income_loss: Optional[float] = None
+    net_income_loss_attributable_to_parent: Optional[float] = None
+    diluted_earnings_per_share: Optional[float] = None
 
     @staticmethod
     def from_dict(d):
-        return StockFinancial(
-            cik=d.get("cik", None),
-            company_name=d.get("company_name", None),
-            end_date=d.get("end_date", None),
-            filing_date=d.get("filing_date", None),
+        """
+        Create a StockFinancial, preserving all old behavior, but also pulling out
+        a few commonly used fields from the income_statement and comprehensive_income
+        so they can be accessed directly at the top level.
+        """
+        sf = StockFinancial(
+            cik=d.get("cik"),
+            company_name=d.get("company_name"),
+            end_date=d.get("end_date"),
+            filing_date=d.get("filing_date"),
             financials=(
-                None if "financials" not in d else Financials.from_dict(d["financials"])
+                Financials.from_dict(d["financials"]) if "financials" in d else None
             ),
-            fiscal_period=d.get("fiscal_period", None),
-            fiscal_year=d.get("fiscal_year", None),
-            source_filing_file_url=d.get("source_filing_file_url", None),
-            source_filing_url=d.get("source_filing_url", None),
-            start_date=d.get("start_date", None),
+            fiscal_period=d.get("fiscal_period"),
+            fiscal_year=d.get("fiscal_year"),
+            source_filing_file_url=d.get("source_filing_file_url"),
+            source_filing_url=d.get("source_filing_url"),
+            start_date=d.get("start_date"),
         )
+
+        # If we have an income_statement, try to pull out new fields
+        if sf.financials and sf.financials.income_statement:
+            income_stmt = sf.financials.income_statement
+            net_income_dp = income_stmt.get("net_income_loss")
+            if net_income_dp and net_income_dp.value is not None:
+                sf.net_income_loss = net_income_dp.value
+
+            diluted_eps_dp = income_stmt.get("diluted_earnings_per_share")
+            if diluted_eps_dp and diluted_eps_dp.value is not None:
+                sf.diluted_earnings_per_share = diluted_eps_dp.value
+
+        # If we have a comprehensive_income, pull out net income (parent)
+        if sf.financials and sf.financials.comprehensive_income:
+            comp_inc = sf.financials.comprehensive_income
+            net_income_parent_dp = comp_inc.get(
+                "net_income_loss_attributable_to_parent"
+            )
+            if net_income_parent_dp and net_income_parent_dp.value is not None:
+                sf.net_income_loss_attributable_to_parent = net_income_parent_dp.value
+
+        return sf
