@@ -371,24 +371,4 @@ class StockFinancial:
             start_date=d.get("start_date"),
         )
 
-        # If we have an income_statement, try to pull out new fields
-        if sf.financials and sf.financials.income_statement:
-            income_stmt = sf.financials.income_statement
-            net_income_dp = income_stmt.get("net_income_loss")
-            if net_income_dp and net_income_dp.value is not None:
-                sf.net_income_loss = net_income_dp.value
-
-            diluted_eps_dp = income_stmt.get("diluted_earnings_per_share")
-            if diluted_eps_dp and diluted_eps_dp.value is not None:
-                sf.diluted_earnings_per_share = diluted_eps_dp.value
-
-        # If we have a comprehensive_income, pull out net income (parent)
-        if sf.financials and sf.financials.comprehensive_income:
-            comp_inc = sf.financials.comprehensive_income
-            net_income_parent_dp = comp_inc.get(
-                "net_income_loss_attributable_to_parent"
-            )
-            if net_income_parent_dp and net_income_parent_dp.value is not None:
-                sf.net_income_loss_attributable_to_parent = net_income_parent_dp.value
-
         return sf
