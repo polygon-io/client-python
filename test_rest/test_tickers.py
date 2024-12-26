@@ -135,6 +135,27 @@ class TickersTest(BaseTest):
 
         self.assertEqual(details, expected)
 
+    def test_get_test_ticker_details(self):
+        details = self.c.get_ticker_details("NTEST")
+        expected = TickerDetails(
+            active=True,
+            is_test=True,
+            address=CompanyAddress(),
+            currency_name="usd",
+            delisted_utc=None,
+            ticker_root="NTEST",
+            locale="us",
+            market="stocks",
+            name="NYSE Test Ticker",
+            primary_exchange="XNYS",
+            ticker="NTEST",
+            type="CS",
+        )
+        self.assertEqual(details, expected)
+
+        expected.market_cap = 1916103105630
+        details = self.c.get_ticker_details("AAPL", date="2020-10-01")
+
     def test_list_ticker_news(self):
         news = [t for t in self.c.list_ticker_news("NFLX")]
         expected = [
