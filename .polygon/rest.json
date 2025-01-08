@@ -30691,9 +30691,11 @@
                       "type": "string"
                     },
                     "request_id": {
+                      "description": "A request id assigned by the server.",
                       "type": "string"
                     },
                     "results": {
+                      "description": "An array of results containing the requested data.",
                       "items": {
                         "properties": {
                           "currency_code": {
@@ -30714,7 +30716,7 @@
                             "type": "number"
                           },
                           "ipo_status": {
-                            "description": "The status of the IPO event.",
+                            "description": "The status of the IPO event. IPO events start out as status \"rumor\" or \"pending\". On listing day, the status changes to \"new\". After the listing day, the status changes to \"history\".\n\nThe status \"direct_listing_process\" corresponds to a type of offering where, instead of going through all the IPO processes, the company decides to list its shares directly on an exchange, without using an investment bank or other intermediaries. This is called a direct listing, direct placement, or direct public offering (DPO).",
                             "enum": [
                               "direct_listing_process",
                               "history",
