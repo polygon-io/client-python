@@ -14644,7 +14644,7 @@
                         "volume": 37
                       },
                       "ticker": "NCLH",
-                      "type": "stock"
+                      "type": "stocks"
                     },
                     {
                       "last_updated": 1679597116344223500,
@@ -14895,6 +14895,16 @@
                                 "format": "double",
                                 "type": "number"
                               },
+                              "regular_trading_change": {
+                                "description": "Today's change in regular trading hours, difference between current price and previous trading day's close, otherwise difference between today's close and previous day's close.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "regular_trading_change_percent": {
+                                "description": "Today's regular trading change as a percentage.",
+                                "format": "double",
+                                "type": "number"
+                              },
                               "volume": {
                                 "description": "The trading volume for the asset for the day.",
                                 "format": "double",
@@ -14931,15 +14941,7 @@
                           }
                         },
                         "required": [
-                          "ticker",
-                          "name",
-                          "price",
-                          "branding",
-                          "market_status",
-                          "type",
-                          "session",
-                          "options",
-                          "last_updated"
+                          "ticker"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -18576,6 +18578,11 @@
                               "properties": {
                                 "sentiment": {
                                   "description": "The sentiment of the insight.",
+                                  "enum": [
+                                    "positive",
+                                    "neutral",
+                                    "negative"
+                                  ],
                                   "type": "string"
                                 },
                                 "sentiment_reasoning": {
@@ -27213,8 +27220,6 @@
                               }
                             },
                             "required": [
-                              "last_updated",
-                              "timeframe",
                               "ask",
                               "bid",
                               "last_updated",
@@ -27288,9 +27293,6 @@
                               }
                             },
                             "required": [
-                              "last_updated",
-                              "timeframe",
-                              "participant_timestamp",
                               "price",
                               "size"
                             ],
@@ -27378,6 +27380,16 @@
                                 "format": "double",
                                 "type": "number"
                               },
+                              "regular_trading_change": {
+                                "description": "Today's change in regular trading hours, difference between current price and previous trading day's close, otherwise difference between today's close and previous day's close.",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "regular_trading_change_percent": {
+                                "description": "Today's regular trading change as a percentage.",
+                                "format": "double",
+                                "type": "number"
+                              },
                               "volume": {
                                 "description": "The trading volume for the asset for the day.",
                                 "format": "double",
@@ -27454,8 +27466,6 @@
                               }
                             },
                             "required": [
-                              "last_updated",
-                              "timeframe",
                               "ticker",
                               "change_to_break_even"
                             ],
@@ -27769,9 +27779,7 @@
                           }
                         },
                         "required": [
-                          "ticker",
-                          "timeframe",
-                          "last_updated"
+                          "ticker"
                         ],
                         "type": "object",
                         "x-polygon-go-type": {
@@ -28030,7 +28038,8 @@
                         "bid": 120.28,
                         "bid_size": 8,
                         "last_updated": 1605195918507251700,
-                        "midpoint": 120.29
+                        "midpoint": 120.29,
+                        "timeframe": "REAL-TIME"
                       },
                       "last_trade": {
                         "conditions": [
@@ -28131,7 +28140,6 @@
                               }
                             },
                             "required": [
-                              "last_updated",
                               "open",
                               "high",
                               "low",
@@ -28305,8 +28313,6 @@
                               }
                             },
                             "required": [
-                              "last_updated",
-                              "timeframe",
                               "ask",
                               "ask_size",
                               "bid_size",
@@ -28359,7 +28365,6 @@
                               }
                             },
                             "required": [
-                              "timeframe",
                               "exchange",
                               "price",
                               "sip_timestamp",
@@ -28416,8 +28421,6 @@
                               }
                             },
                             "required": [
-                              "last_updated",
-                              "timeframe",
                               "ticker",
                               "change_to_break_even"
                             ],
@@ -28432,7 +28435,6 @@
                           "last_quote",
                           "underlying_asset",
                           "details",
-                          "cha",
                           "break_even_price",
                           "open_interest"
                         ],
@@ -28667,7 +28669,6 @@
                             }
                           },
                           "required": [
-                            "last_updated",
                             "open",
                             "high",
                             "low",
@@ -28841,8 +28842,6 @@
                             }
                           },
                           "required": [
-                            "last_updated",
-                            "timeframe",
                             "ask",
                             "ask_size",
                             "bid_size",
@@ -28895,7 +28894,6 @@
                             }
                           },
                           "required": [
-                            "timeframe",
                             "exchange",
                             "price",
                             "sip_timestamp",
@@ -28952,8 +28950,6 @@
                             }
                           },
                           "required": [
-                            "last_updated",
-                            "timeframe",
                             "ticker",
                             "change_to_break_even"
                           ],
@@ -28968,7 +28964,6 @@
                         "last_quote",
                         "underlying_asset",
                         "details",
-                        "cha",
                         "break_even_price",
                         "open_interest"
                       ],
@@ -30502,6 +30497,388 @@
         }
       }
     },
+    "/vX/reference/ipos": {
+      "get": {
+        "description": "The IPOs API provides access to detailed information about Initial Public Offerings (IPOs), including both upcoming and historical events. With this API, you can query for a comprehensive list of IPOs, along with key details such as the issuer name, ticker symbol, ISIN, IPO date, number of shares offered, expected price range, and final offering price. You can filter the results by status to focus on new, rumors, pending, historical, and more.",
+        "operationId": "ListIPOs",
+        "parameters": [
+          {
+            "description": "Specify a case-sensitive ticker symbol. For example, AAPL represents Apple Inc.",
+            "in": "query",
+            "name": "ticker",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specify a us_code. This is a unique nine-character alphanumeric code that identifies a North American financial security for the purposes of facilitating clearing and settlement of trades.",
+            "in": "query",
+            "name": "us_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specify an International Securities Identification Number (ISIN). This is a unique twelve-digit code that is assigned to every security issuance in the world.",
+            "in": "query",
+            "name": "isin",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specify a listing date. This is the first trading date for the newly listed entity.",
+            "in": "query",
+            "name": "listing_date",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            },
+            "x-polygon-filter-field": {
+              "range": true,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specify an IPO status.",
+            "in": "query",
+            "name": "ipo_status",
+            "schema": {
+              "enum": [
+                "direct_listing_process",
+                "history",
+                "new",
+                "pending",
+                "postponed",
+                "rumor",
+                "withdrawn"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by listing_date.",
+            "in": "query",
+            "name": "listing_date.gte",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by listing_date.",
+            "in": "query",
+            "name": "listing_date.gt",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by listing_date.",
+            "in": "query",
+            "name": "listing_date.lte",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Range by listing_date.",
+            "in": "query",
+            "name": "listing_date.lt",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Order results based on the `sort` field.",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of results returned, default is 10 and max is 1000.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 10,
+              "example": 10,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field used for ordering.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "listing_date",
+              "enum": [
+                "listing_date",
+                "ticker",
+                "last_updated",
+                "security_type",
+                "issuer_name",
+                "currency_code",
+                "isin",
+                "us_code",
+                "final_issue_price",
+                "min_shares_offered",
+                "max_shares_offered",
+                "lowest_offer_price",
+                "highest_offer_price",
+                "total_offer_size",
+                "shares_outstanding",
+                "primary_exchange",
+                "lot_size",
+                "security_description",
+                "ipo_status"
+              ],
+              "example": "listing_date",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "next_url": "https://api.polygon.io/vX/reference/ipos?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIxLTA0LTI1JmxpbWl0PTEmb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUElN0M5YWRjMjY0ZTgyM2E1ZjBiOGUyNDc5YmZiOGE1YmYwNDVkYzU0YjgwMDcyMWE2YmI1ZjBjMjQwMjU4MjFmNGZiJnNvcnQ9dGlja2Vy",
+                  "request_id": "6a7e466379af0a71039d60cc78e72282",
+                  "results": [
+                    {
+                      "currency_code": "USD",
+                      "final_issue_price": 17,
+                      "highest_offer_price": 17,
+                      "ipo_status": "history",
+                      "isin": "US75383L1026",
+                      "issue_end_date": "2024-06-06",
+                      "issue_start_date": "2024-06-01",
+                      "issuer_name": "Rapport Therapeutics Inc.",
+                      "last_updated": "2024-06-27",
+                      "listing_date": "2024-06-07",
+                      "lot_size": 100,
+                      "lowest_offer_price": 17,
+                      "max_shares_offered": 8000000,
+                      "min_shares_offered": 1000000,
+                      "primary_exchange": "XNAS",
+                      "security_description": "Ordinary Shares",
+                      "security_type": "CS",
+                      "shares_outstanding": 35376457,
+                      "ticker": "RAPP",
+                      "total_offer_size": 136000000,
+                      "us_code": "75383L102"
+                    }
+                  ],
+                  "status": "OK"
+                },
+                "schema": {
+                  "properties": {
+                    "next_url": {
+                      "description": "If present, this value can be used to fetch the next page of data.",
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "description": "A request id assigned by the server.",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "An array of results containing the requested data.",
+                      "items": {
+                        "properties": {
+                          "currency_code": {
+                            "description": "Underlying currency of the security.",
+                            "example": "USD",
+                            "type": "string"
+                          },
+                          "final_issue_price": {
+                            "description": "The price set by the company and its underwriters before the IPO goes live.",
+                            "example": 14.5,
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "highest_offer_price": {
+                            "description": "The highest price within the IPO price range that the company might use to price the shares.",
+                            "example": 20,
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "ipo_status": {
+                            "description": "The status of the IPO event. IPO events start out as status \"rumor\" or \"pending\". On listing day, the status changes to \"new\". After the listing day, the status changes to \"history\".\n\nThe status \"direct_listing_process\" corresponds to a type of offering where, instead of going through all the IPO processes, the company decides to list its shares directly on an exchange, without using an investment bank or other intermediaries. This is called a direct listing, direct placement, or direct public offering (DPO).",
+                            "enum": [
+                              "direct_listing_process",
+                              "history",
+                              "new",
+                              "pending",
+                              "postponed",
+                              "rumor",
+                              "withdrawn"
+                            ],
+                            "example": "history",
+                            "type": "string"
+                          },
+                          "isin": {
+                            "description": "International Securities Identification Number. This is a unique twelve-digit code that is assigned to every security issuance in the world.",
+                            "example": "US0378331005",
+                            "type": "string"
+                          },
+                          "issuer_name": {
+                            "description": "Name of issuer.",
+                            "example": "Apple Inc.",
+                            "type": "string"
+                          },
+                          "last_updated": {
+                            "description": "The date when the IPO event was last modified.",
+                            "example": "2023-01-02",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "listing_date": {
+                            "description": "First trading date for the newly listed entity.",
+                            "example": "2023-02-01",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "lot_size": {
+                            "description": "The minimum number of shares that can be bought or sold in a single transaction.",
+                            "example": 100,
+                            "type": "number"
+                          },
+                          "lowest_offer_price": {
+                            "description": "The lowest price within the IPO price range that the company is willing to offer its shares to investors.",
+                            "example": 10,
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "max_shares_offered": {
+                            "description": "The upper limit of the shares that the company is offering to investors.",
+                            "example": 1000,
+                            "type": "number"
+                          },
+                          "min_shares_offered": {
+                            "description": "The lower limit of shares that the company is willing to sell in the IPO.",
+                            "example": 1000,
+                            "type": "number"
+                          },
+                          "primary_exchange": {
+                            "description": "Market Identifier Code (MIC) of the primary exchange where the security is listed. The Market Identifier Code (MIC) (ISO 10383) is a unique identification code used to identify securities trading exchanges, regulated and non-regulated trading markets.",
+                            "example": "XNAS",
+                            "type": "string"
+                          },
+                          "security_description": {
+                            "description": "Description of the security.",
+                            "example": "Ordinary Shares - Class A",
+                            "type": "string"
+                          },
+                          "security_type": {
+                            "description": "The classification of the stock. For example, \"CS\" stands for Common Stock.",
+                            "example": "CS",
+                            "type": "string"
+                          },
+                          "shares_outstanding": {
+                            "description": "The total number of shares that the company has issued and are held by investors.",
+                            "example": 1000000,
+                            "type": "number"
+                          },
+                          "ticker": {
+                            "description": "The ticker symbol of the IPO event.",
+                            "example": "AAPL",
+                            "type": "string"
+                          },
+                          "total_offer_size": {
+                            "description": "The total amount raised by the company for IPO.",
+                            "example": 1000000,
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "us_code": {
+                            "description": "This is a unique nine-character alphanumeric code that identifies a North American financial security for the purposes of facilitating clearing and settlement of trades.",
+                            "example": 37833100,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "last_updated",
+                          "primary_exchange",
+                          "security_type",
+                          "security_description",
+                          "ipo_status"
+                        ],
+                        "type": "object",
+                        "x-polygon-go-type": {
+                          "name": "IPOsResult"
+                        }
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "description": "The status of this request's response.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A list of IPO events."
+          }
+        },
+        "summary": "IPOs",
+        "tags": [
+          "reference:stocks:ipos"
+        ],
+        "x-polygon-entitlement-data-type": {
+          "description": "Reference data",
+          "name": "reference"
+        },
+        "x-polygon-paginate": {
+          "limit": {
+            "default": 10,
+            "max": 1000
+          },
+          "order": {
+            "default": "desc"
+          },
+          "sort": {
+            "default": "listing_date",
+            "enum": [
+              "listing_date",
+              "ticker",
+              "last_updated",
+              "security_type",
+              "issuer_name",
+              "currency_code",
+              "isin",
+              "us_code",
+              "final_issue_price",
+              "min_shares_offered",
+              "max_shares_offered",
+              "lowest_offer_price",
+              "highest_offer_price",
+              "total_offer_size",
+              "shares_outstanding",
+              "primary_exchange",
+              "lot_size",
+              "security_description",
+              "ipo_status"
+            ]
+          }
+        }
+      }
+    },
     "/vX/reference/tickers/taxonomies": {
       "get": {
         "description": "Many investors place a high value on sector data. It is used to measure economic activity, identify peers and competitors, build ETF products, quantify market share, and compare company performance. However, there are some limitations to industry standard sectors:\n* They have difficulty identifying the primary area of activity for large, complex businesses.\n* Studies confirm significant disagreement between classification schemes when attempting to categorize the same companies.\n* The systems' hierarchical nature is inflexible and struggles to convey business nuances.\n<br />\n<br />\nAs a result, we've developed a new taxonomy to supplement existing sector classifications. The taxonomy is created by reviewing related 10K filings to create a set of structured categories and tags.\n<br />\n<br />\nThe categories are based on company operating models and are industry agnostic. Our current version only supports one category, Revenue Streams, with future plans to support more.\n<br />\n<br />\nThe tags define a specific type within the category. Within the Revenue Streams category, for example, tags for \"product sales\" and \"advertising\" may be found. A company may have many tags in a given category. The complete Revenue Streams taxonomy is shown below.\n<br />\n<br />\nOur taxonomy is powered by AI and is currently in early beta testing. You should expect some inaccuracies in the responses.\n<br />\n<br />\n## **Revenue Streams**\n  *Latest Revision (7/7/2023)*\n<br />\n<br />\n- **Physical Product Sales:**\n  Revenue generated from the sale of tangible goods or physical products to customers, either in-store or online.\n  - Consumer Goods\n  - Industrial Goods\n  - Electronics\n  - Vehicles\n  - Healthcare Products\n<br />\n<br />\n- **Digital Product Sales:**\n  Revenue earned from the sale of digital goods or products, such as software licenses, e-books, music downloads, or digital media content. It also includes revenue obtained by selling aggregated, anonymized, or processed data to third parties for market research, analytics, or other purposes.\n  - Software\n  - E-books and Digital Media\n  - Mobile Applications\n  - Games\n  - Online Courses\n  - Market Research Data\n  - Customer Behavior Data\n<br />\n<br />\n- **Professional Services:**\n  Revenue obtained by providing specialized services, expertise, or consulting to clients in exchange for fees. This includes services offered by professionals such as lawyers, accountants, or consultants.\n  - Consulting\n  - Legal Services\n  - Financial Services\n  - Marketing Services\n  - Construction Services\n  - Education & Tutoring\n<br />\n<br />\n- **Consumer Services:**\n  Revenue earned from providing services directly to consumers, including services like healthcare, personal grooming, fitness, or hospitality.\n  - Dining & Hospitality\n  - Personal Care\n  - Entertainment & Recreation\n  - Fitness & Wellness\n  - Travel & Tourism\n  - Transportation\n  - Home Services\n  - Child & Family Care\n  - Automotive\n<br />\n<br />\n- **Subscription-based Revenue:**\n  Revenue obtained from recurring fees charged to customers for accessing a product or service over a defined period. This includes revenue from subscription-based models, membership programs, or software-as-a-service (SaaS) offerings.\n  - Software as a Service (SaaS)\n  - Streaming Services\n  - Physical Media\n  - Memberships\n<br />\n<br />\n- **Licensing and Royalties:**\n  Revenue generated from the licensing of intellectual property rights to third parties, including franchise rights, patent licensing, brand licensing, and the receipt of royalties for authorized use of intellectual property like music royalties, book royalties, or patent royalties.\n  - Franchise Fees\n  - Patent Licensing\n  - Brand Licensing\n  - Media Royalties\n<br />\n<br />\n- **Advertising:**\n  Revenue generated by displaying ads or promotional content to customers, whether through traditional or digital advertising channels, including revenue from display ads, sponsored content, or affiliate marketing.\n  - Print Advertising\n  - Online Display Advertising\n  - Social Media Advertising\n  - Influencer Marketing\n<br />\n<br />\n- **Commission-Based Revenue:**\n  Revenue earned by acting as an intermediary and receiving a percentage or commission on sales made on behalf of another party. This includes revenue from affiliate programs, referral fees, or any other commission-based revenue models.\n  - Real Estate Commissions\n  - Affiliate Marketing Commissions\n  - Online Marketplace Commissions\n<br />\n<br />\n- **Rentals or Leasing:**\n  Revenue earned by leasing or renting out assets, properties, or equipment to customers, including rental income from real estate properties, equipment leasing, or vehicle rentals.\n  - Property Rentals\n  - Equipment Leasing\n  - Vehicle Rentals",
@@ -31436,6 +31813,16 @@
         {
           "paths": [
             "/v1/related-companies/{ticker}"
+          ]
+        },
+        {
+          "paths": [
+            "/vX/reference/ipos"
+          ]
+        },
+        {
+          "paths": [
+            "/vX/reference/short-interest/{identifier_type}/{identifier}"
           ]
         }
       ]
