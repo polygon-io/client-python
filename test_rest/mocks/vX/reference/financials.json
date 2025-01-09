@@ -45,12 +45,6 @@
                         "unit": "USD",
                         "order": 400
                     },
-                    "other_than_fixed_noncurrent_assets": {
-                        "label": "Other Than Fixed Noncurrent Assets",
-                        "value": 1.6046e+10,
-                        "unit": "USD",
-                        "order": 500
-                    },
                     "noncurrent_liabilities": {
                         "label": "Noncurrent Liabilities",
                         "value": 1.1716e+10,
