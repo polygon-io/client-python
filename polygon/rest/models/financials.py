@@ -1,8 +1,10 @@
-from typing import Optional, Dict, List
+from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
 from ...modelclass import modelclass
 
 
 @modelclass
+@dataclass
 class DataPoint:
     """Represents a single numeric or textual data point in the financials."""
 
@@ -16,7 +18,7 @@ class DataPoint:
     xpath: Optional[str] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "DataPoint":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "DataPoint":
         if not d:
             return DataPoint()
         return DataPoint(
@@ -31,6 +33,7 @@ class DataPoint:
         )
 
 
+@dataclass
 @modelclass
 class BalanceSheet:
     assets: Optional[DataPoint] = None
@@ -68,10 +71,9 @@ class BalanceSheet:
     liabilities_and_equity: Optional[DataPoint] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "BalanceSheet":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "BalanceSheet":
         if not d:
             return BalanceSheet()
-
         return BalanceSheet(
             assets=DataPoint.from_dict(d.get("assets")),
             current_assets=DataPoint.from_dict(d.get("current_assets")),
@@ -133,9 +135,9 @@ class BalanceSheet:
         )
 
 
+@dataclass
 @modelclass
 class CashFlowStatement:
-
     net_cash_flow_from_operating_activities: Optional[DataPoint] = None
     net_cash_flow_from_operating_activities_continuing: Optional[DataPoint] = None
     net_cash_flow_from_operating_activities_discontinued: Optional[DataPoint] = None
@@ -151,10 +153,9 @@ class CashFlowStatement:
     net_cash_flow_discontinued: Optional[DataPoint] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "CashFlowStatement":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "CashFlowStatement":
         if not d:
             return CashFlowStatement()
-
         return CashFlowStatement(
             net_cash_flow_from_operating_activities=DataPoint.from_dict(
                 d.get("net_cash_flow_from_operating_activities")
@@ -194,9 +195,9 @@ class CashFlowStatement:
         )
 
 
+@dataclass
 @modelclass
 class ComprehensiveIncome:
-
     comprehensive_income_loss: Optional[DataPoint] = None
     comprehensive_income_loss_attributable_to_noncontrolling_interest: Optional[
         DataPoint
@@ -209,10 +210,9 @@ class ComprehensiveIncome:
     other_comprehensive_income_loss_attributable_to_parent: Optional[DataPoint] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "ComprehensiveIncome":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "ComprehensiveIncome":
         if not d:
             return ComprehensiveIncome()
-
         return ComprehensiveIncome(
             comprehensive_income_loss=DataPoint.from_dict(
                 d.get("comprehensive_income_loss")
@@ -239,9 +239,9 @@ class ComprehensiveIncome:
         )
 
 
+@dataclass
 @modelclass
 class IncomeStatement:
-
     revenues: Optional[DataPoint] = None
     benefits_costs_expenses: Optional[DataPoint] = None
     cost_of_revenue: Optional[DataPoint] = None
@@ -310,7 +310,7 @@ class IncomeStatement:
     common_stock_dividends: Optional[DataPoint] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "IncomeStatement":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "IncomeStatement":
         if not d:
             return IncomeStatement()
         return IncomeStatement(
@@ -457,6 +457,7 @@ class IncomeStatement:
         )
 
 
+@dataclass
 @modelclass
 class Financials:
     """
@@ -473,7 +474,7 @@ class Financials:
     income_statement: Optional[IncomeStatement] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "Financials":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "Financials":
         if not d:
             return Financials()
         return Financials(
@@ -488,6 +489,7 @@ class Financials:
         )
 
 
+@dataclass
 @modelclass
 class StockFinancial:
     """
@@ -508,7 +510,7 @@ class StockFinancial:
     start_date: Optional[str] = None
 
     @staticmethod
-    def from_dict(d: dict) -> "StockFinancial":
+    def from_dict(d: Optional[Dict[str, Any]]) -> "StockFinancial":
         if not d:
             return StockFinancial()
         return StockFinancial(
