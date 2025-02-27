@@ -358,6 +358,7 @@ class FairMarketValue:
             timestamp=d.get("t", None),
         )
 
+
 @modelclass
 class FuturesTrade:
     ev: Optional[str] = None  # Event type ("T")
@@ -413,7 +414,6 @@ class FuturesAggregate:
     z: Optional[int] = None  # Average trade size
     s: Optional[int] = None  # Start timestamp in Unix MS
     e: Optional[int] = None  # End timestamp in Unix MS
-
 
 
 WebSocketMessage = NewType(

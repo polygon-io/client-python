@@ -1,6 +1,7 @@
 from typing import Optional, List
 from ...modelclass import modelclass
 
+
 @modelclass
 class MarketExchanges:
     "Contains exchange market status data."
@@ -8,9 +9,11 @@ class MarketExchanges:
     nyse: Optional[str] = None
     otc: Optional[str] = None
 
+
 @modelclass
 class FuturesAggregate:
     """Represents an aggregate for a futures contract."""
+
     close: Optional[float] = None
     dollar_volume: Optional[float] = None
     high: Optional[float] = None
@@ -25,11 +28,15 @@ class FuturesAggregate:
 
     @staticmethod
     def from_dict(d):
-        return FuturesAggregate(**{k: v for k, v in d.items() if k in FuturesAggregate.__annotations__})
+        return FuturesAggregate(
+            **{k: v for k, v in d.items() if k in FuturesAggregate.__annotations__}
+        )
+
 
 @modelclass
 class FuturesContract:
     """Represents a futures contract."""
+
     active: Optional[bool] = None
     as_of: Optional[str] = None
     days_to_maturity: Optional[int] = None
@@ -49,22 +56,30 @@ class FuturesContract:
 
     @staticmethod
     def from_dict(d):
-        return FuturesContract(**{k: v for k, v in d.items() if k in FuturesContract.__annotations__})
+        return FuturesContract(
+            **{k: v for k, v in d.items() if k in FuturesContract.__annotations__}
+        )
+
 
 @modelclass
 class FuturesMarketStatus:
     """Represents the market status for a futures product."""
+
     exchange_code: Optional[str] = None
     market_status: Optional[str] = None
     product_code: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
-        return FuturesMarketStatus(**{k: v for k, v in d.items() if k in FuturesMarketStatus.__annotations__})
+        return FuturesMarketStatus(
+            **{k: v for k, v in d.items() if k in FuturesMarketStatus.__annotations__}
+        )
+
 
 @modelclass
 class FuturesProduct:
     """Represents a futures product."""
+
     as_of: Optional[str] = None
     asset_class: Optional[str] = None
     asset_sub_class: Optional[str] = None
@@ -86,21 +101,29 @@ class FuturesProduct:
 
     @staticmethod
     def from_dict(d):
-        return FuturesProduct(**{k: v for k, v in d.items() if k in FuturesProduct.__annotations__})
+        return FuturesProduct(
+            **{k: v for k, v in d.items() if k in FuturesProduct.__annotations__}
+        )
+
 
 @modelclass
 class FuturesScheduleEvent:
     """Represents a single event in a futures schedule."""
+
     event: Optional[str] = None
     timestamp: Optional[str] = None
 
     @staticmethod
     def from_dict(d):
-        return FuturesScheduleEvent(**{k: v for k, v in d.items() if k in FuturesScheduleEvent.__annotations__})
+        return FuturesScheduleEvent(
+            **{k: v for k, v in d.items() if k in FuturesScheduleEvent.__annotations__}
+        )
+
 
 @modelclass
 class FuturesSchedule:
     """Represents a futures trading schedule."""
+
     market_identifier_code: Optional[str] = None
     product_code: Optional[str] = None
     product_name: Optional[str] = None
@@ -109,7 +132,11 @@ class FuturesSchedule:
 
     @staticmethod
     def from_dict(d):
-        schedule = [FuturesScheduleEvent.from_dict(e) for e in d.get("schedule", [])] if d.get("schedule") else None
+        schedule = (
+            [FuturesScheduleEvent.from_dict(e) for e in d.get("schedule", [])]
+            if d.get("schedule")
+            else None
+        )
         return FuturesSchedule(
             market_identifier_code=d.get("market_identifier_code"),
             product_code=d.get("product_code"),
@@ -118,9 +145,11 @@ class FuturesSchedule:
             session_end_date=d.get("session_end_date"),
         )
 
+
 @modelclass
 class FuturesQuote:
     """Represents a quote for a futures contract."""
+
     ask_price: Optional[float] = None
     ask_size: Optional[float] = None
     ask_timestamp: Optional[int] = None
@@ -133,11 +162,15 @@ class FuturesQuote:
 
     @staticmethod
     def from_dict(d):
-        return FuturesQuote(**{k: v for k, v in d.items() if k in FuturesQuote.__annotations__})
+        return FuturesQuote(
+            **{k: v for k, v in d.items() if k in FuturesQuote.__annotations__}
+        )
+
 
 @modelclass
 class FuturesTrade:
     """Represents a trade for a futures contract."""
+
     price: Optional[float] = None
     session_start_date: Optional[str] = None
     size: Optional[float] = None
@@ -146,4 +179,6 @@ class FuturesTrade:
 
     @staticmethod
     def from_dict(d):
-        return FuturesTrade(**{k: v for k, v in d.items() if k in FuturesTrade.__annotations__})
+        return FuturesTrade(
+            **{k: v for k, v in d.items() if k in FuturesTrade.__annotations__}
+        )

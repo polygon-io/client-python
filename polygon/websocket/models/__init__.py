@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def parse_single(data: Dict[str, Any], market: Market) -> Optional[WebSocketMessage]:
     event_type = data.get("ev")
     if not event_type:

@@ -3,7 +3,7 @@ from enum import Enum
 
 class Feed(Enum):
     Delayed = "delayed.polygon.io"
-    RealTime = "socket.ny5.polygon.io" # "socket.polygon.io"
+    RealTime = "socket.ny5.polygon.io"  # "socket.polygon.io"
     Nasdaq = "nasdaqfeed.polygon.io"
     PolyFeed = "polyfeed.polygon.io"
     PolyFeedPlus = "polyfeedplus.polygon.io"
