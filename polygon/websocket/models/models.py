@@ -358,6 +358,63 @@ class FairMarketValue:
             timestamp=d.get("t", None),
         )
 
+@modelclass
+class FuturesTrade:
+    ev: Optional[str] = None  # Event type ("T")
+    sym: Optional[str] = None  # Ticker symbol (e.g., "ESZ4")
+    p: Optional[float] = None  # Trade price per unit
+    s: Optional[int] = None  # Trade size (number of contracts)
+    t: Optional[int] = None  # SIP timestamp in Unix MS
+    q: Optional[int] = None  # Sequence number
+
+    @staticmethod
+    def from_dict(d):
+        return EquityTrade(
+            d.get("ev", None),
+            d.get("sym", None),
+            d.get("p", None),
+            d.get("s", None),
+            d.get("t", None),
+            d.get("q", None),
+        )
+
+
+@modelclass
+class FuturesQuote:
+    """Represents a quote event for a futures contract."""
+
+    ev: Optional[str] = None  # Event type ("Q")
+    sym: Optional[str] = None  # Ticker symbol (e.g., "ESZ4")
+    bp: Optional[float] = None  # Bid price per unit
+    bs: Optional[int] = None  # Bid size (number of contracts)
+    bt: Optional[int] = None  # Bid timestamp in Unix MS
+    ap: Optional[float] = None  # Ask price per unit
+    as_: Optional[int] = (
+        None  # Ask size (number of contracts, renamed to as_ to avoid Python keyword)
+    )
+    at: Optional[int] = None  # Ask timestamp in Unix MS
+    t: Optional[int] = None  # SIP timestamp in Unix MS
+
+
+@modelclass
+class FuturesAggregate:
+    """Represents an aggregate event (second or minute) for a futures contract."""
+
+    ev: Optional[str] = None  # Event type ("A" or "AM")
+    sym: Optional[str] = None  # Ticker symbol (e.g., "6CH5")
+    v: Optional[int] = None  # Tick volume
+    av: Optional[int] = None  # Accumulated volume
+    op: Optional[float] = None  # Official opening price
+    o: Optional[float] = None  # Opening price for this window
+    c: Optional[float] = None  # Closing price for this window
+    h: Optional[float] = None  # Highest price for this window
+    l: Optional[float] = None  # Lowest price for this window
+    a: Optional[float] = None  # Volume-weighted average price
+    z: Optional[int] = None  # Average trade size
+    s: Optional[int] = None  # Start timestamp in Unix MS
+    e: Optional[int] = None  # End timestamp in Unix MS
+
+
 
 WebSocketMessage = NewType(
     "WebSocketMessage",
@@ -376,6 +433,9 @@ WebSocketMessage = NewType(
             IndexValue,
             LaunchpadValue,
             FairMarketValue,
+            FuturesTrade,
+            FuturesQuote,
+            FuturesAggregate,
         ]
     ],
 )

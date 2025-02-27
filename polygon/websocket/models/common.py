@@ -3,7 +3,7 @@ from enum import Enum
 
 class Feed(Enum):
     Delayed = "delayed.polygon.io"
-    RealTime = "socket.polygon.io"
+    RealTime = "socket.ny5.polygon.io" # "socket.polygon.io"
     Nasdaq = "nasdaqfeed.polygon.io"
     PolyFeed = "polyfeed.polygon.io"
     PolyFeedPlus = "polyfeedplus.polygon.io"
@@ -28,6 +28,11 @@ class Market(Enum):
     Forex = "forex"
     Crypto = "crypto"
     Indices = "indices"
+    Futures = "futures"
+    FuturesCME = "futures/cme"
+    FuturesCBOT = "futures/cbot"
+    FuturesNYMEX = "futures/nymex"
+    FuturesCOMEX = "futures/comex"
 
 
 class EventType(Enum):
@@ -42,6 +47,10 @@ class EventType(Enum):
     EquityQuote = "Q"
     ForexQuote = "C"
     CryptoQuote = "XQ"
+    FuturesTrade = "T"
+    FuturesQuote = "Q"
+    FuturesAggregateSecond = "A"
+    FuturesAggregateMinute = "AM"
     Imbalances = "NOI"
     LimitUpLimitDown = "LULD"
     CryptoL2 = "XL2"
