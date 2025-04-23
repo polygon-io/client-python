@@ -1,7 +1,7 @@
 from polygon import RESTClient
 
 # docs
-# https://staging.polygon.io/docs/rest/economy/treasury-yields
+# https://polygon.io/docs/rest/economy/treasury-yields
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
