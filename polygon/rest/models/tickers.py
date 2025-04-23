@@ -1,5 +1,4 @@
 from typing import Optional, List
-
 from ...modelclass import modelclass
 
 
@@ -255,10 +254,6 @@ class TickerChangeResults:
         return TickerChangeResults(**d)
 
 
-from typing import Optional
-from ...modelclass import modelclass
-
-
 @modelclass
 class IPOListing:
     """
@@ -309,4 +304,111 @@ class IPOListing:
             ticker=d.get("ticker"),
             total_offer_size=d.get("total_offer_size"),
             us_code=d.get("us_code"),
+        )
+
+
+@modelclass
+class ShortInterest:
+    """
+    Short Interest data for a specific identifier.
+    """
+
+    avg_daily_volume: Optional[int] = None
+    days_to_cover: Optional[float] = None
+    settlement_date: Optional[str] = None
+    short_interest: Optional[int] = None
+    ticker: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return ShortInterest(
+            avg_daily_volume=d.get("avg_daily_volume"),
+            days_to_cover=d.get("days_to_cover"),
+            settlement_date=d.get("settlement_date"),
+            short_interest=d.get("short_interest"),
+            ticker=d.get("ticker"),
+        )
+
+
+@modelclass
+class ShortVolume:
+    """
+    Short Volume data for a specific identifier on a given date.
+    """
+
+    adf_short_volume: Optional[int] = None
+    adf_short_volume_exempt: Optional[int] = None
+    date: Optional[str] = None
+    exempt_volume: Optional[int] = None
+    nasdaq_carteret_short_volume: Optional[int] = None
+    nasdaq_carteret_short_volume_exempt: Optional[int] = None
+    nasdaq_chicago_short_volume: Optional[int] = None
+    nasdaq_chicago_short_volume_exempt: Optional[int] = None
+    non_exempt_volume: Optional[int] = None
+    nyse_short_volume: Optional[int] = None
+    nyse_short_volume_exempt: Optional[int] = None
+    short_volume: Optional[int] = None
+    short_volume_ratio: Optional[float] = None
+    ticker: Optional[str] = None
+    total_volume: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return ShortVolume(
+            adf_short_volume=d.get("adf_short_volume"),
+            adf_short_volume_exempt=d.get("adf_short_volume_exempt"),
+            date=d.get("date"),
+            exempt_volume=d.get("exempt_volume"),
+            nasdaq_carteret_short_volume=d.get("nasdaq_carteret_short_volume"),
+            nasdaq_carteret_short_volume_exempt=d.get(
+                "nasdaq_carteret_short_volume_exempt"
+            ),
+            nasdaq_chicago_short_volume=d.get("nasdaq_chicago_short_volume"),
+            nasdaq_chicago_short_volume_exempt=d.get(
+                "nasdaq_chicago_short_volume_exempt"
+            ),
+            non_exempt_volume=d.get("non_exempt_volume"),
+            nyse_short_volume=d.get("nyse_short_volume"),
+            nyse_short_volume_exempt=d.get("nyse_short_volume_exempt"),
+            short_volume=d.get("short_volume"),
+            short_volume_ratio=d.get("short_volume_ratio"),
+            ticker=d.get("ticker"),
+            total_volume=d.get("total_volume"),
+        )
+
+
+@modelclass
+class TreasuryYield:
+    """
+    Treasury yield data for a specific date.
+    """
+
+    date: Optional[str] = None
+    yield_1_month: Optional[float] = None
+    yield_3_month: Optional[float] = None
+    yield_6_month: Optional[float] = None
+    yield_1_year: Optional[float] = None
+    yield_2_year: Optional[float] = None
+    yield_3_year: Optional[float] = None
+    yield_5_year: Optional[float] = None
+    yield_7_year: Optional[float] = None
+    yield_10_year: Optional[float] = None
+    yield_20_year: Optional[float] = None
+    yield_30_year: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return TreasuryYield(
+            date=d.get("date"),
+            yield_1_month=d.get("yield_1_month"),
+            yield_3_month=d.get("yield_3_month"),
+            yield_6_month=d.get("yield_6_month"),
+            yield_1_year=d.get("yield_1_year"),
+            yield_2_year=d.get("yield_2_year"),
+            yield_3_year=d.get("yield_3_year"),
+            yield_5_year=d.get("yield_5_year"),
+            yield_7_year=d.get("yield_7_year"),
+            yield_10_year=d.get("yield_10_year"),
+            yield_20_year=d.get("yield_20_year"),
+            yield_30_year=d.get("yield_30_year"),
         )
