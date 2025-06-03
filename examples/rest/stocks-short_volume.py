@@ -7,7 +7,7 @@ from polygon import RESTClient
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 items = []
-for item in client.vx.list_short_volume(ticker="RDDT"):
+for item in client.list_short_volume(ticker="RDDT"):
     items.append(item)
 
 print(items)

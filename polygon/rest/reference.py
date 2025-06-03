@@ -22,6 +22,9 @@ from .models import (
     SIP,
     Exchange,
     OptionsContract,
+    ShortInterest,
+    ShortVolume,
+    TreasuryYield,
 )
 from urllib3 import HTTPResponse
 from datetime import date
@@ -565,5 +568,172 @@ class ContractsClient(BaseClient):
             params=self._get_params(self.list_options_contracts, locals()),
             raw=raw,
             deserializer=OptionsContract.from_dict,
+            options=options,
+        )
+
+    def list_short_interest(
+        self,
+        ticker: Optional[str] = None,
+        days_to_cover: Optional[str] = None,
+        days_to_cover_lt: Optional[str] = None,
+        days_to_cover_lte: Optional[str] = None,
+        days_to_cover_gt: Optional[str] = None,
+        days_to_cover_gte: Optional[str] = None,
+        settlement_date: Optional[str] = None,
+        settlement_date_lt: Optional[str] = None,
+        settlement_date_lte: Optional[str] = None,
+        settlement_date_gt: Optional[str] = None,
+        settlement_date_gte: Optional[str] = None,
+        avg_daily_volume: Optional[str] = None,
+        avg_daily_volume_lt: Optional[str] = None,
+        avg_daily_volume_lte: Optional[str] = None,
+        avg_daily_volume_gt: Optional[str] = None,
+        avg_daily_volume_gte: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[ShortInterest], HTTPResponse]:
+        """
+        Retrieve short interest data for stocks.
+
+        :param ticker: Filter by the primary ticker symbol.
+        :param days_to_cover: Filter by the days to cover value.
+        :param days_to_cover_lt: Filter for days to cover dates less than the provided date.
+        :param days_to_cover_lte: Filter for days to cover dates less than or equal to the provided date.
+        :param days_to_cover_gt: Filter for days to cover dates greater than the provided date.
+        :param days_to_cover_gte: Filter for days to cover dates greater than or equal to the provided date.
+        :param settlement_date: Filter by settlement date (YYYY-MM-DD).
+        :param settlement_date_lt: Filter for settlement dates less than the provided date.
+        :param settlement_date_lte: Filter for settlement dates less than or equal to the provided date.
+        :param settlement_date_gt: Filter for settlement dates greater than the provided date.
+        :param settlement_date_gte: Filter for settlement dates greater than or equal to the provided date.
+        :param avg_daily_volume: Filter by average daily volume.
+        :param avg_daily_volume_lt: Filter for average daily volume dates less than the provided date.
+        :param avg_daily_volume_lte: Filter for average daily volume dates less than or equal to the provided date.
+        :param avg_daily_volume_gt: Filter for average daily volume dates greater than the provided date.
+        :param avg_daily_volume_gte: Filter for average daily volume dates greater than or equal to the provided date.
+        :param limit: Limit the number of results returned. Default 10, max 50000.
+        :param sort: Field to sort by (e.g., "ticker").
+        :param order: Order results based on the sort field ("asc" or "desc"). Default "desc".
+        :param params: Additional query parameters.
+        :param raw: Return raw HTTPResponse object if True, else return List[ShortInterest].
+        :param options: RequestOptionBuilder for additional headers or params.
+        :return: A list of ShortInterest objects or HTTPResponse if raw=True.
+        """
+        url = "/stocks/v1/short-interest"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_short_interest, locals()),
+            deserializer=ShortInterest.from_dict,
+            raw=raw,
+            result_key="results",
+            options=options,
+        )
+
+    def list_short_volume(
+        self,
+        ticker: Optional[str] = None,
+        date: Optional[str] = None,
+        date_lt: Optional[str] = None,
+        date_lte: Optional[str] = None,
+        date_gt: Optional[str] = None,
+        date_gte: Optional[str] = None,
+        short_volume_ratio: Optional[str] = None,
+        short_volume_ratio_lt: Optional[str] = None,
+        short_volume_ratio_lte: Optional[str] = None,
+        short_volume_ratio_gt: Optional[str] = None,
+        short_volume_ratio_gte: Optional[str] = None,
+        total_volume: Optional[str] = None,
+        total_volume_lt: Optional[str] = None,
+        total_volume_lte: Optional[str] = None,
+        total_volume_gt: Optional[str] = None,
+        total_volume_gte: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[ShortVolume], HTTPResponse]:
+        """
+        Retrieve short volume data for stocks.
+
+        :param ticker: Filter by the primary ticker symbol.
+        :param date: Filter by the date of trade activity (YYYY-MM-DD).
+        :param date_lt: Filter for dates less than the provided date.
+        :param date_lte: Filter for dates less than or equal to the provided date.
+        :param date_gt: Filter for dates greater than the provided date.
+        :param date_gte: Filter for dates greater than or equal to the provided date.
+        :param short_volume_ratio: Filter by short volume ratio.
+        :param short_volume_ratio_lt: Filter for short volume ratio less than the provided date.
+        :param short_volume_ratio_lte: Filter for short volume ratio less than or equal to the provided date.
+        :param short_volume_ratio_gt: Filter for short volume ratio greater than the provided date.
+        :param short_volume_ratio_gte: Filter for short volume ratio greater than or equal to the provided date.
+        :param total_volume: Filter by total volume.
+        :param total_volume_lt: Filter for total volume less than the provided date.
+        :param total_volume_lte: Filter for total volume less than or equal to the provided date.
+        :param total_volume_gt: Filter for total volume greater than the provided date.
+        :param total_volume_gte: Filter for total volume greater than or equal to the provided date.
+        :param limit: Limit the number of results returned. Default 10, max 50000.
+        :param sort: Field to sort by (e.g., "ticker").
+        :param order: Order results based on the sort field ("asc" or "desc"). Default "desc".
+        :param params: Additional query parameters.
+        :param raw: Return raw HTTPResponse object if True, else return List[ShortVolume].
+        :param options: RequestOptionBuilder for additional headers or params.
+        :return: A list of ShortVolume objects or HTTPResponse if raw=True.
+        """
+        url = "/stocks/v1/short-volume"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_short_volume, locals()),
+            deserializer=ShortVolume.from_dict,
+            raw=raw,
+            result_key="results",
+            options=options,
+        )
+
+    def list_treasury_yields(
+        self,
+        date: Optional[str] = None,
+        date_gt: Optional[str] = None,
+        date_gte: Optional[str] = None,
+        date_lt: Optional[str] = None,
+        date_lte: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        order: Optional[Union[str, Order]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[List[TreasuryYield], HTTPResponse]:
+        """
+        Retrieve treasury yield data.
+
+        :param date: Calendar date of the yield observation (YYYY-MM-DD).
+        :param date_gt: Filter for dates greater than the provided date.
+        :param date_gte: Filter for dates greater than or equal to the provided date.
+        :param date_lt: Filter for dates less than the provided date.
+        :param date_lte: Filter for dates less than or equal to the provided date.
+        :param limit: Limit the number of results returned. Default 100, max 50000.
+        :param sort: Field to sort by (e.g., "date"). Default "date".
+        :param order: Order results based on the sort field ("asc" or "desc"). Default "desc".
+        :param params: Additional query parameters.
+        :param raw: Return raw HTTPResponse object if True, else return List[TreasuryYield].
+        :param options: RequestOptionBuilder for additional headers or params.
+        :return: A list of TreasuryYield objects or HTTPResponse if raw=True.
+        """
+        url = "/fed/v1/treasury-yields"
+
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_treasury_yields, locals()),
+            deserializer=TreasuryYield.from_dict,
+            raw=raw,
+            result_key="results",
             options=options,
         )

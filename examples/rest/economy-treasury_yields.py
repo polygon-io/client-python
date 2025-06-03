@@ -7,7 +7,7 @@ from polygon import RESTClient
 client = RESTClient()  # POLYGON_API_KEY environment variable is used
 
 yields = []
-for date in client.vx.list_treasury_yields():
+for date in client.list_treasury_yields():
     yields.append(date)
 
 print(yields)
