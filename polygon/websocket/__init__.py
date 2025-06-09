@@ -49,16 +49,19 @@ class WebSocketClient:
             )
         self.api_key = api_key
         self.feed = feed
-        self.market = market
+        if isinstance(market, str):
+            self.market = Market(market)  # converts str input to enum
+        else:
+            self.market = market
+
+        self.market_value = self.market.value
         self.raw = raw
         if verbose:
             logger.setLevel(logging.DEBUG)
         self.websocket_cfg = kwargs
         if isinstance(feed, Enum):
             feed = feed.value
-        if isinstance(market, Enum):
-            market = market.value
-        self.url = f"ws{'s' if secure else ''}://{self.feed.value}/{self.market.value}"
+        self.url = f"ws{'s' if secure else ''}://{feed}/{self.market_value}"
         self.subscribed = False
         self.subs: Set[str] = set()
         self.max_reconnects = max_reconnects

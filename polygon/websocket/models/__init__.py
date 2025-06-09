@@ -1,10 +1,18 @@
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Type, Protocol, cast
 from .common import *
 from .models import *
 import logging
 
+
+# Protocol to define classes with from_dict method
+class FromDictProtocol(Protocol):
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "FromDictProtocol":
+        pass
+
+
 # Define the mapping of market and event type to model class
-MARKET_EVENT_MAP = {
+MARKET_EVENT_MAP: Dict[Market, Dict[str, Type[FromDictProtocol]]] = {
     Market.Stocks: {
         "A": EquityAgg,
         "AM": EquityAgg,
@@ -50,14 +58,19 @@ MARKET_EVENT_MAP = {
 }
 
 
-def parse_single(data: Dict[str, Any], market: Market, logger: logging.Logger) -> Any:
+def parse_single(
+    data: Dict[str, Any], logger: logging.Logger, market: Market
+) -> Optional[WebSocketMessage]:
     event_type = data["ev"]
     # Look up the model class based on market and event type
     model_class: Optional[Type[FromDictProtocol]] = MARKET_EVENT_MAP.get(
         market, {}
     ).get(event_type)
     if model_class:
-        return model_class.from_dict(data)
+        parsed = model_class.from_dict(data)
+        return cast(
+            WebSocketMessage, parsed
+        )  # Ensure the return type is WebSocketMessage
     else:
         # Log a warning for unrecognized event types, unless it's a status message
         if event_type != "status":
@@ -70,7 +83,7 @@ def parse(
 ) -> List[WebSocketMessage]:
     res = []
     for m in msg:
-        parsed = parse_single(m, market)
+        parsed = parse_single(m, logger, market)
         if parsed is None:
             if m["ev"] != "status":
                 logger.warning("could not parse message %s", m)
