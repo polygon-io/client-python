@@ -58,7 +58,7 @@ class WebSocketClient:
             feed = feed.value
         if isinstance(market, Enum):
             market = market.value
-        self.url = f"ws{'s' if secure else ''}://{feed}/{market}"
+        self.url = f"ws{'s' if secure else ''}://{self.feed.value}/{self.market.value}"
         self.subscribed = False
         self.subs: Set[str] = set()
         self.max_reconnects = max_reconnects

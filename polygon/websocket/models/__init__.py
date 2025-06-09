@@ -50,10 +50,12 @@ MARKET_EVENT_MAP = {
 }
 
 
-def parse_single(data: Dict[str, Any], market: Market) -> Any:
+def parse_single(data: Dict[str, Any], market: Market, logger: logging.Logger) -> Any:
     event_type = data["ev"]
     # Look up the model class based on market and event type
-    model_class = MARKET_EVENT_MAP.get(market, {}).get(event_type)
+    model_class: Optional[Type[FromDictProtocol]] = MARKET_EVENT_MAP.get(
+        market, {}
+    ).get(event_type)
     if model_class:
         return model_class.from_dict(data)
     else:
