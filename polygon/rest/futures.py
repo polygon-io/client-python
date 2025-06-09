@@ -10,6 +10,8 @@ from .models.futures import (
     FuturesQuote,
     FuturesTrade,
     FuturesSchedule,
+    FuturesMarketStatus,
+    FuturesSnapshot,
 )
 from .models.common import Sort, Order
 from .models.request import RequestOptionBuilder
@@ -49,7 +51,7 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/aggs/{ticker}"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_aggregates, locals()),
+            params=self._get_params(self.list_futures_aggregates, locals()),
             raw=raw,
             deserializer=FuturesAgg.from_dict,
             options=options,
@@ -78,7 +80,7 @@ class FuturesClient(BaseClient):
         url = "/futures/vX/contracts"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_contracts, locals()),
+            params=self._get_params(self.list_futures_contracts, locals()),
             raw=raw,
             deserializer=FuturesContract.from_dict,
             options=options,
@@ -101,7 +103,7 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/contracts/{ticker}"
         return self._get(
             path=url,
-            params=self._get_params(self.get_contract_details, locals()),
+            params=self._get_params(self.get_futures_contract_details, locals()),
             deserializer=FuturesContract.from_dict,
             raw=raw,
             result_key="results",
@@ -134,7 +136,7 @@ class FuturesClient(BaseClient):
         url = "/futures/vX/products"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_products, locals()),
+            params=self._get_params(self.list_futures_products, locals()),
             raw=raw,
             deserializer=FuturesProduct.from_dict,
             options=options,
@@ -158,7 +160,7 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/products/{product_code}"
         return self._get(
             path=url,
-            params=self._get_params(self.get_product_details, locals()),
+            params=self._get_params(self.get_futures_product_details, locals()),
             deserializer=FuturesProduct.from_dict,
             raw=raw,
             result_key="results",
@@ -193,7 +195,7 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/quotes/{ticker}"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_quotes, locals()),
+            params=self._get_params(self.list_futures_quotes, locals()),
             raw=raw,
             deserializer=FuturesQuote.from_dict,
             options=options,
@@ -227,7 +229,7 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/trades/{ticker}"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_trades, locals()),
+            params=self._get_params(self.list_futures_trades, locals()),
             raw=raw,
             deserializer=FuturesTrade.from_dict,
             options=options,
@@ -253,7 +255,7 @@ class FuturesClient(BaseClient):
         url = "/futures/vX/schedules"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_schedules, locals()),
+            params=self._get_params(self.list_futures_schedules, locals()),
             raw=raw,
             deserializer=FuturesSchedule.from_dict,
             options=options,
@@ -282,7 +284,7 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/schedules/{product_code}"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_schedules_by_product_code, locals()),
+            params=self._get_params(self.list_futures_schedules_by_product_code, locals()),
             raw=raw,
             deserializer=FuturesSchedule.from_dict,
             options=options,
@@ -302,7 +304,7 @@ class FuturesClient(BaseClient):
         url = "/futures/vX/market-status"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_market_statuses, locals()),
+            params=self._get_params(self.list_futures_market_statuses, locals()),
             raw=raw,
             deserializer=FuturesMarketStatus.from_dict,
             options=options,
@@ -331,7 +333,7 @@ class FuturesClient(BaseClient):
         url = "/futures/vX/snapshot"
         return self._paginate(
             path=url,
-            params=self._get_params(self.get_snapshot, locals()),
+            params=self._get_params(self.get_futures_snapshot, locals()),
             raw=raw,
             deserializer=FuturesSnapshot.from_dict,
             options=options,
