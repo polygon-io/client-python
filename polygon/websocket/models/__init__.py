@@ -29,6 +29,7 @@ MARKET_EVENT_MAP: Dict[Market, Dict[str, Type[FromDictProtocol]]] = {
         "T": EquityTrade,
         "Q": EquityQuote,
         "FMV": FairMarketValue,
+        "LV": LaunchpadValue,
     },
     Market.Indices: {
         "A": EquityAgg,
@@ -48,12 +49,16 @@ MARKET_EVENT_MAP: Dict[Market, Dict[str, Type[FromDictProtocol]]] = {
         "XQ": CryptoQuote,
         "XL2": Level2Book,
         "FMV": FairMarketValue,
+        "AM": EquityAgg,
+        "LV": LaunchpadValue,
     },
     Market.Forex: {
         "CA": CurrencyAgg,
         "CAS": CurrencyAgg,
         "C": ForexQuote,
         "FMV": FairMarketValue,
+        "AM": EquityAgg,
+        "LV": LaunchpadValue,
     },
 }
 
