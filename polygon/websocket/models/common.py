@@ -11,6 +11,7 @@ class Feed(Enum):
     Launchpad = "launchpad.polygon.io"
     Business = "business.polygon.io"
     EdgxBusiness = "edgx-business.polygon.io"
+    IEXBusiness = "iex-business.polygon.io"
     DelayedBusiness = "delayed-business.polygon.io"
     DelayedEdgxBusiness = "delayed-edgx-business.polygon.io"
     DelayedNasdaqLastSaleBusiness = "delayed-nasdaq-last-sale-business.polygon.io"

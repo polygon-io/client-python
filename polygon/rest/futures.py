@@ -33,7 +33,6 @@ class FuturesClient(BaseClient):
         window_start_gt: Optional[str] = None,
         window_start_gte: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -66,7 +65,6 @@ class FuturesClient(BaseClient):
         active: Optional[str] = None,
         type: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -122,7 +120,6 @@ class FuturesClient(BaseClient):
         asset_sub_class: Optional[str] = None,
         type: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -181,7 +178,6 @@ class FuturesClient(BaseClient):
         session_end_date_gt: Optional[str] = None,
         session_end_date_gte: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -215,7 +211,6 @@ class FuturesClient(BaseClient):
         session_end_date_gt: Optional[str] = None,
         session_end_date_gte: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -240,7 +235,6 @@ class FuturesClient(BaseClient):
         session_end_date: Optional[str] = None,
         market_identifier_code: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
@@ -270,18 +264,17 @@ class FuturesClient(BaseClient):
         session_end_date_gt: Optional[str] = None,
         session_end_date_gte: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[FuturesSchedule], HTTPResponse]:
         """
-        Endpoint: GET /futures/vX/schedules/{product_code}
+        Endpoint: GET /futures/vX/products/{product_code}/schedules
 
         Returns schedule data for a single product across (potentially) many trading dates.
         """
-        url = f"/futures/vX/schedules/{product_code}"
+        url = f"/futures/vX/products/{product_code}/schedules"
         return self._paginate(
             path=url,
             params=self._get_params(
@@ -297,7 +290,6 @@ class FuturesClient(BaseClient):
         product_code_any_of: Optional[str] = None,
         product_code: Optional[str] = None,
         limit: Optional[int] = None,
-        order: Optional[Union[str, Order]] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,
         raw: bool = False,
