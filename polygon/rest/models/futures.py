@@ -253,86 +253,92 @@ class FuturesMarketStatus:
             product_code=d.get("product_code"),
         )
 
-    @modelclass
-    class FuturesSnapshotDetails:
-        open_interest: Optional[int] = None
-        settlement_date: Optional[int] = None
 
-    @modelclass
-    class FuturesSnapshotMinute:
-        close: Optional[float] = None
-        high: Optional[float] = None
-        last_updated: Optional[int] = None
-        low: Optional[float] = None
-        open: Optional[float] = None
-        volume: Optional[float] = None
+@modelclass
+class FuturesSnapshotDetails:
+    open_interest: Optional[int] = None
+    settlement_date: Optional[int] = None
 
-    @modelclass
-    class FuturesSnapshotQuote:
-        ask: Optional[float] = None
-        ask_size: Optional[int] = None
-        ask_timestamp: Optional[int] = None
-        bid: Optional[float] = None
-        bid_size: Optional[int] = None
-        bid_timestamp: Optional[int] = None
-        last_updated: Optional[int] = None
 
-    @modelclass
-    class FuturesSnapshotTrade:
-        last_updated: Optional[int] = None
-        price: Optional[float] = None
-        size: Optional[int] = None
+@modelclass
+class FuturesSnapshotMinute:
+    close: Optional[float] = None
+    high: Optional[float] = None
+    last_updated: Optional[int] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    volume: Optional[float] = None
 
-    @modelclass
-    class FuturesSnapshotSession:
-        change: Optional[float] = None
-        change_percent: Optional[float] = None
-        close: Optional[float] = None
-        high: Optional[float] = None
-        low: Optional[float] = None
-        open: Optional[float] = None
-        previous_settlement: Optional[float] = None
-        settlement_price: Optional[float] = None
-        volume: Optional[float] = None
 
-    @modelclass
-    class FuturesSnapshot:
-        ticker: Optional[str] = None
-        product_code: Optional[str] = None
-        details: Optional[FuturesSnapshotDetails] = None
-        last_minute: Optional[FuturesSnapshotMinute] = None
-        last_quote: Optional[FuturesSnapshotQuote] = None
-        last_trade: Optional[FuturesSnapshotTrade] = None
-        session: Optional[FuturesSnapshotSession] = None
+@modelclass
+class FuturesSnapshotQuote:
+    ask: Optional[float] = None
+    ask_size: Optional[int] = None
+    ask_timestamp: Optional[int] = None
+    bid: Optional[float] = None
+    bid_size: Optional[int] = None
+    bid_timestamp: Optional[int] = None
+    last_updated: Optional[int] = None
 
-        @staticmethod
-        def from_dict(d):
-            return FuturesSnapshot(
-                ticker=d.get("ticker"),
-                product_code=d.get("product_code"),
-                details=(
-                    FuturesSnapshotDetails.from_dict(d.get("details", {}))
-                    if d.get("details")
-                    else None
-                ),
-                last_minute=(
-                    FuturesSnapshotMinute.from_dict(d.get("last_minute", {}))
-                    if d.get("last_minute")
-                    else None
-                ),
-                last_quote=(
-                    FuturesSnapshotQuote.from_dict(d.get("last_quote", {}))
-                    if d.get("last_quote")
-                    else None
-                ),
-                last_trade=(
-                    FuturesSnapshotTrade.from_dict(d.get("last_trade", {}))
-                    if d.get("last_trade")
-                    else None
-                ),
-                session=(
-                    FuturesSnapshotSession.from_dict(d.get("session", {}))
-                    if d.get("session")
-                    else None
-                ),
-            )
+
+@modelclass
+class FuturesSnapshotTrade:
+    last_updated: Optional[int] = None
+    price: Optional[float] = None
+    size: Optional[int] = None
+
+
+@modelclass
+class FuturesSnapshotSession:
+    change: Optional[float] = None
+    change_percent: Optional[float] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    previous_settlement: Optional[float] = None
+    settlement_price: Optional[float] = None
+    volume: Optional[float] = None
+
+
+@modelclass
+class FuturesSnapshot:
+    ticker: Optional[str] = None
+    product_code: Optional[str] = None
+    details: Optional[FuturesSnapshotDetails] = None
+    last_minute: Optional[FuturesSnapshotMinute] = None
+    last_quote: Optional[FuturesSnapshotQuote] = None
+    last_trade: Optional[FuturesSnapshotTrade] = None
+    session: Optional[FuturesSnapshotSession] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesSnapshot(
+            ticker=d.get("ticker"),
+            product_code=d.get("product_code"),
+            details=(
+                FuturesSnapshotDetails.from_dict(d.get("details", {}))
+                if d.get("details")
+                else None
+            ),
+            last_minute=(
+                FuturesSnapshotMinute.from_dict(d.get("last_minute", {}))
+                if d.get("last_minute")
+                else None
+            ),
+            last_quote=(
+                FuturesSnapshotQuote.from_dict(d.get("last_quote", {}))
+                if d.get("last_quote")
+                else None
+            ),
+            last_trade=(
+                FuturesSnapshotTrade.from_dict(d.get("last_trade", {}))
+                if d.get("last_trade")
+                else None
+            ),
+            session=(
+                FuturesSnapshotSession.from_dict(d.get("session", {}))
+                if d.get("session")
+                else None
+            ),
+        )

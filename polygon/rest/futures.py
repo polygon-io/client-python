@@ -284,7 +284,9 @@ class FuturesClient(BaseClient):
         url = f"/futures/vX/schedules/{product_code}"
         return self._paginate(
             path=url,
-            params=self._get_params(self.list_futures_schedules_by_product_code, locals()),
+            params=self._get_params(
+                self.list_futures_schedules_by_product_code, locals()
+            ),
             raw=raw,
             deserializer=FuturesSchedule.from_dict,
             options=options,
