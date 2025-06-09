@@ -140,7 +140,7 @@ class WebSocketClient:
                             if m["ev"] == "status":
                                 logger.debug("status: %s", m["message"])
                                 continue
-                        cmsg = parse(msgJson, logger)
+                        cmsg = parse(msgJson, logger, self.market)
 
                     if len(cmsg) > 0:
                         await processor(cmsg)  # type: ignore

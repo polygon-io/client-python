@@ -359,6 +359,93 @@ class FairMarketValue:
         )
 
 
+@modelclass
+class FuturesTrade:
+    event_type: Optional[str] = None
+    symbol: Optional[str] = None
+    price: Optional[float] = None
+    size: Optional[int] = None
+    timestamp: Optional[int] = None
+    sequence_number: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesTrade(
+            event_type=d.get("ev"),
+            symbol=d.get("sym"),
+            price=d.get("p"),
+            size=d.get("s"),
+            timestamp=d.get("t"),
+            sequence_number=d.get("q"),
+        )
+
+
+@modelclass
+class FuturesQuote:
+    event_type: Optional[str] = None
+    symbol: Optional[str] = None
+    bid_price: Optional[float] = None
+    bid_size: Optional[int] = None
+    bid_timestamp: Optional[int] = None
+    ask_price: Optional[float] = None
+    ask_size: Optional[int] = None
+    ask_timestamp: Optional[int] = None
+    sip_timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesQuote(
+            event_type=d.get("ev"),
+            symbol=d.get("sym"),
+            bid_price=d.get("bp"),
+            bid_size=d.get("bs"),
+            bid_timestamp=d.get("bt"),
+            ask_price=d.get("ap"),
+            ask_size=d.get("as"),
+            ask_timestamp=d.get("at"),
+            sip_timestamp=d.get("t"),
+        )
+
+
+@modelclass
+class FuturesAgg:
+    event_type: Optional[str] = None
+    symbol: Optional[str] = None
+    volume: Optional[float] = None
+    accumulated_volume: Optional[float] = None
+    official_open_price: Optional[float] = None
+    vwap: Optional[float] = None
+    open: Optional[float] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    aggregate_vwap: Optional[float] = None
+    average_size: Optional[float] = None
+    start_timestamp: Optional[int] = None
+    end_timestamp: Optional[int] = None
+    otc: Optional[bool] = None  # If present
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesAgg(
+            event_type=d.get("ev"),
+            symbol=d.get("sym"),
+            volume=d.get("v"),
+            accumulated_volume=d.get("av"),
+            official_open_price=d.get("op"),
+            vwap=d.get("vw"),
+            open=d.get("o"),
+            close=d.get("c"),
+            high=d.get("h"),
+            low=d.get("l"),
+            aggregate_vwap=d.get("a"),
+            average_size=d.get("z"),
+            start_timestamp=d.get("s"),
+            end_timestamp=d.get("e"),
+            otc=d.get("otc"),
+        )
+
+
 WebSocketMessage = NewType(
     "WebSocketMessage",
     List[
@@ -376,6 +463,9 @@ WebSocketMessage = NewType(
             IndexValue,
             LaunchpadValue,
             FairMarketValue,
+            FuturesTrade,
+            FuturesQuote,
+            FuturesAgg,
         ]
     ],
 )
