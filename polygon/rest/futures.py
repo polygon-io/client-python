@@ -13,7 +13,7 @@ from .models.futures import (
     FuturesMarketStatus,
     FuturesSnapshot,
 )
-from .models.common import Sort, Order
+from .models.common import Sort
 from .models.request import RequestOptionBuilder
 
 
