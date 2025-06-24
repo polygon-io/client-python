@@ -28,6 +28,7 @@ class Market(Enum):
     Forex = "forex"
     Crypto = "crypto"
     Indices = "indices"
+    Futures = "futures"
 
 
 class EventType(Enum):
@@ -46,12 +47,10 @@ class EventType(Enum):
     LimitUpLimitDown = "LULD"
     CryptoL2 = "XL2"
     Value = "V"
-    """Launchpad* EventTypes are only available to Launchpad users. These values are the same across all asset classes (
-    stocks, options, forex, crypto).
-    """
     LaunchpadValue = "LV"
     LaunchpadAggMin = "AM"
-    """Business* EventTypes are only available to Business users. These values are the same across all asset classes (
-    stocks, options, forex, crypto).
-    """
     BusinessFairMarketValue = "FMV"
+    FuturesTrade = "T"
+    FuturesQuote = "Q"
+    FuturesAgg = "A"
+    FuturesAggMin = "AM"
