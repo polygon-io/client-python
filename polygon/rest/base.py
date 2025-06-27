@@ -207,6 +207,9 @@ class BaseClient:
         result_key: str = "results",
         options: Optional[RequestOptionBuilder] = None,
     ):
+        limit = params.get("limit")
+        yielded_count = 0
+
         while True:
             resp = self._get(
                 path=path,
@@ -226,8 +229,11 @@ class BaseClient:
             if result_key not in decoded:
                 return []
             for t in decoded[result_key]:
+                if limit is not None and yielded_count >= limit:
+                    return
                 yield deserializer(t)
-            if "next_url" in decoded:
+                yielded_count += 1
+            if "next_url" in decoded and (limit is None or yielded_count < limit):
                 path = decoded["next_url"].replace(self.BASE, "")
                 params = {}
             else:
