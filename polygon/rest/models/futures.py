@@ -101,6 +101,7 @@ class FuturesProduct:
     market_identifier_code: Optional[str] = None
     asset_class: Optional[str] = None
     asset_sub_class: Optional[str] = None
+    clearing_channel: Optional[str] = None
     sector: Optional[str] = None
     sub_sector: Optional[str] = None
     type: Optional[str] = None
@@ -122,6 +123,7 @@ class FuturesProduct:
             as_of=d.get("as_of"),
             market_identifier_code=d.get("market_identifier_code"),
             asset_class=d.get("asset_class"),
+            clearing_channel=d.get("clearing_channel"),
             asset_sub_class=d.get("asset_sub_class"),
             sector=d.get("sector"),
             sub_sector=d.get("sub_sector"),
