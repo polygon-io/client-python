@@ -62,6 +62,41 @@ for quote in quotes:
     print(quote)
 ```
 
+### Pagination Behavior
+
+By default, the client paginates results for endpoints like `list_trades` and `list_quotes` behind the scenes for you. Understanding how pagination interacts with the `limit` parameter is key.
+
+#### Default (Pagination Enabled)
+
+Pagination is enabled by default (`pagination=True`):
+
+* `limit` controls the page size, not the total number of results.
+* The client automatically fetches all pages, yielding results until none remain.
+
+Here's an example:
+
+```python
+client = RESTClient(api_key="<API_KEY>")
+trades = [t for t in client.list_trades(ticker="TSLA", limit=100)]
+```
+
+This fetches all TSLA trades, 100 per page.
+
+#### Disabling Pagination
+
+To return a fixed number of results and stop, disable pagination:
+
+```python
+client = RESTClient(api_key="<API_KEY>", pagination=False)
+trades = [t for t in client.list_trades(ticker="TSLA", limit=100)]
+```
+
+This returns at most 100 total trades, no additional pages.
+
+### Performance Tip
+
+If you're fetching large datasets, always use the maximum supported limit for the API endpoint. This reduces the number of API calls and improves overall performance.
+
 ### Additional Filter Parameters
 
 Many of the APIs in this client library support the use of additional filter parameters to refine your queries. Please refer to the specific API documentation for details on which filter parameters are supported for each endpoint. These filters can be applied using the following operators:
