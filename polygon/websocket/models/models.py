@@ -411,19 +411,16 @@ class FuturesQuote:
 class FuturesAgg:
     event_type: Optional[str] = None
     symbol: Optional[str] = None
-    volume: Optional[float] = None
-    accumulated_volume: Optional[float] = None
-    official_open_price: Optional[float] = None
-    vwap: Optional[float] = None
+    volume: Optional[int] = None
+    total_value: Optional[int] = None
     open: Optional[float] = None
     close: Optional[float] = None
     high: Optional[float] = None
     low: Optional[float] = None
-    aggregate_vwap: Optional[float] = None
-    average_size: Optional[float] = None
+    transaction_count: Optional[int] = None
+    underlying_asset: Optional[str] = None
     start_timestamp: Optional[int] = None
     end_timestamp: Optional[int] = None
-    otc: Optional[bool] = None  # If present
 
     @staticmethod
     def from_dict(d):
@@ -431,18 +428,15 @@ class FuturesAgg:
             event_type=d.get("ev"),
             symbol=d.get("sym"),
             volume=d.get("v"),
-            accumulated_volume=d.get("av"),
-            official_open_price=d.get("op"),
-            vwap=d.get("vw"),
+            total_value=d.get("dv"),
             open=d.get("o"),
             close=d.get("c"),
             high=d.get("h"),
             low=d.get("l"),
-            aggregate_vwap=d.get("a"),
-            average_size=d.get("z"),
+            transaction_count=d.get("n"),
+            underlying_asset=d.get("p"),
             start_timestamp=d.get("s"),
             end_timestamp=d.get("e"),
-            otc=d.get("otc"),
         )
 
 
