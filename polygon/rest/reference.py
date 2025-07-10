@@ -704,6 +704,7 @@ class ContractsClient(BaseClient):
         date_gte: Optional[str] = None,
         date_lt: Optional[str] = None,
         date_lte: Optional[str] = None,
+        date_any_of: Optional[str] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
         order: Optional[Union[str, Order]] = None,
@@ -719,6 +720,7 @@ class ContractsClient(BaseClient):
         :param date_gte: Filter for dates greater than or equal to the provided date.
         :param date_lt: Filter for dates less than the provided date.
         :param date_lte: Filter for dates less than or equal to the provided date.
+        :param date_any_of: Filter for dates that match any of the provided dates. Split by comma to specify multiple values.
         :param limit: Limit the number of results returned. Default 100, max 50000.
         :param sort: Field to sort by (e.g., "date"). Default "date".
         :param order: Order results based on the sort field ("asc" or "desc"). Default "desc".
