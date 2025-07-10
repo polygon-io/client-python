@@ -359,6 +359,87 @@ class FairMarketValue:
         )
 
 
+@modelclass
+class FuturesTrade:
+    event_type: Optional[str] = None
+    symbol: Optional[str] = None
+    price: Optional[float] = None
+    size: Optional[int] = None
+    timestamp: Optional[int] = None
+    sequence_number: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesTrade(
+            event_type=d.get("ev"),
+            symbol=d.get("sym"),
+            price=d.get("p"),
+            size=d.get("s"),
+            timestamp=d.get("t"),
+            sequence_number=d.get("q"),
+        )
+
+
+@modelclass
+class FuturesQuote:
+    event_type: Optional[str] = None
+    symbol: Optional[str] = None
+    bid_price: Optional[float] = None
+    bid_size: Optional[int] = None
+    bid_timestamp: Optional[int] = None
+    ask_price: Optional[float] = None
+    ask_size: Optional[int] = None
+    ask_timestamp: Optional[int] = None
+    sip_timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesQuote(
+            event_type=d.get("ev"),
+            symbol=d.get("sym"),
+            bid_price=d.get("bp"),
+            bid_size=d.get("bs"),
+            bid_timestamp=d.get("bt"),
+            ask_price=d.get("ap"),
+            ask_size=d.get("as"),
+            ask_timestamp=d.get("at"),
+            sip_timestamp=d.get("t"),
+        )
+
+
+@modelclass
+class FuturesAgg:
+    event_type: Optional[str] = None
+    symbol: Optional[str] = None
+    volume: Optional[int] = None
+    total_value: Optional[int] = None
+    open: Optional[float] = None
+    close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    transaction_count: Optional[int] = None
+    underlying_asset: Optional[str] = None
+    start_timestamp: Optional[int] = None
+    end_timestamp: Optional[int] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesAgg(
+            event_type=d.get("ev"),
+            symbol=d.get("sym"),
+            volume=d.get("v"),
+            total_value=d.get("dv"),
+            open=d.get("o"),
+            close=d.get("c"),
+            high=d.get("h"),
+            low=d.get("l"),
+            transaction_count=d.get("n"),
+            underlying_asset=d.get("p"),
+            start_timestamp=d.get("s"),
+            end_timestamp=d.get("e"),
+        )
+
+
 WebSocketMessage = NewType(
     "WebSocketMessage",
     List[
@@ -376,6 +457,9 @@ WebSocketMessage = NewType(
             IndexValue,
             LaunchpadValue,
             FairMarketValue,
+            FuturesTrade,
+            FuturesQuote,
+            FuturesAgg,
         ]
     ],
 )

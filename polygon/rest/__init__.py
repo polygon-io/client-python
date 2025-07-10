@@ -1,4 +1,5 @@
 from .aggs import AggsClient
+from .futures import FuturesClient
 from .trades import TradesClient
 from .quotes import QuotesClient
 from .snapshot import SnapshotClient
@@ -23,6 +24,7 @@ ENV_KEY = "POLYGON_API_KEY"
 
 class RESTClient(
     AggsClient,
+    FuturesClient,
     TradesClient,
     QuotesClient,
     SnapshotClient,
@@ -44,6 +46,7 @@ class RESTClient(
         num_pools: int = 10,
         retries: int = 3,
         base: str = BASE,
+        pagination: bool = True,
         verbose: bool = False,
         trace: bool = False,
         custom_json: Optional[Any] = None,
@@ -55,6 +58,7 @@ class RESTClient(
             num_pools=num_pools,
             retries=retries,
             base=base,
+            pagination=pagination,
             verbose=verbose,
             trace=trace,
             custom_json=custom_json,
@@ -66,6 +70,7 @@ class RESTClient(
             num_pools=num_pools,
             retries=retries,
             base=base,
+            pagination=pagination,
             verbose=verbose,
             trace=trace,
             custom_json=custom_json,

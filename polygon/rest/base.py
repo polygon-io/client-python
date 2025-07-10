@@ -10,7 +10,7 @@ from importlib.metadata import version, PackageNotFoundError
 from .models.request import RequestOptionBuilder
 from ..logging import get_logger
 import logging
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse
 from ..exceptions import AuthError, BadResponse
 
 logger = get_logger("RESTClient")
@@ -30,6 +30,7 @@ class BaseClient:
         num_pools: int,
         retries: int,
         base: str,
+        pagination: bool,
         verbose: bool,
         trace: bool,
         custom_json: Optional[Any] = None,
@@ -41,6 +42,7 @@ class BaseClient:
 
         self.API_KEY = api_key
         self.BASE = base
+        self.pagination = pagination
 
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
@@ -227,11 +229,14 @@ class BaseClient:
                 return []
             for t in decoded[result_key]:
                 yield deserializer(t)
-            if "next_url" in decoded:
-                path = decoded["next_url"].replace(self.BASE, "")
-                params = {}
-            else:
+            if not self.pagination or "next_url" not in decoded:
                 return
+            next_url = decoded["next_url"]
+            parsed = urlparse(next_url)
+            path = parsed.path
+            if parsed.query:
+                path += "?" + parsed.query
+            params = {}
 
     def _paginate(
         self,
