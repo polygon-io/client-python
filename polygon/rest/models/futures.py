@@ -10,7 +10,6 @@ class FuturesAgg:
     """
 
     ticker: Optional[str] = None
-    underlying_asset: Optional[str] = None
     open: Optional[float] = None
     high: Optional[float] = None
     low: Optional[float] = None
@@ -26,7 +25,6 @@ class FuturesAgg:
     def from_dict(d):
         return FuturesAgg(
             ticker=d.get("ticker"),
-            underlying_asset=d.get("underlying_asset"),
             open=d.get("open"),
             high=d.get("high"),
             low=d.get("low"),
@@ -49,7 +47,7 @@ class FuturesContract:
 
     ticker: Optional[str] = None
     product_code: Optional[str] = None
-    market_identifier_code: Optional[str] = None
+    trading_venue: Optional[str] = None
     name: Optional[str] = None
     type: Optional[str] = None
     as_of: Optional[str] = None
@@ -70,7 +68,7 @@ class FuturesContract:
         return FuturesContract(
             ticker=d.get("ticker"),
             product_code=d.get("product_code"),
-            market_identifier_code=d.get("market_identifier_code"),
+            trading_venue=d.get("trading_venue"),
             name=d.get("name"),
             type=d.get("type"),
             as_of=d.get("as_of"),
@@ -98,7 +96,7 @@ class FuturesProduct:
     product_code: Optional[str] = None
     name: Optional[str] = None
     as_of: Optional[str] = None
-    market_identifier_code: Optional[str] = None
+    trading_venue: Optional[str] = None
     asset_class: Optional[str] = None
     asset_sub_class: Optional[str] = None
     clearing_channel: Optional[str] = None
@@ -106,7 +104,6 @@ class FuturesProduct:
     sub_sector: Optional[str] = None
     type: Optional[str] = None
     last_updated: Optional[str] = None
-    otc_eligible: Optional[bool] = None
     price_quotation: Optional[str] = None
     settlement_currency_code: Optional[str] = None
     settlement_method: Optional[str] = None
@@ -121,7 +118,7 @@ class FuturesProduct:
             product_code=d.get("product_code"),
             name=d.get("name"),
             as_of=d.get("as_of"),
-            market_identifier_code=d.get("market_identifier_code"),
+            trading_venue=d.get("trading_venue"),
             asset_class=d.get("asset_class"),
             clearing_channel=d.get("clearing_channel"),
             asset_sub_class=d.get("asset_sub_class"),
@@ -129,7 +126,6 @@ class FuturesProduct:
             sub_sector=d.get("sub_sector"),
             type=d.get("type"),
             last_updated=d.get("last_updated"),
-            otc_eligible=d.get("otc_eligible"),
             price_quotation=d.get("price_quotation"),
             settlement_currency_code=d.get("settlement_currency_code"),
             settlement_method=d.get("settlement_method"),
@@ -222,7 +218,7 @@ class FuturesSchedule:
 
     session_end_date: Optional[str] = None
     product_code: Optional[str] = None
-    market_identifier_code: Optional[str] = None
+    trading_venue: Optional[str] = None
     product_name: Optional[str] = None
     schedule: Optional[List[FuturesScheduleEvent]] = None
 
@@ -231,7 +227,7 @@ class FuturesSchedule:
         return FuturesSchedule(
             session_end_date=d.get("session_end_date"),
             product_code=d.get("product_code"),
-            market_identifier_code=d.get("market_identifier_code"),
+            trading_venue=d.get("trading_venue"),
             product_name=d.get("product_name"),
             schedule=[
                 FuturesScheduleEvent.from_dict(ev) for ev in d.get("schedule", [])
@@ -241,7 +237,7 @@ class FuturesSchedule:
 
 @modelclass
 class FuturesMarketStatus:
-    market_identifier_code: Optional[str] = None
+    trading_venue: Optional[str] = None
     market_status: Optional[str] = (
         None  # Enum: pre_open, open, close, pause, post_close_pre_open
     )
@@ -250,7 +246,7 @@ class FuturesMarketStatus:
     @staticmethod
     def from_dict(d):
         return FuturesMarketStatus(
-            market_identifier_code=d.get("market_identifier_code"),
+            trading_venue=d.get("trading_venue"),
             market_status=d.get("market_status"),
             product_code=d.get("product_code"),
         )
