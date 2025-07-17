@@ -20,6 +20,7 @@ class EconomyClient(BaseClient):
     def list_treasury_yields(
         self,
         date: Optional[str] = None,
+        date_any_of: Optional[str] = None,
         date_gt: Optional[str] = None,
         date_gte: Optional[str] = None,
         date_lt: Optional[str] = None,
@@ -35,6 +36,7 @@ class EconomyClient(BaseClient):
         Retrieve treasury yield data.
 
         :param date: Calendar date of the yield observation (YYYY-MM-DD).
+        :param date_any_of: Filter equal to any of the values.
         :param date_gt: Filter for dates greater than the provided date.
         :param date_gte: Filter for dates greater than or equal to the provided date.
         :param date_lt: Filter for dates less than the provided date.
