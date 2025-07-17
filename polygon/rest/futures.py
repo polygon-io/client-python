@@ -113,7 +113,7 @@ class FuturesClient(BaseClient):
         name: Optional[str] = None,
         name_search: Optional[str] = None,
         as_of: Optional[Union[str, date]] = None,
-        market_identifier_code: Optional[str] = None,
+        trading_venue: Optional[str] = None,
         sector: Optional[str] = None,
         sub_sector: Optional[str] = None,
         asset_class: Optional[str] = None,
@@ -233,7 +233,7 @@ class FuturesClient(BaseClient):
     def list_futures_schedules(
         self,
         session_end_date: Optional[str] = None,
-        market_identifier_code: Optional[str] = None,
+        trading_venue: Optional[str] = None,
         limit: Optional[int] = None,
         sort: Optional[Union[str, Sort]] = None,
         params: Optional[Dict[str, Any]] = None,

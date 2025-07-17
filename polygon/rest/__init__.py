@@ -1,5 +1,8 @@
 from .aggs import AggsClient
 from .futures import FuturesClient
+from .benzinga import BenzingaClient
+from .economy import EconomyClient
+from .tmx import TmxClient
 from .trades import TradesClient
 from .quotes import QuotesClient
 from .snapshot import SnapshotClient
@@ -25,6 +28,9 @@ ENV_KEY = "POLYGON_API_KEY"
 class RESTClient(
     AggsClient,
     FuturesClient,
+    BenzingaClient,
+    EconomyClient,
+    TmxClient,
     TradesClient,
     QuotesClient,
     SnapshotClient,
