@@ -26,7 +26,7 @@ class FuturesClient(BaseClient):
     def list_futures_aggregates(
         self,
         ticker: str,
-        resolution: str,
+        resolution: Optional[str] = None,
         window_start: Optional[str] = None,
         window_start_lt: Optional[str] = None,
         window_start_lte: Optional[str] = None,
