@@ -10,9 +10,24 @@ from .models import (
 from urllib3 import HTTPResponse
 from datetime import datetime, date
 from .models.request import RequestOptionBuilder
+import warnings
 
 
 class VXClient(BaseClient):
+    """
+    DEPRECATED: This client is deprecated and will be removed in a future version.
+
+    The single /vX/reference/financials endpoint has been replaced by 6 specialized endpoints:
+    - Use client.list_balance_sheets() instead
+    - Use client.list_cash_flow_statements() instead
+    - Use client.list_income_statements() instead
+    - Use client.list_financial_ratios() instead
+    - Use client.list_short_interest() instead
+    - Use client.list_short_volume() instead
+
+    See examples/rest/fundamentals_example.py for usage examples.
+    """
+
     def list_stock_financials(
         self,
         ticker: Optional[str] = None,
@@ -66,6 +81,16 @@ class VXClient(BaseClient):
         :param raw: Return raw object instead of results object
         :return: Iterator of financials
         """
+        warnings.warn(
+            "VXClient.list_stock_financials() is deprecated. "
+            "Use client.list_balance_sheets(), "
+            "client.list_cash_flow_statements(), "
+            "client.list_income_statements(), etc. instead. "
+            "See examples/rest/fundamentals_example.py for usage examples.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+
         url = "/vX/reference/financials"
 
         return self._paginate(

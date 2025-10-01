@@ -18,6 +18,7 @@ from .reference import (
     ContractsClient,
 )
 from .vX import VXClient
+from .fundamentals import FundamentalsClient
 from typing import Optional, Any
 import os
 
@@ -43,6 +44,7 @@ class RESTClient(
     ContractsClient,
     IndicatorsClient,
     SummariesClient,
+    FundamentalsClient,
 ):
     def __init__(
         self,
@@ -69,6 +71,7 @@ class RESTClient(
             trace=trace,
             custom_json=custom_json,
         )
+        # Deprecated - use self.fundamentals instead
         self.vx = VXClient(
             api_key=api_key,
             connect_timeout=connect_timeout,

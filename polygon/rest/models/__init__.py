@@ -5,6 +5,7 @@ from .contracts import *
 from .dividends import *
 from .exchanges import *
 from .financials import *
+from .fundamentals import *
 from .futures import *
 from .indicators import *
 from .markets import *
