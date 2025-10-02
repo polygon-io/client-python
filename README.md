@@ -60,6 +60,22 @@ print(quote)
 quotes = client.list_quotes(ticker=ticker, timestamp="2022-01-04")
 for quote in quotes:
     print(quote)
+
+# Fundamentals Data
+# Get balance sheets for a company
+balance_sheets = client.list_balance_sheets(tickers="AAPL", timeframe="quarterly", limit=5)
+for sheet in balance_sheets:
+    print(f"Period: {sheet.period_end}, Total Assets: ${sheet.total_assets:,.0f}")
+
+# Get financial ratios
+ratios = client.list_financial_ratios(ticker="AAPL", limit=5)
+for ratio in ratios:
+    print(f"P/E Ratio: {ratio.price_to_earnings}, Market Cap: ${ratio.market_cap:,.0f}")
+
+# Get short interest data
+short_interest = client.list_short_interest(ticker="AAPL", limit=5)
+for si in short_interest:
+    print(f"Settlement Date: {si.settlement_date}, Short Interest: {si.short_interest:,} shares")
 ```
 
 ### Pagination Behavior

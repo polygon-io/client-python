@@ -36,7 +36,8 @@ def main():
     print("\n📊 1. Balance Sheets")
     print("-" * 20)
     try:
-        balance_sheets = client.list_balance_sheets(tickers=ticker, timeframe="quarterly", limit=5)
+        # Example with filter modifiers - get balance sheets from 2023 onwards
+        balance_sheets = client.list_balance_sheets(tickers=ticker, timeframe="quarterly", period_end_gte="2023-01-01", limit=5)  # Filter modifier
         for bs in balance_sheets:
             if bs.period_end and bs.total_assets:
                 print(f"Period: {bs.period_end}, Total Assets: ${bs.total_assets:,.0f}")
@@ -69,7 +70,8 @@ def main():
     print("\n📋 4. Financial Ratios")
     print("-" * 18)
     try:
-        ratios = client.list_financial_ratios(ticker=ticker, limit=5)
+        # Example with filter modifiers - get ratios for stocks over $100
+        ratios = client.list_financial_ratios(ticker=ticker, price_gt=100.0, limit=5)  # Filter modifier - stock price > $100
         for ratio in ratios:
             if ratio.date:
                 print(f"Date: {ratio.date}")
@@ -112,6 +114,10 @@ def main():
         print(f"Error fetching short volume: {e}")
 
     print("\n✅ Example completed!")
+    print("\n📝 Filter Modifiers Available:")
+    print("  • Date filters: period_end_gte, fiscal_year_gt, settlement_date_lt, etc.")
+    print("  • Numeric filters: price_gt, market_cap_gte, days_to_cover_lt, etc.")
+    print("  • All methods support _gt, _gte, _lt, _lte modifiers for applicable fields")
     print("\nNote: The old VXClient (client.vx) is deprecated.")
     print("Use the new direct methods: client.list_balance_sheets(), etc.")
 

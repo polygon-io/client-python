@@ -8,6 +8,7 @@ This documentation is for the Python client only. For details about the response
   :caption: Contents:
 
   Getting-Started
+  Fundamentals
   Aggs
   WebSocket
   Snapshot

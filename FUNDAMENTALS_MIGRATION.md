@@ -84,7 +84,21 @@ short_volume = client.list_short_volume(
     limit=10
 )
 
-# Clean, direct access - no extra namespacing needed!
+# Clean, direct access with powerful filter modifiers!
+
+# Example with filter modifiers
+balance_sheets = client.list_balance_sheets(
+    tickers="AAPL",
+    period_end_gte="2023-01-01",  # From 2023 onwards
+    fiscal_year_lte=2024          # Up to 2024
+)
+
+# Advanced filtering for financial ratios
+ratios = client.list_financial_ratios(
+    price_gt=100.0,              # Stock price > $100
+    market_cap_gte=10000000000,  # Market cap >= $10B
+    price_to_earnings_lt=25.0    # P/E ratio < 25
+)
 
 ## Key Benefits of New API
 
