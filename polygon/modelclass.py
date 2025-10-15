@@ -2,16 +2,16 @@ import inspect
 import typing
 from dataclasses import dataclass
 
-
 _T = typing.TypeVar("_T")
 
 
 def modelclass(cls: typing.Type[_T]) -> typing.Type[_T]:
     cls = dataclass(cls)
+    type_hints = typing.get_type_hints(cls)
     attributes = [
         a
-        for a in cls.__dict__["__annotations__"].keys()
-        if not a.startswith("__") and not inspect.isroutine(a)
+        for a in type_hints.keys()
+        if not a.startswith("__") and not inspect.isroutine(getattr(cls, a, None))
     ]
 
     def init(self, *args, **kwargs):

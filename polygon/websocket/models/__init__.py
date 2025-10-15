@@ -42,6 +42,30 @@ MARKET_EVENT_MAP: Dict[Market, Dict[str, Type[FromDictProtocol]]] = {
         "T": FuturesTrade,
         "Q": FuturesQuote,
     },
+    Market.FuturesCME: {
+        "A": FuturesAgg,
+        "AM": FuturesAgg,
+        "T": FuturesTrade,
+        "Q": FuturesQuote,
+    },
+    Market.FuturesCBOT: {
+        "A": FuturesAgg,
+        "AM": FuturesAgg,
+        "T": FuturesTrade,
+        "Q": FuturesQuote,
+    },
+    Market.FuturesNYMEX: {
+        "A": FuturesAgg,
+        "AM": FuturesAgg,
+        "T": FuturesTrade,
+        "Q": FuturesQuote,
+    },
+    Market.FuturesCOMEX: {
+        "A": FuturesAgg,
+        "AM": FuturesAgg,
+        "T": FuturesTrade,
+        "Q": FuturesQuote,
+    },
     Market.Crypto: {
         "XA": CurrencyAgg,
         "XAS": CurrencyAgg,

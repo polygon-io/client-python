@@ -28,7 +28,11 @@ class Market(Enum):
     Forex = "forex"
     Crypto = "crypto"
     Indices = "indices"
-    Futures = "futures"
+    Futures = "futures"  # CME, CBOT, NYMEX, and COMEX
+    FuturesCME = "futures/cme"
+    FuturesCBOT = "futures/cbot"
+    FuturesNYMEX = "futures/nymex"
+    FuturesCOMEX = "futures/comex"
 
 
 class EventType(Enum):
