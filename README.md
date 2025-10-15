@@ -7,7 +7,7 @@ Welcome to the official Python client library for the [Polygon](https://polygon.
 
 ## Prerequisites
 
-Before installing the Polygon Python client, ensure your environment has Python 3.8 or higher.
+Before installing the Polygon Python client, ensure your environment has Python 3.9 or higher.
 
 ## Install
 
