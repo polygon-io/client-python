@@ -363,6 +363,49 @@ class BenzingaClient(BaseClient):
             options=options,
         )
 
+    def list_benzinga_news_v2(
+        self,
+        published: Optional[str] = None,
+        published_gt: Optional[str] = None,
+        published_gte: Optional[str] = None,
+        published_lt: Optional[str] = None,
+        published_lte: Optional[str] = None,
+        channels: Optional[str] = None,
+        channels_all_of: Optional[str] = None,
+        channels_any_of: Optional[str] = None,
+        tags: Optional[str] = None,
+        tags_all_of: Optional[str] = None,
+        tags_any_of: Optional[str] = None,
+        author: Optional[str] = None,
+        author_any_of: Optional[str] = None,
+        author_gt: Optional[str] = None,
+        author_gte: Optional[str] = None,
+        author_lt: Optional[str] = None,
+        author_lte: Optional[str] = None,
+        stocks: Optional[str] = None,
+        stocks_all_of: Optional[str] = None,
+        stocks_any_of: Optional[str] = None,
+        tickers: Optional[str] = None,
+        tickers_all_of: Optional[str] = None,
+        tickers_any_of: Optional[str] = None,
+        limit: Optional[int] = None,
+        sort: Optional[Union[str, Sort]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        raw: bool = False,
+        options: Optional[RequestOptionBuilder] = None,
+    ) -> Union[Iterator[BenzingaNews], HTTPResponse]:
+        """
+        Endpoint: GET /benzinga/v2/news
+        """
+        url = "/benzinga/v2/news"
+        return self._paginate(
+            path=url,
+            params=self._get_params(self.list_benzinga_news_v2, locals()),
+            raw=raw,
+            deserializer=BenzingaNews.from_dict,
+            options=options,
+        )
+
     def list_benzinga_ratings(
         self,
         date: Optional[Union[str, date]] = None,
