@@ -7,7 +7,7 @@ import asyncio
 import ssl
 import certifi
 from .models import *
-from websockets.client import connect, WebSocketClientProtocol
+from websockets.asyncio.client import connect, ClientConnection
 from websockets.exceptions import ConnectionClosedOK, ConnectionClosedError
 from ..logging import get_logger
 import logging
@@ -65,7 +65,7 @@ class WebSocketClient:
         self.subscribed = False
         self.subs: Set[str] = set()
         self.max_reconnects = max_reconnects
-        self.websocket: Optional[WebSocketClientProtocol] = None
+        self.websocket: Optional[ClientConnection] = None
         if subscriptions is None:
             subscriptions = []
         self.scheduled_subs: Set[str] = set(subscriptions)
@@ -100,8 +100,13 @@ class WebSocketClient:
             ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
             ssl_context.load_verify_locations(certifi.where())
 
+        last_exc = None
         async for s in connect(
-            self.url, close_timeout=close_timeout, ssl=ssl_context, **kwargs
+            self.url,
+            close_timeout=close_timeout,
+            ssl=ssl_context,
+            process_exception=lambda exc: None,
+            **kwargs,
         ):
             self.websocket = s
             try:
@@ -151,14 +156,22 @@ class WebSocketClient:
                 logger.debug("connection closed (OK): %s", e)
                 return
             except ConnectionClosedError as e:
+                last_exc = e
                 logger.debug("connection closed (ERR): %s", e)
                 reconnects += 1
                 self.scheduled_subs = set(self.subs)
                 self.subs = set()
                 self.schedule_resub = True
                 if self.max_reconnects is not None and reconnects > self.max_reconnects:
-                    return
+                    break
                 continue
+
+        if (
+            last_exc
+            and self.max_reconnects is not None
+            and reconnects > self.max_reconnects
+        ):
+            raise last_exc
 
     def run(
         self,
