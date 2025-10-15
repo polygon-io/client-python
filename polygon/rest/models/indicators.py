@@ -1,4 +1,3 @@
-from sqlite3 import Timestamp
 from typing import Optional, Any, Dict, List, Union
 from ...modelclass import modelclass
 from .aggs import Agg

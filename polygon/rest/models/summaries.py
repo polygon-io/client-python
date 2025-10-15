@@ -1,4 +1,3 @@
-from sqlite3 import Timestamp
 from typing import Optional
 from ...modelclass import modelclass
 from .tickers import Branding
