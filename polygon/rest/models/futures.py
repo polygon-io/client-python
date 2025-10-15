@@ -265,7 +265,20 @@ class FuturesSnapshotMinute:
     last_updated: Optional[int] = None
     low: Optional[float] = None
     open: Optional[float] = None
+    timeframe: Optional[str] = None
     volume: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesSnapshotMinute(
+            close=d.get("close"),
+            high=d.get("high"),
+            last_updated=d.get("last_updated"),
+            low=d.get("low"),
+            open=d.get("open"),
+            timeframe=d.get("timeframe"),
+            volume=d.get("volume"),
+        )
 
 
 @modelclass
@@ -277,6 +290,20 @@ class FuturesSnapshotQuote:
     bid_size: Optional[int] = None
     bid_timestamp: Optional[int] = None
     last_updated: Optional[int] = None
+    timeframe: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesSnapshotQuote(
+            ask=d.get("ask"),
+            ask_size=d.get("ask_size"),
+            ask_timestamp=d.get("ask_timestamp"),
+            bid=d.get("bid"),
+            bid_size=d.get("bid_size"),
+            bid_timestamp=d.get("bid_timestamp"),
+            last_updated=d.get("last_updated"),
+            timeframe=d.get("timeframe"),
+        )
 
 
 @modelclass
@@ -284,6 +311,16 @@ class FuturesSnapshotTrade:
     last_updated: Optional[int] = None
     price: Optional[float] = None
     size: Optional[int] = None
+    timeframe: Optional[str] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesSnapshotTrade(
+            last_updated=d.get("last_updated"),
+            price=d.get("price"),
+            size=d.get("size"),
+            timeframe=d.get("timeframe"),
+        )
 
 
 @modelclass
@@ -297,6 +334,20 @@ class FuturesSnapshotSession:
     previous_settlement: Optional[float] = None
     settlement_price: Optional[float] = None
     volume: Optional[float] = None
+
+    @staticmethod
+    def from_dict(d):
+        return FuturesSnapshotSession(
+            change=d.get("change"),
+            change_percent=d.get("change_percent"),
+            close=d.get("close"),
+            high=d.get("high"),
+            low=d.get("low"),
+            open=d.get("open"),
+            previous_settlement=d.get("previous_settlement"),
+            settlement_price=d.get("settlement_price"),
+            volume=d.get("volume"),
+        )
 
 
 @modelclass
