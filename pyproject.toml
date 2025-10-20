@@ -33,7 +33,7 @@ certifi = ">=2022.5.18,<2026.0.0"
 black = "^24.8.0"
 mypy = "^1.18"
 types-urllib3 = "^1.26.25"
-Sphinx = "^7.1.2"
+Sphinx = "^7.4.7"
 sphinx-rtd-theme = "^3.0.2"
 # keep this in sync with docs/requirements.txt for readthedocs.org
 sphinx-autodoc-typehints = "^2.0.1"
