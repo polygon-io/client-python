@@ -535,14 +535,14 @@ test = ["appdirs (==1.4.4)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-mock 
 
 [[package]]
 name = "pook"
-version = "2.0.1"
+version = "2.1.4"
 description = "HTTP traffic mocking and expectations made easy"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "pook-2.0.1-py3-none-any.whl", hash = "sha256:30d73c95e0520f45c1e3889f3bf486e990b6f04b4915aa9daf86cf0d8136b2e1"},
-    {file = "pook-2.0.1.tar.gz", hash = "sha256:e04c0e698f256438b4dfbf3ab1b27559f0ec25e42176823167f321f4e8b9c9e4"},
+    {file = "pook-2.1.4-py3-none-any.whl", hash = "sha256:3f273ab189874dd775a15c3fa1b1bf89f28b001d2619c5f909e4d3f7df66d36e"},
+    {file = "pook-2.1.4.tar.gz", hash = "sha256:2bcbc7d58d1d88b6f2da98c711f5391d5f690292bdd5ff2ccda927576500937a"},
 ]
 
 [package.dependencies]
@@ -1025,4 +1025,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "8862e5f182dcc8b07b2c3ebff198187fcb1c4d17895071592b83c772ad84b980"
+content-hash = "cb904c35dab26d810aa728bd0f813e6a64290bd95915fe9230e8e1c2d7de8251"
