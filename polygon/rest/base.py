@@ -113,8 +113,8 @@ class BaseClient:
                 print_headers["Authorization"] = print_headers["Authorization"].replace(
                     self.API_KEY, "REDACTED"
                 )
-            print(f"Request URL: {full_url}")
-            print(f"Request Headers: {print_headers}")
+            logger.info("Request URL: %s", full_url)
+            logger.info("Request Headers: %s", print_headers)
 
         resp = self.client.request(
             "GET",
@@ -125,7 +125,7 @@ class BaseClient:
 
         if self.trace:
             resp_headers_dict = dict(resp.headers.items())
-            print(f"Response Headers: {resp_headers_dict}")
+            logger.info("Response Headers: %s", resp_headers_dict)
 
         if resp.status != 200:
             raise BadResponse(resp.data.decode("utf-8"))
@@ -136,7 +136,7 @@ class BaseClient:
         try:
             obj = self._decode(resp)
         except ValueError as e:
-            print(f"Error decoding json response: {e}")
+            logger.error("Error decoding json response: %s", e)
             return []
 
         if result_key:
@@ -222,7 +222,7 @@ class BaseClient:
             try:
                 decoded = self._decode(resp)
             except ValueError as e:
-                print(f"Error decoding json response: {e}")
+                logger.error("Error decoding json response: %s", e)
                 return []
 
             if result_key not in decoded:
