@@ -135,12 +135,12 @@ Sometimes you may find it useful to see the actual request and response details 
 You can activate the debug mode as follows:
 
 ```python
-client = RESTClient(trace=True)
+client = RESTClient(trace=True, verbose=True)
 ```
 
 ### What Does Debug Mode Do?
 
-When debug mode is enabled, the client will print out useful debugging information for each API request. This includes: the request URL, the headers sent in the request, and the headers received in the response.
+When debug mode is enabled, the client will print out useful debugging information for each API request. You need to enable `verbose=True` too so that you log the trace or already have your own logger configured. This includes: the request URL, the headers sent in the request, and the headers received in the response.
 
 ### Example Output
 
