@@ -113,8 +113,7 @@ class BaseClient:
                 print_headers["Authorization"] = print_headers["Authorization"].replace(
                     self.API_KEY, "REDACTED"
                 )
-            logger.info("Request URL: %s", full_url)
-            logger.info("Request Headers: %s", print_headers)
+            logger.info("Request URL: %s, Request Headers: %s", full_url, print_headers)
 
         resp = self.client.request(
             "GET",
