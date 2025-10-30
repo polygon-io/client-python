@@ -29,7 +29,7 @@ jobs:
         uses: abatilo/actions-poetry@v2
       - name: Get package name
         id: package
-        run: echo "name=$(poetry run python -c 'import toml; print(toml.load(\"pyproject.toml\")[\"tool\"][\"poetry\"][\"name\"])')" >> $GITHUB_OUTPUT
+        run: echo "name=$(python -c \"with open('pyproject.toml') as f: lines = f.readlines(); for line in lines: if line.strip().startswith('name ='): print(line.strip().split(' = ')[1].strip('\\\"')); break\")" >> $GITHUB_OUTPUT
       - name: Configure Poetry
         run: |
           if [ "${{ steps.package.outputs.name }}" == "polygon-api-client" ]; then
@@ -42,6 +42,8 @@ jobs:
           fi
       - name: Install deps
         run: poetry install
+      - name: Run tests
+        run: poetry run make test  # Assuming 'make test' from repo; adjust if different (e.g., poetry run pytest)
       - name: Get tag
         id: tag
         uses: dawidd6/action-get-tag@v1
