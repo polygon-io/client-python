@@ -31,17 +31,17 @@ jobs:
         id: package
         run: |
           echo "name=$(python - <<'PY'
-import sys
-with open('pyproject.toml', 'r', encoding='utf-8') as f:
-    for line in f:
-        s = line.strip()
-        if s.startswith('name'):
-            # supports: name="foo" or name = "foo" and ignores inline comments
-            val = s.split('=', 1)[1].split('#', 1)[0].strip().strip('"').strip("'")
-            print(val)
-            break
-PY
-)" >> "$GITHUB_OUTPUT"
+          import sys
+          with open('pyproject.toml', 'r', encoding='utf-8') as f:
+              for line in f:
+                  s = line.strip()
+                  if s.startswith('name'):
+                      # supports: name="foo" or name = "foo" and ignores inline comments
+                      val = s.split('=', 1)[1].split('#', 1)[0].strip().strip('"').strip("'")
+                      print(val)
+                      break
+          PY
+          )" >> "$GITHUB_OUTPUT"
       - name: Configure Poetry
         run: |
           if [ "${{ steps.package.outputs.name }}" = "polygon-api-client" ]; then
