@@ -1,10 +1,10 @@
-from polygon import RESTClient
+from massive import RESTClient
 
 # docs
-# https://polygon.io/docs/rest/stocks/fundamentals/short-interest
+# https://massive.com/docs/rest/stocks/fundamentals/short-interest
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 items = []
 for item in client.list_short_interest(ticker="RDDT"):

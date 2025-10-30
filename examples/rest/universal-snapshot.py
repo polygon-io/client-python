@@ -1,14 +1,14 @@
 from typing import cast, Iterator, Union
 from urllib3 import HTTPResponse
-from polygon import RESTClient
-from polygon.rest.models import UniversalSnapshot, SnapshotMarketType
+from massive import RESTClient
+from massive.rest.models import UniversalSnapshot, SnapshotMarketType
 
 # docs
-# https://polygon.io/docs/stocks/get_v3_snapshot
-# https://polygon-api-client.readthedocs.io/en/latest/Snapshot.html
+# https://massive.com/docs/stocks/get_v3_snapshot
+# https://massive-api-client.readthedocs.io/en/latest/Snapshot.html
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 
 def print_snapshots(iterator: Union[Iterator[UniversalSnapshot], HTTPResponse]):

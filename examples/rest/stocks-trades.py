@@ -1,8 +1,8 @@
-from polygon import RESTClient
+from massive import RESTClient
 
 # docs
-# https://polygon.io/docs/stocks/get_v3_trades__stockticker
-# https://polygon-api-client.readthedocs.io/en/latest/Trades.html#polygon.RESTClient.list_trades
+# https://massive.com/docs/stocks/get_v3_trades__stockticker
+# https://massive-api-client.readthedocs.io/en/latest/Trades.html#massive.RESTClient.list_trades
 
 # Trade data refers to the tick records of individual transactions that have
 # taken place in a financial market, such as the price, size, and time of
@@ -11,7 +11,7 @@ from polygon import RESTClient
 # market behavior and inform their investment decisions.
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 trades = []
 for t in client.list_trades("IBIO", "2023-02-01", limit=50000):

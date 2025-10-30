@@ -1,15 +1,15 @@
 # This code retrieves trade records and counts the amount of money that changes hands.
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     Trade,
 )
 
 # docs
-# https://polygon.io/docs/stocks/get_v3_trades__stockticker
-# https://polygon-api-client.readthedocs.io/en/latest/Trades.html#polygon.RESTClient.list_trades
+# https://massive.com/docs/stocks/get_v3_trades__stockticker
+# https://massive-api-client.readthedocs.io/en/latest/Trades.html#massive.RESTClient.list_trades
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 # used to track money across trades
 money = float(0)

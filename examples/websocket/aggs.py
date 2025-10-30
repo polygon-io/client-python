@@ -1,5 +1,5 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, EquityTrade
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, EquityTrade
 from typing import List
 
 c = WebSocketClient(subscriptions=["T.*"])

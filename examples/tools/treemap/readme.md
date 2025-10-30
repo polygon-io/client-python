@@ -1,47 +1,47 @@
-# Mapping Market Movements with Polygon.io and D3.js Treemap
+# Mapping Market Movements with Massive.com and D3.js Treemap
 
-This repository offers a tutorial on how to create a Treemap visualization of the current stock market conditions. Using D3.js Treemap, Polygon.io's [Snapshot API](https://polygon.io/docs/stocks/get_v2_snapshot_locale_us_markets_stocks_tickers), and the [python-client library](https://github.com/polygon-io/client-python), we'll guide you through building an interactive visualization. The Snapshot API allows us to fetch the most recent market data for all US-traded stocks, transforming them into color-coded nested rectangles within the Treemap. This presents an insightful and interactive snapshot of the market's current status.
+This repository offers a tutorial on how to create a Treemap visualization of the current stock market conditions. Using D3.js Treemap, Massive.com's [Snapshot API](https://massive.com/docs/stocks/get_v2_snapshot_locale_us_markets_stocks_tickers), and the [python-client library](https://github.com/massive-com/client-python), we'll guide you through building an interactive visualization. The Snapshot API allows us to fetch the most recent market data for all US-traded stocks, transforming them into color-coded nested rectangles within the Treemap. This presents an insightful and interactive snapshot of the market's current status.
 
 ![Treemap Visualization](./market-wide-treemap.png)
 
-Please see the [tutorial](https://polygon.io/blog/market-movements-with-treemap) for more details.
+Please see the [tutorial](https://massive.com/blog/market-movements-with-treemap) for more details.
 
 ## Structure
 
 The repo consists of:
 
-- `polygon_sic_code_data_gatherer.py`: Builds ticker to SIC code mapping for treemap groups.
+- `massive_sic_code_data_gatherer.py`: Builds ticker to SIC code mapping for treemap groups.
 - `sic_code_groups.json`: Pre-built JSON file containing grouped ticker to SIC code data.
 - `treemap_server.py`: Simple server to host the treemap visualization (requires sic_code_groups.json).
 
-For those interested in the underlying mechanics, the `polygon_sic_code_data_gatherer.py` script retrieves a snapshot of all ticker symbols, processes each one to obtain its SIC code via the Ticker Details API, and then saves these classifications into the file named `sic_code_groups.json`.
+For those interested in the underlying mechanics, the `massive_sic_code_data_gatherer.py` script retrieves a snapshot of all ticker symbols, processes each one to obtain its SIC code via the Ticker Details API, and then saves these classifications into the file named `sic_code_groups.json`.
 
 The logic of this SIC code-to-group enables us to transform a large dataset into a neatly structured visualization. This structured approach facilitates easy identification of market conditions, providing a snapshot of the market's overall health. You don't need to do anything since it is pre-built but we added the script if you wanted to modify anything.
 
 ## Getting Started
 
-Setting up and visualizing the stock market's current conditions is straightforward. All you'll need to do is clone the repository, secure an API key from Polygon.io, install the required Python library, launch the visualization server example, and then dive into the visualization through your web browser.
+Setting up and visualizing the stock market's current conditions is straightforward. All you'll need to do is clone the repository, secure an API key from Massive.com, install the required Python library, launch the visualization server example, and then dive into the visualization through your web browser.
 
 ### Prerequisites
 
 - Python 3.x
-- Polygon.io account and API key
+- Massive.com account and API key
 
 ### Setup
 
 1. Clone the repository:
    ```
-   git clone https://github.com/polygon-io/client-python.git
+   git clone https://github.com/massive-com/client-python.git
    ```
 
 2. Install the necessary Python packages. 
    ```
-   pip install -U polygon-api-client
+   pip install -U massive-api-client
    ```
 
-3. Store your Polygon.io API key securely, or set it as an environment variable:
+3. Store your Massive.com API key securely, or set it as an environment variable:
    ```
-   export POLYGON_API_KEY=YOUR_API_KEY_HERE
+   export MASSIVE_API_KEY=YOUR_API_KEY_HERE
    ```
 
 ### Running the Treemap Server

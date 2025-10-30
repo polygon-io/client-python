@@ -1,5 +1,5 @@
-from polygon import RESTClient
-from polygon.rest.models.request import RequestOptionBuilder
+from massive import RESTClient
+from massive.rest.models.request import RequestOptionBuilder
 
 
 def get_list_trades_launchpad():

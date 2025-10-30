@@ -27,8 +27,8 @@
   "total_employees": 154000,
   "list_date": "1980-12-12",
   "branding": {
-   "logo_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_logo.svg",
-   "icon_url": "https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_icon.png"
+   "logo_url": "https://api.massive.com/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_logo.svg",
+   "icon_url": "https://api.massive.com/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_icon.png"
   },
   "share_class_shares_outstanding": 16319440000,
   "weighted_shares_outstanding": 16185181000

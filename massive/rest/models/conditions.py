@@ -62,7 +62,7 @@ class UpdateRules:
 
 @modelclass
 class Condition:
-    "Condition contains data for a condition that Polygon.io uses."
+    "Condition contains data for a condition that Massive.com uses."
     abbreviation: Optional[str] = None
     asset_class: Optional[str] = None
     data_types: Optional[List[str]] = None

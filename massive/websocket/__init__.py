@@ -13,7 +13,7 @@ from ..logging import get_logger
 import logging
 from ..exceptions import AuthError
 
-env_key = "POLYGON_API_KEY"
+env_key = "MASSIVE_API_KEY"
 logger = get_logger("WebSocketClient")
 
 
@@ -32,7 +32,7 @@ class WebSocketClient:
         **kwargs,
     ):
         """
-        Initialize a Polygon WebSocketClient.
+        Initialize a Massive WebSocketClient.
 
         :param api_key: Your API key.
         :param feed: The feed to subscribe to.

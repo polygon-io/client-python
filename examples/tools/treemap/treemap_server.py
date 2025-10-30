@@ -1,4 +1,4 @@
-from polygon import RESTClient
+from massive import RESTClient
 from collections import defaultdict
 import http.server
 import socketserver
@@ -14,7 +14,7 @@ html = """
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title>Polygon.io Snapshot + D3.js Treemap</title>
+    <title>Massive.com Snapshot + D3.js Treemap</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style type="text/css">
         svg {
@@ -218,7 +218,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
     def generate_data(self):
         client = (
             RESTClient()
-        )  # Assuming you have POLYGON_API_KEY environment variable set up
+        )  # Assuming you have MASSIVE_API_KEY environment variable set up
         snapshots = client.get_snapshot_all("stocks")
         pct_changes = {
             snapshot.ticker: round(snapshot.todays_change_percent, 2)

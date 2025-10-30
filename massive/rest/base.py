@@ -16,7 +16,7 @@ from ..exceptions import AuthError, BadResponse
 logger = get_logger("RESTClient")
 version_number = "unknown"
 try:
-    version_number = version("polygon-api-client")
+    version_number = version("massive-api-client")
 except PackageNotFoundError:
     pass
 
@@ -37,7 +37,7 @@ class BaseClient:
     ):
         if api_key is None:
             raise AuthError(
-                f"Must specify env var POLYGON_API_KEY or pass api_key in constructor"
+                f"Must specify env var MASSIVE_API_KEY or pass api_key in constructor"
             )
 
         self.API_KEY = api_key
@@ -47,7 +47,7 @@ class BaseClient:
         self.headers = {
             "Authorization": "Bearer " + self.API_KEY,
             "Accept-Encoding": "gzip",
-            "User-Agent": f"Polygon.io PythonClient/{version_number}",
+            "User-Agent": f"Massive.com PythonClient/{version_number}",
         }
 
         # initialize self.retries with the parameter value before using it

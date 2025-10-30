@@ -1,4 +1,4 @@
-from polygon.rest.models import (
+from massive.rest.models import (
     Ticker,
     TickerDetails,
     TickerNews,
@@ -102,8 +102,8 @@ class TickersTest(BaseTest):
                 postal_code="95014",
             ),
             branding=Branding(
-                icon_url="https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_icon.png",
-                logo_url="https://api.polygon.io/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_logo.svg",
+                icon_url="https://api.massive.com/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_icon.png",
+                logo_url="https://api.massive.com/v1/reference/company-branding/d3d3LmFwcGxlLmNvbQ/images/2022-05-01_logo.svg",
             ),
             cik="0000320193",
             composite_figi="BBG000B9XRY4",
@@ -148,9 +148,9 @@ class TickersTest(BaseTest):
                 keywords=None,
                 published_utc="2022-04-28T17:08:00Z",
                 publisher=Publisher(
-                    favicon_url="https://s3.polygon.io/public/assets/news/favicons/marketwatch.ico",
+                    favicon_url="https://s3.massive.com/public/assets/news/favicons/marketwatch.ico",
                     homepage_url="https://www.marketwatch.com/",
-                    logo_url="https://s3.polygon.io/public/assets/news/logos/marketwatch.svg",
+                    logo_url="https://s3.massive.com/public/assets/news/logos/marketwatch.svg",
                     name="MarketWatch",
                 ),
                 tickers=["MSFT", "TSN", "NFLX", "AMZN"],

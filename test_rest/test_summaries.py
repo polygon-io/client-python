@@ -1,4 +1,4 @@
-from polygon.rest.models import SummaryResult, Branding, Session, Options
+from massive.rest.models import SummaryResult, Branding, Session, Options
 from base import BaseTest
 
 
@@ -12,8 +12,8 @@ class SummariesTest(BaseTest):
                 name="Norwegian Cruise Lines",
                 ticker="NCLH",
                 branding=Branding(
-                    icon_url="https://api.polygon.io/icon.png",
-                    logo_url="https://api.polygon.io/logo.svg",
+                    icon_url="https://api.massive.com/icon.png",
+                    logo_url="https://api.massive.com/logo.svg",
                 ),
                 market_status="closed",
                 type="stocks",
@@ -82,8 +82,8 @@ class SummariesTest(BaseTest):
                 name="Bitcoin - United States Dollar",
                 ticker="X:BTCUSD",
                 branding=Branding(
-                    icon_url="https://api.polygon.io/icon.png",
-                    logo_url="https://api.polygon.io/logo.svg",
+                    icon_url="https://api.massive.com/icon.png",
+                    logo_url="https://api.massive.com/logo.svg",
                 ),
                 market_status="open",
                 type="crypto",

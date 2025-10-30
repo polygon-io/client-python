@@ -1,11 +1,11 @@
 import json
 import concurrent.futures
-from polygon import RESTClient
+from massive import RESTClient
 
-# Initialize Polygon API client
+# Initialize Massive API client
 client = RESTClient(
     trace=True
-)  # Assuming you have POLYGON_API_KEY environment variable set up
+)  # Assuming you have MASSIVE_API_KEY environment variable set up
 
 # Initialize the data structure to hold SIC code groups
 sic_code_groups = {}

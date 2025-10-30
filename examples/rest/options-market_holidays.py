@@ -1,14 +1,14 @@
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     MarketHoliday,
 )
 
 # docs
-# https://polygon.io/docs/options/get_v1_marketstatus_upcoming
-# https://polygon-api-client.readthedocs.io/en/latest/Reference.html#get-market-holidays
+# https://massive.com/docs/options/get_v1_marketstatus_upcoming
+# https://massive-api-client.readthedocs.io/en/latest/Reference.html#get-market-holidays
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 holidays = client.get_market_holidays()
 # print(holidays)

@@ -1,4 +1,4 @@
-from polygon.rest.models import Dividend
+from massive.rest.models import Dividend
 from base import BaseTest
 
 

@@ -1,4 +1,4 @@
-from polygon import WebSocketClient
+from massive import WebSocketClient
 from typing import Union
 import json
 

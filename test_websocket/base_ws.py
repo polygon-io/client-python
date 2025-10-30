@@ -2,7 +2,7 @@ import unittest
 import asyncio
 from mock_server import run_mock_server
 from typing import List
-from polygon.websocket import WebSocketMessage
+from massive.websocket import WebSocketMessage
 
 unittest.util._MAX_LENGTH = 30000  # type: ignore
 

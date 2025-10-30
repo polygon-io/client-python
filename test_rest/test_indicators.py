@@ -1,6 +1,6 @@
 from base import BaseTest
-from polygon.rest.models.aggs import Agg
-from polygon.rest.models.indicators import (
+from massive.rest.models.aggs import Agg
+from massive.rest.models.indicators import (
     SingleIndicatorResults,
     SMAIndicatorResults,
     EMAIndicatorResults,
@@ -28,7 +28,7 @@ class IndicatorsTest(BaseTest):
                 IndicatorValue(timestamp=1578049600, value=138.22),
             ],
             underlying=IndicatorUnderlying(
-                url="https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/1626912000000/1629590400000?adjusted=true&limit=50000&sort=desc",
+                url="https://api.massive.com/v2/aggs/ticker/AAPL/range/1/day/1626912000000/1629590400000?adjusted=true&limit=50000&sort=desc",
                 aggregates=[
                     Agg(
                         open=74.06,
@@ -198,7 +198,7 @@ class IndicatorsTest(BaseTest):
                 IndicatorValue(timestamp=1660896000000, value=173.97207377638065),
             ],
             underlying=IndicatorUnderlying(
-                url="https://api.polygon.io/v2/aggs/ticker/AAPL/range/15/minute/1660521600000/1660928746001?limit=50000&sort=desc",
+                url="https://api.massive.com/v2/aggs/ticker/AAPL/range/15/minute/1660521600000/1660928746001?limit=50000&sort=desc",
                 aggregates=[],
             ),
         )

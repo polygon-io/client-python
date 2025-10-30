@@ -1,21 +1,21 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Polygon Websocket Spec",
+    "title": "Massive Websocket Spec",
     "description": "The future of fintech.",
     "version": "2.0.0"
   },
   "servers": [
     {
-      "url": "wss://socket.polygon.io",
+      "url": "wss://socket.massive.com",
       "description": "Real-time"
     },
     {
-      "url": "wss://delayed.polygon.io",
+      "url": "wss://delayed.massive.com",
       "description": "Delayed"
     }
   ],
-  "x-polygon-order": {
+  "x-massive-order": {
     "stocks": {
       "market": [
         {
@@ -219,7 +219,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -248,7 +248,7 @@
                     },
                     "x": {
                       "type": "integer",
-                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
                     },
                     "i": {
                       "type": "string",
@@ -269,7 +269,7 @@
                     },
                     "c": {
                       "type": "array",
-                      "description": "The trade conditions. See <a target=\"_blank\" href=\"https://polygon.io/glossary/us/stocks/conditions-indicators\" \nalt=\"Conditions and Indicators\">Conditions and Indicators</a> for Polygon.io's trade conditions glossary.\n",
+                      "description": "The trade conditions. See <a target=\"_blank\" href=\"https://massive.com/glossary/us/stocks/conditions-indicators\" \nalt=\"Conditions and Indicators\">Conditions and Indicators</a> for Massive.com's trade conditions glossary.\n",
                       "items": {
                         "type": "integer",
                         "description": "The ID of the condition."
@@ -312,15 +312,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "trades",
           "description": "Trade data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -340,7 +340,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -399,7 +399,7 @@
                     },
                     "i": {
                       "type": "array",
-                      "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).\n",
+                      "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).\n",
                       "items": {
                         "type": "integer",
                         "description": "The indicator code.\n"
@@ -440,15 +440,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "nbbo",
           "description": "NBBO data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -464,7 +464,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -583,15 +583,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -611,7 +611,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -730,15 +730,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -758,7 +758,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -832,15 +832,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "limit-up-limit-down",
           "description": "Limit-Up Limit-Down data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -856,7 +856,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -901,7 +901,7 @@
                     },
                     "x": {
                       "type": "integer",
-                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
                     },
                     "o": {
                       "type": "integer",
@@ -934,15 +934,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "imbalances",
           "description": "Imbalances data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -958,7 +958,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -983,7 +983,7 @@
                       "description": "The event type."
                     },
                     "fmv": {
-                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.\n"
+                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.\n"
                     },
                     "sym": {
                       "description": "The ticker symbol for the given security."
@@ -1003,15 +1003,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1031,7 +1031,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1132,15 +1132,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1160,7 +1160,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+            "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1205,15 +1205,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "stocks",
           "description": "Stocks data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1233,7 +1233,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1262,7 +1262,7 @@
                     },
                     "x": {
                       "type": "integer",
-                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                      "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
                     },
                     "p": {
                       "type": "number",
@@ -1307,15 +1307,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "trades",
           "description": "Trade data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1335,7 +1335,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1364,11 +1364,11 @@
                     },
                     "bx": {
                       "type": "integer",
-                      "description": "The bid exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                      "description": "The bid exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
                     },
                     "ax": {
                       "type": "integer",
-                      "description": "The ask exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                      "description": "The ask exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
                     },
                     "bp": {
                       "type": "number",
@@ -1414,15 +1414,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "nbbo",
           "description": "NBBO data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -1438,7 +1438,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1553,15 +1553,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1581,7 +1581,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1696,15 +1696,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1724,7 +1724,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1749,7 +1749,7 @@
                       "description": "The event type."
                     },
                     "fmv": {
-                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.\n"
+                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.\n"
                     },
                     "sym": {
                       "description": "The ticker symbol for the given security."
@@ -1769,15 +1769,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1797,7 +1797,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1898,15 +1898,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1926,7 +1926,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+            "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -1971,15 +1971,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "options",
           "description": "Options data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -1999,7 +1999,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2028,7 +2028,7 @@
                         },
                         "x": {
                           "type": "integer",
-                          "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                          "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
                         },
                         "a": {
                           "type": "number",
@@ -2070,15 +2070,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "nbbo",
           "description": "NBBO data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "fx",
           "description": "Forex data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -2094,7 +2094,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2170,15 +2170,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "fx",
           "description": "Forex data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -2194,7 +2194,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2270,15 +2270,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "fx",
           "description": "Forex data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -2294,7 +2294,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2319,7 +2319,7 @@
                       "description": "The event type."
                     },
                     "fmv": {
-                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.\n"
+                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.\n"
                     },
                     "sym": {
                       "description": "The ticker symbol for the given security."
@@ -2339,15 +2339,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "fx",
           "description": "Forex data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -2367,7 +2367,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2468,15 +2468,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "fx",
           "description": "Forex data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -2496,7 +2496,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+            "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2541,15 +2541,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "fx",
           "description": "Forex data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -2569,7 +2569,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2625,11 +2625,11 @@
                     },
                     "x": {
                       "type": "integer",
-                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
                     },
                     "r": {
                       "type": "integer",
-                      "description": "The timestamp that the tick was received by Polygon."
+                      "description": "The timestamp that the tick was received by Massive."
                     }
                   }
                 },
@@ -2650,15 +2650,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "trades",
           "description": "Trade data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -2674,7 +2674,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2728,11 +2728,11 @@
                     },
                     "x": {
                       "type": "integer",
-                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
                     },
                     "r": {
                       "type": "integer",
-                      "description": "The timestamp that the tick was received by Polygon."
+                      "description": "The timestamp that the tick was received by Massive."
                     }
                   }
                 },
@@ -2751,15 +2751,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "nbbo",
           "description": "NBBO data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -2775,7 +2775,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2833,11 +2833,11 @@
                     },
                     "x": {
                       "type": "integer",
-                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+                      "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
                     },
                     "r": {
                       "type": "integer",
-                      "description": "The timestamp that the tick was received by Polygon."
+                      "description": "The timestamp that the tick was received by Massive."
                     }
                   }
                 },
@@ -2872,21 +2872,21 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "nbbo",
           "description": "NBBO data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
           }
         ],
-        "x-polygon-deprecation": {
+        "x-massive-deprecation": {
           "date": 1719838800000
         }
       }
@@ -2899,7 +2899,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -2987,15 +2987,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -3011,7 +3011,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3099,15 +3099,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "realtime",
             "description": "Real Time Data"
@@ -3123,7 +3123,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3148,7 +3148,7 @@
                       "description": "The event type."
                     },
                     "fmv": {
-                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.\n"
+                      "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.\n"
                     },
                     "sym": {
                       "description": "The ticker symbol for the given security."
@@ -3168,15 +3168,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -3196,7 +3196,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3297,15 +3297,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -3325,7 +3325,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+            "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3370,15 +3370,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "indicative-price",
           "description": "Indicative Price"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "crypto",
           "description": "Crypto data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -3398,7 +3398,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://massive.com/docs/indices/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3486,15 +3486,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "indices",
           "description": "Indices data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -3514,7 +3514,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://massive.com/docs/indices/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3602,15 +3602,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "aggregates",
           "description": "Aggregate data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "indices",
           "description": "Indices data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -3630,7 +3630,7 @@
           {
             "name": "ticker",
             "in": "query",
-            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+            "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://massive.com/docs/indices/get_v3_reference_tickers).\n",
             "required": true,
             "schema": {
               "type": "string",
@@ -3675,15 +3675,15 @@
             }
           }
         },
-        "x-polygon-entitlement-data-type": {
+        "x-massive-entitlement-data-type": {
           "name": "value",
           "description": "Value data"
         },
-        "x-polygon-entitlement-market-type": {
+        "x-massive-entitlement-market-type": {
           "name": "indices",
           "description": "Indices data"
         },
-        "x-polygon-entitlement-allowed-timeframes": [
+        "x-massive-entitlement-allowed-timeframes": [
           {
             "name": "delayed",
             "description": "15 minute delayed data"
@@ -3943,7 +3943,7 @@
           },
           "x": {
             "type": "integer",
-            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
           },
           "i": {
             "type": "string",
@@ -3964,7 +3964,7 @@
           },
           "c": {
             "type": "array",
-            "description": "The trade conditions. See <a target=\"_blank\" href=\"https://polygon.io/glossary/us/stocks/conditions-indicators\" \nalt=\"Conditions and Indicators\">Conditions and Indicators</a> for Polygon.io's trade conditions glossary.\n",
+            "description": "The trade conditions. See <a target=\"_blank\" href=\"https://massive.com/glossary/us/stocks/conditions-indicators\" \nalt=\"Conditions and Indicators\">Conditions and Indicators</a> for Massive.com's trade conditions glossary.\n",
             "items": {
               "type": "integer",
               "description": "The ID of the condition."
@@ -4033,7 +4033,7 @@
           },
           "i": {
             "type": "array",
-            "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://polygon.io/glossary/us/stocks/conditions-indicators).\n",
+            "description": "The indicators. For more information, see our glossary of [Conditions and\nIndicators](https://massive.com/glossary/us/stocks/conditions-indicators).\n",
             "items": {
               "type": "integer",
               "description": "The indicator code.\n"
@@ -4369,7 +4369,7 @@
           },
           "x": {
             "type": "integer",
-            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
           },
           "o": {
             "type": "integer",
@@ -4396,7 +4396,7 @@
       },
       "StockExchangeID": {
         "type": "integer",
-        "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+        "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
       },
       "OptionTradeEvent": {
         "type": "object",
@@ -4413,7 +4413,7 @@
           },
           "x": {
             "type": "integer",
-            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+            "description": "The exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/stocks/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
           },
           "p": {
             "type": "number",
@@ -4457,11 +4457,11 @@
           },
           "bx": {
             "type": "integer",
-            "description": "The bid exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+            "description": "The bid exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
           },
           "ax": {
             "type": "integer",
-            "description": "The ask exchange ID. See <a target=\"_blank\" href=\"https://polygon.io/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+            "description": "The ask exchange ID. See <a target=\"_blank\" href=\"https://massive.com/docs/options/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
           },
           "bp": {
             "type": "number",
@@ -4737,7 +4737,7 @@
           },
           "x": {
             "type": "integer",
-            "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+            "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
           },
           "a": {
             "type": "number",
@@ -4770,7 +4770,7 @@
               },
               "x": {
                 "type": "integer",
-                "description": "The exchange ID. See <a href=\"https://polygon.io/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Polygon.io's mapping of exchange IDs."
+                "description": "The exchange ID. See <a href=\"https://massive.com/docs/forex/get_v3_reference_exchanges\" alt=\"Exchanges\">Exchanges</a> for Massive.com's mapping of exchange IDs."
               },
               "a": {
                 "type": "number",
@@ -4936,11 +4936,11 @@
           },
           "x": {
             "type": "integer",
-            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
           },
           "r": {
             "type": "integer",
-            "description": "The timestamp that the tick was received by Polygon."
+            "description": "The timestamp that the tick was received by Massive."
           }
         }
       },
@@ -4986,11 +4986,11 @@
           },
           "x": {
             "type": "integer",
-            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
           },
           "r": {
             "type": "integer",
-            "description": "The timestamp that the tick was received by Polygon."
+            "description": "The timestamp that the tick was received by Massive."
           }
         }
       },
@@ -5152,11 +5152,11 @@
           },
           "x": {
             "type": "integer",
-            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+            "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
           },
           "r": {
             "type": "integer",
-            "description": "The timestamp that the tick was received by Polygon."
+            "description": "The timestamp that the tick was received by Massive."
           }
         }
       },
@@ -5166,11 +5166,11 @@
       },
       "CryptoExchangeID": {
         "type": "integer",
-        "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://polygon.io/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
+        "description": "The crypto exchange ID.  See <a target=\"_blank\" href=\"https://massive.com/docs/crypto/get_v3_reference_exchanges\">Exchanges</a> for a list of exchanges and their IDs.\n"
       },
       "CryptoReceivedTimestamp": {
         "type": "integer",
-        "description": "The timestamp that the tick was received by Polygon."
+        "description": "The timestamp that the tick was received by Massive."
       },
       "IndicesBaseAggregateEvent": {
         "type": "object",
@@ -5455,7 +5455,7 @@
             "description": "The event type."
           },
           "fmv": {
-            "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://polygon.io/contact\">contact us</a>.\n"
+            "description": "Fair market value is only available on Business plans. It is our proprietary algorithm to generate a real-time, accurate, fair market value of a tradable security. For more information, <a rel=\"nofollow\" target=\"_blank\" href=\"https://massive.com/contact\">contact us</a>.\n"
           },
           "sym": {
             "description": "The ticker symbol for the given security."
@@ -5470,7 +5470,7 @@
       "StocksTickerParam": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://polygon.io/docs/stocks/get_v3_reference_tickers).\n",
+        "description": "Specify a stock ticker or use * to subscribe to all stock tickers.\nYou can also use a comma separated list to subscribe to multiple stock tickers.\nYou can retrieve available stock tickers from our [Stock Tickers API](https://massive.com/docs/stocks/get_v3_reference_tickers).\n",
         "required": true,
         "schema": {
           "type": "string",
@@ -5481,7 +5481,7 @@
       "OptionsTickerParam": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+        "description": "Specify an option contract or use * to subscribe to all option contracts.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
         "required": true,
         "schema": {
           "type": "string",
@@ -5492,7 +5492,7 @@
       "OptionsTickerWithoutWildcardParam": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://polygon.io/docs/options/get_v3_reference_options_contracts).\n",
+        "description": "Specify an option contract. You're only allowed to subscribe to 1,000 option contracts per connection.\nYou can also use a comma separated list to subscribe to multiple option contracts.\nYou can retrieve active options contracts from our [Options Contracts API](https://massive.com/docs/options/get_v3_reference_options_contracts).\n",
         "required": true,
         "schema": {
           "type": "string",
@@ -5503,7 +5503,7 @@
       "ForexTickerParam": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://polygon.io/docs/forex/get_v3_reference_tickers).\n",
+        "description": "Specify a forex pair in the format {from}/{to} or use * to subscribe to all forex pairs.\nYou can also use a comma separated list to subscribe to multiple forex pairs.\nYou can retrieve active forex tickers from our [Forex Tickers API](https://massive.com/docs/forex/get_v3_reference_tickers).\n",
         "required": true,
         "schema": {
           "type": "string",
@@ -5514,7 +5514,7 @@
       "CryptoTickerParam": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://polygon.io/docs/crypto/get_v3_reference_tickers).\n",
+        "description": "Specify a crypto pair in the format {from}-{to} or use * to subscribe to all crypto pairs.\nYou can also use a comma separated list to subscribe to multiple crypto pairs.\nYou can retrieve active crypto tickers from our [Crypto Tickers API](https://massive.com/docs/crypto/get_v3_reference_tickers).\n",
         "required": true,
         "schema": {
           "type": "string",
@@ -5525,7 +5525,7 @@
       "IndicesIndexParam": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+        "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://massive.com/docs/indices/get_v3_reference_tickers).\n",
         "required": true,
         "schema": {
           "type": "string",
@@ -5536,7 +5536,7 @@
       "IndicesIndexParamWithoutWildcard": {
         "name": "ticker",
         "in": "query",
-        "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://polygon.io/docs/indices/get_v3_reference_tickers).\n",
+        "description": "Specify an index ticker using \"I:\" prefix or use * to subscribe to all index tickers.\nYou can also use a comma separated list to subscribe to multiple index tickers.\nYou can retrieve available index tickers from our [Index Tickers API](https://massive.com/docs/indices/get_v3_reference_tickers).\n",
         "required": true,
         "schema": {
           "type": "string",

@@ -1,12 +1,12 @@
-from polygon import RESTClient
+from massive import RESTClient
 import pprint
 
 # docs
-# https://polygon.io/docs/crypto/get_v2_aggs_grouped_locale_global_market_crypto__date
-# https://polygon-api-client.readthedocs.io/en/latest/Aggs.html#get-grouped-daily-aggs
+# https://massive.com/docs/crypto/get_v2_aggs_grouped_locale_global_market_crypto__date
+# https://massive-api-client.readthedocs.io/en/latest/Aggs.html#get-grouped-daily-aggs
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 grouped = client.get_grouped_daily_aggs(
     "2023-01-09", locale="global", market_type="crypto"

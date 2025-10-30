@@ -1,5 +1,5 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, EquityTrade
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, EquityTrade
 from typing import List
 from typing import Dict
 from datetime import datetime
@@ -8,10 +8,10 @@ import threading
 import os
 
 # docs
-# https://polygon.io/docs/stocks/ws_stocks_am
-# https://polygon-api-client.readthedocs.io/en/latest/WebSocket.html#
+# https://massive.com/docs/stocks/ws_stocks_am
+# https://massive-api-client.readthedocs.io/en/latest/WebSocket.html#
 
-# This program connects to the Polygon WebSocket API, authenticates the
+# This program connects to the Massive WebSocket API, authenticates the
 # connection, and subscribes to receive trades. Every 5 seconds, it counts
 # the number of trades per symbol and stores the results in a map. The
 # program then prints the map, which gives a readout of the top stocks
@@ -84,7 +84,7 @@ def print_centered(s: str):
 
 def run_websocket_client():
     # client = WebSocketClient("XXXXXX") # hardcoded api_key is used
-    client = WebSocketClient()  # POLYGON_API_KEY environment variable is used
+    client = WebSocketClient()  # MASSIVE_API_KEY environment variable is used
     client.subscribe("T.*")  # all trades
     client.run(handle_msg)
 

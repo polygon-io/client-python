@@ -1,11 +1,11 @@
 import unittest
 
-from polygon import RESTClient
-from polygon.rest.models.request import (
+from massive import RESTClient
+from massive.rest.models.request import (
     RequestOptionBuilder,
-    X_POLYGON_EDGE_ID,
-    X_POLYGON_EDGE_USER_AGENT,
-    X_POLYGON_EDGE_IP_ADDRESS,
+    X_MASSIVE_EDGE_ID,
+    X_MASSIVE_EDGE_USER_AGENT,
+    X_MASSIVE_EDGE_IP_ADDRESS,
 )
 
 
@@ -22,9 +22,9 @@ class RequestTest(unittest.TestCase):
         )
 
         expected_object = {
-            X_POLYGON_EDGE_ID: "test",
-            X_POLYGON_EDGE_IP_ADDRESS: "test",
-            X_POLYGON_EDGE_USER_AGENT: "test",
+            X_MASSIVE_EDGE_ID: "test",
+            X_MASSIVE_EDGE_IP_ADDRESS: "test",
+            X_MASSIVE_EDGE_USER_AGENT: "test",
         }
 
         assert expected_object == options.headers
@@ -35,16 +35,16 @@ class RequestTest(unittest.TestCase):
         )
 
         required_options = {
-            X_POLYGON_EDGE_ID: "test",
-            X_POLYGON_EDGE_IP_ADDRESS: "test",
+            X_MASSIVE_EDGE_ID: "test",
+            X_MASSIVE_EDGE_IP_ADDRESS: "test",
         }
         print(options.headers, required_options)
         self.assertDictEqual(required_options, options.headers)
 
         all_options = {
-            X_POLYGON_EDGE_ID: "test",
-            X_POLYGON_EDGE_IP_ADDRESS: "test",
-            X_POLYGON_EDGE_USER_AGENT: "test",
+            X_MASSIVE_EDGE_ID: "test",
+            X_MASSIVE_EDGE_IP_ADDRESS: "test",
+            X_MASSIVE_EDGE_USER_AGENT: "test",
         }
 
         options = options.update_edge_header(edge_user="test")
@@ -60,17 +60,17 @@ class RequestTest(unittest.TestCase):
         headers = options.headers
 
         expected_headers = {
-            "X-Polygon-Edge-ID": "test",
-            "X-Polygon-Edge-IP-Address": "test",
-            "X-Polygon-Edge-User-Agent": "test",
+            "X-Massive-Edge-ID": "test",
+            "X-Massive-Edge-IP-Address": "test",
+            "X-Massive-Edge-User-Agent": "test",
         }
 
         self.assertDictEqual(headers, expected_headers)
 
         expected_headers = {
-            "X-Polygon-Edge-ID": "test2",
-            "X-Polygon-Edge-IP-Address": "test2",
-            "X-Polygon-Edge-User-Agent": "test2",
+            "X-Massive-Edge-ID": "test2",
+            "X-Massive-Edge-IP-Address": "test2",
+            "X-Massive-Edge-User-Agent": "test2",
         }
 
         options = options.update_edge_header(
@@ -86,10 +86,10 @@ class RequestTest(unittest.TestCase):
 
         expected = {
             "Authorization": "Bearer test",
-            "User-Agent": "Polygon.io PythonClient/0.0.0",
-            "X-Polygon-Edge-ID": "test",
-            "X-Polygon-Edge-IP-Address": "test",
-            "X-Polygon-Edge-User-Agent": "test",
+            "User-Agent": "Massive.com PythonClient/0.0.0",
+            "X-Massive-Edge-ID": "test",
+            "X-Massive-Edge-IP-Address": "test",
+            "X-Massive-Edge-User-Agent": "test",
         }
 
         self.assertDictEqual(concat_headers, expected)
@@ -97,7 +97,7 @@ class RequestTest(unittest.TestCase):
         headers = None
         expected = {
             "Authorization": "Bearer test",
-            "User-Agent": "Polygon.io PythonClient/0.0.0",
+            "User-Agent": "Massive.com PythonClient/0.0.0",
         }
 
         self.assertDictEqual(expected, client._concat_headers(headers))

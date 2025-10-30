@@ -1,4 +1,4 @@
-from polygon.rest.models import Split
+from massive.rest.models import Split
 from base import BaseTest
 
 

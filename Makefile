@@ -22,22 +22,22 @@ help:
 
 ## Check code style
 style:
-	poetry run black $(if $(CI),--check,) polygon test_* examples
+	poetry run black $(if $(CI),--check,) massive test_* examples
 
 ## Check static types
 static:
-	poetry run mypy polygon test_* examples
+	poetry run mypy massive test_* examples
 
 ## Check code style and static types
 lint: style static
 
 ## Update the REST API spec
 rest-spec:
-	poetry run python .polygon/rest.py
+	poetry run python .massive/rest.py
 
 ## Update the WebSocket API spec
 ws-spec:
-	curl https://api.polygon.io/specs/websocket.json > .polygon/websocket.json
+	curl https://api.massive.io/specs/websocket.json > .massive/websocket.json
 
 test_rest:
 	poetry run python -m unittest discover -s test_rest

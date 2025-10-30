@@ -1,16 +1,16 @@
 # See Connections with the Related Companies API
 
-This repository contains the Python script and HTML file used in our tutorial to demonstrate how to identify and visualize relationships between companies using Polygon.io's Related Companies API. The tutorial showcases how to fetch related company data and create a dynamic network graph using Python and vis.js, providing insights into the interconnected corporate landscape.
+This repository contains the Python script and HTML file used in our tutorial to demonstrate how to identify and visualize relationships between companies using Massive.com's Related Companies API. The tutorial showcases how to fetch related company data and create a dynamic network graph using Python and vis.js, providing insights into the interconnected corporate landscape.
 
 ![Related Companies](./related-companies.png)
 
-Please see the [tutorial](https://polygon.io/blog/related-companies-api) for more details.
+Please see the [tutorial](https://massive.com/blog/related-companies-api) for more details.
 
 ### Prerequisites
 
 - Python 3.8+
-- Have Polygon.io's [python client](https://github.com/polygon-io/client-python) installed
-- An active Polygon.io account with an API key
+- Have Massive.com's [python client](https://github.com/massive-com/client-python) installed
+- An active Massive.com account with an API key
 
 ### Repository Contents
 
@@ -33,4 +33,4 @@ To visualize the relationships:
 2. Open `index.html` in your web browser.
 3. The web page should display the network graph.
 
-For a complete step-by-step guide on setting up and exploring the capabilities of the Related Companies API, refer to our detailed [tutorial](https://polygon.io/blog/related-companies-api).
+For a complete step-by-step guide on setting up and exploring the capabilities of the Related Companies API, refer to our detailed [tutorial](https://massive.com/blog/related-companies-api).

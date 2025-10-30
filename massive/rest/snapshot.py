@@ -41,11 +41,11 @@ class SnapshotClient(BaseClient):
     ) -> Union[Iterator[UniversalSnapshot], HTTPResponse]:
         """
         Get snapshots for assets of all types
-        - https://polygon.io/docs/stocks/get_v3_snapshot
-        - https://polygon.io/docs/options/get_v3_snapshot
-        - https://polygon.io/docs/indices/get_v3_snapshot
-        - https://polygon.io/docs/forex/get_v3_snapshot
-        - https://polygon.io/docs/crypto/get_v3_snapshot
+        - https://massive.com/docs/stocks/get_v3_snapshot
+        - https://massive.com/docs/options/get_v3_snapshot
+        - https://massive.com/docs/indices/get_v3_snapshot
+        - https://massive.com/docs/forex/get_v3_snapshot
+        - https://massive.com/docs/crypto/get_v3_snapshot
 
         :param type: the type of the asset
         :param ticker_any_of: Comma-separated list of tickers, up to a maximum of 250. If no tickers are passed then all

@@ -32,5 +32,5 @@
     "status": "OK",
     "request_id": "37089bb3b4ef99a796cdc82ff971e447",
     "count": 2,
-    "next_url": "https://api.polygon.io/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIyLTA0LTI3JmxpbWl0PTImb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUFBJTdDZjEyMmJjYmY4YWQwNzRmZmJlMTZmNjkxOWQ0ZDc3NjZlMzA3MWNmNmU1Nzg3OGE0OGU1NjQ1YzQyM2U3NzJhOSZzb3J0PXRpY2tlcg"
+    "next_url": "https://api.massive.com/v3/reference/tickers?cursor=YWN0aXZlPXRydWUmZGF0ZT0yMDIyLTA0LTI3JmxpbWl0PTImb3JkZXI9YXNjJnBhZ2VfbWFya2VyPUFBJTdDZjEyMmJjYmY4YWQwNzRmZmJlMTZmNjkxOWQ0ZDc3NjZlMzA3MWNmNmU1Nzg3OGE0OGU1NjQ1YzQyM2U3NzJhOSZzb3J0PXRpY2tlcg"
 }

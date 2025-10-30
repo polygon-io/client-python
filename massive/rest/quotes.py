@@ -15,7 +15,7 @@ from datetime import datetime, date
 from .models.request import RequestOptionBuilder
 
 
-# https://polygon.io/docs/stocks
+# https://massive.com/docs/stocks
 class QuotesClient(BaseClient):
     def list_quotes(
         self,

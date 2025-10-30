@@ -23,8 +23,8 @@ from .vX import VXClient
 from typing import Optional, Any
 import os
 
-BASE = "https://api.polygon.io"
-ENV_KEY = "POLYGON_API_KEY"
+BASE = "https://api.massive.com"
+ENV_KEY = "MASSIVE_API_KEY"
 
 
 class RESTClient(

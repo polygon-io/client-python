@@ -6,214 +6,214 @@ Models
 ==============================================================
 Universal Snapshot
 ==============================================================
-.. autoclass:: polygon.rest.models.UniversalSnapshot
+.. autoclass:: massive.rest.models.UniversalSnapshot
 
 ==============================================================
 Universal Snapshot Session
 ==============================================================
-.. autoclass:: polygon.rest.models.UniversalSnapshotSession
+.. autoclass:: massive.rest.models.UniversalSnapshotSession
 
 ==============================================================
 Universal Snapshot Last Quote
 ==============================================================
-.. autoclass:: polygon.rest.models.UniversalSnapshotLastQuote
+.. autoclass:: massive.rest.models.UniversalSnapshotLastQuote
 
 ==============================================================
 Universal Snapshot Last Trade
 ==============================================================
-.. autoclass:: polygon.rest.models.UniversalSnapshotLastTrade
+.. autoclass:: massive.rest.models.UniversalSnapshotLastTrade
 
 ==============================================================
 Universal Snapshot Details
 ==============================================================
-.. autoclass:: polygon.rest.models.UniversalSnapshotDetails
+.. autoclass:: massive.rest.models.UniversalSnapshotDetails
 
 ==============================================================
 Universal Snapshot Underlying Asset
 ==============================================================
-.. autoclass:: polygon.rest.models.UniversalSnapshotUnderlyingAsset
+.. autoclass:: massive.rest.models.UniversalSnapshotUnderlyingAsset
 
 ==============================================================
 Agg
 ==============================================================
-.. autoclass:: polygon.rest.models.Agg
+.. autoclass:: massive.rest.models.Agg
 
 ==============================================================
 Grouped Daily Agg
 ==============================================================
-.. autoclass:: polygon.rest.models.GroupedDailyAgg
+.. autoclass:: massive.rest.models.GroupedDailyAgg
 
 ==============================================================
 Daily Open Close Agg
 ==============================================================
-.. autoclass:: polygon.rest.models.DailyOpenCloseAgg
+.. autoclass:: massive.rest.models.DailyOpenCloseAgg
 
 ==============================================================
 Previous Close Agg
 ==============================================================
-.. autoclass:: polygon.rest.models.PreviousCloseAgg
+.. autoclass:: massive.rest.models.PreviousCloseAgg
 
 ==============================================================
 Trade
 ==============================================================
-.. autoclass:: polygon.rest.models.Trade
+.. autoclass:: massive.rest.models.Trade
 
 ==============================================================
 Last Trade
 ==============================================================
-.. autoclass:: polygon.rest.models.LastTrade
+.. autoclass:: massive.rest.models.LastTrade
 
 ==============================================================
 Crypto Trade
 ==============================================================
-.. autoclass:: polygon.rest.models.CryptoTrade
+.. autoclass:: massive.rest.models.CryptoTrade
 
 ==============================================================
 Quote
 ==============================================================
-.. autoclass:: polygon.rest.models.Quote
+.. autoclass:: massive.rest.models.Quote
 
 ==============================================================
 Last Quote
 ==============================================================
-.. autoclass:: polygon.rest.models.LastQuote
+.. autoclass:: massive.rest.models.LastQuote
 
 ==============================================================
 Snapshot Min
 ==============================================================
-.. autoclass:: polygon.rest.models.MinuteSnapshot
+.. autoclass:: massive.rest.models.MinuteSnapshot
 
 ==============================================================
 Snapshot
 ==============================================================
-.. autoclass:: polygon.rest.models.TickerSnapshot
+.. autoclass:: massive.rest.models.TickerSnapshot
 
 ==============================================================
 Day Option Contract Snapshot
 ==============================================================
-.. autoclass:: polygon.rest.models.DayOptionContractSnapshot
+.. autoclass:: massive.rest.models.DayOptionContractSnapshot
 
 ==============================================================
 Option Details
 ==============================================================
-.. autoclass:: polygon.rest.models.OptionDetails
+.. autoclass:: massive.rest.models.OptionDetails
 
 ==============================================================
 Option Greeks
 ==============================================================
-.. autoclass:: polygon.rest.models.Greeks
+.. autoclass:: massive.rest.models.Greeks
 
 ==============================================================
 Underlying Asset
 ==============================================================
-.. autoclass:: polygon.rest.models.UnderlyingAsset
+.. autoclass:: massive.rest.models.UnderlyingAsset
 
 ==============================================================
 Option Contract Snapshot
 ==============================================================
-.. autoclass:: polygon.rest.models.OptionContractSnapshot
+.. autoclass:: massive.rest.models.OptionContractSnapshot
 
 ==============================================================
 Order Book Quote
 ==============================================================
-.. autoclass:: polygon.rest.models.OrderBookQuote
+.. autoclass:: massive.rest.models.OrderBookQuote
 
 ==============================================================
 Snapshot Ticker Full Book
 ==============================================================
-.. autoclass:: polygon.rest.models.SnapshotTickerFullBook
+.. autoclass:: massive.rest.models.SnapshotTickerFullBook
 
 ==============================================================
 Ticker
 ==============================================================
-.. autoclass:: polygon.rest.models.Ticker
+.. autoclass:: massive.rest.models.Ticker
 
 ==============================================================
 Address
 ==============================================================
-.. autoclass:: polygon.rest.models.CompanyAddress
+.. autoclass:: massive.rest.models.CompanyAddress
 
 ==============================================================
 Branding
 ==============================================================
-.. autoclass:: polygon.rest.models.Branding
+.. autoclass:: massive.rest.models.Branding
 
 ==============================================================
 Publisher
 ==============================================================
-.. autoclass:: polygon.rest.models.Publisher
+.. autoclass:: massive.rest.models.Publisher
 
 ==============================================================
 Ticker Details
 ==============================================================
-.. autoclass:: polygon.rest.models.TickerDetails
+.. autoclass:: massive.rest.models.TickerDetails
 
 ==============================================================
 Ticker News
 ==============================================================
-.. autoclass:: polygon.rest.models.TickerNews
+.. autoclass:: massive.rest.models.TickerNews
 
 ==============================================================
 Ticker Types
 ==============================================================
-.. autoclass:: polygon.rest.models.TickerTypes
+.. autoclass:: massive.rest.models.TickerTypes
 
 ==============================================================
 Market Holiday
 ==============================================================
-.. autoclass:: polygon.rest.models.MarketHoliday
+.. autoclass:: massive.rest.models.MarketHoliday
 
 ==============================================================
 Market Currencies
 ==============================================================
-.. autoclass:: polygon.rest.models.MarketCurrencies
+.. autoclass:: massive.rest.models.MarketCurrencies
 
 ==============================================================
 Market Exchanges
 ==============================================================
-.. autoclass:: polygon.rest.models.MarketExchanges
+.. autoclass:: massive.rest.models.MarketExchanges
 
 ==============================================================
 Market Status
 ==============================================================
-.. autoclass:: polygon.rest.models.MarketStatus
+.. autoclass:: massive.rest.models.MarketStatus
 
 ==============================================================
 Split
 ==============================================================
-.. autoclass:: polygon.rest.models.Split
+.. autoclass:: massive.rest.models.Split
 
 ==============================================================
 Dividend
 ==============================================================
-.. autoclass:: polygon.rest.models.Dividend
+.. autoclass:: massive.rest.models.Dividend
 
 ==============================================================
 Sip Mapping
 ==============================================================
-.. autoclass:: polygon.rest.models.SipMapping
+.. autoclass:: massive.rest.models.SipMapping
 
 ==============================================================
 Consolidated
 ==============================================================
-.. autoclass:: polygon.rest.models.Consolidated
+.. autoclass:: massive.rest.models.Consolidated
 
 ==============================================================
 Market Center
 ==============================================================
-.. autoclass:: polygon.rest.models.MarketCenter
+.. autoclass:: massive.rest.models.MarketCenter
 
 ==============================================================
 Update Rules
 ==============================================================
-.. autoclass:: polygon.rest.models.UpdateRules
+.. autoclass:: massive.rest.models.UpdateRules
 
 ==============================================================
 Condition
 ==============================================================
-.. autoclass:: polygon.rest.models.Condition
+.. autoclass:: massive.rest.models.Condition
 
 ==============================================================
 Exchange
 ==============================================================
-.. autoclass:: polygon.rest.models.Exchange
+.. autoclass:: massive.rest.models.Exchange

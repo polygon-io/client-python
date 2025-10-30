@@ -14,6 +14,6 @@ List stock financials
 
 - `Stocks financials vX`_
 
-.. automethod:: polygon.rest.VXClient.list_stock_financials
+.. automethod:: massive.rest.VXClient.list_stock_financials
 
-.. _Stocks financials vX: https://polygon.io/docs/stocks/get_vx_reference_financials
+.. _Stocks financials vX: https://massive.com/docs/stocks/get_vx_reference_financials

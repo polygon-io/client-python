@@ -123,5 +123,5 @@
     ],
     "status": "OK",
     "request_id": "280bc9f4c6d0ba24a819f0d153b15d85",
-    "next_url": "https://api.polygon.io/v3/quotes/AAPL?cursor=YXA9MTkyODgxNjYmYXM9JmxpbWl0PTEwJm9yZGVyPWRlc2Mmc29ydD10aW1lc3RhbXAmdGltZXN0YW1wLmx0ZT0yMDIyLTA1LTEwVDE0JTNBMTElM0ExMi42OTA2NjExODla"
+    "next_url": "https://api.massive.com/v3/quotes/AAPL?cursor=YXA9MTkyODgxNjYmYXM9JmxpbWl0PTEwJm9yZGVyPWRlc2Mmc29ydD10aW1lc3RhbXAmdGltZXN0YW1wLmx0ZT0yMDIyLTA1LTEwVDE0JTNBMTElM0ExMi42OTA2NjExODla"
 }

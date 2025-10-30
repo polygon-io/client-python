@@ -1,7 +1,7 @@
 {
   "results": {
     "underlying": {
-      "url": "https://api.polygon.io/v2/aggs/ticker/AAPL/range/15/minute/1660521600000/1660928746001?limit=50000&sort=desc"
+      "url": "https://api.massive.com/v2/aggs/ticker/AAPL/range/15/minute/1660521600000/1660928746001?limit=50000&sort=desc"
     },
     "values": [
       {

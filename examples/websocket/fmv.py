@@ -1,5 +1,5 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, Feed, Market
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, Feed, Market
 from typing import List
 
 client = WebSocketClient(feed=Feed.Business, market=Market.Stocks, verbose=True)

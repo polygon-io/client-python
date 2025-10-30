@@ -6,20 +6,20 @@ WebSocket Enums
 ==============================================================
 Feed
 ==============================================================
-.. autoclass:: polygon.websocket.models.Feed
+.. autoclass:: massive.websocket.models.Feed
     :members:
     :undoc-members:                                  
 
 ==============================================================
 Market
 ==============================================================
-.. autoclass:: polygon.websocket.models.Market
+.. autoclass:: massive.websocket.models.Market
     :members:
     :undoc-members:         
 
 ==============================================================
 EventType
 ==============================================================
-.. autoclass:: polygon.websocket.models.EventType
+.. autoclass:: massive.websocket.models.EventType
     :members:
     :undoc-members:         

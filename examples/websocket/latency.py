@@ -1,5 +1,5 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, EquityQuote
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, EquityQuote
 from typing import List, cast
 import time
 

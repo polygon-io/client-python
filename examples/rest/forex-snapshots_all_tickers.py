@@ -1,15 +1,15 @@
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     TickerSnapshot,
     Agg,
 )
 
 # docs
-# https://polygon.io/docs/forex/get_v2_snapshot_locale_global_markets_forex_tickers
-# https://polygon-api-client.readthedocs.io/en/latest/Snapshot.html#get-all-snapshots
+# https://massive.com/docs/forex/get_v2_snapshot_locale_global_markets_forex_tickers
+# https://massive-api-client.readthedocs.io/en/latest/Snapshot.html#get-all-snapshots
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 snapshot = client.get_snapshot_all("forex")  # all tickers
 

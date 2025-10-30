@@ -2,7 +2,7 @@
 # aggregating trades into 30-minute intervals, providing a clear view of when
 # trading activity concentrates during the day. This analysis aims to highlight
 # the distribution of trading volume across the day, from pre-market to after-
-# hours. Please see https://polygon.io/blog/insights-from-trade-level-data
+# hours. Please see https://massive.com/blog/insights-from-trade-level-data
 #
 import pandas as pd  # type: ignore
 import matplotlib.pyplot as plt  # type: ignore

@@ -3,8 +3,8 @@
   "results":[
      {
         "branding":{
-           "icon_url":"https://api.polygon.io/icon.png",
-           "logo_url":"https://api.polygon.io/logo.svg"
+           "icon_url":"https://api.massive.com/icon.png",
+           "logo_url":"https://api.massive.com/logo.svg"
         },
         "market_status":"closed",
         "name":"Norwegian Cruise Lines",
@@ -73,8 +73,8 @@
      },
      {
         "branding":{
-           "icon_url":"https://api.polygon.io/icon.png",
-           "logo_url":"https://api.polygon.io/logo.svg"
+           "icon_url":"https://api.massive.com/icon.png",
+           "logo_url":"https://api.massive.com/logo.svg"
         },
         "market_status":"open",
         "name":"Bitcoin - United States Dollar",

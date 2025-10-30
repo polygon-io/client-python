@@ -1,8 +1,8 @@
-# Polygon.io Flat Files Stock Trades Analysis Scripts
+# Massive.com Flat Files Stock Trades Analysis Scripts
 
-This repository contains Python scripts for analyzing stock market trading data using Flat Files from Polygon.io. These scripts demonstrate various ways to dissect and visualize trade data for comprehensive market analysis.
+This repository contains Python scripts for analyzing stock market trading data using Flat Files from Massive.com. These scripts demonstrate various ways to dissect and visualize trade data for comprehensive market analysis.
 
-Please see the tutorial: [Deep Dive into Trade-Level Data with Flat Files](https://polygon.io/blog/insights-from-trade-level-data)
+Please see the tutorial: [Deep Dive into Trade-Level Data with Flat Files](https://massive.com/blog/insights-from-trade-level-data)
 
 ## Scripts Overview
 
@@ -58,7 +58,7 @@ Creates a histogram that aggregates trades into 30-minute intervals throughout t
 
 ## Download the Data
 
-First, let's download an actual file and explore the data and see what we can learn. We start by downloading the trades for 2024-04-05 via the [File Browser](https://polygon.io/flat-files/stocks-trades/2024/04). The `us_stocks_sip/trades_v1/2024/04/2024-04-05.csv.gz` file is about 1.35GB and is in a compressed gzip format.
+First, let's download an actual file and explore the data and see what we can learn. We start by downloading the trades for 2024-04-05 via the [File Browser](https://massive.com/flat-files/stocks-trades/2024/04). The `us_stocks_sip/trades_v1/2024/04/2024-04-05.csv.gz` file is about 1.35GB and is in a compressed gzip format.
 
 ```
 gunzip 2024-04-05.csv.gz

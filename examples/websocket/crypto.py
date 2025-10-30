@@ -1,5 +1,5 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, Market
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, Market
 from typing import List
 
 client = WebSocketClient(market=Market.Crypto)
