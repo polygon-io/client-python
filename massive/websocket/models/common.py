@@ -1,0 +1,60 @@
+from enum import Enum
+
+
+class Feed(Enum):
+    Delayed = "delayed.massive.com"
+    RealTime = "socket.massive.com"
+    Nasdaq = "nasdaqfeed.massive.com"
+    PolyFeed = "polyfeed.massive.com"
+    PolyFeedPlus = "polyfeedplus.massive.com"
+    StarterFeed = "starterfeed.massive.com"
+    Launchpad = "launchpad.massive.com"
+    Business = "business.massive.com"
+    EdgxBusiness = "edgx-business.massive.com"
+    IEXBusiness = "iex-business.massive.com"
+    DelayedBusiness = "delayed-business.massive.com"
+    DelayedEdgxBusiness = "delayed-edgx-business.massive.com"
+    DelayedNasdaqLastSaleBusiness = "delayed-nasdaq-last-sale-business.massive.com"
+    DelayedNasdaqBasic = "delayed-nasdaq-basic-business.massive.com"
+    DelayedFullMarketBusiness = "delayed-fullmarket-business.massive.com"
+    FullMarketBusiness = "fullmarket-business.massive.com"
+    NasdaqLastSaleBusiness = "nasdaq-last-sale-business.massive.com"
+    NasdaqBasicBusiness = "nasdaq-basic-business.massive.com"
+
+
+class Market(Enum):
+    Stocks = "stocks"
+    Options = "options"
+    Forex = "forex"
+    Crypto = "crypto"
+    Indices = "indices"
+    Futures = "futures"  # CME, CBOT, NYMEX, and COMEX
+    FuturesCME = "futures/cme"
+    FuturesCBOT = "futures/cbot"
+    FuturesNYMEX = "futures/nymex"
+    FuturesCOMEX = "futures/comex"
+
+
+class EventType(Enum):
+    EquityAgg = "A"
+    EquityAggMin = "AM"
+    CryptoAgg = "XA"
+    CryptoAggSec = "XAS"
+    ForexAgg = "CA"
+    ForexAggSec = "CAS"
+    EquityTrade = "T"
+    CryptoTrade = "XT"
+    EquityQuote = "Q"
+    ForexQuote = "C"
+    CryptoQuote = "XQ"
+    Imbalances = "NOI"
+    LimitUpLimitDown = "LULD"
+    CryptoL2 = "XL2"
+    Value = "V"
+    LaunchpadValue = "LV"
+    LaunchpadAggMin = "AM"
+    BusinessFairMarketValue = "FMV"
+    FuturesTrade = "T"
+    FuturesQuote = "Q"
+    FuturesAgg = "A"
+    FuturesAggMin = "AM"

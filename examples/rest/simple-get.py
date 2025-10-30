@@ -1,5 +1,5 @@
-from polygon import RESTClient
-from polygon.rest import models
+from massive import RESTClient
+from massive.rest import models
 
 client = RESTClient()
 

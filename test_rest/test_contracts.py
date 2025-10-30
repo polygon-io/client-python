@@ -1,4 +1,4 @@
-from polygon.rest.models import OptionsContract
+from massive.rest.models import OptionsContract
 from base import BaseTest
 
 

@@ -5,8 +5,8 @@ Users of the Launchpad product will need to pass in certain headers in order to 
  ```python
 
 # import RESTClient
-from polygon import RESTClient
-from polygon.rest.models.request import RequestOptionBuilder
+from massive import RESTClient
+from massive.rest.models.request import RequestOptionBuilder
 
 # create client
 c = RESTClient(api_key="API_KEY")
@@ -27,8 +27,8 @@ Launchpad users can also provide the optional User Agent value describing their 
  ```python
 
 # import RESTClient
-from polygon import RESTClient
-from polygon.rest.models.request import RequestOptionBuilder
+from massive import RESTClient
+from massive.rest.models.request import RequestOptionBuilder
 
 # create client
 c = RESTClient(api_key="API_KEY")

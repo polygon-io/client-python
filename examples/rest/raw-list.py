@@ -1,4 +1,4 @@
-from polygon import RESTClient
+from massive import RESTClient
 from typing import cast
 from urllib3 import HTTPResponse
 
@@ -79,5 +79,5 @@ print(trades.data)
 #  ],
 #  "status": "OK",
 #  "request_id": "618bb99e7a632ed9f55454a541404b44",
-#  "next_url": "https://api.polygon.io/v3/trades/AAA?cursor=YXA9NSZhcz0mbGltaXQ9NSZvcmRlcj1kZXNjJnNvcnQ9dGltZXN0YW1wJnRpbWVzdGFtcC5ndGU9MjAyMi0wNC0yMFQwNCUzQTAwJTNBMDBaJnRpbWVzdGFtcC5sdGU9MjAyMi0wNC0yMFQyMCUzQTEwJTNBMDAuMDAzODY5OTUyWg"
+#  "next_url": "https://api.massive.com/v3/trades/AAA?cursor=YXA9NSZhcz0mbGltaXQ9NSZvcmRlcj1kZXNjJnNvcnQ9dGltZXN0YW1wJnRpbWVzdGFtcC5ndGU9MjAyMi0wNC0yMFQwNCUzQTAwJTNBMDBaJnRpbWVzdGFtcC5sdGU9MjAyMi0wNC0yMFQyMCUzQTEwJTNBMDAuMDAzODY5OTUyWg"
 # }'

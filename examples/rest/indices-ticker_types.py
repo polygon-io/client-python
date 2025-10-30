@@ -1,16 +1,16 @@
 from typing import Optional, Union, List
 from urllib3 import HTTPResponse
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     TickerTypes,
 )
 
 # docs
-# https://polygon.io/docs/indices/get_v3_reference_tickers_types
-# https://polygon-api-client.readthedocs.io/en/latest/Reference.html#get-ticker-types
+# https://massive.com/docs/indices/get_v3_reference_tickers_types
+# https://massive-api-client.readthedocs.io/en/latest/Reference.html#get-ticker-types
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 types: Optional[Union[List[TickerTypes], HTTPResponse]] = None
 

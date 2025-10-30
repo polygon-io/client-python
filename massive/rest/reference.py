@@ -93,7 +93,7 @@ class TickersClient(BaseClient):
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Ticker], HTTPResponse]:
         """
-        Query all ticker symbols which are supported by Polygon.io. This API currently includes Stocks/Equities, Indices, Forex, and Crypto.
+        Query all ticker symbols which are supported by Massive.com. This API currently includes Stocks/Equities, Indices, Forex, and Crypto.
 
         :param ticker: Specify a ticker symbol. Defaults to empty string which queries all tickers.
         :param ticker_lt: Ticker less than.
@@ -134,7 +134,7 @@ class TickersClient(BaseClient):
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[TickerDetails, HTTPResponse]:
         """
-        Get a single ticker supported by Polygon.io. This response will have detailed information about the ticker and the company behind it.
+        Get a single ticker supported by Massive.com. This response will have detailed information about the ticker and the company behind it.
 
         :param ticker: The ticker symbol of the asset.
         :param date: Specify a point in time to get information about the ticker available on that date. When retrieving information from SEC filings, we compare this date with the period of report date on the SEC filing.
@@ -229,7 +229,7 @@ class TickersClient(BaseClient):
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[TickerTypes], HTTPResponse]:
         """
-        List all ticker types that Polygon.io has.
+        List all ticker types that Massive.com has.
 
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.
@@ -434,7 +434,7 @@ class ConditionsClient(BaseClient):
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[Iterator[Condition], HTTPResponse]:
         """
-        List all conditions that Polygon.io uses.
+        List all conditions that Massive.com uses.
 
         :param asset_class: Filter for conditions within a given asset class.
         :param data_type: Data types that this condition applies to.
@@ -468,7 +468,7 @@ class ExchangesClient(BaseClient):
         options: Optional[RequestOptionBuilder] = None,
     ) -> Union[List[Exchange], HTTPResponse]:
         """
-        List all exchanges that Polygon.io knows about.
+        List all exchanges that Massive.com knows about.
 
         :param asset_class: Filter by asset class.
         :param locale: Filter by locale.

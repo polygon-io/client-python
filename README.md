@@ -1,33 +1,34 @@
-[![PyPI version](https://badge.fury.io/py/polygon-api-client.svg)](https://badge.fury.io/py/polygon-api-client)
-[![Docs](https://readthedocs.org/projects/polygon-api-client/badge/?version=latest)](https://polygon-api-client.readthedocs.io/en/latest/)
+# Massive (formerly Polygon.io) Python Client - WebSocket & RESTful APIs
 
-# Polygon Python Client - WebSocket & RESTful APIs
+Welcome to the official Python client library for the [Massive](https://massive.io/) REST and WebSocket API. To get started, please see the [Getting Started](https://massive.io/docs/stocks/getting-started) section in our documentation, view the [examples](./examples/) directory for code snippets.
 
-Welcome to the official Python client library for the [Polygon](https://polygon.io/) REST and WebSocket API. To get started, please see the [Getting Started](https://polygon.io/docs/stocks/getting-started) section in our documentation, view the [examples](./examples/) directory for code snippets, or the [blog post](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) with video tutorials to learn more.
+**Note:** Polygon.io has rebranded as [Massive.com](https://massive.com) on Oct 30, 2025. Existing API keys, accounts, and integrations continue to work exactly as before. The only change in this SDK is that it now defaults to the new API base at `api.massive.com`, while `api.polygon.io` remains supported for an extended period.
+
+For details, see our [rebrand announcement blog post](https://massive.com/blog/polygon-is-now-massive/) or open an issue / contact [support@massive.com](mailto:support@massive.com) if you have questions.
 
 ## Prerequisites
 
-Before installing the Polygon Python client, ensure your environment has Python 3.9 or higher.
+Before installing the Massive Python client, ensure your environment has Python 3.9 or higher.
 
 ## Install
 
 Please use pip to install or update to the latest stable version.
 ```
-pip install -U polygon-api-client
+pip install -U massive
 ```
 
 ## Getting started
 
-To get started, please see the [Getting Started](https://polygon-api-client.readthedocs.io/en/latest/Getting-Started.html) section in our docs, view the [examples](./examples) directory for code snippets, or view the [blog post with videos](https://polygon.io/blog/polygon-io-with-python-for-stock-market-data/) to learn more.
+To get started, please see the [Getting Started](https://massive.io/docs/stocks/getting-started) section in our docs, view the [examples](./examples) directory for code snippets.
 
-The free tier of our API comes with usage limitations, potentially leading to rate limit errors if these are exceeded. For uninterrupted access and to support larger data requirements, we recommend reviewing our [subscription plans](https://polygon.io/pricing), which are tailored for a wide range of needs from development to high-demand applications. Refer to our pricing page for detailed information on limits and features to ensure a seamless experience, especially for real-time data processing.
+The free tier of our API comes with usage limitations, potentially leading to rate limit errors if these are exceeded. For uninterrupted access and to support larger data requirements, we recommend reviewing our [subscription plans](https://massive.io/pricing), which are tailored for a wide range of needs from development to high-demand applications. Refer to our pricing page for detailed information on limits and features to ensure a seamless experience, especially for real-time data processing.
 
 ## REST API Client
 Import the RESTClient.
 ```python
-from polygon import RESTClient
+from massive import RESTClient
 ```
-Create a new client with your [API key](https://polygon.io/dashboard/api-keys)
+Create a new client with your [API key](https://massive.io/dashboard/api-keys)
 ```python
 client = RESTClient(api_key="<API_KEY>")
 ```
@@ -147,8 +148,8 @@ When debug mode is enabled, the client will print out useful debugging informati
 For instance, if you made a request for `TSLA` data for the date `2023-08-01`, you would see debug output similar to the following:
 
 ```
-Request URL: https://api.polygon.io/v2/aggs/ticker/TSLA/range/1/minute/2023-08-01/2023-08-01?limit=50000
-Request Headers: {'Authorization': 'Bearer REDACTED', 'Accept-Encoding': 'gzip', 'User-Agent': 'Polygon.io PythonClient/1.12.4'}
+Request URL: https://api.massive.io/v2/aggs/ticker/TSLA/range/1/minute/2023-08-01/2023-08-01?limit=50000
+Request Headers: {'Authorization': 'Bearer REDACTED', 'Accept-Encoding': 'gzip', 'User-Agent': 'Massive.com PythonClient/1.12.4'}
 Response Headers: {'Server': 'nginx/1.19.2', 'Date': 'Tue, 05 Sep 2023 23:07:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'X-Request-Id': '727c82feed3790b44084c3f4cae1d7d4', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains'}
 ```
 
@@ -158,12 +159,12 @@ This can be an invaluable tool for debugging issues or understanding how the cli
 
 Import classes
 ```python
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage
 from typing import List
 ```
 ### Using the client
-Create a new client with your [API key](https://polygon.io/dashboard/api-keys) and subscription options.
+Create a new client with your [API key](https://massive.io/dashboard/api-keys) and subscription options.
 ```python
 # Note: Multiple subscriptions can be added to the array 
 # For example, if you want to subscribe to AAPL and META,
@@ -179,18 +180,16 @@ def handle_msg(msg: List[WebSocketMessage]):
 
 ws.run(handle_msg=handle_msg)
 ```
-Check out more detailed examples [here](https://github.com/polygon-io/client-python/tree/master/examples/websocket).
+Check out more detailed examples [here](https://github.com/massive-com/client-python/tree/master/examples/websocket).
 
 ## Contributing
 
 If you found a bug or have an idea for a new feature, please first discuss it with us by
-[submitting a new issue](https://github.com/polygon-io/client-python/issues/new/choose).
+[submitting a new issue](https://github.com/massive-com/client-python/issues/new/choose).
 We will respond to issues within at most 3 weeks.
 We're also open to volunteers if you want to submit a PR for any open issues but
 please discuss it with us beforehand. PRs that aren't linked to an existing issue or
-discussed with us ahead of time will generally be declined. If you have more general
-feedback or want to discuss using this client with other users, feel free to reach out
-on our [Slack channel](https://polygon-io.slack.com/archives/C03FRFN7UF3).
+discussed with us ahead of time will generally be declined.
 
 ### Development
 

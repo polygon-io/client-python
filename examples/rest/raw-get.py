@@ -1,4 +1,4 @@
-from polygon import RESTClient
+from massive import RESTClient
 from typing import cast
 from urllib3 import HTTPResponse
 
@@ -16,7 +16,7 @@ aggs = cast(
     ),
 )
 print(aggs.geturl())
-# https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2022-04-01/2022-04-04
+# https://api.massive.com/v2/aggs/ticker/AAPL/range/1/day/2022-04-01/2022-04-04
 print(aggs.status)
 # 200
 print(aggs.data)

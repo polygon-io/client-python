@@ -1,14 +1,14 @@
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     Exchange,
 )
 
 # docs
-# https://polygon.io/docs/options/get_v3_reference_exchanges
-# https://polygon-api-client.readthedocs.io/en/latest/Reference.html#get-exchanges
+# https://massive.com/docs/options/get_v3_reference_exchanges
+# https://massive-api-client.readthedocs.io/en/latest/Reference.html#get-exchanges
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 exchanges = client.get_exchanges("fx")
 print(exchanges)

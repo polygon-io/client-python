@@ -1,9 +1,9 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, Feed, Market
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, Feed, Market
 from typing import List
 
 client = WebSocketClient(
-    api_key="<POLYGON_API_KEY>", feed=Feed.Launchpad, market=Market.Stocks
+    api_key="<MASSIVE_API_KEY>", feed=Feed.Launchpad, market=Market.Stocks
 )
 
 client.subscribe("AM.*")  # all aggregates

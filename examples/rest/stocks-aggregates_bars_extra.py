@@ -1,13 +1,13 @@
 # This code retrieves stock market data for a specific stock using the
-# Polygon REST API and writes it to a CSV file. It uses the "polygon"
+# Massive REST API and writes it to a CSV file. It uses the "massive"
 # library to communicate with the API and the "csv" library to write
 # the data to a CSV file. The script retrieves data for the stock "AAPL"
 # for the dates "2023-01-30" to "2023-02-03" in 1 hour intervals. The
 # resulting data includes the open, high, low, close, volume, vwap,
 # timestamp, transactions, and otc values for each hour. The output is
 # then printed to the console.
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     Agg,
 )
 import csv
@@ -15,11 +15,11 @@ import datetime
 import io
 
 # docs
-# https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to
-# https://polygon-api-client.readthedocs.io/en/latest/Aggs.html#polygon.RESTClient.list_aggs
+# https://massive.com/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to
+# https://massive-api-client.readthedocs.io/en/latest/Aggs.html#massive.RESTClient.list_aggs
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 aggs = []
 for a in client.list_aggs(

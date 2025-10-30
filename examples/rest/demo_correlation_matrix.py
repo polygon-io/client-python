@@ -1,11 +1,11 @@
 """
 This script computes and visualizes the correlation matrix of a selected set of
-stocks using Polygon's API. This script is for educational purposes only and is
+stocks using Massive's API. This script is for educational purposes only and is
 not intended to provide investment advice. The examples provided analyze the 
 correlation between different stocks from diverse sectors, as well as within 
 specific sectors.
 
-Blog: https://polygon.io/blog/finding-correlation-between-stocks/
+Blog: https://massive.com/blog/finding-correlation-between-stocks/
 Video: https://www.youtube.com/watch?v=q0TgaUGWPFc
 
 Before running this script, there are 4 prerequisites:
@@ -16,17 +16,17 @@ Before running this script, there are 4 prerequisites:
    - numpy
    - seaborn
    - matplotlib.pyplot
-   - polygon's python-client library
+   - massive's python-client library
 
    You can likely run:
-   pip install pandas numpy seaborn matplotlib polygon-api-client
+   pip install pandas numpy seaborn matplotlib massive-api-client
 
-2) API Key: You will need a Polygon API key to fetch the stock data. This can 
+2) API Key: You will need a Massive API key to fetch the stock data. This can 
    be set manually in the script below, or you can set an environment variable 
-   'POLYGON_API_KEY'.
+   'MASSIVE_API_KEY'.
 
-   setx POLYGON_API_KEY "<your_api_key>"   <- windows
-   export POLYGON_API_KEY="<your_api_key>" <- mac/linux
+   setx MASSIVE_API_KEY "<your_api_key>"   <- windows
+   export MASSIVE_API_KEY="<your_api_key>" <- mac/linux
 
 3) Select Stocks: You need to select the stocks you're interested in analyzing.
    Update the 'symbols' variable in this script with your chosen stock symbols.
@@ -45,7 +45,7 @@ import pandas as pd  # type: ignore
 import numpy as np  # type: ignore
 import seaborn as sns  # type: ignore
 import matplotlib.pyplot as plt  # type: ignore
-from polygon import RESTClient
+from massive import RESTClient
 
 # Less likely to be correlated due to being in different sectors and are
 # exposed to different market forces, economic trends, and price risks.
@@ -69,7 +69,7 @@ def fetch_stock_data(symbols, start_date, end_date):
     stocks = []
 
     # client = RESTClient("XXXXXX") # hardcoded api_key is used
-    client = RESTClient()  # POLYGON_API_KEY environment variable is used
+    client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
     try:
         for symbol in symbols:

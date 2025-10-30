@@ -1,7 +1,7 @@
 import datetime
 import concurrent.futures
 import logging
-from polygon import RESTClient
+from massive import RESTClient
 import signal
 import sys
 import pickle
@@ -10,7 +10,7 @@ import lz4.frame  # type: ignore
 """
 This script performs the following tasks:
 
-1. Downloads aggregated market data (referred to as 'aggs') for specific stock symbols using the Polygon API.
+1. Downloads aggregated market data (referred to as 'aggs') for specific stock symbols using the Massive API.
 2. Handles data for multiple dates and performs these operations in parallel to improve efficiency.
 3. Saves the downloaded data in a compressed format (LZ4) using Python's pickle serialization.
 4. Utilizes logging to track its progress and any potential errors.
@@ -18,7 +18,7 @@ This script performs the following tasks:
 
 Usage:
 1. pip install lz4
-2. Set your Polygon API key in the environment variable 'POLYGON_API_KEY'.
+2. Set your Massive API key in the environment variable 'MASSIVE_API_KEY'.
 3. Specify the date range and stock symbols you are interested in within the script.
 4. Run the script.
 
@@ -43,7 +43,7 @@ def get_aggs_for_symbol_and_date(symbol_date_pair):
     """Retrieve aggs for a given symbol and date"""
     symbol, date = symbol_date_pair
     aggs = []
-    client = RESTClient(trace=True)  # Uses POLYGON_API_KEY environment variable
+    client = RESTClient(trace=True)  # Uses MASSIVE_API_KEY environment variable
 
     for a in client.list_aggs(
         symbol,

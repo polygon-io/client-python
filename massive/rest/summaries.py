@@ -1,4 +1,4 @@
-from polygon.rest.models.summaries import SummaryResult
+from massive.rest.models.summaries import SummaryResult
 from .base import BaseClient
 from typing import Optional, Any, Dict, List, Union
 from urllib3 import HTTPResponse
@@ -16,7 +16,7 @@ class SummariesClient(BaseClient):
     ) -> Union[List[SummaryResult], HTTPResponse]:
         """
         GetSummaries retrieves summaries for the ticker list with the given params.
-        For more details see https://polygon.io/docs/stocks/get_v1_summaries.
+        For more details see https://massive.com/docs/stocks/get_v1_summaries.
 
         :param ticker_any_of: The ticker symbol
         :param params: Any additional query params

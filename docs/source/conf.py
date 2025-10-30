@@ -14,13 +14,13 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 print('docs path', sys.path[0])
-os.environ['POLYGON_API_KEY'] = 'POLYGON_API_KEY'
+os.environ['MASSIVE_API_KEY'] = 'MASSIVE_API_KEY'
 
 # -- Project information -----------------------------------------------------
 
-project = 'polygon-api-client'
-copyright = '2022, Polygon.io'
-author = 'Polygon.io'
+project = 'massive-api-client'
+copyright = '2022, Massive.com'
+author = 'Massive.com'
 
 # The full version, including alpha/beta/rc tags
 release = '0.3.0'

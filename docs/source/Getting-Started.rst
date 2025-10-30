@@ -2,26 +2,26 @@ Getting Started
 ===============
 
 Requirements:
-  - `Polygon.io API key <https://polygon.io/dashboard/api-keys>`_
+  - `Massive.com API key <https://massive.com/dashboard/api-keys>`_
   - `Python >= 3.8 <https://www.python.org/downloads/>`_
-  - `This package <https://pypi.org/project/polygon-api-client/>`_
+  - `This package <https://pypi.org/project/massive-api-client/>`_
 
 .. code-block:: shell
 
-    pip install polygon-api-client
+    pip install massive-api-client
 
 HTTP client usage
 -----------------
 
-.. automethod:: polygon.RESTClient.__init__
+.. automethod:: massive.RESTClient.__init__
 
-You can pass your API key via the environment variable :code:`POLYGON_API_KEY` or as the first parameter to the :code:`RESTClient` constructor:
+You can pass your API key via the environment variable :code:`MASSIVE_API_KEY` or as the first parameter to the :code:`RESTClient` constructor:
 
 .. code-block:: python
 
-  from polygon import RESTClient
+  from massive import RESTClient
 
-  client = RESTClient() # POLYGON_API_KEY is used
+  client = RESTClient() # MASSIVE_API_KEY is used
   client = RESTClient("api_key") # api_key is used
 
 For non-paginated endpoints call :code:`get_*`:
@@ -41,7 +41,7 @@ For endpoints that have a set of parameters you can use the provided :doc:`enums
 
 .. code-block:: python
 
-  from polygon.rest.models import Sort
+  from massive.rest.models import Sort
 
   client.list_trades(..., sort=Sort.ASC)
 
@@ -60,7 +60,7 @@ To provide your own JSON processing library (exposing loads/dumps functions) pas
 WebSocket client usage
 ----------------------
 
-.. automethod:: polygon.WebSocketClient.__init__
+.. automethod:: massive.WebSocketClient.__init__
 
 The simplest way to use the websocket client is to just provide a callback:
 

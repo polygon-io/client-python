@@ -4,15 +4,15 @@ import os
 import re
 from concurrent.futures import ThreadPoolExecutor
 from typing import Optional, Union
-from polygon import RESTClient, WebSocketClient
-from polygon.websocket.models import Market, Feed
+from massive import RESTClient, WebSocketClient
+from massive.websocket.models import Market, Feed
 
 
 class ApiCallHandler:
     def __init__(self):
         self.api_call_queue = asyncio.Queue()
         self.executor = ThreadPoolExecutor()  # Thread pool for running synchronous code
-        self.client = RESTClient()  # Assumes POLYGON_API_KEY is set in the environment
+        self.client = RESTClient()  # Assumes MASSIVE_API_KEY is set in the environment
 
     async def enqueue_api_call(self, options_ticker):
         await self.api_call_queue.put(options_ticker)
@@ -75,8 +75,8 @@ class MessageHandler:
 
 class MyClient:
     def __init__(self, feed, market, subscriptions):
-        api_key = os.getenv("POLYGON_API_KEY")
-        self.polygon_websocket_client = WebSocketClient(
+        api_key = os.getenv("MASSIVE_API_KEY")
+        self.massive_websocket_client = WebSocketClient(
             api_key=api_key,
             feed=feed,
             market=market,
@@ -89,7 +89,7 @@ class MyClient:
     async def start_event_stream(self):
         try:
             await asyncio.gather(
-                self.polygon_websocket_client.connect(self.message_handler.add),
+                self.massive_websocket_client.connect(self.message_handler.add),
                 self.message_handler.start_handling(),
                 self.api_call_handler.start_processing_api_calls(),
             )

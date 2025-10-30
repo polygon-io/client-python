@@ -1,8 +1,8 @@
 from typing import Dict, Optional
 
-X_POLYGON_EDGE_ID = "X-Polygon-Edge-ID"
-X_POLYGON_EDGE_IP_ADDRESS = "X-Polygon-Edge-IP-Address"
-X_POLYGON_EDGE_USER_AGENT = "X-Polygon-Edge-User-Agent"
+X_MASSIVE_EDGE_ID = "X-Massive-Edge-ID"
+X_MASSIVE_EDGE_IP_ADDRESS = "X-Massive-Edge-IP-Address"
+X_MASSIVE_EDGE_USER_AGENT = "X-Massive-Edge-User-Agent"
 
 HEADER = "header"
 
@@ -15,7 +15,7 @@ class RequestOptionBuilder:
         edge_user: Optional[str] = None,
     ):
         """
-        RequestOptionBuilder is a utility class to build polygon api options used in requests.
+        RequestOptionBuilder is a utility class to build massive api options used in requests.
         :param edge_id: is a required Launchpad header. It identifies the Edge User requesting data
         :param edge_ip_address: is a required Launchpad header. It denotes the originating IP Address of the Edge User
         :param edge_user: is an optional Launchpad header. It denotes the originating UserAgent of the Edge User requesting data.
@@ -42,12 +42,12 @@ class RequestOptionBuilder:
         :return ResponseOptionBuilder
         """
         edge_headers: Dict[str, str] = {
-            X_POLYGON_EDGE_ID: edge_id,
-            X_POLYGON_EDGE_IP_ADDRESS: edge_ip_address,
+            X_MASSIVE_EDGE_ID: edge_id,
+            X_MASSIVE_EDGE_IP_ADDRESS: edge_ip_address,
         }
 
         if edge_user is not None:
-            edge_headers[X_POLYGON_EDGE_USER_AGENT] = edge_user
+            edge_headers[X_MASSIVE_EDGE_USER_AGENT] = edge_user
 
         self._add_to_edge_headers(**edge_headers)
 
@@ -75,13 +75,13 @@ class RequestOptionBuilder:
         edge_headers: Dict[str, str] = {}
 
         if edge_id is not None:
-            edge_headers[X_POLYGON_EDGE_ID] = edge_id
+            edge_headers[X_MASSIVE_EDGE_ID] = edge_id
 
         if edge_ip_address is not None:
-            edge_headers[X_POLYGON_EDGE_IP_ADDRESS] = edge_ip_address
+            edge_headers[X_MASSIVE_EDGE_IP_ADDRESS] = edge_ip_address
 
         if edge_user is not None:
-            edge_headers[X_POLYGON_EDGE_USER_AGENT] = edge_user
+            edge_headers[X_MASSIVE_EDGE_USER_AGENT] = edge_user
 
         self._add_to_edge_headers(**edge_headers)
 

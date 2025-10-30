@@ -1,15 +1,15 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage, Market
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage, Market
 from typing import List
 
 # docs
-# https://polygon.io/docs/options/ws_getting-started
-# https://polygon-api-client.readthedocs.io/en/latest/WebSocket.html
+# https://massive.com/docs/options/ws_getting-started
+# https://massive-api-client.readthedocs.io/en/latest/WebSocket.html
 
 # client = WebSocketClient("XXXXXX") # hardcoded api_key is used
 client = WebSocketClient(
     market=Market.Options
-)  # POLYGON_API_KEY environment variable is used
+)  # MASSIVE_API_KEY environment variable is used
 
 # aggregates
 # client.subscribe("AM.*") # aggregates (per minute)

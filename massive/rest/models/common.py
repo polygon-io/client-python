@@ -98,6 +98,6 @@ class SeriesType(Enum):
 
 
 class LaunchPadOptions(Enum):
-    X_POLYGON_EDGE_ID = "X-Polygon-Edge-ID"
-    X_POLYGON_IP_ADDRESS = "X-Polygon-Edge-IP-Address"
-    X_POLYGON_EDGE_USER_AGENT = "X-Polygon-Edge-User-Agent"
+    X_MASSIVE_EDGE_ID = "X-Massive-Edge-ID"
+    X_MASSIVE_IP_ADDRESS = "X-Massive-Edge-IP-Address"
+    X_MASSIVE_EDGE_USER_AGENT = "X-Massive-Edge-User-Agent"

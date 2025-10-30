@@ -1,4 +1,4 @@
-from polygon.rest.models import (
+from massive.rest.models import (
     MarketHoliday,
     MarketStatus,
     MarketCurrencies,

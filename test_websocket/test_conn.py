@@ -1,8 +1,8 @@
-from polygon import WebSocketClient
+from massive import WebSocketClient
 from base_ws import BaseTest
 from mock_server import subs, port
 import asyncio
-from polygon.websocket import EquityTrade
+from massive.websocket import EquityTrade
 
 
 class WebSocketsTest(BaseTest):

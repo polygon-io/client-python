@@ -11,35 +11,35 @@ WebSocket
 ===========
 Init client
 ===========
-.. automethod:: polygon.WebSocketClient.__init__
+.. automethod:: massive.WebSocketClient.__init__
   :noindex:
 
 ============================
 Connect
 ============================
-.. automethod:: polygon.WebSocketClient.connect
+.. automethod:: massive.WebSocketClient.connect
 
 ============================
 Run
 ============================
-.. automethod:: polygon.WebSocketClient.run
+.. automethod:: massive.WebSocketClient.run
 
 ============================
 Subscribe
 ============================
-.. automethod:: polygon.WebSocketClient.subscribe
+.. automethod:: massive.WebSocketClient.subscribe
 
 ============================
 Unsubscribe
 ============================
-.. automethod:: polygon.WebSocketClient.unsubscribe
+.. automethod:: massive.WebSocketClient.unsubscribe
 
 ============================
 Close
 ============================
-.. automethod:: polygon.WebSocketClient.close
+.. automethod:: massive.WebSocketClient.close
 
-.. _Stocks getting started: https://polygon.io/docs/stocks/ws_getting-started
-.. _Options getting started: https://polygon.io/docs/options/ws_getting-started
-.. _Forex getting started: https://polygon.io/docs/forex/ws_getting-started
-.. _Crypto getting started: https://polygon.io/docs/crypto/ws_getting-started
+.. _Stocks getting started: https://massive.com/docs/stocks/ws_getting-started
+.. _Options getting started: https://massive.com/docs/options/ws_getting-started
+.. _Forex getting started: https://massive.com/docs/forex/ws_getting-started
+.. _Crypto getting started: https://massive.com/docs/crypto/ws_getting-started

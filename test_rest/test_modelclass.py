@@ -1,4 +1,4 @@
-from polygon.rest.models import Agg
+from massive.rest.models import Agg
 from base import BaseTest
 
 

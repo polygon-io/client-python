@@ -1,7 +1,7 @@
-Welcome to polygon-api-client's documentation!
+Welcome to massive-api-client's documentation!
 ==============================================
 
-This documentation is for the Python client only. For details about the responses see `the official docs <https://polygon.io/docs>`_.
+This documentation is for the Python client only. For details about the responses see `the official docs <https://massive.com/docs>`_.
 
 .. toctree::
   :maxdepth: 1

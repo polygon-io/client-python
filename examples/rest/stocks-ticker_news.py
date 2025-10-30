@@ -1,14 +1,14 @@
-from polygon import RESTClient
-from polygon.rest.models import (
+from massive import RESTClient
+from massive.rest.models import (
     TickerNews,
 )
 
 # docs
-# https://polygon.io/docs/stocks/get_v2_reference_news
-# https://polygon-api-client.readthedocs.io/en/latest/Reference.html#list-ticker-news
+# https://massive.com/docs/stocks/get_v2_reference_news
+# https://massive-api-client.readthedocs.io/en/latest/Reference.html#list-ticker-news
 
 # client = RESTClient("XXXXXX") # hardcoded api_key is used
-client = RESTClient()  # POLYGON_API_KEY environment variable is used
+client = RESTClient()  # MASSIVE_API_KEY environment variable is used
 
 news = []
 for n in client.list_ticker_news("BBBY", order="desc", limit=1000):

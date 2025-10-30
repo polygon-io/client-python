@@ -1,5 +1,5 @@
-from polygon import WebSocketClient
-from polygon.websocket.models import WebSocketMessage
+from massive import WebSocketClient
+from massive.websocket.models import WebSocketMessage
 from typing import List
 
 # type: ignore

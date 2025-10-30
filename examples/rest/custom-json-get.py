@@ -1,4 +1,4 @@
-from polygon import RESTClient
+from massive import RESTClient
 
 # type: ignore
 import orjson

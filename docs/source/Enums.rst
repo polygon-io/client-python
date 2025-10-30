@@ -6,97 +6,97 @@ Enums
 ==============================================================
 Sort
 ==============================================================
-.. autoclass:: polygon.rest.models.Sort
+.. autoclass:: massive.rest.models.Sort
     :members:
     :undoc-members:                                  
 
 ==============================================================
 Order
 ==============================================================
-.. autoclass:: polygon.rest.models.Order
+.. autoclass:: massive.rest.models.Order
     :members:
     :undoc-members: 
 
 ==============================================================
 Locale
 ==============================================================
-.. autoclass:: polygon.rest.models.Locale
+.. autoclass:: massive.rest.models.Locale
     :members:
     :undoc-members: 
 
 ==============================================================
 Market
 ==============================================================
-.. autoclass:: polygon.rest.models.Market
+.. autoclass:: massive.rest.models.Market
     :members:
     :undoc-members:
 
 ==============================================================
 AssetClass
 ==============================================================
-.. autoclass:: polygon.rest.models.AssetClass
+.. autoclass:: massive.rest.models.AssetClass
     :members:
     :undoc-members: 
 
 ==============================================================
 DividendType
 ==============================================================
-.. autoclass:: polygon.rest.models.DividendType
+.. autoclass:: massive.rest.models.DividendType
     :members:
     :undoc-members: 
 
 ==============================================================
 Frequency
 ==============================================================
-.. autoclass:: polygon.rest.models.Frequency
+.. autoclass:: massive.rest.models.Frequency
     :members:
     :undoc-members: 
 
 ==============================================================
 DataType
 ==============================================================
-.. autoclass:: polygon.rest.models.DataType
+.. autoclass:: massive.rest.models.DataType
     :members:
     :undoc-members: 
 
 ==============================================================
 SIP
 ==============================================================
-.. autoclass:: polygon.rest.models.SIP
+.. autoclass:: massive.rest.models.SIP
     :members:
     :undoc-members: 
 
 ==============================================================
 ExchangeType
 ==============================================================
-.. autoclass:: polygon.rest.models.ExchangeType
+.. autoclass:: massive.rest.models.ExchangeType
     :members:
     :undoc-members: 
 
 ==============================================================
 Direction
 ==============================================================
-.. autoclass:: polygon.rest.models.Direction
+.. autoclass:: massive.rest.models.Direction
     :members:
     :undoc-members: 
 
 ==============================================================
 SnapshotMarketType
 ==============================================================
-.. autoclass:: polygon.rest.models.SnapshotMarketType
+.. autoclass:: massive.rest.models.SnapshotMarketType
     :members:
     :undoc-members: 
 
 ==============================================================
 Timeframe
 ==============================================================
-.. autoclass:: polygon.rest.models.Timeframe
+.. autoclass:: massive.rest.models.Timeframe
     :members:
     :undoc-members: 
 
 ==============================================================
 Precision
 ==============================================================
-.. autoclass:: polygon.rest.models.Precision
+.. autoclass:: massive.rest.models.Precision
     :members:
     :undoc-members: 

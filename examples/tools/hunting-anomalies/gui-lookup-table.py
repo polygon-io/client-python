@@ -2,8 +2,8 @@ import os
 import pickle
 import json
 from datetime import datetime
-from polygon import RESTClient
-from polygon.rest.models import Agg
+from massive import RESTClient
+from massive.rest.models import Agg
 import http.server
 import socketserver
 import traceback
@@ -166,7 +166,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
                 # Fetch minute aggregates for the ticker and date
                 client = RESTClient(
                     trace=True
-                )  # POLYGON_API_KEY environment variable is used
+                )  # MASSIVE_API_KEY environment variable is used
                 try:
                     aggs = []
                     date_from = date

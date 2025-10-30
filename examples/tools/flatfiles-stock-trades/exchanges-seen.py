@@ -1,7 +1,7 @@
 # Here's a Python script for analyzing the dataset, that identifies the
 # distribution of trades across different exchanges and calculates their
 # respective percentages of the total trades. Please see
-# https://polygon.io/blog/insights-from-trade-level-data
+# https://massive.com/blog/insights-from-trade-level-data
 #
 import pandas as pd  # type: ignore
 

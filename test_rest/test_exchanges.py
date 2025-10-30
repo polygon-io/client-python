@@ -1,4 +1,4 @@
-from polygon.rest.models import Exchange
+from massive.rest.models import Exchange
 from base import BaseTest
 
 

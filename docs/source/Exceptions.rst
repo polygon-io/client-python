@@ -6,14 +6,14 @@ Exceptions
 ==============================================================
 AuthError
 ==============================================================
-.. autoclass:: polygon.exceptions.AuthError
+.. autoclass:: massive.exceptions.AuthError
     :members:
     :undoc-members:  
 
 ==============================================================
 BadResponse
 ==============================================================
-.. autoclass:: polygon.exceptions.BadResponse
+.. autoclass:: massive.exceptions.BadResponse
     :members:
     :undoc-members:  
 
