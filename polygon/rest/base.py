@@ -125,7 +125,9 @@ class BaseClient:
 
         if self.trace:
             resp_headers_dict = dict(resp.headers.items())
-            logger.info("Response Headers: %s", resp_headers_dict)
+            logger.info(
+                "Request URL: %s, Response Headers: %s", full_url, resp_headers_dict
+            )
 
         if resp.status != 200:
             raise BadResponse(resp.data.decode("utf-8"))
