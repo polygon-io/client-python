@@ -2,6 +2,10 @@
 
 Welcome to the official Python client library for the [Massive](https://massive.io/) REST and WebSocket API. To get started, please see the [Getting Started](https://massive.io/docs/stocks/getting-started) section in our documentation, view the [examples](./examples/) directory for code snippets.
 
+**Note:** Polygon.io has rebranded as [Massive.com](https://massive.com) on Oct 30, 2025. Existing API keys, accounts, and integrations continue to work exactly as before. The only change in this SDK is that it now defaults to the new API base at `api.massive.com`, while `api.polygon.io` remains supported for an extended period.
+
+For details, see our [rebrand announcement blog post](https://massive.com/blog/polygon-is-now-massive/) or open an issue / contact [support@massive.com](mailto:support@massive.com) if you have questions.
+
 ## Prerequisites
 
 Before installing the Massive Python client, ensure your environment has Python 3.9 or higher.
