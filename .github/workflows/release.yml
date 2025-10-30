@@ -29,12 +29,24 @@ jobs:
         uses: abatilo/actions-poetry@v2
       - name: Get package name
         id: package
-        run: echo "name=$(python -c \"with open('pyproject.toml') as f: lines = f.readlines(); for line in lines: if line.strip().startswith('name ='): print(line.strip().split(' = ')[1].strip('\\\"')); break\")" >> $GITHUB_OUTPUT
+        run: |
+          echo "name=$(python - <<'PY'
+import sys
+with open('pyproject.toml', 'r', encoding='utf-8') as f:
+    for line in f:
+        s = line.strip()
+        if s.startswith('name'):
+            # supports: name="foo" or name = "foo" and ignores inline comments
+            val = s.split('=', 1)[1].split('#', 1)[0].strip().strip('"').strip("'")
+            print(val)
+            break
+PY
+)" >> "$GITHUB_OUTPUT"
       - name: Configure Poetry
         run: |
-          if [ "${{ steps.package.outputs.name }}" == "polygon-api-client" ]; then
+          if [ "${{ steps.package.outputs.name }}" = "polygon-api-client" ]; then
             poetry config pypi-token.pypi ${{ secrets.POETRY_HTTP_BASIC_PYPI_PASSWORD }}
-          elif [ "${{ steps.package.outputs.name }}" == "massive" ]; then
+          elif [ "${{ steps.package.outputs.name }}" = "massive" ]; then
             poetry config pypi-token.pypi ${{ secrets.POETRY_HTTP_BASIC_PYPI_PASSWORD_MASSIVE }}
           else
             echo "Unknown package name: ${{ steps.package.outputs.name }}; skipping publish"
