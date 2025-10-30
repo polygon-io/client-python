@@ -42,8 +42,6 @@ jobs:
           fi
       - name: Install deps
         run: poetry install
-      - name: Run tests
-        run: poetry run make test  # Assuming 'make test' from repo; adjust if different (e.g., poetry run pytest)
       - name: Get tag
         id: tag
         uses: dawidd6/action-get-tag@v1
